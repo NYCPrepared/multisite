@@ -1,0 +1,16 @@
+{
+    "name" : "Multisite Site Category",
+    "slug" : "multisite-site-category-master",
+    "download_url" : "https://github.com/brasofilo/multisite-site-category/archive/master.zip",
+    "version" : "2013.10.11",
+    "author" : "Rodolfo Buaiz",
+    "author_homepage" : "http://brasofilo.com",
+    "homepage" : "https://github.com/brasofilo/multisite-site-category",
+    "tested" : "3.6",
+    "sections" : {
+        "description" : "Add a custom meta option when registering new sites in WordPress Multisite.",
+        "changelog" : "<p><ul><li><strong>2013.10.11</strong><p>Added GitHub updater.</p></li></ul>"
+    },
+    "upgrade_notice" : "Version 2013.10.11 - Adding github updater.",
+    "last_updated" : "2013-10-11"
+}
