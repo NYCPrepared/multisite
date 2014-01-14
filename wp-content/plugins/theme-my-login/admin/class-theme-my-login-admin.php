@@ -29,7 +29,7 @@ class Theme_My_Login_Admin extends Theme_My_Login_Abstract {
 	 * @access public
 	 * @return Theme_My_Login
 	 */
-	public static function get_object() {
+	public static function get_object( $class = null ) {
 		return parent::get_object( __CLASS__ );
 	}
 

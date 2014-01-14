@@ -22,7 +22,7 @@ class Theme_My_Login_MS_Signup extends Theme_My_Login_Abstract {
 	 * @access public
 	 * @return object
 	 */
-	public static function get_object() {
+	public static function get_object( $class = null ) {
 		return parent::get_object( __CLASS__ );
 	}
 

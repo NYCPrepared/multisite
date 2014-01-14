@@ -84,7 +84,7 @@ class Theme_My_Login extends Theme_My_Login_Abstract {
 	 * @access public
 	 * @return object
 	 */
-	public static function get_object() {
+	public static function get_object( $class = null ) {
 		return parent::get_object( __CLASS__ );
 	}
 
@@ -1006,7 +1006,7 @@ if(typeof wpOnload=='function')wpOnload()
 		if ( empty( $_POST['user_login'] ) ) {
 			$errors->add( 'empty_username', __( '<strong>ERROR</strong>: Enter a username or e-mail address.' ) );
 		} else if ( strpos( $_POST['user_login'], '@' ) ) {
-			$user_data = get_user_by_email( trim( $_POST['user_login'] ) );
+			$user_data = get_user_by( 'email', trim( $_POST['user_login'] ) );
 			if ( empty( $user_data ) )
 				$errors->add( 'invalid_email', __( '<strong>ERROR</strong>: There is no user registered with that email address.' ) );
 		} else {
