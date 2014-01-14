@@ -7,8 +7,8 @@
 						<?php bloginfo('description'); ?>
 						<div class="social links icons">
 							<ul class="social-links">
-								<li class="facebook"><span class="icon facebook">FB</span></li>
-								<li class="twitter"><span class="icon twitter">Twitter</span></li>
+								<li class="facebook"><span class="icon-facebook">FB</span></li>
+								<li class="twitter"><span class="icon-twitter">Twitter</span></li>
 							</ul>
 						</div>
 					</section>
