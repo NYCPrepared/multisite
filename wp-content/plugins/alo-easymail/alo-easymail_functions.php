@@ -887,7 +887,7 @@ function alo_em_add_subscriber( $fields, $newstate=0, $lang="" ) { //edit : orig
  	$output = true;
  	$fields = array_map( 'strip_tags', $fields );
  	$email = $fields['email'];
- 	if ( !is_admin() ) $fields['ip_address'] = alo_em_ip_address();
+ 	if ( !is_admin() || ( defined('DOING_AJAX') && DOING_AJAX ) ) $fields['ip_address'] = alo_em_ip_address();
 	//foreach( $fields as $key => $value ) { ${$key} = $value; } //edit : added all this line in order to transform the fields array into simple variables
     // if there is NOT a subscriber with this email address: add new subscriber and send activation email
     if (alo_em_is_subscriber($email) == false){
@@ -2068,7 +2068,7 @@ function alo_em_zirkuss_newsletter_content( $content, $newsletter, $recipient, $
 			// Tracking code
 			$track_vars = $recipient->ID . '|' . $recipient->unikey;
 		    $track_vars = urlencode( base64_encode( $track_vars ) );    
-			$tracking_view = '<img src="'. ALO_EM_PLUGIN_URL .'/tr.php?v='. $track_vars .'" width="1" height="1" border="0" >';
+			$tracking_view = '<img src="'. ALO_EM_PLUGIN_URL .'/tr.php?v='. $track_vars .'" width="1" height="1" border="0" alt="" >';
 		}
 		
 		// Content default if not theme found
