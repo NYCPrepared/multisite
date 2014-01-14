@@ -14,3 +14,9 @@ sitemap.xml.gz
 wp-config.php
 
 
+wp-content/plugins/wp-example-content/content.php
+wp-content/plugins/wp-example-content/magic.php
+wp-content/plugins/wp-example-content/readme.txt
+wp-content/plugins/wp-example-content/screenshot-1.png
+wp-content/plugins/wp-example-content/screenshot-2.png
+wp-content/plugins/wp-example-content/screenshot-3.png
