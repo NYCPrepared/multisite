@@ -1,5 +1,7 @@
 <?php get_header(); ?>
 
+ <?php include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); ?>
+
 			<div id="content">
 
 				<div id="inner-content" class="wrap clearfix">
@@ -58,6 +60,8 @@
 								<li></li>
 							</ul>
 						</article>
+						<?php // check for plugin using plugin name
+						if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
 						<article class="module row events clearfix">
 							<h3 class="module-heading">Events</h3>
 							<ul class="events-list">
@@ -66,12 +70,11 @@
 									'format'=>'<li><span class="event-month">#M</span>
 									<span class="event-date">#j</span>
 									<span class="event-day">#D</span>
-									<h4 class="post-title event-title">#_EVENTLINK</h4></li>'));
-								?>
-
+									<h4 class="post-title event-title">#_EVENTLINK</h4></li>'));?>
 								<?php echo $events; ?>
 							</ul>
 						</article>
+						<?php } ?>
 						<article class="module row sites clearfix">
 							<h3 class="module-heading">Sites</h3>
 							<ul class="sites-list">
