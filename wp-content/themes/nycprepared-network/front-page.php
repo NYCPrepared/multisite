@@ -7,7 +7,7 @@
 				<div id="inner-content" class="wrap clearfix">
 
 					<section class="home-main clearfix">
-						<article class="left home-feature eightcol first clearfix">
+						<article class="left home-feature ninecol first clearfix">
 
 							<ul class="featured-posts">
 
@@ -41,7 +41,7 @@
 							</ul>
 
 						</article>
-						<article class="right home-main fourcol">
+						<article class="right home-main threecol">
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 								<?php the_content(); ?>
 							<?php endwhile; endif; ?>
