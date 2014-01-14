@@ -1,0 +1,15 @@
+/*
+ Theme Name:   Group Site
+ Theme URI:    http://nycprepared.org
+ Description:  Theme for a group website, based on the Network Site theme
+ Author:       Glocal Coop, Erica Heinz
+ Author URI:   http://glocal.coop
+ Template:     nycprepared-network
+ Version:      1.0.0
+ Tags:         two-columns, right-sidebar, responsive-layout
+ Text Domain:  nycprepared-group-site
+*/
+
+@import url("../nycprepared-network/style.css");
+
+/* =Theme customization starts here

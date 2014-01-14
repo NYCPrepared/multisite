@@ -1,0 +1,39 @@
+/* import mixins */
+@import "mixins";
+
+@import "grid";
+@import "481up";
+@import "768up";
+@import "1030up";
+
+// Styles are just to ease template development
+.home {
+	//Debugging
+	section,
+	div {}
+	ul.featured-posts .post-image img {
+		max-height: 250px;
+		width: 100%;
+		height: auto;
+	}
+	.home-main {
+		.right {
+			background: #ddd;
+		}
+	}
+	.module {
+		border-bottom: 1px solid #ccc;
+	}
+	footer {
+		background: #ddd;
+
+		.global.links {
+			background: #999;
+		}
+
+		.copyright {
+			background: #666;
+		}
+	}
+}
+
