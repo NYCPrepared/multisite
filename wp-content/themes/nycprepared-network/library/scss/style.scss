@@ -31,8 +31,8 @@ the other stylesheets. Remember, keep it light: Speed is Important.
 // styles in base.scss
 @import "base";
 
-// styles in home.scss
-@import "home";
+// styles for debugging
+@import "debug"; // to be removed
 
 /*
 LARGER MOBILE DEVICES
