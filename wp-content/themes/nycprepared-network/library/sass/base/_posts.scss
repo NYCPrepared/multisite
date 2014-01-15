@@ -1,0 +1,189 @@
+// INDEX PAGE
+
+
+.post-preview, 
+.work-preview {
+    @extend %clearfix;
+    border-bottom: 1px solid $gray9;
+    padding-bottom: 1em;
+    overflow: hidden;
+}
+
+.work-preview {
+    border-bottom-color: $gray7;
+    height: 220px;
+    @include transition (height 0.25s ease-in-out);
+    a {
+        display: block;
+        background: transparent;
+        &:hover {
+            background: transparent;
+        }
+    }
+    &:hover {
+        height: 300px;
+        .work-excerpt {
+            opacity: 1;
+        }
+    }
+	@include breakpoint(mama) {
+    	&:hover {
+        	height: 270px;
+    	}
+	}
+	@include breakpoint(baby) {
+	    height: inherit;
+    	&:hover {
+        	height: inherit;
+    	}
+	}
+}
+
+
+.post-title, 
+.work-title {
+    margin: 1.25em 0 0;
+	@include font-size(27);
+	@include breakpoint(mama) {@include font-size(24);}
+	@include breakpoint(baby) {@include font-size(18);}
+	a {
+    	background: transparent;
+	}
+}
+
+.work-image {
+    float: right;
+    width: 70%;
+    max-width: 570px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    @include breakpoint(baby) {margin-left: 10px; margin-bottom: 10px; width: 60%;}
+}
+
+.work-excerpt {
+    opacity: 0;
+    @include transition (opacity 0.25s ease-in-out);
+	@include font-size(16);
+    @include breakpoint(baby) {@include font-size(15); line-height: 1.4; opacity: 1;}
+}
+
+.content .post-excerpt {
+    margin-top: .4em;
+    @include font-size(16);
+	line-height: 1.8;
+	max-width: 36em;
+}
+
+
+.post-frame {
+    height: 100px;
+    width: 100px;
+    float: right;
+    overflow: hidden;
+    border: 1px solid $gray9;
+    margin: -1px 0 20px 30px;
+    img {
+        height: 100%; 
+        width: auto;
+        max-width: none;
+    }
+	@include breakpoint(mama) {margin-left: 20px;}
+}
+
+
+// ENLARGE FIRST POST
+
+.post-preview:first-child {
+    .post-frame {
+        width: 200px;
+        height: 200px;
+        margin-top: 36px;
+    	@include breakpoint(mama) {}
+    	@include breakpoint(baby) {width: 180px; height: 180px; }
+    }
+    .post-title {
+    	@include font-size(42);
+    	margin-top: 1.1em;
+    	@include breakpoint(mama) {@include font-size(30);}
+    	@include breakpoint(baby) {@include font-size(24);}
+    }
+    .post-excerpt {
+    	@include font-size(22);
+    	line-height: 1.6;
+    	max-width: 24em;
+    	@include breakpoint(mama) {@include font-size(18);}
+    	@include breakpoint(baby) {@include font-size(16);}
+    }
+    .post-date {
+    	@include font-size(18);
+    	@include breakpoint(mama) {@include font-size(16);}
+    	@include breakpoint(baby) {@include font-size(13);}
+    	.arrow-right {
+        	height: 15px;
+        	width: 15px;
+        	top: -1px;
+        	left: 4px;
+    	}
+    	.arrow-right,
+    	.arrow-right:after {
+        	border-width: 2px;
+    	}
+    }
+}
+
+
+
+// POST PAGE
+
+
+.work-logo {
+    width: 520px;
+    height: auto;
+    margin: 80px auto 70px;
+    display: block;
+    @include breakpoint(mama) {
+        margin: 50px auto 60px;
+    }
+    @include breakpoint(baby) {
+        width: 100%;
+        height: auto;
+        margin: 30px auto;
+    }
+}
+
+.post-date,
+.post-date:link, 
+.post-date:visited {
+    margin-left: .25em;
+	color: $gray7;
+	@extend %square;
+	@include font-size(14);
+    @include transition (color 0.25s ease-in-out);
+	white-space: nowrap;
+	background: transparent;
+	.arrow-right {
+    	height: 9px;
+    	width: 9px;
+    	display: inline-block;
+    	top: -1px;
+    	left: 3px;
+    	&:after {
+        	border-color: $gray7;
+    	}
+	}
+	&:hover {
+    	color: $anchor;
+    	background: transparent;
+    	.arrow-right,
+    	.arrow-right:after {
+        	border-color: $anchor;
+    	}
+	}
+}
+
+.more-content {
+	@include font-size(15);
+    margin-top: 2em;
+}
+
+

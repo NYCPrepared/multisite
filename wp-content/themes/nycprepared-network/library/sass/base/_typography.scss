@@ -1,0 +1,164 @@
+// TYPEFACES
+
+// if you're going to use webfonts, be sure to check your weights
+// http://css-tricks.com/watch-your-font-weight/
+
+
+// Entypo symbol font
+@import url('http://weloveiconfonts.com/api/?family=entypo');
+[class*="entypo-"]:before {font-family: 'entypo', sans-serif;}
+
+$sans:        "Lato", Helvetica, Verdana, sans-serif;
+$condensed:   "Oswald", "Arial Narrow", Arial, sans-serif;
+
+%sans {
+    font-family: $sans;
+    font-weight: 300;
+}
+
+%condensed {
+    font-family: $condensed;
+    font-weight: 400;
+    @extend %caps;
+}
+
+%caps {
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+
+
+
+// FONT SIZING
+// http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
+
+@mixin font-size($size: 16){
+  font-size: $size + px;
+  font-size: $size / 16 + rem;
+}
+
+
+html {
+    font-size: 100%; // 16px 
+}
+
+body {
+    @include font-size(16);
+    @extend %sans;
+    line-height: 1.6;
+    color: $gray1;
+}
+
+
+
+
+// HEADERS
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    @extend %sans;
+	line-height: 1.4;
+	text-rendering: optimizelegibility;
+	font-weight: 700;
+	// removing text decoration from all headline links 
+	a {
+		text-decoration: none;
+	}
+}
+
+h1, .h1 {
+    @include font-size(48);
+	@include breakpoint(mama) {@include font-size(38);}
+	@include breakpoint(papa) {@include font-size(48);}
+}
+
+h2, .h2 {
+    @include font-size(30);
+	margin-bottom: 0.375em;
+}
+
+h3, .h3 {
+    @include font-size(23);
+    margin-bottom: 0.125em;
+}
+
+h4, .h4 {
+    @include font-size(20);
+}
+
+h5, .h5 {
+    @include font-size(18);
+	@extend %caps;
+}
+
+h6, .h6 {
+    @include font-size(15);
+}
+
+p {
+    @include font-size(18);
+    @extend %sans;
+	line-height: 1.8;
+}
+
+li, dt, dd, input, label {
+    @include font-size(18);
+    @extend %sans;
+	line-height: 1.8;
+	margin-bottom: 1em;
+}
+
+small {
+    @include font-size(13);
+    @extend %sans;
+	line-height: 1.4;
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+i, em {
+    font-style: italic;
+}
+
+
+
+ul, ol {
+    margin: 0 0 2.4em;
+    li {
+        margin-bottom: .8em;
+    }
+}
+
+
+blockquote {
+    padding: 0 10% 0 0;
+    margin: 1.4em 0;
+    ol, ul {
+        margin-bottom: 1.5em;
+    }
+    p, li {
+    	@include font-size(23);
+    	color: $gray5;
+        font-style: italic;
+    }
+}
+
+
+code,
+kbd,
+pre,
+samp {
+    font-family: 'Courier New', Courier, monospace;
+	@include font-size(18);
+}
+
+pre {
+    padding: 1em 1.5em;
+    margin: 1.8em 0;
+    display: block;
+    background: $gray2;
+    color: $gray0;
+}
+

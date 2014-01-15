@@ -1,0 +1,155 @@
+// STARTER VARIABLES AND MIXINS
+
+
+// COLORS
+
+$navy: #247cc9;
+$blue: #29abe2;
+$teal: #00a99d;
+$green: #22b573;
+$lime: #8cc63f;
+$yellow: #fbb03b;
+$orange: #ff931e;
+$red: #f15a24;
+
+$black: #000;
+$white: #fff;
+
+// shades of beige -- HSB(43, 3, X)
+$gray1: #1a1919;
+$gray2: #333231;
+$gray3: #4d4c4a;
+$gray4: #757472;
+$gray5: #999894;
+$gray6: #b8b6b2;
+$gray7: #d1cfcb;
+$gray8: #e6e4df;
+$gray9: #f5f3ed;
+$gray0: #fffdf7;
+
+
+// Tutorial: how to use color variables properly:
+// http://sachagreif.com/sass-color-variables/
+
+$anchor: $navy;
+
+
+// colors for bones theme components
+$alert-yellow:      $yellow;
+$alert-red:         $red;
+$alert-green:       $green;
+$alert-blue:        $blue;
+
+
+
+
+
+// LAYERS
+
+$layer1: 1; // content
+$layer2: 2; // hovers
+$layer3: 3; // cloak
+$layer4: 4; // lightbox
+$layer5: 5; // lightbox content
+
+
+
+// GRID (BOURBON NEAT) //
+// so great! read the docs:
+// neat.bourbon.io/docs/
+
+$grid-columns: 16;
+$max-width: 1200px;
+
+
+// RWD BREAKPOINTS 
+
+@mixin breakpoint($point) {
+	@if $point == papa {
+		@media (min-width: 1025px) { @content; }
+	}
+	@if $point == mama {
+ 		@media (max-width: 1024px) { @content; }
+	}
+	@else if $point == baby {
+		@media (max-width: 480px)  { @content; }
+	}
+}
+
+
+
+// MIXINS 
+// read the Bourbon docs for all kinds of well-tested mixins 
+// check there before adding new ones
+// http://bourbon.io/docs/
+
+
+// cross-browser inline-block -- bit.ly/KuaPpr 
+%inline-block {
+	display: -moz-inline-stack; 
+	display: inline-block;
+	zoom: 1;
+	*display: inline;		
+}	
+
+
+// clearfix
+
+// for old markup w/clearfix class:
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+// for semantic markup, a la http://blog.teamtreehouse.com/a-better-clearfix-with-sass
+// usage: @extend %clearfix;
+%clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+
+
+// STATES
+
+.is-hidden {
+	display: none;
+}
+
+.fullwidth { 
+	width: 100%; 
+}
+
+
+
+// STANDARD ELEMENTS
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+	
+hr {
+	border: 0;
+	height: 1px;
+	background: $gray8;
+	margin:2rem 0 4rem 0;
+}
+
+
+img, video, object { 
+  max-width: 100% 
+}

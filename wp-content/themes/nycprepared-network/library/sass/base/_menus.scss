@@ -1,0 +1,229 @@
+/*********************
+NAVIGATION STYLES
+*********************/
+
+/*
+all navs have a .nav class applied via
+the wp_menu function; this is so we can
+easily write one group of styles for
+the navs on the site so our css is cleaner
+and more scalable.
+*/
+
+
+
+ 
+.nav {
+    background: $white;
+	li {
+        margin: 0;
+        white-space: nowrap;
+		a {
+			display: block;
+			text-decoration: none;
+            color: $gray4;
+			&:hover, 
+			&:focus {
+			}
+		}
+	} 
+
+	// highlight current page 
+	li.current-menu-item,
+	li.current_page_item,
+	li.current-page-ancestor {
+		a {}
+	} 
+}
+
+
+#logo {
+    @include font-size(28);
+    @extend %condensed;
+	float: left;
+    margin: 0;
+    padding: 16px 16px 16px 0;
+    white-space: nowrap;
+    @include breakpoint(mama) {@include font-size(24); float: none; text-align: left;}
+    @include breakpoint(baby) {@include font-size(20); padding-left: 5px;}
+    a {
+        color: $yellow;
+    }
+    span {
+        display: inline-block;
+        border: 3px solid $yellow;
+        padding: 5px 7px;
+        margin-left: 7px;   
+        @include transition (border-color 0.25s ease);
+        @include breakpoint(baby) {border-width: 2px; padding: 3px 5px; margin-left: 5px;}
+    }
+    a:hover {
+        color: $gray4;
+        span {
+            border-color: $gray4;
+        }
+    }
+}
+
+
+// rainbow colors for menu
+@mixin rainbow-menu($color){
+    a,
+    a:visited {
+        color: $color;
+    }
+    a:hover,
+    a:focus, 
+    &.current-menu-item a,
+    &.current-menu-ancestor a {
+        border-color: $color; 
+    }
+    .sub-menu li a, 
+    .sub-menu li a:visited {
+        border-color: transparent; 
+        color: $gray5;
+    }
+    .sub-menu li a:hover,
+    .sub-menu li a:focus {
+        color: $color; 
+        border-color: $color;
+    }
+    .sub-menu li.current-menu-item a {
+        color: $color; 
+    }
+}
+
+
+.top-nav {
+    margin: 0;
+    padding: 19px 0 0;
+    @include breakpoint(mama) {margin-left: -18px; padding: 0;}
+    @include breakpoint(baby) {margin: 0; padding-bottom: 5px;}
+    li {
+        @include font-size(22);
+        @extend %sans;
+        font-weight: 700;
+        padding: 0 4px;
+		float: left;
+		position: relative;
+        @include breakpoint(mama) {@include font-size(20);}
+        @include breakpoint(baby) {@include font-size(15); padding: 0;}
+        a {
+    		padding: 2px 8px;
+            border: 3px solid $white;
+            @include transition (all 0.25s ease);
+            @include breakpoint(baby) {border-width: 2px; padding: 2px 4px;}
+        }
+    }
+    li:nth-child(4n+1) {
+        @include rainbow-menu($green);
+    }
+    li:nth-child(4n+2) {
+        @include rainbow-menu($teal);
+    }
+    li:nth-child(4n+3) {
+        @include rainbow-menu($blue);
+    }
+    li:nth-child(4n+4) {
+        @include rainbow-menu($navy);
+    }
+	.sub-menu,
+	.children {
+		display: none; 
+	    padding: 0;
+		margin: 0;
+		position: absolute;
+		z-index: $layer5;
+		left: 4px;
+		top: auto;
+		background: $white;
+		border-bottom: 3px solid $gray7;
+		border-top: 0;
+        @include breakpoint(baby) {left: 0;}
+		li {
+            @include font-size(16);
+		    margin: 0;
+		    padding: 0;
+            @include breakpoint(mama) {@include font-size(14);}
+            @include breakpoint(baby) {@include font-size(13);}
+			a {
+			    margin: 0;
+				padding: 8px 12px;
+				border: 0;
+				border-left: 3px solid transparent;
+				display: block;
+                @include breakpoint(baby) {border-width: 2px;}
+			}
+		}
+	}
+	// show sub-menus 
+	li:hover ul {
+		display: block;
+    }
+}
+
+// hide subnav on iframe template, which have their own subnav
+.page-template-page-iframe-php .current-menu-parent ul {
+    display: none;
+}
+
+
+
+
+.footer #logo {
+    @include span-columns(4);
+    @include breakpoint(baby) {@include fill-parent;}
+}
+
+.footer-nav {
+    @include span-columns(8); 
+    padding: 30px 0;
+    margin: 0;
+	@include breakpoint(baby) {@include fill-parent; padding: 0;}
+	li {
+        @include span-columns(2 of 8); 
+        @include font-size(16);
+        @extend %sans;
+        font-weight: 700;
+        padding: 0;
+        @include breakpoint(baby) {@include font-size(14); width: 33%; margin: 0; }
+    }
+    .sub-menu {
+    	@extend %clearfix;
+    	li {
+            @include font-size(14);
+            font-weight: 300;
+            float: none;
+        }
+    }
+    a:hover {
+        color: $blue;
+    }
+}
+
+.footer-social {
+    @include span-columns(4);
+    white-space: nowrap;
+    @include breakpoint(baby) {@include fill-parent; margin-top: 0;}
+    a {
+        padding: 0;
+        height: 36px;
+        width: 36px;
+        text-align: center;
+        line-height: 36px;
+        border-radius: 0;
+        margin-left: 3px;
+    }
+    i {
+        margin: 0 !important;
+    }
+}
+
+.copyright {
+    @include font-size(12);
+    @extend %caps;
+    color: $gray6;
+    clear: both;
+	@include breakpoint(baby) {@include font-size(10);}
+}
+

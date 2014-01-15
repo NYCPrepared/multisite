@@ -1,0 +1,51 @@
+// CONTAINERS 
+// use Bourbon Neat grid
+
+
+#content {
+	background: $gray9;
+    padding-top: 20px;
+}
+
+#inner-header,
+#inner-content,
+#inner-footer,
+.section-inner {
+    @include outer-container;
+}
+
+.wrap {
+	width: 96%;
+	margin: 0 auto;
+}
+
+
+// sidebar
+div[role='complementary'] {
+    @include span-columns(4); 
+	@include breakpoint(baby) {
+    	@include fill-parent; 
+	}
+}
+
+// main
+div[role='main'] {
+    @include span-columns(12);
+    padding-bottom: 60px; 
+    
+    // single page template 
+    .page-template-page-iframe-php & {
+        @include span-columns(16); 
+        padding: 0;
+    }
+
+	@include breakpoint(baby) {
+    	@include fill-parent; 
+	}
+}
+
+
+.iframe-container {
+    min-height: 800px;
+    padding-top: 0 !important;
+}

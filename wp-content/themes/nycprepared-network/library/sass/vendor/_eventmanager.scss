@@ -1,0 +1,95 @@
+
+// EVENTS INDEX
+
+// search form
+.em-search-wrapper {
+    display: none;
+}
+
+// table
+.events-table {
+    th {
+        vertical-align: bottom;
+        text-align: left;
+        padding-bottom: 5px
+    }
+    td {
+        vertical-align: top;
+        padding: 10px 10px 10px 0;
+        border-top: 1px solid $gray8;
+    }
+    a {
+        font-weight: 700;
+        color: $teal;
+    }
+}
+
+// SINGLE EVENT PAGE
+
+.single-event {
+    .byline {
+        display: none;
+    }
+}
+
+// categories list
+ul.event-categories {
+    margin: 0;
+    margin-top: -18px;
+    padding: 0;
+    list-style: none;
+    li {
+        display: inline;
+        margin-right: 20px;
+    }
+}
+
+// booking form
+.em-booking {
+    margin: 10px 0px 30px 0px;
+    background: $gray8;
+    background: rgba(0,0,0,.1);
+}
+.em-booking-form-details {
+    padding: 30px;
+}
+.em-tickets-spaces {
+    margin: 0;
+}
+.em-booking-form label {
+    margin-bottom: 0;
+}
+.em-booking-form-details textarea {
+    width: 300px;
+}
+
+
+// map
+.em-location-map-container {
+    border: 5px solid $white;
+}
+
+
+
+// WIDGET
+
+.widget_em_widget {
+    a {
+        font-weight: 700;
+    }
+    // date time location
+    ul li ul {
+        margin: .25em 0 1.5em;
+        li {
+            margin: 0;
+        }
+    }
+}
+
+.all-events-link {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+
