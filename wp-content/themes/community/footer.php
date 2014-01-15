@@ -12,13 +12,23 @@
 							</ul>
 						</div>
 					</section>
-					<section class="global links eightcol">
-						<ul class="global-links">
-							<li class="knowledge">Knowledge</li>
-							<li class="data">Data</li>
-							<li class="resources">Resources</li>
-							<li class="more">More</li>
-						</ul>
+					<section class="widgets eightcol">
+						<?php if ( is_active_sidebar( 'footer1' ) ) : ?>
+							<?php dynamic_sidebar( 'footer1' ); ?>
+						<?php endif; ?>
+
+						<div class="right widgets">
+							<?php if ( is_active_sidebar( 'footer2' ) ) : ?>
+								<?php dynamic_sidebar( 'footer2' ); ?>
+							<?php endif; ?>
+							<?php if ( is_active_sidebar( 'footer3' ) ) : ?>
+								<?php dynamic_sidebar( 'footer3' ); ?>
+							<?php endif; ?>
+							<?php if ( is_active_sidebar( 'footer4' ) ) : ?>
+								<?php dynamic_sidebar( 'footer4' ); ?>
+							<?php endif; ?>
+						</div>
+
 					</section>
 					
 				</div>
