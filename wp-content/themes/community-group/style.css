@@ -1,15 +1,15 @@
 /*
- Theme Name:   Group Site
+ Theme Name:   Community Group
  Theme URI:    http://nycprepared.org
- Description:  Theme for a group website, based on the Network Site theme
+ Description:  Child theme for a group website, based on the Community theme
  Author:       Glocal Coop, Erica Heinz
  Author URI:   http://glocal.coop
- Template:     nycprepared-network
+ Template:     community
  Version:      1.0.0
  Tags:         two-columns, right-sidebar, responsive-layout
- Text Domain:  nycprepared-group-site
+ Text Domain:  community-group
 */
 
-@import url("../nycprepared-network/style.css");
+@import url("../community/style.css");
 
 /* =Theme customization starts here

@@ -1,15 +1,15 @@
 /*
- Theme Name:   Profile Page
+ Theme Name:   Community Partner
  Theme URI:    http://nycprepared.org
- Description:  Theme for a single page partner site, based on the Network Site theme
+ Description:  Child theme for a single page partner site, based on the Community theme
  Author:       Glocal Coop, Erica Heinz
  Author URI:   http://glocal.coop
- Template:     nycprepared-network
+ Template:     community
  Version:      1.0.0
  Tags:         two-columns, right-sidebar, responsive-layout
- Text Domain:  nycprepared-profile-page
+ Text Domain:  community-partner
 */
 
-@import url("../nycprepared-network/style.css");
+@import url("../community/style.css");
 
 /* =Theme customization starts here
