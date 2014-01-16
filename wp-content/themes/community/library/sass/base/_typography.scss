@@ -7,9 +7,7 @@
 // http://css-tricks.com/watch-your-font-weight/
 
 
-// Entypo symbol font
 @import url('http://weloveiconfonts.com/api/?family=entypo');
-[class*="entypo-"]:before {font-family: 'entypo', sans-serif;}
 
 $sans:        "Lato", Helvetica, Verdana, sans-serif;
 $condensed:   "Oswald", "Arial Narrow", Arial, sans-serif;
@@ -30,6 +28,9 @@ $condensed:   "Oswald", "Arial Narrow", Arial, sans-serif;
 	letter-spacing: 1px;
 }
 
+[class*="icon-"]:before {
+    font-family: "entypo", sans-serif;
+}
 
 
 
