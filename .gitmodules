@@ -1,0 +1,3 @@
+[submodule "wp-content/themes/community/library/fonts"]
+	path = wp-content/themes/community/library/fonts
+	url = https://github.com/AKIRA-MIYAKE/iOS7-icon-font.git
