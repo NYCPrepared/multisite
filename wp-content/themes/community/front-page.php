@@ -9,32 +9,37 @@
 					<section class="home-main clearfix">
 						<article class="left home-feature first clearfix">
 
-							<ul class="featured-posts">
+							<script type="text/javascript">
+							jQuery(document).ready(function(){
+								jQuery('.bxslider').bxSlider({
+									captions: true
+								});
+							});
+							</script>
 
-							<?php
-							/* Get all Sticky Posts */
-							$sticky = get_option( 'sticky_posts' );
+							<ul id="featured" class="featured-posts bxslider">
 
-							/* Sort Sticky Posts, newest at the top */
-							rsort( $sticky );
+								<?php
+								$sticky = get_option( 'sticky_posts' );
+								rsort( $sticky );
+								$sticky = array_slice( $sticky, 0, 5 );
+								$featuredposts = new WP_Query( array( 'post__in' => $sticky, 'ignore_sticky_posts' => 1 ) );
 
-							/* Get top 5 Sticky Posts */
-							$sticky = array_slice( $sticky, 0, 5 );
+								while ($featuredposts->have_posts()) : $featuredposts->the_post();
 
-							/* Query Sticky Posts */
-							$featuredposts = new WP_Query( array( 'post__in' => $sticky, 'ignore_sticky_posts' => 1 ) );
-							while ($featuredposts->have_posts()) : $featuredposts->the_post();
+									$permalink = get_permalink();
+									$title = get_the_title();
+									$imagearg = array(
+										'title'	=> trim(strip_tags($title)),
+										'alt'	=> trim(strip_tags($title))
+									);
+								?>
 
-							$permalink = get_permalink();
-							?>
-
-							<li class="featured-post">
-								<a href="<?php echo $permalink; ?>" title="<?php echo get_the_title();?>">
-								</h3><?php the_title('<h3 class="post-title">','</h3>'); ?>
-								<div class="post-image"><?php the_post_thumbnail('large'); ?></div>
-								<div class="post-meta"></div>
-								</a>
-							</li>
+								<li class="featured-post">
+									<a href="<?php echo $permalink; ?>" title="<?php echo get_the_title();?>">
+									<?php echo get_the_post_thumbnail($page->ID, 'large', $imagearg); ?>
+									</a>
+								</li>
 
 							<?php endwhile; ?>
 
