@@ -10,12 +10,16 @@ body {
     padding-top: 20px;
 }
 
+#inner-header {
+    border-bottom: 1px solid $gray6;
+}
+
+
 #inner-header,
 #inner-content,
 #inner-footer,
 .section-inner {
     @include outer-container;
-    border-bottom: 1px solid $gray6;
 }
 
 .wrap {
@@ -52,4 +56,15 @@ div[role='main'] {
 .iframe-container {
     min-height: 800px;
     padding-top: 0 !important;
+}
+
+
+// footer
+
+.footer {
+    background: $gray8;
+}
+
+.copyright {
+    background: $gray7;
 }
