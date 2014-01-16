@@ -1,0 +1,48 @@
+// HEADER
+
+
+#inner-header {
+    border-bottom: 1px solid $gray6;
+}
+
+.top-nav {
+    position: absolute;
+    right: 0;
+    top: 0;
+    @include breakpoint(medium) {position: static;}
+	li {
+        @include font-size(18);
+        line-height: 1;
+        @include breakpoint(medium) {@include font-size(14); display: inline-block;}
+		a {
+		    padding: 15px 10px;
+            color: $text-color;
+		}
+	} 
+
+	// highlight current page 
+	li.current-menu-item,
+	li.current_page_item,
+	li.current-page-ancestor {
+		a {
+		
+		}
+	} 
+}
+
+
+#logo {
+    @include font-size(18);
+    line-height: 1;
+	float: left;
+    margin: 0;
+    white-space: nowrap;
+    @include breakpoint(medium) {@include font-size(14);}
+    a {
+        display: block;
+        color: $text-color;
+        font-weight: 700;
+        padding: 15px 10px 15px 0;
+    }
+}
+

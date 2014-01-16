@@ -1,0 +1,60 @@
+// FOOTER
+
+.footer {
+    background: $gray8;
+    .global {
+        padding: 30px 0;
+    }
+    .logo {
+        @include breakpoint(large) {display: inline-block; margin-right: 30px;}
+    }
+    
+}
+
+
+
+.social {
+    clear: both;
+    li {
+        display: inline-block;
+        padding: 0;
+        height: 36px;
+        width: 36px;
+        text-align: center;
+        line-height: 36px;
+        border-radius: 0;
+        margin-right: 3px;
+        color: $white;
+    }
+    .facebook {
+        background: $blue;
+    }
+    .twitter {
+        background: $cyan;
+    }
+}
+
+.copyright {
+    @include font-size(10);
+    @extend %caps;
+    background: $gray7;
+    padding: 15px;
+    clear: both;
+    text-align: center;
+	@include breakpoint(papa) {@include font-size(12);}
+}
+
+
+
+// footer widgets
+
+.footer .widget {
+    background: $white;   
+	@include breakpoint(papa) {@include span-columns(4);}
+	li {
+    	@include font-size(16);
+	}
+	a {
+    	color: $blue;
+	}
+}

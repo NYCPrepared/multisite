@@ -10,10 +10,6 @@ body {
     padding-top: 20px;
 }
 
-#inner-header {
-    border-bottom: 1px solid $gray6;
-}
-
 
 #inner-header,
 #inner-content,
@@ -59,11 +55,3 @@ div[role='main'] {
 }
 
 
-// footer widgets
-
-.footer .widget {
-   
-	@include breakpoint(papa) {
-        @include span-columns(4);
-	}
-}

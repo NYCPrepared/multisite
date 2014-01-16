@@ -10,3 +10,8 @@
         @include span-columns(4); 
     }
 }
+
+.home-modules .row {
+    border-top: 1px solid $gray6;
+    margin-top: 20px;
+}
