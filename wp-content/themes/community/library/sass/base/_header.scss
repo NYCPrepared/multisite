@@ -41,33 +41,50 @@
 	} 
 }
 
+// notched line mixin
 
-// notched line for active item
-
-li.current-menu-item,
-li.current_page_item,
-li.current-page-ancestor {
+@mixin notch($size, $border: $gray5, $fill: $gray9){
     position: relative;
-    a:before {
-        position: absolute;
-        content: '';
-        height: 0px;
-        left: 50%;
-        margin-left: -8px;
-        border: 8px solid transparent;
-        border-bottom-color: $gray5;
-        bottom: -1px;
-    }
+    a:before,
     a:after {
         position: absolute;
         content: '';
         height: 0px;
         left: 50%;
-        margin-left: -7px;
-        border: 7px solid transparent;
-        border-bottom-color: $gray9;
         bottom: -1px;
+        border-color: transparent;
     }
+    a:before {
+        border-bottom-color: $border;
+        border-width: $size;
+        margin-left: -$size;
+    }
+    a:after {
+        border-bottom-color: $fill;
+        border-width: $size - 1;
+        margin-left: -$size + 1;
+    }
+}
+
+
+// active item
+
+li.current-menu-item,
+li.current_page_item,
+li.current-page-ancestor {
+    @include notch(8px);
+}
+
+// hover state
+
+.top-nav li:hover {
+    @include notch(5px);
+}
+
+// disable hover for current page but not its ancestors
+
+li.current-menu-item,
+li.current_page_item {
     a:hover {
         color: $text-color;
         cursor: default;
