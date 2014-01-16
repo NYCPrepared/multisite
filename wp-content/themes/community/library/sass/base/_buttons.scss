@@ -37,15 +37,16 @@ a:visited {
 
 
 
-.btn,
-button {
-    @extend %condensed;
+button,
+.button {
     @include transition(all 0.25s ease);
-    @include font-size(18);
+    @include font-size(14);
+	@extend %caps;
+	font-weight: 700;
     padding: .5em 2em;
     border-radius: 5px;
-    border: 3px solid $gray1;
-    background: $gray1;
+    border: 0;
+    background: $teal;
     color: $white;
     display: inline-block;
     &:link,
@@ -57,7 +58,25 @@ button {
         background: $white;
         color: $gray2;
     }
+    @include breakpoint(medium) {@include font-size(16);}
 }
+
+
+// button sizes
+
+%button-large {
+    @include font-size(24);
+    padding: 1em 3em;
+    border-radius: 7px;
+}
+
+%button-small {
+    @include font-size(15);
+    padding: .25em 1em;
+    border-radius: 3px;
+}
+
+
 
 // invert colors on hover
 @mixin flip-button($color){
@@ -100,20 +119,6 @@ button {
 .btn-red {
     @extend .btn;
     @include flip-button($red);
-}
-
-.btn-large {
-    @extend .btn;
-    @include font-size(24);
-    padding: 1em 3em;
-    border-radius: 7px;
-}
-
-.btn-small {
-    @extend .btn;
-    @include font-size(15);
-    padding: .25em 1em;
-    border-radius: 3px;
 }
 
 

@@ -67,13 +67,13 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 }
 
 h1, .h1 {
-    @include font-size(48);
-	@include breakpoint(mama) {@include font-size(38);}
-	@include breakpoint(papa) {@include font-size(48);}
+    @include font-size(36);
+	@include breakpoint(medium) {@include font-size(44);}
 }
 
 h2, .h2 {
-    @include font-size(30);
+    @include font-size(28);
+	@include breakpoint(medium) {@include font-size(32);}
 	margin-bottom: 0.375em;
 }
 
