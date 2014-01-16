@@ -11,7 +11,7 @@
 
 							<script type="text/javascript">
 							jQuery(document).ready(function(){
-							  jQuery('#featured').slippry(pause: 5000)
+							  jQuery('#featured').slippry({pause: 5000})
 							});
 							</script>
 

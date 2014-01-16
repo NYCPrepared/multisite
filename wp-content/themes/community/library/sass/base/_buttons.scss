@@ -75,18 +75,6 @@ button,
 
 
 
-// invert colors on hover
-@mixin flip-button($color){
-    background: $color;
-    border-color: $color;
-    color: $white;
-    &:hover,
-    &:focus {
-        background: $white;
-        color: $color !important;
-    }
-}
-
 // colored buttons
 
 .btn-navy {

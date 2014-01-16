@@ -32,6 +32,7 @@
     }
 }
 
+
 .social-links {
     clear: both;
     margin-top: 20px;
@@ -47,23 +48,12 @@
     }
     a {
         display: block;
-        color: $white;
     }
-    .facebook {
-        background: $navy;
-    }
-    .twitter {
-        background: $blue;
-    }
-    .github {
-        background: $teal;
-    }
-    .email {
-        background: $green;
-    }
-    .rss {
-        background: $orange;
-    }
+    .facebook {@include flip-button($navy);}
+    .twitter {@include flip-button($blue);}
+    .github {@include flip-button($teal);}
+    .email {@include flip-button($green);}
+    .rss {@include flip-button($orange);}
 }
 
 .copyright {

@@ -36,15 +36,6 @@ $headline-color: $gray1;
 $text-color: $gray2;
 
 
-// colors for bones theme components
-$alert-yellow:      $yellow;
-$alert-red:         $red;
-$alert-green:       $green;
-$alert-blue:        $blue;
-
-
-
-
 
 // LAYERS
 
@@ -144,7 +135,17 @@ $max-width: 1200px;
     }
 }
 
-
+// invert colors on hover
+@mixin flip-button($color){
+    background: $color;
+    border-color: $color;
+    color: $white;
+    &:hover,
+    &:focus {
+        background: $white;
+        color: $color !important;
+    }
+}
 
 
 // STATES
