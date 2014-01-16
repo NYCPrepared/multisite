@@ -1,3 +1,9 @@
 [submodule "wp-content/themes/community/library/fonts"]
 	path = wp-content/themes/community/library/fonts
 	url = https://github.com/AKIRA-MIYAKE/iOS7-icon-font.git
+[submodule "wp-content/themes/community/library/slippry"]
+	path = wp-content/themes/community/library/slippry
+	url = https://github.com/booncon/slippry.git
+[submodule "wp-content/themes/community/library/boxslider"]
+	path = wp-content/themes/community/library/boxslider
+	url = https://github.com/wandoledzep/bxslider-4.git
