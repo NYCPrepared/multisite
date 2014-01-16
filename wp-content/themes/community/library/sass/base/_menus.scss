@@ -16,14 +16,23 @@ and more scalable.
 .nav {
     margin: 0;
 	li {
-        @include font-size(18);
         @extend %sans;
         margin: 0;
         white-space: nowrap;
-        font-size: 
 		a {
 			display: block;
 			text-decoration: none;
+		}
+	} 
+}
+
+
+
+.top-nav {
+	li {
+        @include font-size(18);
+        @include breakpoint(papa) {@include font-size(14); display: inline;}
+		a {
             color: $text-color;
 		}
 	} 
@@ -35,12 +44,6 @@ and more scalable.
 		a {
 		}
 	} 
-}
-
-
-
-.top-nav {
-    background: transparent;
 }
 
 

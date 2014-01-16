@@ -2,12 +2,11 @@
 // use Bourbon Neat grid
 
 
-.header {
-    border-bottom: 1px solid $gray6;
+body {
+	background: $gray9;
 }
 
 #content {
-	background: $gray9;
     padding-top: 20px;
 }
 
@@ -16,6 +15,7 @@
 #inner-footer,
 .section-inner {
     @include outer-container;
+    border-bottom: 1px solid $gray6;
 }
 
 .wrap {
