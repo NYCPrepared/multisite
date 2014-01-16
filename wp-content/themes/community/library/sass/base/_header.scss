@@ -38,36 +38,25 @@
 		a:hover {
     		color: $teal;
 		}
-	} 
+	}
+	li:hover {
+        @include notch(5px);
+    } 
 }
 
-
-// notched line for active item
+// active item
 
 li.current-menu-item,
 li.current_page_item,
 li.current-page-ancestor {
-    position: relative;
-    a:before {
-        position: absolute;
-        content: '';
-        height: 0px;
-        left: 50%;
-        margin-left: -8px;
-        border: 8px solid transparent;
-        border-bottom-color: $gray5;
-        bottom: -1px;
-    }
-    a:after {
-        position: absolute;
-        content: '';
-        height: 0px;
-        left: 50%;
-        margin-left: -7px;
-        border: 7px solid transparent;
-        border-bottom-color: $gray9;
-        bottom: -1px;
-    }
+    @include notch(8px);
+}
+
+
+// disable hover for current page but not its ancestors
+
+li.current-menu-item,
+li.current_page_item {
     a:hover {
         color: $text-color;
         cursor: default;

@@ -119,6 +119,32 @@ $max-width: 1200px;
 }
 
 
+// notched line mixin
+
+@mixin notch($size, $border: $gray5, $fill: $gray9){
+    position: relative;
+    a:before,
+    a:after {
+        position: absolute;
+        content: '';
+        height: 0px;
+        left: 50%;
+        bottom: -1px;
+        border-color: transparent;
+    }
+    a:before {
+        border-bottom-color: $border;
+        border-width: $size;
+        margin-left: -$size;
+    }
+    a:after {
+        border-bottom-color: $fill;
+        border-width: $size - 1;
+        margin-left: -$size + 1;
+    }
+}
+
+
 
 
 // STATES
