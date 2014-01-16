@@ -153,8 +153,10 @@ function bones_scripts_and_styles() {
 
 		// enqueue styles and scripts
 		wp_enqueue_script( 'bones-modernizr' );
+		wp_enqueue_script( 'responsive-slider-script' );
 		wp_enqueue_script( 'responsive-slider-script2' );
 		wp_enqueue_style( 'bones-stylesheet' );
+		wp_enqueue_style( 'responsive-slider-stylesheet' );
 		wp_enqueue_style( 'responsive-slider-stylesheet2' );
 		wp_enqueue_style( 'bones-ie-only' );
 
