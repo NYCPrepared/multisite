@@ -105,8 +105,8 @@ function bones_register_sidebars() {
 		'id' => 'footer2',
 		'name' => __( 'Footer 2', 'bonestheme' ),
 		'description' => __( 'Second footer widget area.', 'bonestheme' ),
-		'before_widget' => '<div id="%1$s" class="widget footer-widget-2 %2$s">',
-		'after_widget' => '</div>',
+		'before_widget' => '<nav id="%1$s" class="widget footer-widget-2 %2$s">',
+		'after_widget' => '</nav>',
 		'before_title' => '<h3 class="widgettitle">',
 		'after_title' => '</h3>',
 	));
