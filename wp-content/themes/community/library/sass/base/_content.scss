@@ -1,0 +1,12 @@
+// CONTENT 
+
+.home-feature {
+    @include breakpoint(medium) {
+        @include span-columns(12); 
+    }
+}
+.home-main {
+    @include breakpoint(medium) {
+        @include span-columns(4); 
+    }
+}
