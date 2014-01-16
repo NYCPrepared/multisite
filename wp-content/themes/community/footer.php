@@ -3,7 +3,7 @@
 				<div id="inner-footer" class="wrap clearfix">
 
 					<section class="global site-meta first">
-						<div id="logo-NYCP"><a href="http://nycprepared.org">NYC<span>Prepared</span></a></div>
+						<div class="logo-NYCP"><a href="http://nycprepared.org">NYC<span>Prepared</span></a></div>
 						<?php bloginfo('description'); ?>
 						<ul class="social-links">
 						    <li class="email"><a href="mailto:info@nycprepared.org" target="_blank"><i class="entypo-envelope"></i></a>

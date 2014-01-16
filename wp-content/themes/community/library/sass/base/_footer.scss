@@ -32,7 +32,7 @@
     }
 }
 
-.social {
+.social-links {
     clear: both;
     margin-top: 20px;
     li {
@@ -44,6 +44,9 @@
         line-height: 36px;
         border-radius: 0;
         margin-right: 3px;
+    }
+    a {
+        display: block;
         color: $white;
     }
     .facebook {
@@ -51,6 +54,15 @@
     }
     .twitter {
         background: $blue;
+    }
+    .github {
+        background: $teal;
+    }
+    .email {
+        background: $green;
+    }
+    .rss {
+        background: $orange;
     }
 }
 
