@@ -3,32 +3,29 @@
 				<div id="inner-footer" class="wrap clearfix">
 
 					<section class="global site-meta first">
-						<div class="logo">{NYC:Prepared Logo}</div>
+						<div id="logo-NYCP"><a href="http://nycprepared.org">NYC<span>Prepared</span></a></div>
 						<?php bloginfo('description'); ?>
-						<div class="social links icons">
-							<ul class="social-links">
-								<li class="facebook"><span class="icon-facebook"></span></li>
-								<li class="twitter"><span class="icon-twitter"></span></li>
-							</ul>
-						</div>
+						<ul class="social-links">
+						    <li class="email"><a href="mailto:info@nycprepared.org" target="_blank"><i class="entypo-envelope"></i></a>
+						    <li class="github"><a href="https://github.com/NYCPrepared/multisite" target="_blank"><i class="entypo-github"></i></a>
+						    <li class="twitter"><a href="https://twitter.com/NYCPrepared" target="_blank"><i class="entypo-twitter"></i></a>
+						    <li class="facebook"><a href="https://www.facebook.com/nycprepared" target="_blank"><i class="entypo-facebook"></i></a>
+						    <li class="rss"><a href="/feed" target="_blank"><i class="entypo-rss"></i></a>
+                        </ul>
 					</section>
 					<section class="widgets ">
 						<?php if ( is_active_sidebar( 'footer1' ) ) : ?>
 							<?php dynamic_sidebar( 'footer1' ); ?>
 						<?php endif; ?>
-
-						<div class="right widgets">
-							<?php if ( is_active_sidebar( 'footer2' ) ) : ?>
-								<?php dynamic_sidebar( 'footer2' ); ?>
-							<?php endif; ?>
-							<?php if ( is_active_sidebar( 'footer3' ) ) : ?>
-								<?php dynamic_sidebar( 'footer3' ); ?>
-							<?php endif; ?>
-							<?php if ( is_active_sidebar( 'footer4' ) ) : ?>
-								<?php dynamic_sidebar( 'footer4' ); ?>
-							<?php endif; ?>
-						</div>
-
+						<?php if ( is_active_sidebar( 'footer2' ) ) : ?>
+							<?php dynamic_sidebar( 'footer2' ); ?>
+						<?php endif; ?>
+						<?php if ( is_active_sidebar( 'footer3' ) ) : ?>
+							<?php dynamic_sidebar( 'footer3' ); ?>
+						<?php endif; ?>
+						<?php if ( is_active_sidebar( 'footer4' ) ) : ?>
+							<?php dynamic_sidebar( 'footer4' ); ?>
+						<?php endif; ?>
 					</section>
 					
 				</div>

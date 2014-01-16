@@ -5,16 +5,36 @@
     .global {
         padding: 30px 0;
     }
-    .logo {
-        @include breakpoint(large) {display: inline-block; margin-right: 30px;}
-    }
-    
 }
 
-
+.logo-NYCP {
+    @include font-size(22);
+    @extend %condensed;
+	float: left;
+    margin-right: 30px;
+    white-space: nowrap;
+    @include breakpoint(large) {display: inline-block; margin-right: 30px;}
+    a {
+        color: $white;
+    }
+    span {
+        display: inline-block;
+        border: 2px solid $white;
+        padding: 3px 5px;
+        margin-left: 5px;   
+        @include transition (border-color 0.25s ease);
+    }
+    a:hover {
+        color: $text-color;
+        span {
+            border-color: $text-color;
+        }
+    }
+}
 
 .social {
     clear: both;
+    margin-top: 20px;
     li {
         display: inline-block;
         padding: 0;
