@@ -43,7 +43,6 @@ COMMENT FORM STYLES
 .respond-form {
 	padding-bottom: 2.2em;
 	form {
-		margin: 0.5em 0;
 		li {
 			list-style-type: none;
 			clear: both;
@@ -95,7 +94,7 @@ COMMENT FORM STYLES
 
 /* comment form title */
 #comment-form-title {
-	margin: 0 0 1.1em;
+	margin: 1.5em 0 .5em;
 }
 
 /* cancel comment reply link */
@@ -108,7 +107,6 @@ COMMENT FORM STYLES
 
 /* allowed tags */
 #allowed_tags {
-	margin: 1.5em 10px 0.7335em 0;
 }
 
 /* no comments */
