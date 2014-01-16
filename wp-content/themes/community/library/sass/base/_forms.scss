@@ -1,6 +1,10 @@
 
 // FORMS
 
+form {
+    background: $gray8;
+    padding: 40px;
+}
 
 fieldset {
     border: 0;
@@ -31,6 +35,89 @@ input[type='submit'] {
         color: $gray2;
     }
 }
+
+
+/******************************************************************
+COMMENT FORM STYLES
+******************************************************************/
+
+.respond-form {
+	padding-bottom: 2.2em;
+	form {
+		margin: 0.5em 0;
+		li {
+			list-style-type: none;
+			clear: both;
+			margin-bottom: 0.7335em;
+			label,
+			small {
+				display: none;
+			}
+		}
+		input[type=text],
+		input[type=email],
+		input[type=url],
+		textarea {
+			padding: 4px 8px;
+			background: $white;
+			border: 1px solid $gray6;
+			&:focus {
+				border-color: $blue;
+			}
+			&:invalid {
+				outline: none;
+				border-color: $red;
+				background-color: $gray0;
+				-webkit-box-shadow: none;
+				   -moz-box-shadow: none;
+				    -ms-box-shadow: none;
+						box-shadow: none;
+			}
+		}
+
+		input[type=text],
+		input[type=email],
+		input[type=url] {
+			max-width: 400px;
+			min-width: 250px;
+		}
+
+		textarea {
+			resize: none;
+			width: 97.3%;
+			height: 150px;
+		}
+
+	}
+}
+
+/* comment submit button */
+#submit {}
+
+/* comment form title */
+#comment-form-title {
+	margin: 0 0 1.1em;
+}
+
+/* cancel comment reply link */
+#cancel-comment-reply {
+	a {}
+}
+
+/* logged in comments */
+.comments-logged-in-as {}
+
+/* allowed tags */
+#allowed_tags {
+	margin: 1.5em 10px 0.7335em 0;
+}
+
+/* no comments */
+.nocomments {
+	margin: 0 20px 1.1em;
+}
+
+
 
 
 // SEARCH 

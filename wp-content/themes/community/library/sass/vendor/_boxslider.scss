@@ -1,5 +1,4 @@
 // BOX SLIDER PLUGIN 
-// CSS overwrites
 
 .bx-wrapper {
     margin-bottom: 10px;
@@ -11,8 +10,9 @@
     .featured-posts li {
         height: 100%;
     }
-    .bx-caption {
-        background: rgba(255,255,255,.8) !important;
+    // extra class needed to override defaults
+    .bxslider .bx-caption {
+        background: rgba(255,255,255,.8);
         span {
             @extend %sans;
             color: $text-color;

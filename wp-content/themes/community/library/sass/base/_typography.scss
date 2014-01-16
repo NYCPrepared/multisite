@@ -101,11 +101,18 @@ p {
 	line-height: 1.8;
 }
 
-li, dt, dd, input, label {
+li, dt, dd {
     @include font-size(18);
     @extend %sans;
 	line-height: 1.8;
 	margin-bottom: 1em;
+}
+
+input, label, textarea {
+    @include font-size(18);
+    @extend %sans;
+	line-height: 1.4;
+	margin-bottom: .75em;
 }
 
 small {
@@ -145,7 +152,6 @@ blockquote {
     }
 }
 
-
 code,
 kbd,
 pre,
@@ -162,3 +168,20 @@ pre {
     color: $gray0;
 }
 
+
+
+// post date and author name
+.byline {
+    color: $gray6;
+	@extend %caps;
+	@include font-size(15);
+    a {
+        color: $gray6;
+    }
+}
+
+// blog posts
+
+.entry-content p {
+    
+}
