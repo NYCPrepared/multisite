@@ -1,0 +1,37 @@
+@mixin font-face($font-family, $font-id, $file-path, $weight: normal, $style: normal ) {
+  @font-face {
+      font-family: $font-family;
+      src: url('#{$file-path}.eot');
+      src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+           url('#{$file-path}.woff') format('woff'),
+           url('#{$file-path}.ttf') format('truetype'),
+           url('#{$file-path}.svg##{$font-id}') format('svg');
+      font-weight: $weight;
+      font-style: $style;
+      font-stretch: none;
+  }
+}
+
+
+@mixin font-icon-base($family:"entypo", $font-size: 1em, $width: 1em, $margin: 0.2em, $align: left, $color: inherit, $line-height: 1) {
+  @if $family == "entypo-social" {
+    $family:"entypo-social";
+    $file:"entypo-social";
+  }
+  @else if $family == "entypo" {
+    $family:"entypo";
+    $file:"entypo";
+  }
+  &:before {
+    font-family: "#{$family}";
+    font-style: normal;
+    font-size: $font-size;
+    line-height: $line-height;
+    margin-right: $margin;
+    text-align: $align;
+    display: inline-block;
+    width: $width;
+    color: $color;
+    vertical-align: middle;
+  }
+}
