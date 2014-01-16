@@ -7,7 +7,7 @@
 				<div id="inner-content" class="wrap clearfix">
 
 					<section class="home-main clearfix">
-						<article class="left home-feature first clearfix">
+						<article class="home-feature clearfix">
 
 							<script type="text/javascript">
 							jQuery(document).ready(function(){
@@ -46,7 +46,7 @@
 							</ul>
 
 						</article>
-						<article class="right home-main">
+						<article class="home-intro">
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 								<?php the_content(); ?>
 							<?php endwhile; endif; ?>
@@ -54,7 +54,7 @@
 					</section>
 					<section class="home-modules clearfix">
 						<article class="module row volunteers clearfix">
-							<h3 class="module-heading">Volunteers</h3>
+							<h3 class="module-heading">Volunteers needed</h3>
 							<ul class="volunteer-list">
 								<li></li>
 							</ul>

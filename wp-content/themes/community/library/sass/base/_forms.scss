@@ -38,7 +38,6 @@ input[type='submit'] {
 #searchform {
     float: right;
     padding: 27px 0 0;
-    @include breakpoint(baby) {padding-top: 21px;}
     label {
         display: none;
     }
@@ -50,8 +49,6 @@ input[type='submit'] {
         line-height: 28px;
         padding: 2px 5px;
         text-transform: lowercase;
-        @include breakpoint(mama) {@include font-size(14); width: 150px;}
-        @include breakpoint(baby) {width: 100px;}
     }
     input[type='submit'] {
         @include font-size(16);

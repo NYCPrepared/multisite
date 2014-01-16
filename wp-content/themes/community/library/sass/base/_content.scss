@@ -1,0 +1,17 @@
+// CONTENT 
+
+.home-feature {
+    @include breakpoint(medium) {
+        @include span-columns(12); 
+    }
+}
+.home-intro {
+    @include breakpoint(medium) {
+        @include span-columns(4); 
+    }
+}
+
+.home-modules .row {
+    border-top: 1px solid $gray6;
+    margin-top: 20px;
+}

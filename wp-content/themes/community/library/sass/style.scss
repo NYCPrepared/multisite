@@ -15,6 +15,9 @@
 @import "base/config";
 @import "base/typography";
 @import "base/containers";
+@import "base/content";
+@import "base/header";
+@import "base/footer";
 @import "base/buttons";
 @import "base/menus";
 @import "base/posts";
@@ -23,5 +26,6 @@
 
 
 // VENDOR PLUGINS/ADD-ONS
+@import "vendor/boxslider";
 @import "vendor/easymail";
 @import "vendor/eventmanager";
