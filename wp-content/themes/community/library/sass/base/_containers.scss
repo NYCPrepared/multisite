@@ -14,7 +14,8 @@ body {
 #inner-header,
 #inner-content,
 #inner-footer,
-.section-inner {
+.section-inner,
+.home-main {
     @include outer-container;
 }
 

@@ -27,10 +27,10 @@
         color: $white;
     }
     .facebook {
-        background: $blue;
+        background: $navy;
     }
     .twitter {
-        background: $cyan;
+        background: $blue;
     }
 }
 
@@ -55,6 +55,6 @@
     	@include font-size(16);
 	}
 	a {
-    	color: $blue;
+    	color: $navy;
 	}
 }
