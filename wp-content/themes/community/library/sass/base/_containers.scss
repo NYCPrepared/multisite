@@ -2,6 +2,10 @@
 // use Bourbon Neat grid
 
 
+.header {
+    border-bottom: 1px solid $gray6;
+}
+
 #content {
 	background: $gray9;
     padding-top: 20px;
