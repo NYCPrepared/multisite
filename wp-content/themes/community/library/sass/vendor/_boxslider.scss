@@ -7,18 +7,15 @@
         -webkit-box-shadow: inherit;
         box-shadow: inherit;
     }
-    img {
-        width: 100%;
-        height: auto;
-    }
     .featured-posts, 
     .featured-posts li {
         height: 100%;
     }
     .bx-caption {
-        background: rgba(255,255,255,.8);
+        background: rgba(255,255,255,.8) !important;
         span {
             @extend %sans;
+            color: $text-color;
             @include font-size(14);
             @include breakpoint(medium) {@include font-size(24);}
         }
