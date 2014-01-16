@@ -11,14 +11,14 @@
 
 							<!-- ####Comment out the one you don't want#### -->
 							<script type="text/javascript">
-							// jQuery(document).ready(function(){
-							// 	jQuery('.bxslider').bxSlider({
-							// 		captions: true
-							// 	});
-							// });
 							jQuery(document).ready(function(){
-							  jQuery('#featured').slippry()
+							 	jQuery('.bxslider').bxSlider({
+							 		captions: true
+							 	});
 							});
+							// jQuery(document).ready(function(){
+							//   jQuery('#featured').slippry()
+							// });
 							</script>
 
 							<ul id="featured" class="featured-posts bxslider">
