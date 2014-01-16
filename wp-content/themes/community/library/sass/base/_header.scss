@@ -5,32 +5,6 @@
     border-bottom: 1px solid $gray6;
 }
 
-.top-nav {
-    position: absolute;
-    right: 0;
-    top: 0;
-    @include breakpoint(medium) {position: static;}
-	li {
-        @include font-size(18);
-        line-height: 1;
-        @include breakpoint(medium) {@include font-size(14); display: inline-block;}
-		a {
-		    padding: 15px 10px;
-            color: $text-color;
-		}
-	} 
-
-	// highlight current page 
-	li.current-menu-item,
-	li.current_page_item,
-	li.current-page-ancestor {
-		a {
-		
-		}
-	} 
-}
-
-
 #logo {
     @include font-size(18);
     line-height: 1;
@@ -46,3 +20,52 @@
     }
 }
 
+.top-nav {
+    position: absolute;
+    right: 0;
+    top: 0;
+    @include breakpoint(medium) {position: static;}
+	li {
+        @include font-size(18);
+        line-height: 1;
+        @include breakpoint(medium) {@include font-size(14); display: inline-block;}
+		a, 
+		a:visited {
+		    padding: 15px 10px;
+            color: $text-color;
+		}
+        a:focus,
+		a:hover {
+    		color: $teal;
+		}
+	} 
+}
+
+
+// notched line for active item
+
+li.current-menu-item,
+li.current_page_item,
+li.current-page-ancestor {
+    position: relative;
+    a:before {
+        position: absolute;
+        content: '';
+        height: 0px;
+        left: 50%;
+        margin-left: -10px;
+        border: 10px solid transparent;
+        border-bottom-color: $gray5;
+        bottom: -1px;
+    }
+    a:after {
+        position: absolute;
+        content: '';
+        height: 0px;
+        left: 50%;
+        margin-left: -8px;
+        border: 8px solid transparent;
+        border-bottom-color: $gray9;
+        bottom: -1px;
+    }
+}
