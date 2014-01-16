@@ -2,7 +2,7 @@
 
 				<div id="inner-footer" class="wrap clearfix">
 
-					<section class="global site-meta fourcol first">
+					<section class="global site-meta first">
 						<div class="logo">{NYC:Prepared Logo}</div>
 						<?php bloginfo('description'); ?>
 						<div class="social links icons">
@@ -12,7 +12,7 @@
 							</ul>
 						</div>
 					</section>
-					<section class="widgets eightcol">
+					<section class="widgets ">
 						<?php if ( is_active_sidebar( 'footer1' ) ) : ?>
 							<?php dynamic_sidebar( 'footer1' ); ?>
 						<?php endif; ?>
