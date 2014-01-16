@@ -6,11 +6,13 @@
 
 .sy-caption-wrap {
     bottom: 0;
-    width: 100%;
+    left: 0;
+    width: 101%; // prevent gap 
     .sy-caption {
         border-radius: 0;
         background: rgba(255,255,255,.8);
         color: $text-color;
+        left: auto;
         @include font-size(14);
         @include breakpoint(medium) {@include font-size(24);}
     }
