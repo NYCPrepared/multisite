@@ -9,15 +9,9 @@
 					<section class="home-main clearfix">
 						<article class="home-feature clearfix">
 
-							<!-- ####Comment out the one you don't want#### -->
 							<script type="text/javascript">
-							// jQuery(document).ready(function(){
-							// 	jQuery('.bxslider').bxSlider({
-							// 		captions: true
-							// 	});
-							// });
 							jQuery(document).ready(function(){
-							  jQuery('#featured').slippry()
+							  jQuery('#featured').slippry(pause: 5000)
 							});
 							</script>
 
