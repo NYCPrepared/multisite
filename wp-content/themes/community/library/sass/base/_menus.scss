@@ -31,8 +31,9 @@ and more scalable.
 .top-nav {
 	li {
         @include font-size(18);
-        @include breakpoint(papa) {@include font-size(14); display: inline;}
+        @include breakpoint(papa) {@include font-size(14); display: inline-block;}
 		a {
+		    padding: 15px 10px;
             color: $text-color;
 		}
 	} 
@@ -42,6 +43,7 @@ and more scalable.
 	li.current_page_item,
 	li.current-page-ancestor {
 		a {
+		
 		}
 	} 
 }
@@ -51,7 +53,7 @@ and more scalable.
     @include font-size(18);
 	float: left;
     margin: 0;
-    padding: 16px 16px 16px 0;
+    padding: 15px 10px 15px 0;
     white-space: nowrap;
     @include breakpoint(papa) {@include font-size(14);}
     a {
