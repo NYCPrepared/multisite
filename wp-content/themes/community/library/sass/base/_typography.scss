@@ -47,7 +47,7 @@ body {
     @include font-size(16);
     @extend %sans;
     line-height: 1.6;
-    color: $gray1;
+    color: $text-color;
 }
 
 
@@ -60,7 +60,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	line-height: 1.4;
 	text-rendering: optimizelegibility;
 	font-weight: 700;
-	// removing text decoration from all headline links 
+    color: $headline-color;
 	a {
 		text-decoration: none;
 	}

@@ -59,12 +59,11 @@ div[role='main'] {
 }
 
 
-// footer
+// footer widgets
 
-.footer {
-    background: $gray8;
-}
-
-.copyright {
-    background: $gray7;
+.footer .widget {
+   
+	@include breakpoint(papa) {
+        @include span-columns(4);
+	}
 }

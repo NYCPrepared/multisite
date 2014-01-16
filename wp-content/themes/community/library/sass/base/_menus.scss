@@ -62,6 +62,12 @@ and more scalable.
     }
 }
 
+// footer
+
+.footer {
+    background: $gray8;
+}
+
 
 .footer #logo {
     @include span-columns(4);
@@ -112,11 +118,14 @@ and more scalable.
     }
 }
 
+
+
 .copyright {
-    @include font-size(12);
+    @include font-size(10);
     @extend %caps;
-    color: $gray6;
+    background: $gray7;
+    padding: 15px;
     clear: both;
-	@include breakpoint(baby) {@include font-size(10);}
+	@include breakpoint(papa) {@include font-size(12);}
 }
 
