@@ -29,9 +29,14 @@ and more scalable.
 
 
 .top-nav {
+    position: absolute;
+    right: 0;
+    top: 0;
+    @include breakpoint(medium) {position: static;}
 	li {
         @include font-size(18);
-        @include breakpoint(papa) {@include font-size(14); display: inline-block;}
+        line-height: 1;
+        @include breakpoint(medium) {@include font-size(14); display: inline-block;}
 		a {
 		    padding: 15px 10px;
             color: $text-color;
@@ -51,16 +56,18 @@ and more scalable.
 
 #logo {
     @include font-size(18);
+    line-height: 1;
 	float: left;
     margin: 0;
-    padding: 15px 10px 15px 0;
     white-space: nowrap;
-    @include breakpoint(papa) {@include font-size(14);}
+    @include breakpoint(medium) {@include font-size(14);}
     a {
         color: $text-color;
         font-weight: 700;
+        padding: 15px 10px 15px 0;
     }
 }
+
 
 // footer
 
@@ -70,35 +77,9 @@ and more scalable.
 
 
 .footer #logo {
-    @include span-columns(4);
-    @include breakpoint(baby) {@include fill-parent;}
+    @include breakpoint(large) {@include span-columns(4);}
 }
 
-.footer-nav {
-    @include span-columns(8); 
-    padding: 30px 0;
-    margin: 0;
-	@include breakpoint(baby) {@include fill-parent; padding: 0;}
-	li {
-        @include span-columns(2 of 8); 
-        @include font-size(16);
-        @extend %sans;
-        font-weight: 700;
-        padding: 0;
-        @include breakpoint(baby) {@include font-size(14); width: 33%; margin: 0; }
-    }
-    .sub-menu {
-    	@extend %clearfix;
-    	li {
-            @include font-size(14);
-            font-weight: 300;
-            float: none;
-        }
-    }
-    a:hover {
-        color: $blue;
-    }
-}
 
 .footer-social {
     @include span-columns(4);

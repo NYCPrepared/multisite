@@ -67,6 +67,12 @@ $max-width: 1200px;
 // RWD BREAKPOINTS 
 
 @mixin breakpoint($point) {
+	@if $point == large {
+		@media (min-width: 1025px) { @content; }
+	}
+	@if $point == medium {
+		@media (min-width: 480px) { @content; }
+	}
 	@if $point == papa {
 		@media (min-width: 1025px) { @content; }
 	}
