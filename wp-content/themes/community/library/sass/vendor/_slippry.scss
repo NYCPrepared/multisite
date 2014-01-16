@@ -1,0 +1,32 @@
+// SLIDER PLUGIN 
+
+.sy-slides-wrap {
+    border: 5px solid white;
+}
+
+.sy-caption-wrap {
+    bottom: 0;
+    width: 100%;
+    .sy-caption {
+        border-radius: 0;
+        background: rgba(255,255,255,.8);
+        color: $text-color;
+        @include font-size(14);
+        @include breakpoint(medium) {@include font-size(24);}
+    }
+}
+
+.sy-pager {
+    margin-top: 10px;
+    li {
+        width: .75em;
+        height: .75em;
+        margin: 0 .75em 0 0;
+        a {
+            background: $gray8;
+        }
+        &.sy-active a {
+            background-color: $text-color;
+        }
+    }
+}
