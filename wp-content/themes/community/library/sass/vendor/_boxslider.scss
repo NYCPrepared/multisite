@@ -1,0 +1,23 @@
+// BOX SLIDER PLUGIN 
+// CSS overwrites
+
+.bx-wrapper {
+    margin-bottom: 10px;
+    .bx-viewport {
+        -webkit-box-shadow: inherit;
+        box-shadow: inherit;
+    }
+    .featured-posts, 
+    .featured-posts li {
+        height: 100%;
+    }
+    .bx-caption {
+        background: rgba(255,255,255,.8);
+        span {
+            @extend %sans;
+            @include font-size(14);
+            @include breakpoint(medium) {@include font-size(24);}
+        }
+    }
+}
+

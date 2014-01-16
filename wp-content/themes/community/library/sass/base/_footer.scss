@@ -41,7 +41,7 @@
     padding: 15px;
     clear: both;
     text-align: center;
-	@include breakpoint(papa) {@include font-size(12);}
+	@include breakpoint(medium) {@include font-size(12);}
 }
 
 
@@ -50,7 +50,7 @@
 
 .footer .widget {
     background: $white;   
-	@include breakpoint(papa) {@include span-columns(4);}
+	@include breakpoint(medium) {@include span-columns(4);}
 	li {
     	@include font-size(16);
 	}

@@ -11,6 +11,11 @@ body {
 }
 
 
+.wrap {
+	width: 96%;
+	margin: 0 auto;
+}
+
 #inner-header,
 #inner-content,
 #inner-footer,
@@ -19,34 +24,22 @@ body {
     @include outer-container;
 }
 
-.wrap {
-	width: 96%;
-	margin: 0 auto;
-}
 
 
 // sidebar
 div[role='complementary'] {
-    @include span-columns(4); 
-	@include breakpoint(baby) {
-    	@include fill-parent; 
-	}
+	@include breakpoint(medium) {@include span-columns(4);}
 }
 
 // main
 div[role='main'] {
-    @include span-columns(12);
     padding-bottom: 60px; 
-    
+	@include breakpoint(medium) {@include span-columns(12); }
     // single page template 
     .page-template-page-iframe-php & {
         @include span-columns(16); 
         padding: 0;
     }
-
-	@include breakpoint(baby) {
-    	@include fill-parent; 
-	}
 }
 
 

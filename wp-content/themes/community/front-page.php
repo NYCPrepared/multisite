@@ -54,7 +54,7 @@
 					</section>
 					<section class="home-modules clearfix">
 						<article class="module row volunteers clearfix">
-							<h3 class="module-heading">Volunteers</h3>
+							<h3 class="module-heading">Volunteers needed</h3>
 							<ul class="volunteer-list">
 								<li></li>
 							</ul>
