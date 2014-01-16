@@ -1,4 +1,101 @@
-// INDEX PAGE
+/*********************
+POSTS & CONTENT STYLES
+*********************/
 
+.hentry {
+	header {}
+	footer {}
+
+} 
+
+.single-title,
+.page-title {}
+
+.single-title {}
+.page-title {}
+.archive-title {}
+
+
+/* want to style individual post classes? Booya! */
+.post-id {}         /* post by id (i.e. post-3) */
+.post {}            /* general post style */
+.page {}            /* general article on a page style */
+.attachment {}      /* general style on an attatchment */
+.sticky {}          /* sticky post style */
+.hentry {}          /* hentry class */
+.category-slug {}   /* style by category (i.e. category-videos) */
+.tag-slug {}        /* style by tag (i.e. tag-news) */
+
+
+// post date and author name
+.byline {
+    color: $gray6;
+	@extend %caps;
+	@include font-size(15);
+    a {
+        color: $gray6;
+    }
+}
+
+
+// post content 
+.entry-content {
+
+    h2, h3, h4 {
+        margin-top: 1.8em;
+    }
+    
+	p {
+    	max-width: 40em;
+	}
+
+	ul, ol, table, dl {}
+	ul, ol {
+        padding: 0 40px;
+		li {
+		}
+	}
+	ul {
+        list-style: square;
+		li {}
+	}
+	ol {
+        list-style: decimal;
+		li {}
+	}
+	blockquote {
+		&:before {}
+	}
+	dl {
+    	border-top: 1px solid $white;
+        padding-top: 1em;
+	}
+	dt {
+    	float: left;
+	}
+	dd {
+    	margin-left: 375px;
+	}
+	img {
+		margin: 0 0 1.5em 0;
+		max-width: 100%;
+		height: auto;
+	}
+	/*
+	image alignment on a screen this size may be
+	a bit difficult. It's set to start aligning
+	and floating images at the next breakpoint,
+	but it's up to you. Feel free to change it up.
+	*/
+	.alignleft, img.alignleft {float: left; margin-right: 40px; margin-bottom: 20px;}
+	.alignright, img.alignright {float: right; margin-left: 40px; margin-bottom: 20px;}
+	.aligncenter, img.aligncenter {}
+	video, object {
+		max-width: 100%;
+		height: auto;
+	}
+	pre {}
+
+} // end .entry-content 
 
 

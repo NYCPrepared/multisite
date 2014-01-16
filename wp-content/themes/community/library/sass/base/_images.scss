@@ -1,0 +1,49 @@
+// Wordpress size classes
+
+.size-full {}
+.size-large {}
+.size-medium {}
+.size-thumbnail {}
+
+
+// image captions
+
+.wp-caption {
+	max-width: 100%;
+    background: $white;
+    margin-bottom: 1em;
+    padding: 0;
+    display: inline-block;
+    vertical-align: top;
+	img {
+		width: 100%;
+		max-width: 100%;
+		height: auto;
+		margin-bottom: 0 !important;
+	}
+    p.wp-caption-text {
+        @include font-size(15);
+        line-height: 1.4;
+        text-align: center;
+        margin: 0;
+        padding: 0px 10px 10px;
+    }
+}
+
+
+// image gallery  
+
+.gallery {
+	dl {
+		a {}
+		img {}
+	}
+	dt {}
+	dd {}
+} 
+
+
+// gallery caption  
+
+.gallery-caption {}
+

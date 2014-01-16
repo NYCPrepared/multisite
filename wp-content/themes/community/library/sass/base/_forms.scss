@@ -23,13 +23,12 @@ input[type='submit'] {
     @extend %condensed;
     -webkit-appearance: button;
     cursor: pointer;
-    border-radius: 3px;
-    border: 3px solid $gray2;
+    border-radius: 5px;
     background: $gray2;
     color: $white;
     line-height: 1;
     margin: 0;
-    padding: .5em 1em;
+    padding: .5em 2em;
     &:hover {
         background: $white;
         color: $gray2;
@@ -117,10 +116,20 @@ COMMENT FORM STYLES
 	margin: 0 20px 1.1em;
 }
 
+// all the input fields
+#comment-form-elements {
+    margin: 0;
+}
+
+// the wrapper paragraph for the textarea
+#comment-form-elements + p {
+    margin: 0 0 30px;
+}
 
 
-
-// SEARCH 
+/******************************************************************
+SEARCH FORM 
+******************************************************************/
 
 #searchform {
     float: right;

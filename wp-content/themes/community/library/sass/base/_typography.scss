@@ -1,5 +1,8 @@
-// TYPEFACES
+// BASE STYLES
+// variations are in _posts
 
+
+// TYPEFACES
 // if you're going to use webfonts, be sure to check your weights
 // http://css-tricks.com/watch-your-font-weight/
 
@@ -169,19 +172,3 @@ pre {
 }
 
 
-
-// post date and author name
-.byline {
-    color: $gray6;
-	@extend %caps;
-	@include font-size(15);
-    a {
-        color: $gray6;
-    }
-}
-
-// blog posts
-
-.entry-content p {
-    
-}

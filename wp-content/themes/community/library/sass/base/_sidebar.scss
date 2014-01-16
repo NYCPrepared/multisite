@@ -1,0 +1,77 @@
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+
+.sidebar {
+	margin-top: 2.2em;
+}
+
+.widgettitle {
+    @extend %condensed;
+	margin: 0 0 0.75em;
+	color: $white;
+}
+
+.widget {
+	padding: 20px;
+	margin: 0 0 20px;
+    background: $gray3;
+    color: $white;
+	a {
+		color: $white;
+		&:hover {
+    		color: $gray2;
+		}
+	}
+	ul {
+		li {
+			margin-bottom: 0.75em;
+            line-height: 1.4;
+			&:first-child {}
+			&:last-child {}
+			a {}
+			/* deep nesting */
+
+			ul {
+				margin-top: 0.75em;
+				padding-left: 1em;
+			}
+		}
+	}
+}
+
+.sidebar .widget {
+	&:first-child {
+		background: $green;
+	}
+	&:nth-child(2) {
+		background: $teal;
+	}
+	&:nth-child(3) {
+		background: $blue;
+	}
+	&:nth-child(4) {
+		background: $navy;
+	}
+}
+
+
+#wp-calendar {
+    width: 100%;
+    caption {
+        @extend %condensed;
+    }
+    td {
+        text-align: center;
+    }
+    td#prev {
+        text-align: left;
+        @extend %condensed;
+    }
+    td#next {
+        text-align: right;
+        @extend %condensed;
+    }
+}
+
