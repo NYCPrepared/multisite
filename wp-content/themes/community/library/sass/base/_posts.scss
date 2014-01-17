@@ -143,10 +143,10 @@ POSTS & CONTENT STYLES
         @include breakpoint(small) {padding: 10px 20px;}
     }
     .post-title {
-        margin: .5em 0 0;
+        margin: .25em 0 0;
     }
     .post-excerpt {
-        margin: 0 0 .5em;
+        margin: .25em 0 .5em;
     }
     .location {
         @extend %caps;
@@ -164,15 +164,17 @@ POSTS & CONTENT STYLES
     li {
         background: $white;
         height: 300px;
+        overflow: hidden;
+        @extend %overflow-fade;
         margin: 0;
         padding: 10px;
     	@include breakpoint(small) {@include span-columns(8); padding: 10px 20px;}
     }
     .post-title {
-        margin: .5em 0 0;
+        margin: .25em 0 0;
     }
     .post-excerpt {
-        margin:  0 0 .5em;
+        margin:  .25em 0 .5em;
     }
     .post-date {
         @extend %caps;
@@ -191,7 +193,7 @@ POSTS & CONTENT STYLES
         margin-top: 0;
         margin-bottom: 0;
         padding: 0;
-    	@include breakpoint(small) {@include span-columns(4); padding: 10px 20px;}
+    	@include breakpoint(small) {@include span-columns(4);}
     }
     .site-thumbnail {
         width: 100%;
