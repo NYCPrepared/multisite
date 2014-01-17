@@ -160,31 +160,11 @@ $max-width: 1200px;
 
 
 
-// STANDARD ELEMENTS
+// BROWSER ADJUSTMENTS
 
+// standardize box model across browsers! IE8 and up. bit.ly/1eXrOej 
 *, *:before, *:after {
     -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-
-	
-hr {
-	border: 0;
-	height: 1px;
-	background: $gray8;
-	margin:2rem 0 4rem 0;
-}
-
-
-img, video, object { 
-  max-width: 100% 
-}

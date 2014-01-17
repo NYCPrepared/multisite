@@ -1,10 +1,28 @@
 // CONTAINERS 
-// use Bourbon Neat grid
 
 
+// base
+
+html,
 body {
-	background: $gray9;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: $gray9;
 }
+
+
+hr {
+	border: 0;
+	height: 1px;
+	background: $gray8;
+	margin:2rem 0 4rem 0;
+}
+
+
+// modules
+// use Bourbon Neat grid
 
 #content {
     padding-top: 20px;

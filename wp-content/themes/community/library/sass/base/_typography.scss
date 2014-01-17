@@ -1,13 +1,10 @@
 // BASE STYLES
-// variations are in _posts
+// variations are in _posts partial
 
 
 // TYPEFACES
 // if you're going to use webfonts, be sure to check your weights
 // http://css-tricks.com/watch-your-font-weight/
-
-
-@import url('http://weloveiconfonts.com/api/?family=entypo');
 
 $sans:        "Lato", Helvetica, Verdana, sans-serif;
 $condensed:   "Oswald", "Arial Narrow", Arial, sans-serif;
@@ -26,6 +23,10 @@ $condensed:   "Oswald", "Arial Narrow", Arial, sans-serif;
 %caps {
 	text-transform: uppercase;
 	letter-spacing: 1px;
+}
+
+%icon {
+    
 }
 
 [class*="entypo-"]:before {
