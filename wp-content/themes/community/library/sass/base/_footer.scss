@@ -10,11 +10,10 @@
 .logo-NYCP {
     @include font-size(22);
     @extend %condensed;
-	float: left;
     margin-right: 30px;
     white-space: nowrap;
-    @include breakpoint(large) {display: inline-block; margin-right: 30px;}
-    a {
+    display: inline-block; 
+    a, a:visited {
         color: $white;
     }
     span {
@@ -34,26 +33,26 @@
 
 
 .social-links {
-    clear: both;
-    margin-top: 20px;
+    margin: 30px 0 0;
     li {
+        @include font-size(20);
         display: inline-block;
         padding: 0;
-        height: 36px;
-        width: 36px;
+        height: 32px;
+        width: 32px;
         text-align: center;
-        line-height: 36px;
+        line-height: 32px;
         border-radius: 0;
-        margin-right: 3px;
+        margin-right: 1px;
     }
     a {
         display: block;
     }
-    .facebook {@include flip-button($navy); @extend %entypo-social-facebook;}
-    .twitter {@include flip-button($blue); @extend %entypo-social-twitter;}
-    .github {@include flip-button($teal); @extend %entypo-social-github;}
-    .email {@include flip-button($green); @extend %entypo-mail;}
-    .rss {@include flip-button($orange); @extend %entypo-rss;}
+    .facebook a {@include flip-button($navy); @extend %entypo-social-facebook;}
+    .twitter a {@include flip-button($blue); @extend %entypo-social-twitter;}
+    .github a {@include flip-button($teal); @extend %entypo-social-github;}
+    .email a {@include flip-button($green); @extend %entypo-mail;}
+    .rss a {@include flip-button($orange); @extend %entypo-rss;}
 }
 
 .copyright {
