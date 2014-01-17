@@ -109,14 +109,14 @@ POSTS & CONTENT STYLES
 }
 
 .home .post-excerpt {
-    @include font-size(16);
-    line-height: 1.4;
+    @include font-size(18);
+    line-height: 1.5;
 }
 
 .news, 
 .events, 
 .sites {
-    .module-heading {@extend %h5;}    
+    .module-heading {@extend %p; @extend %caps;}    
 } 
 
 // VOLUNTEER PROMO
@@ -143,10 +143,10 @@ POSTS & CONTENT STYLES
         @include breakpoint(small) {padding: 10px 20px;}
     }
     .post-title {
-        margin: .75em 0 .25em;
+        margin: .5em 0 0;
     }
     .post-excerpt {
-        margin: 0;
+        margin: 0 0 .5em;
     }
     .location {
         @extend %caps;
@@ -169,10 +169,10 @@ POSTS & CONTENT STYLES
     	@include breakpoint(small) {@include span-columns(8); padding: 10px 20px;}
     }
     .post-title {
-        margin: .75em 0 .25em;
+        margin: .5em 0 0;
     }
     .post-excerpt {
-        margin: 0;
+        margin:  0 0 .5em;
     }
     .post-date {
         @extend %caps;
@@ -188,15 +188,17 @@ POSTS & CONTENT STYLES
 .sites-list {
     li {
         background: $white;
-        height: 300px;
-        margin: 0;
-        padding: 0 0 10px;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 0;
     	@include breakpoint(small) {@include span-columns(4); padding: 10px 20px;}
     }
     .site-thumbnail {
         width: 100%;
         height: auto;
+        min-height: 100px;
         background: $gray7;
+        display: block;
     }
     .site-title {
         @extend %caps;
@@ -206,5 +208,7 @@ POSTS & CONTENT STYLES
     .site-meta {
         margin: 0;
         padding: 0 10px;
+        @extend %small;
+        color: $quiet-color;
     }
 }

@@ -107,9 +107,8 @@ h6, %h6 {
 	@extend %caps;
 }
 
-p {
+p, %p {
     @include font-size(18);
-    @extend %sans;
 	line-height: 1.8;
 }
 

@@ -76,8 +76,10 @@ div[role='main'] {
     }
 }
 
-.home-modules .row {
-    border-top: 1px solid $hr-color;
-    padding: 20px 0;
+.home-modules {
+    padding-bottom: 30px;
+    .row {
+        border-top: 1px solid $hr-color;
+        padding: 20px 0;
+    }
 }
-
