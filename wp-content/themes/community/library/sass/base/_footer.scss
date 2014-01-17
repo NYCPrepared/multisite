@@ -23,14 +23,15 @@
         margin-left: 5px;   
         @include transition (border-color 0.25s ease);
     }
-    a:hover {
+    a:hover,
+    a:focus, 
+    a:visited:hover {
         color: $text-color;
         span {
             border-color: $text-color;
         }
     }
 }
-
 
 .social-links {
     margin: 30px 0 0;

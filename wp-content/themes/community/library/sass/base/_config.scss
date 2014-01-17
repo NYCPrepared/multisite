@@ -62,22 +62,24 @@ $max-width: 1200px;
 
 
 // RWD BREAKPOINTS 
+// mobile first! so you only have to use floats etc in larger sizes
+// set breakpoints where your content breaks, not particular devices
 
 @mixin breakpoint($point) {
-	@if $point == xl {
-		@media (min-width: 1200px) { @content; }
-	}
-	@if $point == large {
-		@media (min-width: 1025px) { @content; }
-	}
-	@if $point == medium {
-		@media (min-width: 769px) { @content; }
+	@if $point == tiny {
+		@media (min-width: 321px)  { @content; } 
 	}
 	@if $point == small {
 		@media (min-width: 481px) { @content; }
 	}
-	@else if $point == tiny {
-		@media (min-width: 321px)  { @content; }
+	@if $point == medium {
+		@media (min-width: 769px) { @content; }
+	}
+	@if $point == large {
+		@media (min-width: 1025px) { @content; }
+	}
+	@else if $point == xl {
+		@media (min-width: 1200px) { @content; }
 	}
 }
 
@@ -92,7 +94,6 @@ $max-width: 1200px;
 }
 
 // for semantic markup, a la http://blog.teamtreehouse.com/a-better-clearfix-with-sass
-// usage: @extend %clearfix;
 %clearfix:after {
     content: "";
     display: table;

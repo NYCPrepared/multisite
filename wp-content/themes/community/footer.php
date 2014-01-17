@@ -4,8 +4,8 @@
 
 					<section class="global site-meta first">
 						<div class="logo-NYCP"><a href="http://nycprepared.org">NYC<span>Prepared</span></a></div>
-						<?php bloginfo('description'); ?>
-						<ul class="social-links">
+						<h5 class="tagline-NYCP"><?php bloginfo('description'); ?></h5>
+						<ul class="social-links icons-NYCP">
 						    <li class="email"><a href="mailto:info@nycprepared.org" target="_blank"></a></li>
 						    <li class="github"><a href="https://github.com/NYCPrepared" target="_blank"></a></li>
 						    <li class="twitter"><a href="https://twitter.com/NYCPrepared" target="_blank"></a></li>
@@ -13,7 +13,7 @@
 						    <li class="rss"><a href="/feed" target="_blank"></a></li>
                         </ul>
 					</section>
-					<section class="widgets ">
+					<section class="widgets">
 						<?php if ( is_active_sidebar( 'footer1' ) ) : ?>
 							<?php dynamic_sidebar( 'footer1' ); ?>
 						<?php endif; ?>
