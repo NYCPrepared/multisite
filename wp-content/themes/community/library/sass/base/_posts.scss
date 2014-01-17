@@ -104,7 +104,13 @@ POSTS & CONTENT STYLES
 
 
 .home .module-heading {
-    margin: 0;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.home .post-excerpt {
+    @include font-size(16);
+    line-height: 1.4;
 }
 
 .news, 
@@ -133,10 +139,11 @@ POSTS & CONTENT STYLES
     li {
         border-bottom: 1px solid $gray8;
         padding: 10px;
+        margin-bottom: 0;
         @include breakpoint(small) {padding: 10px 20px;}
     }
     .post-title {
-        margin: .5em 0 0;
+        margin: .75em 0 .25em;
     }
     .post-excerpt {
         margin: 0;
@@ -157,13 +164,12 @@ POSTS & CONTENT STYLES
     li {
         background: $white;
         height: 300px;
-        overflow-y: scroll;
         margin: 0;
         padding: 10px;
     	@include breakpoint(small) {@include span-columns(8); padding: 10px 20px;}
     }
     .post-title {
-        margin: .5em 0 0;
+        margin: .75em 0 .25em;
     }
     .post-excerpt {
         margin: 0;
@@ -173,5 +179,32 @@ POSTS & CONTENT STYLES
         @extend %small;
         white-space: nowrap;
         margin-left: 3px;
+    }
+}
+
+
+// SITES PROMO
+
+.sites-list {
+    li {
+        background: $white;
+        height: 300px;
+        margin: 0;
+        padding: 0 0 10px;
+    	@include breakpoint(small) {@include span-columns(4); padding: 10px 20px;}
+    }
+    .site-thumbnail {
+        width: 100%;
+        height: auto;
+        background: $gray7;
+    }
+    .site-title {
+        @extend %caps;
+        margin: 0;
+        padding: 0 10px;
+    }
+    .site-meta {
+        margin: 0;
+        padding: 0 10px;
     }
 }

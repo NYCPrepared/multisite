@@ -62,6 +62,10 @@
 									<h3 class="post-title"><a href="#">Accounting Help</a></h3>
 									<p class="post-excerpt">Excel expert would be greatly appreciated! <span class="location">Remote</span></p>
 								</li>
+								<li>
+									<h3 class="post-title"><a href="#">Experienced cook</a></h3>
+									<p class="post-excerpt">We need help preparing and distributing meals to displaced residents. <span class="location">Staten Island</span></p>
+								</li>
 							</ul>
 						</article>
 						<article class="module row news clearfix">
@@ -110,8 +114,9 @@
 								?>
 							
 								<li id="site-<?php echo $site_id; ?>">
+    								<img class="post-thumbnail site-thumbnail" src="">
 									<h3 class="post-title site-title"><a href="<?php echo $site_details->path; ?>" title="<?php echo $site_details->blogname; ?>"><?php echo $site_details->blogname; ?></a></h3>
-									<h5 class="site-meta modified"><span class"modified-title">Last updated</span> <time><?php echo date_i18n(get_option('date_format') ,strtotime("$site_details->last_updated;"));?></time></h5>
+									<h6 class="site-meta modified"><span class"modified-title">Last updated</span> <time><?php echo date_i18n(get_option('date_format') ,strtotime("$site_details->last_updated;"));?></time></h6>
 								</li>
 							
 								<?php }

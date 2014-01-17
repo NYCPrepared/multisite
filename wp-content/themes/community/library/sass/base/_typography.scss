@@ -89,6 +89,7 @@ h2, %h2 {
 
 h3, %h3 {
     @include font-size(23);
+	@include breakpoint(medium) {@include font-size(28);}
     margin-bottom: 0.125em;
 }
 
@@ -97,12 +98,13 @@ h4, %h4 {
 }
 
 h5, %h5 {
-    @include font-size(16);
-	@extend %caps;
+    @include font-size(18);
+    font-weight: bold;
 }
 
 h6, %h6 {
     @include font-size(15);
+	@extend %caps;
 }
 
 p {
