@@ -165,7 +165,6 @@ POSTS & CONTENT STYLES
         background: $white;
         height: 300px;
         overflow: hidden;
-        @extend %overflow-fade;
         margin: 0;
         padding: 10px;
     	@include breakpoint(small) {@include span-columns(8); padding: 10px 20px;}
@@ -205,11 +204,11 @@ POSTS & CONTENT STYLES
     .site-title {
         @extend %caps;
         margin: 0;
-        padding: 0 10px;
+        padding: 5px 10px 0;
     }
     .site-meta {
         margin: 0;
-        padding: 0 10px;
+        padding: 0 10px 10px;
         @extend %small;
         color: $quiet-color;
     }

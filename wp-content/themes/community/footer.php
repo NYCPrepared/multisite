@@ -4,7 +4,7 @@
 
 					<section class="global site-meta first">
 						<div class="logo-NYCP"><a href="http://nycprepared.org">NYC<span>Prepared</span></a></div>
-						<h5 class="tagline-NYCP"><?php bloginfo('description'); ?></h5>
+						<h6 class="tagline-NYCP"><?php bloginfo('description'); ?></h6>
 						<ul class="social-links icons-NYCP">
 						    <li class="email"><a href="mailto:info@nycprepared.org" target="_blank"></a></li>
 						    <li class="github"><a href="https://github.com/NYCPrepared" target="_blank"></a></li>
