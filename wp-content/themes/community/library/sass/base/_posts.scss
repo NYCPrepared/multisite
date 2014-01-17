@@ -104,8 +104,10 @@ POSTS & CONTENT STYLES
 
 .volunteers .module-heading {
     color: $white;
-    background: $gray8;
-    padding: 10px;
+    background: $gray7; // temp
+    padding: 20px;
+    height: 300px;
+    overflow: hidden;
 	@include breakpoint(small) {@include span-columns(8);}
 }
 

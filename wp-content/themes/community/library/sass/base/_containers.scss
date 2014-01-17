@@ -78,5 +78,8 @@ div[role='main'] {
 
 .home-modules .row {
     border-top: 1px solid $gray6;
-    margin-top: 20px;
+    padding: 20px 0;
+    .modules-heading {
+        margin: 0;
+    }
 }
