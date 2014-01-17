@@ -52,30 +52,28 @@
 					</section>
 					<section class="home-modules clearfix">
 						<article class="module row volunteers clearfix">
-							<h3 class="module-heading">Volunteers Needed</h3>
+							<h2 class="module-heading">Volunteers Needed</h2>
 							<ul class="volunteer-list">
 								<li>
-									<h4 class="post-title"><a href="#">Mold remediation in the Rockaways</a></h4>
-									<p>We need 10 people to help us clean up a community center this weekend.</p>
-									<span class="location">Far Rockaway</span>
+									<h3 class="post-title"><a href="#">Mold remediation in the Rockaways</a></h3>
+									<p class="post-excerpt">We need 10 people to help us clean up a community center this weekend. <span class="location">Far Rockaway</span></p>
 								</li>
 								<li>
-									<h4 class="post-title"><a href="#">Accounting Help</a></h4>
-									<p class="post-excerpt">Excel expert would be greatly appreciated!</p>
-									<span class="location">Remote</span>
+									<h3 class="post-title"><a href="#">Accounting Help</a></h3>
+									<p class="post-excerpt">Excel expert would be greatly appreciated! <span class="location">Remote</span></p>
 								</li>
 							</ul>
 						</article>
 						<article class="module row news clearfix">
-							<h3 class="module-heading">News</h3>
+							<h2 class="module-heading">News</h2>
 							<ul class="news-list">
 								<li>
-									<h4 class="post-title"><a href="#">CKAN 2.1 released</a></h4>
-									<p class="post-excerpt">We are happy to announce that the new CKAN 2.1 version is available to download and install. This version adds exciting new features, including an interface for bulk dataset updates (shown below), improved previews for text files, a new redesigned dashboard and significant.. improvements to the documentation.</p>
+									<h3 class="post-title"><a href="#">CKAN 2.1 released</a></h3>
+									<p class="post-excerpt">We are happy to announce that the new CKAN 2.1 version is available to download and install. This version adds exciting new features, including an interface for bulk dataset updates (shown below), improved previews for text files, a new redesigned dashboard and significant improvements to the documentation.</p>
 									<span class="meta post-date">02-01-2014</span>
 								</li>
 								<li>
-									<h4 class="post-title"><a href="#">Ten design teams selected for stage two of Rebuild by Design</a></h4>
+									<h3 class="post-title"><a href="#">Ten design teams selected for stage two of Rebuild by Design</a></h4>
 									<p class="post-excerpt">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
 									<span class="meta post-date">02-05-2014</span>
 								</li>
@@ -84,7 +82,7 @@
 						<?php // check for plugin using plugin name
 						if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
 						<article class="module row events clearfix">
-							<h3 class="module-heading">Events</h3>
+							<h2 class="module-heading">Events</h2>
 							<ul class="events-list">
 								<?php
 								$events = EM_Events::output(array('limit'=>5, 
@@ -97,7 +95,7 @@
 						</article>
 						<?php } ?>
 						<article class="module row sites clearfix">
-							<h3 class="module-heading">Sites</h3>
+							<h2 class="module-heading">Sites</h2>
 							<ul class="sites-list">
 
 							<?php
@@ -114,8 +112,8 @@
 								?>
 							
 								<li id="site-<?php echo $site_id; ?>">
-									<h4 class="post-title site-title"><a href="<?php echo $site_details->path; ?>" title="<?php echo $site_details->blogname; ?>"><?php echo $site_details->blogname; ?></a></h4>
-									<div class="site-meta modified-date"><span class"modified-date">Last Updated</span> <?php echo date_i18n(get_option('date_format') ,strtotime("$site_details->last_updated;"));?></div>
+									<h3 class="post-title site-title"><a href="<?php echo $site_details->path; ?>" title="<?php echo $site_details->blogname; ?>"><?php echo $site_details->blogname; ?></a></h3>
+									<h5 class="site-meta modified"><span class"modified-title">Last updated</span> <time><?php echo date_i18n(get_option('date_format') ,strtotime("$site_details->last_updated;"));?></time></h5>
 								</li>
 							
 								<?php }

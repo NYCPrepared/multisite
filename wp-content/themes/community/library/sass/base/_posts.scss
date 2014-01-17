@@ -29,11 +29,11 @@ POSTS & CONTENT STYLES
 
 // post date and author name
 .byline {
-    color: $gray6;
+    color: $quiet-color;
 	@extend %caps;
 	@include font-size(15);
     a {
-        color: $gray6;
+        color: $quiet-color;
     }
 }
 
@@ -99,3 +99,35 @@ POSTS & CONTENT STYLES
 } // end .entry-content 
 
 
+
+// VOLUNTEER PROMO
+
+.volunteers .module-heading {
+    color: $white;
+    background: $gray8;
+    padding: 10px;
+	@include breakpoint(small) {@include span-columns(8);}
+}
+
+.volunteer-list {
+    background: $white;
+    height: 300px;
+    overflow-y: scroll;
+    margin: 0;
+	@include breakpoint(small) {@include span-columns(8);}
+    li {
+        border-bottom: 1px solid $divider-color;
+        padding: 10px;
+    }
+    .post-title {
+        margin: .5em 0 0;
+    }
+    .post-excerpt {
+        margin: 0;
+    }
+    .location {
+        @extend %caps;
+        @extend %small;
+        color: $quiet-color;
+    }
+}

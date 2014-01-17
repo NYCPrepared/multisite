@@ -72,7 +72,7 @@
 
 .footer .widget {
     background: $white;   
-	@include breakpoint(medium) {@include span-columns(4);}
+	@include breakpoint(small) {@include span-columns(4);}
 	li {
     	@include font-size(16);
 	}
