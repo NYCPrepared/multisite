@@ -100,6 +100,19 @@ POSTS & CONTENT STYLES
 
 
 
+// HOME PAGE POSTS
+
+
+.home .module-heading {
+    margin: 0;
+}
+
+.news, 
+.events, 
+.sites {
+    .module-heading {@extend %h5;}    
+} 
+
 // VOLUNTEER PROMO
 
 .volunteers .module-heading {
@@ -108,7 +121,6 @@ POSTS & CONTENT STYLES
     padding: 20px;
     height: 300px;
     overflow: hidden;
-    @extend %h2;
 	@include breakpoint(small) {@include span-columns(8);}
 }
 
