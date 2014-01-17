@@ -49,11 +49,11 @@
     a {
         display: block;
     }
-    .facebook {@include flip-button($navy);}
-    .twitter {@include flip-button($blue);}
-    .github {@include flip-button($teal);}
-    .email {@include flip-button($green);}
-    .rss {@include flip-button($orange);}
+    .facebook {@include flip-button($navy); @extend %entypo-social-facebook;}
+    .twitter {@include flip-button($blue); @extend %entypo-social-twitter;}
+    .github {@include flip-button($teal); @extend %entypo-social-github;}
+    .email {@include flip-button($green); @extend %entypo-mail;}
+    .rss {@include flip-button($orange); @extend %entypo-rss;}
 }
 
 .copyright {
