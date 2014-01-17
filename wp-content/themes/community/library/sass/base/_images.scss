@@ -6,6 +6,13 @@
 .size-thumbnail {}
 
 
+// images in posts
+
+.entry-content img {
+    @extend %image-border;
+}
+
+
 // image captions
 
 .wp-caption {

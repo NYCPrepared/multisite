@@ -91,7 +91,7 @@ $max-width: 1200px;
 }	
 
 
-// clearfix
+// CLEARFIX
 
 // for old markup w/clearfix class:
 .clearfix:after {
@@ -109,7 +109,7 @@ $max-width: 1200px;
 }
 
 
-// notched line mixin
+// NOTCHED LINE
 
 @mixin notch($size, $border: $gray5, $fill: $gray9){
     position: relative;
@@ -134,11 +134,19 @@ $max-width: 1200px;
     }
 }
 
-// invert colors on hover
+// IMAGE FRAME
+
+%image-border {
+    border: 5px solid $white;
+}
+
+
+// BUTTON THAT FLIPS BG/TEXT COLORS ON HOVER
+
 @mixin flip-button($color){
     background: $color;
     border-color: $color;
-    color: $white;
+    color: $white !important;
     &:hover,
     &:focus {
         background: $white;
