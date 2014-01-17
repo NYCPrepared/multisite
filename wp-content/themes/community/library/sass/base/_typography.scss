@@ -78,18 +78,18 @@ h1, h2, h3, h4, h5, h6 {
 
 h1, %h1 {
     @include font-size(36);
-	@include breakpoint(medium) {@include font-size(44);}
+	@include breakpoint(medium) {@include font-size(48);}
 }
 
 h2, %h2 {
     @include font-size(28);
-	@include breakpoint(medium) {@include font-size(32);}
+	@include breakpoint(medium) {@include font-size(40);}
 	margin-bottom: 0.375em;
 }
 
 h3, %h3 {
     @include font-size(23);
-	@include breakpoint(medium) {@include font-size(28);}
+	@include breakpoint(medium) {@include font-size(30);}
     margin-bottom: 0.125em;
 }
 

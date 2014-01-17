@@ -80,8 +80,8 @@ function bones_register_sidebars() {
 		'description' => __( 'First (primary) sidebar.', 'bonestheme' ),
 		'before_widget' => '<div id="%1$s" class="widget primary %2$s">',
 		'after_widget' => '</div>',
-		'before_title' => '<h3 class="widgettitle">',
-		'after_title' => '</h3>',
+		'before_title' => '<h4 class="widgettitle">',
+		'after_title' => '</h4>',
 	));
 	register_sidebar(array(
 		'id' => 'home-sidebar',
@@ -89,8 +89,8 @@ function bones_register_sidebars() {
 		'description' => __( 'A homepage widget area.', 'bonestheme' ),
 		'before_widget' => '<div id="%1$s" class="widget home-sidebar %2$s">',
 		'after_widget' => '</div>',
-		'before_title' => '<h3 class="widgettitle">',
-		'after_title' => '</h3>',
+		'before_title' => '<h4 class="widgettitle">',
+		'after_title' => '</h4>',
 	));
 	register_sidebar(array(
 		'id' => 'footer1',
@@ -98,8 +98,8 @@ function bones_register_sidebars() {
 		'description' => __( 'First footer widget area.', 'bonestheme' ),
 		'before_widget' => '<div id="%1$s" class="widget footer-widget-1 %2$s">',
 		'after_widget' => '</div>',
-		'before_title' => '<h3 class="widgettitle">',
-		'after_title' => '</h3>',
+		'before_title' => '<h4 class="widgettitle">',
+		'after_title' => '</h4>',
 	));
 	register_sidebar(array(
 		'id' => 'footer2',
@@ -107,8 +107,8 @@ function bones_register_sidebars() {
 		'description' => __( 'Second footer widget area.', 'bonestheme' ),
 		'before_widget' => '<nav id="%1$s" class="widget footer-widget-2 %2$s">',
 		'after_widget' => '</nav>',
-		'before_title' => '<h3 class="widgettitle">',
-		'after_title' => '</h3>',
+		'before_title' => '<h4 class="widgettitle">',
+		'after_title' => '</h4>',
 	));
 	register_sidebar(array(
 		'id' => 'footer3',
@@ -116,8 +116,8 @@ function bones_register_sidebars() {
 		'description' => __( 'Third footer widget area.', 'bonestheme' ),
 		'before_widget' => '<div id="%1$s" class="widget footer-widget-3 %2$s">',
 		'after_widget' => '</div>',
-		'before_title' => '<h3 class="widgettitle">',
-		'after_title' => '</h3>',
+		'before_title' => '<h4 class="widgettitle">',
+		'after_title' => '</h4>',
 	));
 	register_sidebar(array(
 		'id' => 'footer4',
@@ -125,8 +125,8 @@ function bones_register_sidebars() {
 		'description' => __( 'Fourth footer widget area.', 'bonestheme' ),
 		'before_widget' => '<div id="%1$s" class="widget footer-widget-4 %2$s">',
 		'after_widget' => '</div>',
-		'before_title' => '<h3 class="widgettitle">',
-		'after_title' => '</h3>',
+		'before_title' => '<h4 class="widgettitle">',
+		'after_title' => '</h4>',
 	));
 	/*
 
