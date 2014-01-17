@@ -55,6 +55,12 @@ $grid-columns: 16;
 $max-width: 1200px;
 
 
+// MIXINS 
+// read the Bourbon docs for all kinds of well-tested mixins 
+// check there before adding new ones
+// http://bourbon.io/docs/
+
+
 // RWD BREAKPOINTS 
 
 @mixin breakpoint($point) {
@@ -74,13 +80,6 @@ $max-width: 1200px;
 		@media (min-width: 321px)  { @content; }
 	}
 }
-
-
-
-// MIXINS 
-// read the Bourbon docs for all kinds of well-tested mixins 
-// check there before adding new ones
-// http://bourbon.io/docs/
 
 
 // cross-browser inline-block -- bit.ly/KuaPpr 
