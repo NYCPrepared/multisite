@@ -2,10 +2,10 @@
 
 
 #inner-header {
-    border-bottom: 1px solid $divider-color;
+    border-bottom: 1px solid $hr-color;
 }
 
-.site-title {
+.domain-title {
     @include font-size(18);
     line-height: 1;
 	float: left;

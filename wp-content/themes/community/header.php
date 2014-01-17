@@ -47,7 +47,7 @@
 
 				<div id="inner-header" class="wrap clearfix">
 
-					<p class="site-title"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
+					<p class="domain-title"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 					<nav id="main-navigation" class="top-nav main-nav" role="navigation">
 						<?php bones_main_nav(); ?>
 					</nav>

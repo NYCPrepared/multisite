@@ -69,13 +69,11 @@
 							<ul class="news-list">
 								<li>
 									<h3 class="post-title"><a href="#">CKAN 2.1 released</a></h3>
-									<p class="post-excerpt">We are happy to announce that the new CKAN 2.1 version is available to download and install. This version adds exciting new features, including an interface for bulk dataset updates (shown below), improved previews for text files, a new redesigned dashboard and significant improvements to the documentation.</p>
-									<span class="meta post-date">02-01-2014</span>
+									<p class="post-excerpt">We are happy to announce that the new CKAN 2.1 version is available to download and install. This version adds exciting new features, including an interface for bulk dataset updates (shown below), improved previews for text files, a new redesigned dashboard and significant improvements to the documentation. <a href="#" class="meta post-date">02-01-2014</a></p>
 								</li>
 								<li>
 									<h3 class="post-title"><a href="#">Ten design teams selected for stage two of Rebuild by Design</a></h4>
-									<p class="post-excerpt">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
-									<span class="meta post-date">02-05-2014</span>
+									<p class="post-excerpt">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. <a href="#" class="meta post-date">02-05-2014</a></p>
 								</li>
 							</ul>
 						</article>
@@ -89,7 +87,7 @@
 									'format'=>'<li><span class="event-month">#M</span>
 									<span class="event-date">#j</span>
 									<span class="event-day">#D</span>
-									<h4 class="post-title event-title">#_EVENTLINK</h4></li>'));?>
+									<h3 class="post-title event-title">#_EVENTLINK</h3></li>'));?>
 								<?php echo $events; ?>
 							</ul>
 						</article>

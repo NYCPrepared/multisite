@@ -16,7 +16,7 @@ body {
 hr {
 	border: 0;
 	height: 1px;
-	background: $gray8;
+	background: $hr-color;
 	margin:2rem 0 4rem 0;
 }
 
@@ -77,9 +77,11 @@ div[role='main'] {
 }
 
 .home-modules .row {
-    border-top: 1px solid $gray6;
+    border-top: 1px solid $hr-color;
     padding: 20px 0;
-    .modules-heading {
+    .module-heading {
         margin: 0;
+        @extend %h5;
     }
 }
+

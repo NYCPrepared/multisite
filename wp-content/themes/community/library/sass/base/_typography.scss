@@ -25,6 +25,10 @@ $condensed:   "Oswald", "Arial Narrow", Arial, sans-serif;
 	letter-spacing: 1px;
 }
 
+%small {
+	font-size: 75%;
+}
+
 %icon {
     
 }
@@ -61,7 +65,7 @@ body {
 
 // HEADERS
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+h1, h2, h3, h4, h5, h6 {
     @extend %sans;
 	line-height: 1.4;
 	text-rendering: optimizelegibility;
@@ -72,32 +76,32 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	}
 }
 
-h1, .h1 {
+h1, %h1 {
     @include font-size(36);
 	@include breakpoint(medium) {@include font-size(44);}
 }
 
-h2, .h2 {
+h2, %h2 {
     @include font-size(28);
 	@include breakpoint(medium) {@include font-size(32);}
 	margin-bottom: 0.375em;
 }
 
-h3, .h3 {
+h3, %h3 {
     @include font-size(23);
     margin-bottom: 0.125em;
 }
 
-h4, .h4 {
+h4, %h4 {
     @include font-size(20);
 }
 
-h5, .h5 {
-    @include font-size(18);
+h5, %h5 {
+    @include font-size(16);
 	@extend %caps;
 }
 
-h6, .h6 {
+h6, %h6 {
     @include font-size(15);
 }
 

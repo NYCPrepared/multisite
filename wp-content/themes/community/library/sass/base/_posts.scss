@@ -108,6 +108,7 @@ POSTS & CONTENT STYLES
     padding: 20px;
     height: 300px;
     overflow: hidden;
+    @extend %h2;
 	@include breakpoint(small) {@include span-columns(8);}
 }
 
@@ -118,8 +119,9 @@ POSTS & CONTENT STYLES
     margin: 0;
 	@include breakpoint(small) {@include span-columns(8);}
     li {
-        border-bottom: 1px solid $divider-color;
+        border-bottom: 1px solid $gray8;
         padding: 10px;
+        @include breakpoint(small) {padding: 10px 20px;}
     }
     .post-title {
         margin: .5em 0 0;
@@ -131,5 +133,33 @@ POSTS & CONTENT STYLES
         @extend %caps;
         @extend %small;
         color: $quiet-color;
+        white-space: nowrap;
+        margin-left: 3px;
+    }
+}
+
+
+// NEWS PROMO
+
+.news-list {
+    li {
+        background: $white;
+        height: 300px;
+        overflow-y: scroll;
+        margin: 0;
+        padding: 10px;
+    	@include breakpoint(small) {@include span-columns(8); padding: 10px 20px;}
+    }
+    .post-title {
+        margin: .5em 0 0;
+    }
+    .post-excerpt {
+        margin: 0;
+    }
+    .post-date {
+        @extend %caps;
+        @extend %small;
+        white-space: nowrap;
+        margin-left: 3px;
     }
 }
