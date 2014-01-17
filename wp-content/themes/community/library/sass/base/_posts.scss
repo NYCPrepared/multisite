@@ -119,16 +119,18 @@ POSTS & CONTENT STYLES
     .module-heading {@extend %p; @extend %caps;}    
 } 
 
-// VOLUNTEER PROMO
-
 .volunteers .module-heading {
     color: $white;
     background: $gray7; // temp
     padding: 20px;
+    margin-bottom: 0;
     height: 300px;
     overflow: hidden;
 	@include breakpoint(small) {@include span-columns(8);}
 }
+
+
+// VOLUNTEER PROMO
 
 .volunteer-list {
     background: $white;
