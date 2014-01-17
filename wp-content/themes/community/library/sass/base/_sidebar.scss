@@ -26,12 +26,13 @@ SIDEBARS & ASIDES
 	}
 	ul {
     	border-top: 1px solid $white;
-    	border-top: 1px solid rgba(255,255,255,.7);
+    	border-top: 1px solid rgba(255,255,255,.3);
 	}
 	li {
     	border-bottom: 1px solid $white;
-    	border-bottom: 1px solid rgba(255,255,255,.7);
-		margin-bottom: 0.75em;
+    	border-bottom: 1px solid rgba(255,255,255,.3);
+        padding: 0.5em 0;
+        margin: 0;
         line-height: 1.4;
 		&:first-child {}
 		&:last-child {}
