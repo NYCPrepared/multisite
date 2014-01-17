@@ -12,7 +12,7 @@
     margin: 0;
     white-space: nowrap;
     @include breakpoint(medium) {@include font-size(14);}
-    a {
+    a, a:visited {
         display: block;
         color: $text-color;
         font-weight: 700;

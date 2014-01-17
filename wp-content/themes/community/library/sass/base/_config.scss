@@ -82,15 +82,6 @@ $max-width: 1200px;
 }
 
 
-// cross-browser inline-block -- bit.ly/KuaPpr 
-%inline-block {
-	display: -moz-inline-stack; 
-	display: inline-block;
-	zoom: 1;
-	*display: inline;		
-}	
-
-
 // CLEARFIX
 
 // for old markup w/clearfix class:
@@ -107,6 +98,14 @@ $max-width: 1200px;
     display: table;
     clear: both;
 }
+
+
+// IMAGE FRAME
+
+%image-border {
+    border: 5px solid $white;
+}
+
 
 
 // NOTCHED LINE
@@ -132,12 +131,6 @@ $max-width: 1200px;
         border-width: $size - 1;
         margin-left: -$size + 1;
     }
-}
-
-// IMAGE FRAME
-
-%image-border {
-    border: 5px solid $white;
 }
 
 
