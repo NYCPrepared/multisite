@@ -52,15 +52,33 @@
 					</section>
 					<section class="home-modules clearfix">
 						<article class="module row volunteers clearfix">
-							<h3 class="module-heading">Volunteers needed</h3>
+							<h3 class="module-heading">Volunteers Needed</h3>
 							<ul class="volunteer-list">
-								<li></li>
+								<li>
+									<h4 class="post-title"><a href="#">Mold remediation in the Rockaways</a></h4>
+									<p>We need 10 people to help us clean up a community center this weekend.</p>
+									<span class="location">Far Rockaway</span>
+								</li>
+								<li>
+									<h4 class="post-title"><a href="#">Accounting Help</a></h4>
+									<p class="post-excerpt">Excel expert would be greatly appreciated!</p>
+									<span class="location">Remote</span>
+								</li>
 							</ul>
 						</article>
 						<article class="module row news clearfix">
 							<h3 class="module-heading">News</h3>
 							<ul class="news-list">
-								<li></li>
+								<li>
+									<h4 class="post-title"><a href="#">CKAN 2.1 released</a></h4>
+									<p class="post-excerpt">We are happy to announce that the new CKAN 2.1 version is available to download and install. This version adds exciting new features, including an interface for bulk dataset updates (shown below), improved previews for text files, a new redesigned dashboard and significant.. improvements to the documentation.</p>
+									<span class="meta post-date">02-01-2014</span>
+								</li>
+								<li>
+									<h4 class="post-title"><a href="#">Ten design teams selected for stage two of Rebuild by Design</a></h4>
+									<p class="post-excerpt">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+									<span class="meta post-date">02-05-2014</span>
+								</li>
 							</ul>
 						</article>
 						<?php // check for plugin using plugin name
