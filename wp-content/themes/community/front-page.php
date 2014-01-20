@@ -10,13 +10,14 @@
 						<article class="home-feature clearfix">
 
 							<script type="text/javascript">
+							// Slippry Slider configuration info can be found at: http://slippry.com/
 							jQuery(document).ready(function(){
 							  jQuery('#featured').slippry({pause: 5000})
 							});
 							</script>
 
 							<ul id="featured" class="featured-posts bxslider">
-
+								<!-- Get featured content from current site -->
 								<?php
 								$sticky = get_option( 'sticky_posts' );
 								rsort( $sticky );
@@ -50,9 +51,67 @@
 							<?php endwhile; endif; ?>
 						</article>
 					</section>
+					<?php
+						$siteargs = array(
+							'limit'      => 5,
+						    'offset'     => 1,
+						    );
+						$sites = wp_get_sites($siteargs);
+						rsort($sites);
+					?>
 					<section class="home-modules clearfix">
 						<article class="module row volunteers clearfix">
 							<h3 class="module-heading">Volunteers Needed</h3>
+							<?php
+							$cat_name = 'volunteers';
+							foreach ($sites as $site) {
+								$blog_id = $site['blog_id'];
+								switch_to_blog($blog_id);
+
+								$posts = get_posts("numberposts=5");
+
+								foreach ($posts as $post) {
+									the_title();
+								}
+								// if($posts) {
+								// 	foreach ($posts as $post) {
+								// 		the_title();
+								// 	}
+							 //        // $all_posts = array_merge($all_posts, $posts);
+							        
+							 //    }
+								// echo "Hi, I'm ID: $blog_id";
+								// $cat_id = get_query_var($cat_name);
+								// echo "The ID: for $cat_name is $cat_id";
+								// echo $cat_id;
+								// echo "<pre>";
+								// var_dump($cat_id);
+								// echo "</pre>";
+
+								restore_current_blog();
+
+							}
+
+
+							// fetch blogs here
+							$all_posts = array();
+							foreach($sites as $b)
+							{
+							    switch_to_blog($b->blog_id);
+							    echo $b->blog_id;
+							    $posts = get_posts("category_name=volunteers");
+							    if($posts) {
+							        $all_posts = array_merge($all_posts, $posts);
+							    }
+							    restore_current_blog();
+							}
+
+
+								echo "<pre>";
+								var_dump($all_posts);
+								echo "</pre>";
+
+							?>
 							<ul class="volunteer-list">
 								<li>
 									<h4 class="post-title"><a href="#">Mold remediation in the Rockaways</a></h4>
@@ -101,12 +160,6 @@
 							<ul class="sites-list">
 
 							<?php
-							$siteargs = array(
-								'limit'      => 5,
-							    'offset'     => 1,
-							    );
-							$sites = wp_get_sites($siteargs);
-							rsort($sites);
 
 							foreach ($sites as $site) {
 								$site_id = $site['blog_id'];
