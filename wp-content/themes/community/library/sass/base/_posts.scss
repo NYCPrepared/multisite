@@ -29,11 +29,11 @@ POSTS & CONTENT STYLES
 
 // post date and author name
 .byline {
-    color: $gray6;
+    color: $quiet-color;
 	@extend %caps;
 	@include font-size(15);
     a {
-        color: $gray6;
+        color: $quiet-color;
     }
 }
 
@@ -99,3 +99,119 @@ POSTS & CONTENT STYLES
 } // end .entry-content 
 
 
+
+// HOME PAGE POSTS
+
+
+.home .module-heading {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.home .post-excerpt {
+    @include font-size(18);
+    line-height: 1.5;
+}
+
+.news, 
+.events, 
+.sites {
+    .module-heading {@extend %p; @extend %caps;}    
+} 
+
+.volunteers .module-heading {
+    color: $white;
+    background: $gray7; // temp
+    padding: 20px;
+    margin-bottom: 0;
+    height: 300px;
+    overflow: hidden;
+	@include breakpoint(small) {@include span-columns(8);}
+}
+
+
+// VOLUNTEER PROMO
+
+.volunteer-list {
+    background: $white;
+    height: 300px;
+    overflow-y: scroll;
+    margin: 0;
+	@include breakpoint(small) {@include span-columns(8);}
+    li {
+        border-bottom: 1px solid $gray8;
+        padding: 10px;
+        margin-bottom: 0;
+        @include breakpoint(small) {padding: 10px 20px;}
+    }
+    .post-title {
+        margin: .25em 0 0;
+    }
+    .post-excerpt {
+        margin: .25em 0 .5em;
+    }
+    .location {
+        @extend %caps;
+        @extend %small;
+        color: $quiet-color;
+        white-space: nowrap;
+        margin-left: 3px;
+    }
+}
+
+
+// NEWS PROMO
+
+.news-list {
+    li {
+        background: $white;
+        height: 300px;
+        overflow: hidden;
+        margin: 0;
+        padding: 10px;
+    	@include breakpoint(small) {@include span-columns(8); padding: 10px 20px;}
+    }
+    .post-title {
+        margin: .25em 0 0;
+    }
+    .post-excerpt {
+        margin:  .25em 0 .5em;
+    }
+    .post-date {
+        @extend %caps;
+        @extend %small;
+        white-space: nowrap;
+        margin-left: 3px;
+    }
+}
+
+
+// SITES PROMO
+
+.sites-list {
+    li {
+        background: $white;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 0;
+    	@include breakpoint(small) {@include span-columns(4);}
+    }
+    .site-thumbnail {
+        width: 100%;
+        height: auto;
+        min-height: 100px;
+        background: $gray7;
+        display: block;
+    }
+    .site-title {
+        @extend %caps;
+        margin: 0;
+        padding: 5px 10px 0;
+    }
+    .site-meta {
+        margin: 0;
+        padding: 0 10px 10px;
+        @extend %small;
+        color: $quiet-color;
+    }
+}

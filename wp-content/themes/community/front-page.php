@@ -10,14 +10,13 @@
 						<article class="home-feature clearfix">
 
 							<script type="text/javascript">
-							// Slippry Slider configuration info can be found at: http://slippry.com/
 							jQuery(document).ready(function(){
 							  jQuery('#featured').slippry({pause: 5000})
 							});
 							</script>
 
 							<ul id="featured" class="featured-posts bxslider">
-								<!-- Get featured content from current site -->
+
 								<?php
 								$sticky = get_option( 'sticky_posts' );
 								rsort( $sticky );
@@ -51,115 +50,63 @@
 							<?php endwhile; endif; ?>
 						</article>
 					</section>
-					<?php
-						$siteargs = array(
-							'limit'      => 5,
-						    'offset'     => 1,
-						    );
-						$sites = wp_get_sites($siteargs);
-						rsort($sites);
-					?>
 					<section class="home-modules clearfix">
 						<article class="module row volunteers clearfix">
-							<h3 class="module-heading">Volunteers Needed</h3>
-							<?php
-							$cat_name = 'volunteers';
-							foreach ($sites as $site) {
-								$blog_id = $site['blog_id'];
-								switch_to_blog($blog_id);
-
-								$posts = get_posts("numberposts=5");
-
-								foreach ($posts as $post) {
-									the_title();
-								}
-								// if($posts) {
-								// 	foreach ($posts as $post) {
-								// 		the_title();
-								// 	}
-							 //        // $all_posts = array_merge($all_posts, $posts);
-							        
-							 //    }
-								// echo "Hi, I'm ID: $blog_id";
-								// $cat_id = get_query_var($cat_name);
-								// echo "The ID: for $cat_name is $cat_id";
-								// echo $cat_id;
-								// echo "<pre>";
-								// var_dump($cat_id);
-								// echo "</pre>";
-
-								restore_current_blog();
-
-							}
-
-
-							// fetch blogs here
-							$all_posts = array();
-							foreach($sites as $b)
-							{
-							    switch_to_blog($b->blog_id);
-							    echo $b->blog_id;
-							    $posts = get_posts("category_name=volunteers");
-							    if($posts) {
-							        $all_posts = array_merge($all_posts, $posts);
-							    }
-							    restore_current_blog();
-							}
-
-
-								echo "<pre>";
-								var_dump($all_posts);
-								echo "</pre>";
-
-							?>
+							<h2 class="module-heading"><a href="#">Volunteers Needed</a></h2>
 							<ul class="volunteer-list">
 								<li>
-									<h4 class="post-title"><a href="#">Mold remediation in the Rockaways</a></h4>
-									<p>We need 10 people to help us clean up a community center this weekend.</p>
-									<span class="location">Far Rockaway</span>
+									<h3 class="post-title"><a href="#">Mold remediation in the Rockaways</a></h3>
+									<p class="post-excerpt">We need 10 people to help us clean up a community center this weekend. <span class="location">Far Rockaway</span></p>
 								</li>
 								<li>
-									<h4 class="post-title"><a href="#">Accounting Help</a></h4>
-									<p class="post-excerpt">Excel expert would be greatly appreciated!</p>
-									<span class="location">Remote</span>
+									<h3 class="post-title"><a href="#">Accounting Help</a></h3>
+									<p class="post-excerpt">Excel expert would be greatly appreciated! <span class="location">Remote</span></p>
+								</li>
+								<li>
+									<h3 class="post-title"><a href="#">Experienced cook</a></h3>
+									<p class="post-excerpt">We need help preparing and distributing meals to displaced residents. <span class="location">Staten Island</span></p>
 								</li>
 							</ul>
 						</article>
 						<article class="module row news clearfix">
-							<h3 class="module-heading">News</h3>
+							<h2 class="module-heading"><a href="#">News</a></h2>
 							<ul class="news-list">
 								<li>
-									<h4 class="post-title"><a href="#">CKAN 2.1 released</a></h4>
-									<p class="post-excerpt">We are happy to announce that the new CKAN 2.1 version is available to download and install. This version adds exciting new features, including an interface for bulk dataset updates (shown below), improved previews for text files, a new redesigned dashboard and significant.. improvements to the documentation.</p>
-									<span class="meta post-date">02-01-2014</span>
+									<h3 class="post-title"><a href="#">CKAN 2.1 released</a></h3>
+									<p class="post-excerpt">We are happy to announce that the new CKAN 2.1 version is available to download and install. This version adds exciting new features, including an interface for bulk dataset updates (shown below), improved previews for text files, a new redesigned dashboard and significant improvements to the documentation. <a href="#" class="meta post-date">02-01-2014</a></p>
 								</li>
 								<li>
-									<h4 class="post-title"><a href="#">Ten design teams selected for stage two of Rebuild by Design</a></h4>
-									<p class="post-excerpt">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
-									<span class="meta post-date">02-05-2014</span>
+									<h3 class="post-title"><a href="#">Ten design teams selected for stage two of Rebuild by Design</a></h4>
+									<p class="post-excerpt">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. <a href="#" class="meta post-date">02-05-2014</a></p>
 								</li>
 							</ul>
 						</article>
 						<?php // check for plugin using plugin name
 						if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
 						<article class="module row events clearfix">
-							<h3 class="module-heading">Events</h3>
+							<h2 class="module-heading"><a href="#">Events</a></h2>
 							<ul class="events-list">
 								<?php
 								$events = EM_Events::output(array('limit'=>5, 
 									'format'=>'<li><span class="event-month">#M</span>
 									<span class="event-date">#j</span>
 									<span class="event-day">#D</span>
-									<h4 class="post-title event-title">#_EVENTLINK</h4></li>'));?>
+									<h3 class="post-title event-title">#_EVENTLINK</h3></li>'));?>
 								<?php echo $events; ?>
 							</ul>
 						</article>
 						<?php } ?>
 						<article class="module row sites clearfix">
-							<h3 class="module-heading">Sites</h3>
+							<h2 class="module-heading"><a href="#">Sites</a></h2>
 							<ul class="sites-list">
 
 							<?php
+							$siteargs = array(
+								'limit'      => 5,
+							    'offset'     => 1,
+							    );
+							$sites = wp_get_sites($siteargs);
+							rsort($sites);
 
 							foreach ($sites as $site) {
 								$site_id = $site['blog_id'];
@@ -167,8 +114,9 @@
 								?>
 							
 								<li id="site-<?php echo $site_id; ?>">
-									<h4 class="post-title site-title"><a href="<?php echo $site_details->path; ?>" title="<?php echo $site_details->blogname; ?>"><?php echo $site_details->blogname; ?></a></h4>
-									<div class="site-meta modified-date"><span class"modified-date">Last Updated</span> <?php echo date_i18n(get_option('date_format') ,strtotime("$site_details->last_updated;"));?></div>
+    								<img class="post-thumbnail site-thumbnail" src="">
+									<h3 class="post-title site-title"><a href="<?php echo $site_details->path; ?>" title="<?php echo $site_details->blogname; ?>"><?php echo $site_details->blogname; ?></a></h3>
+									<h6 class="site-meta modified"><span class"modified-title">Last updated</span> <time><?php echo date_i18n(get_option('date_format') ,strtotime("$site_details->last_updated;"));?></time></h6>
 								</li>
 							
 								<?php }

@@ -31,10 +31,11 @@ $gray0: #fffdf7;
 // Tutorial: how to use color variables properly:
 // http://sachagreif.com/sass-color-variables/
 
-$anchor: $navy;
+$anchor: $teal;
 $headline-color: $gray1;
 $text-color: $gray2;
-
+$quiet-color: $gray6;
+$hr-color: $gray6;
 
 
 // LAYERS
@@ -55,44 +56,36 @@ $grid-columns: 16;
 $max-width: 1200px;
 
 
-// RWD BREAKPOINTS 
-
-@mixin breakpoint($point) {
-	@if $point == xl {
-		@media (min-width: 1200px) { @content; }
-	}
-	@if $point == large {
-		@media (min-width: 1025px) { @content; }
-	}
-	@if $point == medium {
-		@media (min-width: 769px) { @content; }
-	}
-	@if $point == small {
-		@media (min-width: 481px) { @content; }
-	}
-	@else if $point == tiny {
-		@media (min-width: 321px)  { @content; }
-	}
-}
-
-
-
 // MIXINS 
 // read the Bourbon docs for all kinds of well-tested mixins 
 // check there before adding new ones
 // http://bourbon.io/docs/
 
 
-// cross-browser inline-block -- bit.ly/KuaPpr 
-%inline-block {
-	display: -moz-inline-stack; 
-	display: inline-block;
-	zoom: 1;
-	*display: inline;		
-}	
+// RWD BREAKPOINTS 
+// mobile first! so you only have to use floats etc in larger sizes
+// set breakpoints where your content breaks, not particular devices
+
+@mixin breakpoint($point) {
+	@if $point == tiny {
+		@media (min-width: 321px)  { @content; } 
+	}
+	@if $point == small {
+		@media (min-width: 481px) { @content; }
+	}
+	@if $point == medium {
+		@media (min-width: 769px) { @content; }
+	}
+	@if $point == large {
+		@media (min-width: 1025px) { @content; }
+	}
+	@else if $point == xl {
+		@media (min-width: 1200px) { @content; }
+	}
+}
 
 
-// clearfix
+// CLEARFIX
 
 // for old markup w/clearfix class:
 .clearfix:after {
@@ -102,7 +95,6 @@ $max-width: 1200px;
 }
 
 // for semantic markup, a la http://blog.teamtreehouse.com/a-better-clearfix-with-sass
-// usage: @extend %clearfix;
 %clearfix:after {
     content: "";
     display: table;
@@ -110,7 +102,15 @@ $max-width: 1200px;
 }
 
 
-// notched line mixin
+// IMAGE FRAME
+
+%image-border {
+    border: 5px solid $white;
+}
+
+
+
+// NOTCHED LINE
 
 @mixin notch($size, $border: $gray5, $fill: $gray9){
     position: relative;
@@ -135,16 +135,34 @@ $max-width: 1200px;
     }
 }
 
-// invert colors on hover
+
+// BUTTON THAT FLIPS BG/TEXT COLORS ON HOVER
+
 @mixin flip-button($color){
     background: $color;
     border-color: $color;
-    color: $white;
+    color: $white !important;
     &:hover,
     &:focus {
         background: $white;
         color: $color !important;
     }
+}
+
+
+// OVERFLOW FADES OUT
+
+%overflow-fade {
+    position: relative;
+	&:after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 30px;
+		@include linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1), $fallback: transparent);
+	}
 }
 
 
@@ -160,31 +178,11 @@ $max-width: 1200px;
 
 
 
-// STANDARD ELEMENTS
+// BROWSER ADJUSTMENTS
 
+// standardize box model across browsers! IE8 and up. bit.ly/1eXrOej 
 *, *:before, *:after {
     -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-
-	
-hr {
-	border: 0;
-	height: 1px;
-	background: $gray8;
-	margin:2rem 0 4rem 0;
-}
-
-
-img, video, object { 
-  max-width: 100% 
-}

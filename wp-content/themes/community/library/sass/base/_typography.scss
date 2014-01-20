@@ -1,13 +1,10 @@
 // BASE STYLES
-// variations are in _posts
+// variations are in _posts partial
 
 
 // TYPEFACES
 // if you're going to use webfonts, be sure to check your weights
 // http://css-tricks.com/watch-your-font-weight/
-
-
-@import url('http://weloveiconfonts.com/api/?family=entypo');
 
 $sans:        "Lato", Helvetica, Verdana, sans-serif;
 $condensed:   "Oswald", "Arial Narrow", Arial, sans-serif;
@@ -26,6 +23,14 @@ $condensed:   "Oswald", "Arial Narrow", Arial, sans-serif;
 %caps {
 	text-transform: uppercase;
 	letter-spacing: 1px;
+}
+
+%small {
+	font-size: 75%;
+}
+
+%icon {
+    
 }
 
 [class*="entypo-"]:before {
@@ -60,7 +65,7 @@ body {
 
 // HEADERS
 
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+h1, h2, h3, h4, h5, h6 {
     @extend %sans;
 	line-height: 1.4;
 	text-rendering: optimizelegibility;
@@ -71,38 +76,39 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 	}
 }
 
-h1, .h1 {
+h1, %h1 {
     @include font-size(36);
-	@include breakpoint(medium) {@include font-size(44);}
+	@include breakpoint(medium) {@include font-size(48);}
 }
 
-h2, .h2 {
+h2, %h2 {
     @include font-size(28);
-	@include breakpoint(medium) {@include font-size(32);}
+	@include breakpoint(medium) {@include font-size(40);}
 	margin-bottom: 0.375em;
 }
 
-h3, .h3 {
+h3, %h3 {
     @include font-size(23);
+	@include breakpoint(medium) {@include font-size(30);}
     margin-bottom: 0.125em;
 }
 
-h4, .h4 {
+h4, %h4 {
     @include font-size(20);
 }
 
-h5, .h5 {
+h5, %h5 {
     @include font-size(18);
+    font-weight: bold;
+}
+
+h6, %h6 {
+    @include font-size(15);
 	@extend %caps;
 }
 
-h6, .h6 {
-    @include font-size(15);
-}
-
-p {
+p, %p {
     @include font-size(18);
-    @extend %sans;
 	line-height: 1.8;
 }
 
