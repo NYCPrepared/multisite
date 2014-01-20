@@ -50,9 +50,20 @@
 							<?php endwhile; endif; ?>
 						</article>
 					</section>
+					<?php
+					$siteargs = array(
+						'limit'      => 5,
+					    'offset'     => 1,
+					    );
+					$sites = wp_get_sites($siteargs);
+					rsort($sites);
+					?>
 					<section class="home-modules clearfix">
 						<article class="module row volunteers clearfix">
 							<h2 class="module-heading"><a href="#">Volunteers Needed</a></h2>
+
+
+
 							<ul class="volunteer-list">
 								<li>
 									<h3 class="post-title"><a href="#">Mold remediation in the Rockaways</a></h3>
@@ -101,12 +112,6 @@
 							<ul class="sites-list">
 
 							<?php
-							$siteargs = array(
-								'limit'      => 5,
-							    'offset'     => 1,
-							    );
-							$sites = wp_get_sites($siteargs);
-							rsort($sites);
 
 							foreach ($sites as $site) {
 								$site_id = $site['blog_id'];
