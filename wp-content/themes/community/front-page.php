@@ -58,7 +58,7 @@
 
 					<section class="home-modules clearfix">
 						<article class="module row volunteers clearfix">
-							<h2 class="module-heading"><a href="#">Volunteers Needed</a></h2>
+							<h2 class="module-heading">Volunteers Needed</h2>
 							<ul class="volunteer-list">
 								<?php 
 								if(function_exists('recent_network_posts')) {
@@ -87,7 +87,7 @@
 						
 						</script>
 						<article id="news-module" class="module row news clearfix">
-							<h2 class="module-heading"><a href="#">News</a></h2>
+							<h2 class="module-heading"><a href="/news/">News</a></h2>
 							<ul class="news-list">
 								<?php 
 								if(function_exists('recent_network_posts')) {
@@ -112,7 +112,7 @@
 						<?php // check for plugin using plugin name
 						if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
 						<article class="module row events clearfix">
-							<h2 class="module-heading"><a href="#">Events</a></h2>
+							<h2 class="module-heading"><a href="/events/">Events</a></h2>
 							<ul class="events-list">
 								<?php
 								$events = EM_Events::output(array('limit'=>5, 
@@ -125,7 +125,7 @@
 						</article>
 						<?php } ?>
 						<article class="module row sites clearfix">
-							<h2 class="module-heading"><a href="#">Sites</a></h2>
+							<h2 class="module-heading"><a href="/directory/">Sites</a></h2>
 							<ul class="sites-list">
 
 							<?php
