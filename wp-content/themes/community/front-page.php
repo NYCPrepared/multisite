@@ -18,11 +18,12 @@
 							</script>
 
 							<ul id="featured" class="featured-posts bxslider">
+							<!-- Displays sticky posts from the current site -->
 
 								<?php
-								$sticky = get_option( 'sticky_posts' );
-								rsort( $sticky );
-								$sticky = array_slice( $sticky, 0, 5 );
+								$sticky = get_option( 'sticky_posts' ); // Fetch an array of sticky posts
+								rsort( $sticky ); // Sort by latest first
+								$sticky = array_slice( $sticky, 0, 5 ); // Change the last number to show more or less posts
 								$featuredposts = new WP_Query( array( 'post__in' => $sticky, 'ignore_sticky_posts' => 1 ) );
 
 								while ($featuredposts->have_posts()) : $featuredposts->the_post();
@@ -34,7 +35,6 @@
 										'alt'	=> trim(strip_tags($title))
 									);
 								?>
-
 
 								<li class="featured-post">
 									<a href="<?php echo $permalink; ?>" title="<?php echo get_the_title();?>">
@@ -49,10 +49,10 @@
 
 						</article>
 						<article class="home-intro">
+							<!-- Displays any content entered in the page used as the front page -->
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 								<?php the_content(); ?>
 							<?php endwhile; endif; ?>
-							<?php wp_reset_query(); ?> 
 						</article>
 					</section>
 
@@ -131,7 +131,7 @@
 								<li id="site-<?php echo $site_id; ?>">
     								<img class="post-thumbnail site-thumbnail" src="">
 									<h3 class="post-title site-title"><a href="<?php echo $site_details->path; ?>" title="<?php echo $site_details->blogname; ?>"><?php echo $site_details->blogname; ?></a></h3>
-									<h6 class="site-meta modified"><span class"modified-title">Last updated</span> <time><?php echo date_i18n(get_option('date_format') ,strtotime($site_details->last_updated));?></time></h6>
+									<h6 class="site-meta modified"><span class="modified-title">Last updated</span> <time><?php echo date_i18n(get_option('date_format') ,strtotime($site_details->last_updated));?></time></h6>
 								</li>
 							
 								<?php } ?>
