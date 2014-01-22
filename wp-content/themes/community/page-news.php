@@ -33,14 +33,16 @@
 						<div id="main" class="content first clearfix" role="main">
 						<?php
 						if(function_exists('recent_network_posts')) {
-							$news_posts = recent_network_posts($numberposts = 50);
+							$news_posts = recent_network_posts($numberposts = 50); // This adjusts total number of posts
 							foreach ($news_posts as $post) {
 								$blog_details = get_blog_details($post->blog_id);
 								$title = $post->post_title;
 								$content = $post->post_content;
 								$permalink = $post->post_url;
 								$date = $post->post_date;
-								$post_excerpt = recent_posts_excerpt($count =55, $content, $permalink, $excerpt_trail = '... ');
+								// $count is the number of words to display in the excerpt; change as desired
+								// $excerpt_trail is the trailer after the excerpt, it will link to the post; change as desired
+								$post_excerpt = recent_posts_excerpt($count = 55, $content, $permalink, $excerpt_trail = '... ');
 
 							?>
 							<article class="<?php $post->post_name; ?>">
