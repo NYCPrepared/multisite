@@ -1,0 +1,285 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Yann Dubois <yann@abc.fr>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# YD WPMU SITEWIDE OPTIONS PLUGIN.
+# Copyright (C) 2010 yann.com
+# This file is distributed under the same license as the yd-wpmu-sitewide-options package.
+# FIRST AUTHOR <yann@abc.fr>, 2010.
+# <a href="http://wordpress.org/tag/yd-wpmu-sitewide-options">
+#
+#: yd-wpmu-sitewide-options.php:148
+#: yd-wpmu-sitewide-options.php:150
+#: yd-wpmu-sitewide-options.php:181
+msgid "YD Network-wide Options"
+msgstr "YD Network-wide Options"
+
+#: yd-wpmu-sitewide-options.php:160
+msgid "This will disable the link in your blog footer. If you are using this plugin on your site and like it, did you consider making a donation? -- Thanks."
+msgstr "Ceci va désactiver le lien en bas de page. Puisque vous utilisez cette extension sur votre site et que vous l'appréciez, avez-vous envisagé de faire un don ? -- Merci."
+
+#: yd-wpmu-sitewide-options.php:185
+msgid "Action:"
+msgstr "Action :"
+
+#: yd-wpmu-sitewide-options.php:186
+msgid "I should now"
+msgstr "Je dois maintenant faire la"
+
+#: yd-wpmu-sitewide-options.php:187
+#: yd-wpmu-sitewide-options.php:212
+#: yd-wpmu-sitewide-options.php:556
+msgid "Reset plugin settings"
+msgstr "RAZ des réglages"
+
+#: yd-wpmu-sitewide-options.php:189
+msgid "Plugin settings are reset"
+msgstr "Les réglages de l'extension sont réinitialisés"
+
+#: yd-wpmu-sitewide-options.php:190
+#: yd-wpmu-sitewide-options.php:553
+msgid "Update plugin settings"
+msgstr "MAJ des réglages"
+
+#: yd-wpmu-sitewide-options.php:192
+msgid "Plugin settings are updated"
+msgstr "Les réglages de l'extension sont à jour"
+
+#: yd-wpmu-sitewide-options.php:199
+msgid "Welcome to YD Network-wide Options Admin Page."
+msgstr "Bienvenue dans la page d'administration de YD Network-wide Options"
+
+#: yd-wpmu-sitewide-options.php:210
+msgid "Uh-oh. Looks like I lost my settings. Sorry."
+msgstr "Oh-oh, on dirait que j'ai perdu mes réglages. Désolé."
+
+#: yd-wpmu-sitewide-options.php:230
+msgid "Considered donating?"
+msgstr "Envisagé de faire un don&nbsp;?"
+
+#: yd-wpmu-sitewide-options.php:234
+msgid "Enjoy this plugin?"
+msgstr "Vous appréciez cette extension&nbsp;?"
+
+#: yd-wpmu-sitewide-options.php.php:234
+msgid "Help me improve it!"
+msgstr "Aidez-moi à l'améliorer&nbsp;!"
+
+#: yd-wpmu-sitewide-options.php:239
+#: yd-wpmu-sitewide-options.php:240
+msgid "en_US"
+msgstr "fr_FR"
+
+#: yd-wpmu-sitewide-options.php.php:242
+msgid "Thanks"
+msgstr "Merci"
+
+#: yd-wpmu-sitewide-options.php:250
+msgid "Credits"
+msgstr "Crédits"
+
+#: yd-wpmu-sitewide-options.php:253
+msgid "Running on PHP v."
+msgstr "Site sous PHP v."
+
+#: yd-wpmu-sitewide-options.php:254
+msgid "Funding"
+msgstr "Financement"
+
+#: yd-wpmu-sitewide-options.php:256
+msgid "Initial:"
+msgstr "Initial&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:257
+#: yd-wpmu-sitewide-options.php:258
+msgid "Additional:"
+msgstr "Additionnel&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:260
+msgid "Translations"
+msgstr "Traductions"
+
+#: yd-wpmu-sitewide-options.php:262
+msgid "English:"
+msgstr "Anglais&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:263
+msgid "French:"
+msgstr "Français&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:264
+msgid "Dutch:"
+msgstr "Hollandais&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:265
+msgid "German:"
+msgstr "Allemand&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:267
+msgid "If you want to contribute to a translation of this plugin, please drop me a line by "
+msgstr "Si vous voulez proposer une traduction de cette extension, veuillez me contacter par "
+
+#: yd-wpmu-sitewide-options.php:268
+msgid "e-mail"
+msgstr "courriel"
+
+#: yd-wpmu-sitewide-options.php:269
+msgid "or leave a comment on the "
+msgstr "ou laissez un commentaire sur la "
+
+#: yd-wpmu-sitewide-options.php:270
+msgid "plugin's page"
+msgstr "page de l'extension"
+
+#: yd-wpmu-sitewide-options.php:271
+msgid "You will get credit for your translation in the plugin file and the documentation page, "
+msgstr "Vous serez crédité pour votre traduction dans le fichier de l'extension et sa page de documentation, "
+
+#: yd-wpmu-sitewide-options.php:272
+msgid "as well as a link on this page and on my developers' blog."
+msgstr "et vous obtiendrez un lien sur cette page, et sur mon blog de développeur."
+
+#: yd-wpmu-sitewide-options.php:282
+msgid "Free support"
+msgstr "Support gratuit"
+
+#: yd-wpmu-sitewide-options.php:284
+msgid "Support page:"
+msgstr "Page de support&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:285
+msgid "here."
+msgstr "ici."
+
+#: yd-wpmu-sitewide-options.php:286
+msgid "(use comments!)"
+msgstr "(utilisez les commentaires&nbsp;!)"
+
+#: yd-wpmu-sitewide-options.php:288
+msgid "Professional consulting"
+msgstr "Assistance professionnelle"
+
+#: yd-wpmu-sitewide-options.php:289
+msgid "I am available as an experienced free-lance Wordpress plugin developer and web consultant. "
+msgstr "Je suis disponible en tant que développeur d'extensions Wordpress expérimenté et consultant web. "
+
+#: yd-wpmu-sitewide-options.php:290
+msgid "Please feel free to <a href=\"mailto:yann@abc.fr\">check with me</a> for any adaptation or specific implementation of this plugin. "
+msgstr "N'hésitez pas à <a href=\"mailto:yann@abc.fr\">me contacter</a> pour toute adaptation ou installation particulière de cette extension. "
+
+#: yd-wpmu-sitewide-options.php:291
+msgid "Or for any WP-related custom development or consulting work. Hourly rates available."
+msgstr "Ou pour tout développement sur mesure en rapport avec WP. Tarifs horaires disponibles."
+
+#: yd-wpmu-sitewide-options.php:354
+msgid "Options to propagate:"
+msgstr "Options à propager&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:356
+#: yd-wpmu-sitewide-options.php:449
+msgid "Master blog ID:"
+msgstr "ID du site maître&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:360
+msgid "Replicate these options network-wide:"
+msgstr "Répliquer ces options sur tous les sites du réseau&nbsp;: "
+
+#: yd-wpmu-sitewide-options.php:361
+msgid "Value from master blog:"
+msgstr "Valeur sur le site &quot;maître&quot;&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:373
+msgid "Database tables to propagate:"
+msgstr "Tables de base de donnée à propager&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:378
+msgid "Replicate these tables network-wide:"
+msgstr "Répliquer ces tables sur tous les sites&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:379
+msgid "Also replicate data:"
+msgstr "Répliquer également les données&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:391
+msgid "Global settings:"
+msgstr "Réglages d'ensemble&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:399
+msgid "Overwrite existing blog settings:"
+msgstr "Ecraser les réglages existants sur les blogs&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:404
+msgid "(settings stored as option keys)"
+msgstr "(réglages stockés sous forme d'options)"
+
+#: yd-wpmu-sitewide-options.php:409
+msgid "Overwrite existing blog plugin data:"
+msgstr "Ecraser les données d'extensions existantes&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:414
+msgid "(settings stored in custom database tables)"
+msgstr "(réglages stockés dans des tables de base de données)"
+
+#: yd-wpmu-sitewide-options.php:419
+msgid "Automatically apply future changes to all blogs:"
+msgstr "Appliquer les changements à tous les blogs automatiquement&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:429
+msgid "Spread options to new blogs:"
+msgstr "Etendre les options aux nouveaux blogs&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:439
+msgid "Flush rewrite rules on new blogs:"
+msgstr "Réinitialiser les règles de réécriture sur les nx. sites&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:459
+msgid "Only propagate to blogs marked as public:"
+msgstr "Ne propager que sur les blogs publics&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:471
+msgid "Skip blogs marked as archived:"
+msgstr "Eviter les blogs archivés&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:483
+msgid "Skip blogs marked as mature:"
+msgstr "Eviter les blogs marqués 'mature'&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:495
+msgid "Skip blogs marked as spam:"
+msgstr "Eviter les blogs marqués 'spam'&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:507
+msgid "Skip blogs marked as deleted:"
+msgstr "Eviter les blogs effacés&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:519
+msgid "Skip blog IDs:"
+msgstr "Eviter ces ID&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:523
+msgid "(comma-separated list of blog IDs to avoid)"
+msgstr "(liste des ID de blogs à éviter, séparés par des virgules)"
+
+#: yd-wpmu-sitewide-options.php:530
+msgid "Show debug messages:"
+msgstr "Montrer les messages de diagnostic&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:538
+msgid "Disable backlink in the blog footer:"
+msgstr "Désactivation du lien en bas de page&nbsp;:"
+
+#: yd-wpmu-sitewide-options.php:679
+msgid "http://www.yann.com/en/wp-plugins/yd-wpmu-sitewide-options"
+msgstr "http://www.yann.com/fr/a-propos/developpeur-wordpress"
+
+#: yd-wpmu-sitewide-options.php:680
+msgid "Network-wide options by YD - Freelance Wordpress Developer"
+msgstr "extension Network-wide options par YD - Développeur Wordpress"
+
