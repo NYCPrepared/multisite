@@ -57,11 +57,11 @@
 					</section>
 
 					<section class="home-modules clearfix">
+						<?php if(function_exists('recent_network_posts')) { ?>
 						<article class="module row volunteers clearfix">
 							<h2 class="module-heading">Volunteers Needed</h2>
 							<ul class="volunteer-list">
 								<?php 
-								if(function_exists('recent_network_posts')) {
 									$volunteer_posts = recent_network_posts($numberposts = 5, $postsperblog = 3, $postcat = 'Volunteers');
 									foreach ($volunteer_posts as $post) {
 										$title = $post->post_title;
@@ -77,20 +77,15 @@
 										</p>
 									</li>
 
-								<?php }
-
-								}
-								?>
+								<?php } ?>
 							</ul>
 						</article>
-						<script>
-						
-						</script>
+						<?php } ?>
+						<?php if(function_exists('recent_network_posts')) { ?>
 						<article id="news-module" class="module row news clearfix">
 							<h2 class="module-heading"><a href="/news/">News</a></h2>
 							<ul class="news-list">
 								<?php 
-								if(function_exists('recent_network_posts')) {
 									$recent_posts = recent_network_posts($numberposts = 5, $excludepostcat = 'Volunteers');
 									foreach ($recent_posts as $post) { 
 										$title = $post->post_title;
@@ -104,11 +99,10 @@
 									<p class="post-excerpt"><?php echo $post_excerpt; ?>
 									<span class="meta post-date"><?php echo date_i18n(get_option('date_format') ,strtotime($date));?></span></p>
 								</li>
-								<?php }
-								}
-								?>
+								<?php } ?>
 							</ul>
 						</article>
+						<?php } ?>
 						<?php // check for plugin using plugin name
 						if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
 						<article class="module row events clearfix">
