@@ -1,0 +1,319 @@
+# Translation of WP Fullcalendar in French (France)
+# This file is distributed under the same license as the WP Fullcalendar package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2013-08-06 20:04+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Poedit 1.5.7\n"
+"Project-Id-Version: WP Fullcalendar\n"
+"POT-Creation-Date: \n"
+"Last-Translator: Marcus Sykes <wp.plugins@netweblogic.com>\n"
+"Language-Team: \n"
+
+#: wp-fullcalendar.php:307
+msgid "Settings"
+msgstr "Réglages"
+
+#: wpfc-admin.php:62
+msgid ""
+"To use this plugin, simply use the %s shortcode in one of your posts or "
+"pages."
+msgstr ""
+"Pour utiliser cette extension, placer simplement le code %s dans un article "
+"ou une page."
+
+#: wpfc-admin.php:63
+msgid "You can also do this with PHP and this snippet : %s."
+msgstr "Vous pouvez aussi le faire par PHP et avec ce raccourci : %s."
+
+#: wpfc-admin.php:66
+msgid "Post Types"
+msgstr "Types d'article"
+
+#: wpfc-admin.php:67
+msgid ""
+"By default, your calendar will show the types of posts based on settings "
+"below."
+msgstr ""
+"Par défaut, votre calendrier montrera les types d'items en fonction des "
+"réglages ci-dessous."
+
+#: wpfc-admin.php:69
+msgid ""
+"You can override these settings by choosing your post type in your shortode "
+"like this %s."
+msgstr ""
+"Vous pouvez outre-passer ces réglages en choisissant votre type d'item dans "
+"votre code ainsi : %s."
+
+#: wpfc-admin.php:70
+msgid "You can override taxonomy search settings as well like this %s."
+msgstr ""
+"Vous pouvez aussi passer outre les réglages de recherche par noms ainsi : %s."
+
+#: wpfc-admin.php:71
+msgid "In both cases, the values you should use are in (parenteses) below."
+msgstr ""
+"Dans les deux cas, les valeurs à utiliser sont celles ci-dessous entre "
+"parenthèses."
+
+#: wpfc-admin.php:86
+msgid ""
+"Choose which taxonomies you want to see listed as search options on the "
+"calendar."
+msgstr ""
+"Choisissez quelles termes vous voulez voir afficher comme options de "
+"recherche dans le calendrier."
+
+#: wpfc-admin.php:109
+msgid "Calendar Options"
+msgstr "Options du calendrier"
+
+#: wpfc-admin.php:113
+msgid "Events limit"
+msgstr "Nombre maximum d'événements"
+
+#: wpfc-admin.php:113
+msgid ""
+"Enter the maximum number of events to show per day, which will then be "
+"preceded by a link to the calendar day page."
+msgstr ""
+"Indiquer le nombre maximum d'événements à montrer par jour, il sera précédé "
+"d'un lien vers la page du calendrier journalier."
+
+#: wpfc-admin.php:114
+msgid "View events link"
+msgstr "Lien de visualisation des événements"
+
+#: wpfc-admin.php:114
+msgid ""
+"When the limit of events is shown for one day, this text will be used for "
+"the link to the calendar day page."
+msgstr ""
+"Quand la limite d'événements pour la journée est atteinte, ce texte sera "
+"utilisé comme lien vers la page de calendrier journalier."
+
+#: wpfc-admin.php:117
+msgid "jQuery UI Themeroller"
+msgstr "jQuery UI Themeroller"
+
+#: wpfc-admin.php:118
+msgid ""
+"You can select from a set of pre-made CSS themes, which are taken from the "
+"<a href=\"%s\">jQuery Theme Roller</a> gallery. If you roll your own theme, "
+"upload the CSS file and images folder to <code>wp-content/yourtheme/plugins/"
+"wp-fullcalendar/</code> and refresh this page, it should appear an option in "
+"the pull down menu below."
+msgstr ""
+"Vous pouvez choisir dans un ensemble de thèmes CSS préfabriqués, pris dans "
+"la galerie <a href=\"%s\">jQuery Theme Roller</a>. SI vous utilisez votre "
+"propre thème, chargez le fichier CSS et le dossier images en <code>wp-"
+"content/votretheme/plugins/wp-fullcalendar/</code> et actualisez cette page."
+"Une option devrait apparaître dans le menu déroulant dessous."
+
+#: wpfc-admin.php:135
+msgid "jQuery CSS Theme?"
+msgstr "Thème CSS jQuery"
+
+#: wpfc-admin.php:138
+msgid "No Theme"
+msgstr "Aucun thème"
+
+#: wpfc-admin.php:139
+msgid "Built-In"
+msgstr "Incorporé"
+
+#: wpfc-admin.php:145
+msgid "Custom"
+msgstr "Adapté"
+
+#: wpfc-admin.php:152
+msgid ""
+"You can use the jQuery UI CSS framework to style the calendar, and choose "
+"from a set of themes below."
+msgstr ""
+"Vous pouvez utiliser le CSS jQuery UI pour habiller le calendrier et choisir "
+"dans une ensemble de thèmes plus bas."
+
+#: wpfc-admin.php:156
+msgid "Toolips"
+msgstr "Notes"
+
+#: wpfc-admin.php:157
+msgid ""
+"You can use <a href=\"http://craigsworks.com/projects/qtip2/\">jQuery qTips</"
+"a> to show excerpts of your events within a tooltip when hovering over a "
+"specific event on the calendar. You can control the content shown, "
+"positioning and style of the tool tips below."
+msgstr ""
+"Vous pouvez utiliser <a href=\"http://craigsworks.com/projects/qtip2/"
+"\">jQuery qTips</a> pour montrer des extraits de vos événements à "
+"l'intérieur d'une note descriptive en survolant un événement du calendrier. "
+"Vous pouvez déterminer le contenu, la position et le style des descriptifs "
+"ci-dessous."
+
+#: wpfc-admin.php:160
+msgid "Enable event tooltips?"
+msgstr "Activer les descriptifs d'événements"
+
+#: wpfc-admin.php:165
+msgid "Tooltip style"
+msgstr "Style du descriptif"
+
+#: wpfc-admin.php:165
+msgid "You can choose from one of these preset styles for your tooltip."
+msgstr ""
+"Vous pouvez choisir parmi ces styles pré-définis pour votre descriptif."
+
+#: wpfc-admin.php:166
+msgid "Rounded tooltips?"
+msgstr "Descriptifs arrondis ?"
+
+#: wpfc-admin.php:166
+msgid ""
+"If your chosen tooltip style doesn't already do/prevent this, you can add "
+"rounded corners using CSS3."
+msgstr ""
+"Si le style de descriptif choisi ne le permet pas ou ne l'empêche pas déjà, "
+"vous pouvez ajouter des coins arrondis en utilisant CSS3."
+
+#: wpfc-admin.php:167
+msgid "Add shadow to tooltips?"
+msgstr "Ajouter une ombre aux descriptifs ?"
+
+#: wpfc-admin.php:167
+msgid ""
+"If your chosen tooltip style doesn't already do/prevent this, you can add a "
+"CSS3 drop-shadow effect to your tooltip."
+msgstr ""
+"Si le style de descriptif choisi ne le permet pas ou ne l'empêche pas déjà, "
+"vous pouvez ajouter un effet d'ombre (drop-shadow) via CSS3."
+
+#: wpfc-admin.php:172
+msgid "Tooltip pointer position"
+msgstr "Position du pointeur de descriptif "
+
+#: wpfc-admin.php:172
+msgid "Choose where the pointer will be situated on your tooltip."
+msgstr "Choisissez l'endroit où le pointeur sera situé sur votre descriptif."
+
+#: wpfc-admin.php:173
+msgid "Tooltip bubble position"
+msgstr "Position de la bulle descriptive"
+
+#: wpfc-admin.php:173
+msgid ""
+"Choose where your tooltip will be situated relative to the event link which "
+"triggers the tooltip."
+msgstr ""
+"Choisissez l'endroit où votre descriptif sera situé par rapport au lien "
+"d'événement qui déclenche le descriptif."
+
+#: wpfc-admin.php:174
+msgid "Enable featured image?"
+msgstr "Activer l'Image Associée ? (souvent nommée \"Image à la Une\")"
+
+#: wpfc-admin.php:174
+msgid "If your post has a featured image, it will be included as a thumbnail."
+msgstr ""
+"Si votre article a une image associée, celle-ci sera incluse en vignette."
+
+#: wpfc-admin.php:177
+msgid "Featured image size"
+msgstr "Taille de l'image associée"
+
+#: wpfc-admin.php:179
+msgid "Width"
+msgstr "Largeur"
+
+#: wpfc-admin.php:180
+msgid "Height"
+msgstr "Hauteur"
+
+#: wpfc-admin.php:185
+msgid "Submit Changes"
+msgstr "Valider les changements"
+
+#: wpfc-admin.php:264
+msgid "No"
+msgstr "Non"
+
+#: wpfc-admin.php:264
+msgid "Yes"
+msgstr "Oui"
+
+#: wpfc-events-manager.php:54
+msgid ""
+"If you choose the Event post type whilst Events Manager is activated, you "
+"can also visit the <a href=\"%s\">Events Manager settings page</a> for a few "
+"more options when displaying event information on your calendar."
+msgstr ""
+"Si vous choisissez le type d'item d'événement alors que Events Manager est "
+"actif, vous pouvez aussi vous rendre sur la <a href=\"%s\">Events Manager "
+"settings page</a> (page de réglages de Events Manager) pour quelques options "
+"supplémentaires quand des informations événementielles s'affichent sur votre "
+"calendrier."
+
+#: wpfc-events-manager.php:322
+msgid "Click to toggle"
+msgstr "Cliquer pour basculer"
+
+#: wpfc-events-manager.php:322
+msgid "Full Calendar Options"
+msgstr "Toutes les options du calendrier"
+
+#: wpfc-events-manager.php:324
+msgid ""
+"Looking for the rest of the FullCalendar Options? They've moved <a href=\"%s"
+"\">here</a>, the options below are for overriding specific bits relevant to "
+"Events Manager."
+msgstr ""
+"À la recherche des autres options de FullCalendar ? Elles ont été placées <a "
+"href=\"%s\">ici</a>. Les options ci-dessous permettent de remplacer des "
+"éléments spécifiques qui relèvent de Events Manager."
+
+#: wpfc-events-manager.php:328
+msgid "Override calendar on events page?"
+msgstr "Remplacer le calendrier pour la page des événements ?"
+
+#: wpfc-events-manager.php:328
+msgid ""
+"If set to yes, the FullCalendar will be used instead of the standard "
+"calendar on the events page."
+msgstr ""
+"Réglé sur \"oui\", le FullCalendar sera utilisé à la place du calendrier "
+"standard pour la page événements."
+
+#: wpfc-events-manager.php:329
+msgid "Override calendar shortcode?"
+msgstr "Remplacer le code d'appel pour le calendrier ?"
+
+#: wpfc-events-manager.php:329
+msgid ""
+"Overrides the default calendar shortcode. You can also use "
+"[events_fullcalendar] instead."
+msgstr ""
+"Remplace le code d'appel du calendrier par défaut. Vous pouvez aussi "
+"utiliser [events_fullcalendar] à la place."
+
+#: wpfc-events-manager.php:330
+msgid "Event title format"
+msgstr "Format du titre de l'événement"
+
+#: wpfc-events-manager.php:330
+msgid "HTML is not accepted."
+msgstr "Le HTML n'est pas accepté."
+
+#: wpfc-events-manager.php:331
+msgid "Event tooltips format"
+msgstr "Format des descriptifs d'événements"
+
+#: wpfc-events-manager.php:331
+msgid ""
+"If you enable tips, this information will be shwon, which can include HTML."
+msgstr ""
+"Si vous activez les descriptifs, cette information sera affichée? Elle peut "
+"inclure de l'HTML."
