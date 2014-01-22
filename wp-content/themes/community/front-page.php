@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
  <?php include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); ?>
+ <?php $sites = wp_get_sites('offset=1'); ?>
 
 			<div id="content">
 
@@ -12,6 +13,7 @@
 							<script type="text/javascript">
 							jQuery(document).ready(function(){
 							  jQuery('#featured').slippry({pause: 5000})
+							  adaptiveHeight: false
 							});
 							</script>
 
@@ -33,6 +35,7 @@
 									);
 								?>
 
+
 								<li class="featured-post">
 									<a href="<?php echo $permalink; ?>" title="<?php echo get_the_title();?>">
 									<?php echo get_the_post_thumbnail($page->ID, 'large', $imagearg); ?>
@@ -40,6 +43,7 @@
 								</li>
 
 							<?php endwhile; ?>
+							<?php wp_reset_query(); ?> 
 
 							</ul>
 
@@ -48,48 +52,60 @@
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 								<?php the_content(); ?>
 							<?php endwhile; endif; ?>
+							<?php wp_reset_query(); ?> 
 						</article>
 					</section>
-					<?php
-					$siteargs = array(
-						'limit'      => 5,
-					    'offset'     => 1,
-					    );
-					$sites = wp_get_sites($siteargs);
-					rsort($sites);
-					?>
+
 					<section class="home-modules clearfix">
 						<article class="module row volunteers clearfix">
 							<h2 class="module-heading"><a href="#">Volunteers Needed</a></h2>
-
-
-
 							<ul class="volunteer-list">
-								<li>
-									<h3 class="post-title"><a href="#">Mold remediation in the Rockaways</a></h3>
-									<p class="post-excerpt">We need 10 people to help us clean up a community center this weekend. <span class="location">Far Rockaway</span></p>
-								</li>
-								<li>
-									<h3 class="post-title"><a href="#">Accounting Help</a></h3>
-									<p class="post-excerpt">Excel expert would be greatly appreciated! <span class="location">Remote</span></p>
-								</li>
-								<li>
-									<h3 class="post-title"><a href="#">Experienced cook</a></h3>
-									<p class="post-excerpt">We need help preparing and distributing meals to displaced residents. <span class="location">Staten Island</span></p>
-								</li>
+								<?php 
+								if(function_exists('recent_network_posts')) {
+									$volunteer_posts = recent_network_posts($numberposts = 5, $postsperblog = 3, $postcat = 'Volunteers');
+									foreach ($volunteer_posts as $post) {
+										$title = $post->post_title;
+										$content = $post->post_content;
+										$permalink = $post->post_url;
+										$post_excerpt = recent_posts_excerpt($count = 20, $content, $permalink, $excerpt_trail = '... ');
+									?>
+									<li>
+										<h3 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h3>
+										<p class="post-excerpt">
+											<?php echo $post_excerpt; ?>
+											<span class="meta location">{Custom Field}</span>
+										</p>
+									</li>
+
+								<?php }
+								}
+								?>
 							</ul>
 						</article>
-						<article class="module row news clearfix">
+						<script>
+						
+						</script>
+						<article id="news-module" class="module row news clearfix">
 							<h2 class="module-heading"><a href="#">News</a></h2>
 							<ul class="news-list">
+								<?php 
+								if(function_exists('recent_network_posts')) {
+									$recent_posts = recent_network_posts($numberposts = 5, $excludepostcat = 'Volunteers');
+									foreach ($recent_posts as $post) { 
+										$title = $post->post_title;
+										$content = $post->post_content;
+										$permalink = $post->post_url;
+										$post_excerpt = recent_posts_excerpt($count = 20, $content, $permalink, $excerpt_trail = '... ');
+										$date = $post->post_date;
+									?>
 								<li>
-									<h3 class="post-title"><a href="#">CKAN 2.1 released</a></h3>
-									<p class="post-excerpt">We are happy to announce that the new CKAN 2.1 version is available to download and install. This version adds exciting new features, including an interface for bulk dataset updates (shown below), improved previews for text files, a new redesigned dashboard and significant improvements to the documentation. <a href="#" class="meta post-date">02-01-2014</a></p>
+									<h3 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h3>
+									<p class="post-excerpt"><?php echo $post_excerpt; ?>
+									<span class="meta post-date"><?php echo date_i18n(get_option('date_format') ,strtotime($date));?></span></p>
 								</li>
-								<li>
-									<h3 class="post-title"><a href="#">Ten design teams selected for stage two of Rebuild by Design</a></h4>
-									<p class="post-excerpt">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. <a href="#" class="meta post-date">02-05-2014</a></p>
-								</li>
+								<?php }
+								}
+								?>
 							</ul>
 						</article>
 						<?php // check for plugin using plugin name
@@ -112,7 +128,6 @@
 							<ul class="sites-list">
 
 							<?php
-
 							foreach ($sites as $site) {
 								$site_id = $site['blog_id'];
 								$site_details = get_blog_details($site_id);
@@ -124,14 +139,23 @@
 									<h6 class="site-meta modified"><span class"modified-title">Last updated</span> <time><?php echo date_i18n(get_option('date_format') ,strtotime("$site_details->last_updated;"));?></time></h6>
 								</li>
 							
-								<?php }
-							// echo "<pre>";
-							// var_dump($sites);
-							// echo "</pre>";
-							?>
+								<?php } ?>
 							</ul>
 
 						</article>
+
+						<?php 
+						
+						// echo "<pre>";
+						// var_dump($recent_posts);
+						// echo "</pre>";
+
+						// $posts = get_posts('post_type=post');
+						// echo "<pre>";
+						// var_dump($posts);
+						// echo "</pre>";
+
+						?>
 					</section>
 
 				</div>
