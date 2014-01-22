@@ -45,8 +45,6 @@ require_once( 'library/bones.php' ); // if you remove this, bones will break
 */
 // require_once( 'library/translation/translation.php' ); // this comes turned off by default
 
-require_once( 'library/recent-posts.php' ); // Required to display recent posts
-
 require_once( 'library/recent-network-posts.php' ); // Required to display recent posts
 
 /************* THUMBNAIL SIZE OPTIONS *************/
