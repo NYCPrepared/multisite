@@ -40,28 +40,32 @@
 								$content = $post->post_content;
 								$permalink = $post->post_url;
 								$date = $post->post_date;
+								$post_slug = $post->post_name;
+								$blog_slug = trim($blog_details->path,'/');
 								// $count is the number of words to display in the excerpt; change as desired
 								// $excerpt_trail is the trailer after the excerpt, it will link to the post; change as desired
 								$post_excerpt = recent_posts_excerpt($count = 55, $content, $permalink, $excerpt_trail = '... ');
-
 							?>
-							<article class="<?php $post->post_name; ?>">
+							<article id="<?php echo $post_slug; ?>" class="site-<?php echo $blog_slug; ?>">
 								<header class="post-header">
-									<h2 class="post-title"><a href="<?php echo $post->post_url; ?>"><?php echo $title; ?></a></h2>
+									<h2 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h2>
 									<p class="post-author"><a href="<?php echo $blog_details->path; ?>"><?php echo $blog_details->blogname; ?></a></p>
-									<p class="post-author"><?php echo date_i18n(get_option('date_format') ,strtotime($date));?></time></p>
+									<p class="post-author"><time><?php echo date_i18n(get_option('date_format') ,strtotime($date));?></time></p>
 								</header>
 								<section class="post-body"><?php echo $post_excerpt; ?></section>
 								<footer class="post-footer">
 									<ul class="meta taxonomy categories">
 									<?php
 									foreach ($post->post_categories as $key => $value) {
+										$slug = $value['slug'];
+										$catlink = $value['nice_link'];
 									?>
-										<li id="category-<?php echo $value['slug']; ?>"><?php echo $value['nice_link']; ?></li>
+										<li id="category-<?php echo $slug; ?>"><?php echo $catlink; ?></li>
 									<?php } ?>
 									</ul>
 								</footer>
-							<article>
+							</article>
+
 
 						<?php }	
 							// echo "<pre>";
