@@ -24,7 +24,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    @include breakpoint(medium) {position: static;}
+    @include breakpoint(medium) {position: static; display: inline-block; padding-right: 10px;}
 	li {
         @include font-size(18);
         line-height: 1;

@@ -23,6 +23,7 @@ input[type='submit'] {
     @extend %condensed;
     -webkit-appearance: button;
     cursor: pointer;
+    border: 0;
     border-radius: 5px;
     background: $gray2;
     color: $white;
@@ -32,6 +33,42 @@ input[type='submit'] {
     &:hover {
         background: $white;
         color: $gray2;
+    }
+}
+
+/******************************************************************
+SEARCH FORM 
+******************************************************************/
+
+.search-form {
+    display: inline-block;
+}
+#searchform {
+    padding: 0;
+    label {
+        display: none;
+    }
+    #s {
+        @include font-size(18);
+        line-height: 1;
+        width: 140px;
+        display: inline-block;
+        height: 24px;
+        line-height: 24px;
+        padding: 2px 5px;
+        margin: 0;
+        @include breakpoint(medium) {@include font-size(14);}
+    }
+    input[type='submit'] {
+        @include font-size(18);
+        height: 24px;
+        width: 24px;
+        line-height: 24px;
+        padding: 0;
+        margin-left: -4px;
+        border-radius: 0;
+        border: 1px solid $gray2;
+        @include breakpoint(medium) {@include font-size(14);}
     }
 }
 
@@ -125,32 +162,3 @@ COMMENT FORM STYLES
 }
 
 
-/******************************************************************
-SEARCH FORM 
-******************************************************************/
-
-#searchform {
-    float: right;
-    padding: 27px 0 0;
-    label {
-        display: none;
-    }
-    #s {
-        width: 170px;
-        display: inline-block;
-        @include font-size(16);
-        height: 28px;
-        line-height: 28px;
-        padding: 2px 5px;
-        text-transform: lowercase;
-    }
-    input[type='submit'] {
-        @include font-size(16);
-        height: 28px;
-        width: 28px;
-        line-height: 28px;
-        padding: 0;
-        margin-left: -4px;
-        border: 1px solid $gray2;
-    }
-}
