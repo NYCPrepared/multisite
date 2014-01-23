@@ -137,7 +137,13 @@
 									<h6 class="site-meta modified"><span class="modified-title">Last updated</span> <time><?php echo date_i18n(get_option('date_format') ,strtotime($site_details->last_updated));?></time></h6>
 								</li>
 							
-								<?php } ?>
+                            <?php } ?>
+
+								<li id="site-promo">
+									<h3 class="post-title">Join the community</h3>
+									<a class="button" href="/register" title="Create a site">Create a site</a>
+								</li>
+
 							</ul>
 
 						</article>
