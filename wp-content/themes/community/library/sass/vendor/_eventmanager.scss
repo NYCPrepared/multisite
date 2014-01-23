@@ -102,6 +102,7 @@ ul.event-categories {
         @include breakpoint(medium) {@include span-columns(4); display: inline-block; max-height: 100px; overflow: hidden;}
         &:hover {
             background: $navy;
+            cursor: pointer;
         }
     }
 }

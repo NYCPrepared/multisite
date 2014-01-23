@@ -216,7 +216,16 @@ POSTS & CONTENT STYLES
     }
 }
 
-#sites-create {
+#site-promo {
     background: $yellow;
-    color: $white;
+    padding: 20px;
+    .site-title {
+        color: $white;
+        margin: 0;
+        padding-bottom: 40px;
+    }
+    .button {
+        background-color: $gray1;
+        background-color: rgba(0,0,0,.3);
+    }
 }

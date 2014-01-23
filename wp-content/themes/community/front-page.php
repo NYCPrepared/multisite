@@ -140,7 +140,7 @@
                             <?php } ?>
 
 								<li id="site-promo">
-									<h3 class="post-title">Join the community</h3>
+									<h3 class="site-title">Join the community</h3>
 									<a class="button" href="/register" title="Create a site">Create a site</a>
 								</li>
 
