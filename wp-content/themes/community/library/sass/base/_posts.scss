@@ -119,9 +119,11 @@ POSTS & CONTENT STYLES
     .module-heading {@extend %p; @extend %caps;}    
 } 
 
-.volunteers .module-heading {
+.highlights .module-heading {
     color: $white;
-    background: $gray7; // temp
+    background-color: $gray7;
+    background-image: url('http://dev.sites.nycprepared.org/wp-content/uploads/2014/01/CarolinaKroon7.png');
+    background-size: cover; 
     padding: 20px;
     margin-bottom: 0;
     height: 300px;
@@ -130,9 +132,9 @@ POSTS & CONTENT STYLES
 }
 
 
-// VOLUNTEER PROMO
+// HIGHLIGHTED CATEGORY PROMO
 
-.volunteer-list {
+.highlights-list {
     background: $white;
     height: 300px;
     overflow-y: scroll;
