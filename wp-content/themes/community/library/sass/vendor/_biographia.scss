@@ -1,0 +1,33 @@
+// BIOGRAPHIA PLUGIN
+
+.wp-biographia-container-top {
+	background: transparent;
+	border-top: 1px solid $hr-color;
+	margin: 20px 0;
+	padding: 20px 0;
+}
+
+.wp-biographia-text h3 {
+    margin: 0;
+}
+
+.wp-biographia-container-around {
+	background: transparent;
+	border-color: $hr-color;
+}
+
+.wp-biographia-container-none {
+	background: transparent;
+}
+
+.wp-biographia-links {
+    ul {
+        padding: 0;
+    }
+    li a {
+        padding: 0 10px;
+    }
+    li:first-child a {
+        padding-left: 0;
+    }
+}

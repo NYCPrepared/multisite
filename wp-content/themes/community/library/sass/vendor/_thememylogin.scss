@@ -1,0 +1,41 @@
+// OVERWRITE PLUGIN STYLES
+
+.login {
+	padding: 0 0 20px;
+	p.error {
+    	padding: 20px;
+    	border: 1px solid $red;
+    	background-color: $white;
+    	color: $headline-color;
+    }
+    p.message {
+        padding: 20px;
+        border: 1px solid $yellow;
+        background-color: $white;
+        color: $text-color;
+    }
+}
+
+#pass-strength-result {
+    background-color: $gray8;
+    border-color: $gray6 !important;
+    &.bad {
+        background-color: lighten($orange, 30);
+        border-color: $orange !important;
+    }
+    
+    &.good {
+        background-color: lighten($yellow, 30);
+        border-color: $yellow !important;
+    }
+    &.short {
+        background-color: lighten($red, 30);
+        border-color: $red !important;
+    }
+    &.strong {
+        background-color: lighten($green, 30);
+        border-color: $green !important;
+    }
+}
+
+
