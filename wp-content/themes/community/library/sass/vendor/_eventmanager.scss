@@ -30,6 +30,9 @@
     .byline {
         display: none;
     }
+    .event-image img {
+        border: $image-border;
+    }
 }
 
 // categories list
@@ -94,41 +97,44 @@ ul.event-categories {
 
 // HOME PAGE MODULE
 
-.events-list {
-    li {
-        background: $teal;
-        color: $white;
-        @include transition(background 0.25s ease);
-        @include breakpoint(medium) {@include span-columns(4); display: inline-block; max-height: 100px; overflow: hidden;}
-        &:hover {
-            background: $navy;
-            cursor: pointer;
+
+.home-modules {
+    .events-list {
+        li {
+            background: $teal;
+            color: $white;
+            @include transition(background 0.25s ease);
+            @include breakpoint(medium) {@include span-columns(4); display: inline-block; max-height: 100px; overflow: hidden;}
+            &:hover {
+                background: $navy;
+                cursor: pointer;
+            }
         }
     }
-}
-.event-start {
-    float: left;
-    width: 24%;
-    text-align: center;
-    color: white;
-    border-right: 1px solid $white;
-    border-right: 1px solid rgba(255,255,255,.3);
-    margin: 0;
-    padding: 10px 0;
-    line-height: 1.1;
-    .event-date {
-        display: block;
-        font-size: 250%;
+    .event-start {
+        float: left;
+        width: 24%;
+        text-align: center;
+        color: white;
+        border-right: 1px solid $white;
+        border-right: 1px solid rgba(255,255,255,.3);
+        margin: 0;
+        padding: 10px 0;
+        line-height: 1.1;
+        .event-date {
+            display: block;
+            font-size: 250%;
+        }
     }
-}
-.event-title {
-    width: 70%;
-    margin: 0 0 0 28%;
-    padding: 10px 0;
-    @include breakpoint(medium) {@include font-size(20); line-height: 1.3;}
-    a {
-        display: block;
-        color: $white;
+    .event-title {
+        width: 70%;
+        margin: 0 0 0 28%;
+        padding: 10px 0;
+        @include breakpoint(medium) {@include font-size(20); line-height: 1.3;}
+        a {
+            display: block;
+            color: $white;
+        }
     }
 }
 
