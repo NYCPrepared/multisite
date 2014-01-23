@@ -516,10 +516,6 @@ body, h1, h2, h3, h4, h5, h6, li, dt, dd, input, label, textarea, small, .nav li
 .volunteer-list .location, .news-list .post-date, .sites-list .site-meta {
   font-size: 75%; }
 
-[class*="entypo-"]:before {
-  font-family: "entypo", sans-serif;
-  font-style: normal; }
-
 html {
   font-size: 100%; }
 
@@ -887,6 +883,17 @@ li.current_page_item a:hover {
     margin-right: 1px; }
   .social-links a {
     display: block; }
+    .social-links a:before {
+      font-family: "entypo-social";
+      font-style: normal;
+      font-size: 1em;
+      line-height: 1;
+      margin-right: 0.2em;
+      text-align: left;
+      display: inline-block;
+      width: 1em;
+      color: inherit;
+      vertical-align: middle; }
   .social-links .facebook a {
     background: #247cc9;
     border-color: #247cc9;
@@ -915,6 +922,17 @@ li.current_page_item a:hover {
     .social-links .email a:hover, .social-links .email a:focus {
       background: white;
       color: #22b573 !important; }
+    .social-links .email a:before {
+      font-family: "entypo";
+      font-style: normal;
+      font-size: 1em;
+      line-height: 1;
+      margin-right: 0.2em;
+      text-align: left;
+      display: inline-block;
+      width: 1em;
+      color: inherit;
+      vertical-align: middle; }
   .social-links .rss a {
     background: #ff931e;
     border-color: #ff931e;
@@ -922,6 +940,17 @@ li.current_page_item a:hover {
     .social-links .rss a:hover, .social-links .rss a:focus {
       background: white;
       color: #ff931e !important; }
+    .social-links .rss a:before {
+      font-family: "entypo";
+      font-style: normal;
+      font-size: 1em;
+      line-height: 1;
+      margin-right: 0.2em;
+      text-align: left;
+      display: inline-block;
+      width: 1em;
+      color: inherit;
+      vertical-align: middle; }
 
 .copyright {
   font-size: 10px;

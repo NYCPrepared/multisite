@@ -57,9 +57,9 @@
 
 					<section class="home-modules clearfix">
 						<?php if(function_exists('recent_network_posts')) { ?>
-						<article id="volunteers-module" class="module row volunteers clearfix">
+						<article id="highlights-module" class="module row volunteers clearfix">
 							<h2 class="module-heading"><?php echo of_get_option( 'module_1_heading', 'Volunteers Needed' ); ?></h2>
-							<ul class="volunteer-list">
+							<ul class="highlights-list">
 								<?php 
 									$post_cat = of_get_option( 'module_1_post_category', 'Volunteers' );
 									$volunteer_posts = recent_network_posts($numberposts = 5, $postsperblog = 3, $postcat = $post_cat);
