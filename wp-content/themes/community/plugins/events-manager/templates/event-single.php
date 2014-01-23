@@ -13,24 +13,22 @@
  */
 global $EM_Event;
 /* @var $EM_Event EM_Event */
-echo $EM_Event->output_single(array(
-	'format'=>'
-	<section class="event-details">
-		<div class="date-time">
-			<span class="event-day">#l</span>
-			<span class="event-date">#F #j, #Y</span>
-			<span class="event-time">#g:#i#a - #@g:#@i#@a</span>
-		</div>
-		<div class="location">#_LOCATIONLINK</div>
-		{has_location}<div class="tools"><a href="#_LOCATIONICALURL" class="add-to-calendar button">Add to Calendar</a></div>{/has_location}
-	</section>
-	{has_image}<section class="event-image">#_EVENTIMAGE</section>{/has_image}
-	{has_location}<section class="event-map">#_MAP</section>{/has_location}
-	<section class="event-description">#_EVENTNOTES</section>
-	<footer class="event-footer">
-		<div class="meta categories">#_EVENTCATEGORIES</div>
-		<div class="share"></div>
-	</footer>
-	'
-	));
+echo $EM_Event->output_single();
 ?>
+
+<section class="event-details">
+	<div class="date-time">
+		<span class="event-day"><?php echo $EM_Event->output('#l'); ?></span>
+		<span class="event-date"><?php echo $EM_Event->output('#F #j, #Y'); ?></span>
+		<span class="event-time"><?php echo $EM_Event->output('#g:#i#a'); ?> - <?php echo $EM_Event->output('#@g:#@i#@a'); ?></span>
+	</div>
+	<div class="location">#_LOCATIONLINK</div>
+	{has_location}<div class="tools"><a href="#_LOCATIONICALURL" class="add-to-calendar button">Add to Calendar</a></div>{/has_location}
+</section>
+{has_image}<section class="event-image"><?php echo $EM_Event->output('#_EVENTIMAGE'); ?></section>{/has_image}
+{has_location}<section class="event-map"><?php echo $EM_Event->output('#_MAP'); ?></section>{/has_location}
+<section class="event-description"><?php echo $EM_Event->output('#_EVENTNOTES'); ?></section>
+<footer class="event-footer">
+	<div class="meta categories"><?php echo $EM_Event->output('#_EVENTCATEGORIES'); ?></div>
+	<div class="share"></div>
+</footer>
