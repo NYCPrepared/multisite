@@ -109,10 +109,14 @@
 							<ul class="events-list">
 								<?php
 								$events = EM_Events::output(array('limit'=>5, 
-									'format'=>'<li><span class="event-month">#M</span>
-									<span class="event-date">#j</span>
-									<span class="event-day">#D</span>
-									<h3 class="post-title event-title">#_EVENTLINK</h3></li>'));?>
+									'format'=>'<li>
+									<h6 class="event-start">
+                				        <time class="event-month" datetime="#M">#M</time>
+                				        <time class="event-date" datetime="#j">#j</time>
+                				        <time class="event-day" datetime="#D">#D</time>
+                					</h6>
+									<h3 class="post-title event-title">#_EVENTLINK</h3>
+									</li>'));?>
 								<?php echo $events; ?>
 							</ul>
 						</article>
