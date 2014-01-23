@@ -156,10 +156,11 @@ function optionsframework_options() {
 
 	$options[] = array(
 		'name' => __('News Module Link', 'options_check'),
-		'desc' => __('Enter Destination to Which Heading Should Link', 'options_check'),
+		'desc' => __('Select Page to Which the Header Should Link', 'options_check'),
 		'id' => 'module_2_heading_link',
-		'std' => '/news/',
-		'type' => 'text');
+		'type' => 'select',
+		'class' => 'mini',
+		'options' => $options_pages);
 
 	$options[] = array(
 		'name' => __('News Module Posts', 'options_check'),
@@ -185,10 +186,11 @@ function optionsframework_options() {
 
 	$options[] = array(
 		'name' => __('Events Module Link', 'options_check'),
-		'desc' => __('Enter Destination to Which Heading Should Link', 'options_check'),
+		'desc' => __('Select Page to Which the Header Should Link', 'options_check'),
 		'id' => 'module_3_heading_link',
-		'std' => '/events/',
-		'type' => 'text');
+		'type' => 'select',
+		'class' => 'mini',
+		'options' => $options_pages);
 
 	$options[] = array(
 		'name' => __('Events Module Posts', 'options_check'),
@@ -214,11 +216,12 @@ function optionsframework_options() {
 		'type' => 'text');
 
 	$options[] = array(
-		'name' => __('News Module Link', 'options_check'),
-		'desc' => __('Enter Destination to Which Heading Should Link', 'options_check'),
+		'name' => __('Sites Module Link', 'options_check'),
+		'desc' => __('Select Page to Which the Header Should Link', 'options_check'),
 		'id' => 'module_4_heading_link',
-		'std' => '/directory/',
-		'type' => 'text');
+		'type' => 'select',
+		'class' => 'mini',
+		'options' => $options_pages);
 
 	$options[] = array(
 		'name' => __('Sites Module Sites', 'options_check'),
@@ -229,44 +232,6 @@ function optionsframework_options() {
 		'class' => 'mini', //mini, tiny, small
 		'options' => $default_array);
 
-	$options[] = array(
-		'name' => __('Input Text Mini', 'options_check'),
-		'desc' => __('A mini text input field.', 'options_check'),
-		'id' => 'example_text_mini',
-		'std' => 'Default',
-		'class' => 'mini',
-		'type' => 'text');
-
-	$options[] = array(
-		'name' => __('Input Text', 'options_check'),
-		'desc' => __('A text input field.', 'options_check'),
-		'id' => 'example_text',
-		'std' => 'Default Value',
-		'type' => 'text');
-
-	$options[] = array(
-		'name' => __('Textarea', 'options_check'),
-		'desc' => __('Textarea description.', 'options_check'),
-		'id' => 'example_textarea',
-		'std' => 'Default Text',
-		'type' => 'textarea');
-
-	$options[] = array(
-		'name' => __('Input Select Small', 'options_check'),
-		'desc' => __('Small Select Box.', 'options_check'),
-		'id' => 'example_select',
-		'std' => 'three',
-		'type' => 'select',
-		'class' => 'mini', //mini, tiny, small
-		'options' => $default_array);
-
-	$options[] = array(
-		'name' => __('Input Select Wide', 'options_check'),
-		'desc' => __('A wider select box.', 'options_check'),
-		'id' => 'example_select_wide',
-		'std' => 'two',
-		'type' => 'select',
-		'options' => $default_array);
 
 	$options[] = array(
 		'name' => __('Select a Category', 'options_check'),
@@ -291,25 +256,6 @@ function optionsframework_options() {
 		'type' => 'select',
 		'options' => $options_pages);
 
-	$options[] = array(
-		'name' => __('Input Radio (one)', 'options_check'),
-		'desc' => __('Radio select with default options "one".', 'options_check'),
-		'id' => 'example_radio',
-		'std' => 'one',
-		'type' => 'radio',
-		'options' => $default_array);
-
-	$options[] = array(
-		'name' => __('Example Info', 'options_check'),
-		'desc' => __('This is just some example information you can put in the panel.', 'options_check'),
-		'type' => 'info');
-
-	$options[] = array(
-		'name' => __('Input Checkbox', 'options_check'),
-		'desc' => __('Example checkbox, defaults to true.', 'options_check'),
-		'id' => 'example_checkbox',
-		'std' => '1',
-		'type' => 'checkbox');
 
 	$options[] = array(
 		'name' => __('Advanced Settings', 'options_check'),

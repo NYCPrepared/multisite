@@ -53,12 +53,13 @@
     }
     a {
         display: block;
+        @include font-icon-base($family:"entypo-social");
     }
     .facebook a {@include flip-button($navy); @extend %entypo-social-facebook;}
     .twitter a {@include flip-button($blue); @extend %entypo-social-twitter;}
     .github a {@include flip-button($teal); @extend %entypo-social-github;}
-    .email a {@include flip-button($green); @extend %entypo-mail;}
-    .rss a {@include flip-button($orange); @extend %entypo-rss;}
+    .email a {@include flip-button($green); @include font-icon-base($family:"entypo");  @extend %entypo-mail;}
+    .rss a {@include flip-button($orange); @include font-icon-base($family:"entypo"); @extend %entypo-rss;}
 }
 
 .copyright {
