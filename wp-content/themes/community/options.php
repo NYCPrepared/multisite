@@ -110,22 +110,30 @@ function optionsframework_options() {
 		'type' => 'info');
 
 	$options[] = array(
-		'name' => __('Volunteers Module', 'options_check'),
-		'desc' => __('Display Volunteers Module?', 'options_check'),
+		'name' => __('First Module', 'options_check'),
+		'desc' => __('Display First Module?', 'options_check'),
 		'id' => 'module_1',
 		'std' => '1',
 		'type' => 'checkbox');
 
 	$options[] = array(
-		'name' => __('Volunteers Module Heading', 'options_check'),
+		'name' => __('First Module Heading', 'options_check'),
 		'desc' => __('Enter Text to Display for Heading', 'options_check'),
 		'id' => 'module_1_heading',
 		'std' => 'Volunteers',
 		'type' => 'text');
 
 	$options[] = array(
-		'name' => __('Volunteers Modules Posts', 'options_check'),
-		'desc' => __('Select number of posts to display in module.', 'options_check'),
+		'name' => __('First Module Category', 'options_check'),
+		'desc' => __('Enter Post Category Name to Display', 'options_check'),
+		'id' => 'module_1_post_category',
+		'std' => 'Volunteers',
+		'type' => 'text',
+		'class' => 'mini');
+
+	$options[] = array(
+		'name' => __('First Modules Posts', 'options_check'),
+		'desc' => __('Select number of posts to display in module', 'options_check'),
 		'id' => 'module_1_posts',
 		'std' => 'two',
 		'type' => 'select',
@@ -142,13 +150,20 @@ function optionsframework_options() {
 	$options[] = array(
 		'name' => __('News Module Heading', 'options_check'),
 		'desc' => __('Enter Text to Display for Heading', 'options_check'),
-		'id' => 'module_1_heading',
+		'id' => 'module_2_heading',
 		'std' => 'News',
 		'type' => 'text');
 
 	$options[] = array(
+		'name' => __('News Module Link', 'options_check'),
+		'desc' => __('Enter Destination to Which Heading Should Link', 'options_check'),
+		'id' => 'module_2_heading_link',
+		'std' => '/news/',
+		'type' => 'text');
+
+	$options[] = array(
 		'name' => __('News Module Posts', 'options_check'),
-		'desc' => __('Select number of posts to display in module.', 'options_check'),
+		'desc' => __('Select number of posts to display in module', 'options_check'),
 		'id' => 'module_2_posts',
 		'std' => 'two',
 		'type' => 'radio',
@@ -169,8 +184,15 @@ function optionsframework_options() {
 		'type' => 'text');
 
 	$options[] = array(
+		'name' => __('Events Module Link', 'options_check'),
+		'desc' => __('Enter Destination to Which Heading Should Link', 'options_check'),
+		'id' => 'module_3_heading_link',
+		'std' => '/events/',
+		'type' => 'text');
+
+	$options[] = array(
 		'name' => __('Events Module Posts', 'options_check'),
-		'desc' => __('Select number of posts to display in module.', 'options_check'),
+		'desc' => __('Select number of posts to display in module', 'options_check'),
 		'id' => 'module_3_posts',
 		'std' => 'two',
 		'type' => 'select',
@@ -192,8 +214,15 @@ function optionsframework_options() {
 		'type' => 'text');
 
 	$options[] = array(
+		'name' => __('News Module Link', 'options_check'),
+		'desc' => __('Enter Destination to Which Heading Should Link', 'options_check'),
+		'id' => 'module_4_heading_link',
+		'std' => '/directory/',
+		'type' => 'text');
+
+	$options[] = array(
 		'name' => __('Sites Module Sites', 'options_check'),
-		'desc' => __('Select number of sites to display in module.', 'options_check'),
+		'desc' => __('Select number of sites to display in module', 'options_check'),
 		'id' => 'module_4_posts',
 		'std' => 'two',
 		'type' => 'select',

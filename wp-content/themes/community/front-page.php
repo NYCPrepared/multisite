@@ -58,10 +58,11 @@
 					<section class="home-modules clearfix">
 						<?php if(function_exists('recent_network_posts')) { ?>
 						<article id="volunteers-module" class="module row volunteers clearfix">
-							<h2 class="module-heading">Volunteers Needed</h2>
+							<h2 class="module-heading"><?php echo of_get_option( 'module_1_heading', 'Volunteers Needed' ); ?></h2>
 							<ul class="volunteer-list">
 								<?php 
-									$volunteer_posts = recent_network_posts($numberposts = 5, $postsperblog = 3, $postcat = 'Volunteers');
+									$post_cat = of_get_option( 'module_1_post_category', 'Volunteers' );
+									$volunteer_posts = recent_network_posts($numberposts = 5, $postsperblog = 3, $postcat = $post_cat);
 									foreach ($volunteer_posts as $post) {
 										$title = $post->post_title;
 										$content = $post->post_content;
@@ -82,7 +83,11 @@
 						<?php } ?>
 						<?php if(function_exists('recent_network_posts')) { ?>
 						<article id="news-module" class="module row news clearfix">
-							<h2 class="module-heading"><a href="/news/">News</a></h2>
+							<h2 class="module-heading">
+								<?php if(of_get_option('module_2_heading')) { ?><a href="<?php echo of_get_option( 'module_2_heading_link', '/news/' ); ?>"><?php } ?>
+								<?php echo of_get_option( 'module_2_heading', 'News' ); ?>
+								<?php if(of_get_option('module_2_heading')) { ?></a><?php } ?>
+							</h2>
 							<ul class="news-list">
 								<?php 
 									$recent_posts = recent_network_posts($numberposts = 5, $excludepostcat = 'Volunteers');
@@ -105,7 +110,11 @@
 						<?php // check for plugin using plugin name
 						if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
 						<article id="events-module" class="module row events clearfix">
-							<h2 class="module-heading"><a href="/events/">Events</a></h2>
+							<h2 class="module-heading">
+								<?php if(of_get_option('module_3_heading')) { ?><a href="<?php echo of_get_option( 'module_3_heading_link', '/events/' ); ?>"><?php } ?>
+								<?php echo of_get_option( 'module_3_heading', 'Events' ); ?>
+								<?php if(of_get_option('module_3_heading')) { ?></a><?php } ?>
+							</h2>
 							<ul class="events-list">
 								<?php
 								$events = EM_Events::output(array('limit'=>5, 
@@ -122,7 +131,11 @@
 						</article>
 						<?php } ?>
 						<article id="sites-module" class="module row sites clearfix">
-							<h2 class="module-heading"><a href="/directory/">Sites</a></h2>
+							<h2 class="module-heading">
+								<?php if(of_get_option('module_4_heading')) { ?><a href="<?php echo of_get_option( 'module_4_heading_link', '/directory/' ); ?>"><?php } ?>
+								<?php echo of_get_option( 'module_4_heading', 'Sites' ); ?>
+								<?php if(of_get_option('module_4_heading')) { ?></a><?php } ?>
+							</h2>
 							<ul class="sites-list">
 
 							<?php
@@ -156,7 +169,7 @@
 
 						// $posts = get_posts('post_type=post');
 						// echo "<pre>";
-						// var_dump($posts);
+						// var_dump(of_get_option('module_4_heading'));
 						// echo "</pre>";
 
 						?>
