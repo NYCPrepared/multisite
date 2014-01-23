@@ -29,9 +29,11 @@ $events = EM_Events::output(array(
 	'format'=>
 			'<tr>
 				<td>
-					<span class="event-day">#l</span>
-					<span class="event-date">#F #j</span>
-					<span class="event-time">#g:#i#a</span>
+				    <h6 class="event-start">
+				        <time class="event-day" datetime="#l">#l</time>
+				        <time class="event-date" datetime="#F #j">#F #j</time>
+				        <time class="event-time" datetime="#g:#i#a">#g:#i#a</time>
+					</h6>
 				</td>
 				<td>
 					<h3 class="event-title post-title">#_EVENTLINK</h3>

@@ -92,4 +92,13 @@ ul.event-categories {
     font-size: 14px;
 }
 
+// HOME PAGE MODULE
+
+.events-list {
+    li {
+        background: $teal;
+        color: $white;
+        @include breakpoint(medium) {@include span-columns(4); display: inline-block;}
+    }
+}
 
