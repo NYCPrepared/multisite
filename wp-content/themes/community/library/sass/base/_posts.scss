@@ -183,6 +183,7 @@ POSTS & CONTENT STYLES
     .post-date {
         @extend %caps;
         @extend %small;
+        color: $quiet-color;
         white-space: nowrap;
         margin-left: 3px;
     }
