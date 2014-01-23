@@ -4,7 +4,7 @@ Donate link: http://strategy11.com/donate/
 Tags: widget, widgets, admin, show, hide, page, sidebar, content, wpmu, wordpress, plugin, post, posts, content, filter, widget logic, widget context
 Requires at least: 3.1
 Tested up to: 3.8
-Stable tag: 2.02
+Stable tag: 2.03
 
 Simply hide widgets on specified pages. Adds checkboxes to each widget to either show or hide it on every site page.
 
@@ -47,12 +47,26 @@ http://strategy11.com/display-widgets/
 
 This is a known limitation. Widgets written in the pre-2.8 format don't work the same way, and don't have the hooks. Sorry.
 
+= My widgets aren't showing when I activate =
+
+With some plugins and themes, you may need to adjust when the widget checking starts. You can add this to your theme functions.php or a new plugin.
+
+add_filter('dw_callback_trigger', 'dw_callback_trigger');
+function dw_callback_trigger(){
+    return 'wp_head'; //change to: plugins_loaded, after_setup_theme, wp_loaded, wp_head, or a hook of your choice
+}
 
 == Screenshots ==
 
 1. The extra widget options added.
 
 == Changelog ==
+= 2.03 =
+* Default to check for widgets on wp_loaded hook
+* Added dw_callback_trigger hook to change timing of first widget sidebar check
+* Fixed saving widget settings when widget is first added
+* Updated Polish translation
+
 = 2.02 =
 * Trigger widget checking later on page load
 

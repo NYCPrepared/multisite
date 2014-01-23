@@ -31,7 +31,7 @@ if (!defined('URE_PLUGIN_URL')) {
    $user_info .= '  <span style="font-weight: bold; color:red;">'. esc_html__('Network Super Admin', 'ure') .'</span>';
  }
   
-	 $this->display_box_start(__('Change capabilities for user', 'ure').$user_info, 'min-width:1050px;');
+	 $this->display_box_start(__('Change capabilities for user', 'ure').$user_info, 'min-width:1100px;');
  
 ?>
 <table cellpadding="0" cellspacing="0" style="width: 100%;">

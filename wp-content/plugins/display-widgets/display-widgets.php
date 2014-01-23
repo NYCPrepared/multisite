@@ -5,8 +5,17 @@ Plugin URI: http://strategy11.com/display-widgets/
 Description: Adds checkboxes to each widget to show or hide on site pages.
 Author: Strategy11
 Author URI: http://strategy11.com
-Version: 2.02
+Version: 2.03
 */
+
+/*
+// Change the hook this is triggered on with a bit of custom code. Copy and paste into your theme functions.php or a new plugin.
+add_filter('dw_callback_trigger', 'dw_callback_trigger');
+function dw_callback_trigger(){
+    return 'wp_head'; //plugins_loaded, after_setup_theme, wp_loaded, wp_head
+}
+*/
+
 
 global $dw_plugin;
 $dw_plugin = new DWPlugin();
@@ -34,7 +43,11 @@ class DWPlugin{
     
     function __construct(){
         //add_filter('widget_display_callback', array(&$this, 'show_widget'));
-        add_filter('wp_head', array(&$this, 'trigger_widget_checks'));
+        
+        // change the hook that triggers widget check
+        $hook = apply_filters('dw_callback_trigger', 'wp_loaded');
+        
+        add_filter($hook, array(&$this, 'trigger_widget_checks'));
         add_action('in_widget_form', array(&$this, 'hidden_widget_options'), 10, 3);
         add_filter('widget_update_callback', array(&$this, 'update_widget_options'), 10, 3);
         add_action('wp_ajax_dw_show_widget', array(&$this, 'show_widget_options'));
@@ -296,7 +309,7 @@ class DWPlugin{
         </select>
     </p>    
 
-<div style="height:150px; overflow:auto; border:1px solid #dfdfdf;padding:5px;">
+<div style="height:150px; overflow:auto; border:1px solid #dfdfdf; padding:5px; margin-bottom:5px;">
     <h4 class="dw_toggle" style="cursor:pointer;margin-top:0;"><?php _e('Miscellaneous', 'display-widgets') ?> +/-</h4>
     <div class="dw_collapse">
     <?php foreach ($wp_page_types as $key => $label){ 
@@ -524,17 +537,17 @@ function dw_show_opts(e){
 	    return;
 	}
 	
-	opts.append('<span class="spinner" style="display:block;"></span>');
+	inside.find('.spinner').show();
     
     jQuery.ajax({
 		type:'POST',url:'<?php echo admin_url( "admin-ajax.php" ) ?>',
 		data:{
 		    'action':'dw_show_widget',
 		    'opts':JSON.stringify(opts.children('input').serializeArray()),
-		    'id_base':widget.find('input.id_base').val(),
-		    'widget_number':widget.find('input.widget_number').val()
+		    'id_base':inside.find('input.id_base').val(),
+		    'widget_number':(inside.find('input.multi_number').val() == '') ? inside.find('input.widget_number').val() : inside.find('input.multi_number').val()
 		},
-		success:function(html){ opts.replaceWith(html); }
+		success:function(html){ opts.replaceWith(html); inside.find('.spinner').hide(); }
 	});
 }
 function dw_toggle(){jQuery(this).next('.dw_collapse').toggle();}

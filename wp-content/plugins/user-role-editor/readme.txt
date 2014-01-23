@@ -78,6 +78,16 @@ Share with me new ideas about plugin further development and link to your site w
 
 == Changelog ==
 
+= 4.9 =
+* 19.01.2014
+* New tab "Default Roles" was added to the User Role Editor settings page. It is possible to select multiple default roles to assign them automatically to the new registered user.
+* CSS and dialog windows layout various enhancements.
+* 'members_get_capabilities' filter was applied to provide better compatibility with themes and plugins which may use it to add its own user capabilities.
+* jQuery UI CSS was updated to version 1.10.4.
+* Pro version: Option was added to download jQuery UI CSS from the jQuery CDN.
+* Pro version: Bug was fixed: Plugins activation assess restriction section was not shown for selected user under multi-site environment.
+
+
 = 4.8 =
 * 10.12.2013
 * Role ID validation rule was added to prohibit numeric role ID - WordPress does not support them.

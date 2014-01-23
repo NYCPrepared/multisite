@@ -28,7 +28,7 @@ class Ure_Lib extends Garvs_WP_Lib {
 	protected $hide_pro_banner = false;	
 	protected $full_capabilities = false;
 	protected $ure_object = 'role';  // what to process, 'role' or 'user'  
-	protected $role_default_html = '';
+	public $role_default_html = '';
 	protected $role_to_copy_html = '';
 	protected $role_select_html = '';
 	protected $role_delete_html = '';
@@ -465,6 +465,12 @@ class Ure_Lib extends Garvs_WP_Lib {
 	// end of set_apply_to_all()
 	
 
+    public function get_default_role() {
+        $this->wp_default_role = get_option('default_role');
+    }
+    // end of get_default_role()
+    
+
     protected function editor_init0() {
         $this->caps_readable = get_site_transient('ure_caps_readable');
         if (false === $this->caps_readable) {
@@ -478,7 +484,7 @@ class Ure_Lib extends Garvs_WP_Lib {
         }
 
         $this->hide_pro_banner = $this->get_option('ure_hide_pro_banner', 0);
-        $this->wp_default_role = get_option('default_role');
+        $this->get_default_role();
 
         // could be sent as by POST, as by GET
         if (isset($_REQUEST['object'])) {
@@ -497,7 +503,7 @@ class Ure_Lib extends Garvs_WP_Lib {
     // end of editor_init0()
 
 
-    protected function editor_init1() {
+    public function editor_init1() {
 
         if (!isset($this->roles) || !$this->roles) {
             // get roles data from database
@@ -1422,6 +1428,12 @@ class Ure_Lib extends Garvs_WP_Lib {
                 $this->add_capability_to_full_caps_list($gf_cap);
             }
         }
+        // provide compatibility with plugins and themes which use 'members_get_capabilities' filter from Members plugin to define their capabilities
+        $custom_caps = array();
+        $custom_caps = apply_filters( 'members_get_capabilities', $custom_caps );
+        foreach ($custom_caps as $cap) {
+           $this->add_capability_to_full_caps_list($cap);
+        }
         
         if ($this->ure_object=='user') {
             foreach($this->user_to_edit->caps as $key=>$value)  {
@@ -2257,11 +2269,16 @@ class Ure_Lib extends Garvs_WP_Lib {
     // end of show_admin_role()
     
     
-    protected function role_edit_prepare_html() {
+    public function role_edit_prepare_html($select_width=200) {
         $caps_access_restrict_for_simple_admin = $this->get_option('caps_access_restrict_for_simple_admin', 0);
         $show_admin_role = $this->show_admin_role_allowed();
-        $this->role_default_html = '<select id="default_user_role" name="default_user_role" width="200" style="width: 200px">';
-        $this->role_to_copy_html = '<select id="user_role_copy_from" name="user_role_copy_from" width="200" style="width: 200px">
+        if ($select_width>0) {
+            $select_style = 'style="width: '. $select_width .'px"';
+        } else {
+            $select_style = '';
+        }
+        $this->role_default_html = '<select id="default_user_role" name="default_user_role" '. $select_style .'>';
+        $this->role_to_copy_html = '<select id="user_role_copy_from" name="user_role_copy_from" style="width: '. $select_width .'px">
             <option value="none" selected="selected">' . __('None', 'ure') . '</option>';
         $this->role_select_html = '<select id="user_role" name="user_role" onchange="ure_role_change(this.value);">';
         foreach ($this->roles as $key => $value) {
@@ -2348,7 +2365,7 @@ class Ure_Lib extends Garvs_WP_Lib {
 
         global $wp_roles;
 
-        if (is_multisite() && is_super_admin()) {
+        if (is_multisite() && is_super_admin($user->ID)) {
             return true;
         }
 
@@ -2368,6 +2385,25 @@ class Ure_Lib extends Garvs_WP_Lib {
     }
     // end of user_has_capability()           
         
+    
+    public function show_other_default_roles() {
+        $other_default_roles = $this->get_option('other_default_roles', array());
+        foreach ($this->roles as $role_id => $role) {
+            if ( $role_id=='administrator' || $role_id==$this->wp_default_role ) {			
+                continue;
+            }
+            if ( in_array($role_id, $other_default_roles) ) {
+                $checked = 'checked="checked"';
+            } else {
+                $checked = '';
+            }
+            echo '<label for="wp_role_' . $role_id .'"><input type="checkbox"	id="wp_role_' . $role_id . 
+                '" name="wp_role_' . $role_id . '" value="' . $role_id . '"' . $checked .' />&nbsp;' . 
+                esc_html__($role['name'], 'ure') . '</label><br />';
+          }		
+           
+    }
+    // end of show_other_default_roles()
     
 }
 // end of URE_Lib class

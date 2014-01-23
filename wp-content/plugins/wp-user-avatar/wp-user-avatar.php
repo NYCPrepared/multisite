@@ -1,7 +1,7 @@
 <?php
 /**
  * @package WP User Avatar
- * @version 1.7.1
+ * @version 1.7.2
  */
 /*
 Plugin Name: WP User Avatar
@@ -9,7 +9,7 @@ Plugin URI: http://wordpress.org/plugins/wp-user-avatar/
 Description: Use any image from your WordPress Media Library as a custom user avatar. Add your own Default Avatar.
 Author: Bangbay Siboliban
 Author URI: http://siboliban.org/
-Version: 1.7.1
+Version: 1.7.2
 Text Domain: wp-user-avatar
 Domain Path: /lang/
 */
@@ -20,7 +20,7 @@ if(!defined('ABSPATH')){
 }
 
 // Define paths and variables
-define('WPUA_VERSION', ' 1.7.1');
+define('WPUA_VERSION', ' 1.7.2');
 define('WPUA_FOLDER', basename(dirname(__FILE__)));
 define('WPUA_ABSPATH', trailingslashit(str_replace('\\', '/', WP_PLUGIN_DIR.'/'.WPUA_FOLDER)));
 define('WPUA_URLPATH', trailingslashit(plugins_url(WPUA_FOLDER)));
@@ -366,7 +366,7 @@ if(!class_exists('wp_user_avatar')){
       }
     }
     // Add to edit user profile
-    function wpua_action_show_user_profile($user){
+    public static function wpua_action_show_user_profile($user){
       global $blog_id, $current_user, $post, $show_avatars, $wpdb, $wpua_allow_upload, $wpua_edit_avatar, $wpua_upload_size_limit_with_units;
       // Get WPUA attachment ID
       $wpua = get_user_meta($user->ID, $wpdb->get_blog_prefix($blog_id).'user_avatar', true);
@@ -554,13 +554,13 @@ if(!class_exists('wp_user_avatar')){
     }
 
     // Media uploader
-    function wpua_media_upload_scripts($user=""){
+    public static function wpua_media_upload_scripts($user=""){
       global $mustache_admin, $pagenow, $show_avatars, $wpua_upload_size_limit;
       wp_enqueue_script('jquery');
       if(current_user_can('upload_files')){
         wp_enqueue_script('admin-bar');
         wp_enqueue_media();
-        wp_enqueue_script('wp-user-avatar', WPUA_URLPATH.'js/wp-user-avatar.js', array('jquery'), WPUA_VERSION, true);
+        wp_enqueue_script('wp-user-avatar', WPUA_URLPATH.'js/wp-user-avatar.js', array('jquery','media-editor'), WPUA_VERSION, true);
       } else {
         wp_enqueue_script('wp-user-avatar', WPUA_URLPATH.'js/wp-user-avatar-user.js', array('jquery'), WPUA_VERSION, true);
       }

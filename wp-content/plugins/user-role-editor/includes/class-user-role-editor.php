@@ -37,7 +37,7 @@ class User_Role_Editor {
         if ($this->lib->multisite) {
             // new blog may be registered not at admin back-end only but automatically after new user registration, e.g. 
             // Gravity Forms User Registration Addon does
-            add_action( 'wpmu_new_blog', array($this, 'duplicate_roles_for_new_blog'), 10, 2);
+            add_action( 'wpmu_new_blog', array($this, 'duplicate_roles_for_new_blog'), 10, 2);                        
         }
         
         if (!is_admin()) {
@@ -103,18 +103,43 @@ class User_Role_Editor {
     add_filter( 'all_plugins', array($this, 'exclude_from_plugins_list' ) );
     
     if ($this->lib->multisite) {          
-      $allow_edit_users_to_not_super_admin = $this->lib->get_option('allow_edit_users_to_not_super_admin', 0);
-      if ($allow_edit_users_to_not_super_admin) {
-          add_filter( 'map_meta_cap', array($this, 'restore_users_edit_caps'), 1, 4 );
-          remove_all_filters( 'enable_edit_any_user_configuration' );
-          add_filter( 'enable_edit_any_user_configuration', '__return_true');
-          add_filter( 'admin_head', array($this, 'edit_user_permission_check'), 1, 4 );
-      }
+        add_action( 'wpmu_activate_user', array($this, 'add_other_default_roles'), 10, 1 );
+        
+        $allow_edit_users_to_not_super_admin = $this->lib->get_option('allow_edit_users_to_not_super_admin', 0);
+        if ($allow_edit_users_to_not_super_admin) {
+            add_filter( 'map_meta_cap', array($this, 'restore_users_edit_caps'), 1, 4 );
+            remove_all_filters( 'enable_edit_any_user_configuration' );
+            add_filter( 'enable_edit_any_user_configuration', '__return_true');
+            add_filter( 'admin_head', array($this, 'edit_user_permission_check'), 1, 4 );
+        }
+    } else {
+        add_action( 'user_register', array($this, 'add_other_default_roles'), 10, 1 );
     }
     
   }
   // end of plugin_init()
     
+  
+  public function add_other_default_roles($user_id) {
+      
+      if (empty($user_id)) {
+          return;
+      }
+      $user = get_user_by('id', $user_id);
+      if (empty($user->ID)) {
+          return;
+      }
+      $other_default_roles = $this->lib->get_option('other_default_roles', array());
+      if (count($other_default_roles)==0) {
+          return;
+      }
+      foreach($other_default_roles as $role) {
+          $user->add_role($role);
+      }
+      
+  }
+  // end of add_other_default_roles()
+  
   
   /**
    * restore edit_users, delete_users, create_users capabilities for non-superadmin users under multisite
@@ -500,7 +525,7 @@ class User_Role_Editor {
     protected function get_settings_action() {
 
         $action = 'show';
-        $update_buttons = array('ure_settings_update', 'ure_settings_ms_update');
+        $update_buttons = array('ure_settings_update', 'ure_settings_ms_update', 'ure_default_roles_update');
         foreach($update_buttons as $update_button) {
             if (!isset($_POST[$update_button])) {
                 continue;
@@ -535,11 +560,39 @@ class User_Role_Editor {
         do_action('ure_settings_update');
 
         $this->lib->flush_options();
-        $this->lib->show_message(__('User Role Editor options are updated', 'ure'));
+        $this->lib->show_message(esc_html__('User Role Editor options are updated', 'ure'));
         
     }
     // end of update_general_options()
 
+    
+    protected function update_default_roles() {
+        global $wp_roles;    
+        
+        // Primary default role
+        $primary_default_role = $this->lib->get_request_var('default_user_role', 'post');
+        if (!empty($primary_default_role) && isset($wp_roles->role_objects[$primary_default_role]) && $primary_default_role !== 'administrator') {
+            update_option('default_role', $primary_default_role);
+        }
+                
+        // Other default roles
+        $other_default_roles = array();
+        foreach($_POST as $key=>$value) {
+            $prefix = substr($key, 0, 8);
+            if ($prefix!=='wp_role_') {
+                continue;
+            }
+            $role_id = substr($key, 8);
+            if ($role_id!=='administrator' && isset($wp_roles->role_objects[$role_id])) {
+                $other_default_roles[] = $role_id;
+            }            
+        }  // foreach()
+        $this->lib->put_option('other_default_roles', $other_default_roles, true);
+        
+        $this->lib->show_message(esc_html__('Default Roles are updated', 'ure'));
+    }
+    // end of update_default_roles()
+    
     
     protected function update_multisite_options() {
         if (!$this->lib->multisite) {
@@ -552,7 +605,7 @@ class User_Role_Editor {
         do_action('ure_settings_ms_update');
 
         $this->lib->flush_options();
-        $this->lib->show_message(__('User Role Editor options are updated', 'ure'));
+        $this->lib->show_message(esc_html__('User Role Editor options are updated', 'ure'));
         
     }
     // end of update_multisite_options()
@@ -570,6 +623,8 @@ class User_Role_Editor {
             case 'ure_settings_ms_update':
                 $this->update_multisite_options();
                 break;
+            case 'ure_default_roles_update':
+                $this->update_default_roles();
             case 'show':
             default:                
             ;
@@ -585,8 +640,13 @@ class User_Role_Editor {
         if ($this->lib->multisite) {
             $allow_edit_users_to_not_super_admin = $this->lib->get_option('allow_edit_users_to_not_super_admin', 0);
         }
-        $ure_tab_idx = $this->lib->get_request_var('ure_tab_idx', 'int');
         
+        $this->lib->get_default_role();
+        $this->lib->editor_init1();
+        $this->lib->role_edit_prepare_html(0);
+        
+        $ure_tab_idx = $this->lib->get_request_var('ure_tab_idx', 'int');
+                
         do_action('ure_settings_load');        
 
         if (is_multisite()) {
@@ -602,7 +662,7 @@ class User_Role_Editor {
     public function admin_css_action() {
 
         wp_enqueue_style('wp-jquery-ui-dialog');
-        wp_enqueue_style('ure-jquery-ui-tabs', URE_PLUGIN_URL . 'css/jquery-ui-1.10.3.css', array(), false, 'screen');
+        wp_enqueue_style('ure-jquery-ui-tabs', URE_PLUGIN_URL . 'css/jquery-ui-1.10.4.custom.min.css', array(), false, 'screen');
         wp_enqueue_style('ure-admin-css', URE_PLUGIN_URL . 'css/ure-admin.css', array(), false, 'screen');
     }
     // end of admin_css_action()
