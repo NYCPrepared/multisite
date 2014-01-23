@@ -1,0 +1,328 @@
+#
+# Translators:
+# Anu-Maria Laitinen <anumaria@facebook.com>, 2013.
+# Jan-Erik Finlander <janerik.finlander@gmail.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Full Calendar\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2013-01-28 16:34+0100\n"
+"Last-Translator: Marcus Sykes <wp.plugins@netweblogic.com>\n"
+"Language-Team: Finnish (http://www.transifex.com/projects/p/full-calendar/"
+"language/fi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: wp-fullcalendar.php:307
+msgid "Settings"
+msgstr "Asetukset"
+
+#: wpfc-admin.php:62
+#, php-format
+msgid ""
+"To use this plugin, simply use the %s shortcode in one of your posts or "
+"pages."
+msgstr ""
+"Käyttääksesi tätä lisäosaa käytä lyhytkoodia %s julkaisuissasi tai "
+"sivuillasi. "
+
+#: wpfc-admin.php:63
+#, php-format
+msgid "You can also do this with PHP and this snippet : %s."
+msgstr "Voit myös käyttää PHP:tä ja pätkää: %s."
+
+#: wpfc-admin.php:66
+msgid "Post Types"
+msgstr "Julkaisun tyypit"
+
+#: wpfc-admin.php:67
+msgid ""
+"By default, your calendar will show the types of posts based on settings "
+"below."
+msgstr ""
+"Oletuksena kalenterisi näyttää alla oleviin asetuksiin perustuvat "
+"julkaisutyypit. "
+
+#: wpfc-admin.php:69
+#, php-format
+msgid ""
+"You can override these settings by choosing your post type in your shortode "
+"like this %s."
+msgstr ""
+"Voit ohittaa nämä asetukset valitsemalla julkaisutyypin lyhytkoodilla %s."
+
+#: wpfc-admin.php:70
+#, php-format
+msgid "You can override taxonomy search settings as well like this %s."
+msgstr "Voit ohittaa luokittelun hakuvalinnat myös käyttämällä lyhytkoodia %s."
+
+#: wpfc-admin.php:71
+msgid "In both cases, the values you should use are in (parenteses) below."
+msgstr ""
+"Molemmissa tapauksissa arvot, joita sinun tulee käyttää ovat (suluissa) "
+"alapuolella. "
+
+#: wpfc-admin.php:86
+msgid ""
+"Choose which taxonomies you want to see listed as search options on the "
+"calendar."
+msgstr ""
+"Valitse ne luokittelut, jotka haluat näkyvän hakuvalinnoissa kalenterissa. "
+
+#: wpfc-admin.php:109
+msgid "Calendar Options"
+msgstr "Kalenterin vaihtoehdot"
+
+#: wpfc-admin.php:113
+msgid "Events limit"
+msgstr "Tapahtumien rajat"
+
+#: wpfc-admin.php:113
+msgid ""
+"Enter the maximum number of events to show per day, which will then be "
+"preceded by a link to the calendar day page."
+msgstr ""
+"Lisää näytettävien tapahtumien päiväkohtainen maksimimäärä, jonka eteen "
+"tulee linkki kalenterin päiväsivule. "
+
+#: wpfc-admin.php:114
+msgid "View events link"
+msgstr "Katso tapahtumien linkki"
+
+#: wpfc-admin.php:114
+msgid ""
+"When the limit of events is shown for one day, this text will be used for "
+"the link to the calendar day page."
+msgstr ""
+"Kun päiväkohtainen tapahtumarajoitus näytetään, tämä teksti toimii linkkinä "
+"kalenterin päiväsivulle. "
+
+#: wpfc-admin.php:117
+msgid "jQuery UI Themeroller"
+msgstr "jQuery UI Themeroller"
+
+#: wpfc-admin.php:118
+#, php-format
+msgid ""
+"You can select from a set of pre-made CSS themes, which are taken from the "
+"<a href=\"%s\">jQuery Theme Roller</a> gallery. If you roll your own theme, "
+"upload the CSS file and images folder to <code>wp-content/yourtheme/plugins/"
+"wp-fullcalendar/</code> and refresh this page, it should appear an option in "
+"the pull down menu below."
+msgstr ""
+"Voit valita valmiista CSS -teemoista, jotka on otettu <a href=\"%s\">jQuery "
+"Theme Roller</a> galleriasta. Jos käytät omaa teemaa, lataa CSS -tiedosto ja "
+"kuvakansio seuraavaan <code>wp-content/yourtheme/plugins/wp-fullcalendar/</"
+"code> ja lataa tämä sivu uudelleen. Sen pitäisi näkyä vaihtoehtona "
+"alasvetovalikossa tämän alapuolella. "
+
+#: wpfc-admin.php:135
+msgid "jQuery CSS Theme?"
+msgstr "jQuery CSS Theme?"
+
+#: wpfc-admin.php:138
+msgid "No Theme"
+msgstr "Ei teemaa. "
+
+#: wpfc-admin.php:139
+msgid "Built-In"
+msgstr "Sisäänrakennettu"
+
+#: wpfc-admin.php:145
+msgid "Custom"
+msgstr "Muokattu"
+
+#: wpfc-admin.php:152
+msgid ""
+"You can use the jQuery UI CSS framework to style the calendar, and choose "
+"from a set of themes below."
+msgstr ""
+"Voit käyttää jQuery UI CSS -kehystä kalenterin tyylin muokkaukseen ja valita "
+"alla olevista teemoista. "
+
+#: wpfc-admin.php:156
+msgid "Toolips"
+msgstr "Työkaluvinkit"
+
+#: wpfc-admin.php:157
+msgid ""
+"You can use <a href=\"http://craigsworks.com/projects/qtip2/\">jQuery qTips</"
+"a> to show excerpts of your events within a tooltip when hovering over a "
+"specific event on the calendar. You can control the content shown, "
+"positioning and style of the tool tips below."
+msgstr ""
+"Voit käyttää <a href=\"http://craigsworks.com/projects/qtip2/\">jQuery "
+"qTips</a> näyttääksesi poimintoja tapahtumistasi työkaluvinkkinä, kun "
+"kuljetat hiirtä tietyn tapahtuman yli kalenterissa. Voit valvoa näytettävän "
+"työkaluvinkin sisältöä, sijaintia ja tyyliä alapuolella. "
+
+#: wpfc-admin.php:160
+msgid "Enable event tooltips?"
+msgstr "Ota käyttöön tapahtumien työkaluvinkit"
+
+#: wpfc-admin.php:165
+msgid "Tooltip style"
+msgstr "Työkaluvinkin tyyli"
+
+#: wpfc-admin.php:165
+msgid "You can choose from one of these preset styles for your tooltip."
+msgstr "Voit valita jonkin etukäteen säädetyistä tyyleistä työkaluvinkkiisi. "
+
+#: wpfc-admin.php:166
+msgid "Rounded tooltips?"
+msgstr "Pyöristetyt työkaluvinkit?"
+
+#: wpfc-admin.php:166
+msgid ""
+"If your chosen tooltip style doesn't already do/prevent this, you can add "
+"rounded corners using CSS3."
+msgstr ""
+"Jos valitsemasi työkaluvinkin tyyli ei pyöristä kulmia tai estä pyöristystä, "
+"voit lisätä pyöristetyt kulmat käyttämällä CSS3."
+
+#: wpfc-admin.php:167
+msgid "Add shadow to tooltips?"
+msgstr "Lisää varjostus työkaluvinkkeihin. "
+
+#: wpfc-admin.php:167
+msgid ""
+"If your chosen tooltip style doesn't already do/prevent this, you can add a "
+"CSS3 drop-shadow effect to your tooltip."
+msgstr ""
+"Jos valitsemasi työkaluvinkin tyyli ei varjosta tai estä varjostusta, voit "
+"lisätä varjostusefektiä käyttämällä CSS3."
+
+#: wpfc-admin.php:172
+msgid "Tooltip pointer position"
+msgstr "Työkaluvinkin osoittimen asemointi"
+
+#: wpfc-admin.php:172
+msgid "Choose where the pointer will be situated on your tooltip."
+msgstr "Valitse mihin osoitin asetetaan työkaluvinkissäsi. "
+
+#: wpfc-admin.php:173
+msgid "Tooltip bubble position"
+msgstr "Työkaluvinkin puhekuplan asemointi"
+
+#: wpfc-admin.php:173
+msgid ""
+"Choose where your tooltip will be situated relative to the event link which "
+"triggers the tooltip."
+msgstr ""
+"Valitse mihin työkaluvinkkisi sijoitetaan suhteessa tapahtumaan linkkiin, "
+"joka avaa työkaluvinkin. "
+
+#: wpfc-admin.php:174
+msgid "Enable featured image?"
+msgstr "Ota käyttöön kuvituskuva?"
+
+#: wpfc-admin.php:174
+msgid "If your post has a featured image, it will be included as a thumbnail."
+msgstr "Jos julkaisussasi on kuvituskuva, se tulee näkyviin pikkukuvassa. "
+
+#: wpfc-admin.php:177
+msgid "Featured image size"
+msgstr "Kuvituskuvan koko"
+
+#: wpfc-admin.php:179
+msgid "Width"
+msgstr "Leveys"
+
+#: wpfc-admin.php:180
+msgid "Height"
+msgstr "Korkeus"
+
+#: wpfc-admin.php:185
+msgid "Submit Changes"
+msgstr "Lähetä muutokset"
+
+#: wpfc-admin.php:264
+msgid "No"
+msgstr "Ei "
+
+#: wpfc-admin.php:264
+msgid "Yes"
+msgstr "Kyllä"
+
+#: wpfc-events-manager.php:54
+#, php-format
+msgid ""
+"If you choose the Event post type whilst Events Manager is activated, you "
+"can also visit the <a href=\"%s\">Events Manager settings page</a> for a few "
+"more options when displaying event information on your calendar."
+msgstr ""
+"Jos valitset tapahtuman julkaisutyypin kun Event Manager on aktivoituna, "
+"voit myös vierailla <a href=\"%s\">Events Manager settings page</a> "
+"katsomassa muutamaa muuta vaihtoehtoa tapahtumainfon näyttämiseen "
+"kalenterissasi. "
+
+#: wpfc-events-manager.php:322
+msgid "Click to toggle"
+msgstr "Klikkaa merkataksesi"
+
+#: wpfc-events-manager.php:322
+msgid "Full Calendar Options"
+msgstr "Full Calendar vaihtoehdot"
+
+#: wpfc-events-manager.php:324
+#, php-format
+msgid ""
+"Looking for the rest of the FullCalendar Options? They've moved <a href=\"%s"
+"\">here</a>, the options below are for overriding specific bits relevant to "
+"Events Manager."
+msgstr ""
+"Etsitkö loppuja Full Calendar -vaihtoehtoja? Ne on siirretty <a href=\"%s"
+"\">here</a>. Alla olevat vaihtoehdot ovat Event Managerille oleellisten "
+"erityisten osien ohittamiseen. "
+
+#: wpfc-events-manager.php:328
+msgid "Override calendar on events page?"
+msgstr "Ohitetaanko tapahtumaasivun kalenteri?"
+
+#: wpfc-events-manager.php:328
+msgid ""
+"If set to yes, the FullCalendar will be used instead of the standard "
+"calendar on the events page."
+msgstr ""
+"Jos olet valinnut tähän kyllä, FullCalendar tulee käyttöön tapahtumasivun "
+"standardikalenterin sijaan. "
+
+#: wpfc-events-manager.php:329
+msgid "Override calendar shortcode?"
+msgstr "Ohita kalenterin lyhytkoodi?"
+
+#: wpfc-events-manager.php:329
+msgid ""
+"Overrides the default calendar shortcode. You can also use "
+"[events_fullcalendar] instead."
+msgstr ""
+"Ohittaa oletuskalenterin lyhytkoodin. Voit myös käyttää "
+"[events_fullcalendar] sen sijaan. "
+
+#: wpfc-events-manager.php:330
+msgid "Event title format"
+msgstr "Tapahtuman otsikon muotoilu"
+
+#: wpfc-events-manager.php:330
+msgid "HTML is not accepted."
+msgstr "HTML ei hyväksytä."
+
+#: wpfc-events-manager.php:331
+msgid "Event tooltips format"
+msgstr "Tapahtuma työkaluvihjeet muotoilua"
+
+#: wpfc-events-manager.php:331
+msgid ""
+"If you enable tips, this information will be shwon, which can include HTML."
+msgstr "Jos otat vinkkejä käyttöön, näytetään tietoa jossa voi olla HTML myös."

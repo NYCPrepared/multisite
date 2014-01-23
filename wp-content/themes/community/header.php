@@ -50,7 +50,9 @@
 					<p class="domain-title"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 					<nav id="main-navigation" class="top-nav main-nav" role="navigation">
 						<?php bones_main_nav(); ?>
+						<div class="search-form"><?php get_search_form(); ?> </div>
 					</nav>
+
 					<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
 
 					<?php // if you'd like to use the site description you can un-comment it below ?>

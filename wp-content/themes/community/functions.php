@@ -8,6 +8,9 @@ just edit things like thumbnail sizes, header images,
 sidebars, comments, ect.
 */
 
+/************* FUNCTION TO CHECK IF PLUGINS ARE ACTIVE ***************/
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
 /************* INCLUDE NEEDED FILES ***************/
 
 /*
@@ -44,6 +47,14 @@ require_once( 'library/bones.php' ); // if you remove this, bones will break
 	- adding support for other languages
 */
 // require_once( 'library/translation/translation.php' ); // this comes turned off by default
+
+require_once( 'library/recent-network-posts.php' ); // Required to display recent posts
+
+
+// if ( is_plugin_active('options-framework/options-framework.php') ) { 
+// 	require_once( 'library/community-options.php' ); // Required to display recent posts
+// }
+
 
 /************* THUMBNAIL SIZE OPTIONS *************/
 
@@ -138,7 +149,10 @@ function bones_register_sidebars() {
 	*/
 } // don't remove this bracket!
 
-/************* CUSTOM MENUS *********************/
+/*********************
+MENUS & NAVIGATION
+*********************/
+
 // wp menus
 add_theme_support( 'menus' );
 
@@ -149,10 +163,6 @@ register_nav_menus(
 		'utility-nav' => __( 'The Utility Menu', 'bonestheme' ),   // utility nav in header
 	)
 );
-
-/*********************
-MENUS & NAVIGATION
-*********************/
 
 // the secondary menu
 function bones_secondary_nav() {
@@ -188,6 +198,29 @@ function bones_utility_nav() {
 	));
 } /* end bones secondary nav */
 
+/*************************
+OPTIONS FRAMEWORK FUNCTION
+*************************/
+
+if ( !function_exists( 'of_get_option' ) ) {
+	function of_get_option($name, $default = false) {
+		
+		$optionsframework_settings = get_option('optionsframework');
+		
+		// Gets the unique option id
+		$option_name = $optionsframework_settings['id'];
+		
+		if ( get_option($option_name) ) {
+			$options = get_option($option_name);
+		}
+			
+		if ( isset($options[$name]) ) {
+			return $options[$name];
+		} else {
+			return $default;
+		}
+	}
+}
 /************* COMMENT LAYOUT *********************/
 
 // Comment Layout
@@ -241,74 +274,82 @@ function bones_wpsearch($form) {
 
 /************* GET MOST RECENT SITES *****************/
 
-function get_recent_sites() {
+// function get_recent_sites() {
 
-	// $blogs = array_reverse(wp_get_sites(), true); 
-	// Assume blog ID corresponds to date registered
-	$blogs = wp_get_sites();
+// 	// $blogs = array_reverse(wp_get_sites(), true); 
+// 	// Assume blog ID corresponds to date registered
+// 	$blogs = wp_get_sites();
 
-	// Start unordered list
-	echo '<ul>';
+// 	// Start unordered list
+// 	echo '<ul>';
 
-	// For each blog search for blog name in respective options table
-	foreach( $blogs as $blog ) {
+// 	// For each blog search for blog name in respective options table
+// 	foreach( $blogs as $blog ) {
 
-		$blog_id = $blog['blog_id'];
+// 		$blog_id = $blog['blog_id'];
 
-		global $wpdb;
+// 		global $wpdb;
 
-		// Query for name from options table
-		$blogname = $wpdb->get_results("SELECT option_value FROM wp_". $blog_id ."_options WHERE option_name='blogname' OR option_name='' ");
-		// echo "<pre>";
-		// var_dump($blogname);
-		// echo "</pre>";
-		foreach( $blogname as $name ) {
+// 		// Query for name from options table
+// 		$blogname = $wpdb->get_results("SELECT option_value FROM wp_". $blog_id ."_options WHERE option_name='blogname' OR option_name='' ");
+// 		// echo "<pre>";
+// 		// var_dump($blogname);
+// 		// echo "</pre>";
+// 		foreach( $blogname as $name ) {
 
-			// Create bullet with name linked to blog home pag
-			echo '<li><div class="site-image">{picture}</div>'; // Add in image once site image field exists
-			echo '<a href="http://';
-			echo $blog['domain'];
-			echo $blog['path'];
-			echo '">';
-			echo $name->option_value;
-			echo '</a></li>';
+// 			// Create bullet with name linked to blog home pag
+// 			echo '<li><div class="site-image">{picture}</div>'; // Add in image once site image field exists
+// 			echo '<a href="http://';
+// 			echo $blog['domain'];
+// 			echo $blog['path'];
+// 			echo '">';
+// 			echo $name->option_value;
+// 			echo '</a></li>';
 
-		}
-	}
+// 		}
+// 	}
 
-	// End unordered list
-	echo '</ul>';
-}
+// 	// End unordered list
+// 	echo '</ul>';
+// }
 
-add_shortcode( 'recentsiteslist', 'get_recent_sites' );
+// add_shortcode( 'recentsiteslist', 'get_recent_sites' );
 
 
-function get_recent_posts($numberposts = '2', $excludemain = '1') {
-	$blogs = wp_get_sites('offset=$excludemain');
+// function get_recent_posts($numberposts = '2', $excludemain = '1') {
+// 	$blogs = wp_get_sites('offset=$excludemain');
 
-	foreach ($blogs as $blog) {
-		$blog_id = $blog['blog_id'];
-		switch_to_blog($blog_id);
+// 	foreach ($blogs as $blog) {
+// 		$blog_id = $blog['blog_id'];
+// 		switch_to_blog($blog_id);
 
-		query_posts('posts_per_page=$numberposts');
+// 		query_posts('posts_per_page=$numberposts');
 
-		if (have_posts()) : while (have_posts()) : the_post();
+// 		if (have_posts()) : while (have_posts()) : the_post();
 
-			$title = get_the_title();
-			$blogposts[$post->post_date] = $post;
+// 			$title = get_the_title();
+// 			$blogposts[$post->post_date] = $post;
 
-		endwhile; else : 
-		endif;
+// 		endwhile; else : 
+// 		endif;
 
-		restore_current_blog();
-	}
-	krsort($blogposts);
-	return $blogposts;
+// 		restore_current_blog();
+// 	}
+// 	krsort($blogposts);
+// 	return $blogposts;
 
-	echo "<pre>";
-	var_dump($blogposts);
-	echo "</pre>";
+// 	echo "<pre>";
+// 	var_dump($blogposts);
+// 	echo "</pre>";
 
-}
+// }
+
+// function get_the_custom_excerpt($chars = '85'){
+// 	$excerpt = get_the_content();
+// 	$excerpt = strip_shortcodes($excerpt);
+// 	$excerpt = strip_tags($excerpt);
+// 	$the_str = substr($excerpt, 0, $chars);
+// 	return $the_str;
+// }
 
 ?>
