@@ -8,6 +8,9 @@ just edit things like thumbnail sizes, header images,
 sidebars, comments, ect.
 */
 
+/************* FUNCTION TO CHECK IF PLUGINS ARE ACTIVE ***************/
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
 /************* INCLUDE NEEDED FILES ***************/
 
 /*
@@ -46,6 +49,12 @@ require_once( 'library/bones.php' ); // if you remove this, bones will break
 // require_once( 'library/translation/translation.php' ); // this comes turned off by default
 
 require_once( 'library/recent-network-posts.php' ); // Required to display recent posts
+
+
+// if ( is_plugin_active('options-framework/options-framework.php') ) { 
+// 	require_once( 'library/community-options.php' ); // Required to display recent posts
+// }
+
 
 /************* THUMBNAIL SIZE OPTIONS *************/
 
@@ -140,7 +149,10 @@ function bones_register_sidebars() {
 	*/
 } // don't remove this bracket!
 
-/************* CUSTOM MENUS *********************/
+/*********************
+MENUS & NAVIGATION
+*********************/
+
 // wp menus
 add_theme_support( 'menus' );
 
@@ -151,10 +163,6 @@ register_nav_menus(
 		'utility-nav' => __( 'The Utility Menu', 'bonestheme' ),   // utility nav in header
 	)
 );
-
-/*********************
-MENUS & NAVIGATION
-*********************/
 
 // the secondary menu
 function bones_secondary_nav() {
@@ -190,6 +198,29 @@ function bones_utility_nav() {
 	));
 } /* end bones secondary nav */
 
+/*************************
+OPTIONS FRAMEWORK FUNCTION
+*************************/
+
+if ( !function_exists( 'of_get_option' ) ) {
+	function of_get_option($name, $default = false) {
+		
+		$optionsframework_settings = get_option('optionsframework');
+		
+		// Gets the unique option id
+		$option_name = $optionsframework_settings['id'];
+		
+		if ( get_option($option_name) ) {
+			$options = get_option($option_name);
+		}
+			
+		if ( isset($options[$name]) ) {
+			return $options[$name];
+		} else {
+			return $default;
+		}
+	}
+}
 /************* COMMENT LAYOUT *********************/
 
 // Comment Layout

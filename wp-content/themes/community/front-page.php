@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
- <?php include_once( ABSPATH . 'wp-admin/includes/plugin.php' ); ?>
  <?php $sites = wp_get_sites('offset=1'); ?>
 
 			<div id="content">
@@ -58,7 +57,7 @@
 
 					<section class="home-modules clearfix">
 						<?php if(function_exists('recent_network_posts')) { ?>
-						<article class="module row volunteers clearfix">
+						<article id="volunteers-module" class="module row volunteers clearfix">
 							<h2 class="module-heading">Volunteers Needed</h2>
 							<ul class="volunteer-list">
 								<?php 
@@ -105,7 +104,7 @@
 						<?php } ?>
 						<?php // check for plugin using plugin name
 						if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
-						<article class="module row events clearfix">
+						<article id="events-module" class="module row events clearfix">
 							<h2 class="module-heading"><a href="/events/">Events</a></h2>
 							<ul class="events-list">
 								<?php
@@ -118,7 +117,7 @@
 							</ul>
 						</article>
 						<?php } ?>
-						<article class="module row sites clearfix">
+						<article id="sites-module" class="module row sites clearfix">
 							<h2 class="module-heading"><a href="/directory/">Sites</a></h2>
 							<ul class="sites-list">
 
