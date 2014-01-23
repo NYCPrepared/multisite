@@ -25,17 +25,18 @@
 										<span class="event-date"><?php echo $EM_Event->output('#F #j, #Y'); ?></span>
 										<span class="event-time"><?php echo $EM_Event->output('#g:#i#a'); ?> - <?php echo $EM_Event->output('#@g:#@i#@a'); ?></span>
 									</div>
+
 									<?php if($EM_Event->location_id) { ?>
 									<div class="location">
 										<div class="location-name"><?php echo $EM_Event->output('#_LOCATIONLINK'); ?></div>
 										<div class="location-address"><?php echo $EM_Event->output('#_LOCATIONTOWN #_LOCATIONSTATE'); ?></div>
 									</div>
 									<?php } ?>
+
 									<div class="tools"><a href="<?php echo $EM_Event->output('#_EVENTICALURL'); ?>" class="add-to-calendar button">Add to Calendar</a></div>
 								</section>
-								<?php if($EM_Event->image_url) { ?>
 								<section class="event-image"><?php echo $EM_Event->output('#_EVENTIMAGE'); ?></section>
-								<?php } ?>
+
 								<?php if($EM_Event->location_id) { ?>
 								<section class="event-map"><?php echo $EM_Event->output('#_MAP'); ?></section>
 								<?php } ?>
@@ -43,9 +44,7 @@
 								<section class="event-description"><?php echo $EM_Event->output('#_EVENTNOTES'); ?></section>
 
 								<footer class="event-footer">
-									<?php if($EM_Event->categories) { ?>
 									<div class="meta categories"><?php echo $EM_Event->output('#_EVENTCATEGORIES'); ?></div>
-									<?php } ?>
 									<div class="share"></div>
 								</footer>
 
@@ -53,6 +52,7 @@
 								// echo "<pre>";
 								// var_dump($EM_Event);
 								// echo "</pre>";
+								echo $EM_Event->image_url;
 								?>
 
 								<?php comments_template(); ?>
