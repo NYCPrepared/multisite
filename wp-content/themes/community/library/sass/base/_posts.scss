@@ -119,6 +119,9 @@ POSTS & CONTENT STYLES
     .module-heading {@extend %p; @extend %caps;}    
 } 
 
+
+// HIGHLIGHTED CATEGORY PROMO
+
 .highlights .module-heading {
     color: $white;
     background-color: $gray7;
@@ -130,9 +133,6 @@ POSTS & CONTENT STYLES
     overflow: hidden;
 	@include breakpoint(small) {@include span-columns(8);}
 }
-
-
-// HIGHLIGHTED CATEGORY PROMO
 
 .highlights-list {
     background: $white;

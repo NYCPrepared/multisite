@@ -1,12 +1,12 @@
 // OVERWRITE PLUGIN STYLES
 
 .login {
-	padding: 20px;
+	padding: 0 0 20px;
 	p.error {
     	padding: 20px;
     	border: 1px solid $red;
     	background-color: $white;
-    	color: #333;
+    	color: $headline-color;
     }
     p.message {
         padding: 20px;
