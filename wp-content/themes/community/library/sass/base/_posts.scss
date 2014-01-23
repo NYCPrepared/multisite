@@ -165,10 +165,11 @@ POSTS & CONTENT STYLES
 .news-list {
     li {
         background: $white;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 10px;
         height: 300px;
         overflow: hidden;
-        margin: 0;
-        padding: 10px;
     	@include breakpoint(small) {@include span-columns(8); padding: 10px 20px;}
     }
     .post-title {
@@ -194,12 +195,14 @@ POSTS & CONTENT STYLES
         margin-top: 0;
         margin-bottom: 0;
         padding: 0;
+        height: 240px;
+        overflow: hidden;
     	@include breakpoint(small) {@include span-columns(4);}
     }
     .site-thumbnail {
         width: 100%;
         height: auto;
-        min-height: 100px;
+        min-height: 180px;
         background: $gray7;
         display: block;
     }
@@ -219,13 +222,13 @@ POSTS & CONTENT STYLES
 #site-promo {
     background: $yellow;
     padding: 20px;
-    .site-title {
+    .post-title {
         color: $white;
         margin: 0;
         padding-bottom: 40px;
     }
     .button {
-        background-color: $gray1;
-        background-color: rgba(0,0,0,.3);
+        background: $gray1;
+        background: rgba(0,0,0,.3);
     }
 }
