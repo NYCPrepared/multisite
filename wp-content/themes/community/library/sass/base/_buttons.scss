@@ -42,8 +42,10 @@ button,
     @include transition(all 0.25s ease);
     @include font-size(14);
 	@extend %caps;
+    line-height: 1.2;
 	font-weight: 700;
     padding: .5em 2em;
+    text-align: center;
     border: 0;
     background: $teal;
     color: $white;
