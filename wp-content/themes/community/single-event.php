@@ -52,7 +52,6 @@
 								// echo "<pre>";
 								// var_dump($EM_Event);
 								// echo "</pre>";
-								echo $EM_Event->image_url;
 								?>
 
 								<?php comments_template(); ?>
