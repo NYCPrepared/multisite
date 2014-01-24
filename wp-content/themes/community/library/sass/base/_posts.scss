@@ -232,5 +232,9 @@ POSTS & CONTENT STYLES
     .button {
         background: $gray1;
         background: rgba(0,0,0,.3);
+        &:hover {
+            background: $white;
+            color: $text-color;
+        }
     }
 }

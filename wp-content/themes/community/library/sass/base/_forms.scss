@@ -61,8 +61,9 @@ SEARCH FORM
         @include breakpoint(medium) {@include font-size(14);}
     }
     input[type='submit'] {
+        @include font-icon-base($family:"entypo"); 
         @extend %entypo-search;
-        @include font-size(18);
+        @include font-size(24);
         height: 24px;
         width: 24px;
         line-height: 24px;
