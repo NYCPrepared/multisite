@@ -60,7 +60,7 @@ SEARCH FORM
         vertical-align: top;
         @include breakpoint(medium) {@include font-size(14);}
     }
-    input[type='submit'] {
+    #searchsubmit {
         @include font-icon-base($family:"entypo"); 
         @extend %entypo-search;
         @include font-size(24);
@@ -72,7 +72,7 @@ SEARCH FORM
         border-radius: 0;
         border: 1px solid $gray2;
         vertical-align: top;
-        @include breakpoint(medium) {@include font-size(14);}
+        @include breakpoint(medium) {@include font-size(18);}
     }
 }
 
