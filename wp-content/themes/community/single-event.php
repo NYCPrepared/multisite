@@ -19,6 +19,8 @@
 
 								</header>
 
+								<section class="event-image"><?php echo $EM_Event->output('#_EVENTIMAGE'); ?></section>
+
 								<section class="event-details">
 									<div class="date-time">
 										<span class="event-day"><?php echo $EM_Event->output('#l'); ?></span>
@@ -35,7 +37,6 @@
 
 									<div class="tools"><a href="<?php echo $EM_Event->output('#_EVENTICALURL'); ?>" class="add-to-calendar button">Add to Calendar</a></div>
 								</section>
-								<section class="event-image"><?php echo $EM_Event->output('#_EVENTIMAGE'); ?></section>
 
 								<?php if($EM_Event->location_id) { ?>
 								<section class="event-map"><?php echo $EM_Event->output('#_MAP'); ?></section>

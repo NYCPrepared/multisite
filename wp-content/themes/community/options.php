@@ -99,6 +99,28 @@ function optionsframework_options() {
 	// If using image radio buttons, define a directory path
 	$imagepath =  get_template_directory_uri() . '/library/images/options/';
 
+
+	if(get_page_by_title('News')) {
+		$news_page = get_page_by_title( 'News', ARRAY_A );
+		$news_page = array_shift($news_page);
+	} else {
+		$news_page = '';
+	}
+
+	if(get_page_by_title('Events')) {
+		$events_page = get_page_by_title( 'Events', ARRAY_A );
+		$events_page = array_shift($events_page);
+	} else {
+		$events_page = '';
+	}
+
+	if(get_page_by_title('Sites')) {
+		$sites_page = get_page_by_title( 'Sites', ARRAY_A );
+		$sites_page = array_shift($sites_page);
+	} else {
+		$sites_page = '';
+	}
+
 	$options = array();
 
 	$options[] = array(
@@ -154,11 +176,13 @@ function optionsframework_options() {
 		'std' => 'News',
 		'type' => 'text');
 
+	// $news_page = get_page_by_title( 'News' );
 	$options[] = array(
 		'name' => __('News Module Link', 'options_check'),
 		'desc' => __('Select Page to Which the Header Should Link', 'options_check'),
-		'id' => 'module_2_heading_link',
+		'id' => 'module_2_link',
 		'type' => 'select',
+		'std' => $news_page,
 		'class' => 'mini',
 		'options' => $options_pages);
 
@@ -184,11 +208,13 @@ function optionsframework_options() {
 		'std' => 'Events',
 		'type' => 'text');
 
+	// $events_page = get_page_by_title( 'Events' );
 	$options[] = array(
 		'name' => __('Events Module Link', 'options_check'),
 		'desc' => __('Select Page to Which the Header Should Link', 'options_check'),
-		'id' => 'module_3_heading_link',
+		'id' => 'module_3_link',
 		'type' => 'select',
+		'std' => $events_page,
 		'class' => 'mini',
 		'options' => $options_pages);
 
@@ -196,7 +222,7 @@ function optionsframework_options() {
 		'name' => __('Events Module Posts', 'options_check'),
 		'desc' => __('Select number of posts to display in module', 'options_check'),
 		'id' => 'module_3_posts',
-		'std' => 'two',
+		'std' => 'four',
 		'type' => 'select',
 		'class' => 'mini', //mini, tiny, small
 		'options' => $default_array);
@@ -215,10 +241,12 @@ function optionsframework_options() {
 		'std' => 'Sites',
 		'type' => 'text');
 
+	// $sites_page = get_page_by_title( 'Sites' );
 	$options[] = array(
 		'name' => __('Sites Module Link', 'options_check'),
 		'desc' => __('Select Page to Which the Header Should Link', 'options_check'),
-		'id' => 'module_4_heading_link',
+		'id' => 'module_4_link',
+		'std' => $sites_page,
 		'type' => 'select',
 		'class' => 'mini',
 		'options' => $options_pages);

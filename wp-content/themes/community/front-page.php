@@ -56,7 +56,7 @@
 					</section>
 
 					<section class="home-modules clearfix">
-						<?php if(function_exists('recent_network_posts')) { ?>
+						<?php if(function_exists('recent_network_posts')) { // Check if display is selected in theme options ?>
 						<article id="highlights-module" class="module row volunteers clearfix">
 							<h2 class="module-heading"><?php echo of_get_option( 'module_1_heading', 'Volunteers Needed' ); ?></h2>
 							<ul class="highlights-list">
@@ -81,60 +81,66 @@
 							</ul>
 						</article>
 						<?php } ?>
-						<?php if(function_exists('recent_network_posts')) { ?>
-						<article id="news-module" class="module row news clearfix">
-							<h2 class="module-heading">
-								<?php if(of_get_option('module_2_heading')) { ?><a href="<?php echo of_get_option( 'module_2_heading_link', '/news/' ); ?>"><?php } ?>
-								<?php echo of_get_option( 'module_2_heading', 'News' ); ?>
-								<?php if(of_get_option('module_2_heading')) { ?></a><?php } ?>
-							</h2>
-							<ul class="news-list">
-								<?php 
-									$recent_posts = recent_network_posts($numberposts = 5, $excludepostcat = 'Volunteers');
-									foreach ($recent_posts as $post) { 
-										$title = $post->post_title;
-										$content = $post->post_content;
-										$permalink = $post->post_url;
-										$post_excerpt = recent_posts_excerpt($count = 20, $content, $permalink, $excerpt_trail = '... ');
-										$date = $post->post_date;
-									?>
-								<li>
-									<h3 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h3>
-									<p class="post-excerpt"><?php echo $post_excerpt; ?>
-									<span class="meta post-date"><?php echo date_i18n(get_option('date_format') ,strtotime($date));?></span></p>
-								</li>
+						<?php if(of_get_option('module_2')) { // Check if display is selected in theme options ?>
+							<?php if(function_exists('recent_network_posts')) { ?>
+							<article id="news-module" class="module row news clearfix">
+								<h2 class="module-heading">
+									<?php if(of_get_option('module_2_link')) { ?><a href="<?php echo get_page_link(of_get_option('module_2_link', '/news/')); ?>"><?php } else { ?><a href="/news/"><?php } ?>
+									<?php echo of_get_option( 'module_2_heading', 'News' ); ?>
+									</a>
+								</h2>
+								<ul class="news-list">
+									<?php 
+										$recent_posts = recent_network_posts($numberposts = 5, $excludepostcat = 'Volunteers');
+										foreach ($recent_posts as $post) { 
+											$title = $post->post_title;
+											$content = $post->post_content;
+											$permalink = $post->post_url;
+											$post_excerpt = recent_posts_excerpt($count = 20, $content, $permalink, $excerpt_trail = '... ');
+											$date = $post->post_date;
+										?>
+									<li>
+										<h3 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h3>
+										<p class="post-excerpt"><?php echo $post_excerpt; ?>
+										<span class="meta post-date"><?php echo date_i18n(get_option('date_format') ,strtotime($date));?></span></p>
+									</li>
+									<?php } ?>
 								<?php } ?>
 							</ul>
 						</article>
 						<?php } ?>
-						<?php // check for plugin using plugin name
-						if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
-						<article id="events-module" class="module row events clearfix">
-							<h2 class="module-heading">
-								<?php if(of_get_option('module_3_heading')) { ?><a href="<?php echo of_get_option( 'module_3_heading_link', '/events/' ); ?>"><?php } ?>
-								<?php echo of_get_option( 'module_3_heading', 'Events' ); ?>
-								<?php if(of_get_option('module_3_heading')) { ?></a><?php } ?>
-							</h2>
-							<ul class="events-list">
-								<?php
-								$events = EM_Events::output(array('limit'=>5, 
-									'format'=>'<li>
-									<h6 class="event-start">
-                				        <time class="event-month" datetime="#M">#M</time>
-                				        <time class="event-date" datetime="#j">#j</time>
-                				        <time class="event-day" datetime="#D">#D</time>
-                					</h6>
-									<h3 class="post-title event-title">#_EVENTLINK</h3>
-									</li>'));?>
-								<?php echo $events; ?>
-							</ul>
-						</article>
+						<?php if(of_get_option('module_3')) { // Check if display is selected in theme options ?>
+							<?php // check for plugin using plugin name
+							if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
+							<article id="events-module" class="module row events clearfix">
+								<h2 class="module-heading">
+									<?php if(of_get_option('module_3_link')) { ?><a href="<?php echo get_page_link(of_get_option('module_3_link', '/events/')); ?>"><?php } else { ?><a href="/events/"><?php } ?>
+									<?php echo of_get_option( 'module_3_heading', 'Events' ); ?>
+									</a>
+								</h2>
+								<ul class="events-list">
+									<?php
+									$events = EM_Events::output(array('limit'=>5, 
+										'format'=>'<li>
+										<h6 class="event-start">
+	                				        <time class="event-month" datetime="#M">#M</time>
+	                				        <time class="event-date" datetime="#j">#j</time>
+	                				        <time class="event-day" datetime="#D">#D</time>
+	                					</h6>
+										<h3 class="post-title event-title">#_EVENTLINK</h3>
+										</li>'));?>
+									<?php echo $events; ?>
+								</ul>
+							</article>
+							<?php } ?>
 						<?php } ?>
+						<?php if(of_get_option('module_4')) { // Check if display is selected in theme options ?> 
 						<article id="sites-module" class="module row sites clearfix">
 							<h2 class="module-heading">
-								<?php if(of_get_option('module_4_heading')) { ?><a href="<?php echo of_get_option( 'module_4_heading_link', '/directory/' ); ?>"><?php } ?>
+								<?php get_page_link(of_get_option('module_4_link')); ?>
+								<?php if(of_get_option('module_4_link')) { ?><a href="<?php echo get_page_link(of_get_option('module_4_link', '/sites/')); ?>"><?php } else { ?><a href="/sites"><?php } ?>
 								<?php echo of_get_option( 'module_4_heading', 'Sites' ); ?>
-								<?php if(of_get_option('module_4_heading')) { ?></a><?php } ?>
+								</a>
 							</h2>
 							<ul class="sites-list">
 
@@ -158,18 +164,39 @@
 								</li>
 
 							</ul>
-
 						</article>
+						<?php } ?>
 
-						<?php 
+						<?php
+						// if(function_exists('recent_network_posts')) { }
+
+						// $news = get_page_by_name('News');
+						// if (!empty($page)) {
+						// echo 'yes, it exists';
+						// } else {
+						// echo 'no, not so much';
+						// }
+
+						// if(get_page_by_title('News')) {
+						// 	echo 'yes, it exists';
+						// } else {
+						// 	echo 'no, not so much';
+						// }
+
+						// $sites_page = get_page_by_title( 'XYX', ARRAY_A );
+						// $sites_page = array_shift($sites_page);
+						// if($sites_page) {
+						// 	$sites = $sites_page;
+						// } else {
+						// 	$sites = '';
+						// }
+						// echo $sites;
 						
-						// echo "<pre>";
-						// var_dump($recent_posts);
-						// echo "</pre>";
+						
 
 						// $posts = get_posts('post_type=post');
 						// echo "<pre>";
-						// var_dump(of_get_option('module_4_heading'));
+						// var_dump($news);
 						// echo "</pre>";
 
 						?>

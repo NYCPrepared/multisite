@@ -16,6 +16,7 @@ global $EM_Event;
 echo $EM_Event->output_single();
 ?>
 
+{has_image}<section class="event-image"><?php echo $EM_Event->output('#_EVENTIMAGE'); ?></section>{/has_image}
 <section class="event-details">
 	<div class="date-time">
 		<span class="event-day"><?php echo $EM_Event->output('#l'); ?></span>
@@ -25,7 +26,6 @@ echo $EM_Event->output_single();
 	<div class="location">#_LOCATIONLINK</div>
 	{has_location}<div class="tools"><a href="#_LOCATIONICALURL" class="add-to-calendar button">Add to Calendar</a></div>{/has_location}
 </section>
-{has_image}<section class="event-image"><?php echo $EM_Event->output('#_EVENTIMAGE'); ?></section>{/has_image}
 {has_location}<section class="event-map"><?php echo $EM_Event->output('#_MAP'); ?></section>{/has_location}
 <section class="event-description"><?php echo $EM_Event->output('#_EVENTNOTES'); ?></section>
 <footer class="event-footer">
