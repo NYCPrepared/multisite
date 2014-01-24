@@ -267,7 +267,7 @@ function bones_wpsearch($form) {
 	$form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" >
 	<label class="screen-reader-text" for="s">' . __( 'Search for:', 'bonestheme' ) . '</label>
 	<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . esc_attr__( 'Search', 'bonestheme' ) . '" />
-	<button type="submit" id="searchsubmit"><i class="icon-search"></i></button>
+	<button type="submit" id="searchsubmit"></button>
 	</form>';
 	return $form;
 } // don't remove this bracket!

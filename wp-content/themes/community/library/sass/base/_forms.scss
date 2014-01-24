@@ -45,6 +45,7 @@ SEARCH FORM
 }
 #searchform {
     padding: 0;
+    background: transparent;
     label {
         display: none;
     }
@@ -74,7 +75,10 @@ SEARCH FORM
         vertical-align: top;
         background: $gray2;
         padding: 0;
-        @include breakpoint(medium) {@include font-size(18);}
+        &:hover {
+            background: $white;
+            border-color: $gray6;
+        }
     }
 }
 
