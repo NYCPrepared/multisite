@@ -91,7 +91,8 @@
 								</h2>
 								<ul class="news-list">
 									<?php 
-										$recent_posts = recent_network_posts($numberposts = 5, $excludepostcat = 'Volunteers');
+										$exclude_cat = of_get_option( 'module_1_post_category', 'Volunteers' );
+										$recent_posts = recent_network_posts($numberposts = 5, $excludepostcat = $exclude_cat);
 										foreach ($recent_posts as $post) { 
 											$title = $post->post_title;
 											$content = $post->post_content;

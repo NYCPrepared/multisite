@@ -91,7 +91,7 @@ function recent_network_posts($numberposts = 25, $postsperblog = 3, $postcat = '
     global $wpdb;
 
     $blogs = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs WHERE blog_id != '1' AND
-        public = '1' AND archived = '0' AND mature = '0' AND spam = '0' AND deleted = '0' 
+        public = '1' AND archived = '0' AND spam = '0' AND deleted = '0' 
         ORDER BY last_updated DESC");
 
     if( $blogs ) {
