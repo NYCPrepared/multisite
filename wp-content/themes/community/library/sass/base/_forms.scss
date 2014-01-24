@@ -72,6 +72,8 @@ SEARCH FORM
         border-radius: 0;
         border: 1px solid $gray2;
         vertical-align: top;
+        background: $gray2;
+        padding: 0;
         @include breakpoint(medium) {@include font-size(18);}
     }
 }
