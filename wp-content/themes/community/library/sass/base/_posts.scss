@@ -124,8 +124,7 @@ POSTS & CONTENT STYLES
 
 .highlights .module-heading {
     color: $white;
-    background-color: $gray7;
-    background-image: url('http://dev.sites.nycprepared.org/wp-content/uploads/2014/01/CarolinaKroon7.png');
+    background: $gray7 url('http://dev.sites.nycprepared.org/wp-content/uploads/2014/01/CarolinaKroon7.png') no-repeat center center;
     background-size: cover; 
     padding: 20px;
     margin-bottom: 0;

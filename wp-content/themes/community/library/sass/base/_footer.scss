@@ -10,9 +10,10 @@
 .logo-NYCP {
     @include font-size(22);
     @extend %condensed;
-    margin-right: 30px;
+    margin: 0 30px 0 0;
     white-space: nowrap;
     display: inline-block; 
+	@include breakpoint(medium) {@include span-columns(4);}
     a, a:visited {
         color: $white;
     }
@@ -35,11 +36,13 @@
 
 .tagline-NYCP {
     padding: 0 10px;
+	@include breakpoint(medium) {@include span-columns(8);}
 }
 
 
 .social-links {
     margin: 30px 0 0;
+	@include breakpoint(medium) {@include span-columns(4); margin: 0;}
     li {
         @include font-size(20);
         display: inline-block;
@@ -81,6 +84,7 @@
 	@include breakpoint(small) {@include span-columns(4);}
 	li {
     	@include font-size(16);
+    	color: $text-color;
 	}
 	a {
     	color: $navy;
