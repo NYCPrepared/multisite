@@ -7,13 +7,15 @@
     }
 }
 
+.footer-logo {
+    margin: 0;
+}
+
 .logo-NYCP {
     @include font-size(22);
     @extend %condensed;
-    margin: 0 30px 0 0;
     white-space: nowrap;
     display: inline-block; 
-	@include breakpoint(medium) {@include span-columns(3);}
     a, a:visited {
         color: $white;
     }
@@ -35,16 +37,18 @@
 }
 
 .tagline-NYCP {
+    @extend %h6;
+    @include font-size(13);
     padding: 0 10px;
     margin-top: 0;
     margin-bottom: 0;
-	@include breakpoint(medium) {@include span-columns(8);}
+    line-height: 40px;
 }
 
 
 .social-links {
     margin: 30px 0 0;
-	@include breakpoint(medium) {@include span-columns(4); margin: 0;}
+	@include breakpoint(medium) {float: right;}
     li {
         @include font-size(42);
         display: inline-block;
