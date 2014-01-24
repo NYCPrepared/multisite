@@ -186,3 +186,18 @@ pre {
 }
 
 
+[class^="icon-"] {
+  display: inline-block;
+  -webkit-text-rendering: geometricPrecision;
+  -moz-text-rendering: geometricPrecision;
+  -ms-text-rendering: geometricPrecision;
+  -o-text-rendering: geometricPrecision;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+
