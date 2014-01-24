@@ -83,9 +83,14 @@
 .footer .widget {
     background: $white;   
 	@include breakpoint(small) {@include span-columns(4);}
+	ul {
+    	margin-bottom: 0;
+	}
 	li {
     	@include font-size(16);
     	color: $text-color;
+    	padding: 0;
+    	margin-bottom: .2em;
 	}
 	a, a:visited {
     	color: $teal;
@@ -103,11 +108,14 @@
         @include font-size(28); 
         @include font-icon-base($family:"ios7-icon", $margin: 10px, $color: $teal); 
         padding-top: 0;
+        &:hover:before {
+            color: $text-color;
+        }
     }
 }
 
 #nav_menu-5 li:first-child {@extend %ios7-sites;}
 #nav_menu-4 li:first-child {@extend %ios7-book;}
-#nav_menu-3 li:first-child {@extend %ios7-truck;}
+#nav_menu-3 li:first-child {@extend %ios7-truck; position: relative; top: -5px;}
 #nav_menu-2 li:first-child {@extend %ios7-data;}
 
