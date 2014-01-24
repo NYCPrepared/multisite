@@ -57,7 +57,7 @@
 
 					<section class="home-modules clearfix">
 						<?php if(function_exists('recent_network_posts')) { // Check if display is selected in theme options ?>
-						<article id="highlights-module" class="module row volunteers clearfix">
+						<article id="highlights-module" class="module row highlights clearfix">
 							<h2 class="module-heading"><?php echo of_get_option( 'module_1_heading', 'Volunteers Needed' ); ?></h2>
 							<ul class="highlights-list">
 								<?php 
