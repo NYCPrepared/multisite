@@ -99,12 +99,27 @@ function optionsframework_options() {
 	// If using image radio buttons, define a directory path
 	$imagepath =  get_template_directory_uri() . '/library/images/options/';
 
-	$news_page = get_page_by_title( 'News', ARRAY_A );
-	$news_page = array_shift($news_page);
-	$events_page = get_page_by_title( 'Events', ARRAY_A );
-	$events_page = array_shift($events_page);
-	$sites_page = get_page_by_title( 'Sites', ARRAY_A );
-	$sites_page = array_shift($sites_page);
+
+	if(get_page_by_title('News')) {
+		$news_page = get_page_by_title( 'News', ARRAY_A );
+		$news_page = array_shift($news_page);
+	} else {
+		$news_page = '';
+	}
+
+	if(get_page_by_title('Events')) {
+		$events_page = get_page_by_title( 'Events', ARRAY_A );
+		$events_page = array_shift($events_page);
+	} else {
+		$events_page = '';
+	}
+
+	if(get_page_by_title('Sites')) {
+		$sites_page = get_page_by_title( 'Sites', ARRAY_A );
+		$sites_page = array_shift($sites_page);
+	} else {
+		$sites_page = '';
+	}
 
 	$options = array();
 
