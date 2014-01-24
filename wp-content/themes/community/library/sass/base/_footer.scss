@@ -100,8 +100,9 @@
         display: none;
     }
     li:first-child {
-        @include font-size(32); 
-        @include font-icon-base($family:"ios7-icon"); 
+        @include font-size(28); 
+        @include font-icon-base($family:"ios7-icon", $margin: 10px, $color: $teal); 
+        padding-top: 0;
     }
 }
 
