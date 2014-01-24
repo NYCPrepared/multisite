@@ -21,7 +21,7 @@
 }
 
 
-@mixin font-icon-base($family:"entypo", $font-size: 1.5rem, $width: 1em, $margin: 0.2em, $align: center, $color: inherit, $line-height: 1) {
+@mixin font-icon-base($family:"entypo", $font-size: inherit, $line-height: inherit, $margin: 0, $align: center, $color: inherit) {
   @if $family == "entypo-social" {
     $family:"entypo-social";
   }
@@ -36,7 +36,6 @@
     margin-right: $margin;
     text-align: $align;
     display: inline-block;
-    width: $width;
     color: $color;
     vertical-align: middle;
   }
