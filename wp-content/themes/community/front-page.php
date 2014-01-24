@@ -167,11 +167,36 @@
 						</article>
 						<?php } ?>
 
-						<?php 
+						<?php
+						// if(function_exists('recent_network_posts')) { }
+
+						// $news = get_page_by_name('News');
+						// if (!empty($page)) {
+						// echo 'yes, it exists';
+						// } else {
+						// echo 'no, not so much';
+						// }
+
+						// if(get_page_by_title('News')) {
+						// 	echo 'yes, it exists';
+						// } else {
+						// 	echo 'no, not so much';
+						// }
+
+						// $sites_page = get_page_by_title( 'XYX', ARRAY_A );
+						// $sites_page = array_shift($sites_page);
+						// if($sites_page) {
+						// 	$sites = $sites_page;
+						// } else {
+						// 	$sites = '';
+						// }
+						// echo $sites;
+						
+						
 
 						// $posts = get_posts('post_type=post');
 						// echo "<pre>";
-						// var_dump($news_page);
+						// var_dump($news);
 						// echo "</pre>";
 
 						?>
