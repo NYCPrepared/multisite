@@ -138,7 +138,7 @@
 						<article id="sites-module" class="module row sites clearfix">
 							<h2 class="module-heading">
 								<?php get_page_link(of_get_option('module_4_link')); ?>
-								<?php if(of_get_option('module_4_link')) { ?><a href="<?php echo get_page_link(of_get_option('module_4_link', '/sites/')); ?>"><?php } else { ?><a href="/sites/"><?php } ?>
+								<?php if(of_get_option('module_4_link')) { ?><a href="<?php echo get_page_link(of_get_option('module_4_link', '/sites/')); ?>"><?php } else { ?><a href="/sites"><?php } ?>
 								<?php echo of_get_option( 'module_4_heading', 'Sites' ); ?>
 								</a>
 							</h2>
@@ -168,19 +168,6 @@
 						<?php } ?>
 
 						<?php
-
-						 $networks = get_terms( 'bcat', array(
-						 	'hide_empty' => 0
-						 ) );
-
-						$network_terms = get_term(9, SITE_CATEGORIES_TAXONOMY);
-
-						foreach ($networks as $network) {
-							$term_link = get_term_link( $network );
-							echo $term_link;
-							echo "<a href='$term_link'>$network->name</a>";
-						}
-
 						// if(function_exists('recent_network_posts')) { }
 
 						// $news = get_page_by_name('News');
@@ -208,9 +195,9 @@
 						
 
 						// $posts = get_posts('post_type=post');
-						echo "<pre>";
-						var_dump($networks);
-						echo "</pre>";
+						// echo "<pre>";
+						// var_dump($news);
+						// echo "</pre>";
 
 						?>
 					</section>
