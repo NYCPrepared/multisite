@@ -33,10 +33,15 @@ $condensed:   "Oswald", "Arial Narrow", Arial, sans-serif;
     
 }
 
-// [class*="entypo-"]:before {
-//     font-family: "entypo", sans-serif;
-//     font-style: normal;
-// }
+[class*="entypo-"]:before {
+    font-family: "entypo", sans-serif;
+    font-style: normal;
+}
+
+[class*="entypo-social-"]:before {
+    font-family: "entypo-social", sans-serif;
+    font-style: normal;
+}
 
 
 
