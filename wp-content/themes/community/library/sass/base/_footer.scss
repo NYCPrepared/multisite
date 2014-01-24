@@ -83,9 +83,6 @@
 .footer .widget {
     background: $white;   
 	@include breakpoint(small) {@include span-columns(4);}
-    .widgettitle {
-        display: none;
-    }
 	li {
     	@include font-size(16);
     	color: $text-color;
@@ -99,7 +96,13 @@
 #nav_menu-4, 
 #nav_menu-3, 
 #nav_menu-2 {
-    li:first-child {@include font-size(32); @include font-icon-base($family:"entypo"); }
+    .widgettitle {
+        display: none;
+    }
+    li:first-child {
+        @include font-size(32); 
+        @include font-icon-base($family:"ios7-icon"); 
+    }
 }
 
 #nav_menu-5 li:first-child {@extend %ios7-sites;}
