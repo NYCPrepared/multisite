@@ -161,6 +161,7 @@
 
 								<li id="site-promo">
 									<h3 class="post-title">Join the community</h3>
+									<div class="promo-icons"><i></i><i></i><i></i><i></i></div>
 									<a class="button" href="/register" title="Create a site">Create a site</a>
 								</li>
 

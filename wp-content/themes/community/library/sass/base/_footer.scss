@@ -4,19 +4,22 @@
     background: $gray8;
     .global {
         padding: 30px 0;
+        @include breakpoint(medium) {position: relative;}
     }
+}
+
+.footer-logo {
+    margin: 0;
+    line-height: 30px;
 }
 
 .logo-NYCP {
     @include font-size(22);
     @extend %condensed;
-    margin: 0 30px 0 0;
     white-space: nowrap;
     display: inline-block; 
-	@include breakpoint(medium) {@include span-columns(3);}
-    a, a:visited {
-        color: $white;
-    }
+    margin-right: 20px;
+    color: $white;
     span {
         display: inline-block;
         border: 2px solid $white;
@@ -24,9 +27,12 @@
         margin-left: 5px;   
         @include transition (border-color 0.25s ease);
     }
-    a:hover,
-    a:focus, 
-    a:visited:hover {
+    &:visited {
+        color: $white;
+    }
+    &:hover,
+    &:focus, 
+    &:visited:hover {
         color: $text-color;
         span {
             border-color: $text-color;
@@ -35,24 +41,82 @@
 }
 
 .tagline-NYCP {
-    padding: 0 10px;
-    margin-top: 0;
-    margin-bottom: 0;
-	@include breakpoint(medium) {@include span-columns(8);}
+    @extend %h6;
+    @include font-size(13);
+    vertical-align: middle;
+    white-space: nowrap;
+    color: $gray5;
+}
+
+
+
+// footer widgets
+
+.footer .widget {
+    background: $white;
+    margin-bottom: 30px;   
+	@include breakpoint(small) {@include span-columns(4);}
+	ul {
+    	margin-bottom: 0;
+	}
+	li {
+    	@include font-size(16);
+    	color: $text-color;
+    	padding: 0;
+    	margin-bottom: .2em;
+	}
+	a, a:visited {
+    	color: $teal;
+	}
+}
+
+#nav_menu-5, 
+#nav_menu-4, 
+#nav_menu-3, 
+#nav_menu-2 {
+    .widgettitle {
+        display: none;
+    }
+    li:first-child {
+        @include font-size(28); 
+        @include font-icon-base($family:"ios7-icon", $margin: 10px, $color: $teal); 
+        padding-top: 0;
+        &:hover:before {
+            color: $text-color;
+        }
+    }
+}
+
+#nav_menu-5 li:first-child {@extend %ios7-sites;}
+#nav_menu-4 li:first-child {@extend %ios7-book;}
+#nav_menu-2 li:first-child {@extend %ios7-data;}
+#nav_menu-3 li:first-child {@extend %ios7-truck; &:before {position: relative; top: -5px;}}
+
+
+
+// SOCIAL LINKS AND COPYRIGHT
+
+.footer-slug {
+    background: $gray7;
+    clear: both;
+    .wrap {
+        max-width: 1200px;
+    }
 }
 
 
 .social-links {
-    margin: 30px 0 0;
-	@include breakpoint(medium) {@include span-columns(4); margin: 0;}
+    margin: 0 20px 0 0;
+    padding: 5px 0;
+    display: inline-block;
     li {
-        @include font-size(27);
+        @include font-size(40);
         display: inline-block;
         padding: 0;
-        height: 32px;
-        width: 32px;
+        height: 30px;
+        width: 30px;
         text-align: center;
-        line-height: 32px;
+        line-height: 30px;
         border-radius: 0;
         margin-right: 1px;
     }
@@ -66,28 +130,11 @@
     .rss a {@include flip-button($orange); @include font-icon-base($family:"entypo"); @extend %entypo-rss;}
 }
 
+
 .copyright {
     @include font-size(10);
     @extend %caps;
-    background: $gray7;
-    padding: 15px;
-    clear: both;
-    text-align: center;
+    color: $gray4;
+    display: inline-block;;
 	@include breakpoint(medium) {@include font-size(12);}
-}
-
-
-
-// footer widgets
-
-.footer .widget {
-    background: $white;   
-	@include breakpoint(small) {@include span-columns(4);}
-	li {
-    	@include font-size(16);
-    	color: $text-color;
-	}
-	a {
-    	color: $navy;
-	}
 }

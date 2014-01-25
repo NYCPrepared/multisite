@@ -1,17 +1,9 @@
 			<footer class="footer" role="contentinfo">
 
-				<div id="inner-footer" class="wrap clearfix">
+				<div id="inner-footer" class="wrap">
 
 					<section class="global site-meta first">
-						<h2 class="logo-NYCP"><a href="http://nycprepared.org">NYC<span>Prepared</span></a></h2>
-						<h6 class="tagline-NYCP"><?php bloginfo('description'); ?></h6>
-						<ul class="social-links icons-NYCP">
-						    <li class="email"><a href="mailto:info@nycprepared.org" target="_blank"></a></li>
-						    <li class="github"><a href="https://github.com/NYCPrepared" target="_blank"></a></li>
-						    <li class="twitter"><a href="https://twitter.com/NYCPrepared" target="_blank"></a></li>
-						    <li class="facebook"><a href="https://www.facebook.com/nycprepared" target="_blank"></a></li>
-						    <li class="rss"><a href="/feed" target="_blank"></a></li>
-                        </ul>
+						<h2 class="footer-logo"><a class="logo-NYCP" href="http://nycprepared.org">NYC<span>Prepared</span></a><span class="tagline-NYCP"><?php bloginfo('description'); ?></span></h2>
 					</section>
 					
 					<section class="widgets">
@@ -31,11 +23,23 @@
 					
 				</div>
 
-				<nav role="navigation clearfix">
+				<nav class="footer-nav" role="navigation clearfix">
 					<?php bones_footer_links(); ?>
 				</nav>
 
-				<div class="source-org copyright clearfix">Copyleft <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?></div>
+				<div class="footer-slug">
+				    <div class="wrap">
+    					<ul class="social-links icons-NYCP">
+    					    <li class="email"><a href="mailto:info@nycprepared.org" target="_blank"></a></li>
+    					    <li class="github"><a href="https://github.com/NYCPrepared" target="_blank"></a></li>
+    					    <li class="twitter"><a href="https://twitter.com/NYCPrepared" target="_blank"></a></li>
+    					    <li class="facebook"><a href="https://www.facebook.com/nycprepared" target="_blank"></a></li>
+    					    <li class="rss"><a href="/feed" target="_blank"></a></li>
+                        </ul>
+    				    <h6 class="copyright">Copyleft <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?></h6>
+				    </div>
+				</div>
+				
 			</footer>
 
 		</div>

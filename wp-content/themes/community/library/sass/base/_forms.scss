@@ -64,18 +64,18 @@ SEARCH FORM
     #searchsubmit {
         @include font-icon-base($family:"ios7-icon"); 
         @extend %ios7-search;
-        @include font-size(24);
+        @include font-size(20);
+        font-weight: normal;
+        line-height: 24px;
         height: 24px;
         width: 24px;
-        line-height: 24px;
         padding: 0;
         margin-left: -4px;
-        border-radius: 0;
-        border: 1px solid $gray2;
         vertical-align: top;
-        background: $gray2;
-        padding: 0;
-        font-weight: normal;
+        background: $gray3;
+        border: 1px solid $gray3;
+        border-radius: 0;
+        @include breakpoint(medium) {@include font-size(16);}
         &:hover {
             background: $white;
             border-color: $gray6;

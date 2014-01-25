@@ -227,7 +227,17 @@ POSTS & CONTENT STYLES
     .post-title {
         color: $white;
         margin: 0;
-        padding-bottom: 40px;
+    }
+    .promo-icons {
+        padding: 10px 0;
+        color: $white;
+        white-space: nowrap;
+        i {
+            @include font-icon-base($family:"ios7-icon"); 
+            @extend %ios7-store;
+            @include font-size(48);
+            line-height: 1;
+        }
     }
     .button {
         background: $gray1;
