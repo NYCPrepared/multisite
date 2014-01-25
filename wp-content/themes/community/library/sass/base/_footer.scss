@@ -4,6 +4,7 @@
     background: $gray8;
     .global {
         padding: 30px 0;
+        @include breakpoint(medium) {position: relative;}
     }
 }
 
@@ -14,11 +15,11 @@
 .logo-NYCP {
     @include font-size(22);
     @extend %condensed;
+    line-height: 30px;
     white-space: nowrap;
     display: inline-block; 
-    a, a:visited {
-        color: $white;
-    }
+    margin-right: 10px;
+    color: $white;
     span {
         display: inline-block;
         border: 2px solid $white;
@@ -26,9 +27,12 @@
         margin-left: 5px;   
         @include transition (border-color 0.25s ease);
     }
-    a:hover,
-    a:focus, 
-    a:visited:hover {
+    &:visited {
+        color: $white;
+    }
+    &:hover,
+    &:focus, 
+    &:visited:hover {
         color: $text-color;
         span {
             border-color: $text-color;
@@ -39,16 +43,13 @@
 .tagline-NYCP {
     @extend %h6;
     @include font-size(13);
-    padding: 0 10px;
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
+    vertical-align: middle;
 }
 
 
 .social-links {
     margin: 30px 0 0;
-	@include breakpoint(medium) {float: right;}
+	@include breakpoint(medium) {position: absolute; top: 0; right: 0; text-align: right;}
     li {
         @include font-size(42);
         display: inline-block;
@@ -85,7 +86,8 @@
 // footer widgets
 
 .footer .widget {
-    background: $white;   
+    background: $white;
+    margin-bottom: 30px;   
 	@include breakpoint(small) {@include span-columns(4);}
 	ul {
     	margin-bottom: 0;
