@@ -1,0 +1,545 @@
+﻿/*
+Theme Name: CETS Blog Topics Sample Theme
+Theme URI: 
+Description: A sample site aggregation theme - heavily reliant on the blog topics plugin.
+Version: 1.0
+Author: Kevin Graeme, Deanna Schneider
+Author URI: http://www.uwex.edu/ces/techservices/
+*/
+
+
+/* Base Styles */
+/* ***************************************************************** */
+
+body {
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+	font-size: 62.5%; /* Resets 1em to 10px */
+	text-align: center;
+	}
+
+strong, em, b, i {
+    font-family: Verdana, Helvetica, Arial, sans-serif;
+	}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: "Trebuchet MS", Verdana, sans-serif;
+	}
+h1 {
+	font-size: 2.6em;
+	font-weight: bold;
+}
+
+h2 { 
+	font-size: 2.4em;
+	font-weight: bold;
+	letter-spacing: -1px;
+	}
+	
+h3, h4 { 
+	font-size: 1.8em;
+	letter-spacing: -1px;
+	}
+
+h1, 
+h2, 
+h3, 
+h4 {
+	color: #444;
+	}
+
+h1, h1 a, h1 a:visited,
+h2, h2 a, h2 a:visited,
+h3, h3 a, h3 a:visited,
+h4, h4 a, h4 a:visited {
+	text-decoration: none;
+	}
+h1 a:hover, 
+h2 a:hover,
+h3 a:hover,
+h4 a:hover {
+	text-decoration: underline;
+	}
+	
+code {
+	font-family: Monaco, "Courier New", Courier, monospace;
+	}
+a, a:visited {
+	color: #3B6498;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline
+}
+/*- Global Classes */
+.clear {clear:both;}
+.imagereplacement {
+	/* http://www.evotech.net/blog/2007/09/css-image-replacement-method/ */
+	display:-moz-inline-box;
+	display:inline-block;
+	background:transparent none 0 0 no-repeat;
+	text-indent:-3000px;
+	font:0/0 Arial;
+	overflow:hidden;
+	color:rgba(255,255,255,0);
+	vertical-align:bottom;
+}
+a.rss{ 
+	/* image replacement specific to .rss */
+	background-image: url(images/feed-icon.png);
+	height: 14px;
+	width: 14px;
+	}
+/*- Page Structure */
+body {
+	color: #444;
+	background: #C8DFEF url(images/bg-gradient.jpg) repeat-x;
+	}
+#wrapper {
+	width: 800px;
+	background: white;
+	text-align: left;
+	margin: 2em auto 0;
+	position: relative;
+	border: 1px solid #77A4CB;
+	border-top: none;
+	clear: both;
+	}
+#pageTitle {
+	font-size: 30px;
+	font-weight: normal;
+	margin: 0;
+}
+/* Header */
+/* ***************************************************************** */
+#header {
+	background-image: url(images/UWEXCE_200x64.gif);
+	background-repeat: no-repeat;
+	background-position: 570px 20px;
+	height: 100px;
+	margin: 0;
+	padding: 0;
+}
+#header h1 {
+	font-size: 40px;
+	width: 530px;
+	margin: 0;
+	padding: 20px;
+	padding-top: 25px;
+	letter-spacing: -2px;
+}
+#topnav {
+	list-style: none;
+	font-size: 1.1em;
+	background-color: #F5D592;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	height: 20px;
+}
+#topnav a {
+	display: block;
+	color: #0F3574;
+	text-decoration: none;
+	padding: 3px 0.5em 4px;
+}
+#topnav a:hover {
+	background-color: #CC9900;
+	color: white;
+}
+#topnav li {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+/* Page Header */
+/* ***************************************************************** */
+#pageHeader{
+	display: none;
+}
+.home #pageHeader,
+.topic #pageHeader ,
+.sites #pageHeader {
+	display: block;
+	margin: 0;
+	padding: 20px;
+	width: 760px;
+	background-color: #F1EFEF;
+}
+/* home */
+.home #pageHeader h1 {
+	display: none;
+}
+.home #pageHeader p {
+	font-size: 1.8em;
+	margin: 0 0 1em 400px;
+	padding: 0;
+}
+.home .pageHeaderImage {
+	width: 380px;
+	margin:0;
+	padding: 0;
+	float: left;
+}
+.home .pageHeaderImage img {
+	width: 380px;
+	height: 225px;
+}
+/* Topic and Sites */
+.topic #pageHeader h1,
+.sites #pageHeader h1 {
+	margin: 0 0 0.5em 270px;
+	padding: 0;
+	line-height: 1em;
+}
+.topic #pageHeader p,
+.sites #pageHeader p {
+	font-size: 1.2em;
+	margin: 0 0 1em 270px;
+	padding: 0;
+}
+.topic .pageHeaderImage,
+.sites .pageHeaderImage {
+	width: 230px;
+	float: left;
+}
+.topic .pageHeaderImage img,
+.sites .pageHeaderImage img {
+	width: 230px;
+	height: 140px;
+}
+
+
+
+/* Content Area */
+/* ***************************************************************** */
+#mainContent, #sideContent1 {
+	padding: 20px;
+}
+.twoCol #mainContent {
+	float: left;
+	width: 447px;
+	margin: 0;
+	padding: 20px;
+	/* DEBUGGING */
+	/*background-color:#FFFFCC;*/
+}
+.twoCol #sideContent1 {
+	float: right;
+	width: 284px;
+	margin: 0;
+	padding: 20px;
+	padding-left: 0px;
+}
+.oneCol #sideContent1 {
+	display: none;
+}
+#mainContent h3,
+#sideContent1 h3 {
+/*    font-size: 1.8em;
+	font-weight: normal;
+	margin-bottom: 0.5em;*/
+}
+.entry-content {
+	margin: 1em 0;
+	font-size: 1.2em;
+}
+.mu_register {
+	padding: 2em;
+	font-size: 1.6em;
+}
+.widget {
+	margin-bottom: 3em;
+}
+/* Topic List Formatting */
+/* ***************************************************************** */
+.home #mainContent h2,
+.home #sideContent1 h2,
+.topic #mainContent h2,
+.topic #sideContent1 h2 {
+	margin: 0;
+	padding: 0;
+    padding-bottom: 0.5em;
+	font-weight: normal;
+}
+
+.home #mainContent h3,
+.home #sideContent1 h3,
+.topic #mainContent h3,
+.topic #sideContent1 h3 {
+    margin: 0;
+	margin-bottom: 0.5em;
+	padding: 0;
+	font-weight: normal;
+}
+.home #mainContent .topicListing {
+	background-repeat:no-repeat;
+	margin:1em 0 0 0;
+	min-height:120px;
+	padding:0 0 1em 140px;
+	border-bottom:1px solid #F1EFEF;
+}
+
+/* ***************
+Include one item for each topic here if you want to include a background image. This is based on the slug of the topic
+***************** */
+
+.home #mainContent .UnCategorized {
+	background-image: url(images/thumbs/Resources.png);
+}
+
+
+.home #sideContent1 .topicListing {
+	margin-bottom: 2em;
+}
+.topicListing ul,
+.widget_cets_bt_recent_posts ul {
+	margin: 0;
+	padding: 0;
+    list-style: none;
+}
+.topicListing li,
+.widget_cets_bt_recent_posts li {
+	margin: 0;
+    margin-bottom: 0.5em;
+	padding: 0;
+}
+.topicListing .headline,
+.widget_cets_bt_recent_posts .headline {
+    font-size: 1.2em;
+	font-weight: bold;
+}
+.topicListing .blurb,
+.widget_cets_bt_recent_posts .blurb {
+	font-size: 1.1em;
+}
+.topicListing .topicMore,
+.widget_cets_bt_recent_posts .topicMore {
+	margin-top: 1em;
+}
+
+#sideContent1 object,
+#sideContent1 embed {
+	margin: 0;
+	margin-bottom: 1em;
+	padding: 0;
+}
+#mainContent h2 a.rss{ 
+	/* image replacement specific to .rss */
+	background-image: url(images/feed-icon.png);
+	height: 14px;
+	width: 14px;
+	margin: 0 0 6px 6px;
+	}
+.showAllSites {
+	margin: 0;
+	margin-top: 0.5em;
+	border-top: 1px solid #F5D592;
+	padding: 0;
+	padding-top: 0.5em;
+	font-size: 1.4em;
+}
+/* Featured blog */
+/* ***************************************************************** */
+.widget_cets_featured_blog {
+	background: #F1EFEF;
+	border: 1px solid #C8DFEF;
+	margin: 24px 0 24px 40px;
+}
+.widget_cets_featured_blog div.image {
+	float: left;
+	margin-left: -40px;
+	padding: 12px 0 0;
+	width: 80px;
+}
+.widget_cets_featured_blog .avatar {
+	background: white;
+	border: 1px solid #C8DFEF;
+	padding: 2px;
+}
+.widget_cets_featured_blog .featuredContent {
+	/*float: left;*/
+	padding: 0.5em;
+	padding-left: 50px;
+}
+.widget_cets_featured_blog h2 {
+	border-bottom: 1px solid #C8DFEF;
+}
+.widget_cets_featured_blog ul {
+	margin-top: 0.5em;
+}
+.widget_cets_featured_blog .headline {
+	font-weight: normal;
+}
+.widget_cets_featured_blog .more {
+	border-top: 1px solid #C8DFEF;
+	padding-top: 0.5em;
+	text-align: right;
+}
+/* Sites page Formatting */
+/* ***************************************************************** */
+.sites #mainContent h2 {
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	padding-bottom: 0.5em;
+}
+.sites ul.siteList {
+	font-size: 1.2em;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.sites .siteList li {
+	margin: 0;
+	border: 1px solid #F1EFEF;
+	border-width: 0 0 1px 1px;
+	padding: 0.25em;
+}
+
+/* Tags page Formatting */
+/* ***************************************************************** */
+.cets-tag-cloud {
+	line-height: 1.8em;
+}
+
+#pageTitle .tag_title {
+	font-style: italic;
+	color:#666;
+}
+.tagDescription {
+	font-size: 1.4em;
+	line-height: 1.4em;
+	margin: 1em 0 2em 0;
+}
+.tagDescription p {
+	margin: 0 0 1em 0;
+}
+.tag-post {
+	margin: 0 2em 1em 2em;
+	border-bottom:1px solid #F1EFEF;
+	padding: 0 0 1em;
+}
+.tag-post .entry-title {
+	font-weight: normal;
+	margin: 0;
+}
+.tag-post .entry-content {
+	font-size: 1.2em;
+	margin: 0;
+}
+.tag-post .entry-content p {
+	margin: 0.25em 0;
+}
+.tag-post .post-meta {
+	color: #999;
+	margin: 0;
+}
+
+/* Tags widget Formatting */
+/* ***************************************************************** */
+.widget_tag_cloud h2, .widget_cets_tag_cloud h2 {
+	border-bottom: 1px solid #F1EFEF;
+}
+
+.widget_cets_tag_cloud {
+	border-bottom: 1px solid #F1EFEF;
+	margin: 1em 0;
+	padding-bottom: 0.5em;
+	position: relative;
+}
+.widget_cets_tag_cloud .more {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+/*Footer */
+/* ***************************************************************** */
+#footer {
+	margin: 0;
+	padding: 20px;
+	background-color: #F1EFEF;
+}
+#footer ul {
+	list-style: none;
+	text-align: center;
+	margin: 0;
+	margin-bottom: 1em;
+	padding: 0;
+}
+#footer li {
+	display: inline;
+	margin: 0;
+	padding: 0 1em;
+	border-left: 1px solid black;
+}
+#footer li:first-child {
+	border-left: none;
+}
+
+/* CES Footer (copyright and links)
+=====================================================================*/
+
+#cesThemeFooter {
+	clear: both;
+	width: 800px;
+	height: 43px;
+	padding: 0 16px;
+	padding-top: 2px;
+	margin: 0 auto 0 auto;
+	position:relative;
+	color: #517EAD;
+	font: 11px Arial, Helvetica, sans-serif;
+}
+#cesThemeFooter a {
+	color: #517EAD;
+	text-decoration: none;
+}
+#cesThemeFooter a:hover {
+	text-decoration: underline;
+}
+
+#cesThemeFooter #copyright {
+	float:left;
+	width: 470px;
+	height: 18px;
+	padding: 4px 0 0 75px;
+	margin: 0;
+	margin-top: 0.5em;
+	background-image: url(images/copyright_logo.gif);
+	background-repeat:no-repeat;
+	text-align: left;
+}
+
+
+
+#cesThemeFooter ul#footerLinks {
+	float: right;
+	width: 220px;
+	height: 18px;
+	padding: 4px 0 0 0;
+	margin: 0;
+	margin-top: 0.5em;
+}
+
+#cesThemeFooter ul#footerLinks li {
+	float: right;
+	list-style: none;
+	margin: 0;
+	margin-left: 1em;
+}
+
+
+#footerlinks2 {
+	list-style: none;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	padding-top: 1em;
+}
+#footerlinks2 li {
+	display: inline;
+	margin: 0;
+	padding: 0 1em;
+}
+
