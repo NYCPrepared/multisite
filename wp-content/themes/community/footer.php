@@ -1,6 +1,6 @@
 			<footer class="footer" role="contentinfo">
 
-				<div id="inner-footer" class="wrap clearfix">
+				<div id="inner-footer" class="wrap">
 
 					<section class="global site-meta first">
 						<h2 class="footer-logo"><a class="logo-NYCP" href="http://nycprepared.org">NYC<span>Prepared</span></a><span class="tagline-NYCP"><?php bloginfo('description'); ?></span></h2>
@@ -30,11 +30,14 @@
 					
 				</div>
 
-				<nav role="navigation clearfix">
+				<nav class="footer-nav" role="navigation clearfix">
 					<?php bones_footer_links(); ?>
 				</nav>
 
-				<div class="source-org copyright clearfix">Copyleft <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?></div>
+				<div class="footer-source">
+				    <h6 class="copyright wrap">Copyleft <?php echo date('Y'); ?> <?php bloginfo( 'name' ); ?>
+				</div>
+				
 			</footer>
 
 		</div>

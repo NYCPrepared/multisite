@@ -45,6 +45,7 @@
     @include font-size(13);
     vertical-align: middle;
     white-space: nowrap;
+    color: $gray5;
 }
 
 
@@ -72,13 +73,17 @@
     .rss a {@include flip-button($orange); @include font-icon-base($family:"entypo"); @extend %entypo-rss;}
 }
 
-.copyright {
-    @include font-size(10);
-    @extend %caps;
+.footer-source {
     background: $gray7;
     padding: 15px;
     clear: both;
-    text-align: center;
+}
+
+.copyright {
+    @include font-size(10);
+    @extend %caps;
+    color: $gray4;
+    max-width: 1200px;
 	@include breakpoint(medium) {@include font-size(12);}
 }
 
@@ -123,6 +128,6 @@
 
 #nav_menu-5 li:first-child {@extend %ios7-sites;}
 #nav_menu-4 li:first-child {@extend %ios7-book;}
-#nav_menu-3 li:first-child {@extend %ios7-truck; position: relative; top: -5px;}
 #nav_menu-2 li:first-child {@extend %ios7-data;}
+#nav_menu-3 li:first-child {@extend %ios7-truck; &:before {position: relative; top: -5px;}}
 
