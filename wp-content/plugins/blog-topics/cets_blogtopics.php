@@ -88,10 +88,10 @@ class cets_blog_topics  {
 			// if not create the topic table
 	    	$table_topic_query = "CREATE TABLE $this->table_topic (
 						      id int(11) unsigned NOT NULL auto_increment,
-						      topic_name VARCHAR(55) NOT NULL default '',
+						      topic_name VARCHAR(140) NOT NULL default '',
 							  active int(1) unsigned NOT NULL default 1,
-							  slug VARCHAR(55) NOT NULL default '',
-							  description VARCHAR(4000) NOT NULL default '',
+							  slug VARCHAR(140) NOT NULL default '',
+							  description VARCHAR(8000) NOT NULL default '',
 							  thumbnail VARCHAR(200) NOT NULL default '',
 							  banner VARCHAR(200) NOT NULL default '',
 							  featured Integer default 0,
@@ -152,8 +152,8 @@ class cets_blog_topics  {
 			$results = $wpdb->query($alter_rel);
 			
 			$alter_query = "Alter table $this->table_topic 
-			ADD column slug VARCHAR(55) NOT NULL default '',
-			ADD column description VARCHAR(4000) NOT NULL default '',
+			ADD column slug VARCHAR(140) NOT NULL default '',
+			ADD column description VARCHAR(8000) NOT NULL default '',
 			ADD column thumbnail VARCHAR(200) NOT NULL default '',
 			ADD column banner VARCHAR(200) NOT NULL default '',
 			ADD column featured INTEGER default 0 ";
@@ -719,18 +719,18 @@ class cets_blog_topics  {
     {
     	global $wpdb;
     	
-    	echo "<table><thead><tr><th>Topic ID</th><th valign='top'>Site Topic:</th><th>Slug</th><th>Description<th>Edit/Add</th><th>Delete</th></tr></thead>";
+    	echo "<table><thead><tr><th>ID</th><th valign='top'>Name</th><th>Slug</th><th>Description</th></tr></thead>";
     	foreach ( $this->get_topics() as $topic )  {
 			
     		echo "<tbody><tr valign='top'><form name='catupdate' method='post'><td align='center'>" . $topic->id . "</td>";
-			echo("<td valign='top'><input type='text' name='topic' value='" . $topic->topic_name . "'>");
-			echo("<td valign='top'><input type='text' name='slug' value='" . $topic->slug . "'>");
-			echo("<td valign='top'><textarea name='description' cols='40' rows='5'>" . $topic->description . "</textarea>" );
+			echo("<td valign='top'><input type='text' maxlength='140' name='topic' value='" . $topic->topic_name . "'><br />140 chars max");
+			echo("<td valign='top'><input type='text' maxlength='140' name='slug' value='" . $topic->slug . "'><br />140 chars max");
+			echo("<td valign='top'><textarea name='description' maxlength='8000' cols='40' rows='5'>" . $topic->description . "</textarea><br />8000 chars max" );
 			echo("<input type='hidden' name='topic_id' value='" . $topic->id . "'>");
-			echo("<td  valign='top'><input type='hidden' name='action' value='edit'> <input type='submit' class='button' name='edit' value='Edit'> </td>");
+			echo("<td  valign='top'><input type='hidden' name='action' value='edit'> <input type='submit' class='button' name='edit' value='Update'> </td>");
 			echo("</form><td valign='top'>");
 			if ($topic->id != 1) {
-				echo "<form name='deletecat' method='post'><input type='hidden' name='action' value='delete'><input type='hidden' name='topicid' value='" . $topic->id . "'><input type='submit' class='button alert' value='Delete'></form>";
+				echo "<form name='deletecat' method='post' onsubmit='return confirm(\"Are you sure you want to delete this topic?\");'><input type='hidden' name='action' value='delete'><input type='hidden' name='topicid' value='" . $topic->id . "'><input type='submit' class='button alert' value='Delete'></form>";
 			}
 			else {
 				echo "Topic 1 can not be deleted.";
@@ -738,9 +738,10 @@ class cets_blog_topics  {
 			
 			echo "</td></tr>";
     	}
-    	echo("<tr valign='top'><form name='catadd' method='post'><td>&nbsp;</td><td><input type='text' name='topic' value=''><input type='hidden' name='action' value='add'></td>");
-		echo("<td><input type='text' name='slug' value=''></td>");
-		echo("<td><textarea name='description' cols='40' rows='5'></textarea>");
+    	echo("<tr><th>ADD NEW</th><th valign='top'>Name</th><th>Slug</th><th>Description</th></tr>");
+    	echo("<tr valign='top'><form name='catadd' method='post'><td>&nbsp;</td><td><input type='text' maxlength='140' name='topic' value=''><br />140 chars max<input type='hidden' name='action' value='add'></td>");
+		echo("<td><input type='text' maxlength='140' name='slug' value=''><br />140 chars max</td>");
+		echo("<td><textarea name='description' cols='40' rows='5'></textarea><br />8000 chars max</td>");
 		echo("<td><input type='submit' class='button' value='Add'></form></td></tr></tbody></table>");
     }
 	

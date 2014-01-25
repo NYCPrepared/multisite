@@ -721,19 +721,19 @@ class cets_blog_locations
     {
     	global $wpdb;
     	
-    	echo "<table><thead><tr><th>Location ID</th><th valign='top'>Site Location:</th><th>Slug</th><th>Description<th>Edit/Add</th><th>Delete</th></tr></thead>";
+    	echo "<table><thead><tr><th>ID</th><th valign='top'>Name</th><th>Slug</th><th>Description</th></tr></thead>";
     	foreach ( $this->get_locations() as $location )  {
 			
     		echo "<tbody><tr valign='top'><form name='catupdate' method='post'><td align='center'>" . $location->id . "</td>";
-			echo("<td valign='top'><input type='text' name='location' value='" . $location->location_name . "'>");
-			echo("<td valign='top'><input type='text' name='slug' value='" . $location->slug . "'>");
-			echo("<td valign='top'><textarea name='description' cols='40' rows='5'>" . $location->description . "</textarea>" );
+			echo("<td valign='top'><input type='text' maxlength='140' name='location' value='" . $location->location_name . "'><br />140 chars max");
+			echo("<td valign='top'><input type='text' maxlength='140' name='slug' value='" . $location->slug . "'><br />140 chars max");
+			echo("<td valign='top'><textarea name='description' cols='40' rows='5'>" . $location->description . "</textarea><br />8000 chars max" );
 
 			echo("<input type='hidden' name='location_id' value='" . $location->id . "'>");
-			echo("<td  valign='top'><input type='hidden' name='action' value='edit'> <input type='submit' class='button' name='edit' value='Edit'> </td>");
+			echo("<td  valign='top'><input type='hidden' name='action' value='edit'> <input type='submit' class='button' name='edit' value='Update'> </td>");
 			echo("</form><td valign='top'>");
 			if ($location->id != 1) {
-				echo "<form name='deletecat' method='post'><input type='hidden' name='action' value='delete'><input type='hidden' name='locationid' value='" . $location->id . "'><input type='submit' class='button alert' value='Delete'></form>";
+				echo "<form name='deletecat' method='post' onsubmit='return confirm(\"Are you sure you want to delete this location?\");'><input type='hidden' name='action' value='delete'><input type='hidden' name='locationid' value='" . $location->id . "'><input type='submit' class='button alert'  value='Delete'></form>";
 			}
 			else {
 				echo "Location 1 can not be deleted.";
@@ -741,9 +741,10 @@ class cets_blog_locations
 			
 			echo "</td></tr>";
     	}
-    	echo("<tr valign='top'><form name='catadd' method='post'><td>&nbsp;</td><td><input type='text' name='location' value=''><input type='hidden' name='action' value='add'></td>");
-		echo("<td><input type='text' name='slug' value=''></td>");
-		echo("<td><textarea name='description' cols='40' rows='5'></textarea>");
+    	echo("<tr><th>ADD NEW</th><th valign='top'>Name</th><th>Slug</th><th>Description</th></tr>");
+    	echo("<tr valign='top'><form name='catadd' method='post'><td>&nbsp;</td><td><input type='text' maxlength='140' name='location' value=''><br />140 chars max<input type='hidden' name='action' value='add'></td>");
+		echo("<td><input type='text' maxlength='140' name='slug' value=''><br />140 chars max</td>");
+		echo("<td><textarea name='description' cols='40' rows='5'></textarea><br />8000 chars max</td>");
 		echo("<td><input type='submit' class='button' value='Add'></form></td></tr></tbody></table>");
     }
 	

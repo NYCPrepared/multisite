@@ -687,18 +687,18 @@ class glo_blog_networks {
 	 function get_networks_table() {
     	global $wpdb;
     	
-    	echo "<table><thead><tr><th>Network ID</th><th valign='top'>Site Network:</th><th>Slug</th><th>Description<th>Edit/Add</th><th>Delete</th></tr></thead>";
+    	echo "<table><thead><tr><th>ID</th><th valign='top'>Name</th><th>Slug</th><th>Description</th></tr></thead>";
     	foreach ( $this->get_networks() as $network )  {
 			
     		echo "<tbody><tr valign='top'><form name='catupdate' method='post'><td align='center'>" . $network->id . "</td>";
-			echo("<td valign='top'><input type='text' name='network' value='" . $network->network_name . "'><br />140 chars max");
-			echo("<td valign='top'><input type='text' name='slug' value='" . $network->slug . "'><br />140 chars max");
+			echo("<td valign='top'><input type='text' maxlength='140' name='network' value='" . $network->network_name . "'><br />140 chars max");
+			echo("<td valign='top'><input type='text' maxlength='140' name='slug' value='" . $network->slug . "'><br />140 chars max");
 			echo("<td valign='top'><textarea name='description' cols='40' rows='5'>" . $network->description . "</textarea><br />8000 chars max" );
 			echo("<input type='hidden' name='network_id' value='" . $network->id . "'>");
-			echo("<td  valign='top'><input type='hidden' name='action' value='edit'> <input type='submit' class='button' name='edit' value='Edit'> </td>");
+			echo("<td  valign='top'><input type='hidden' name='action' value='edit'> <input type='submit' class='button' name='edit' value='Update'> </td>");
 			echo("</form><td valign='top'>");
 			if ($network->id != 1) {
-				echo "<form name='deletecat' method='post'><input type='hidden' name='action' value='delete'><input type='hidden' name='networkid' value='" . $network->id . "'><input type='submit' class='button alert' value='Delete'></form>";
+				echo "<form name='deletecat' method='post' onsubmit='return confirm(\"Are you sure you want to delete this network?\");'><input type='hidden' name='action' value='delete'><input type='hidden' name='networkid' value='" . $network->id . "'><input type='submit' class='button alert' value='Delete'></form>";
 			}
 			else {
 				echo "Network 1 can not be deleted.";
@@ -706,9 +706,10 @@ class glo_blog_networks {
 			
 			echo "</td></tr>";
     	}
-    	echo("<tr valign='top'><form name='catadd' method='post'><td>&nbsp;</td><td><input type='text' name='network' value=''><input type='hidden' name='action' value='add'></td>");
-		echo("<td><input type='text' name='slug' value=''></td>");
-		echo("<td><textarea name='description' cols='40' rows='5'></textarea>");
+    	echo("<tr><th>ADD NEW</th><th valign='top'>Name</th><th>Slug</th><th>Description</th></tr>");
+    	echo("<tr valign='top'><form name='catadd' method='post'><td>&nbsp;</td><td><input type='text' maxlength='140' name='network' value=''><br />140 chars max<input type='hidden' name='action' value='add'></td>");
+		echo("<td><input type='text' maxlength='140' name='slug' value=''><br />140 chars max</td>");
+		echo("<td><textarea name='description' cols='40' rows='5'></textarea><br />8000 chars max</td>");
 		echo("<td><input type='submit' class='button' value='Add'></form></td></tr></tbody></table>");
     }
 	
@@ -813,7 +814,7 @@ class glo_blog_networks {
 			
 		?>
         <div class="wrap">
-        <h2>Update/Add Site Networks</h2>
+        <h2>Manage Site Networks</h2>
           
             <?php
 			if ($updated){
