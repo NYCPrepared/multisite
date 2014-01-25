@@ -110,8 +110,8 @@ class cets_blog_topics  {
 			
 			//insert topics & slugs into database - if you want more default topics, add them here before running the plugin
 		    $topics = array(
-				array(topic_name => 'Uncategorized',
-					  slug => 'uncategorized')	  
+				array(topic_name => 'General',
+					  slug => 'general')	  
 					  );
 		    
 		   

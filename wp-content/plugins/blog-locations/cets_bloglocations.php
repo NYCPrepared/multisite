@@ -92,7 +92,7 @@ class cets_blog_locations
 						      location_name VARCHAR(55) NOT NULL default '',
 							  active int(1) unsigned NOT NULL default 1,
 							  slug VARCHAR(55) NOT NULL default '',
-							  description LONGTEXT(4000) NOT NULL default '',
+							  description VARCHAR(4000) NOT NULL default '',
 							  thumbnail VARCHAR(200) NOT NULL default '',
 							  banner VARCHAR(200) NOT NULL default '',
 							  featured Integer default 0,
@@ -154,7 +154,7 @@ class cets_blog_locations
 			
 			$alter_query = "Alter table $this->table_location 
 			ADD column slug VARCHAR(55) NOT NULL default '',
-			ADD column description LONGTEXT(4000) NOT NULL default '',
+			ADD column description VARCHAR(4000) NOT NULL default '',
 			ADD column thumbnail VARCHAR(200) NOT NULL default '',
 			ADD column banner VARCHAR(200) NOT NULL default '',
 			ADD column featured INTEGER default 0 ";

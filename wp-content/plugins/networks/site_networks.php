@@ -869,11 +869,7 @@ class glo_blog_networks {
 	function site_admin_notice() {
 
 		global $wp_db_version, $blog_id;
-
 		$noticeon = get_option('glo_notification');
-
-		
-
 		
 
 		// if a blog has never set the notice status, default it to turned on
@@ -881,14 +877,9 @@ class glo_blog_networks {
 		if (strlen($noticeon) != 1) {
 
 			$noticeon = 1;
-
 			update_option('glo_notification', 1);
 
 		}
-
-		
-
-			
 
 		// don't show this notice on the page where you change the setting or if the notice has been turned off
 
