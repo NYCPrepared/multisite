@@ -10,15 +10,15 @@
 
 .footer-logo {
     margin: 0;
+    line-height: 30px;
 }
 
 .logo-NYCP {
     @include font-size(22);
     @extend %condensed;
-    line-height: 30px;
     white-space: nowrap;
     display: inline-block; 
-    margin-right: 10px;
+    margin-right: 20px;
     color: $white;
     span {
         display: inline-block;
@@ -44,6 +44,7 @@
     @extend %h6;
     @include font-size(13);
     vertical-align: middle;
+    white-space: nowrap;
 }
 
 
