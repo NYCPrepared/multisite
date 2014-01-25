@@ -848,7 +848,7 @@ class cets_blog_topics  {
 			
 		?>
         <div class="wrap">
-        <h2>Update/Add Site Topics</h2>
+        <h2>Manage Site Topics</h2>
           
             <?php
 			if ($updated){

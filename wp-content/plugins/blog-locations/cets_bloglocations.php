@@ -851,7 +851,7 @@ class cets_blog_locations
 			
 		?>
         <div class="wrap">
-        <h2>Update/Add Site Locations</h2>
+        <h2>Manage Site Locations</h2>
           
             <?php
 			if ($updated){
