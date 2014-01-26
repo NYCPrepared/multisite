@@ -172,9 +172,7 @@
 								// WP_Query arguments
 								$recentargs = array (
 									'post_type'              => 'post',
-									'posts_per_page'         => '2',
 									'ignore_sticky_posts'    => false,
-									'paged' => $paged,
 								);
 
 								// The Query
