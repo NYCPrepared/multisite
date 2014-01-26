@@ -67,12 +67,18 @@
 										foreach ($sites as $site) {
 											$site_id = $site['blog_id'];
 											$site_details = get_blog_details($site_id);
+											$site_options = get_blog_option($site_id, 'theme_mods_community-group');
+											$site_image = $site_options['community_site_image'];
+
+											// echo "<pre>";
+											// var_dump($site_options);
+											// echo "</pre>";
 											if (function_exists('cets_get_blog_location_name')) { 
 												$site_location = cets_get_blog_location_name($site_id);
 											}
 										?>
 										<li>
-											<div class="site-image"></div>
+											<div class="site-image"><?php if($site_image) { ?><img src="<?php echo $site_image; ?>" class="site-image"><?php } ?></div>
 											<h3 class="site-title"><a href="<?php echo $site_details->siteurl; ?>"><?php echo $site_details->blogname; ?></a></h3>
 											<div class="meta site-location"><?php echo $site_location; ?></div>
 
@@ -86,13 +92,7 @@
 
 								<footer class="article-footer">
 
-									<?php
-										
-										// echo "<pre>";
-										// var_dump($site_location);
-										// echo "</pre>";
-										
-									?>
+									<?php ?>
 
 								</footer>
 
