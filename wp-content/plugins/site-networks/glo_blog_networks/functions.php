@@ -1,4 +1,9 @@
 <?php
+/*
+Plugin Name: Helper functions for glo_blog_networks
+Text Domain: site-networks
+*/
+
 // -------------------------------------------------------------------------//
 // Helper functions used in multiple files within the glo_blognetworks plugin.
 // -------------------------------------------------------------------------//

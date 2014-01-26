@@ -5,7 +5,8 @@ Plugin URI:
 Description: Adds a sidebar widget to display Blog's Network and/or Recent Posts
 Version: 1.0
 Author: Deanna Schneider
-Copyright:
+Text Domain: site-networks
+
 
     Copyright 2009 CETS
 

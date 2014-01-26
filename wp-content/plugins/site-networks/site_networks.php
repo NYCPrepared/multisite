@@ -7,6 +7,7 @@ Description: Plug-in to organize sites in Network groupings. Based on Site Netwo
 Author: Glocal Coop
 Version: 1.0
 Author URI: http://glocal.coop
+Text Domain: site-networks
 
 Copyright:
 

@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name:   Miscellaneous actions options for glo_blog_networks
-
+Plugin Name: Miscellaneous actions options for glo_blog_networks
+Text Domain: site-networks
 */
 
 

@@ -5,7 +5,7 @@ Plugin URI:
 Description: Adds a sidebar widget to display Blog's Network
 Version: 2.0
 Author: Deanna Schneider
-Copyright:
+Text Domain: site-networks
 
     
 
