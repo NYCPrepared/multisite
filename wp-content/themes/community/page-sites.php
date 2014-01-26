@@ -13,6 +13,7 @@
 								<header class="article-header">
 
 									<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
+									<?php glo_get_networks_html(true, false, true, true) ?>	
 
 									<div class="filters">
 										<!-- Dummy Filters -->

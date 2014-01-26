@@ -58,40 +58,6 @@ require_once( 'library/recent-network-posts.php' ); // Required to display recen
 
 function community_theme_customize_register( $wp_customize ) {
 	
-	// $colors = array();
-	// $colors[] = array(
-	// 	'slug'=>'content_text_color', 
-	// 	'default' => '#333',
-	// 	'label' => __('Content Text Color', 'community_theme')
-	// );
-	// $colors[] = array(
-	// 	'slug'=>'content_link_color', 
-	// 	'default' => '#88C34B',
-	// 	'label' => __('Content Link Color', 'community_theme')
-	// );
-
-	// foreach( $colors as $color ) {
-	// 	// SETTINGS
-	// 	$wp_customize->add_setting(
-	// 		$color['slug'], array(
-	// 			'default' => $color['default'],
-	// 			'type' => 'option', 
-	// 			'capability' => 
-	// 			'edit_theme_options'
-	// 		)
-	// 	);
-	// 	// CONTROLS
-	// 	$wp_customize->add_control(
-	// 		new WP_Customize_Color_Control(
-	// 			$wp_customize,
-	// 			$color['slug'], 
-	// 			array('label' => $color['label'], 
-	// 			'section' => 'colors',
-	// 			'settings' => $color['slug'])
-	// 		)
-	// 	);
-	// }
-
 	$wp_customize->remove_section( 'background_image' );
 	$wp_customize->remove_section( 'colors' );
 

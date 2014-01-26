@@ -1,6 +1,14 @@
-<?php get_header(); ?>
+<?php
+// Template: Front Page
 
- <?php $sites = wp_get_sites('offset=1'); ?>
+// This template makes heavy use of the Events Manager and Options Framework plugins and the recent-network-posts function (included in with this theme in recent-network-posts.php).
+// Without Events Manager, the events module (module 3) will not appear.
+// Without Options Framework, some module display options will need to be made directly in this template
+// Without the recent-network-posts function, the network-wide posts (module 1 and module 2) will not appear
+
+?>
+
+<?php get_header(); ?>
 
 			<div id="content">
 
@@ -26,7 +34,6 @@
 								$featuredposts = new WP_Query( array( 'post__in' => $sticky, 'ignore_sticky_posts' => 1 ) );
 
 								while ($featuredposts->have_posts()) : $featuredposts->the_post();
-
 									$permalink = get_permalink();
 									$title = get_the_title();
 									$imagearg = array(
@@ -56,12 +63,16 @@
 					</section>
 
 					<section class="home-modules clearfix">
-						<?php if(function_exists('recent_network_posts')) { // Check if display is selected in theme options ?>
+						<?php if ( is_multisite() ) { // Check to see if multisite is active. If not, display a recent posts and events module for this site. ?> 
+						<?php $sites = wp_get_sites('offset=1'); // Set up variable that holds array of sites ?>
+						<?php
+						// Check to see if recent_network_post function exists. If not don't display this module.
+						if(function_exists('recent_network_posts')) { ?>
 						<article id="highlights-module" class="module row highlights clearfix">
-							<h2 class="module-heading"><?php echo of_get_option( 'module_1_heading', 'Volunteers Needed' ); ?></h2>
+							<h2 class="module-heading">Volunteers Needed</h2>
 							<ul class="highlights-list">
 								<?php 
-									$post_cat = of_get_option( 'module_1_post_category', 'Volunteers' );
+									$post_cat = 'Volunteers'; // You can change post category here
 									$volunteer_posts = recent_network_posts($numberposts = 5, $postsperblog = 3, $postcat = $post_cat);
 									foreach ($volunteer_posts as $post) {
 										$title = $post->post_title;
@@ -81,68 +92,52 @@
 							</ul>
 						</article>
 						<?php } ?>
-						<?php if(of_get_option('module_2')) { // Check if display is selected in theme options ?>
-							<?php if(function_exists('recent_network_posts')) { ?>
-							<article id="news-module" class="module row news clearfix">
-								<h2 class="module-heading">
-									<?php if(of_get_option('module_2_link')) { ?><a href="<?php echo get_page_link(of_get_option('module_2_link', '/news/')); ?>"><?php } else { ?><a href="/news/"><?php } ?>
-									<?php echo of_get_option( 'module_2_heading', 'News' ); ?>
-									</a>
-								</h2>
-								<ul class="news-list">
-									<?php 
-										$exclude_cat = of_get_option( 'module_1_post_category', 'Volunteers' );
-										$recent_posts = recent_network_posts($numberposts = 5, $excludepostcat = $exclude_cat);
-										foreach ($recent_posts as $post) { 
-											$title = $post->post_title;
-											$content = $post->post_content;
-											$permalink = $post->post_url;
-											$post_excerpt = recent_posts_excerpt($count = 20, $content, $permalink, $excerpt_trail = '... ');
-											$date = $post->post_date;
-										?>
-									<li>
-										<h3 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h3>
-										<p class="post-excerpt"><?php echo $post_excerpt; ?>
-										<span class="meta post-date"><?php echo date_i18n(get_option('date_format') ,strtotime($date));?></span></p>
-									</li>
-									<?php } ?>
+						<?php 
+						// Check to see if recent_network_post function exists. If not don't display this module.
+						if(function_exists('recent_network_posts')) { ?>
+						<article id="news-module" class="module row news clearfix">
+							<h2 class="module-heading"><a href="/news/">News</a></h2>
+							<ul class="news-list">
+								<?php 
+									$exclude_cat = $post_cat; // Set to exclude post category in previous module. Change to whatever you'd like
+									$recent_posts = recent_network_posts($numberposts = 5, $excludepostcat = $exclude_cat);
+									foreach ($recent_posts as $post) { 
+										$title = $post->post_title;
+										$content = $post->post_content;
+										$permalink = $post->post_url;
+										$post_excerpt = recent_posts_excerpt($count = 20, $content, $permalink, $excerpt_trail = '... ');
+										$date = $post->post_date;
+									?>
+								<li>
+									<h3 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h3>
+									<p class="post-excerpt"><?php echo $post_excerpt; ?>
+									<span class="meta post-date"><?php echo date_i18n(get_option('date_format'),strtotime($date));?></span></p>
+								</li>
 								<?php } ?>
 							</ul>
 						</article>
 						<?php } ?>
-						<?php if(of_get_option('module_3')) { // Check if display is selected in theme options ?>
-							<?php // check for plugin using plugin name
-							if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
-							<article id="events-module" class="module row events clearfix">
-								<h2 class="module-heading">
-									<?php if(of_get_option('module_3_link')) { ?><a href="<?php echo get_page_link(of_get_option('module_3_link', '/events/')); ?>"><?php } else { ?><a href="/events/"><?php } ?>
-									<?php echo of_get_option( 'module_3_heading', 'Events' ); ?>
-									</a>
-								</h2>
-								<ul class="events-list">
-									<?php
-									$events = EM_Events::output(array('limit'=>5, 
-										'format'=>'<li>
-										<h6 class="event-start">
-	                				        <time class="event-month" datetime="#M">#M</time>
-	                				        <time class="event-date" datetime="#j">#j</time>
-	                				        <time class="event-day" datetime="#D">#D</time>
-	                					</h6>
-										<h3 class="post-title event-title">#_EVENTLINK</h3>
-										</li>'));?>
-									<?php echo $events; ?>
-								</ul>
-							</article>
-							<?php } ?>
+						<?php // Check to see if Events Manager is active. If not don't display this module.
+						if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
+						<article id="events-module" class="module row events clearfix">
+							<h2 class="module-heading"><a href="/events/">Events</a></h2>
+							<ul class="events-list">
+								<?php
+								$events = EM_Events::output(array('limit'=>5, 
+									'format'=>'<li>
+									<h6 class="event-start">
+                				        <time class="event-month" datetime="#M">#M</time>
+                				        <time class="event-date" datetime="#j">#j</time>
+                				        <time class="event-day" datetime="#D">#D</time>
+                					</h6>
+									<h3 class="post-title event-title">#_EVENTLINK</h3>
+									</li>'));?>
+								<?php echo $events; ?>
+							</ul>
+						</article>
 						<?php } ?>
-						<?php if(of_get_option('module_4')) { // Check if display is selected in theme options ?> 
 						<article id="sites-module" class="module row sites clearfix">
-							<h2 class="module-heading">
-								<?php get_page_link(of_get_option('module_4_link')); ?>
-								<?php if(of_get_option('module_4_link')) { ?><a href="<?php echo get_page_link(of_get_option('module_4_link', '/sites/')); ?>"><?php } else { ?><a href="/sites"><?php } ?>
-								<?php echo of_get_option( 'module_4_heading', 'Sites' ); ?>
-								</a>
-							</h2>
+							<h2 class="module-heading"><a href="/sites/">Sites</a></h2>
 							<ul class="sites-list">
 
 							<?php
@@ -162,11 +157,59 @@
 								<li id="site-promo">
 									<h3 class="post-title">Join the community</h3>
 									<div class="promo-icons"><i></i><i></i><i></i><i></i></div>
-									<a class="button" href="/register" title="Create a site">Create a site</a>
+									<a class="button" href="/register" title="Create a site">Create a Site</a>
 								</li>
 
 							</ul>
 						</article>
+
+						<?php } else { // If multisite isn't enabled, show a recent posts module for the site ?>
+
+						<article id="news-module" class="module row news clearfix">
+							<h2 class="module-heading"><a href="/news/">News</a></h2>
+							<ul class="news-list">
+								<?php 
+								// WP_Query arguments
+								$recentargs = array (
+									'post_type'              => 'post',
+									'posts_per_page'         => '2',
+									'ignore_sticky_posts'    => false,
+									'paged' => $paged,
+								);
+
+								// The Query
+								$recentposts = new WP_Query($recentargs);
+								?>
+								<?php while ($recentposts->have_posts()) : $recentposts->the_post(); ?>
+								<li>
+									<h3 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+									<p class="post-excerpt"><?php the_excerpt(); ?>
+									<span class="meta post-date"><?php the_date(); ?><?php// echo date_i18n(get_option('date_format'),strtotime($date));?></span></p>
+								</li>
+								<?php endwhile; ?>
+							</ul>
+						</article>
+						<?php // Check to see if Events Manager is active. If not don't display this module.
+						if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
+						<article id="events-module" class="module row events clearfix">
+							<h2 class="module-heading"><a href="/events/">Events</a></h2>
+							<ul class="events-list">
+								<?php
+								$events = EM_Events::output(array('limit'=>5, 
+									'format'=>'<li>
+									<h6 class="event-start">
+                				        <time class="event-month" datetime="#M">#M</time>
+                				        <time class="event-date" datetime="#j">#j</time>
+                				        <time class="event-day" datetime="#D">#D</time>
+                					</h6>
+									<h3 class="post-title event-title">#_EVENTLINK</h3>
+									</li>'));?>
+								<?php echo $events; ?>
+							</ul>
+						</article>
+						<?php } ?>
+
+
 						<?php } ?>
 
 						<?php

@@ -272,8 +272,6 @@ function optionsframework_options() {
 		'id' => 'site_banner_image',
 		'type' => 'upload');
 
-
-
 	$options[] = array(
 		'name' => __('Select a Category', 'options_check'),
 		'desc' => __('Passed an array of categories with cat_ID and cat_name', 'options_check'),
