@@ -698,7 +698,7 @@ class glo_blog_networks {
 			echo("<td  valign='top'><input type='hidden' name='action' value='edit'> <input type='submit' class='button' name='edit' value='Update'> </td>");
 			echo("</form><td valign='top'>");
 			if ($network->id != 1) {
-				echo "<form name='deletecat' method='post' onsubmit='return confirm(\"Are you sure you want to delete this network?\");'><input type='hidden' name='action' value='delete'><input type='hidden' name='networkid' value='" . $network->id . "'><input type='submit' class='button alert' value='Delete'></form>";
+				echo "<form name='deletecat' method='post' onsubmit='return confirm(\"Are you sure you want to delete this network?\");'><input type='hidden' name='action' value='delete'><input type='hidden' name='networkid' value='" . $network->id . "'><input type='submit' class='button alert submitdelete deletion' value='Delete'></form>";
 			}
 			else {
 				echo "Network 1 can not be deleted.";
@@ -710,7 +710,7 @@ class glo_blog_networks {
     	echo("<tr valign='top'><form name='catadd' method='post'><td>&nbsp;</td><td><input type='text' maxlength='140' name='network' value=''><br />140 chars max<input type='hidden' name='action' value='add'></td>");
 		echo("<td><input type='text' maxlength='140' name='slug' value=''><br />140 chars max</td>");
 		echo("<td><textarea name='description' cols='40' rows='5'></textarea><br />8000 chars max</td>");
-		echo("<td><input type='submit' class='button' value='Add'></form></td></tr></tbody></table>");
+		echo("<td><input type='submit' class='button add new' value='Add'></form></td></tr></tbody></table>");
     }
 	
 	
