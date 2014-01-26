@@ -33,7 +33,7 @@ function glo_bn_listfind($list,$value,$delimiter=",")
 	return 0;
 }
 
-function glo_bn_toggle_blog_exclusion($id, $flag = 'e') {
+function glo_bn_toggle_blog_exclusion($id, $flag = 'i') {
 	$currentlist = get_site_option('glo_blognetworks_excluded_blogs');
 	$newlist = "0";
 	$currentstatus = glo_bn_listfind($currentlist, $id, ","); // 0 == it is not excluded; 1 == it is excluded
