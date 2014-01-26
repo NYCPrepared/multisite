@@ -86,7 +86,7 @@ LIST OF PARAMETERS
 */
 
 
-function recent_network_posts($numberposts = 25, $postsperblog = 3, $postcat = '', $excludepostcat = '', $imagesize ='thumbnail') { //Start Function
+function recent_network_posts($numberposts = '25', $postsperblog = '3', $postcat = null, $excludepostcat = null, $imagesize ='thumbnail') { //Start Function
 
     global $wpdb;
 
@@ -166,6 +166,15 @@ function recent_network_posts($numberposts = 25, $postsperblog = 3, $postcat = '
                     $all_thumbnails[$post->guid] = '';   
                 }
 
+                $post_metas = get_post_meta($post->ID);
+                $all_meta[$post->guid] = array();
+                foreach($post_metas as $metakey => $metavalue) {
+                    $all_meta[$post->guid][$metakey] = $metakey;
+                    foreach ($metavalue as $meta) {
+                        $all_meta[$post->guid][$metakey] = $meta;
+                    }
+                }
+
                 // Get categories for each post and put into $all_categories array
                 $post_categories = wp_get_post_categories($post->ID);
                 $all_categories[$post->guid] = array();
@@ -235,7 +244,8 @@ function recent_network_posts($numberposts = 25, $postsperblog = 3, $postcat = '
             $wp_post->post_categories = $all_categories[$wp_post->guid];
             $wp_post->post_tags = $all_tags[$wp_post->guid];
             $wp_post->post_format = $all_post_formats[$wp_post->guid];
-            $wp_post->syndication_link = $all_syndication_details[$wp_post->guid];
+            // $wp_post->syndication_link = $all_syndication_details[$wp_post->guid];
+            $wp_post->meta = $all_meta[$wp_post->guid];
             $blog_posts[$wp_post->guid] = $wp_post;
 
         $i++;

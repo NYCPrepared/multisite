@@ -51,10 +51,11 @@ require_once( 'library/bones.php' ); // if you remove this, bones will break
 require_once( 'library/recent-network-posts.php' ); // Required to display recent posts
 // require_once( 'customize.php' ); // Required to display recent posts
 
+/************* REWRITE RULES FOR USE WITH NETWORK SITES PLUGIN *****************/
+if ( is_plugin_active('site_networks/site_networks.php') ) { 
+	include_once dirname(__FILE__) . '/rewrites.php';
+}
 
-// if ( is_plugin_active('options-framework/options-framework.php') ) { 
-// 	require_once( 'library/community-options.php' ); // Required to display recent posts
-// }
 
 function community_theme_customize_register( $wp_customize ) {
 	
@@ -364,9 +365,6 @@ function bones_wpsearch($form) {
 	</form>';
 	return $form;
 } // don't remove this bracket!
-
-//include the rewrites
-include_once dirname(__FILE__) . '/rewrites.php';
 
 
 /************* CUSTOM METABOX *****************/

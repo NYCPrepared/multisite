@@ -36,17 +36,63 @@
 								while ($featuredposts->have_posts()) : $featuredposts->the_post();
 									$permalink = get_permalink();
 									$title = get_the_title();
+									// $post_meta = get_post_meta($post->ID, 'community_volunteer_location', true);
 									$imagearg = array(
 										'title'	=> trim(strip_tags($title)),
 										'alt'	=> trim(strip_tags($title))
 									);
 								?>
+								<?php
+								// $post_metas = get_post_meta($post->ID);
+				    //             $all_meta[$post->guid] = array();
+				    //             foreach($post_metas as $metakey => $metavalue) {
+				    //                 $all_meta[$post->guid][$metakey] = $metakey;
+				    //                 foreach ($metavalue as $meta) {
+				    //                     $all_meta[$post->guid][$metakey] = $meta;
+				    //                 }
+				    //             }
+								// echo "<pre>";
+								// var_dump($all_meta);
+								// echo "</pre>";
+
+								// $post_metas = get_post_meta($post->ID);
+								// foreach($post_metas as $metakey => $metavalue) {
+								// 	echo 'key: ' . $metakey . '<br />';
+
+								// 	foreach ($metavalue as $meta) {
+								// 		echo 'value: ' .  $meta . '<br />';
+								// 	}
+								// 	// echo "<pre>";
+								// 	// var_dump($metakey);
+								// 	// echo "</pre>";
+								// 	// foreach ($post_meta as $key => $value) {
+								// 	// 	// echo $value;
+								// 	// }
+								// 	// echo "<pre>";
+								// 	// var_dump($post_meta);
+								// 	// echo "</pre>";
+									
+								// }
+									// echo "<pre>";
+									// var_dump($post_metas);
+									// echo "</pre>";
+								// $all_meta[$post->guid] = array();
+								// foreach($post_metas as $post_meta) {
+								// 	$meta = get_post_meta($post->ID, $post_meta);
+								// 	$all_meta[$post->guid][$meta->key][‘key’] = $meta->key;
+								// 	$all_meta[$post->guid][$meta->value][‘value’] = $meta->value;
+								// }
+								// echo "<pre>";
+								// var_dump($post_metas);
+								// echo "</pre>";
+								?>
 
 								<li class="featured-post">
 									<a href="<?php echo $permalink; ?>" title="<?php echo get_the_title();?>">
-									<?php echo get_the_post_thumbnail($page->ID, 'large', $imagearg); ?>
+									<?php echo get_the_post_thumbnail($post->ID, 'large', $imagearg); ?>
 									</a>
 								</li>
+								
 
 							<?php endwhile; ?>
 							<?php wp_reset_query(); ?> 
@@ -73,20 +119,31 @@
 							<ul class="highlights-list">
 								<?php 
 									$post_cat = 'Volunteers'; // You can change post category here
-									$volunteer_posts = recent_network_posts($numberposts = 5, $postsperblog = 3, $postcat = $post_cat);
+									$volunteer_posts = recent_network_posts($numberposts = '5', $postsperblog = '2', $postcat = $post_cat, $excludepostcat = '0');
 									foreach ($volunteer_posts as $post) {
-										$title = $post->post_title;
+										// $title = $post->post_title;
 										$content = $post->post_content;
 										$permalink = $post->post_url;
 										$post_excerpt = recent_posts_excerpt($count = 20, $content, $permalink, $excerpt_trail = '... ');
+										$meta = $post->meta;
+										if(array_key_exists('community_volunteer_location', $meta)) {
+											$post_location = $meta['community_volunteer_location'];
+										} 
 									?>
 									<li>
-										<h3 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h3>
+										<h3 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $post->post_title; ?></a></h3>
 										<p class="post-excerpt">
 											<?php echo $post_excerpt; ?>
-											<span class="meta location">{Custom Field}</span>
+											<span class="meta location"><?php echo $post_location; ?></span>
 										</p>
 									</li>
+									<?php
+
+									// echo "<pre>";
+									// var_dump($volunteer_posts);
+									// echo "</pre>";
+									?>
+
 
 								<?php } ?>
 							</ul>
@@ -100,16 +157,16 @@
 							<ul class="news-list">
 								<?php 
 									$exclude_cat = $post_cat; // Set to exclude post category in previous module. Change to whatever you'd like
-									$recent_posts = recent_network_posts($numberposts = 5, $excludepostcat = $exclude_cat);
+									$recent_posts = recent_network_posts($numberposts = '5', $postsperblog = '2', $postcat = '0', $excludepostcat = $exclude_cat);
 									foreach ($recent_posts as $post) { 
-										$title = $post->post_title;
+										// $title = $post->post_title;
 										$content = $post->post_content;
 										$permalink = $post->post_url;
 										$post_excerpt = recent_posts_excerpt($count = 20, $content, $permalink, $excerpt_trail = '... ');
 										$date = $post->post_date;
 									?>
 								<li>
-									<h3 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h3>
+									<h3 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $post->post_title; ?></a></h3>
 									<p class="post-excerpt"><?php echo $post_excerpt; ?>
 									<span class="meta post-date"><?php echo date_i18n(get_option('date_format'),strtotime($date));?></span></p>
 								</li>
