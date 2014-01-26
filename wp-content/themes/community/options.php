@@ -69,7 +69,7 @@ function optionsframework_options() {
 	// Typography Options
 	$typography_options = array(
 		'sizes' => array( '6','12','14','16','20' ),
-		'faces' => array( 'Helvetica Neue' => 'Helvetica Neue','Arial' => 'Arial' ),
+		'faces' => array( 'Helvetica Neue' => 'Helvetica Neue','community_themeal' => 'community_themeal' ),
 		'styles' => array( 'normal' => 'Normal','bold' => 'Bold' ),
 		'color' => false
 	);
@@ -208,7 +208,6 @@ function optionsframework_options() {
 		'std' => 'Events',
 		'type' => 'text');
 
-	// $events_page = get_page_by_title( 'Events' );
 	$options[] = array(
 		'name' => __('Events Module Link', 'options_check'),
 		'desc' => __('Select Page to Which the Header Should Link', 'options_check'),
@@ -241,7 +240,6 @@ function optionsframework_options() {
 		'std' => 'Sites',
 		'type' => 'text');
 
-	// $sites_page = get_page_by_title( 'Sites' );
 	$options[] = array(
 		'name' => __('Sites Module Link', 'options_check'),
 		'desc' => __('Select Page to Which the Header Should Link', 'options_check'),
@@ -259,6 +257,21 @@ function optionsframework_options() {
 		'type' => 'select',
 		'class' => 'mini', //mini, tiny, small
 		'options' => $default_array);
+
+	$options[] = array(
+		'name' => __('Site Settings', 'options_check'),
+		'type' => 'heading');
+
+	$options[] = array(
+		'name' => __('Here are some options to customize this site.', 'options_check'),
+		'type' => 'info');
+
+	$options[] = array(
+		'name' => __('Site Header', 'options_check'),
+		'desc' => __('Upload or select an image to display in the site header.', 'options_check'),
+		'id' => 'site_banner_image',
+		'type' => 'upload');
+
 
 
 	$options[] = array(
@@ -401,103 +414,212 @@ function optionsframework_options() {
 /**
  * Front End Customizer
  *
- * WordPress 3.4 Required
+ * WordPress 3.4 Required header_image
  */
 
-add_action( 'customize_register', 'options_theme_customizer_register' );
-
-function options_theme_customizer_register($wp_customize) {
-
-	/**
-	 * This is optional, but if you want to reuse some of the defaults
-	 * or values you already have built in the options panel, you
-	 * can load them into $options for easy reference
-	 */
-	 
-	$options = optionsframework_options();
+function community_theme_customize_register( $wp_customize ) {
 	
-	/* Basic */
+	// $colors = array();
+	// $colors[] = array(
+	// 	'slug'=>'content_text_color', 
+	// 	'default' => '#333',
+	// 	'label' => __('Content Text Color', 'community_theme')
+	// );
+	// $colors[] = array(
+	// 	'slug'=>'content_link_color', 
+	// 	'default' => '#88C34B',
+	// 	'label' => __('Content Link Color', 'community_theme')
+	// );
 
-	$wp_customize->add_section( 'options_theme_customizer_basic', array(
-		'title' => __( 'Basic', 'options_theme_customizer' ),
+	// foreach( $colors as $color ) {
+	// 	// SETTINGS
+	// 	$wp_customize->add_setting(
+	// 		$color['slug'], array(
+	// 			'default' => $color['default'],
+	// 			'type' => 'option', 
+	// 			'capability' => 
+	// 			'edit_theme_options'
+	// 		)
+	// 	);
+	// 	// CONTROLS
+	// 	$wp_customize->add_control(
+	// 		new WP_Customize_Color_Control(
+	// 			$wp_customize,
+	// 			$color['slug'], 
+	// 			array('label' => $color['label'], 
+	// 			'section' => 'colors',
+	// 			'settings' => $color['slug'])
+	// 		)
+	// 	);
+	// }
+
+	$wp_customize->remove_section( 'background_image' );
+	$wp_customize->remove_section( 'colors' );
+
+	// SECTION
+	$wp_customize->add_section( 'community_theme_customize_header', array(
+		'title' => __( 'Header', 'community_theme_customize' ),
 		'priority' => 100
 	) );
-	
-	$wp_customize->add_setting( 'options_theme_customizer[example_text]', array(
-		'default' => $options['example_text']['std'],
-		'type' => 'option'
+	// SETTINGS
+	$wp_customize->add_setting( 'community_theme_customize_header_image', array(
+		'type' => 'option',
 	) );
+	// CONTROLS
+	$wp_customize->add_control(
+	    new WP_Customize_Image_Control(
+	        $wp_customize,
+	        'community_theme_customize_header_image',
+	        array(
+	            'label' => 'Upload Image',
+	            'section' => 'community_theme_customize_header',
+	            'settings' => 'community_theme_customize_header_image'
+	        )
+	    )
+	);
+	// $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'header_image', array(
+	// 	'label' => $options['header_image']['name'],
+	// 	'section' => 'community_theme_customize_header',
+	// 	'settings' => 'community_theme_customize_header_image'
+	// ) ) );
 
-	$wp_customize->add_control( 'options_theme_customizer_example_text', array(
-		'label' => $options['example_text']['name'],
-		'section' => 'options_theme_customizer_basic',
-		'settings' => 'options_theme_customizer[example_text]',
-		'type' => $options['example_text']['type']
-	) );
-	
-	$wp_customize->add_setting( 'options_theme_customizer[example_select]', array(
-		'default' => $options['example_select']['std'],
-		'type' => 'option'
-	) );
+	// SECTION
+	$wp_customize->add_section(
+        'footer_section',
+        array(
+            'title' => 'Footer',
+            // 'description' => 'Footer Options.',
+            'priority' => 500,
+        )
+    );
+	// SETTINGS
+	$wp_customize->add_setting(
+	    'copyleft_textbox',
+	    array(
+	        'default' => 'Default copyleft text',
+	        'sanitize_callback' => 'community_sanitize_text',
+	    )
+	);
+	// CONTROLS
+	$wp_customize->add_control(
+	    'copyleft_textbox',
+	    array(
+	        'label' => 'Copyleft text',
+	        'section' => 'footer_section',
+	        'type' => 'text',
+	    )
+	);
 
-	$wp_customize->add_control( 'options_theme_customizer_example_select', array(
-		'label' => $options['example_select']['name'],
-		'section' => 'options_theme_customizer_basic',
-		'settings' => 'options_theme_customizer[example_select]',
-		'type' => $options['example_select']['type'],
-		'choices' => $options['example_select']['options']
-	) );
-	
-	$wp_customize->add_setting( 'options_theme_customizer[example_radio]', array(
-		'default' => $options['example_radio']['std'],
-		'type' => 'option'
-	) );
 
-	$wp_customize->add_control( 'options_theme_customizer_example_radio', array(
-		'label' => $options['example_radio']['name'],
-		'section' => 'options_theme_customizer_basic',
-		'settings' => 'options_theme_customizer[example_radio]',
-		'type' => $options['example_radio']['type'],
-		'choices' => $options['example_radio']['options']
-	) );
-	
-	$wp_customize->add_setting( 'options_theme_customizer[example_checkbox]', array(
-		'default' => $options['example_checkbox']['std'],
-		'type' => 'option'
-	) );
-
-	$wp_customize->add_control( 'options_theme_customizer_example_checkbox', array(
-		'label' => $options['example_checkbox']['name'],
-		'section' => 'options_theme_customizer_basic',
-		'settings' => 'options_theme_customizer[example_checkbox]',
-		'type' => $options['example_checkbox']['type']
-	) );
-	
-	/* Extended */
-
-	$wp_customize->add_section( 'options_theme_customizer_extended', array(
-		'title' => __( 'Extended', 'options_theme_customizer' ),
-		'priority' => 110
-	) );
-	
-	$wp_customize->add_setting( 'options_theme_customizer[example_uploader]', array(
-		'type' => 'option'
-	) );
-	
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'example_uploader', array(
-		'label' => $options['example_uploader']['name'],
-		'section' => 'options_theme_customizer_extended',
-		'settings' => 'options_theme_customizer[example_uploader]'
-	) ) );
-	
-	$wp_customize->add_setting( 'options_theme_customizer[example_colorpicker]', array(
-		'default' => $options['example_colorpicker']['std'],
-		'type' => 'option'
-	) );
-	
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'link_color', array(
-		'label'   => $options['example_colorpicker']['name'],
-		'section' => 'options_theme_customizer_extended',
-		'settings'   => 'options_theme_customizer[example_colorpicker]'
-	) ) );
 }
+
+add_action( 'customize_register', 'community_theme_customize_register' );
+
+function community_sanitize_text( $input ) {
+    return wp_kses_post( force_balance_tags( $input ) );
+}
+
+// End function example_customize_preview()
+
+// add_action( 'customize_register', 'community_theme_customize_register' );
+
+// function community_theme_customize_register($wp_customize) {
+
+// 	/**
+// 	 * This is optional, but if you want to reuse some of the defaults
+// 	 * or values you already have built in the options panel, you
+// 	 * can load them into $options for easy reference
+// 	 */
+	 
+// 	$options = optionsframework_options();
+	
+// 	/* Basic */
+
+// 	$wp_customize->add_section( 'community_theme_customize[colors]', array(
+// 		'title' => __( 'Colours', 'community_theme_customize' ),
+// 		'priority' => 100
+// 	) );
+
+// 	$wp_customize->add_section( 'community_theme_customize_basic', array(
+// 		'title' => __( 'Basic', 'community_theme_customize' ),
+// 		'priority' => 100
+// 	) );
+	
+// 	$wp_customize->add_setting( 'community_theme_customize[example_text]', array(
+// 		'default' => $options['example_text']['std'],
+// 		'type' => 'option'
+// 	) );
+
+// 	$wp_customize->add_control( 'community_theme_customize_example_text', array(
+// 		'label' => $options['example_text']['name'],
+// 		'section' => 'community_theme_customize_basic',
+// 		'settings' => 'community_theme_customize[example_text]',
+// 		'type' => $options['example_text']['type']
+// 	) );
+	
+// 	$wp_customize->add_setting( 'community_theme_customize[example_select]', array(
+// 		'default' => $options['example_select']['std'],
+// 		'type' => 'option'
+// 	) );
+
+// 	$wp_customize->add_control( 'community_theme_customize_example_select', array(
+// 		'label' => $options['example_select']['name'],
+// 		'section' => 'community_theme_customize_basic',
+// 		'settings' => 'community_theme_customize[example_select]',
+// 		'type' => $options['example_select']['type'],
+// 		'choices' => $options['example_select']['options']
+// 	) );
+	
+// 	$wp_customize->add_setting( 'community_theme_customize[example_radio]', array(
+// 		'default' => $options['example_radio']['std'],
+// 		'type' => 'option'
+// 	) );
+
+// 	$wp_customize->add_control( 'community_theme_customize_example_radio', array(
+// 		'label' => $options['example_radio']['name'],
+// 		'section' => 'community_theme_customize_basic',
+// 		'settings' => 'community_theme_customize[example_radio]',
+// 		'type' => $options['example_radio']['type'],
+// 		'choices' => $options['example_radio']['options']
+// 	) );
+	
+// 	$wp_customize->add_setting( 'community_theme_customize[example_checkbox]', array(
+// 		'default' => $options['example_checkbox']['std'],
+// 		'type' => 'option'
+// 	) );
+
+// 	$wp_customize->add_control( 'community_theme_customize_example_checkbox', array(
+// 		'label' => $options['example_checkbox']['name'],
+// 		'section' => 'community_theme_customize_basic',
+// 		'settings' => 'community_theme_customize[example_checkbox]',
+// 		'type' => $options['example_checkbox']['type']
+// 	) );
+	
+// 	/* Extended */
+
+// 	$wp_customize->add_section( 'community_theme_customize_extended', array(
+// 		'title' => __( 'Extended', 'community_theme_customize' ),
+// 		'priority' => 110
+// 	) );
+	
+// 	$wp_customize->add_setting( 'community_theme_customize[example_uploader]', array(
+// 		'type' => 'option'
+// 	) );
+	
+// 	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'example_uploader', array(
+// 		'label' => $options['example_uploader']['name'],
+// 		'section' => 'community_theme_customize_extended',
+// 		'settings' => 'community_theme_customize[example_uploader]'
+// 	) ) );
+	
+// 	$wp_customize->add_setting( 'community_theme_customize[example_colorpicker]', array(
+// 		'default' => $options['example_colorpicker']['std'],
+// 		'type' => 'option'
+// 	) );
+	
+// 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'link_color', array(
+// 		'label'   => $options['example_colorpicker']['name'],
+// 		'section' => 'community_theme_customize_extended',
+// 		'settings'   => 'community_theme_customize[example_colorpicker]'
+// 	) ) );
+// }

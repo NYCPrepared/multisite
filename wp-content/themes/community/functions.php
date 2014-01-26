@@ -49,11 +49,137 @@ require_once( 'library/bones.php' ); // if you remove this, bones will break
 // require_once( 'library/translation/translation.php' ); // this comes turned off by default
 
 require_once( 'library/recent-network-posts.php' ); // Required to display recent posts
+// require_once( 'customize.php' ); // Required to display recent posts
 
 
 // if ( is_plugin_active('options-framework/options-framework.php') ) { 
 // 	require_once( 'library/community-options.php' ); // Required to display recent posts
 // }
+
+function community_theme_customize_register( $wp_customize ) {
+	
+	// $colors = array();
+	// $colors[] = array(
+	// 	'slug'=>'content_text_color', 
+	// 	'default' => '#333',
+	// 	'label' => __('Content Text Color', 'community_theme')
+	// );
+	// $colors[] = array(
+	// 	'slug'=>'content_link_color', 
+	// 	'default' => '#88C34B',
+	// 	'label' => __('Content Link Color', 'community_theme')
+	// );
+
+	// foreach( $colors as $color ) {
+	// 	// SETTINGS
+	// 	$wp_customize->add_setting(
+	// 		$color['slug'], array(
+	// 			'default' => $color['default'],
+	// 			'type' => 'option', 
+	// 			'capability' => 
+	// 			'edit_theme_options'
+	// 		)
+	// 	);
+	// 	// CONTROLS
+	// 	$wp_customize->add_control(
+	// 		new WP_Customize_Color_Control(
+	// 			$wp_customize,
+	// 			$color['slug'], 
+	// 			array('label' => $color['label'], 
+	// 			'section' => 'colors',
+	// 			'settings' => $color['slug'])
+	// 		)
+	// 	);
+	// }
+
+	$wp_customize->remove_section( 'background_image' );
+	$wp_customize->remove_section( 'colors' );
+
+	// SECTION
+    $wp_customize->add_section(
+        'community_header_section',
+        array(
+            'title' => 'Header',
+            // 'description' => 'This is a settings section.',
+            'priority' => 20,
+        )
+    );
+    // SETTINGS
+    $wp_customize->add_setting( 'community_header_image' );
+	// CONTROLS
+	$wp_customize->add_control(
+	    new WP_Customize_Image_Control(
+	        $wp_customize,
+	        'community_header_image',
+	        array(
+	            'label' => 'Image Upload',
+	            'section' => 'community_header_section',
+	            'settings' => 'community_header_image'
+	        )
+	    )
+	);
+
+
+	// SECTION
+    $wp_customize->add_section(
+        'community_social_section',
+        array(
+            'title' => 'Social',
+            // 'description' => 'This is a settings section.',
+            'priority' => 30,
+        )
+    );
+    // SETTINGS
+    $wp_customize->add_setting( 'community_site_image' );
+	// CONTROLS
+	$wp_customize->add_control(
+	    new WP_Customize_Image_Control(
+	        $wp_customize,
+	        'community_site_image',
+	        array(
+	            'label' => 'Image Upload',
+	            'section' => 'community_social_section',
+	            'settings' => 'community_site_image'
+	        )
+	    )
+	);
+
+
+	// SECTION
+	$wp_customize->add_section(
+        'footer_section',
+        array(
+            'title' => 'Footer',
+            // 'description' => 'Footer Options.',
+            'priority' => 500,
+        )
+    );
+	// SETTINGS
+	$wp_customize->add_setting(
+	    'copyleft_textbox',
+	    array(
+	        'default' => 'Default copyleft text',
+	        'sanitize_callback' => 'community_sanitize_text',
+	    )
+	);
+	// CONTROLS
+	$wp_customize->add_control(
+	    'copyleft_textbox',
+	    array(
+	        'label' => 'Copyleft text',
+	        'section' => 'footer_section',
+	        'type' => 'text',
+	    )
+	);
+
+
+}
+
+add_action( 'customize_register', 'community_theme_customize_register' );
+
+function community_sanitize_text( $input ) {
+    return wp_kses_post( force_balance_tags( $input ) );
+}
 
 
 /************* THUMBNAIL SIZE OPTIONS *************/
@@ -61,6 +187,7 @@ require_once( 'library/recent-network-posts.php' ); // Required to display recen
 // Thumbnail sizes
 add_image_size( 'bones-thumb-600', 600, 150, true );
 add_image_size( 'bones-thumb-300', 300, 100, true );
+add_image_size( 'bones-thumb-150', 150, 150, true );
 /*
 to add more sizes, simply copy a line from above
 and change the dimensions & name. As long as you
