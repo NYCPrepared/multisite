@@ -52,10 +52,9 @@ require_once( 'library/recent-network-posts.php' ); // Required to display recen
 // require_once( 'customize.php' ); // Required to display recent posts
 
 /************* REWRITE RULES FOR USE WITH NETWORK SITES PLUGIN *****************/
-if ( is_plugin_active('site_networks/site_networks.php') ) { 
+if ( is_plugin_active('site-networks/site_networks.php') ) { 
 	include_once dirname(__FILE__) . '/rewrites.php';
 }
-
 
 function community_theme_customize_register( $wp_customize ) {
 	
