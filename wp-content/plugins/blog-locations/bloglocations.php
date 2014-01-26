@@ -7,6 +7,7 @@ Description: Plug-in to assign locations to sites. Based on Site Topics by Deann
 Author: Glocal Coop
 Version: 1.0
 Author URI: http://glocal.coop
+Text Domain: bloglocations
 
 Copyleft:
 
@@ -33,7 +34,7 @@ Copyleft:
  * ******************************************************************************
  */
 
-class cets_blog_locations 
+class glo_blog_locations 
 {
 	// empty variables for setting up tables
     var $table_location;
@@ -47,18 +48,18 @@ class cets_blog_locations
  * Default constructor
  * *******************************************************************************
  */
-	function cets_blog_locations() 
+	function glo_blog_locations() 
 	{	
 		global $table_prefix, $wpdb;
 		
 		// Update variables for 1 table to hold the locations, 1 table to hold relationships, and 1 table to hold photo references
-		$this->table_location  = $wpdb->blogs . "_cets_location";
-		$this->table_relationship = $wpdb->blogs . "_cets_location_relationship";
+		$this->table_location  = $wpdb->blogs . "_glo_location";
+		$this->table_relationship = $wpdb->blogs . "_glo_location_relationship";
 		
 		// get the version
-		$version = get_site_option( 'cets_bloglocations_setup' );
+		$version = get_site_option( 'glo_bloglocations_setup' );
 		// call set up if there's not option set yet, and we're not uninstalling
-		if ($_GET['page'] == 'cets_bc_management_page' && ! isset($_GET['uninstalling'])){
+		if ($_GET['page'] == 'glo_bc_management_page' && ! isset($_GET['uninstalling'])){
 			if(  $version == null ) {
 				$this->setup();
 			}
@@ -69,14 +70,14 @@ class cets_blog_locations
 			
 		}
 		
-		if ($_GET['page'] == 'cets_bc_management_page' && $_GET['uninstalling'] == true){
+		if ($_GET['page'] == 'glo_bc_management_page' && $_GET['uninstalling'] == true){
 			$this->unInstall();
 			}
 		
-	} //end cets_blog_locations()
+	} //end glo_blog_locations()
 	
 /* *******************************************************************************
- * Setup - only runs when site option cets_bloglocations_setup is not set
+ * Setup - only runs when site option glo_bloglocations_setup is not set
  * *******************************************************************************
  */
    
@@ -132,10 +133,10 @@ class cets_blog_locations
 	    }
 		
 		// Add a site option so that we'll know set up ran
-		add_site_option( 'cets_bloglocations_setup', 3 );
+		add_site_option( 'glo_bloglocations_setup', 3 );
 		
 		// Add a site option to handle excluded blogs
-		add_site_option('cets_bloglocations_excluded_blogs', '0');
+		add_site_option('glo_bloglocations_excluded_blogs', '0');
 	    		
     } // end setup()
  
@@ -149,7 +150,7 @@ class cets_blog_locations
 			$alter_name = "Alter table " . $this->table_location . "s rename to " .  $this->table_location;
 			$results = $wpdb->query($alter_name);
 			
-			$alter_rel = "Alter table " . $wpdb->blogs . "_cets_locations_relationships  rename to " .  $this->table_relationship;
+			$alter_rel = "Alter table " . $wpdb->blogs . "_glo_locations_relationships  rename to " .  $this->table_relationship;
 			$results = $wpdb->query($alter_rel);
 			
 			$alter_query = "Alter table $this->table_location 
@@ -162,14 +163,14 @@ class cets_blog_locations
 			$results = $wpdb->query($alter_query);
 			
 		// Add a site option so that we'll know set up ran
-		update_site_option( 'cets_bloglocations_setup', 3 );
+		update_site_option( 'glo_bloglocations_setup', 3 );
 		// Add a site option to handle excluded blogs
-		add_site_option('cets_bloglocations_excluded_blogs', '0');
+		add_site_option('glo_bloglocations_excluded_blogs', '0');
 		}
     }
 	
 /* *****************************************************************************************
- * Uninstall this plugin - deletes all tables and un-sets cets_bloglocations_setup site option (not really used yet)
+ * Uninstall this plugin - deletes all tables and un-sets glo_bloglocations_setup site option (not really used yet)
  * *****************************************************************************************
  */
 	
@@ -177,8 +178,8 @@ class cets_blog_locations
 		global $wpdb;
 		$wpdb->query("DROP TABLE $this->table_location");
 		$wpdb->query("DROP TABLE $this->table_relationship");
-		$wpdb->query($wpdb->prepare("delete FROM $wpdb->sitemeta WHERE meta_key = %s AND site_id = %d", 'cets_bloglocations_excluded_blogs', $wpdb->siteid) );
-		$wpdb->query($wpdb->prepare("delete FROM $wpdb->sitemeta WHERE meta_key = %s AND site_id = %d", 'cets_bloglocations_setup', $wpdb->siteid) );
+		$wpdb->query($wpdb->prepare("delete FROM $wpdb->sitemeta WHERE meta_key = %s AND site_id = %d", 'glo_bloglocations_excluded_blogs', $wpdb->siteid) );
+		$wpdb->query($wpdb->prepare("delete FROM $wpdb->sitemeta WHERE meta_key = %s AND site_id = %d", 'glo_bloglocations_setup', $wpdb->siteid) );
 
 		
 		
@@ -237,11 +238,11 @@ class cets_blog_locations
 	function get_used_locations() {
     	global $wpdb;
     	// get excluded blogs
-		$excluded = get_site_option('cets_bloglocations_excluded_blogs');
+		$excluded = get_site_option('glo_bloglocations_excluded_blogs');
 		
 		// if the excluded string is nothing, the site option hasn't been set up yet - so do that
 		if (strlen($excluded) == 0){
-			add_site_option('cets_bloglocations_excluded_blogs', '0');
+			add_site_option('glo_bloglocations_excluded_blogs', '0');
 			$excluded = 0;
 		}
 		
@@ -297,11 +298,11 @@ class cets_blog_locations
 			
 		}
 		// get excluded blogs
-		$excluded = get_site_option('cets_bloglocations_excluded_blogs');
+		$excluded = get_site_option('glo_bloglocations_excluded_blogs');
 		
 		// if the excluded string is nothing, the site option hasn't been set up yet - so do that
 		if (strlen($excluded) == 0){
-			add_site_option('cets_bloglocations_excluded_blogs', '0');
+			add_site_option('glo_bloglocations_excluded_blogs', '0');
 			$excluded = 0;
 		}
 		
@@ -587,7 +588,7 @@ class cets_blog_locations
 
     	
 
-    	include_once dirname(__FILE__) . '/cets_blog_locations/functions.php';
+    	include_once dirname(__FILE__) . '/glo_blog_locations/functions.php';
 		
 		/* get the blog name*/
 		
@@ -614,15 +615,15 @@ class cets_blog_locations
 
     	// Set the notice to default to "on" and the sharing to off
 
-    	add_blog_option($blog_id, 'cets_notification', 1);
+    	add_blog_option($blog_id, 'glo_notification', 1);
 
-    	add_blog_option($blog_id, 'cets_locationexclude', 1);
+    	add_blog_option($blog_id, 'glo_locationexclude', 1);
 
     	
 
     	//New blogs should always be set not to aggregate (since they have no content to begin with)
 
-    	cets_bl_toggle_blog_exclusion($blog_id, 'e');
+    	glo_bl_toggle_blog_exclusion($blog_id, 'e');
 
     	
 
@@ -746,7 +747,7 @@ class cets_blog_locations
 	// Adds the submenu to the blog settings screen
     function add_submenu()
     {
-    	add_options_page('Site Location Configuration', 'Site Location', 10, 'cets_blog_location', array(&$this,'config_page'));
+    	add_options_page('Site Location Configuration', 'Site Location', 10, 'glo_blog_location', array(&$this,'config_page'));
     }
     
 	// Creates the configuration page for an individual blog (blog's settings screen sub menu)
@@ -792,7 +793,7 @@ class cets_blog_locations
 
       	if (function_exists('is_network_admin')) {
 
-      		add_submenu_page('settings.php', 'Site Locations', 'Site Locations', 10, 'cets_bc_management_page', array(&$this, 'cets_bc_management_page'));
+      		add_submenu_page('settings.php', 'Site Locations', 'Site Locations', 10, 'glo_bc_management_page', array(&$this, 'glo_bc_management_page'));
 
      
 
@@ -800,7 +801,7 @@ class cets_blog_locations
 
       	else {
 
-      		add_submenu_page('ms-admin.php', 'Site Locations', 'Site Locations', 10, 'cets_bc_management_page', array(&$this, 'cets_bc_management_page'));
+      		add_submenu_page('ms-admin.php', 'Site Locations', 'Site Locations', 10, 'glo_bc_management_page', array(&$this, 'glo_bc_management_page'));
 
      
 
@@ -812,7 +813,7 @@ class cets_blog_locations
 	 
 	 
 	 // Creates the submenu page for the site admins
-	 function cets_bc_management_page(){
+	 function glo_bc_management_page(){
 	 	// Display a list of all the locations to potential edit/add/delete;
 	 
 	 	global $wpdb;
@@ -881,7 +882,7 @@ class cets_blog_locations
 		<p>Uninstalling this plugin will delete all database tables and sitewide options related to this plugin. You will not be able to undo this uninstall. Proceed with caution.</p>
 		
 		<p>Once the data is deleted, you will still need to manually delete the files associated with this plugin. </p>
-		<p><a href="settings.php?page=cets_bc_management_page&uninstalling=true">Yes, uninstall this plugin.</a>
+		<p><a href="settings.php?page=glo_bc_management_page&uninstalling=true">Yes, uninstall this plugin.</a>
 		
 		<?php
 		}
@@ -900,7 +901,7 @@ class cets_blog_locations
 
 		global $wp_db_version, $blog_id;
 
-		$noticeon = get_option('cets_notification');
+		$noticeon = get_option('glo_notification');
 
 		
 
@@ -912,7 +913,7 @@ class cets_blog_locations
 
 			$noticeon = 1;
 
-			update_option('cets_notification', 1);
+			update_option('glo_notification', 1);
 
 		}
 
@@ -930,9 +931,9 @@ class cets_blog_locations
 
 		
 
-		$excludelist = get_site_option('cets_bloglocations_excluded_blogs');
+		$excludelist = get_site_option('glo_bloglocations_excluded_blogs');
 
-		$excluded = cets_bl_listfind($excludelist, $blog_id, ",");
+		$excluded = glo_bl_listfind($excludelist, $blog_id, ",");
 
 		
 
@@ -961,19 +962,19 @@ class cets_blog_locations
 
 	function add_privacy_options_init() {
 
-		add_settings_section('cets_content_sharing_options', 'Content Sharing Options', array('cets_blog_locations', 'add_content_sharing_section'), 'privacy');
+		add_settings_section('glo_content_sharing_options', 'Content Sharing Options', array('glo_blog_locations', 'add_content_sharing_section'), 'privacy');
 
 		
 
-		add_settings_field('cets_locationexclude', 'Share Your Content', array('cets_blog_locations', 'add_cets_locationexclude'), 'privacy', 'cets_content_sharing_options');
+		add_settings_field('glo_locationexclude', 'Share Your Content', array('glo_blog_locations', 'add_glo_locationexclude'), 'privacy', 'glo_content_sharing_options');
 
-		add_settings_field('cets_notification', 'Show/Hide Notification', array('cets_blog_locations', 'add_cets_notification'), 'privacy', 'cets_content_sharing_options');
+		add_settings_field('glo_notification', 'Show/Hide Notification', array('glo_blog_locations', 'add_glo_notification'), 'privacy', 'glo_content_sharing_options');
 
 		
 
-		register_setting('privacy','cets_locationexclude');
+		register_setting('privacy','glo_locationexclude');
 
-		register_setting('privacy', 'cets_notification');
+		register_setting('privacy', 'glo_notification');
 
 		
 
@@ -987,37 +988,37 @@ class cets_blog_locations
 
 		
 
-		echo("<p>Get your site listed and findable by sharing it on the ". get_blog_option(1, 'blogname') ." homepage. Your most recent posts will automatically display in their Location area news and your site will be listed in the Sites list for <a href='". esc_url( admin_url( 'options-general.php?page=cets_blog_location' ) ) ."'>your site's location</a>.</p>");
+		echo("<p>Get your site listed and findable by sharing it on the ". get_blog_option(1, 'blogname') ." homepage. Your most recent posts will automatically display in their Location area news and your site will be listed in the Sites list for <a href='". esc_url( admin_url( 'options-general.php?page=glo_blog_location' ) ) ."'>your site's location</a>.</p>");
 
 	}
 
 	
 
-	function add_cets_locationexclude() {	
+	function add_glo_locationexclude() {	
 
 		// Check to see if this option has been set yet and if not, set it to exclude the blog
 
 		global $blog_id;
 
-		$excludelist = get_site_option('cets_bloglocations_excluded_blogs');
+		$excludelist = get_site_option('glo_bloglocations_excluded_blogs');
 
-		$excluded = cets_bl_listfind($excludelist, $blog_id, ",");
+		$excluded = glo_bl_listfind($excludelist, $blog_id, ",");
 
-		$shared = get_option('cets_locationexclude');
+		$shared = get_option('glo_locationexclude');
 
 		if (strlen($shared) != 1){ 
 
-			add_option('cets_locationexclude', $excluded);
+			add_option('glo_locationexclude', $excluded);
 
 		}
 
 		
 
-		echo('<label for="cets_locationexclude_no"><input id="cets_locationexclude_no" type="radio" name="cets_locationexclude" value="0"' . checked( 0, get_option('cets_locationexclude'), false ) . '/> Share it!</label>');
+		echo('<label for="glo_locationexclude_no"><input id="glo_locationexclude_no" type="radio" name="glo_locationexclude" value="0"' . checked( 0, get_option('glo_locationexclude'), false ) . '/> Share it!</label>');
 
 		echo('<br/>');
 
-	  	echo('<label for="cets_locationexclude_yes"><input id="cets_locationexclude_yes" type="radio" name="cets_locationexclude" value="1"' . checked( 1, get_option('cets_locationexclude'), false ) . '/> Do not share it!</label>');
+	  	echo('<label for="glo_locationexclude_yes"><input id="glo_locationexclude_yes" type="radio" name="glo_locationexclude" value="1"' . checked( 1, get_option('glo_locationexclude'), false ) . '/> Do not share it!</label>');
 
 			
 
@@ -1027,15 +1028,15 @@ class cets_blog_locations
 
 	
 
-	function add_cets_notification(){
+	function add_glo_notification(){
 
-			echo('<label for="cets_notification_off"><input id="cets_notification_off" type="radio" name="cets_notification" value="0" ' . checked( 0, get_option('cets_notification'), false ) .' /> <b>Turn the notification off.</b> I will remember when it is time to share my blog.</label>');
+			echo('<label for="glo_notification_off"><input id="glo_notification_off" type="radio" name="glo_notification" value="0" ' . checked( 0, get_option('glo_notification'), false ) .' /> <b>Turn the notification off.</b> I will remember when it is time to share my blog.</label>');
 
            
 
             echo('<br />');
 
-            echo('<label for="cets_notification_on"><input id="cets_notification_on" type="radio" name="cets_notification" value="1" ' . checked( 1, get_option('cets_notification'), false ) .' /> <b>Turn the notification on.</b> I need a reminder to share my blog when it is ready to go live.</label>');
+            echo('<label for="glo_notification_on"><input id="glo_notification_on" type="radio" name="glo_notification" value="1" ' . checked( 1, get_option('glo_notification'), false ) .' /> <b>Turn the notification on.</b> I need a reminder to share my blog when it is ready to go live.</label>');
 
 			
 
@@ -1049,7 +1050,7 @@ class cets_blog_locations
 
 	
 
-	function update_option_cets_locationexclude($oldvalue, $_newvalue){
+	function update_option_glo_locationexclude($oldvalue, $_newvalue){
 
 		global $blog_id;
 
@@ -1057,7 +1058,7 @@ class cets_blog_locations
 
 					// exclude this blog
 
-					cets_bl_toggle_blog_exclusion($blog_id, 'e');
+					glo_bl_toggle_blog_exclusion($blog_id, 'e');
 
 					
 
@@ -1067,7 +1068,7 @@ class cets_blog_locations
 
 					// include this blog
 
-					cets_bl_toggle_blog_exclusion($blog_id, 'i');
+					glo_bl_toggle_blog_exclusion($blog_id, 'i');
 
 					
 
@@ -1108,39 +1109,39 @@ class cets_blog_locations
 
 
 // Create the class
-$cets_wpmubl = new cets_blog_locations();
+$glo_wpmubl = new glo_blog_locations();
 
 
 
 	
 // Add the actions and filters we need to make all this run	
-add_action('signup_blogform', array(&$cets_wpmubl, 'get_locations_select_signup'));
-add_filter('wpmu_new_blog', array(&$cets_wpmubl, 'set_new_blog_location'), 101);
-add_action('signup_finished', array(&$cets_wpmubl, 'save_signup_blog_location'));
+add_action('signup_blogform', array(&$glo_wpmubl, 'get_locations_select_signup'));
+add_filter('wpmu_new_blog', array(&$glo_wpmubl, 'set_new_blog_location'), 101);
+add_action('signup_finished', array(&$glo_wpmubl, 'save_signup_blog_location'));
 
-add_action( 'admin_notices', array(&$cets_wpmubl, 'site_admin_notice') );
+add_action( 'admin_notices', array(&$glo_wpmubl, 'site_admin_notice') );
 
 
 
 // hook into options-privacy.php and the updates of those options
 
-add_action('admin_init', array(&$cets_wpmubl, 'add_privacy_options_init'));
+add_action('admin_init', array(&$glo_wpmubl, 'add_privacy_options_init'));
 
-add_action('update_option_cets_locationexclude', array(&$cets_wpmubl, 'update_option_cets_locationexclude'), 10, 2);
-
-
-
-add_action( 'wp_head', array(&$cets_wpmubl, 'hide_privacy_stylesheet' ));
+add_action('update_option_glo_locationexclude', array(&$glo_wpmubl, 'update_option_glo_locationexclude'), 10, 2);
 
 
 
-add_action('admin_menu', array(&$cets_wpmubl, 'add_submenu'));
+add_action( 'wp_head', array(&$glo_wpmubl, 'hide_privacy_stylesheet' ));
+
+
+
+add_action('admin_menu', array(&$glo_wpmubl, 'add_submenu'));
 
 
 
 if (function_exists('is_network_admin')) {
 
-	add_action('network_admin_menu', array(&$cets_wpmubl, 'add_siteadmin_page'));
+	add_action('network_admin_menu', array(&$glo_wpmubl, 'add_siteadmin_page'));
 
 }
 
@@ -1148,84 +1149,84 @@ else {
 
 	
 
-add_action('admin_menu', array(&$cets_wpmubl, 'add_siteadmin_page'));
+add_action('admin_menu', array(&$glo_wpmubl, 'add_siteadmin_page'));
 
 }
 
 
 
-add_action('delete_blog', array(&$cets_wpmubl, 'update_relationships'));
+add_action('delete_blog', array(&$glo_wpmubl, 'update_relationships'));
 
 
 
 /* *********************************************************************************
  * Make public functions for the "private" functions in the class
  */
-function cets_get_blogs_from_location_id_html($location_id = '1', $max_rows = 0, $blog_id = 0, $orderby = 'last_updated') {
-    global $cets_wpmubl;
-	return $cets_wpmubl->get_blogs_from_location_id_html($location_id, $max_rows, $blog_id, $orderby);
+function glo_get_blogs_from_location_id_html($location_id = '1', $max_rows = 0, $blog_id = 0, $orderby = 'last_updated') {
+    global $glo_wpmubl;
+	return $glo_wpmubl->get_blogs_from_location_id_html($location_id, $max_rows, $blog_id, $orderby);
 }
 
-function cets_get_location_name($location_id = '1') {
-    global $cets_wpmubl;
-	return $cets_wpmubl->get_location_name($location_id);
+function glo_get_location_name($location_id = '1') {
+    global $glo_wpmubl;
+	return $glo_wpmubl->get_location_name($location_id);
 }
 
-function cets_get_locations_html($used = true, $show_count = true, $send_to_root = false, $use_slugs = false) {
-    global $cets_wpmubl;
-	return $cets_wpmubl->get_locations_html($used, $show_count, $send_to_root, $use_slugs);
+function glo_get_locations_html($used = true, $show_count = true, $send_to_root = false, $use_slugs = false) {
+    global $glo_wpmubl;
+	return $glo_wpmubl->get_locations_html($used, $show_count, $send_to_root, $use_slugs);
 }
 
-function cets_get_blog_location_name($blog_id) {
-	global $cets_wpmubl;
-	return $cets_wpmubl->get_blog_location_name($blog_id);
+function glo_get_blog_location_name($blog_id) {
+	global $glo_wpmubl;
+	return $glo_wpmubl->get_blog_location_name($blog_id);
 }
 
-function cets_get_blog_location_slug($blog_id) {
-	global $cets_wpmubl;
-	return $cets_wpmubl->get_blog_location_slug($blog_id);
+function glo_get_blog_location_slug($blog_id) {
+	global $glo_wpmubl;
+	return $glo_wpmubl->get_blog_location_slug($blog_id);
 }
 
-function cets_get_location_id_from_blog_id($blog_id) {
-	global $cets_wpmubl;
-	return $cets_wpmubl->get_location_id_from_blog_id($blog_id);
+function glo_get_location_id_from_blog_id($blog_id) {
+	global $glo_wpmubl;
+	return $glo_wpmubl->get_location_id_from_blog_id($blog_id);
 }
 
-function cets_get_recent_posts_from_location_id_html($location_id, $max_rows=0, $blog_id) {
-	global $cets_wpmubl;
-	return $cets_wpmubl->get_recent_posts_from_location_id_html($location_id, $max_rows, $blog_id);
+function glo_get_recent_posts_from_location_id_html($location_id, $max_rows=0, $blog_id) {
+	global $glo_wpmubl;
+	return $glo_wpmubl->get_recent_posts_from_location_id_html($location_id, $max_rows, $blog_id);
 }
 
-function cets_get_blog_details_from_location_id($location_id, $max_rows = 0, $blog_id = 0, $orderby = 'last_updated') {
-	global $cets_wpmubl;
-	return $cets_wpmubl->get_blog_details_from_location_id($location_id, $max_rows = 0, $blog_id = 0, $orderby);
+function glo_get_blog_details_from_location_id($location_id, $max_rows = 0, $blog_id = 0, $orderby = 'last_updated') {
+	global $glo_wpmubl;
+	return $glo_wpmubl->get_blog_details_from_location_id($location_id, $max_rows = 0, $blog_id = 0, $orderby);
 }	
 
-function cets_get_recent_posts_from_location_id($location_id, $max_rows=0, $blog_id) {
-	global $cets_wpmubl;
-	return $cets_wpmubl->get_recent_posts_from_location_id($location_id, $max_rows=0, $blog_id);
+function glo_get_recent_posts_from_location_id($location_id, $max_rows=0, $blog_id) {
+	global $glo_wpmubl;
+	return $glo_wpmubl->get_recent_posts_from_location_id($location_id, $max_rows=0, $blog_id);
 }
 
-function cets_get_location_id_from_slug($slug) {
-	global $cets_wpmubl;
-	return $cets_wpmubl->get_location_id_from_slug($slug);	
+function glo_get_location_id_from_slug($slug) {
+	global $glo_wpmubl;
+	return $glo_wpmubl->get_location_id_from_slug($slug);	
 }
 
-function cets_get_location($location_id) {
-	global $cets_wpmubl;
-	return $cets_wpmubl->get_location($location_id);	
+function glo_get_location($location_id) {
+	global $glo_wpmubl;
+	return $glo_wpmubl->get_location($location_id);	
 }
-function cets_get_used_locations() {
-	global $cets_wpmubl;
-	return $cets_wpmubl->get_used_locations();	
+function glo_get_used_locations() {
+	global $glo_wpmubl;
+	return $glo_wpmubl->get_used_locations();	
 }
-function cets_get_featured_location() {
-	global $cets_wpmubl;
-	return $cets_wpmubl->get_featured_location();	
+function glo_get_featured_location() {
+	global $glo_wpmubl;
+	return $glo_wpmubl->get_featured_location();	
 }
-function cets_get_featured_location_name() {
-	global $cets_wpmubl;
-	return $cets_wpmubl->get_featured_location_name();	
+function glo_get_featured_location_name() {
+	global $glo_wpmubl;
+	return $glo_wpmubl->get_featured_location_name();	
 }
 
 
@@ -1233,8 +1234,8 @@ function cets_get_featured_location_name() {
  * Include the privacy options section
  * ********************************************************************************************************
  */
- if ( strpos($_SERVER['REQUEST_URI'], 'wp-admin') == true && file_exists(dirname(__FILE__) . '/cets_blog_locations/miscactions.php')) {
-	include_once dirname(__FILE__) . '/cets_blog_locations/miscactions.php';
+ if ( strpos($_SERVER['REQUEST_URI'], 'wp-admin') == true && file_exists(dirname(__FILE__) . '/glo_blog_locations/miscactions.php')) {
+	include_once dirname(__FILE__) . '/glo_blog_locations/miscactions.php';
 	}
 
 

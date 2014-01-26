@@ -29,7 +29,7 @@ Some of the widgets rely on theme code for topic listing pages and site listing 
 
 == Installation ==
 
-1. Place the cets_blogtopics.php file and the cets_blog_topics folder in the wp-content/mu-plugins folder.
+1. Place the glo_blogtopics.php file and the glo_blog_topics folder in the wp-content/mu-plugins folder.
 2. If desired, place the widget files (located in the widgets subdirectory) in the wp-content/mu-plugins or the plugins folder. It's recommended that you use the plugins folder and only enable these widgets on blogs that need them. They may be confusing for some users.
 4. Go to Site Admin -> Blog Topics Management to add/edit topics. You should enter a name and slug for each topic you wish to use. Description is optional. It is used in the BT Topic Name widget and in the example theme code.
 5. Blog admins can go to Settings -> Blog Topic to edit their assigned topic.
@@ -42,7 +42,7 @@ If Use of the Portal Aspects are desired
 
 == Frequently Asked Questions ==
 1. Can I upgrade from version 0.3.2 to 3.0?
-The plugin will attempt to upgrade your database tables from the previous version of this plugin. There are elements from the previous version that are no longer supported, particularly the portal elements. If you had previously used cets_blog_topics_page.php or cets_blog_topics_list.php you will want to carefully examine the sample theme to determine how to integrate the new portal elements into your blog's theme code.
+The plugin will attempt to upgrade your database tables from the previous version of this plugin. There are elements from the previous version that are no longer supported, particularly the portal elements. If you had previously used glo_blog_topics_page.php or glo_blog_topics_list.php you will want to carefully examine the sample theme to determine how to integrate the new portal elements into your blog's theme code.
 
 
 
@@ -74,11 +74,11 @@ The plugin will attempt to upgrade your database tables from the previous versio
 * Modified layout code for sign up page to fit new 2.6.3 divs instead of tables.
 
 .3
-* Added optional count of blogs by topic to cets_blog_topics_page.php page (defaults to showing count). 
+* Added optional count of blogs by topic to glo_blog_topics_page.php page (defaults to showing count). 
 	If you don't want to show the count, change line 16 from 
-		<?php cets_get_topics_html($used=true, $show_count=false); ?>
+		<?php glo_get_topics_html($used=true, $show_count=false); ?>
 		to
-		<?php cets_get_topics_html($used=true, $show_count=false); ?>
+		<?php glo_get_topics_html($used=true, $show_count=false); ?>
 
 .2
 * modified naming conventions for more consistency throughout.

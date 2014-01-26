@@ -17,22 +17,22 @@
 
 									<div class="filters">
 										<!-- Dummy Filters -->
-										<?php if (function_exists('cets_get_used_topics')) { ?>
+										<?php if (function_exists('glo_get_used_topics')) { ?>
 										<ul id="filter site-categories">
 											<li id="category-all">All Categories</li>
 											<?php
-											$topics = cets_get_used_topics();
+											$topics = glo_get_used_topics();
 											foreach ($topics as $topic) {											
 											?>
 												<li id="topic-<?php echo $topic->slug; ?>"><?php echo $topic->topic_name; ?></li>
 											<?php } ?>
 										</ul>
 										<?php } ?>
-										<?php if (function_exists('cets_get_used_locations')) { ?>
+										<?php if (function_exists('glo_get_used_locations')) { ?>
 										<ul id="filter site-locations">
 											<li id="location-all">All Locations</li>
 											<?php
-											$locations = cets_get_used_locations();
+											$locations = glo_get_used_locations();
 											foreach ($locations as $location) {											
 											?>
 												<li id="location-<?php echo $location->slug; ?>"><?php echo $location->location_name; ?></li>
@@ -73,17 +73,17 @@
 											$site_path = $site_details->path;
 											$site_slug = trim($site_path,'/');
 											
-											if (function_exists('cets_get_blog_location_name')) { 
-												$site_location_name = cets_get_blog_location_name($site_id);
+											if (function_exists('glo_get_blog_location_name')) { 
+												$site_location_name = glo_get_blog_location_name($site_id);
 											}
-											if (function_exists('cets_get_blog_location_slug')) { 
-												$site_location_slug = cets_get_blog_location_slug($site_id);
+											if (function_exists('glo_get_blog_location_slug')) { 
+												$site_location_slug = glo_get_blog_location_slug($site_id);
 											}
-											if (function_exists('cets_get_blog_topic_name')) {
-												$site_topic_name= cets_get_blog_topic_name($site_id);
+											if (function_exists('glo_get_blog_topic_name')) {
+												$site_topic_name= glo_get_blog_topic_name($site_id);
 											}
-											if (function_exists('cets_get_blog_topic_slug')) {
-												$site_topic_slug = cets_get_blog_topic_slug($site_id);
+											if (function_exists('glo_get_blog_topic_slug')) {
+												$site_topic_slug = glo_get_blog_topic_slug($site_id);
 											}
 											if (function_exists('glo_get_blog_network_name')) {
 												$site_network_name = glo_get_blog_network_name($site_id);

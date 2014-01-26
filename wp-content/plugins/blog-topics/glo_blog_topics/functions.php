@@ -1,8 +1,15 @@
 <?php
+
+/*
+Plugin Name:   Miscellaneous functions for glo_blog_topics
+Text Domain: blogtopics
+
+*/
+
 // -------------------------------------------------------------------------//
-// Helper functions used in multiple files within the cets_bloglocations plugin.
+// Helper functions used in multiple files within the glo_blogtopics plugin.
 // -------------------------------------------------------------------------//
-function cets_bl_listfind($list,$value,$delimiter=",")
+function glo_bt_listfind($list,$value,$delimiter=",")
 {
 	// check to make sure this is an actual list as with some length
 	if (strlen($list) == 0 || strlen($list) == 1) {
@@ -28,10 +35,10 @@ function cets_bl_listfind($list,$value,$delimiter=",")
 	return 0;
 }
 
-function cets_bl_toggle_blog_exclusion($id, $flag = 'e') {
-	$currentlist = get_site_option('cets_bloglocations_excluded_blogs');
+function glo_bt_toggle_blog_exclusion($id, $flag = 'e') {
+	$currentlist = get_site_option('glo_blogtopics_excluded_blogs');
 	$newlist = "0";
-	$currentstatus = cets_bl_listfind($currentlist, $id, ","); // 0 == it is not excluded; 1 == it is excluded
+	$currentstatus = glo_bt_listfind($currentlist, $id, ","); // 0 == it is not excluded; 1 == it is excluded
 	// if we're excluding
 	if ($flag == 'e') {
 	// check to see if it's already excluded
@@ -39,7 +46,7 @@ function cets_bl_toggle_blog_exclusion($id, $flag = 'e') {
 		{
 		$newlist = $currentlist . "," . $id;
 		$newlist = implode(",", array_unique(explode(",",$newlist)));
-		update_site_option('cets_bloglocations_excluded_blogs', $newlist);
+		update_site_option('glo_blogtopics_excluded_blogs', $newlist);
 		}
 	}
 	// okay, we're including it, not excluding
@@ -61,7 +68,7 @@ function cets_bl_toggle_blog_exclusion($id, $flag = 'e') {
 			
 		// either way, update the site option
 		$newlist = implode(",", array_unique(explode(",",$newlist)));
-		update_site_option('cets_bloglocations_excluded_blogs', $newlist);
+		update_site_option('glo_blogtopics_excluded_blogs', $newlist);
 		}
 		
 	}		

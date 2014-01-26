@@ -5,9 +5,8 @@ Plugin URI:
 Description: Adds a sidebar widget to display Blog's Topic
 Version: 2.0
 Author: Deanna Schneider
-Copyright:
+Text Domain: blogtopics
 
-    Copyright 2008 CETS
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -26,26 +25,26 @@ Copyright:
 */
 
 // This gets called at the plugins_loaded action
-function widget_cets_bt_topic_name_init() {
+function widget_glo_bt_topic_name_init() {
 
 	// check for sidebar existance
 	if ( !function_exists('register_sidebar_widget') || !function_exists('register_widget_control') )
 		return;
 
 	// Check for the required blog topic class
-	if ( !class_exists('cets_blog_topics') )
+	if ( !class_exists('glo_blog_topics') )
 		return;
 	
 	$widget_title = "Blog Topic Name";
 	$widget_description = "Show the blog's current topic";
 
 	// This saves options and prints the widget's config form.
-	function widget_cets_bt_topic_name_control() {
+	function widget_glo_bt_topic_name_control() {
 		global $blog_id;
-		$thistopic =  cets_get_blog_topic_name($blog_id);
+		$thistopic =  glo_get_blog_topic_name($blog_id);
 		
 		
-		$options = get_option('widget_cets_bt_topic_name');
+		$options = get_option('widget_glo_bt_topic_name');
 		
 		// this section sets defaults
 		if ( !is_array($options) )
@@ -55,19 +54,19 @@ function widget_cets_bt_topic_name_init() {
 			 );
 			 
 		// let's try to manually set this option	 
-		update_option('widget_cets_bt_topic_name', $options);	 
+		update_option('widget_glo_bt_topic_name', $options);	 
 		
 		
 			 
 		// here we set the options to whatever was posted		
-		if ( $_POST['cets_bt_submit'] ) {
-			$options['topic_title'] = strip_tags(stripslashes($_POST['cets_bt_topic_title']));
-			$options['topic_description'] = $_POST['cets_bt_topic_description'];
+		if ( $_POST['glo_bt_submit'] ) {
+			$options['topic_title'] = strip_tags(stripslashes($_POST['glo_bt_topic_title']));
+			$options['topic_description'] = $_POST['glo_bt_topic_description'];
 			
 		}
 		
 		// Update the options
-		update_option('widget_cets_bt_topic_name', $options);
+		update_option('widget_glo_bt_topic_name', $options);
 		
 		// Figure out the default state for the checkboxes
 		$include_topic_description = ( $options['topic_description'] == TRUE ) ? ' checked="checked"' : '';
@@ -80,30 +79,30 @@ function widget_cets_bt_topic_name_init() {
 	<strong>Blog topic: <?php echo($thistopic); ?></strong>
     <p>
     
-    <label for="cets_bt_title"><?php _e('Topic Title:', 'widgets'); ?> 
-	<input type="text" id="cets_bt_topic_title" name="cets_bt_topic_title" value="<?php echo wp_specialchars($options['topic_title'], true); ?>" /></label></p>
+    <label for="glo_bt_title"><?php _e('Topic Title:', 'widgets'); ?> 
+	<input type="text" id="glo_bt_topic_title" name="glo_bt_topic_title" value="<?php echo wp_specialchars($options['topic_title'], true); ?>" /></label></p>
     <p>
-	<label for="cets_bt_topic_description"><?php _e('Include Description:', 'widgets'); ?> 
-	<input type="checkbox" id="cets_bt_topic_description" name="cets_bt_topic_description" <?php echo($include_topic_description) ?> value="TRUE" /></label><br/>
+	<label for="glo_bt_topic_description"><?php _e('Include Description:', 'widgets'); ?> 
+	<input type="checkbox" id="glo_bt_topic_description" name="glo_bt_topic_description" <?php echo($include_topic_description) ?> value="TRUE" /></label><br/>
     </p>
-	<input type="hidden" name="cets_bt_submit" id="cets_bt_submit" value="TRUE" />
+	<input type="hidden" name="glo_bt_submit" id="glo_bt_submit" value="TRUE" />
 				
 	<?php
 	}
 
 	// This prints the widget
-	function widget_cets_bt_topic_name($args) {
+	function widget_glo_bt_topic_name($args) {
 		extract($args);
 		global $blog_id;
 		$this_id = $blog_id;
 		//$widget_title = 'Topic';
-		$options = get_option('widget_cets_bt_topic_name');
+		$options = get_option('widget_glo_bt_topic_name');
 		$title = !isset($options['title']) == 0 ? $widget_title : $options['title'];
 	
 		// get the topic id from the blogid
-		$topic_id = cets_get_topic_id_from_blog_id($this_id);
+		$topic_id = glo_get_topic_id_from_blog_id($this_id);
 		// get the topic info
-		$topic = cets_get_topic($topic_id);
+		$topic = glo_get_topic($topic_id);
 
 		
 		// this is the first widget - the blog topic
@@ -119,14 +118,14 @@ function widget_cets_bt_topic_name_init() {
 
 
 	// Tell Dynamic Sidebar about our new widget and its control
-	$widget_ops = array('classname' => 'widget_cets_bt_topic_name', 'description' => __( "$widget_description") );
-	wp_register_sidebar_widget('widget_cets_bt_topic_name', $widget_title, 'widget_cets_bt_topic_name', $widget_ops);
-	wp_register_widget_control('widget_cets_bt_topic_name', $widget_title, 'widget_cets_bt_topic_name_control' );
+	$widget_ops = array('classname' => 'widget_glo_bt_topic_name', 'description' => __( "$widget_description") );
+	wp_register_sidebar_widget('widget_glo_bt_topic_name', $widget_title, 'widget_glo_bt_topic_name', $widget_ops);
+	wp_register_widget_control('widget_glo_bt_topic_name', $widget_title, 'widget_glo_bt_topic_name_control' );
 
 
 }
 
 // Delay plugin execution to ensure Dynamic Sidebar has a chance to load first
-add_action('plugins_loaded', 'widget_cets_bt_topic_name_init');
+add_action('plugins_loaded', 'widget_glo_bt_topic_name_init');
 
 ?>

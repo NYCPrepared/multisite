@@ -5,9 +5,8 @@ Plugin URI:
 Description: Adds a sidebar widget to display Blog's Location and/or Recent Posts
 Version: 1.0
 Author: Deanna Schneider
-Copyright:
+Text Domain: bloglocations
 
-    Copyright 2009 CETS
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -25,13 +24,13 @@ Copyright:
 
 */
 
-class cets_bl_featured_location_with_posts extends WP_Widget{
+class glo_bl_featured_location_with_posts extends WP_Widget{
 	/** constructor **/
-	function cets_bl_featured_location_with_posts() {
+	function glo_bl_featured_location_with_posts() {
 		parent::WP_Widget(false, $name = 'Blog Locations - Featured Location With Posts');
 		
-		// this widget requires the cets_blog_locations plugin
-		if ( !class_exists('cets_blog_locations') )
+		// this widget requires the glo_blog_locations plugin
+		if ( !class_exists('glo_blog_locations') )
 		return;
 	}
 	
@@ -55,7 +54,7 @@ class cets_bl_featured_location_with_posts extends WP_Widget{
 		
 		
 		// get the featured location
-		$location = cets_get_featured_location();
+		$location = glo_get_featured_location();
 		
 			
 		echo $before_widget;
@@ -64,7 +63,7 @@ class cets_bl_featured_location_with_posts extends WP_Widget{
 		echo("<div class='locationListing " . $location->slug . "'>");
 		echo ("<h3><a href='location/" . strtolower($location->slug) . "'>" . $location->location_name . "</a></h3>");
 		echo ("<ul>");
-		echo (cets_get_recent_posts_from_location_id_html($location, $args['postrows'], 0));
+		echo (glo_get_recent_posts_from_location_id_html($location, $args['postrows'], 0));
 		echo ("</ul>");
 		echo ("<div class='locationMore'>");
 		echo ("<a href='/location/" . strtolower($location->slug) . "'>(More " . $location->slug . " Posts</a> | <a href='/sites/" . strtolower($location->slug) . "'>All " . $location->slug . " Sites)</a>");
@@ -99,7 +98,7 @@ class cets_bl_featured_location_with_posts extends WP_Widget{
 	/** @see WP_Widget::form */
     function form($instance) {				
         // Get the featured location name
-		$location = cets_get_featured_location_name();
+		$location = glo_get_featured_location_name();
 		
 		// Set defaults
 		$defaults = array(
@@ -126,8 +125,8 @@ class cets_bl_featured_location_with_posts extends WP_Widget{
 } // End of class
 
 
-// register cets_tag_cloud widget
-add_action('widgets_init', create_function('', 'return register_widget("cets_bl_featured_location_with_posts");'));
+// register glo_tag_cloud widget
+add_action('widgets_init', create_function('', 'return register_widget("glo_bl_featured_location_with_posts");'));
 
 
 

@@ -7,6 +7,7 @@ Description: Plug-in to assign topics to sites. Based on Site Topics by Deanna S
 Author: Glocal Coop
 Version: 1.5
 Author URI: http://glocal.coop
+Text Domain: blogtopics
 
 Copyleft:
 
@@ -33,7 +34,7 @@ Copyleft:
  * ******************************************************************************
  */
 
-class cets_blog_topics  {
+class glo_blog_topics  {
 	// empty variables for setting up tables
     var $table_topic;
 	var $table_relationship;
@@ -46,18 +47,18 @@ class cets_blog_topics  {
  * Default constructor
  * *******************************************************************************
  */
-	function cets_blog_topics() 
+	function glo_blog_topics() 
 	{	
 		global $table_prefix, $wpdb;
 		
 		// Update variables for 1 table to hold the topics, 1 table to hold relationships, and 1 table to hold photo references
-		$this->table_topic  = $wpdb->blogs . "_cets_topic";
-		$this->table_relationship = $wpdb->blogs . "_cets_topic_relationship";
+		$this->table_topic  = $wpdb->blogs . "_glo_topic";
+		$this->table_relationship = $wpdb->blogs . "_glo_topic_relationship";
 		
 		// get the version
-		$version = get_site_option( 'cets_blogtopics_setup' );
+		$version = get_site_option( 'glo_blogtopics_setup' );
 		// call set up if there's not option set yet, and we're not uninstalling
-		if ($_GET['page'] == 'cets_bt_management_page' && ! isset($_GET['uninstalling'])){
+		if ($_GET['page'] == 'glo_bt_management_page' && ! isset($_GET['uninstalling'])){
 			if(  $version == null ) {
 				$this->setup();
 			}
@@ -68,14 +69,14 @@ class cets_blog_topics  {
 			
 		}
 		
-		if ($_GET['page'] == 'cets_bt_management_page' && $_GET['uninstalling'] == true){
+		if ($_GET['page'] == 'glo_bt_management_page' && $_GET['uninstalling'] == true){
 			$this->unInstall();
 			}
 		
-	} //end cets_blog_topics()
+	} //end glo_blog_topics()
 	
 /* *******************************************************************************
- * Setup - only runs when site option cets_blogtopics_setup is not set
+ * Setup - only runs when site option glo_blogtopics_setup is not set
  * *******************************************************************************
  */
    
@@ -131,10 +132,10 @@ class cets_blog_topics  {
 	    }
 		
 		// Add a site option so that we'll know set up ran
-		add_site_option( 'cets_blogtopics_setup', 3 );
+		add_site_option( 'glo_blogtopics_setup', 3 );
 		
 		// Add a site option to handle excluded blogs
-		add_site_option('cets_blogtopics_excluded_blogs', '0');
+		add_site_option('glo_blogtopics_excluded_blogs', '0');
 	    		
     } // end setup()
  
@@ -148,7 +149,7 @@ class cets_blog_topics  {
 			$alter_name = "Alter table " . $this->table_topic . "s rename to " .  $this->table_topic;
 			$results = $wpdb->query($alter_name);
 			
-			$alter_rel = "Alter table " . $wpdb->blogs . "_cets_topics_relationships  rename to " .  $this->table_relationship;
+			$alter_rel = "Alter table " . $wpdb->blogs . "_glo_topics_relationships  rename to " .  $this->table_relationship;
 			$results = $wpdb->query($alter_rel);
 			
 			$alter_query = "Alter table $this->table_topic 
@@ -161,14 +162,14 @@ class cets_blog_topics  {
 			$results = $wpdb->query($alter_query);
 			
 		// Add a site option so that we'll know set up ran
-		update_site_option( 'cets_blogtopics_setup', 3 );
+		update_site_option( 'glo_blogtopics_setup', 3 );
 		// Add a site option to handle excluded blogs
-		add_site_option('cets_blogtopics_excluded_blogs', '0');
+		add_site_option('glo_blogtopics_excluded_blogs', '0');
 		}
     }
 	
 /* *****************************************************************************************
- * Uninstall this plugin - deletes all tables and un-sets cets_blogtopics_setup site option (not really used yet)
+ * Uninstall this plugin - deletes all tables and un-sets glo_blogtopics_setup site option (not really used yet)
  * *****************************************************************************************
  */
 	
@@ -176,8 +177,8 @@ class cets_blog_topics  {
 		global $wpdb;
 		$wpdb->query("DROP TABLE $this->table_topic");
 		$wpdb->query("DROP TABLE $this->table_relationship");
-		$wpdb->query($wpdb->prepare("delete FROM $wpdb->sitemeta WHERE meta_key = %s AND site_id = %d", 'cets_blogtopics_excluded_blogs', $wpdb->siteid) );
-		$wpdb->query($wpdb->prepare("delete FROM $wpdb->sitemeta WHERE meta_key = %s AND site_id = %d", 'cets_blogtopics_setup', $wpdb->siteid) );
+		$wpdb->query($wpdb->prepare("delete FROM $wpdb->sitemeta WHERE meta_key = %s AND site_id = %d", 'glo_blogtopics_excluded_blogs', $wpdb->siteid) );
+		$wpdb->query($wpdb->prepare("delete FROM $wpdb->sitemeta WHERE meta_key = %s AND site_id = %d", 'glo_blogtopics_setup', $wpdb->siteid) );
 
 		
 		
@@ -239,11 +240,11 @@ class cets_blog_topics  {
 	function get_used_topics() {
     	global $wpdb;
     	// get excluded blogs
-		$excluded = get_site_option('cets_blogtopics_excluded_blogs');
+		$excluded = get_site_option('glo_blogtopics_excluded_blogs');
 		
 		// if the excluded string is nothing, the site option hasn't been set up yet - so do that
 		if (strlen($excluded) == 0){
-			add_site_option('cets_blogtopics_excluded_blogs', '0');
+			add_site_option('glo_blogtopics_excluded_blogs', '0');
 			$excluded = 0;
 		}
 		
@@ -302,11 +303,11 @@ class cets_blog_topics  {
 			
 		}
 		// get excluded blogs
-		$excluded = get_site_option('cets_blogtopics_excluded_blogs');
+		$excluded = get_site_option('glo_blogtopics_excluded_blogs');
 		
 		// if the excluded string is nothing, the site option hasn't been set up yet - so do that
 		if (strlen($excluded) == 0){
-			add_site_option('cets_blogtopics_excluded_blogs', '0');
+			add_site_option('glo_blogtopics_excluded_blogs', '0');
 			$excluded = 0;
 		}
 		
@@ -591,7 +592,7 @@ class cets_blog_topics  {
 
     	
 
-    	include_once dirname(__FILE__) . '/cets_blog_topics/functions.php';
+    	include_once dirname(__FILE__) . '/glo_blog_topics/functions.php';
 		
 		/* get the blog name*/
 		
@@ -618,15 +619,15 @@ class cets_blog_topics  {
 
     	// Set the notice to default to "on" and the sharing to off
 
-    	add_blog_option($blog_id, 'cets_notification', 1);
+    	add_blog_option($blog_id, 'glo_notification', 1);
 
-    	add_blog_option($blog_id, 'cets_topicexclude', 1);
+    	add_blog_option($blog_id, 'glo_topicexclude', 1);
 
     	
 
     	//New blogs should always be set not to aggregate (since they have no content to begin with)
 
-    	cets_bt_toggle_blog_exclusion($blog_id, 'e');
+    	glo_bt_toggle_blog_exclusion($blog_id, 'e');
 
     	
 
@@ -749,7 +750,7 @@ class cets_blog_topics  {
 	// Adds the submenu to the blog settings screen
     function add_submenu()
     {
-    	add_options_page('Site Topic Configuration', 'Site Topic', 10, 'cets_blog_topic', array(&$this,'config_page'));
+    	add_options_page('Site Topic Configuration', 'Site Topic', 10, 'glo_blog_topic', array(&$this,'config_page'));
     }
     
 	// Creates the configuration page for an individual blog (blog's settings screen sub menu)
@@ -795,7 +796,7 @@ class cets_blog_topics  {
 
       	if (function_exists('is_network_admin')) {
 
-      		add_submenu_page('settings.php', 'Site Topics', 'Site Topics', 10, 'cets_bt_management_page', array(&$this, 'cets_bt_management_page'));
+      		add_submenu_page('settings.php', 'Site Topics', 'Site Topics', 10, 'glo_bt_management_page', array(&$this, 'glo_bt_management_page'));
 
      
 
@@ -803,7 +804,7 @@ class cets_blog_topics  {
 
       	else {
 
-      		add_submenu_page('ms-admin.php', 'Site Topics', 'Site Topics', 10, 'cets_bt_management_page', array(&$this, 'cets_bt_management_page'));
+      		add_submenu_page('ms-admin.php', 'Site Topics', 'Site Topics', 10, 'glo_bt_management_page', array(&$this, 'glo_bt_management_page'));
 
      
 
@@ -815,7 +816,7 @@ class cets_blog_topics  {
 	 
 	 
 	 // Creates the submenu page for the site admins
-	 function cets_bt_management_page(){
+	 function glo_bt_management_page(){
 	 	// Display a list of all the topics to potential edit/add/delete;
 	 
 	 	global $wpdb;
@@ -884,7 +885,7 @@ class cets_blog_topics  {
 		<p>Uninstalling this plugin will delete all database tables and sitewide options related to this plugin. You will not be able to undo this uninstall. Proceed with caution.</p>
 		
 		<p>Once the data is deleted, you will still need to manually delete the files associated with this plugin. </p>
-		<p><a href="settings.php?page=cets_bt_management_page&uninstalling=true">Yes, uninstall this plugin.</a>
+		<p><a href="settings.php?page=glo_bt_management_page&uninstalling=true">Yes, uninstall this plugin.</a>
 		
 		<?php
 		}
@@ -903,7 +904,7 @@ class cets_blog_topics  {
 
 		global $wp_db_version, $blog_id;
 
-		$noticeon = get_option('cets_notification');
+		$noticeon = get_option('glo_notification');
 
 		
 
@@ -915,7 +916,7 @@ class cets_blog_topics  {
 
 			$noticeon = 1;
 
-			update_option('cets_notification', 1);
+			update_option('glo_notification', 1);
 
 		}
 
@@ -933,9 +934,9 @@ class cets_blog_topics  {
 
 		
 
-		$excludelist = get_site_option('cets_blogtopics_excluded_blogs');
+		$excludelist = get_site_option('glo_blogtopics_excluded_blogs');
 
-		$excluded = cets_bt_listfind($excludelist, $blog_id, ",");
+		$excluded = glo_bt_listfind($excludelist, $blog_id, ",");
 
 		
 
@@ -964,19 +965,19 @@ class cets_blog_topics  {
 
 	function add_privacy_options_init() {
 
-		add_settings_section('cets_content_sharing_options', 'Content Sharing Options', array('cets_blog_topics', 'add_content_sharing_section'), 'privacy');
+		add_settings_section('glo_content_sharing_options', 'Content Sharing Options', array('glo_blog_topics', 'add_content_sharing_section'), 'privacy');
 
 		
 
-		add_settings_field('cets_topicexclude', 'Share Your Content', array('cets_blog_topics', 'add_cets_topicexclude'), 'privacy', 'cets_content_sharing_options');
+		add_settings_field('glo_topicexclude', 'Share Your Content', array('glo_blog_topics', 'add_glo_topicexclude'), 'privacy', 'glo_content_sharing_options');
 
-		add_settings_field('cets_notification', 'Show/Hide Notification', array('cets_blog_topics', 'add_cets_notification'), 'privacy', 'cets_content_sharing_options');
+		add_settings_field('glo_notification', 'Show/Hide Notification', array('glo_blog_topics', 'add_glo_notification'), 'privacy', 'glo_content_sharing_options');
 
 		
 
-		register_setting('privacy','cets_topicexclude');
+		register_setting('privacy','glo_topicexclude');
 
-		register_setting('privacy', 'cets_notification');
+		register_setting('privacy', 'glo_notification');
 
 		
 
@@ -990,37 +991,37 @@ class cets_blog_topics  {
 
 		
 
-		echo("<p>Get your site listed and findable by sharing it on the ". get_blog_option(1, 'blogname') ." homepage. Your most recent posts will automatically display in their Topic area news and your site will be listed in the Sites list for <a href='". esc_url( admin_url( 'options-general.php?page=cets_blog_topic' ) ) ."'>your site's topic</a>.</p>");
+		echo("<p>Get your site listed and findable by sharing it on the ". get_blog_option(1, 'blogname') ." homepage. Your most recent posts will automatically display in their Topic area news and your site will be listed in the Sites list for <a href='". esc_url( admin_url( 'options-general.php?page=glo_blog_topic' ) ) ."'>your site's topic</a>.</p>");
 
 	}
 
 	
 
-	function add_cets_topicexclude() {	
+	function add_glo_topicexclude() {	
 
 		// Check to see if this option has been set yet and if not, set it to exclude the blog
 
 		global $blog_id;
 
-		$excludelist = get_site_option('cets_blogtopics_excluded_blogs');
+		$excludelist = get_site_option('glo_blogtopics_excluded_blogs');
 
-		$excluded = cets_bt_listfind($excludelist, $blog_id, ",");
+		$excluded = glo_bt_listfind($excludelist, $blog_id, ",");
 
-		$shared = get_option('cets_topicexclude');
+		$shared = get_option('glo_topicexclude');
 
 		if (strlen($shared) != 1){ 
 
-			add_option('cets_topicexclude', $excluded);
+			add_option('glo_topicexclude', $excluded);
 
 		}
 
 		
 
-		echo('<label for="cets_topicexclude_no"><input id="cets_topicexclude_no" type="radio" name="cets_topicexclude" value="0"' . checked( 0, get_option('cets_topicexclude'), false ) . '/> Share it!</label>');
+		echo('<label for="glo_topicexclude_no"><input id="glo_topicexclude_no" type="radio" name="glo_topicexclude" value="0"' . checked( 0, get_option('glo_topicexclude'), false ) . '/> Share it!</label>');
 
 		echo('<br/>');
 
-	  	echo('<label for="cets_topicexclude_yes"><input id="cets_topicexclude_yes" type="radio" name="cets_topicexclude" value="1"' . checked( 1, get_option('cets_topicexclude'), false ) . '/> Do not share it!</label>');
+	  	echo('<label for="glo_topicexclude_yes"><input id="glo_topicexclude_yes" type="radio" name="glo_topicexclude" value="1"' . checked( 1, get_option('glo_topicexclude'), false ) . '/> Do not share it!</label>');
 
 			
 
@@ -1030,15 +1031,15 @@ class cets_blog_topics  {
 
 	
 
-	function add_cets_notification(){
+	function add_glo_notification(){
 
-			echo('<label for="cets_notification_off"><input id="cets_notification_off" type="radio" name="cets_notification" value="0" ' . checked( 0, get_option('cets_notification'), false ) .' /> <b>Turn the notification off.</b> I will remember when it is time to share my blog.</label>');
+			echo('<label for="glo_notification_off"><input id="glo_notification_off" type="radio" name="glo_notification" value="0" ' . checked( 0, get_option('glo_notification'), false ) .' /> <b>Turn the notification off.</b> I will remember when it is time to share my blog.</label>');
 
            
 
             echo('<br />');
 
-            echo('<label for="cets_notification_on"><input id="cets_notification_on" type="radio" name="cets_notification" value="1" ' . checked( 1, get_option('cets_notification'), false ) .' /> <b>Turn the notification on.</b> I need a reminder to share my blog when it is ready to go live.</label>');
+            echo('<label for="glo_notification_on"><input id="glo_notification_on" type="radio" name="glo_notification" value="1" ' . checked( 1, get_option('glo_notification'), false ) .' /> <b>Turn the notification on.</b> I need a reminder to share my blog when it is ready to go live.</label>');
 
 			
 
@@ -1052,7 +1053,7 @@ class cets_blog_topics  {
 
 	
 
-	function update_option_cets_topicexclude($oldvalue, $_newvalue){
+	function update_option_glo_topicexclude($oldvalue, $_newvalue){
 
 		global $blog_id;
 
@@ -1060,7 +1061,7 @@ class cets_blog_topics  {
 
 					// exclude this blog
 
-					cets_bt_toggle_blog_exclusion($blog_id, 'e');
+					glo_bt_toggle_blog_exclusion($blog_id, 'e');
 
 					
 
@@ -1070,7 +1071,7 @@ class cets_blog_topics  {
 
 					// include this blog
 
-					cets_bt_toggle_blog_exclusion($blog_id, 'i');
+					glo_bt_toggle_blog_exclusion($blog_id, 'i');
 
 					
 
@@ -1111,39 +1112,39 @@ class cets_blog_topics  {
 
 
 // Create the class
-$cets_wpmubt = new cets_blog_topics();
+$glo_wpmubt = new glo_blog_topics();
 
 
 
 	
 // Add the actions and filters we need to make all this run	
-add_action('signup_blogform', array(&$cets_wpmubt, 'get_topics_select_signup'));
-add_filter('wpmu_new_blog', array(&$cets_wpmubt, 'set_new_blog_topic'), 101);
-add_action('signup_finished', array(&$cets_wpmubt, 'save_signup_blog_topic'));
+add_action('signup_blogform', array(&$glo_wpmubt, 'get_topics_select_signup'));
+add_filter('wpmu_new_blog', array(&$glo_wpmubt, 'set_new_blog_topic'), 101);
+add_action('signup_finished', array(&$glo_wpmubt, 'save_signup_blog_topic'));
 
-add_action( 'admin_notices', array(&$cets_wpmubt, 'site_admin_notice') );
+add_action( 'admin_notices', array(&$glo_wpmubt, 'site_admin_notice') );
 
 
 
 // hook into options-privacy.php and the updates of those options
 
-add_action('admin_init', array(&$cets_wpmubt, 'add_privacy_options_init'));
+add_action('admin_init', array(&$glo_wpmubt, 'add_privacy_options_init'));
 
-add_action('update_option_cets_topicexclude', array(&$cets_wpmubt, 'update_option_cets_topicexclude'), 10, 2);
-
-
-
-add_action( 'wp_head', array(&$cets_wpmubt, 'hide_privacy_stylesheet' ));
+add_action('update_option_glo_topicexclude', array(&$glo_wpmubt, 'update_option_glo_topicexclude'), 10, 2);
 
 
 
-add_action('admin_menu', array(&$cets_wpmubt, 'add_submenu'));
+add_action( 'wp_head', array(&$glo_wpmubt, 'hide_privacy_stylesheet' ));
+
+
+
+add_action('admin_menu', array(&$glo_wpmubt, 'add_submenu'));
 
 
 
 if (function_exists('is_network_admin')) {
 
-	add_action('network_admin_menu', array(&$cets_wpmubt, 'add_siteadmin_page'));
+	add_action('network_admin_menu', array(&$glo_wpmubt, 'add_siteadmin_page'));
 
 }
 
@@ -1151,84 +1152,84 @@ else {
 
 	
 
-add_action('admin_menu', array(&$cets_wpmubt, 'add_siteadmin_page'));
+add_action('admin_menu', array(&$glo_wpmubt, 'add_siteadmin_page'));
 
 }
 
 
 
-add_action('delete_blog', array(&$cets_wpmubt, 'update_relationships'));
+add_action('delete_blog', array(&$glo_wpmubt, 'update_relationships'));
 
 
 
 /* *********************************************************************************
  * Make public functions for the "private" functions in the class
  */
-function cets_get_blogs_from_topic_id_html($topic_id = '1', $max_rows = 0, $blog_id = 0, $orderby = 'last_updated') {
-    global $cets_wpmubt;
-	return $cets_wpmubt->get_blogs_from_topic_id_html($topic_id, $max_rows, $blog_id, $orderby);
+function glo_get_blogs_from_topic_id_html($topic_id = '1', $max_rows = 0, $blog_id = 0, $orderby = 'last_updated') {
+    global $glo_wpmubt;
+	return $glo_wpmubt->get_blogs_from_topic_id_html($topic_id, $max_rows, $blog_id, $orderby);
 }
 
-function cets_get_topic_name($topic_id = '1') {
-    global $cets_wpmubt;
-	return $cets_wpmubt->get_topic_name($topic_id);
+function glo_get_topic_name($topic_id = '1') {
+    global $glo_wpmubt;
+	return $glo_wpmubt->get_topic_name($topic_id);
 }
 
-function cets_get_topics_html($used = true, $show_count = true, $send_to_root = false, $use_slugs = false) {
-    global $cets_wpmubt;
-	return $cets_wpmubt->get_topics_html($used, $show_count, $send_to_root, $use_slugs);
+function glo_get_topics_html($used = true, $show_count = true, $send_to_root = false, $use_slugs = false) {
+    global $glo_wpmubt;
+	return $glo_wpmubt->get_topics_html($used, $show_count, $send_to_root, $use_slugs);
 }
 
-function cets_get_blog_topic_name($blog_id) {
-	global $cets_wpmubt;
-	return $cets_wpmubt->get_blog_topic_name($blog_id);
+function glo_get_blog_topic_name($blog_id) {
+	global $glo_wpmubt;
+	return $glo_wpmubt->get_blog_topic_name($blog_id);
 }
 
-function cets_get_blog_topic_slug($blog_id) {
-	global $cets_wpmubt;
-	return $cets_wpmubt->get_blog_topic_slug($blog_id);
+function glo_get_blog_topic_slug($blog_id) {
+	global $glo_wpmubt;
+	return $glo_wpmubt->get_blog_topic_slug($blog_id);
 }
 
-function cets_get_topic_id_from_blog_id($blog_id) {
-	global $cets_wpmubt;
-	return $cets_wpmubt->get_topic_id_from_blog_id($blog_id);
+function glo_get_topic_id_from_blog_id($blog_id) {
+	global $glo_wpmubt;
+	return $glo_wpmubt->get_topic_id_from_blog_id($blog_id);
 }
 
-function cets_get_recent_posts_from_topic_id_html($topic_id, $max_rows=0, $blog_id) {
-	global $cets_wpmubt;
-	return $cets_wpmubt->get_recent_posts_from_topic_id_html($topic_id, $max_rows, $blog_id);
+function glo_get_recent_posts_from_topic_id_html($topic_id, $max_rows=0, $blog_id) {
+	global $glo_wpmubt;
+	return $glo_wpmubt->get_recent_posts_from_topic_id_html($topic_id, $max_rows, $blog_id);
 }
 
-function cets_get_blog_details_from_topic_id($topic_id, $max_rows = 0, $blog_id = 0, $orderby = 'last_updated') {
-	global $cets_wpmubt;
-	return $cets_wpmubt->get_blog_details_from_topic_id($topic_id, $max_rows = 0, $blog_id = 0, $orderby);
+function glo_get_blog_details_from_topic_id($topic_id, $max_rows = 0, $blog_id = 0, $orderby = 'last_updated') {
+	global $glo_wpmubt;
+	return $glo_wpmubt->get_blog_details_from_topic_id($topic_id, $max_rows = 0, $blog_id = 0, $orderby);
 }	
 
-function cets_get_recent_posts_from_topic_id($topic_id, $max_rows=0, $blog_id) {
-	global $cets_wpmubt;
-	return $cets_wpmubt->get_recent_posts_from_topic_id($topic_id, $max_rows=0, $blog_id);
+function glo_get_recent_posts_from_topic_id($topic_id, $max_rows=0, $blog_id) {
+	global $glo_wpmubt;
+	return $glo_wpmubt->get_recent_posts_from_topic_id($topic_id, $max_rows=0, $blog_id);
 }
 
-function cets_get_topic_id_from_slug($slug) {
-	global $cets_wpmubt;
-	return $cets_wpmubt->get_topic_id_from_slug($slug);	
+function glo_get_topic_id_from_slug($slug) {
+	global $glo_wpmubt;
+	return $glo_wpmubt->get_topic_id_from_slug($slug);	
 }
 
-function cets_get_topic($topic_id) {
-	global $cets_wpmubt;
-	return $cets_wpmubt->get_topic($topic_id);	
+function glo_get_topic($topic_id) {
+	global $glo_wpmubt;
+	return $glo_wpmubt->get_topic($topic_id);	
 }
-function cets_get_used_topics() {
-	global $cets_wpmubt;
-	return $cets_wpmubt->get_used_topics();	
+function glo_get_used_topics() {
+	global $glo_wpmubt;
+	return $glo_wpmubt->get_used_topics();	
 }
-function cets_get_featured_topic() {
-	global $cets_wpmubt;
-	return $cets_wpmubt->get_featured_topic();	
+function glo_get_featured_topic() {
+	global $glo_wpmubt;
+	return $glo_wpmubt->get_featured_topic();	
 }
-function cets_get_featured_topic_name() {
-	global $cets_wpmubt;
-	return $cets_wpmubt->get_featured_topic_name();	
+function glo_get_featured_topic_name() {
+	global $glo_wpmubt;
+	return $glo_wpmubt->get_featured_topic_name();	
 }
 
 
@@ -1238,8 +1239,8 @@ function cets_get_featured_topic_name() {
  * Include the privacy options section
  * ********************************************************************************************************
  */
- if ( strpos($_SERVER['REQUEST_URI'], 'wp-admin') == true && file_exists(dirname(__FILE__) . '/cets_blog_topics/miscactions.php')) {
-	include_once dirname(__FILE__) . '/cets_blog_topics/miscactions.php';
+ if ( strpos($_SERVER['REQUEST_URI'], 'wp-admin') == true && file_exists(dirname(__FILE__) . '/glo_blog_topics/miscactions.php')) {
+	include_once dirname(__FILE__) . '/glo_blog_topics/miscactions.php';
 	}
 
 ?>

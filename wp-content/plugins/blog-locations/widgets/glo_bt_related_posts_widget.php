@@ -5,9 +5,8 @@ Plugin URI:
 Description: Adds a sidebar widget to display Blog's Location and/or Recent Posts
 Version: 2.0
 Author: Deanna Schneider
-Copyright:
+Text Domain: bloglocations
 
-    Copyright 2008 CETS
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -26,28 +25,28 @@ Copyright:
 */
 
 // This gets called at the plugins_loaded action
-function widget_cets_bl_recent_posts_init() {
+function widget_glo_bl_recent_posts_init() {
 
 	// check for sidebar existance
 	if ( !function_exists('register_sidebar_widget') || !function_exists('register_widget_control') )
 		return;
 
 	// Check for the required blog location class
-	if ( !class_exists('cets_blog_locations') )
+	if ( !class_exists('glo_blog_locations') )
 		return;
 	
 	$widget_title = "Blog Locations - Recent Posts";
 	$widget_description = "Show a linked list of related (by location) recent posts ordered by most recent activity.";
 
 	// This saves options and prints the widget's config form.
-	function widget_cets_bl_recent_posts_control() {
+	function widget_glo_bl_recent_posts_control() {
 		global $blog_id;
 		
 		// Get the list of used locations
-		$locations = cets_get_used_locations();
-		$thislocation =  cets_get_location_id_from_blog_id($blog_id);
+		$locations = glo_get_used_locations();
+		$thislocation =  glo_get_location_id_from_blog_id($blog_id);
 		
-		$options = get_option('widget_cets_bl_recent_posts');
+		$options = get_option('widget_glo_bl_recent_posts');
 		
 		// this section sets defaults
 		if ( !is_array($options) )
@@ -56,34 +55,34 @@ function widget_cets_bl_recent_posts_init() {
 			 'locationid' => $thislocation);
 			 
 		// let's try to manually set this option	 
-		update_option('widget_cets_bl_recent_posts', $options);	 
+		update_option('widget_glo_bl_recent_posts', $options);	 
 		
 		
 			 
 		// here we set the options to whatever was posted		
-		if ( $_POST['cets_bl_recent_posts_submit'] ) {
-			$options['posts_title'] = strip_tags(stripslashes($_POST['cets_bl_posts_title']));
-			$options['postrows'] = strip_tags(stripslashes($_POST['cets_bl_postrows']));
-			$options['locationid'] = $_POST['cets_location_id'];
+		if ( $_POST['glo_bl_recent_posts_submit'] ) {
+			$options['posts_title'] = strip_tags(stripslashes($_POST['glo_bl_posts_title']));
+			$options['postrows'] = strip_tags(stripslashes($_POST['glo_bl_postrows']));
+			$options['locationid'] = $_POST['glo_location_id'];
 			
 		}
 		
 		// Update the options
-		update_option('widget_cets_bl_recent_posts', $options);
+		update_option('widget_glo_bl_recent_posts', $options);
 		
 
 	?>
 	 <strong>Sitewide Recent Posts</strong>
      <p>
-     <label for="cets_bl_p_title"><?php _e('Title:', 'widgets'); ?> <input type="text" id="cets_bl_posts_title" name="cets_bl_posts_title" value="<?php echo wp_specialchars($options['posts_title'], true); ?>" /></label>
+     <label for="glo_bl_p_title"><?php _e('Title:', 'widgets'); ?> <input type="text" id="glo_bl_posts_title" name="glo_bl_posts_title" value="<?php echo wp_specialchars($options['posts_title'], true); ?>" /></label>
 	 </p>
 	 <p>
-     <label for="cets_bl_postrows"><?php _e('Number of recent posts to include:', 'widgets'); ?> <input type="text" id="cets_bl_postrows" name="cets_bl_postrows" size="5" value="<?php echo wp_specialchars($options['postrows'], true); ?>" /></label>
+     <label for="glo_bl_postrows"><?php _e('Number of recent posts to include:', 'widgets'); ?> <input type="text" id="glo_bl_postrows" name="glo_bl_postrows" size="5" value="<?php echo wp_specialchars($options['postrows'], true); ?>" /></label>
     </p>
 	<p>
 		
-	<label for="cets_location_id">Select the location for Recent Posts:<br/>
-	<select name="cets_location_id" size="1" id="cets_location_id">
+	<label for="glo_location_id">Select the location for Recent Posts:<br/>
+	<select name="glo_location_id" size="1" id="glo_location_id">
 		<?php foreach ($locations as $location){
 			echo('<option value="' . $location->id); 
 			if ($options['locationid'] == $location->id) { echo 'selected="selected"';}
@@ -97,19 +96,19 @@ function widget_cets_bl_recent_posts_init() {
 	</label>
 	</p>	
 	
-	<input type="hidden" name="cets_bl_recent_posts_submit" id="cets_bl_recent_posts_submit" value="TRUE" />
+	<input type="hidden" name="glo_bl_recent_posts_submit" id="glo_bl_recent_posts_submit" value="TRUE" />
 				
 	<?php
 	}
 
 	// This prints the widget
-	function widget_cets_bl_recent_posts($args) {
+	function widget_glo_bl_recent_posts($args) {
 		global $blog_id;
 		$this_id = $blog_id;
 		extract($args);
-		$options = get_option('widget_cets_bl_recent_posts');
+		$options = get_option('widget_glo_bl_recent_posts');
 		$location_id = $options['locationid'];
-		$location = cets_get_location($location_id);
+		$location = glo_get_location($location_id);
 		$postrows_default = 10; // we'll default to 10 otherwise the query gets too huge
 		
 		$title = !isset($options['title']) == 0 ? $widget_title : $options['title'];
@@ -133,7 +132,7 @@ function widget_cets_bl_recent_posts_init() {
 		// the sitewide recent posts
 			echo $before_widget . $before_title . $options['posts_title']  . $after_title;
 			echo ("<ul>");
-			cets_get_recent_posts_from_location_id_html($location_id, $postrows, $this_id);
+			glo_get_recent_posts_from_location_id_html($location_id, $postrows, $this_id);
 			echo ("</ul>");
 			echo ("<div class='locationMore'>");
 			echo ("<a href='/location/" . strtolower($location->slug) . "'>(More " . $location->slug . " Posts</a> | <a href='/sites/" . strtolower($location->slug) . "'>All " . $location->slug . " Sites)</a>");
@@ -147,14 +146,14 @@ function widget_cets_bl_recent_posts_init() {
 
 
 	// Tell Dynamic Sidebar about our new widget and its control
-	$widget_ops = array('classname' => 'widget_cets_bl_recent_posts', 'description' => __( "$widget_description") );
-	wp_register_sidebar_widget('widget_cets_bl_recent_posts', $widget_title, 'widget_cets_bl_recent_posts', $widget_ops);
-	wp_register_widget_control('widget_cets_bl_recent_posts', $widget_title, 'widget_cets_bl_recent_posts_control' );
+	$widget_ops = array('classname' => 'widget_glo_bl_recent_posts', 'description' => __( "$widget_description") );
+	wp_register_sidebar_widget('widget_glo_bl_recent_posts', $widget_title, 'widget_glo_bl_recent_posts', $widget_ops);
+	wp_register_widget_control('widget_glo_bl_recent_posts', $widget_title, 'widget_glo_bl_recent_posts_control' );
 
 
 }
 
 // Delay plugin execution to ensure Dynamic Sidebar has a chance to load first
-add_action('plugins_loaded', 'widget_cets_bl_recent_posts_init');
+add_action('plugins_loaded', 'widget_glo_bl_recent_posts_init');
 
 ?>

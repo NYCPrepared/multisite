@@ -5,9 +5,7 @@ Plugin URI:
 Description: Adds a sidebar widget to display Blog's Topic and/or Recent Posts
 Version: 2.0
 Author: Deanna Schneider
-Copyright:
-
-    Copyright 2008 CETS
+Text Domain: blogtopics
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -26,28 +24,28 @@ Copyright:
 */
 
 // This gets called at the plugins_loaded action
-function widget_cets_bt_recent_posts_init() {
+function widget_glo_bt_recent_posts_init() {
 
 	// check for sidebar existance
 	if ( !function_exists('register_sidebar_widget') || !function_exists('register_widget_control') )
 		return;
 
 	// Check for the required blog topic class
-	if ( !class_exists('cets_blog_topics') )
+	if ( !class_exists('glo_blog_topics') )
 		return;
 	
 	$widget_title = "Blog Topics - Recent Posts";
 	$widget_description = "Show a linked list of related (by topic) recent posts ordered by most recent activity.";
 
 	// This saves options and prints the widget's config form.
-	function widget_cets_bt_recent_posts_control() {
+	function widget_glo_bt_recent_posts_control() {
 		global $blog_id;
 		
 		// Get the list of used topics
-		$topics = cets_get_used_topics();
-		$thistopic =  cets_get_topic_id_from_blog_id($blog_id);
+		$topics = glo_get_used_topics();
+		$thistopic =  glo_get_topic_id_from_blog_id($blog_id);
 		
-		$options = get_option('widget_cets_bt_recent_posts');
+		$options = get_option('widget_glo_bt_recent_posts');
 		
 		// this section sets defaults
 		if ( !is_array($options) )
@@ -56,34 +54,34 @@ function widget_cets_bt_recent_posts_init() {
 			 'topicid' => $thistopic);
 			 
 		// let's try to manually set this option	 
-		update_option('widget_cets_bt_recent_posts', $options);	 
+		update_option('widget_glo_bt_recent_posts', $options);	 
 		
 		
 			 
 		// here we set the options to whatever was posted		
-		if ( $_POST['cets_bt_recent_posts_submit'] ) {
-			$options['posts_title'] = strip_tags(stripslashes($_POST['cets_bt_posts_title']));
-			$options['postrows'] = strip_tags(stripslashes($_POST['cets_bt_postrows']));
-			$options['topicid'] = $_POST['cets_topic_id'];
+		if ( $_POST['glo_bt_recent_posts_submit'] ) {
+			$options['posts_title'] = strip_tags(stripslashes($_POST['glo_bt_posts_title']));
+			$options['postrows'] = strip_tags(stripslashes($_POST['glo_bt_postrows']));
+			$options['topicid'] = $_POST['glo_topic_id'];
 			
 		}
 		
 		// Update the options
-		update_option('widget_cets_bt_recent_posts', $options);
+		update_option('widget_glo_bt_recent_posts', $options);
 		
 
 	?>
 	 <strong>Sitewide Recent Posts</strong>
      <p>
-     <label for="cets_bt_p_title"><?php _e('Title:', 'widgets'); ?> <input type="text" id="cets_bt_posts_title" name="cets_bt_posts_title" value="<?php echo wp_specialchars($options['posts_title'], true); ?>" /></label>
+     <label for="glo_bt_p_title"><?php _e('Title:', 'widgets'); ?> <input type="text" id="glo_bt_posts_title" name="glo_bt_posts_title" value="<?php echo wp_specialchars($options['posts_title'], true); ?>" /></label>
 	 </p>
 	 <p>
-     <label for="cets_bt_postrows"><?php _e('Number of recent posts to include:', 'widgets'); ?> <input type="text" id="cets_bt_postrows" name="cets_bt_postrows" size="5" value="<?php echo wp_specialchars($options['postrows'], true); ?>" /></label>
+     <label for="glo_bt_postrows"><?php _e('Number of recent posts to include:', 'widgets'); ?> <input type="text" id="glo_bt_postrows" name="glo_bt_postrows" size="5" value="<?php echo wp_specialchars($options['postrows'], true); ?>" /></label>
     </p>
 	<p>
 		
-	<label for="cets_topic_id">Select the topic for Recent Posts:<br/>
-	<select name="cets_topic_id" size="1" id="cets_topic_id">
+	<label for="glo_topic_id">Select the topic for Recent Posts:<br/>
+	<select name="glo_topic_id" size="1" id="glo_topic_id">
 		<?php foreach ($topics as $topic){
 			echo('<option value="' . $topic->id); 
 			if ($options['topicid'] == $topic->id) { echo 'selected="selected"';}
@@ -97,19 +95,19 @@ function widget_cets_bt_recent_posts_init() {
 	</label>
 	</p>	
 	
-	<input type="hidden" name="cets_bt_recent_posts_submit" id="cets_bt_recent_posts_submit" value="TRUE" />
+	<input type="hidden" name="glo_bt_recent_posts_submit" id="glo_bt_recent_posts_submit" value="TRUE" />
 				
 	<?php
 	}
 
 	// This prints the widget
-	function widget_cets_bt_recent_posts($args) {
+	function widget_glo_bt_recent_posts($args) {
 		global $blog_id;
 		$this_id = $blog_id;
 		extract($args);
-		$options = get_option('widget_cets_bt_recent_posts');
+		$options = get_option('widget_glo_bt_recent_posts');
 		$topic_id = $options['topicid'];
-		$topic = cets_get_topic($topic_id);
+		$topic = glo_get_topic($topic_id);
 		$postrows_default = 10; // we'll default to 10 otherwise the query gets too huge
 		
 		$title = !isset($options['title']) == 0 ? $widget_title : $options['title'];
@@ -133,7 +131,7 @@ function widget_cets_bt_recent_posts_init() {
 		// the sitewide recent posts
 			echo $before_widget . $before_title . $options['posts_title']  . $after_title;
 			echo ("<ul>");
-			cets_get_recent_posts_from_topic_id_html($topic_id, $postrows, $this_id);
+			glo_get_recent_posts_from_topic_id_html($topic_id, $postrows, $this_id);
 			echo ("</ul>");
 			echo ("<div class='topicMore'>");
 			echo ("<a href='/topic/" . strtolower($topic->slug) . "'>(More " . $topic->slug . " Posts</a> | <a href='/sites/" . strtolower($topic->slug) . "'>All " . $topic->slug . " Sites)</a>");
@@ -147,14 +145,14 @@ function widget_cets_bt_recent_posts_init() {
 
 
 	// Tell Dynamic Sidebar about our new widget and its control
-	$widget_ops = array('classname' => 'widget_cets_bt_recent_posts', 'description' => __( "$widget_description") );
-	wp_register_sidebar_widget('widget_cets_bt_recent_posts', $widget_title, 'widget_cets_bt_recent_posts', $widget_ops);
-	wp_register_widget_control('widget_cets_bt_recent_posts', $widget_title, 'widget_cets_bt_recent_posts_control' );
+	$widget_ops = array('classname' => 'widget_glo_bt_recent_posts', 'description' => __( "$widget_description") );
+	wp_register_sidebar_widget('widget_glo_bt_recent_posts', $widget_title, 'widget_glo_bt_recent_posts', $widget_ops);
+	wp_register_widget_control('widget_glo_bt_recent_posts', $widget_title, 'widget_glo_bt_recent_posts_control' );
 
 
 }
 
 // Delay plugin execution to ensure Dynamic Sidebar has a chance to load first
-add_action('plugins_loaded', 'widget_cets_bt_recent_posts_init');
+add_action('plugins_loaded', 'widget_glo_bt_recent_posts_init');
 
 ?>

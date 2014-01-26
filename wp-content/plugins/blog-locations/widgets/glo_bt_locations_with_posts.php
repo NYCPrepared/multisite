@@ -1,13 +1,12 @@
 <?php
 /*
-Plugin Name: Blog Topics Topics with Posts Widget
+Plugin Name: Blog Locations Locations with Posts Widget
 Plugin URI: 
-Description: Adds a sidebar widget to display Blog's Topic and/or Recent Posts
+Description: Adds a sidebar widget to display Blog's Location and/or Recent Posts
 Version: 1.0
 Author: Deanna Schneider
-Copyright:
+Text Domain: bloglocations
 
-    Copyright 2009 CETS
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -25,13 +24,13 @@ Copyright:
 
 */
 
-class cets_bt_topics_with_posts extends WP_Widget{
+class glo_bl_locations_with_posts extends WP_Widget{
 	/** constructor **/
-	function cets_bt_topics_with_posts() {
-		parent::WP_Widget(false, $name = 'Blog Topics - With Posts');
+	function glo_bl_locations_with_posts() {
+		parent::WP_Widget(false, $name = 'Blog Locations - With Posts');
 		
-		// this widget requires the cets_blog_topics plugin
-		if ( !class_exists('cets_blog_topics') )
+		// this widget requires the glo_blog_locations plugin
+		if ( !class_exists('glo_blog_locations') )
 		return;
 	}
 	
@@ -40,7 +39,7 @@ class cets_bt_topics_with_posts extends WP_Widget{
 		global $current_site;	
         extract( $args );
         $options = $instance;
-		$title = empty($options['title']) ? __('Topics') : apply_filters('widget_title', $options['title']);
+		$title = empty($options['title']) ? __('Locations') : apply_filters('widget_title', $options['title']);
 		$defaults = array(
 			'title' => 'Latest Posts', 'postrows' => 5, 'exclude' => array()
 		);
@@ -54,21 +53,21 @@ class cets_bt_topics_with_posts extends WP_Widget{
 			}
 		
 		
-		// get the topics
-		$topics = cets_get_used_topics();
+		// get the locations
+		$locations = glo_get_used_locations();
 		
 			
 		echo $before_widget;
 		echo $before_title . $args['title'] . $after_title;
-		foreach($topics as $topic) {
-					if (!in_array($topic->id, $args['exclude'])){ //is not in the array of excluded ones
-						echo("<div class='topicListing " . $topic->slug . "'>");
-						echo ("<h3><a href='topic/" . strtolower($topic->slug) . "'>" . $topic->topic_name . "</a></h3>");
+		foreach($locations as $location) {
+					if (!in_array($location->id, $args['exclude'])){ //is not in the array of excluded ones
+						echo("<div class='locationListing " . $location->slug . "'>");
+						echo ("<h3><a href='location/" . strtolower($location->slug) . "'>" . $location->location_name . "</a></h3>");
 						echo ("<ul>");
-						echo (cets_get_recent_posts_from_topic_id_html($topic->id, $args['postrows'], 0));
+						echo (glo_get_recent_posts_from_location_id_html($location->id, $args['postrows'], 0));
 						echo ("</ul>");
-						echo ("<div class='topicMore'>");
-						echo ("<a href='/topic/" . strtolower($topic->slug) . "'>(More " . $topic->slug . " Posts</a> | <a href='/sites/" . strtolower($topic->slug) . "'>All " . $topic->slug . " Sites)</a>");
+						echo ("<div class='locationMore'>");
+						echo ("<a href='/location/" . strtolower($location->slug) . "'>(More " . $location->slug . " Posts</a> | <a href='/sites/" . strtolower($location->slug) . "'>All " . $location->slug . " Sites)</a>");
 						echo ("</div>");
 						echo ("</div>");
 				
@@ -102,8 +101,8 @@ class cets_bt_topics_with_posts extends WP_Widget{
 	/** This function creates the form **/
 	/** @see WP_Widget::form */
     function form($instance) {				
-        // Get the list of used topics
-		$topics = cets_get_used_topics();
+        // Get the list of used locations
+		$locations = glo_get_used_locations();
 		
 		// Set defaults
 		$defaults = array(
@@ -125,8 +124,8 @@ class cets_bt_topics_with_posts extends WP_Widget{
 		
 
 	<p><label for="<?php echo $this->get_field_id('exclude'); ?>"><?php _e('Exclude these blogs:') ?><br/>
-	<?php foreach ($topics as $topic){ ?>
-	<input type="checkbox" name="<?php echo ( 'widget-' . $this->id_base . '[' . $this->number . '][exclude][]'); ?>" id="<?php echo $this->get_field_id('exclude'. '_$topic->id') ; ?>" value="<?php echo $topic->id; ?>" <?php if (in_array($topic->id, $exclude)) { echo 'checked="checked"';}?> > <?php echo $topic->topic_name; ?> <br/> 
+	<?php foreach ($locations as $location){ ?>
+	<input type="checkbox" name="<?php echo ( 'widget-' . $this->id_base . '[' . $this->number . '][exclude][]'); ?>" id="<?php echo $this->get_field_id('exclude'. '_$location->id') ; ?>" value="<?php echo $location->id; ?>" <?php if (in_array($location->id, $exclude)) { echo 'checked="checked"';}?> > <?php echo $location->location_name; ?> <br/> 
 	
 	
 	<?php } ?>
@@ -142,8 +141,8 @@ class cets_bt_topics_with_posts extends WP_Widget{
 } // End of class
 
 
-// register cets_tag_cloud widget
-add_action('widgets_init', create_function('', 'return register_widget("cets_bt_topics_with_posts");'));
+// register glo_tag_cloud widget
+add_action('widgets_init', create_function('', 'return register_widget("glo_bl_locations_with_posts");'));
 
 
 
