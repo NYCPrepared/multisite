@@ -207,37 +207,36 @@ class cets_blog_topics  {
 		$result = $wpdb->get_var($wpdb->prepare("SELECT topic_id FROM $this->table_relationship WHERE blog_id = %d", $blog_id));
 		return $result;
 	}
-        
-   
     
-    function get_blog_topic($blog_id) 
-    {
+    function get_blog_topic($blog_id) {
     	global $wpdb;
     	return $wpdb->get_var($wpdb->prepare("select topic_id from  $this->table_relationship  where blog_id = %d", $blog_id));
     }
 	
-	function get_blog_topic_name($blog_id) 
-    {
+	function get_blog_topic_name($blog_id) {
     	global $wpdb;
     	$result = $wpdb->get_var($wpdb->prepare("select topic_name from $this->table_topic  c INNER JOIN  $this->table_relationship r ON c.id = r.topic_id where r.blog_id =  %d", $blog_id));
 		return ($result);
     }
+
+	function get_blog_topic_slug($blog_id) {
+    	global $wpdb;
+    	$result = $wpdb->get_var($wpdb->prepare("select slug from $this->table_topic  c INNER JOIN  $this->table_relationship r ON c.id = r.topic_id where r.blog_id =  %d", $blog_id));
+		return ($result);
+    }
     
-	function get_topic_name($topic_id)
-    {
+	function get_topic_name($topic_id) {
     	global $wpdb;
     	return $wpdb->get_var($wpdb->prepare("SELECT topic_name FROM $this->table_topic
 						WHERE id = %s AND active = 1;", $topic_id));
     }
     
-	function get_topics()
-    {
+	function get_topics() {
     	global $wpdb;
 		return $wpdb->get_results("SELECT id, topic_name, slug, description, thumbnail, banner, '' as total FROM $this->table_topic WHERE active = 1 ORDER BY topic_name;");
     }
 	
-	function get_used_topics() 
-    {
+	function get_used_topics() {
     	global $wpdb;
     	// get excluded blogs
 		$excluded = get_site_option('cets_blogtopics_excluded_blogs');
@@ -254,7 +253,7 @@ class cets_blog_topics  {
     }
 	
 	// Returns an object of all the info about a single topic
-	function get_topic($topic_id){
+	function get_topic($topic_id) {
 		global $wpdb;
     	return $wpdb->get_row($wpdb->prepare("SELECT topic_name, id, slug, description, thumbnail, banner FROM $this->table_topic
 						WHERE id = %s AND active = 1;", $topic_id));
@@ -262,8 +261,7 @@ class cets_blog_topics  {
 	}
 	
 	// delete a blog from the relationships table
-	function update_relationships($blog_id)
-	{
+	function update_relationships($blog_id) {
 	global $wpdb;
 	$results = $wpdb->query( $wpdb->prepare("DELETE FROM $this->table_relationships WHERE blog_id = %d", $blog_id) );
 	}
@@ -1178,13 +1176,17 @@ function cets_get_topic_name($topic_id = '1') {
 
 function cets_get_topics_html($used = true, $show_count = true, $send_to_root = false, $use_slugs = false) {
     global $cets_wpmubt;
-	
 	return $cets_wpmubt->get_topics_html($used, $show_count, $send_to_root, $use_slugs);
 }
 
 function cets_get_blog_topic_name($blog_id) {
 	global $cets_wpmubt;
 	return $cets_wpmubt->get_blog_topic_name($blog_id);
+}
+
+function cets_get_blog_topic_slug($blog_id) {
+	global $cets_wpmubt;
+	return $cets_wpmubt->get_blog_topic_slug($blog_id);
 }
 
 function cets_get_topic_id_from_blog_id($blog_id) {
@@ -1197,7 +1199,7 @@ function cets_get_recent_posts_from_topic_id_html($topic_id, $max_rows=0, $blog_
 	return $cets_wpmubt->get_recent_posts_from_topic_id_html($topic_id, $max_rows, $blog_id);
 }
 
-function cets_get_blog_details_from_topic_id($topic_id, $max_rows = 0, $blog_id = 0, $orderby = 'last_updated'){
+function cets_get_blog_details_from_topic_id($topic_id, $max_rows = 0, $blog_id = 0, $orderby = 'last_updated') {
 	global $cets_wpmubt;
 	return $cets_wpmubt->get_blog_details_from_topic_id($topic_id, $max_rows = 0, $blog_id = 0, $orderby);
 }	

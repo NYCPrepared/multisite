@@ -69,18 +69,40 @@
 											$site_details = get_blog_details($site_id);
 											$site_options = get_blog_option($site_id, 'theme_mods_community-group');
 											$site_image = $site_options['community_site_image'];
-
-											// echo "<pre>";
-											// var_dump($site_options);
-											// echo "</pre>";
+											$site_path = $site_details->path;
+											$site_slug = trim($site_path,'/');
+											
 											if (function_exists('cets_get_blog_location_name')) { 
-												$site_location = cets_get_blog_location_name($site_id);
+												$site_location_name = cets_get_blog_location_name($site_id);
 											}
+											if (function_exists('cets_get_blog_location_slug')) { 
+												$site_location_slug = cets_get_blog_location_slug($site_id);
+											}
+											if (function_exists('cets_get_blog_topic_name')) {
+												$site_topic_name= cets_get_blog_topic_name($site_id);
+											}
+											if (function_exists('cets_get_blog_topic_slug')) {
+												$site_topic_slug = cets_get_blog_topic_slug($site_id);
+											}
+											if (function_exists('glo_get_blog_network_name')) {
+												$site_network_name = glo_get_blog_network_name($site_id);
+											}
+											if (function_exists('glo_get_blog_network_slug')) {
+												$site_network_slug = glo_get_blog_network_slug($site_id);
+											}
+
+											// $networks = glo_get_networks_html();
+											
+											// echo "<pre>";
+											// var_dump($networks);
+											// echo "</pre>";
 										?>
-										<li>
-											<div class="site-image"><?php if($site_image) { ?><img src="<?php echo $site_image; ?>" class="site-image"><?php } ?></div>
+										<li class="site-<?php echo $site_slug; ?> topic-<?php echo $site_topic_slug; ?> network-<?php echo $site_network_slug; ?> location-<?php echo $site_location_slug; ?>">
+											<div class="site-image <?php if(!$site_image) { echo 'no-image'; } ?>"><?php if($site_image) { ?><img src="<?php echo $site_image; ?>" class="site-image"><?php } ?></div>
 											<h3 class="site-title"><a href="<?php echo $site_details->siteurl; ?>"><?php echo $site_details->blogname; ?></a></h3>
-											<div class="meta site-location"><?php echo $site_location; ?></div>
+											<div class="meta site-network"><a href="/network/<?php echo $site_network_slug; ?>/"><?php echo $site_network_name; ?></a></div>
+											<div class="meta site-location"><?php echo $site_location_name; ?></div>
+											<div class="meta site-topic"><?php echo $site_topic_name; ?></div>
 
 										</li>
 

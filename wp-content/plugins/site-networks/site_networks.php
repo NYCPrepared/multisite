@@ -215,6 +215,12 @@ class glo_blog_networks {
     	$result = $wpdb->get_var($wpdb->prepare("select network_name from $this->table_network  c INNER JOIN  $this->table_relationship r ON c.id = r.network_id where r.blog_id =  %d", $blog_id));
 		return ($result);
     }
+
+	function get_blog_network_slug($blog_id) {
+    	global $wpdb;
+    	$result = $wpdb->get_var($wpdb->prepare("select slug from $this->table_network  c INNER JOIN  $this->table_relationship r ON c.id = r.network_id where r.blog_id =  %d", $blog_id));
+		return ($result);
+    }
     
 	function get_network_name($network_id) {
     	global $wpdb;
@@ -1130,9 +1136,19 @@ function glo_get_networks_html($used = true, $show_count = true, $send_to_root =
 	return $glo_wpmubn->get_networks_html($used, $show_count, $send_to_root, $use_slugs);
 }
 
+function glo_get_blog_network($blog_id) {
+	global $glo_wpmubn;
+	return $glo_wpmubn->get_blog_network($blog_id);
+}
+
 function glo_get_blog_network_name($blog_id) {
 	global $glo_wpmubn;
 	return $glo_wpmubn->get_blog_network_name($blog_id);
+}
+
+function glo_get_blog_network_slug($blog_id) {
+	global $glo_wpmubn;
+	return $glo_wpmubn->get_blog_network_slug($blog_id);
 }
 
 function glo_get_network_id_from_blog_id($blog_id) {

@@ -185,9 +185,6 @@ class cets_blog_locations
 		
 	} // end unInstall()
 	
-
-
-	
 	
 /* **********************************************************************************************************
  * General Helper Functions
@@ -208,37 +205,36 @@ class cets_blog_locations
 		$result = $wpdb->get_var($wpdb->prepare("SELECT location_id FROM $this->table_relationship WHERE blog_id = %d", $blog_id));
 		return $result;
 	}
-        
-   
     
-    function get_blog_location($blog_id) 
-    {
+    function get_blog_location($blog_id) {
     	global $wpdb;
     	return $wpdb->get_var($wpdb->prepare("select location_id from  $this->table_relationship  where blog_id = %d", $blog_id));
     }
 	
-	function get_blog_location_name($blog_id) 
-    {
+	function get_blog_location_name($blog_id) {
     	global $wpdb;
     	$result = $wpdb->get_var($wpdb->prepare("select location_name from $this->table_location  c INNER JOIN  $this->table_relationship r ON c.id = r.location_id where r.blog_id =  %d", $blog_id));
 		return ($result);
     }
-    
-	function get_location_name($location_id)
-    {
+
+	function get_blog_location_slug($blog_id) {
+    	global $wpdb;
+    	$result = $wpdb->get_var($wpdb->prepare("select slug from $this->table_location  c INNER JOIN  $this->table_relationship r ON c.id = r.location_id where r.blog_id =  %d", $blog_id));
+		return ($result);
+    }
+     
+	function get_location_name($location_id) {
     	global $wpdb;
     	return $wpdb->get_var($wpdb->prepare("SELECT location_name FROM $this->table_location
 						WHERE id = %s AND active = 1;", $location_id));
     }
     
-	function get_locations()
-    {
+	function get_locations() {
     	global $wpdb;
 		return $wpdb->get_results("SELECT id, location_name, slug, description, thumbnail, banner, '' as total FROM $this->table_location WHERE active = 1 ORDER BY location_name;");
     }
 	
-	function get_used_locations() 
-    {
+	function get_used_locations() {
     	global $wpdb;
     	// get excluded blogs
 		$excluded = get_site_option('cets_bloglocations_excluded_blogs');
@@ -251,25 +247,21 @@ class cets_blog_locations
 		
 		// don't include the main blog, deleted or excluded blogs
 		return $wpdb->get_results("SELECT distinct id, location_name, slug, description, thumbnail, banner, count(r.blog_id) AS total FROM $this->table_location c INNER JOIN $this->table_relationship r ON c.id = r.location_id INNER JOIN $wpdb->blogs b ON r.blog_id = b.blog_id WHERE c.active = 1  and b.archived = '0' and b.spam = '0' and b.deleted = '0' and b.blog_id !=1 AND b.blog_id not in ($excluded) GROUP BY id, location_name ORDER BY location_name;");
-				 
     }
 	
 	// Returns an object of all the info about a single location
-	function get_location($location_id){
+	function get_location($location_id) {
 		global $wpdb;
     	return $wpdb->get_row($wpdb->prepare("SELECT location_name, id, slug, description, thumbnail, banner FROM $this->table_location
 						WHERE id = %s AND active = 1;", $location_id));
-		
 	}
 	
 	// delete a blog from the relationships table
-	function update_relationships($blog_id)
-	{
-	global $wpdb;
-	$results = $wpdb->query( $wpdb->prepare("DELETE FROM $this->table_relationships WHERE blog_id = %d", $blog_id) );
+	function update_relationships($blog_id) {
+		global $wpdb;
+		$results = $wpdb->query( $wpdb->prepare("DELETE FROM $this->table_relationships WHERE blog_id = %d", $blog_id) );
 	}
 
-	
 	function checkForSpace($str, $pos) {
 		if (substr($str, $pos, 1) == ' '){
 			return $pos;
@@ -1169,14 +1161,12 @@ add_action('delete_blog', array(&$cets_wpmubl, 'update_relationships'));
 /* *********************************************************************************
  * Make public functions for the "private" functions in the class
  */
-function cets_get_blogs_from_location_id_html($location_id = '1', $max_rows = 0, $blog_id = 0, $orderby = 'last_updated')
-{
+function cets_get_blogs_from_location_id_html($location_id = '1', $max_rows = 0, $blog_id = 0, $orderby = 'last_updated') {
     global $cets_wpmubl;
 	return $cets_wpmubl->get_blogs_from_location_id_html($location_id, $max_rows, $blog_id, $orderby);
 }
 
-function cets_get_location_name($location_id = '1')
-{
+function cets_get_location_name($location_id = '1') {
     global $cets_wpmubl;
 	return $cets_wpmubl->get_location_name($location_id);
 }
@@ -1191,12 +1181,17 @@ function cets_get_blog_location_name($blog_id) {
 	return $cets_wpmubl->get_blog_location_name($blog_id);
 }
 
+function cets_get_blog_location_slug($blog_id) {
+	global $cets_wpmubl;
+	return $cets_wpmubl->get_blog_location_slug($blog_id);
+}
+
 function cets_get_location_id_from_blog_id($blog_id) {
 	global $cets_wpmubl;
 	return $cets_wpmubl->get_location_id_from_blog_id($blog_id);
 }
 
-function cets_get_recent_posts_from_location_id_html($location_id, $max_rows=0, $blog_id){
+function cets_get_recent_posts_from_location_id_html($location_id, $max_rows=0, $blog_id) {
 	global $cets_wpmubl;
 	return $cets_wpmubl->get_recent_posts_from_location_id_html($location_id, $max_rows, $blog_id);
 }
@@ -1211,29 +1206,27 @@ function cets_get_recent_posts_from_location_id($location_id, $max_rows=0, $blog
 	return $cets_wpmubl->get_recent_posts_from_location_id($location_id, $max_rows=0, $blog_id);
 }
 
-function cets_get_location_id_from_slug($slug)  {
+function cets_get_location_id_from_slug($slug) {
 	global $cets_wpmubl;
 	return $cets_wpmubl->get_location_id_from_slug($slug);	
 }
 
-function cets_get_location($location_id){
+function cets_get_location($location_id) {
 	global $cets_wpmubl;
 	return $cets_wpmubl->get_location($location_id);	
 }
-function cets_get_used_locations(){
+function cets_get_used_locations() {
 	global $cets_wpmubl;
 	return $cets_wpmubl->get_used_locations();	
 }
-function cets_get_featured_location(){
+function cets_get_featured_location() {
 	global $cets_wpmubl;
 	return $cets_wpmubl->get_featured_location();	
 }
-function cets_get_featured_location_name(){
+function cets_get_featured_location_name() {
 	global $cets_wpmubl;
 	return $cets_wpmubl->get_featured_location_name();	
 }
-
-
 
 
 /* ********************************************************************************************************

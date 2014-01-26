@@ -50,6 +50,7 @@
 					<p class="domain-title"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 					<nav id="main-navigation" class="top-nav main-nav" role="navigation">
 						<?php bones_main_nav(); ?>
+						<?php glo_get_networks_html(true, false, true, true) ?>	
 						<div class="search-form"><?php get_search_form(); ?> </div>
 					</nav>
 

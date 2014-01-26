@@ -399,7 +399,8 @@ function bones_wpsearch($form) {
 	return $form;
 } // don't remove this bracket!
 
-
+//include the rewrites
+include_once dirname(__FILE__) . '/rewrites.php';
 
 
 
