@@ -135,7 +135,7 @@ class glo_blog_networks {
 		add_site_option( 'glo_blognetworks_setup', 3 );
 		
 		// Add a site option to handle excluded blogs
-		// add_site_option('glo_blognetworks_excluded_blogs', '0');
+		add_site_option('glo_blognetworks_excluded_blogs', '0');
 	    		
     } // end setup()
  
@@ -164,7 +164,7 @@ class glo_blog_networks {
 		// Add a site option so that we'll know set up ran
 		update_site_option( 'glo_blognetworks_setup', 3 );
 		// Add a site option to handle excluded blogs
-		// add_site_option('glo_blognetworks_excluded_blogs', '0');
+		add_site_option('glo_blognetworks_excluded_blogs', '0');
 		}
     }
 	
@@ -177,8 +177,7 @@ class glo_blog_networks {
 		global $wpdb;
 		$wpdb->query("DROP TABLE $this->table_network");
 		$wpdb->query("DROP TABLE $this->table_relationship");
-		// $wpdb->query($wpdb->prepare("delete FROM $wpdb->sitemeta WHERE meta_key = %s AND site_id = %d", 'glo_blognetworks_excluded_blogs', $wpdb->siteid) );
-		$wpdb->query($wpdb->prepare("delete FROM $wpdb->sitemeta WHERE meta_key = %s AND site_id = %d", $wpdb->siteid) );
+		$wpdb->query($wpdb->prepare("delete FROM $wpdb->sitemeta WHERE meta_key = %s AND site_id = %d", 'glo_blognetworks_excluded_blogs', $wpdb->siteid) );
 		$wpdb->query($wpdb->prepare("delete FROM $wpdb->sitemeta WHERE meta_key = %s AND site_id = %d", 'glo_blognetworks_setup', $wpdb->siteid) );
 		
 	} // end unInstall()
@@ -216,12 +215,6 @@ class glo_blog_networks {
     	$result = $wpdb->get_var($wpdb->prepare("select network_name from $this->table_network  c INNER JOIN  $this->table_relationship r ON c.id = r.network_id where r.blog_id =  %d", $blog_id));
 		return ($result);
     }
-
-	function get_blog_network_slug($blog_id) {
-    	global $wpdb;
-    	$result = $wpdb->get_var($wpdb->prepare("select slug from $this->table_network  c INNER JOIN  $this->table_relationship r ON c.id = r.network_id where r.blog_id =  %d", $blog_id));
-		return ($result);
-    }
     
 	function get_network_name($network_id) {
     	global $wpdb;
@@ -237,16 +230,16 @@ class glo_blog_networks {
 	function get_used_networks() {
     	global $wpdb;
     	// get excluded blogs
-		// $excluded = get_site_option('glo_blognetworks_excluded_blogs');
+		$excluded = get_site_option('glo_blognetworks_excluded_blogs');
 		
 		// if the excluded string is nothing, the site option hasn't been set up yet - so do that
-		// if (strlen($excluded) == 0){
-		// 	add_site_option('glo_blognetworks_excluded_blogs', '0');
-		// 	$excluded = 0;
-		// }
+		if (strlen($excluded) == 0){
+			add_site_option('glo_blognetworks_excluded_blogs', '0');
+			$excluded = 0;
+		}
 		
 		// don't include the main blog, deleted or excluded blogs
-		return $wpdb->get_results("SELECT distinct id, network_name, slug, description, thumbnail, banner, count(r.blog_id) AS total FROM $this->table_network c INNER JOIN $this->table_relationship r ON c.id = r.network_id INNER JOIN $wpdb->blogs b ON r.blog_id = b.blog_id WHERE c.active = 1  and b.archived = '0' and b.spam = '0' and b.deleted = '0' and b.blog_id !=1 AND b.blog_id GROUP BY id, network_name ORDER BY network_name;");
+		return $wpdb->get_results("SELECT distinct id, network_name, slug, description, thumbnail, banner, count(r.blog_id) AS total FROM $this->table_network c INNER JOIN $this->table_relationship r ON c.id = r.network_id INNER JOIN $wpdb->blogs b ON r.blog_id = b.blog_id WHERE c.active = 1  and b.archived = '0' and b.spam = '0' and b.deleted = '0' and b.blog_id !=1 AND b.blog_id not in ($excluded) GROUP BY id, network_name ORDER BY network_name;");
 				 
     }
 	
@@ -300,18 +293,18 @@ class glo_blog_networks {
 			
 		}
 		// get excluded blogs
-		// $excluded = get_site_option('glo_blognetworks_excluded_blogs');
+		$excluded = get_site_option('glo_blognetworks_excluded_blogs');
 		
 		// if the excluded string is nothing, the site option hasn't been set up yet - so do that
-		// if (strlen($excluded) == 0){
-		// 	add_site_option('glo_blognetworks_excluded_blogs', '0');
-		// 	$excluded = 0;
-		// }
+		if (strlen($excluded) == 0){
+			add_site_option('glo_blognetworks_excluded_blogs', '0');
+			$excluded = 0;
+		}
 		
 		$statement = "SELECT distinct b.blog_id FROM $wpdb->blogs b 
 			INNER JOIN $this->table_relationship r ON b.blog_id = r.blog_id  
 			INNER JOIN $this->table_network c ON r.network_id = c.id AND c.active = 1 
-			WHERE r.network_id = $network_id and b.archived = '0' and b.spam = '0' and b.deleted = '0' and b.blog_id !=1 AND b.blog_id";
+			WHERE r.network_id = $network_id and b.archived = '0' and b.spam = '0' and b.deleted = '0' and b.blog_id !=1 AND b.blog_id not in ($excluded)";
 		if ($blog_id != 0 && $blog_id == (int) $blog_id) {
 			$statement .=  " AND b.blog_id != $blog_id ";
 		}
@@ -383,14 +376,12 @@ class glo_blog_networks {
 				foreach ($result as $post) {
 				
 				$link = get_blog_permalink( $post->blogid, $post->id );
-				$post->post_date = date_i18n(get_option('date_format'),strtotime($post->post_date));
-				// $post->post_date = date("m/d/Y",strtotime($post->post_date));  // Format the date
-				echo "<li><h3 class='post-title network-title'><a href='" .$link . "'>" . $post->post_title . "</a></h3>";
-				echo "<div class='meta post-date'>" . $post->post_date . "</div>";
+				$post->post_date = date("m/d/Y",strtotime($post->post_date));  // Format the date
+				echo "<li><span class='headline'><a href='" .$link . "'>" . $post->post_title . "</a></span> - <span class='date'>" . $post->post_date . "</span><br />";
 				if (strlen(strip_shortcodes(strip_tags($post->post_content))) > 0){
-					echo  "<div class='post-excerpt'>" . wp_html_excerpt(strip_shortcodes($post->post_content), 30) . "</div>";
+					echo  "<span class='blurb'>" . wp_html_excerpt(strip_shortcodes($post->post_content), 30) . "</span> <br />";
 				}
-				echo "<h4 class='site-title'>From: <a href='" . $post->siteurl . "'>" . $post->blogname . "</a></h4>";
+				echo "<span class='sitename'>From: <a href='" . $post->siteurl . "'>" . $post->blogname . "</a></span>";
 				echo "</li>";
 				
 				}
@@ -447,11 +438,10 @@ class glo_blog_networks {
     	foreach ($result  as $blog )  {
    		
     		$details = get_blog_details($blog->blog_id);
-			$thisblog = array(
-				id => $blog->blog_id,
-				domain => $details->domain,
-				path => $details->path,
-				blogname => $details->blogname
+			$thisblog = array(id=>$blog->blog_id,
+			domain=>$details->domain,
+			path=>$details->path,
+			blogname=>$details->blogname
 			);
 			
 			array_push($blogs, $thisblog);
@@ -519,10 +509,9 @@ class glo_blog_networks {
     		$id = $wpdb->blogid;
 			
     	}
+		
     	$blog_network = $this->get_blog_network($id);
-    	echo "<div class='site-network options'>";
-    	echo "<p><label>" . _e( 'Network', 'site-networks' ) . "</label>";
-    	echo "<select name='blog_network_id' id='blog_network_id'>";
+    	echo "<th>Site Network</th> <td><select name='blog_network_id' id='blog_network_id'>";
 		
     	foreach ( $this->get_networks() as $network )  {
     		if ($blog_network && $blog_network == $network->id) {
@@ -531,7 +520,7 @@ class glo_blog_networks {
 			echo "<option value='$network->id' ". $selected .">" . $network->network_name ."</option>";
 			$selected = '';
     	}
-    	echo "</select></div>";
+    	echo "</select> </td>";
     }
     
 /* ********************************************************************************
@@ -541,7 +530,7 @@ class glo_blog_networks {
 	function get_networks_select_featured($id) {
     	global $wpdb;
     	
-    	echo "<th>" . _e( 'Network', 'site-networks' ) . "</th> <td><select name='blog_network_id' id='blog_network_id'>";
+    	echo "<th>Site Network</th> <td><select name='blog_network_id' id='blog_network_id'>";
 		
     	foreach ( $this->get_networks() as $network )  {
     		if ($id == $network->id) {
@@ -559,7 +548,7 @@ class glo_blog_networks {
  */   
 	function get_networks_select_signup($id = 0) {
     	
-    	echo "<label for='blog_network_id'>" . _e( 'Network', 'site-networks' ) . "</label><select name='blog_network_id' id='blog_network_id'>";
+    	echo "<label for='blog_network_id'>Site Network:</label><select name='blog_network_id' id='blog_network_id'>";
 		
     	foreach ( $this->get_networks() as $network )  {
 			echo "<option value='$network->id' " .">" . $network->network_name ."</option>";
@@ -613,15 +602,15 @@ class glo_blog_networks {
 
     	// Set the notice to default to "on" and the sharing to off
 
-    	add_blog_option($blog_id, 'glo_notification', 0);
+    	add_blog_option($blog_id, 'glo_notification', 1);
 
-    	add_blog_option($blog_id, 'glo_networkexclude', 0);
+    	add_blog_option($blog_id, 'glo_networkexclude', 1);
 
     	
 
     	//New blogs should always be set not to aggregate (since they have no content to begin with)
 
-    	glo_bn_toggle_blog_exclusion($blog_id, 'i');
+    	glo_bn_toggle_blog_exclusion($blog_id, 'e');
 		
 
     }
@@ -697,20 +686,107 @@ class glo_blog_networks {
     
 	//Gets the table of all networks - used on the site admin - blog networks page
 	 function get_networks_table() {
-    	global $wpdb;
+    	global $wpdb; ?>
 
-    	// _e( 'Network', 'site-networks' )
+    	<style type="text/css">
+    		table.wp-list-table tbody tr:nth-child(even) {
+    			background: #eeeeee;
+    		}
+    		table.wp-list-table tbody tr td.fields {
+    			padding: 0;
+    		}
+    	</style>
+
+    	  <h3>Update Networks</h3>
+		  <table class="wp-list-table widefat fixed">
+		    <thead>
+		      <tr>
+		        <th class="network-id">ID</th>
+		        <th class="network-name">Name</th>
+		        <th class="network-slug">Slug</th>
+		        <th class="network-description">Description</th>
+		        <th class="actions" colspan="2">Actions</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		      <?php foreach ( $this->get_networks() as $network )  { ?>
+		      <tr>
+		        <td colspan="5" class="fields">
+		          <form name="catupdate" method="post">
+		          <table>
+		              <tr>
+		                <td id="" class="network-id"><?php echo $network->id; ?></td>
+		                <td class="network-name"><input type="text" maxlength="140" name="network" value="<?php echo $network->network_name; ?>"></td>
+		                <td class="network-slug"><input type="text" maxlength="140" name="slug" value="<?php echo $network->slug; ?>"></td>
+		                <td class="network-description" rowspan="2"><textarea name="description" cols="40" rows="5" maxlength="1000"><?php echo $network->description; ?></textarea></td>
+		                <td class="actions" rowspan="2">
+		                  <input type="hidden" name="network_id" value="<?php echo $network->id; ?>">
+		                  <input type="hidden" name="action" value="edit">
+		                  <input type="submit" class="button-primary save" name="edit" value="Update"></td>
+		              </tr>
+		              <tr>
+		                <td class="network-banner" colspan="2"><label for="banner-<?php echo $network->id; ?>">Banner Image</label><input type="url" id="banner-<?php echo $network->id; ?>" maxlength="140" name="banner" value="<?php echo $network->banner; ?>">
+		                </td>
+		                <td class="network-thumbnail network-slug"><label for="thumbnail-<?php echo $network->id; ?>">Thumbnail Image</label><input type="url" maxlength="140" name="thumbnail" id="thumbnail-<?php echo $network->id; ?>" value="<?php echo $network->thumbnail; ?>">
+		                </td>
+		              </tr>
+		          </table>
+		          </form>
+		        </td>
+		        <td class="delete">
+		          <?php if ($network->id != 1) { ?>
+		          <form name="deletecat" method="post" onsubmit="return confirm("Are you sure you want to delete this network?");">
+		            <input type="hidden" name="action" value="delete">
+		            <input type="hidden" name="networkid" value="2">
+		            <input type="submit" class="button submitdelete deletion" value="Delete">
+		          </form>
+		          <?php } else { ?>
+		            Network 1 can not be deleted.
+		          <?php } ?>
+		        </td>
+		      </tr>
+		      <?php } ?>
+		    </tbody>
+		  </table>
+
+		  <h3>Add a Network</h3>
+		  <form name="catadd" method="post">
+		    <table class="wp-list-table widefat fixed">
+		      <thead>
+		        <tr>
+		          <th class="network-name">Name</th>
+		          <th class="network-slug">Slug</th>
+		          <th class="network-description">Description</th>
+		          <th class="actions">Actions</th>
+		        </tr>
+		      </thead>
+		      <tbody>
+		        <tr>
+		          <td class="network-name">
+		          	<input type="text" maxlength="140" name="network" value="">
+		            <input type="hidden" name="action" value="add"></td>
+		          <td class="network-slug"><input type="text" maxlength="140" name="slug" value=""></td>
+		          <td class="network-description" rowspan="2"><textarea name="description" cols="40" rows="5" maxlength="1000"></textarea></td>
+		          <td class="actions" rowspan="2"><input type="submit" class="button button-primary add new" value="Add"></td>
+		        </tr>
+		        <tr>
+		          <td class="network-banner"><label for="banner">Banner Image</label><input type="url" maxlength="140" id="banner" name="banner" value=""></td>
+		          <td class="network-thumbnail network-slug"><label for="thumbnail">Thumbnail Image</label><input type="url" maxlength="140" id="thumbnail" name="thumbnail" value=""></td>
+		        </tr>
+		      </tbody>
+		    </table>
+		  </form>
     	
-    	echo "<table><thead><tr><th>ID</th><th>Image</th><th valign='top'>Name</th><th>Slug</th><th>Description</th></tr></thead>";
+    	<!-- echo "<table class='wp-list-table widefat fixed'><thead><tr><th>ID</th><th>Name</th><th>Slug</th><th>Description</th></tr></thead>";
     	foreach ( $this->get_networks() as $network )  {
 			
-    		echo "<tbody><tr valign='top'><form name='catupdate' method='post'><td align='center'>" . $network->id . "</td>";
-			echo("<td valign='top'><input type='text' maxlength='140' name='network' value='" . $network->network_name . "'><br />140 chars max");
-			echo("<td valign='top'><input type='text' maxlength='140' name='slug' value='" . $network->slug . "'><br />140 chars max");
-			echo("<td valign='top'><textarea name='description' cols='40' rows='5'>" . $network->description . "</textarea><br />8000 chars max" );
+    		echo "<tbody><tr><form name='catupdate' method='post'><td align='center'>" . $network->id . "</td>";
+			echo("<td><input type='text' maxlength='140' name='network' value='" . $network->network_name . "'><br />140 chars max");
+			echo("<td><input type='text' maxlength='140' name='slug' value='" . $network->slug . "'><br />140 chars max");
+			echo("<td><textarea name='description' cols='40' rows='5'>" . $network->description . "</textarea><br />8000 chars max" );
 			echo("<input type='hidden' name='network_id' value='" . $network->id . "'>");
-			echo("<td  valign='top'><input type='hidden' name='action' value='edit'> <input type='submit' class='button' name='edit' value='Update'> </td>");
-			echo("</form><td valign='top'>");
+			echo("<td><input type='hidden' name='action' value='edit'> <input type='submit' class='button' name='edit' value='Update'> </td>");
+			echo("</form><td>");
 			if ($network->id != 1) {
 				echo "<form name='deletecat' method='post' onsubmit='return confirm(\"Are you sure you want to delete this network?\");'><input type='hidden' name='action' value='delete'><input type='hidden' name='networkid' value='" . $network->id . "'><input type='submit' class='button alert submitdelete deletion' value='Delete'></form>";
 			}
@@ -721,11 +797,13 @@ class glo_blog_networks {
 			echo "</td></tr>";
     	}
     	echo("<tr><th>ADD NEW</th><th valign='top'>Name</th><th>Slug</th><th>Description</th></tr>");
-    	echo("<tr valign='top'><form name='catadd' method='post'><td>&nbsp;</td><td><input type='text' maxlength='140' name='network' value=''><br />140 chars max<input type='hidden' name='action' value='add'></td>");
+    	echo("<tr><form name='catadd' method='post'><td>&nbsp;</td><td><input type='text' maxlength='140' name='network' value=''><br />140 chars max<input type='hidden' name='action' value='add'></td>");
 		echo("<td><input type='text' maxlength='140' name='slug' value=''><br />140 chars max</td>");
 		echo("<td><textarea name='description' cols='40' rows='5'></textarea><br />8000 chars max</td>");
-		echo("<td><input type='submit' class='button add new' value='Add'></form></td></tr></tbody></table>");
-    }	
+		echo("<td><input type='submit' class='button add new' value='Add'></form></td></tr></tbody></table>"); -->
+   
+   <?php }
+	
 	
 	
 	
@@ -827,7 +905,7 @@ class glo_blog_networks {
 			
 		?>
         <div class="wrap">
-        <h2><?php _e( 'Manage Networks', 'site-networks' ); ?></h2>
+        <h2>Manage Site Networks</h2>
           
             <?php
 			if ($updated){
@@ -838,12 +916,12 @@ class glo_blog_networks {
                     $this->get_networks_table();
             ?>
 			<div>
-				<h2><?php _e( 'Featured Network', 'site-networks' ); ?></h2>
+				<h2>Featured Network</h2>
 				<form name="catupdate" method="post">
-				<p><?php _e( 'Theme code may want to feature a specific network. Use this option to set the featured network.', 'site-networks' ); ?></p>
+				<p>Theme code may want to feature a specific network. Use this option to set the featured network.</p>
 				<p><?php
 				$featured = $this->get_featured_network();
-				$this->get_networks_select_featured($featured); ?> <input type="submit" class="button" value="<?php _e( 'Set Featured Network', 'site-networks' ); ?>">
+				$this->get_networks_select_featured($featured); ?> <input type="submit" class="button" value="Set Featured Network">
 				<input type="hidden" name="action" value="featured">
 				</p>
 				</form>
@@ -858,21 +936,21 @@ class glo_blog_networks {
 		?>
 		
 		<div class="wrap">
-		<h2><?php _e( 'Uninstall', 'site-networks' ); ?></h2>
+		<h2>Uninstall</h2>
 		<?php if (!isset($_GET['uninstalling'])){
 			
 		?>
-		<p><?php _e( 'Uninstalling this plugin will delete all database tables and sitewide options related to this plugin. You will not be able to undo this uninstall. Proceed with caution.', 'site-networks' ); ?></p>
+		<p>Uninstalling this plugin will delete all database tables and sitewide options related to this plugin. You will not be able to undo this uninstall. Proceed with caution.</p>
 		
-		<p><?php _e( 'Once the data is deleted, you will still need to manually delete the files associated with this plugin.', 'site-networks' ); ?> </p>
-		<p><a href="settings.php?page=glo_bn_management_page&uninstalling=true"><?php _e( 'Yes, Uninstall!', 'site-networks' ); ?></a>
+		<p>Once the data is deleted, you will still need to manually delete the files associated with this plugin. </p>
+		<p><a href="settings.php?page=glo_bn_management_page&uninstalling=true">Yes, uninstall this plugin.</a>
 		
 		<?php
 		}
-		else{ ?>
-			<p><?php _e( 'Your plugin data has been uninstalled. You may safely delete your plugin files.', 'site-networks' ); ?></p>
+		else{
+			echo ("<p>Your plugin data has been uninstalled. You may safely delete your plugin files.</p>");
 			
-		<? }
+		}
 		?>
 		</div>
 		<?php
@@ -890,18 +968,18 @@ class glo_blog_networks {
 
 		if (strlen($noticeon) != 1) {
 
-			$noticeon = 0;
-			update_option('glo_notification', 0);
+			$noticeon = 1;
+			update_option('glo_notification', 1);
 
 		}
 
 		// don't show this notice on the page where you change the setting or if the notice has been turned off
 
-		// if ($_SERVER['SCRIPT_NAME'] == '/wp-admin/options-privacy.php' || $noticeon == 0){
+		if ($_SERVER['SCRIPT_NAME'] == '/wp-admin/options-privacy.php' || $noticeon == 0){
 
-		// 	return;
+			return;
 
-		// }
+		}
 
 		
 
@@ -915,8 +993,8 @@ class glo_blog_networks {
 
 			
 
-	// 		echo "<div class='update-nag'>" . sprintf( __( 'Your site is development mode and hidden from the %s homepage. <br /> To include it on the %s homepage, click <a href="%s">here</a>.' ), get_blog_option(1, 'blogname'), get_blog_option(1, 'blogname'),
- // esc_url( admin_url( 'options-privacy.php' ) ) ) . "</div>";
+			echo "<div class='update-nag'>" . sprintf( __( 'Your site is development mode and hidden from the %s homepage. <br /> To include it on the %s homepage, click <a href="%s">here</a>.' ), get_blog_option(1, 'blogname'), get_blog_option(1, 'blogname'),
+ esc_url( admin_url( 'options-privacy.php' ) ) ) . "</div>";
 
 		}
 
@@ -1019,7 +1097,7 @@ class glo_blog_networks {
 
 					// exclude this blog
 
-					glo_bn_toggle_blog_exclusion($blog_id, 'i');
+					glo_bn_toggle_blog_exclusion($blog_id, 'e');
 
 					
 
@@ -1080,19 +1158,19 @@ add_action('signup_blogform', array(&$glo_wpmubn, 'get_networks_select_signup'))
 add_filter('wpmu_new_blog', array(&$glo_wpmubn, 'set_new_blog_network'), 101);
 add_action('signup_finished', array(&$glo_wpmubn, 'save_signup_blog_network'));
 
-// add_action( 'admin_notices', array(&$glo_wpmubn, 'site_admin_notice') );
+add_action( 'admin_notices', array(&$glo_wpmubn, 'site_admin_notice') );
 
 
 
 // hook into options-privacy.php and the updates of those options
 
-// add_action('admin_init', array(&$glo_wpmubn, 'add_privacy_options_init'));
+add_action('admin_init', array(&$glo_wpmubn, 'add_privacy_options_init'));
 
-// add_action('update_option_glo_networkexclude', array(&$glo_wpmubn, 'update_option_glo_networkexclude'), 10, 2);
+add_action('update_option_glo_networkexclude', array(&$glo_wpmubn, 'update_option_glo_networkexclude'), 10, 2);
 
 
 
-// add_action( 'wp_head', array(&$glo_wpmubn, 'hide_privacy_stylesheet' ));
+add_action( 'wp_head', array(&$glo_wpmubn, 'hide_privacy_stylesheet' ));
 
 
 
@@ -1142,19 +1220,9 @@ function glo_get_networks_html($used = true, $show_count = true, $send_to_root =
 	return $glo_wpmubn->get_networks_html($used, $show_count, $send_to_root, $use_slugs);
 }
 
-function glo_get_blog_network($blog_id) {
-	global $glo_wpmubn;
-	return $glo_wpmubn->get_blog_network($blog_id);
-}
-
 function glo_get_blog_network_name($blog_id) {
 	global $glo_wpmubn;
 	return $glo_wpmubn->get_blog_network_name($blog_id);
-}
-
-function glo_get_blog_network_slug($blog_id) {
-	global $glo_wpmubn;
-	return $glo_wpmubn->get_blog_network_slug($blog_id);
 }
 
 function glo_get_network_id_from_blog_id($blog_id) {
