@@ -147,6 +147,7 @@ POSTS & CONTENT STYLES
     }
     .post-title {
         margin: .25em 0 0;
+        @extend %h4;
     }
     .post-excerpt {
         margin: .25em 0 .5em;

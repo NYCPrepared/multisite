@@ -20,6 +20,7 @@ input[type='email'] {
 
 input[type='submit'] {
     @include transition(all 0.2s ease-in-out);
+    @extend %caps;
     -webkit-appearance: button;
     cursor: pointer;
     border: 0;
