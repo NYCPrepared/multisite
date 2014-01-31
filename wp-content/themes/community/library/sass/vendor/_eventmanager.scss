@@ -132,17 +132,17 @@ ul.event-categories {
 
 // WIDGET
 
-.widget_em_widget {
-    a {
-        font-weight: 700;
-    }
-    // date time location
-    ul li ul {
-        margin: .25em 0 1.5em;
-        li {
-            margin: 0;
-        }
-    }
+.em-calendar {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.em-calendar td.eventless-today {
+    background: transparent;
+    border: 1px solid $white;
+}
+.em-calendar td.eventless-post {
+    color: $gray5;
 }
 
 .all-events-link {
