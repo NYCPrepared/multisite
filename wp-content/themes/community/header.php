@@ -36,7 +36,9 @@
 
 		<?php // drop Google Analytics Here ?>
 		<?php // end analytics ?>
-
+		
+        <link rel="stylesheet" href="http://localhost/multisite/wp-content/themes/community/library/css/style.css">
+        
 	</head>
 
 	<body <?php body_class(); ?>>

@@ -10,6 +10,8 @@ SIDEBARS & ASIDES
 .widgettitle {
 	margin: 0 0 0.75em;
 	color: $white;
+    color: rgba(255,255,255,.7);
+    @extend %h6;
 }
 
 .widget {
@@ -19,7 +21,6 @@ SIDEBARS & ASIDES
     color: $white;
 	a, a:visited {
 		color: $white;
-		color: rgba(255,255,255,.7);
 		&:hover {
     		color: $gray2;
 		}
@@ -34,6 +35,7 @@ SIDEBARS & ASIDES
         padding: 0.5em 0;
         margin: 0;
         line-height: 1.4;
+        @extend %h4;
 		&:first-child {}
 		&:last-child {}
 		a {}
@@ -74,19 +76,14 @@ SIDEBARS & ASIDES
 
 #wp-calendar {
     width: 100%;
-    caption {
-        @extend %condensed;
-    }
     td {
         text-align: center;
     }
     td#prev {
         text-align: left;
-        @extend %condensed;
     }
     td#next {
         text-align: right;
-        @extend %condensed;
     }
 }
 

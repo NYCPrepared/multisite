@@ -147,6 +147,7 @@ POSTS & CONTENT STYLES
     }
     .post-title {
         margin: .25em 0 0;
+        @extend %h4;
     }
     .post-excerpt {
         margin: .25em 0 .5em;
@@ -185,6 +186,45 @@ POSTS & CONTENT STYLES
         color: $quiet-color;
         white-space: nowrap;
         margin-left: 3px;
+    }
+}
+
+
+// NEWS FEED
+
+.news-feed {
+    article {
+        border-top: 1px solid $gray7;
+        padding-top: 20px;
+        @include fill-parent;
+        clear: both;
+    }    
+    .post-header,
+    .post-footer {
+        @extend %caps;
+    	@include breakpoint(medium) {@include span-columns(2 of 12);}
+    	p, li {
+        	margin: .75em 0;
+        	line-height: 1.4;
+        	@include font-size(15);
+        	color: $quiet-color;
+    	}
+    	a, a:visited {
+        	color: $quiet-color;
+        	&:hover {
+            	color: $text-color;
+        	}
+    	}
+    }
+    .post-body {
+        padding-bottom: 10px;
+    	@include breakpoint(medium) {@include span-columns(8 of 12);}
+    	p {
+        	margin: .75em 0;
+    	}
+    }
+    .post-title {
+        margin: 0;
     }
 }
 

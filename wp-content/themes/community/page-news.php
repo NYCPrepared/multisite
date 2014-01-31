@@ -30,7 +30,7 @@
 							<?php endwhile; endif; ?>
 
 						</div>
-						<div id="main" class="content first clearfix" role="main">
+						<div id="main" class="content news-feed first clearfix" role="main">
 						<?php
 						if(function_exists('recent_network_posts')) {
 							$news_posts = recent_network_posts($numberposts = 50); // This adjusts total number of posts
@@ -48,11 +48,13 @@
 							?>
 							<article id="<?php echo $post_slug; ?>" class="site-<?php echo $blog_slug; ?>">
 								<header class="post-header">
-									<h2 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h2>
 									<p class="post-author"><a href="<?php echo $blog_details->path; ?>"><?php echo $blog_details->blogname; ?></a></p>
-									<p class="post-author"><time><?php echo date_i18n(get_option('date_format') ,strtotime($date));?></time></p>
+									<p class="post-date"><time><?php echo date_i18n(get_option('date_format') ,strtotime($date));?></time></p>
 								</header>
-								<section class="post-body"><?php echo $post_excerpt; ?></section>
+								<section class="post-body">
+									<h2 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h2>
+								    <p><?php echo $post_excerpt; ?></p>
+								</section>
 								<footer class="post-footer">
 									<ul class="meta taxonomy categories">
 									<?php

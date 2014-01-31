@@ -6,6 +6,35 @@
 //     display: none;
 // }
 
+
+// EVENTS SEARCH
+
+div.css-search {
+    background: transparent;
+    border-color: $gray7;
+    padding: 0;
+}
+.em-events-search-form {
+    background: white;
+    padding: 20px;
+}
+div.em-search-text,
+div.em-search-geo {
+    background: transparent;
+    @include font-icon-base($family:"ios7-icon"); 
+    @include font-size(40);
+    input {
+        @include font-size(24);
+    }
+}
+div.em-search-text {
+    @extend %ios7-search;
+}
+div.em-search-geo {
+    @extend %ios7-pin;
+}
+
+
 // table
 .events-table {
     th {
@@ -18,8 +47,12 @@
         padding: 10px 10px 10px 0;
         border-top: 1px solid $gray8;
     }
+    .event-start,
+    .event-title, 
+    p {
+        margin: 0;
+    }
     a {
-        font-weight: 700;
         color: $teal;
     }
 }
