@@ -232,6 +232,8 @@ POSTS & CONTENT STYLES
 // SITES PROMO
 
 .sites-list {
+    clear: both;
+    @include fill-parent;
     li {
         background: $white;
         margin-top: 0;
@@ -241,7 +243,7 @@ POSTS & CONTENT STYLES
         overflow: hidden;
     	@include breakpoint(small) {@include span-columns(4);}
     }
-    .site-thumbnail {
+    .site-image {
         width: 100%;
         height: auto;
         min-height: 180px;
