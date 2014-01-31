@@ -17,42 +17,50 @@
 									<div class="filters">
 										<!-- Dummy Filters -->
 										<?php if (function_exists('cets_get_used_topics')) { ?>
-										<ul id="filter site-categories">
-											<li id="category-all">All Categories</li>
-											<?php
-											$topics = cets_get_used_topics();
-											foreach ($topics as $topic) {											
-											?>
-												<li id="topic-<?php echo $topic->slug; ?>"><?php echo $topic->topic_name; ?></li>
-											<?php } ?>
-										</ul>
+										<div class="filter site-categories"
+    										<ul>
+    											<li id="category-all">All Categories</li>
+    											<?php
+    											$topics = cets_get_used_topics();
+    											foreach ($topics as $topic) {											
+    											?>
+    												<li id="topic-<?php echo $topic->slug; ?>"><?php echo $topic->topic_name; ?></li>
+    											<?php } ?>
+    										</ul>
+    									</div>
 										<?php } ?>
 										<?php if (function_exists('cets_get_used_locations')) { ?>
-										<ul id="filter site-locations">
-											<li id="location-all">All Locations</li>
-											<?php
-											$locations = cets_get_used_locations();
-											foreach ($locations as $location) {											
-											?>
-												<li id="location-<?php echo $location->slug; ?>"><?php echo $location->location_name; ?></li>
-											<?php } ?>
-										</ul>
+										<div class="filter site-locations"
+    										<ul>
+    											<li id="location-all">All Locations</li>
+    											<?php
+    											$locations = cets_get_used_locations();
+    											foreach ($locations as $location) {											
+    											?>
+    												<li id="location-<?php echo $location->slug; ?>"><?php echo $location->location_name; ?></li>
+    											<?php } ?>
+    										</ul>
+    									</div>
 										<?php } ?>
 										<?php if (function_exists('glo_get_networks')) { ?>
-										<ul id="filter site-networks">
-											<li id="network-all">All Networks</li>
-											<?php
-											$networks = glo_get_used_networks();
-											foreach ($networks as $network) {											
-											?>
-												<li id="network-<?php echo $network->slug; ?>"><?php echo $network->network_name; ?></li>
-											<?php } ?>
-										</ul>
+										<div class="filter site-networks"
+    										<ul>
+    											<li id="network-all">All Networks</li>
+    											<?php
+    											$networks = glo_get_used_networks();
+    											foreach ($networks as $network) {											
+    											?>
+    												<li id="network-<?php echo $network->slug; ?>"><?php echo $network->network_name; ?></li>
+    											<?php } ?>
+    										</ul>
+    									</div>
 										<?php } ?>
-										<ul id="filter site-view">
-											<li id="view-grid">Grid</li>
-											<li id="view-list">List</li>
-										</ul>
+										<div class="filter site-view"
+    										<ul>
+    											<li id="view-grid">Grid</li>
+    											<li id="view-list">List</li>
+    										</ul>
+    									</div>
 
 									</div>
 

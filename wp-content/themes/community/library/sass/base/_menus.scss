@@ -30,36 +30,38 @@ site so our css is cleaner and more scalable.
 FILTER MENUS
 ******************************************************************/
 
-.filters{
+.filters {
     @include fill-parent;
     position: relative;
+    margin-bottom: 30px;
+}
+.filter {
+    position: relative;
+    @include breakpoint(medium) {@include span-columns(4);}
+	&:first-child {
+		background: $green;
+	}
+	&:nth-child(2) {
+		background: $teal;
+		left: 25%;
+	}
+	&:nth-child(3) {
+		background: $blue;
+		left: 50%;
+	}
+	&:nth-child(4) {
+		background: $navy;
+		left: 75%;
+	}
+	&:hover {
+    	height: auto;
+    	cursor: pointer;
+	}
     ul {
         @include transition(height 0.25s ease);
-        @include breakpoint(medium) {@include span-columns(4);}
-        height: 2em;
+        height: 40px;
         overflow: hidden;
-        background: $gray3;
-        color: $white;
         position: absolute;
-    	&:first-child {
-    		background: $green;
-    	}
-    	&:nth-child(2) {
-    		background: $teal;
-    		left: 25%;
-    	}
-    	&:nth-child(3) {
-    		background: $blue;
-    		left: 50%;
-    	}
-    	&:nth-child(4) {
-    		background: $navy;
-    		left: 75%;
-    	}
-    	&:hover {
-        	height: auto;
-        	cursor: pointer;
-    	}
     }
     li {
         display: block;
@@ -73,9 +75,6 @@ FILTER MENUS
             @extend %ios7-down;
             background: transparent;
             color: $white;
-        }
-        &:hover {
-            color: $text-color;
         }
     }
 }
