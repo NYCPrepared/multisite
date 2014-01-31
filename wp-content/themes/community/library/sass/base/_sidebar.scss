@@ -10,6 +10,8 @@ SIDEBARS & ASIDES
 .widgettitle {
 	margin: 0 0 0.75em;
 	color: $white;
+    color: rgba(255,255,255,.7);
+    @extend %h6;
 }
 
 .widget {
@@ -19,7 +21,6 @@ SIDEBARS & ASIDES
     color: $white;
 	a, a:visited {
 		color: $white;
-		color: rgba(255,255,255,.7);
 		&:hover {
     		color: $gray2;
 		}

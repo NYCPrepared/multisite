@@ -203,20 +203,25 @@ POSTS & CONTENT STYLES
     .post-footer {
         @extend %caps;
     	@include breakpoint(medium) {@include span-columns(2 of 12);}
+    	p, li {
+        	margin: .75em 0;
+        	line-height: 1.4;
+        	@include font-size(15);
+        	color: $quiet-color;
+    	}
     	a, a:visited {
         	color: $quiet-color;
-        	@include font-size(15);
         	&:hover {
             	color: $text-color;
         	}
-    	}
-    	p {
-        	margin: 0;
     	}
     }
     .post-body {
         padding-bottom: 10px;
     	@include breakpoint(medium) {@include span-columns(8 of 12);}
+    	p {
+        	margin: .75em 0;
+    	}
     }
     .post-title {
         margin: 0;
