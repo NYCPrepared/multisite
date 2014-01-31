@@ -37,6 +37,8 @@
 		<?php // drop Google Analytics Here ?>
 		<?php // end analytics ?>
 
+        <link rel="stylesheet" href="file:///Users/Erica/Sites/multisite/wp-content/themes/community/library/css/style.css" type="text/css" media="all">
+        
 	</head>
 
 	<body <?php body_class(); ?>>
