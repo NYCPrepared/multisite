@@ -74,19 +74,14 @@ SIDEBARS & ASIDES
 
 #wp-calendar {
     width: 100%;
-    caption {
-        @extend %condensed;
-    }
     td {
         text-align: center;
     }
     td#prev {
         text-align: left;
-        @extend %condensed;
     }
     td#next {
         text-align: right;
-        @extend %condensed;
     }
 }
 

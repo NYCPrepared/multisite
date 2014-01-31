@@ -7,17 +7,10 @@
 // http://css-tricks.com/watch-your-font-weight/
 
 $sans:        "Lato", Helvetica, Verdana, sans-serif;
-$condensed:   "Oswald", "Arial Narrow", Arial, sans-serif;
 
 %sans {
     font-family: $sans;
     font-weight: 300;
-}
-
-%condensed {
-    font-family: $condensed;
-    font-weight: 400;
-    @extend %caps;
 }
 
 %caps {
@@ -27,20 +20,6 @@ $condensed:   "Oswald", "Arial Narrow", Arial, sans-serif;
 
 %small {
 	font-size: 75%;
-}
-
-%icon {
-    
-}
-
-[class*="entypo-"]:before {
-    font-family: "entypo", sans-serif;
-    font-style: normal;
-}
-
-[class*="entypo-social-"]:before {
-    font-family: "entypo-social", sans-serif;
-    font-style: normal;
 }
 
 
