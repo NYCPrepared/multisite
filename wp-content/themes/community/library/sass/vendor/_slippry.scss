@@ -1,5 +1,10 @@
 // SLIDER PLUGIN 
 
+.sy-box {
+    height: 200px;
+    @include breakpoint(medium) {height: 433px;}
+}
+
 .sy-slides-wrap {
     border: 5px solid white;
 }

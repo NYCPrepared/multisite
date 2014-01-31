@@ -67,7 +67,7 @@ h1, %h1 {
 
 h2, %h2 {
     @include font-size(28);
-	@include breakpoint(medium) {@include font-size(40);}
+	@include breakpoint(medium) {@include font-size(38);}
 	margin-bottom: 0.375em;
 }
 
@@ -84,28 +84,33 @@ h4, %h4 {
 
 h5, %h5 {
     @include font-size(18);
+	@include breakpoint(medium) {@include font-size(20);}
     font-weight: bold;
 }
 
 h6, %h6 {
     @include font-size(15);
+	@include breakpoint(medium) {@include font-size(16);}
 	@extend %caps;
 }
 
 p, %p {
-    @include font-size(18);
+    @include font-size(16);
+	@include breakpoint(medium) {@include font-size(18);}
 	line-height: 1.8;
 }
 
 li, dt, dd {
-    @include font-size(18);
+    @include font-size(16);
+	@include breakpoint(medium) {@include font-size(18);}
     @extend %sans;
 	line-height: 1.8;
 	margin-bottom: 1em;
 }
 
 input, label, textarea {
-    @include font-size(18);
+    @include font-size(16);
+	@include breakpoint(medium) {@include font-size(18);}
     @extend %sans;
 	line-height: 1.4;
 	margin-bottom: .75em;
@@ -113,6 +118,7 @@ input, label, textarea {
 
 small {
     @include font-size(13);
+	@include breakpoint(medium) {@include font-size(15);}
     @extend %sans;
 	line-height: 1.4;
 }
@@ -153,7 +159,8 @@ kbd,
 pre,
 samp {
     font-family: 'Courier New', Courier, monospace;
-	@include font-size(18);
+    @include font-size(16);
+	@include breakpoint(medium) {@include font-size(18);}
 }
 
 pre {
@@ -165,18 +172,5 @@ pre {
 }
 
 
-[class^="icon-"] {
-  display: inline-block;
-  -webkit-text-rendering: geometricPrecision;
-  -moz-text-rendering: geometricPrecision;
-  -ms-text-rendering: geometricPrecision;
-  -o-text-rendering: geometricPrecision;
-  text-rendering: geometricPrecision;
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  -ms-font-smoothing: antialiased;
-  -o-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-}
 
 
