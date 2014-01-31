@@ -16,6 +16,7 @@ div.css-search {
     div.em-search-text,
     div.em-search-geo {
         background: transparent;
+        padding: 0;
         @include font-icon-base($family:"ios7-icon"); 
         @include font-size(40);
         input {
@@ -30,23 +31,27 @@ div.css-search {
     }
     div.em-search-main .em-search-submit {
         @include font-icon-base($family:"ios7-icon"); 
-        @include font-size(40);
+        @include font-size(30);
         @extend %ios7-search;
-        background: gray;
+        background: $text-color;
         box-shadow: inherit;
         height: 50px;
         width: 50px;
         border-radius: 0;
         text-shadow: none;
         padding: 0;
+        border: 0;
         img {
             display: none;
+        }
+        &:hover {
+            background: $teal;
         }
     }
 }
 .em-events-search-form {
     background: white;
-    padding: 20px;
+    padding: 5px 20px;
 }
 
 
