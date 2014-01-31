@@ -27,6 +27,52 @@ site so our css is cleaner and more scalable.
 
 
 /******************************************************************
+FILTER MENUS
+******************************************************************/
+
+.filters{
+    @include fill-parent;
+    ul {
+        @include transition(height 0.25s ease);
+        @include span-columns(4);
+        height: 2em;
+        overflow: hidden;
+        background: $gray3;
+        color: $white;
+    	&:first-child {
+    		background: $green;
+    	}
+    	&:nth-child(2) {
+    		background: $teal;
+    	}
+    	&:nth-child(3) {
+    		background: $blue;
+    	}
+    	&:nth-child(4) {
+    		background: $navy;
+    	}
+    	&:hover {
+        	height: auto;
+        	cursor: pointer;
+    	}
+    }
+    li {
+        display: block;
+        padding: 5px 10px;
+        background: $white;
+        color: $teal;
+        &:first-child {
+            @include font-icon-base($family:"ios7-icon"); 
+            @include font-size(16);
+            @extend %ios7-down;
+            background: transparent;
+            color: $white;
+        }
+    }
+}
+
+
+/******************************************************************
 PAGINATION
 ******************************************************************/
 
