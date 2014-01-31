@@ -194,9 +194,10 @@ POSTS & CONTENT STYLES
 
 .news-feed {
     article {
-        border-top: 1px solid $hr-color;
+        border-top: 1px solid $gray7;
         padding-top: 20px;
         @include fill-parent;
+        clear: both;
     }    
     .post-header {
         @extend %caps;
