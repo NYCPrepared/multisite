@@ -190,6 +190,27 @@ POSTS & CONTENT STYLES
 }
 
 
+// NEWS FEED
+
+.news-feed {
+    article {
+        border-top: 1px solid $hr-color;
+    }    
+    .post-header {
+        @extend %caps;
+    	@include breakpoint(medium) {@include span-columns(2 of 12);}
+    }
+    .post-body {
+    	@include breakpoint(medium) {@include span-columns(8 of 12);}
+    }
+    .post-footer {
+        @extend %caps;
+    	@include breakpoint(medium) {@include span-columns(2 of 12);}
+    }
+
+}
+
+
 // SITES PROMO
 
 .sites-list {
