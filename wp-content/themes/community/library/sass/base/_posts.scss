@@ -195,6 +195,8 @@ POSTS & CONTENT STYLES
 .news-feed {
     article {
         border-top: 1px solid $hr-color;
+        padding-top: 20px;
+        @include fill-parent;
     }    
     .post-header {
         @extend %caps;
@@ -207,7 +209,9 @@ POSTS & CONTENT STYLES
         @extend %caps;
     	@include breakpoint(medium) {@include span-columns(2 of 12);}
     }
-
+    .post-title {
+        margin: 0;
+    }
 }
 
 
