@@ -11,7 +11,9 @@
 							<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
 								<header class="article-header">
+
 									<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
+
 								</header>
 
 								<section class="entry-content clearfix" itemprop="articleBody">
@@ -20,6 +22,7 @@
 
 								<footer class="article-footer">
 									<?php the_tags( '<span class="tags">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '' ); ?>
+
 								</footer>
 
 							</article>
@@ -46,7 +49,7 @@
 							<article id="<?php echo $post_slug; ?>" class="site-<?php echo $blog_slug; ?>">
 								<header class="post-header">
 									<p class="post-author"><a href="<?php echo $blog_details->path; ?>"><?php echo $blog_details->blogname; ?></a></p>
-									<p class="post-date"><time><?php echo date_i18n(get_option('M j, Y') ,strtotime($date));?></time></p>
+									<p class="post-date"><time><?php echo date_i18n(get_option('date_format') ,strtotime($date));?></time></p>
 								</header>
 								<section class="post-body">
 									<h2 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h2>

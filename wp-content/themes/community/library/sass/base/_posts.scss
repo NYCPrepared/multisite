@@ -199,16 +199,24 @@ POSTS & CONTENT STYLES
         @include fill-parent;
         clear: both;
     }    
-    .post-header {
-        @extend %caps;
-    	@include breakpoint(medium) {@include span-columns(2 of 12);}
-    }
-    .post-body {
-    	@include breakpoint(medium) {@include span-columns(8 of 12);}
-    }
+    .post-header,
     .post-footer {
         @extend %caps;
     	@include breakpoint(medium) {@include span-columns(2 of 12);}
+    	a, a:visited {
+        	color: $quiet-color;
+        	@include font-size(15);
+        	&:hover {
+            	color: $text-color;
+        	}
+    	}
+    	p {
+        	margin: 0;
+    	}
+    }
+    .post-body {
+        padding-bottom: 10px;
+    	@include breakpoint(medium) {@include span-columns(8 of 12);}
     }
     .post-title {
         margin: 0;
