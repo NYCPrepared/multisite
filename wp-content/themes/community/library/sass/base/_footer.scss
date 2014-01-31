@@ -15,7 +15,8 @@
 
 .logo-NYCP {
     @include font-size(22);
-    @extend %sans;
+    @extend %caps;
+    font-weight: 700;
     white-space: nowrap;
     display: inline-block; 
     margin-right: 20px;
