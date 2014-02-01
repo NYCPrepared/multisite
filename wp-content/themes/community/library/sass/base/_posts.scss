@@ -52,8 +52,8 @@ POSTS & CONTENT STYLES
     	max-width: 40em;
 	}
 	p:first-child {
-        @extend %h4;
-        margin-top: 3em;
+        @extend %h3;
+        margin-top: 2em;
     }
 
 	ul, ol, table, dl {}

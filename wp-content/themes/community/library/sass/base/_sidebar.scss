@@ -59,6 +59,14 @@ SIDEBARS & ASIDES
     	background: transparent;
     	padding: 20px 0;
 	}
+	label {
+        margin-bottom: 0;
+    }
+    input[type="text"], 
+    input[type="password"], 
+    input[type='email'] {
+        padding: 2px 5px;
+    }
 }
 
 .widget_recent_entries,
@@ -91,7 +99,8 @@ SIDEBARS & ASIDES
     background: $gray3;
     background: rgba(0,0,0,.7);
     &:hover {
-        background: $gray2;
+        background: $white;
+        color: $text-color;
     }
 }
 
