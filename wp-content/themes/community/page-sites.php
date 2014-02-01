@@ -13,7 +13,7 @@
 								<header class="article-header">
 
 									<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
-									<?php glo_get_networks_html(true, false, true, true) ?>	
+									<?php// glo_get_networks_html(true, false, true, true) ?>	
 
 									<div class="filters">
 										<!-- Dummy Filters -->
@@ -73,24 +73,24 @@
 											$site_path = $site_details->path;
 											$site_slug = trim($site_path,'/');
 											
-											if (function_exists('glo_get_blog_location_name')) { 
-												$site_location_name = glo_get_blog_location_name($site_id);
-											}
-											if (function_exists('glo_get_blog_location_slug')) { 
-												$site_location_slug = glo_get_blog_location_slug($site_id);
-											}
-											if (function_exists('glo_get_blog_topic_name')) {
-												$site_topic_name= glo_get_blog_topic_name($site_id);
-											}
-											if (function_exists('glo_get_blog_topic_slug')) {
-												$site_topic_slug = glo_get_blog_topic_slug($site_id);
-											}
-											if (function_exists('glo_get_blog_network_name')) {
-												$site_network_name = glo_get_blog_network_name($site_id);
-											}
-											if (function_exists('glo_get_blog_network_slug')) {
-												$site_network_slug = glo_get_blog_network_slug($site_id);
-											}
+											// if (function_exists('glo_get_blog_location_name')) { 
+											// 	$site_location_name = glo_get_blog_location_name($site_id);
+											// }
+											// if (function_exists('glo_get_blog_location_slug')) { 
+											// 	$site_location_slug = glo_get_blog_location_slug($site_id);
+											// }
+											// if (function_exists('glo_get_blog_topic_name')) {
+											// 	$site_topic_name= glo_get_blog_topic_name($site_id);
+											// }
+											// if (function_exists('glo_get_blog_topic_slug')) {
+											// 	$site_topic_slug = glo_get_blog_topic_slug($site_id);
+											// }
+											// if (function_exists('glo_get_blog_network_name')) {
+											// 	$site_network_name = glo_get_blog_network_name($site_id);
+											// }
+											// if (function_exists('glo_get_blog_network_slug')) {
+											// 	$site_network_slug = glo_get_blog_network_slug($site_id);
+											// }
 
 											// $networks = glo_get_networks_html();
 											
@@ -98,12 +98,12 @@
 											// var_dump($networks);
 											// echo "</pre>";
 										?>
-										<li class="site-<?php echo $site_slug; ?> topic-<?php echo $site_topic_slug; ?> network-<?php echo $site_network_slug; ?> location-<?php echo $site_location_slug; ?>">
+										<li class="site- topic- network- location- ">
 											<div class="site-image <?php if(!$site_image) { echo 'no-image'; } ?>"><?php if($site_image) { ?><img src="<?php echo $site_image; ?>" class="site-image"><?php } ?></div>
 											<h3 class="site-title"><a href="<?php echo $site_details->siteurl; ?>"><?php echo $site_details->blogname; ?></a></h3>
-											<div class="meta site-network"><a href="/network/<?php echo $site_network_slug; ?>/"><?php echo $site_network_name; ?></a></div>
+											<!-- <div class="meta site-network"><a href="/network/<?php echo $site_network_slug; ?>/"><?php echo $site_network_name; ?></a></div>
 											<div class="meta site-location"><?php echo $site_location_name; ?></div>
-											<div class="meta site-topic"><?php echo $site_topic_name; ?></div>
+											<div class="meta site-topic"><?php echo $site_topic_name; ?></div> -->
 
 										</li>
 

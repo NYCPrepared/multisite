@@ -42,50 +42,6 @@
 										'alt'	=> trim(strip_tags($title))
 									);
 								?>
-								<?php
-								// $post_metas = get_post_meta($post->ID);
-				    //             $all_meta[$post->guid] = array();
-				    //             foreach($post_metas as $metakey => $metavalue) {
-				    //                 $all_meta[$post->guid][$metakey] = $metakey;
-				    //                 foreach ($metavalue as $meta) {
-				    //                     $all_meta[$post->guid][$metakey] = $meta;
-				    //                 }
-				    //             }
-								// echo "<pre>";
-								// var_dump($all_meta);
-								// echo "</pre>";
-
-								// $post_metas = get_post_meta($post->ID);
-								// foreach($post_metas as $metakey => $metavalue) {
-								// 	echo 'key: ' . $metakey . '<br />';
-
-								// 	foreach ($metavalue as $meta) {
-								// 		echo 'value: ' .  $meta . '<br />';
-								// 	}
-								// 	// echo "<pre>";
-								// 	// var_dump($metakey);
-								// 	// echo "</pre>";
-								// 	// foreach ($post_meta as $key => $value) {
-								// 	// 	// echo $value;
-								// 	// }
-								// 	// echo "<pre>";
-								// 	// var_dump($post_meta);
-								// 	// echo "</pre>";
-									
-								// }
-									// echo "<pre>";
-									// var_dump($post_metas);
-									// echo "</pre>";
-								// $all_meta[$post->guid] = array();
-								// foreach($post_metas as $post_meta) {
-								// 	$meta = get_post_meta($post->ID, $post_meta);
-								// 	$all_meta[$post->guid][$meta->key][‘key’] = $meta->key;
-								// 	$all_meta[$post->guid][$meta->value][‘value’] = $meta->value;
-								// }
-								// echo "<pre>";
-								// var_dump($post_metas);
-								// echo "</pre>";
-								?>
 
 								<li class="featured-post">
 									<a href="<?php echo $permalink; ?>" title="<?php echo get_the_title();?>">

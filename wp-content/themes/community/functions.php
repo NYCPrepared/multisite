@@ -49,103 +49,15 @@ require_once( 'library/bones.php' ); // if you remove this, bones will break
 // require_once( 'library/translation/translation.php' ); // this comes turned off by default
 
 require_once( 'library/recent-network-posts.php' ); // Required to display recent posts
-// require_once( 'customize.php' ); // Required to display recent posts
 
-/************* REWRITE RULES FOR USE WITH NETWORK SITES PLUGIN *****************/
-if ( is_plugin_active('site-networks/site_networks.php') ) { 
-	include_once dirname(__FILE__) . '/rewrites.php';
-}
-
-function community_theme_customize_register( $wp_customize ) {
-	
-	$wp_customize->remove_section( 'background_image' );
-	$wp_customize->remove_section( 'colors' );
-
-	// SECTION
-    $wp_customize->add_section(
-        'community_header_section',
-        array(
-            'title' => 'Header',
-            // 'description' => 'This is a settings section.',
-            'priority' => 20,
-        )
-    );
-    // SETTINGS
-    $wp_customize->add_setting( 'community_header_image' );
-	// CONTROLS
-	$wp_customize->add_control(
-	    new WP_Customize_Image_Control(
-	        $wp_customize,
-	        'community_header_image',
-	        array(
-	            'label' => 'Image Upload',
-	            'section' => 'community_header_section',
-	            'settings' => 'community_header_image'
-	        )
-	    )
-	);
+// require_once( 'library/metaboxes/community-custom-metaboxes.php' );
 
 
-	// SECTION
-    $wp_customize->add_section(
-        'community_social_section',
-        array(
-            'title' => 'Social',
-            // 'description' => 'This is a settings section.',
-            'priority' => 30,
-        )
-    );
-    // SETTINGS
-    $wp_customize->add_setting( 'community_site_image' );
-	// CONTROLS
-	$wp_customize->add_control(
-	    new WP_Customize_Image_Control(
-	        $wp_customize,
-	        'community_site_image',
-	        array(
-	            'label' => 'Image Upload',
-	            'section' => 'community_social_section',
-	            'settings' => 'community_site_image'
-	        )
-	    )
-	);
+include_once( 'library/network-posts.php' );
 
+include_once( 'library/network-posts2.php' );
 
-	// SECTION
-	$wp_customize->add_section(
-        'footer_section',
-        array(
-            'title' => 'Footer',
-            // 'description' => 'Footer Options.',
-            'priority' => 500,
-        )
-    );
-	// SETTINGS
-	$wp_customize->add_setting(
-	    'copyleft_textbox',
-	    array(
-	        'default' => 'Default copyleft text',
-	        'sanitize_callback' => 'community_sanitize_text',
-	    )
-	);
-	// CONTROLS
-	$wp_customize->add_control(
-	    'copyleft_textbox',
-	    array(
-	        'label' => 'Copyleft text',
-	        'section' => 'footer_section',
-	        'type' => 'text',
-	    )
-	);
-
-
-}
-
-add_action( 'customize_register', 'community_theme_customize_register' );
-
-function community_sanitize_text( $input ) {
-    return wp_kses_post( force_balance_tags( $input ) );
-}
+include_once( 'library/network-posts3.php' );
 
 
 /************* THUMBNAIL SIZE OPTIONS *************/
@@ -291,6 +203,33 @@ function bones_utility_nav() {
 	));
 } /* end bones secondary nav */
 
+
+/*************************
+ADD THEME SUPPORT
+*************************/
+
+if ( ! function_exists('community_theme_features') ) {
+
+// Register Theme Features
+function community_theme_features()  {
+
+	// Add theme support for Post Formats
+	$formats = array( 'gallery', 'image', 'video', 'link', 'aside', );
+	add_theme_support( 'post-formats', $formats );	
+
+	// Add theme support for Semantic Markup
+	$markup = array( 'search-form', );
+	add_theme_support( 'html5', $markup );	
+
+	// Add theme support for Translation
+	load_theme_textdomain( 'community', get_template_directory() . '/library/language' );	
+}
+
+// Hook into the 'after_setup_theme' action
+add_action( 'after_setup_theme', 'community_theme_features' );
+
+}
+
 /*************************
 OPTIONS FRAMEWORK FUNCTION
 *************************/
@@ -366,107 +305,77 @@ function bones_wpsearch($form) {
 } // don't remove this bracket!
 
 
-/************* CUSTOM METABOX *****************/
+/**************************
+SITE NETWORKS CONTENT TYPE
+**************************/
 
-/* Location Field for Volunteer Posts */
+if ( ! function_exists('site_networks') ) {
 
-/* Fire our meta box setup function on the post editor screen. */
-add_action( 'load-post.php', 'community_post_meta_boxes_setup' );
-add_action( 'load-post-new.php', 'community_post_meta_boxes_setup' );
+// Register Custom Post Type
+function site_networks() {
 
-/* Meta box setup function. */
-function community_post_meta_boxes_setup() {
-
-	/* Add meta boxes on the 'add_meta_boxes' hook. */
-	add_action( 'add_meta_boxes', 'community_add_post_meta_boxes' );
-
-	/* Save post meta on the 'save_post' hook. */
-	add_action( 'save_post', 'community_save_volunteer_location_meta', 10, 2 );
-}
-
-/* Create one or more meta boxes to be displayed on the post editor screen. */
-function community_add_post_meta_boxes() {
-
-	add_meta_box(
-		'community-volunteer-location',			// Unique ID
-		esc_html__( 'Volunteer Location', 'example' ),		// Title
-		'community_volunteer_location_meta_box',		// Callback function
-		'post',					// Admin page (or post type)
-		'side',					// Context
-		'default'					// Priority
+	$labels = array(
+		'name'                => _x( 'Site Networks', 'Post Type General Name', 'site_networks' ),
+		'singular_name'       => _x( 'Site Network', 'Post Type Singular Name', 'site_networks' ),
+		'menu_name'           => __( 'Networks', 'site_networks' ),
+		'parent_item_colon'   => __( 'Parent Item:', 'site_networks' ),
+		'all_items'           => __( 'All Networks', 'site_networks' ),
+		'view_item'           => __( 'View Network', 'site_networks' ),
+		'add_new_item'        => __( 'Add New Network', 'site_networks' ),
+		'add_new'             => __( 'Add New', 'site_networks' ),
+		'edit_item'           => __( 'Edit Network', 'site_networks' ),
+		'update_item'         => __( 'Update Network', 'site_networks' ),
+		'search_items'        => __( 'Search Network', 'site_networks' ),
+		'not_found'           => __( 'Not found', 'site_networks' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'site_networks' ),
 	);
+	$rewrite = array(
+		'slug'                => 'network',
+		'with_front'          => true,
+		'pages'               => true,
+		'feeds'               => true,
+	);
+	$capabilities = array(
+		'manage_options'      => 'manage_options',
+	);
+	$args = array(
+		'label'               => __( 'site_networks', 'site_networks' ),
+		'description'         => __( 'Post type that collects MS sites into network groupings', 'site_networks' ),
+		'labels'              => $labels,
+		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'permalink' ),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 80,
+		'menu_icon'           => '',
+		'can_export'          => true,
+		'has_archive'         => false,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'query_var'           => '',
+		'rewrite'             => $rewrite,
+		'capabilities'        => $capabilities,
+	);
+	register_post_type( 'site_networks', $args );
+
 }
 
-/* Display the post meta box. */
-function community_volunteer_location_meta_box( $object, $box ) { ?>
+// Hook into the 'init' action
+add_action( 'init', 'site_networks', 0 );
 
-	<?php wp_nonce_field( basename( __FILE__ ), 'community_volunteer_location_nonce' ); ?>
-
-	<p>
-		<label for="community-volunteer-location"><?php _e( "Add a location to your volunteer posts.", 'example' ); ?></label>
-		<br />
-		<input class="widefat" type="text" name="community-volunteer-location" id="community-volunteer-location" value="<?php echo esc_attr( get_post_meta( $object->ID, 'community_volunteer_location', true ) ); ?>" size="30" />
-	</p>
-<?php }
-
-/* Save the meta box's post metadata. */
-function community_save_volunteer_location_meta( $post_id, $post ) {
-
-	/* Verify the nonce before proceeding. */
-	if ( !isset( $_POST['community_volunteer_location_nonce'] ) || !wp_verify_nonce( $_POST['community_volunteer_location_nonce'], basename( __FILE__ ) ) )
-		return $post_id;
-
-	/* Get the post type object. */
-	$post_type = get_post_type_object( $post->post_type );
-
-	/* Check if the current user has permission to edit the post. */
-	if ( !current_user_can( $post_type->cap->edit_post, $post_id ) )
-		return $post_id;
-
-	/* Get the posted data and sanitize it for use as an HTML class. */
-	// $new_meta_value = ( isset( $_POST['community-volunteer-location'] ) ? sanitize_html_class( $_POST['community-volunteer-location'] ) : '' );
-	$new_meta_value = $_POST['community-volunteer-location'];
-	
-	/* Get the meta key. */
-	$meta_key = 'community_volunteer_location';
-
-	/* Get the meta value of the custom field key. */
-	$meta_value = get_post_meta( $post_id, $meta_key, true );
-
-	/* If a new meta value was added and there was no previous value, add it. */
-	if ( $new_meta_value && '' == $meta_value )
-		add_post_meta( $post_id, $meta_key, $new_meta_value, true );
-
-	/* If the new meta value does not match the old value, update it. */
-	elseif ( $new_meta_value && $new_meta_value != $meta_value )
-		update_post_meta( $post_id, $meta_key, $new_meta_value );
-
-	/* If there is no new meta value but an old value exists, delete it. */
-	elseif ( '' == $new_meta_value && $meta_value )
-		delete_post_meta( $post_id, $meta_key, $meta_value );
 }
 
-/* Filter the post class hook with our custom post class function. */
-add_filter( 'volunteer_location', 'community_volunteer_location' );
 
-function community_volunteer_location( $locations ) {
+/**************************
+SITE NETWORKS METABOXES
+**************************/
 
-	/* Get the current post ID. */
-	$post_id = get_the_ID();
+require_once 'library/metaboxes/metabox-functions.php';
 
-	/* If we have a post ID, proceed. */
-	if ( !empty( $post_id ) ) {
 
-		/* Get the custom post class. */
-		$volunteer_location = get_post_meta( $post_id, 'community_volunteer_location', true );
-
-		/* If a post class was input, sanitize it and add it to the post class array. */
-		if ( !empty( $volunteer_location ) )
-			$locations[] = sanitize_html_class( $volunteer_location );
-	}
-
-	return $locations;
-}
 
 
 ?>
