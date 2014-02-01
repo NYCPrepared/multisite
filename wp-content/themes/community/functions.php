@@ -53,10 +53,6 @@ require_once( 'library/recent-network-posts.php' ); // Required to display recen
 // require_once( 'library/metaboxes/community-custom-metaboxes.php' );
 
 
-include_once( 'library/network-posts.php' );
-
-include_once( 'library/network-posts2.php' );
-
 include_once( 'library/network-posts3.php' );
 
 
