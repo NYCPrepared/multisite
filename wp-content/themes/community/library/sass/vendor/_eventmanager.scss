@@ -138,9 +138,10 @@ ul.event-categories {
 }
 
 .em-calendar td.eventless-today {
-    background: transparent;
+    background: transparent !important;
     border: 1px solid $white;
 }
+.em-calendar td.eventless-pre,
 .em-calendar td.eventless-post {
     color: $gray5;
 }

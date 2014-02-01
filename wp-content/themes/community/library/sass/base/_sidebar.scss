@@ -35,7 +35,6 @@ SIDEBARS & ASIDES
         padding: 0.5em 0;
         margin: 0;
         line-height: 1.3;
-        @extend %h4;
 		&:first-child {}
 		&:last-child {}
 		a {
@@ -52,7 +51,6 @@ SIDEBARS & ASIDES
 		li {
     		border: 0;
     		padding: 0;
-    		@include font-size(18);
     		color: $quiet-color;
 		}
 	}
@@ -61,6 +59,17 @@ SIDEBARS & ASIDES
     	padding: 20px 0;
 	}
 }
+
+.widget_recent_entries,
+.widget_em_widget {
+    li {
+        @extend %h4;
+        li {
+    		@include font-size(18);
+        }
+    }
+}
+
 
 .sidebar .widget {
 	&:first-child {
