@@ -61,7 +61,7 @@
 
 								<section class="entry-content clearfix" itemprop="articleBody" rel="main">
 
-									<ul class="site-list">
+									<ul class="sites-list">
 										<?php
 										$sites = wp_get_sites('offset=1');
 

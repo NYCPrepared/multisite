@@ -2,10 +2,11 @@
 
 .alo_easymail_widget_form {
     padding: 20px 0;
-    border-top: 3px solid $white;
-    border-bottom: 3px solid $white;
+    border-top: 1px solid $white;
+    border-bottom: 1px solid $white;
     border-color: rgba(255,255,255,.5);
     display: inline-block;
+    background: transparent;
     td, label {
         font-size: 16px;
         vertical-align: top;

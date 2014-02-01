@@ -12,7 +12,7 @@ POSTS & CONTENT STYLES
 .page-title {}
 
 .single-title {}
-.page-title {}
+.page-title {margin: .25em 0;}
 .archive-title {}
 
 
@@ -40,7 +40,10 @@ POSTS & CONTENT STYLES
 
 // post content 
 .entry-content {
-
+    h1 {
+        margin-bottom: 0;
+    }
+    
     h2, h3, h4 {
         margin-top: 1.8em;
     }
@@ -48,6 +51,10 @@ POSTS & CONTENT STYLES
 	p {
     	max-width: 40em;
 	}
+	p:first-child {
+        @extend %h3;
+        margin-top: 2em;
+    }
 
 	ul, ol, table, dl {}
 	ul, ol {
@@ -232,6 +239,8 @@ POSTS & CONTENT STYLES
 // SITES PROMO
 
 .sites-list {
+    clear: both;
+    @include fill-parent;
     li {
         background: $white;
         margin-top: 0;
@@ -241,7 +250,7 @@ POSTS & CONTENT STYLES
         overflow: hidden;
     	@include breakpoint(small) {@include span-columns(4);}
     }
-    .site-thumbnail {
+    .site-image {
         width: 100%;
         height: auto;
         min-height: 180px;
