@@ -21,8 +21,15 @@ SIDEBARS & ASIDES
     color: $white;
 	a, a:visited {
 		color: $white;
+		font-weight: 300;
+		display: block;
+        padding: 0.5em 20px 0.5em 0;
 		&:hover {
-    		color: $gray2;
+    		color: $white;
+    		padding-left: 20px;
+    		padding-right: 0;
+            background: $text-color;
+            background: rgba(0,0,0,.1);
 		}
 	}
 	ul {
@@ -35,16 +42,6 @@ SIDEBARS & ASIDES
         padding: 0;
         margin: 0;
         line-height: 1.3;
-		a {
-    		font-weight: 300;
-    		display: block;
-            padding: 0.5em 0;
-		}
-		a:hover {
-    		padding-left: 20px;
-            background: $text-color;
-            background: rgba(0,0,0,.1);
-		}
 		
 		/* deep nesting */
 		ul {
