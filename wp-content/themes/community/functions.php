@@ -50,11 +50,6 @@ require_once( 'library/bones.php' ); // if you remove this, bones will break
 
 require_once( 'library/recent-network-posts.php' ); // Required to display recent posts
 
-// require_once( 'library/metaboxes/community-custom-metaboxes.php' );
-
-
-include_once( 'library/network-posts3.php' );
-
 
 /************* THUMBNAIL SIZE OPTIONS *************/
 
