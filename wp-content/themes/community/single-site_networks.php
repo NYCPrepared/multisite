@@ -48,42 +48,29 @@
 
 									<?php
 
-										$network_id = get_the_ID();
-										
-										if(function_exists('recent_mu_posts')) {
-											$network_posts = recent_mu_posts($howMany = 20, $network = $network_id);
+									$blog_ids = get_post_meta($post->ID, '_community_network_sites');
+									$blog_list = implode(",", $blog_ids);									
 
-											echo '<ul class="post-list">';
+									if(function_exists( 'network_latest_posts' )) {
 
-											foreach ($network_posts as $post) {
-												global $post;
-												setup_postdata( $post );
-												$content = $post->post_content;
-												$permalink = $post->guid;
-												if(function_exists('recent_posts_excerpt')) {
-													$post_excerpt = recent_posts_excerpt($count = 20, $content, $permalink, $excerpt_trail = ' ... ');
-												} else {
-													$post_excerpt = $post->post_content;
-												}
+										$parameters = array(
+											'title'         => '',
+											'title_only'    => 'false',
+											'auto_excerpt'  => 'true',
+											'full_meta'		=> 'true',
+											'thumbnail'        => 'true',
+											'thumbnail_wh'	   => 'medium',
+											'thumbnail_class'  => 'post-image',
+											'wrapper_block_css'=> 'network-posts',
+											'instance'         => 'network-posts',
+											'blog_id'          => $blog_list,
+											'category'         => 'News',
+										);
+										// Execute
+										$posts = network_latest_posts($parameters);
+									}
 
-												 ?>
-
-												<li id="post-<?php echo $post->post_name; ?>">
-													<h3 class="post-title"><a href="<?php echo $post->guid; ?>"><?php the_title(); ?></a></h3>
-													<p class="post-excerpt"><?php echo $post_excerpt; ?></p>
-													<span class="meta post-date"><?php the_date(); ?></span>
-
-												</li>
-
-												<?php
-	
-											}
-											echo '</li>';
-										}
-										// echo "<pre>";
-										// var_dump($network_posts);
-										// echo "</pre>";
-										?>
+									?> 
 
 								</section>
 

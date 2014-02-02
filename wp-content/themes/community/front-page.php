@@ -67,69 +67,45 @@
 					<section class="home-modules clearfix">
 						<?php if ( is_multisite() ) { // Check to see if multisite is active. If not, display a recent posts and events module for this site. ?> 
 						<?php $sites = wp_get_sites('offset=1'); // Set up variable that holds array of sites ?>
+	
 						<?php
-						// Check to see if recent_network_post function exists. If not don't display this module.
-						if(function_exists('recent_network_posts')) { ?>
-						<article id="highlights-module" class="module row highlights clearfix">
-							<h2 class="module-heading">Volunteers Needed</h2>
-							<ul class="highlights-list">
-								<?php 
-									$post_cat = 'Volunteers'; // You can change post category here
-									$volunteer_posts = recent_network_posts($numberposts = '5', $postsperblog = '2', $postcat = $post_cat, $excludepostcat = '0');
-									foreach ($volunteer_posts as $post) {
-										// $title = $post->post_title;
-										$content = $post->post_content;
-										$permalink = $post->post_url;
-										$post_excerpt = recent_posts_excerpt($count = 20, $content, $permalink, $excerpt_trail = '... ');
-										$meta = $post->meta;
-										if(array_key_exists('community_volunteer_location', $meta)) {
-											$post_location = $meta['community_volunteer_location'];
-										} 
-									?>
-									<li>
-										<h3 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $post->post_title; ?></a></h3>
-										<p class="post-excerpt">
-											<?php echo $post_excerpt; ?>
-											<span class="meta location"><?php echo $post_location; ?></span>
-										</p>
-									</li>
-									<?php
+						if(function_exists( 'network_latest_posts' )) {
 
-									// echo "<pre>";
-									// var_dump($volunteer_posts);
-									// echo "</pre>";
-									?>
+							$parameters = array(
+							'title'         => 'Volunteers',
+							'title_only'    => 'false',
+							'auto_excerpt'  => 'true',
+							'full_meta'		=> 'true',
+							'category'         => 'volunteers',          // Widget title
+							'number_posts'     => 2,
+							'wrapper_list_css' => 'highlights-list',
+							'wrapper_block_css'=> 'module row highlights', //The wrapper classe
+							'instance'         => 'highlights-module', //The wrapper ID
+							);
+							// Execute
+							$posts = network_latest_posts($parameters);
+						}
+						?>
 
+						<?php
+						if(function_exists( 'network_latest_posts' )) {
 
-								<?php } ?>
-							</ul>
-						</article>
-						<?php } ?>
-						<?php 
-						// Check to see if recent_network_post function exists. If not don't display this module.
-						if(function_exists('recent_network_posts')) { ?>
-						<article id="news-module" class="module row news clearfix">
-							<h2 class="module-heading"><a href="/news/">News</a></h2>
-							<ul class="news-list">
-								<?php 
-									$exclude_cat = $post_cat; // Set to exclude post category in previous module. Change to whatever you'd like
-									$recent_posts = recent_network_posts($numberposts = '5', $postsperblog = '2', $postcat = '0', $excludepostcat = $exclude_cat);
-									foreach ($recent_posts as $post) { 
-										// $title = $post->post_title;
-										$content = $post->post_content;
-										$permalink = $post->post_url;
-										$post_excerpt = recent_posts_excerpt($count = 20, $content, $permalink, $excerpt_trail = '... ');
-										$date = $post->post_date;
-									?>
-								<li>
-									<h3 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $post->post_title; ?></a></h3>
-									<p class="post-excerpt"><?php echo $post_excerpt; ?>
-									<span class="meta post-date"><?php echo date_i18n(get_option('date_format'),strtotime($date));?></span></p>
-								</li>
-								<?php } ?>
-							</ul>
-						</article>
-						<?php } ?>
+							$parameters = array(
+							'title'         => 'News',
+							'title_link'    => '/news/',
+							'title_only'    => 'false',
+							'auto_excerpt'  => 'true',
+							'full_meta'		=> 'true',
+							// 'category'         => 'news',
+							'number_posts'     => 2,
+							'wrapper_list_css' => 'news-list',
+							'wrapper_block_css'=> 'module row news', //The wrapper classe
+							'instance'         => 'news-module', //The wrapper ID
+							);
+							// Execute
+							$posts = network_latest_posts($parameters);
+						}
+						?>
 						<?php // Check to see if Events Manager is active. If not don't display this module.
 						if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
 						<article id="events-module" class="module row events clearfix">

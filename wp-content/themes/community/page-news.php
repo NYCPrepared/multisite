@@ -32,48 +32,28 @@
 						</div>
 						<div id="main" class="content news-feed first clearfix" role="main">
 						<?php
-						if(function_exists('recent_network_posts')) {
-							$news_posts = recent_network_posts($numberposts = 50); // This adjusts total number of posts
-							foreach ($news_posts as $post) {
-								$blog_details = get_blog_details($post->blog_id);
-								$title = $post->post_title;
-								$content = $post->post_content;
-								$permalink = $post->post_url;
-								$date = $post->post_date;
-								$post_slug = $post->post_name;
-								$blog_slug = trim($blog_details->path,'/');
-								// $count is the number of words to display in the excerpt; change as desired
-								// $excerpt_trail is the trailer after the excerpt, it will link to the post; change as desired
-								$post_excerpt = recent_posts_excerpt($count = 55, $content, $permalink, $excerpt_trail = '... ');
-							?>
-							<article id="<?php echo $post_slug; ?>" class="site-<?php echo $blog_slug; ?>">
-								<header class="post-header">
-									<p class="post-author"><a href="<?php echo $blog_details->path; ?>"><?php echo $blog_details->blogname; ?></a></p>
-									<p class="post-date"><time><?php echo date_i18n(get_option('date_format') ,strtotime($date));?></time></p>
-								</header>
-								<section class="post-body">
-									<h2 class="post-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></h2>
-								    <p><?php echo $post_excerpt; ?></p>
-								</section>
-								<footer class="post-footer">
-									<ul class="meta taxonomy categories">
-									<?php
-									foreach ($post->post_categories as $key => $value) {
-										$slug = $value['slug'];
-										$catlink = $value['nice_link'];
-									?>
-										<li id="category-<?php echo $slug; ?>"><?php echo $catlink; ?></li>
-									<?php } ?>
-									</ul>
-								</footer>
-							</article>
+						if(function_exists( 'network_latest_posts' )) {
 
+							$parameters = array(
+							'title_only'    => 'false',
+							'auto_excerpt'  => 'true',
+							'full_meta'		=> 'true',
+							'show_categories'    => 'true', 
+							'display_type'		=> 'block',
+							'thumbnail'        => 'true',
+							'thumbnail_wh'	   => 'medium',
+							'thumbnail_class'  => 'post-image',
+							'wrapper_list_css' => 'post-list',
+							'wrapper_block_css'=> 'news', //The wrapper classe
+							'instance'         => 'news-page', //The wrapper ID
+							'paginate'         => 'true',        // Paginate results
+					        'posts_per_page'   => 25, 
+							);
+							// Execute
+							$posts = network_latest_posts($parameters);
+						}
+						?>
 
-						<?php }	
-							// echo "<pre>";
-							// var_dump($news_posts);
-							// echo "</pre>";
-						} ?>
 						</div>
 
 						<?php get_sidebar(); ?>
