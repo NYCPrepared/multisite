@@ -753,11 +753,7 @@ function network_latest_posts( $parameters ) {
                         foreach($post_categories as $c) {
                             $cat = get_category( $c );
                             $cats[] = array( 'name' => $cat->name, 'slug' => $cat->slug );
-                            if($cat->name == 'Uncategorized') {
-                                echo '';
-                            } else {
-                                echo '<a href="'.${'blog_url_' . $all_blogkeys[$field->guid]} . '/category/' . $cat->slug . '">' . $cat->name . '</a>';
-                            }
+                            echo '<a href="'.${'blog_url_' . $all_blogkeys[$field->guid]} . '/category/' . $cat->slug . '">' . $cat->name . '</a>';
                         }
 
                         // Close categories container
