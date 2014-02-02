@@ -1,131 +1,19 @@
 <?php
 /*
-Plugin Name: Network Latest Posts
-Plugin URI: http://en.8elite.com/network-latest-posts
-Description: Display the latest posts from the blogs in your network using it as a function, shortcode or widget.
+Plugin Name: Latest Network Posts
+Description: Display the latest posts from the blogs in your network using it as a function, shortcode or widget. Based on Network Latest Posts plugin (http://en.8elite.com/network-latest-posts).
 Author: Pea, Glocal
 Author URI: http://glocal.coop
+Version: 13
 License: GPL
  */
 
 /* Comments
  *
  * This is a customized version of Network Latest Posts (http://en.8elite.com/network-latest-posts).
+ * UPGRADING WITH REMOVE ALL CUSTOMIZATIONS. 
  *
- * Network Latest Posts version 3.0 has been totally rewritten,
- * it now uses WordPress hooks to improve the performance,
- * its easiness to maintain and to tweak in case of need.
- *
- * Because the list of variables became huge, I decided to put everything
- * inside an array, that way it looks clean and most of all READABLE from
- * a programmer's point of view, it's also a good programming practice ;).
- * I also provide backwards compatibility for the renamed variables.
- *
- * I'd like to thank Angelo (http://bitfreedom.com/) because his WPMU Recent
- * Posts Widget was the base code in previous versions of this plugin. He
- * inspired Network Latest Posts.
- *
- * I'd also like to thank the people who sent patches and helped improve the
- * functionalities giving ideas and providing invaluable feedback. Network
- * Latest Posts has evolved a lot thanks to them, below those of you who have
- * helped Network Latest Posts become what it is today:
- *
- * -- John Hawkins (9seeds.com)
- * --- Functionalities proposed:
- * ---- Custom Post Type
- * ---- Ignore Blog
- * **** Patches contributor
- *
- * -- Jenny Beaumont
- * --- Functionalities proposed:
- * ---- Taxonomy Filters (categories & tags)
- *
- * -- Tim (trailsherpa.com)
- * -- Functionalities proposed:
- * --- Excerpt Length
- *
- * -- Josh Maxwell
- * **** Spotted minor bug in the full_meta text
- *
- * -- Davo
- * --- Functionalities proposed:
- * ---- Pagination
- *
- * -- Sergeyzimin
- * --- Functionalities proposed:
- * ---- thumbnail_class
- * ---- Strip shorcodes from excerpts
- * **** Bugs spotted and fixed
- * **** Patch for the nlp_custom_excerpt function
- *
- * -- Greggo
- * **** Missing meta-info spotted
- * **** Missing site name Widget
- *
- * -- skepticblogsnet
- * --- Functionalities proposed:
- * ---- Override CSS classes for the wrapper tag
- *
- * -- Ricardoweb
- * --- Bug spotted $post_type should be $custom_post_type
- *
- * -- Jason Willis
- * --- Spotted deprecated functions register_sidebar_widget and register_widget_control
- *
- * -- Owagu
- * --- Bug spotted, custom post types didn't accept multiple values
- *
- * -- cyberdemon8
- * --- Patched for wp_register_sidebar_widget & wp_register_widget_control
- *
- * -- Kobus
- * --- Functionalities proposed:
- * ---- Random posts
- *
- * -- Aircut
- * --- Spotted an issue with Visual Composer plugin, their shortcodes were not being
- *     stripped out from excerpts
- *
- * -- Snapalot
- * --- Spotted an issue when placing NLPosts right before comments section, comments were
- *     added to different posts
- *
- * -- aaronbennett2097
- * --- Functionalities proposed:
- * ----- Thumbnails from Custom Fields
- *
- * -- kkalvaa
- * --- Spotted auto_excerpt bug
- *
- * -- James
- * --- Proposed ignore posts
- *
- * -- Anton Channing
- * --- Spotted blog IDs were missing from element classes
- *
- * -- Julien Dizdar
- * --- Spotted a bug in sorting parameters
- *
- * -- kkalvaa
- * --- Spotted ignored strings by translation files, this problem was due to
- * --- a loading hierarchy problem
- *
- * -- Gerard Bik
- * -- Proposed display post content instead of excerpts
- *
- * -- ThorHammer
- * --- Spotted a warning when NLPosts couldn't find posts.
- *
- * -- Claas Augner
- * **** Patch to correctly format dates for localization.
- *
- * -- Fred Welden
- * **** Patch to fix a missing quote from $thumbs_html
- * **** Provided two new parameters: use_pub_dates & honor_sticky
- *
- * That's it, let the fun begin!
- *
- */
+  */
 // Requires widget class
 require_once dirname( __FILE__ ) . '/network-latest-posts-widget.php';
 /* Network Latest Posts Main Function
