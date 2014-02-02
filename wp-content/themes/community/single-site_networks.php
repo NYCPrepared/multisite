@@ -65,6 +65,7 @@
 											'instance'         => 'network-posts',
 											'blog_id'          => $blog_list,
 											'category'         => 'News',
+											'number_posts'     => '25', 
 										);
 										// Execute
 										$posts = network_latest_posts($parameters);

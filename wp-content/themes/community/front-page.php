@@ -83,7 +83,7 @@
 							'instance'         => 'highlights-module', //The wrapper ID
 							);
 							// Execute
-							$posts = network_latest_posts($parameters);
+							$hightlights_posts = network_latest_posts($parameters);
 						}
 						?>
 
@@ -103,7 +103,7 @@
 							'instance'         => 'news-module', //The wrapper ID
 							);
 							// Execute
-							$posts = network_latest_posts($parameters);
+							$recent_posts = network_latest_posts($parameters);
 						}
 						?>
 						<?php // Check to see if Events Manager is active. If not don't display this module.

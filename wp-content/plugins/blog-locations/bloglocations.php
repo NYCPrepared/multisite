@@ -3,7 +3,7 @@
  
 Plugin Name: Site Locations
 Plugin URI: http://glocal.coop
-Description: Plug-in to assign locations to sites. Based on Site Topics by Deanna Schneider (http://deannaschneider.wordpress.com)
+Description: Plug-in to assign locations to sites. Based on Site Locations by Deanna Schneider (http://deannaschneider.wordpress.com)
 Author: Glocal Coop
 Version: 1.0
 Author URI: http://glocal.coop
@@ -59,7 +59,7 @@ class glo_blog_locations
 		// get the version
 		$version = get_site_option( 'glo_bloglocations_setup' );
 		// call set up if there's not option set yet, and we're not uninstalling
-		if ($_GET['page'] == 'glo_bc_management_page' && ! isset($_GET['uninstalling'])){
+		if ($_GET['page'] == 'glo_bl_management_page' && ! isset($_GET['uninstalling'])){
 			if(  $version == null ) {
 				$this->setup();
 			}
@@ -70,7 +70,7 @@ class glo_blog_locations
 			
 		}
 		
-		if ($_GET['page'] == 'glo_bc_management_page' && $_GET['uninstalling'] == true){
+		if ($_GET['page'] == 'glo_bl_management_page' && $_GET['uninstalling'] == true){
 			$this->unInstall();
 			}
 		
@@ -702,7 +702,7 @@ class glo_blog_locations
 			// update all the blogs that have that ID to the #1 required ID.
 			$blog_list = $this->get_blogs_from_location_id($location_id);
 			foreach ( $blog_list as $blog ) {
-			$result = $this->set_blog_location($blog->blog_id, 1);
+				$result = $this->set_blog_location($blog->blog_id, 1);
 			}
 			
 			// delete the location
@@ -714,17 +714,17 @@ class glo_blog_locations
     {
     	global $wpdb;
     	
-    	echo "<table><thead><tr><th>ID</th><th valign='top'>Name</th><th>Slug</th><th>Description</th></tr></thead>";
+    	echo "<table class='wp-list-table widefat'><thead><tr><th>ID</th><th>Name</th><th>Slug</th><th colspan='2'>Description</th></tr></thead>";
     	foreach ( $this->get_locations() as $location )  {
 			
-    		echo "<tbody><tr valign='top'><form name='catupdate' method='post'><td align='center'>" . $location->id . "</td>";
-			echo("<td valign='top'><input type='text' maxlength='140' name='location' value='" . $location->location_name . "'><br />140 chars max");
-			echo("<td valign='top'><input type='text' maxlength='140' name='slug' value='" . $location->slug . "'><br />140 chars max");
-			echo("<td valign='top'><textarea name='description' cols='40' rows='5'>" . $location->description . "</textarea><br />8000 chars max" );
+    		echo "<tbody><tr><form name='catupdate' method='post'><td align='center'>" . $location->id . "</td>";
+			echo("<td><input type='text' maxlength='140' name='location' value='" . $location->location_name . "' required><br />140 chars max");
+			echo("<td><input type='text' maxlength='140' name='slug' value='" . $location->slug . "' required><br />140 chars max");
+			echo("<td><textarea name='description' cols='40' rows='5'>" . $location->description . "</textarea><br />8000 chars max" );
 
 			echo("<input type='hidden' name='location_id' value='" . $location->id . "'>");
-			echo("<td  valign='top'><input type='hidden' name='action' value='edit'> <input type='submit' class='button' name='edit' value='Update'> </td>");
-			echo("</form><td valign='top'>");
+			echo("<td><input type='hidden' name='action' value='edit'> <input type='submit' class='button-primary save' name='edit' value='Update'> </td>");
+			echo("</form><td>");
 			if ($location->id != 1) {
 				echo "<form name='deletecat' method='post' onsubmit='return confirm(\"Are you sure you want to delete this location?\");'><input type='hidden' name='action' value='delete'><input type='hidden' name='locationid' value='" . $location->id . "'><input type='submit' class='button alert'  value='Delete'></form>";
 			}
@@ -734,11 +734,13 @@ class glo_blog_locations
 			
 			echo "</td></tr>";
     	}
-    	echo("<tr><th>ADD NEW</th><th valign='top'>Name</th><th>Slug</th><th>Description</th></tr>");
-    	echo("<tr valign='top'><form name='catadd' method='post'><td>&nbsp;</td><td><input type='text' maxlength='140' name='location' value=''><br />140 chars max<input type='hidden' name='action' value='add'></td>");
-		echo("<td><input type='text' maxlength='140' name='slug' value=''><br />140 chars max</td>");
+    	echo "</tbody></table>";
+    	echo "<h2>Add New</h2>";
+    	echo "<table class='wp-list-table widefat'><thead><tr><th>Name</th><th>Slug</th><th colspan='2'>Description</th></tr></thead>";
+    	echo("<tr><form name='catadd' method='post'><td><input type='text' maxlength='140' name='location' value='' required><br />140 chars max<input type='hidden' name='action' value='add'></td>");
+		echo("<td><input type='text' maxlength='140' name='slug' value='' required><br />140 chars max</td>");
 		echo("<td><textarea name='description' cols='40' rows='5'></textarea><br />8000 chars max</td>");
-		echo("<td><input type='submit' class='button' value='Add'></form></td></tr></tbody></table>");
+		echo("<td><input type='submit' class='button-primary save' value='Add'></form></td></tr></tbody></table>");
     }
 	
 	
@@ -747,7 +749,7 @@ class glo_blog_locations
 	// Adds the submenu to the blog settings screen
     function add_submenu()
     {
-    	add_options_page('Site Location Configuration', 'Site Location', 10, 'glo_blog_location', array(&$this,'config_page'));
+    	add_options_page('Site Location', 'Site Location', 10, 'glo_blog_location', array(&$this,'config_page'));
     }
     
 	// Creates the configuration page for an individual blog (blog's settings screen sub menu)
@@ -779,7 +781,7 @@ class glo_blog_locations
             </table>
             <p class="submit">
             <input type="hidden" name="action" value="update" /> 
-            <input type="submit" name="Submit" class="button" value="<?php _e('Update Options') ?> &raquo;" /> 
+            <input type="submit" name="Submit" class="button-primary" value="<?php _e('Update Options') ?>" /> 
             </p>
         </form>
         </div>
@@ -793,7 +795,7 @@ class glo_blog_locations
 
       	if (function_exists('is_network_admin')) {
 
-      		add_submenu_page('settings.php', 'Site Locations', 'Site Locations', 10, 'glo_bc_management_page', array(&$this, 'glo_bc_management_page'));
+      		add_submenu_page('settings.php', 'Site Locations', 'Site Locations', 10, 'glo_bl_management_page', array(&$this, 'glo_bl_management_page'));
 
      
 
@@ -801,9 +803,7 @@ class glo_blog_locations
 
       	else {
 
-      		add_submenu_page('ms-admin.php', 'Site Locations', 'Site Locations', 10, 'glo_bc_management_page', array(&$this, 'glo_bc_management_page'));
-
-     
+      		add_submenu_page('ms-admin.php', 'Site Locations', 'Site Locations', 10, 'glo_bl_management_page', array(&$this, 'glo_bl_management_page'));
 
       	}
 
@@ -813,7 +813,7 @@ class glo_blog_locations
 	 
 	 
 	 // Creates the submenu page for the site admins
-	 function glo_bc_management_page(){
+	 function glo_bl_management_page(){
 	 	// Display a list of all the locations to potential edit/add/delete;
 	 
 	 	global $wpdb;
@@ -882,7 +882,7 @@ class glo_blog_locations
 		<p>Uninstalling this plugin will delete all database tables and sitewide options related to this plugin. You will not be able to undo this uninstall. Proceed with caution.</p>
 		
 		<p>Once the data is deleted, you will still need to manually delete the files associated with this plugin. </p>
-		<p><a href="settings.php?page=glo_bc_management_page&uninstalling=true">Yes, uninstall this plugin.</a>
+		<p><a href="settings.php?page=glo_bl_management_page&uninstalling=true">Yes, uninstall this plugin.</a>
 		
 		<?php
 		}
@@ -902,10 +902,6 @@ class glo_blog_locations
 		global $wp_db_version, $blog_id;
 
 		$noticeon = get_option('glo_notification');
-
-		
-
-		
 
 		// if a blog has never set the notice status, default it to turned on
 
@@ -1109,39 +1105,39 @@ class glo_blog_locations
 
 
 // Create the class
-$glo_wpmubl = new glo_blog_locations();
+$glo_wpmsbl = new glo_blog_locations();
 
 
 
 	
 // Add the actions and filters we need to make all this run	
-add_action('signup_blogform', array(&$glo_wpmubl, 'get_locations_select_signup'));
-add_filter('wpmu_new_blog', array(&$glo_wpmubl, 'set_new_blog_location'), 101);
-add_action('signup_finished', array(&$glo_wpmubl, 'save_signup_blog_location'));
+add_action('signup_blogform', array(&$glo_wpmsbl, 'get_locations_select_signup'));
+add_filter('wpmu_new_blog', array(&$glo_wpmsbl, 'set_new_blog_location'), 101);
+add_action('signup_finished', array(&$glo_wpmsbl, 'save_signup_blog_location'));
 
-add_action( 'admin_notices', array(&$glo_wpmubl, 'site_admin_notice') );
+add_action( 'admin_notices', array(&$glo_wpmsbl, 'site_admin_notice') );
 
 
 
 // hook into options-privacy.php and the updates of those options
 
-add_action('admin_init', array(&$glo_wpmubl, 'add_privacy_options_init'));
+add_action('admin_init', array(&$glo_wpmsbl, 'add_privacy_options_init'));
 
-add_action('update_option_glo_locationexclude', array(&$glo_wpmubl, 'update_option_glo_locationexclude'), 10, 2);
-
-
-
-add_action( 'wp_head', array(&$glo_wpmubl, 'hide_privacy_stylesheet' ));
+add_action('update_option_glo_locationexclude', array(&$glo_wpmsbl, 'update_option_glo_locationexclude'), 10, 2);
 
 
 
-add_action('admin_menu', array(&$glo_wpmubl, 'add_submenu'));
+add_action( 'wp_head', array(&$glo_wpmsbl, 'hide_privacy_stylesheet' ));
+
+
+
+add_action('admin_menu', array(&$glo_wpmsbl, 'add_submenu'));
 
 
 
 if (function_exists('is_network_admin')) {
 
-	add_action('network_admin_menu', array(&$glo_wpmubl, 'add_siteadmin_page'));
+	add_action('network_admin_menu', array(&$glo_wpmsbl, 'add_siteadmin_page'));
 
 }
 
@@ -1149,13 +1145,13 @@ else {
 
 	
 
-add_action('admin_menu', array(&$glo_wpmubl, 'add_siteadmin_page'));
+add_action('admin_menu', array(&$glo_wpmsbl, 'add_siteadmin_page'));
 
 }
 
 
 
-add_action('delete_blog', array(&$glo_wpmubl, 'update_relationships'));
+add_action('delete_blog', array(&$glo_wpmsbl, 'update_relationships'));
 
 
 
@@ -1163,70 +1159,70 @@ add_action('delete_blog', array(&$glo_wpmubl, 'update_relationships'));
  * Make public functions for the "private" functions in the class
  */
 function glo_get_blogs_from_location_id_html($location_id = '1', $max_rows = 0, $blog_id = 0, $orderby = 'last_updated') {
-    global $glo_wpmubl;
-	return $glo_wpmubl->get_blogs_from_location_id_html($location_id, $max_rows, $blog_id, $orderby);
+    global $glo_wpmsbl;
+	return $glo_wpmsbl->get_blogs_from_location_id_html($location_id, $max_rows, $blog_id, $orderby);
 }
 
 function glo_get_location_name($location_id = '1') {
-    global $glo_wpmubl;
-	return $glo_wpmubl->get_location_name($location_id);
+    global $glo_wpmsbl;
+	return $glo_wpmsbl->get_location_name($location_id);
 }
 
 function glo_get_locations_html($used = true, $show_count = true, $send_to_root = false, $use_slugs = false) {
-    global $glo_wpmubl;
-	return $glo_wpmubl->get_locations_html($used, $show_count, $send_to_root, $use_slugs);
+    global $glo_wpmsbl;
+	return $glo_wpmsbl->get_locations_html($used, $show_count, $send_to_root, $use_slugs);
 }
 
 function glo_get_blog_location_name($blog_id) {
-	global $glo_wpmubl;
-	return $glo_wpmubl->get_blog_location_name($blog_id);
+	global $glo_wpmsbl;
+	return $glo_wpmsbl->get_blog_location_name($blog_id);
 }
 
 function glo_get_blog_location_slug($blog_id) {
-	global $glo_wpmubl;
-	return $glo_wpmubl->get_blog_location_slug($blog_id);
+	global $glo_wpmsbl;
+	return $glo_wpmsbl->get_blog_location_slug($blog_id);
 }
 
 function glo_get_location_id_from_blog_id($blog_id) {
-	global $glo_wpmubl;
-	return $glo_wpmubl->get_location_id_from_blog_id($blog_id);
+	global $glo_wpmsbl;
+	return $glo_wpmsbl->get_location_id_from_blog_id($blog_id);
 }
 
 function glo_get_recent_posts_from_location_id_html($location_id, $max_rows=0, $blog_id) {
-	global $glo_wpmubl;
-	return $glo_wpmubl->get_recent_posts_from_location_id_html($location_id, $max_rows, $blog_id);
+	global $glo_wpmsbl;
+	return $glo_wpmsbl->get_recent_posts_from_location_id_html($location_id, $max_rows, $blog_id);
 }
 
 function glo_get_blog_details_from_location_id($location_id, $max_rows = 0, $blog_id = 0, $orderby = 'last_updated') {
-	global $glo_wpmubl;
-	return $glo_wpmubl->get_blog_details_from_location_id($location_id, $max_rows = 0, $blog_id = 0, $orderby);
+	global $glo_wpmsbl;
+	return $glo_wpmsbl->get_blog_details_from_location_id($location_id, $max_rows = 0, $blog_id = 0, $orderby);
 }	
 
 function glo_get_recent_posts_from_location_id($location_id, $max_rows=0, $blog_id) {
-	global $glo_wpmubl;
-	return $glo_wpmubl->get_recent_posts_from_location_id($location_id, $max_rows=0, $blog_id);
+	global $glo_wpmsbl;
+	return $glo_wpmsbl->get_recent_posts_from_location_id($location_id, $max_rows=0, $blog_id);
 }
 
 function glo_get_location_id_from_slug($slug) {
-	global $glo_wpmubl;
-	return $glo_wpmubl->get_location_id_from_slug($slug);	
+	global $glo_wpmsbl;
+	return $glo_wpmsbl->get_location_id_from_slug($slug);	
 }
 
 function glo_get_location($location_id) {
-	global $glo_wpmubl;
-	return $glo_wpmubl->get_location($location_id);	
+	global $glo_wpmsbl;
+	return $glo_wpmsbl->get_location($location_id);	
 }
 function glo_get_used_locations() {
-	global $glo_wpmubl;
-	return $glo_wpmubl->get_used_locations();	
+	global $glo_wpmsbl;
+	return $glo_wpmsbl->get_used_locations();	
 }
 function glo_get_featured_location() {
-	global $glo_wpmubl;
-	return $glo_wpmubl->get_featured_location();	
+	global $glo_wpmsbl;
+	return $glo_wpmsbl->get_featured_location();	
 }
 function glo_get_featured_location_name() {
-	global $glo_wpmubl;
-	return $glo_wpmubl->get_featured_location_name();	
+	global $glo_wpmsbl;
+	return $glo_wpmsbl->get_featured_location_name();	
 }
 
 
@@ -1238,13 +1234,5 @@ function glo_get_featured_location_name() {
 	include_once dirname(__FILE__) . '/glo_blog_locations/miscactions.php';
 	}
 
-
-function do_jslibs()
-{
-	wp_enqueue_script('editor');
-	wp_enqueue_script('thickbox');
-	wp_enqueue_script('media-upload');
-	add_action( 'admin_head', 'wp_tiny_mce' );
-}	
 
 ?>

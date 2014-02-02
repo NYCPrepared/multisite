@@ -5,7 +5,9 @@ Plugin URI:
 Description: Adds a sidebar widget to display Blog's Topic and/or Recent Posts
 Version: 1.0
 Author: Deanna Schneider
-Text Domain: blogtopics
+Copyright:
+
+    Copyright 2009 CETS
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -23,13 +25,13 @@ Text Domain: blogtopics
 
 */
 
-class glo_bt_featured_topic_with_posts extends WP_Widget{
+class cets_bt_featured_topic_with_posts extends WP_Widget{
 	/** constructor **/
-	function glo_bt_featured_topic_with_posts() {
+	function cets_bt_featured_topic_with_posts() {
 		parent::WP_Widget(false, $name = 'Blog Topics - Featured Topic With Posts');
 		
-		// this widget requires the glo_blog_topics plugin
-		if ( !class_exists('glo_blog_topics') )
+		// this widget requires the cets_blog_topics plugin
+		if ( !class_exists('cets_blog_topics') )
 		return;
 	}
 	
@@ -53,7 +55,7 @@ class glo_bt_featured_topic_with_posts extends WP_Widget{
 		
 		
 		// get the featured topic
-		$topic = glo_get_featured_topic();
+		$topic = cets_get_featured_topic();
 		
 			
 		echo $before_widget;
@@ -62,7 +64,7 @@ class glo_bt_featured_topic_with_posts extends WP_Widget{
 		echo("<div class='topicListing " . $topic->slug . "'>");
 		echo ("<h3><a href='topic/" . strtolower($topic->slug) . "'>" . $topic->topic_name . "</a></h3>");
 		echo ("<ul>");
-		echo (glo_get_recent_posts_from_topic_id_html($topic, $args['postrows'], 0));
+		echo (cets_get_recent_posts_from_topic_id_html($topic, $args['postrows'], 0));
 		echo ("</ul>");
 		echo ("<div class='topicMore'>");
 		echo ("<a href='/topic/" . strtolower($topic->slug) . "'>(More " . $topic->slug . " Posts</a> | <a href='/sites/" . strtolower($topic->slug) . "'>All " . $topic->slug . " Sites)</a>");
@@ -97,7 +99,7 @@ class glo_bt_featured_topic_with_posts extends WP_Widget{
 	/** @see WP_Widget::form */
     function form($instance) {				
         // Get the featured topic name
-		$topic = glo_get_featured_topic_name();
+		$topic = cets_get_featured_topic_name();
 		
 		// Set defaults
 		$defaults = array(
@@ -124,8 +126,8 @@ class glo_bt_featured_topic_with_posts extends WP_Widget{
 } // End of class
 
 
-// register glo_tag_cloud widget
-add_action('widgets_init', create_function('', 'return register_widget("glo_bt_featured_topic_with_posts");'));
+// register cets_tag_cloud widget
+add_action('widgets_init', create_function('', 'return register_widget("cets_bt_featured_topic_with_posts");'));
 
 
 

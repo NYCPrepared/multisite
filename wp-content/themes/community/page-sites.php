@@ -16,12 +16,11 @@
 									<?php// glo_get_networks_html(true, false, true, true) ?>	
 
 									<div class="filters">
-										<!-- Dummy Filters -->
-										<?php if (function_exists('glo_get_used_topics')) { ?>
+										<?php if (function_exists('cets_get_used_topics')) { ?>
 										<ul id="filter site-categories">
 											<li id="category-all">All Categories</li>
 											<?php
-											$topics = glo_get_used_topics();
+											$topics = cets_get_used_topics();
 											foreach ($topics as $topic) {											
 											?>
 												<li id="topic-<?php echo $topic->slug; ?>"><?php echo $topic->topic_name; ?></li>
@@ -39,17 +38,15 @@
 											<?php } ?>
 										</ul>
 										<?php } ?>
-										<?php if (function_exists('glo_get_networks')) { ?>
 										<ul id="filter site-networks">
 											<li id="network-all">All Networks</li>
 											<?php
-											$networks = glo_get_used_networks();
+											$networks = get_posts('post_type=site_networks');
 											foreach ($networks as $network) {											
 											?>
-												<li id="network-<?php echo $network->slug; ?>"><?php echo $network->network_name; ?></li>
+												<li id="network-<?php echo $network->post_name; ?>"><?php echo $network->post_title; ?></li>
 											<?php } ?>
 										</ul>
-										<?php } ?>
 										<ul id="filter site-view">
 											<li id="view-grid">Grid</li>
 											<li id="view-list">List</li>
@@ -72,40 +69,37 @@
 											$site_image = $site_options['community_site_image'];
 											$site_path = $site_details->path;
 											$site_slug = trim($site_path,'/');
-											
-											// if (function_exists('glo_get_blog_location_name')) { 
-											// 	$site_location_name = glo_get_blog_location_name($site_id);
-											// }
-											// if (function_exists('glo_get_blog_location_slug')) { 
-											// 	$site_location_slug = glo_get_blog_location_slug($site_id);
-											// }
-											// if (function_exists('glo_get_blog_topic_name')) {
-											// 	$site_topic_name= glo_get_blog_topic_name($site_id);
-											// }
-											// if (function_exists('glo_get_blog_topic_slug')) {
-											// 	$site_topic_slug = glo_get_blog_topic_slug($site_id);
-											// }
-											// if (function_exists('glo_get_blog_network_name')) {
-											// 	$site_network_name = glo_get_blog_network_name($site_id);
-											// }
-											// if (function_exists('glo_get_blog_network_slug')) {
-											// 	$site_network_slug = glo_get_blog_network_slug($site_id);
-											// }
 
-											// $networks = glo_get_networks_html();
-											
-											// echo "<pre>";
-											// var_dump($networks);
-											// echo "</pre>";
-										?>
-										<li class="site- topic- network- location- ">
-											<div class="site-image <?php if(!$site_image) { echo 'no-image'; } ?>"><?php if($site_image) { ?><img src="<?php echo $site_image; ?>" class="site-image"><?php } ?></div>
-											<h3 class="site-title"><a href="<?php echo $site_details->siteurl; ?>"><?php echo $site_details->blogname; ?></a></h3>
-											<!-- <div class="meta site-network"><a href="/network/<?php echo $site_network_slug; ?>/"><?php echo $site_network_name; ?></a></div>
-											<div class="meta site-location"><?php echo $site_location_name; ?></div>
-											<div class="meta site-topic"><?php echo $site_topic_name; ?></div> -->
-
-										</li>
+											// Find Network pages that are assciated with this site
+											$args = array (
+												'post_type'              => 'site_networks',
+												'meta_query'             => array(
+													array(
+														'key'       => '_community_network_sites',
+														'value'     => $site_id,
+														'compare'   => '=',
+													),
+												),
+											);
+											$network_query = new WP_Query( $args );
+											?>
+											<?php 
+											if(function_exists('glo_get_blog_location_name')) { 
+												$location_name = glo_get_blog_location_name($site_id);
+												$location_slug = glo_get_blog_location_slug($site_id); 
+											} ?>
+											<?php 
+											if(function_exists('cets_get_blog_topic_name')) { 
+												$topic_name = cets_get_blog_topic_name($site_id);
+												$topic_slug = cets_get_blog_topic_slug($site_id); 
+											} ?>
+											<li class="site-<?php echo $site_slug; ?> topic-<?php if($location_name) { echo $topic_slug; } ?> network-<?php foreach($network_query as $post){ echo $post->post_name;} ?> location-<?php if($location_name) { echo $location_slug; } ?> ">
+												<div class="site-image <?php if(!$site_image) { echo 'no-image'; } ?>"><?php if($site_image) { ?><img src="<?php echo $site_image; ?>" class="site-image"><?php } ?></div>
+												<h3 class="site-title"><a href="<?php echo $site_details->siteurl; ?>"><?php echo $site_details->blogname; ?></a></h3>
+												<div class="meta site-network"><a href="/network/<?php foreach ($network_query as $post) { echo $post->post_name;} ?>/"><?php foreach($network_query as $post){ echo $post->post_title;} ?></a></div>
+												<div class="meta site-location"><?php if($location_name) { echo $location_name; } ?></div>
+												<div class="meta site-topic"><?php if($location_name) { echo $topic_name; } ?></div>
+											</li>
 
 										<?php } ?>
 

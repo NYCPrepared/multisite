@@ -34,10 +34,10 @@ function glo_bloglocations_misc_actions() {
 	$excluded = glo_bl_listfind($excludelist, $id, ",");
 	
 	?>
-<h3>Blog Topic Options</h3>
+<h3>Blog Location Options</h3>
 <table class="form-table">
 <tr>
-	 <?php  global $glo_wpmubl; $glo_wpmubl->get_locations_select($id); ?>
+	 <?php  global $glo_wpmsbl; $glo_wpmsbl->get_locations_select($id); ?>
 </tr>
 <tr>	
 <th>Privacy</th>
@@ -52,7 +52,7 @@ function glo_bloglocations_misc_actions() {
 }
 
 function glo_bloglocations_misc_actions_posted() {
-	global $glo_wpmubl;
+	global $glo_wpmsbl;
 if( isset($_GET[ 'id' ]) ) { 
 	$id = intval( $_GET[ 'id' ] ); 
 } elseif( isset($_POST[ 'id' ]) ) { 
@@ -61,7 +61,7 @@ if( isset($_GET[ 'id' ]) ) {
 	
 
 // set the location
-	$glo_wpmubl->set_blog_location($id,$_POST['blog_location_id']);
+	$glo_wpmsbl->set_blog_location($id,$_POST['blog_location_id']);
 	
 	// handle privacy
 	if ($_POST['glo_locationexclude'] == 1) {
