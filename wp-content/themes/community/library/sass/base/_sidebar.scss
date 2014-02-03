@@ -26,8 +26,8 @@ SIDEBARS & ASIDES
         padding: 0.5em 20px 0.5em 0;
 		&:hover {
     		color: $white;
-    		padding-left: 20px;
-    		padding-right: 0;
+    		padding-left: 15px;
+    		padding-right: 5px;
             background: $text-color;
             background: rgba(0,0,0,.1);
 		}
@@ -35,6 +35,7 @@ SIDEBARS & ASIDES
 	ul {
     	border-top: 1px solid $text-color;
     	border-top: 1px solid rgba(0,0,0,.1);
+    	margin: 0 0 5px;
 	}
 	li {
     	border-bottom: 1px solid $text-color;
@@ -95,9 +96,12 @@ SIDEBARS & ASIDES
 	}
 }
 
-.sidebar .button {
+.sidebar .button, 
+.sidebar input[type='submit'] {
     background: $gray3;
-    background: rgba(0,0,0,.7);
+    background: rgba(0,0,0,.6);
+    font-weight: 700;
+    @include font-size(16);
     &:hover {
         background: $white;
         color: $text-color;

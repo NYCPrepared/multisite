@@ -64,7 +64,7 @@
     	@include font-size(16);
     	color: $text-color;
     	padding: 0;
-    	margin-bottom: .2em;
+    	margin: 0;
 	}
 	a, a:visited {
     	color: $teal;
@@ -75,15 +75,25 @@
 #nav_menu-4, 
 #nav_menu-3, 
 #nav_menu-2 {
+    padding-top: 0;
     .widgettitle {
         display: none;
+    }
+    ul {
+        border-top: 0;
     }
     li:first-child {
         @include font-size(28); 
         @include font-icon-base($family:"ios7-icon", $margin: 10px, $color: $teal); 
         padding-top: 0;
+        &:before {
+            @include transition (border-color 0.25s ease);
+        }
         &:hover:before {
             color: $text-color;
+        }
+        a {
+            display: inline-block;
         }
     }
 }
