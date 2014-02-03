@@ -107,22 +107,24 @@
 
 
 .social-links {
-    margin: 0 20px 0 0;
-    padding: 5px 0;
-    display: inline-block;
+    margin: 7px 15px 7px 0;
+    padding: 0;
+    float: left;
     li {
         @include font-size(40);
         display: inline-block;
+        margin: 0;
         padding: 0;
         height: 30px;
         width: 30px;
-        text-align: center;
         line-height: 30px;
+        text-align: center;
         border-radius: 0;
-        margin-right: 1px;
     }
     a {
         display: block;
+        height: 100%;
+        line-height: 22px; // needed to vertically center icons
     }
     .facebook a {@include flip-button($navy); @include font-icon-base($family:"entypo-social"); @extend %entypo-social-facebook;}
     .twitter a {@include flip-button($blue); @include font-icon-base($family:"entypo-social"); @extend %entypo-social-twitter;}
@@ -136,6 +138,9 @@
     @include font-size(10);
     @extend %caps;
     color: $gray4;
-    display: inline-block;;
+    display: inline-block;
+    margin: 7px 0;
+    height: 30px;
+    line-height: 30px;
 	@include breakpoint(medium) {@include font-size(12);}
 }
