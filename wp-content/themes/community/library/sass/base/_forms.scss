@@ -42,7 +42,6 @@ SEARCH FORM
 ******************************************************************/
 
 .search-form {
-    display: none;
     float: right;
     margin-top: 10px;
     @include breakpoint(medium) {display: inline-block;}
