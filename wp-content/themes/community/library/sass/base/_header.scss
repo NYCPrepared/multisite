@@ -20,11 +20,13 @@
     }
 }
 
-.top-nav {
+.main-nav {
+    display: none;
     position: absolute;
     right: 0;
     top: 0;
-    @include breakpoint(medium) {position: static; display: inline-block; padding-right: 10px;}
+    background: $white;
+    @include breakpoint(medium) {position: static; display: inline-block; padding-right: 10px; background: transparent;}
 	li {
         @include font-size(18);
         line-height: 1;

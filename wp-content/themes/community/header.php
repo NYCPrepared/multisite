@@ -50,9 +50,15 @@
 				<div id="inner-header" class="wrap clearfix">
 
 					<p class="domain-title"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
-					<nav id="main-navigation" class="top-nav main-nav" role="navigation">
+					<ul id="nav-anchors" class="nav-anchors">
+                    	<li><a href="#nav" id="menu-anchor" class="menu-anchor" title="menu"></a></li>
+                    	<li><a href="#search" id="search-anchor" class="search-anchor" title="search"></a></li>
+                    </ul>
+					<div class="search-form">
+					    <?php get_search_form(); ?>
+					</div>
+					<nav id="main-navigation" class="main-nav" role="navigation">
 						<?php bones_main_nav(); ?>
-						<div class="search-form"><?php get_search_form(); ?> </div>
 					</nav>
 
 					<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>

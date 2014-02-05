@@ -25,6 +25,26 @@ site so our css is cleaner and more scalable.
 	} 
 }
 
+.nav-anchors {
+    float: right;
+    li {
+        display: inline-block;
+    }   
+    a {
+        display: block;
+        padding: .5em;
+        @include font-size(22); 
+        @include font-icon-base($family:"ios7-icon"); 
+    }
+    .menu-anchor {
+        @extend %ios7-down;
+    }
+    .menu-search {
+        @extend %ios7-search;
+    }
+    @include breakpoint(medium) {display: none;}
+}
+
 
 /******************************************************************
 FILTER MENUS
