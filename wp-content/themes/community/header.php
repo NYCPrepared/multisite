@@ -51,13 +51,13 @@
 
 					<p class="domain-title"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 					<ul id="nav-anchors" class="nav-anchors">
-                    	<li><a href="#nav" id="menu-anchor" class="menu-anchor" title="menu"></a></li>
-                    	<li><a href="#search" id="search-anchor" class="search-anchor" title="search"></a></li>
+                    	<li><a href="#nav" class="menu-anchor" id="menu-anchor" title="menu"></a></li>
+                    	<li><a href="#search" class="search-anchor" id="search-anchor" title="search"></a></li>
                     </ul>
-					<div class="search-form">
+					<div class="search-form reveal">
 					    <?php get_search_form(); ?>
 					</div>
-					<nav id="main-navigation" class="main-nav" role="navigation">
+					<nav class="main-nav reveal" id="main-navigation" role="navigation">
 						<?php bones_main_nav(); ?>
 					</nav>
 
