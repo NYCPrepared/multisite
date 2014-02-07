@@ -10,24 +10,7 @@ slow the page load.
 */
 
 
-//Toggle navigation for small screens (script by Brad Frost)
-function setNav() {
-	var $anchorLinks = $('#nav-anchors').find('a');
-	$anchorLinks.click(function(e){
-		e.preventDefault();
-		var $this = $(this),
-			thisHref = $this.attr('href');
-		$('.reveal').hide();
-		if($this.hasClass('active')) {
-			$this.removeClass('active');
-			$(thisHref).hide();
-		} else {
-			$anchorLinks.removeClass('active');
-			$this.addClass('active');
-			$(thisHref).show();
-		}
-	});
-}
+
 
 // IE8 ployfill for GetComputed Style (for Responsive Script below)
 if (!window.getComputedStyle) {
@@ -87,7 +70,25 @@ jQuery(document).ready(function($) {
 	
 	
 	// add all your scripts here
-	
+
+    //Toggle navigation for small screens (script by Brad Frost)
+    function setNav() {
+    	var $anchorLinks = $('#nav-anchors').find('a');
+    	$anchorLinks.click(function(e){
+    		e.preventDefault();
+    		var $this = $(this),
+    			thisHref = $this.attr('href');
+    		$('.reveal').hide();
+    		if($this.hasClass('active')) {
+    			$this.removeClass('active');
+    			$(thisHref).hide();
+    		} else {
+    			$anchorLinks.removeClass('active');
+    			$this.addClass('active');
+    			$(thisHref).show();
+    		}
+    	});
+    }	
  
 }); /* end of as page load scripts */
 
