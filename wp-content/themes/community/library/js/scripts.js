@@ -11,7 +11,6 @@ slow the page load.
 
 
 
-
 // IE8 ployfill for GetComputed Style (for Responsive Script below)
 if (!window.getComputedStyle) {
 	window.getComputedStyle = function(el, pseudo) {
@@ -70,25 +69,27 @@ jQuery(document).ready(function($) {
 	
 	
 	// add all your scripts here
+	
+	
 
-    //Toggle navigation for small screens (script by Brad Frost)
-    function setNav() {
-    	var $anchorLinks = $('#nav-anchors').find('a');
-    	$anchorLinks.click(function(e){
-    		e.preventDefault();
-    		var $this = $(this),
-    			thisHref = $this.attr('href');
-    		$('.reveal').hide();
-    		if($this.hasClass('active')) {
-    			$this.removeClass('active');
-    			$(thisHref).hide();
-    		} else {
-    			$anchorLinks.removeClass('active');
-    			$this.addClass('active');
-    			$(thisHref).show();
-    		}
-    	});
-    }	
+    // toggle navigation for small screens (based on script by Brad Frost)
+	var $anchorLinks = $('#nav-anchors').find('a');
+    $anchorLinks.click(function(e) {
+		e.preventDefault();
+		var $this = $(this),
+			thisHref = $this.attr('href');
+		if($this.hasClass('active')) {
+			$this.removeClass('active');
+			$(thisHref).slideToggle(500);
+		} else {
+			$anchorLinks.removeClass('active');
+			$this.addClass('active');
+			$(thisHref).slideToggle(500);
+		}
+    });
+    
+
+	
  
 }); /* end of as page load scripts */
 
