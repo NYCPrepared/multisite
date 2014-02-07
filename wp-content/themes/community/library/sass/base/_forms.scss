@@ -42,8 +42,7 @@ SEARCH FORM
 ******************************************************************/
 
 .search-form {
-    float: right;
-    margin-top: 10px;
+    margin: 10px 0px;
     @include breakpoint(medium) {display: inline-block;}
 }
 #searchform {
@@ -55,30 +54,30 @@ SEARCH FORM
     #s {
         @include font-size(18);
         line-height: 1;
-        width: 140px;
+        width: 270px;
         display: inline-block;
-        height: 24px;
-        line-height: 24px;
-        padding: 2px 5px;
+        height: 30px;
+        line-height: 30px;
+        padding: 5px;
         margin: 0;
         vertical-align: top;
-        @include breakpoint(medium) {@include font-size(14);}
+        @include breakpoint(medium) {@include font-size(14); width: 140px; height: 24px; line-height: 24px; padding: 2px 5px;}
     }
     #searchsubmit {
         @include font-icon-base($family:"ios7-icon"); 
         @extend %ios7-search;
         @include font-size(20);
         font-weight: normal;
-        line-height: 24px;
-        height: 24px;
-        width: 24px;
+        line-height: 30px;
+        height: 30px;
+        width: 30px;
         padding: 0;
         margin-left: -4px;
         vertical-align: top;
         background: $gray3;
         border: 1px solid $gray3;
         border-radius: 0;
-        @include breakpoint(medium) {@include font-size(16);}
+        @include breakpoint(medium) {@include font-size(16); height: 24px; width: 24px; line-height: 24px; }
         &:hover {
             background: $white;
             border-color: $gray6;

@@ -22,8 +22,8 @@
 
 .main-nav {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 10px;
+    top: 54px;
     background: $white;
     @include breakpoint(medium) {position: static; display: inline-block; padding-right: 10px; background: transparent;}
 	li {
@@ -32,17 +32,16 @@
         @include breakpoint(medium) {@include font-size(14); display: inline-block;}
 		a, 
 		a:visited {
-		    padding: 15px 10px;
+		    padding: 10px 20px;
             color: $text-color;
 		}
         a:focus,
 		a:hover {
-    		color: $teal;
+    		background: $text-color;
+    		color: $white;
+            @include breakpoint(medium) {background: transparent; color: $teal;}
 		}
 	}
-	li:hover {
-        @include notch(5px);
-    } 
 }
 
 // active item
