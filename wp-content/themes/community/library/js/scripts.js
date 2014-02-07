@@ -73,19 +73,19 @@ jQuery(document).ready(function($) {
 	
 
     // toggle navigation for small screens (based on script by Brad Frost)
+	$('.js-reveal').hide();
 	var $anchorLinks = $('#nav-anchors').find('a');
     $anchorLinks.click(function(e) {
 		e.preventDefault();
-		$('.reveal').hide();
 		var $this = $(this),
 			thisHref = $this.attr('href');
 		if($this.hasClass('active')) {
 			$this.removeClass('active');
-			$(thisHref).slideToggle(500);
+			$(thisHref).slideToggle(400);
 		} else {
 			$anchorLinks.removeClass('active');
 			$this.addClass('active');
-			$(thisHref).slideToggle(500);
+			$(thisHref).slideToggle(400);
 		}
     });
     
