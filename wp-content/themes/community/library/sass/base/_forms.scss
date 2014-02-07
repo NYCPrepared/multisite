@@ -43,7 +43,8 @@ SEARCH FORM
 
 .search-form {
     margin: 10px 0px;
-    @include breakpoint(medium) {display: inline-block;}
+    width: 100%;
+    @include breakpoint(medium) {display: inline-block; width: auto;}
 }
 #searchform {
     padding: 0;

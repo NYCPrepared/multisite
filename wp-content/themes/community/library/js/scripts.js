@@ -76,6 +76,7 @@ jQuery(document).ready(function($) {
 	var $anchorLinks = $('#nav-anchors').find('a');
     $anchorLinks.click(function(e) {
 		e.preventDefault();
+		$('.reveal').hide();
 		var $this = $(this),
 			thisHref = $this.attr('href');
 		if($this.hasClass('active')) {

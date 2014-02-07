@@ -54,10 +54,10 @@
                     	<li><a href="#nav" class="menu-anchor" id="menu-anchor" title="menu"></a></li>
                     	<li><a href="#search" class="search-anchor" id="search-anchor" title="search"></a></li>
                     </ul>
-					<div class="search-form reveal" id="search" style="display:none;">
+					<div class="search-form reveal" id="search">
 					    <?php get_search_form(); ?>
 					</div>
-					<nav class="main-nav reveal" id="nav" role="navigation" style="display:none;">
+					<nav class="main-nav reveal" id="nav" role="navigation">
 						<?php bones_main_nav(); ?>
 					</nav>
 
