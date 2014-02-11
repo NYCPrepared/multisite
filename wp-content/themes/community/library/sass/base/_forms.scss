@@ -46,6 +46,14 @@ SEARCH FORM
     width: 100%;
     @include breakpoint(medium) {display: inline-block; width: auto; float: right;}
 }
+
+// body gets .js class on load
+.js .search-form {
+	overflow: hidden;
+	max-height: 0;
+    @include breakpoint(medium) {max-height: none;}
+}
+
 #searchform {
     padding: 0;
     background: transparent;

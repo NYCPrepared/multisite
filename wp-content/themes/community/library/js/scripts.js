@@ -44,26 +44,6 @@ jQuery(document).ready(function($) {
 	
 	/* if is below 481px */
 	if (responsive_viewport < 481) {
-
-    
-        // toggle navigation for small screens (based on script by Brad Frost)
-    	$('.js-reveal').hide();
-    	var $anchorLinks = $('#nav-anchors').find('a');
-        $anchorLinks.click(function(e) {
-    		e.preventDefault();
-    		var $this = $(this),
-    			thisHref = $this.attr('href');
-    		if($this.hasClass('active')) {
-    			$this.removeClass('active');
-    			$(thisHref).slideToggle(400);
-    		} else {
-    			$anchorLinks.removeClass('active');
-    			$this.addClass('active');
-    			$(thisHref).slideToggle(400);
-    		}
-        });
-     
-
 	
 	} /* end smallest screen */
 	
@@ -91,6 +71,21 @@ jQuery(document).ready(function($) {
 	// add all your scripts here
 	
 	   
+    // toggle nav for small screens 
+    // based on pattern by Brad Frost
+    $('body').addClass('js');
+    var $menu = $('#nav'),
+        $menulinks = $('#nav-anchors').find('a');
+    $menulinks.click(function(e) {
+        e.preventDefault();
+		var $this = $(this),
+			thisHref = $this.attr('href');
+        $this.toggleClass('active');
+        $(thisHref).slideToggle(400);
+        $menu.toggleClass('active');
+        return false;
+    });
+
 
 	
  
