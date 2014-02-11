@@ -58,8 +58,9 @@ SEARCH FORM
 }
 
 #searchform {
-    padding: 10px 0;
     background: transparent;
+    padding: 0 0 10px;
+    @include breakpoint(medium) {padding-top: 10px;}
     label {
         display: none;
     }
