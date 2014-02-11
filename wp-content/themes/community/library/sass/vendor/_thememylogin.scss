@@ -4,10 +4,11 @@
 	padding: 0 0 20px;
 	p.error, 
 	p.message {
-        padding: 10px 20px;
+        padding: 20px;
         margin-bottom: 20px;
         color: $text-color;
         border: 0;
+        @extend %p;
 	}
 	p.error {
         background-color: lighten($red, 30);

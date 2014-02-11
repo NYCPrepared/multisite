@@ -60,7 +60,11 @@ div[role='main'] {
     }
 }
 
+// full-width pages 
 
+div[role='main'].news-feed {
+    @include fill-parent;
+}
 
 
 // HOME PAGE 
