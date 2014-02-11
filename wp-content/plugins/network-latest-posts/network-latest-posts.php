@@ -547,7 +547,7 @@ function network_latest_posts( $parameters ) {
                         $author = get_user_by('id',$field->post_author);
                         $format = (string)${'date_format_'.$all_blogkeys[$field->guid]};
                         $datepost = date_i18n($format, strtotime(trim( $field->post_date) ) );
-                        $blog_name = '<span class="blog-name"><a href="'.${'blog_url_'.$all_blogkeys[$field->guid]}.'">'.${'blog_name_'.$all_blogkeys[$field->guid]}."</a></span>";
+                        $blog_name = '<h6 class="blog-name"><a href="'.${'blog_url_'.$all_blogkeys[$field->guid]}.'">'.${'blog_name_'.$all_blogkeys[$field->guid]}."</a></h6>";
                         // The network's root (main blog) is called 'blog',
                         // so we have to set this up because the url ignores the root's subdirectory
                         if( $all_blogkeys[$field->guid] == 1 ) {
@@ -558,7 +558,7 @@ function network_latest_posts( $parameters ) {
                             $author_url = ${'blog_url_'.$all_blogkeys[$field->guid]}.'/author/'.$author->user_login;
                         }
                         // Print metainfo
-                        echo $blog_name . ' <span class="post-date date"><time>' . $datepost . '</time></span> <span class="post-author"><a href="' . $author_url . '">' . $author->display_name . '</a></span>';
+                        echo $blog_name . ' <h6 class="post-date date"><time>' . $datepost . '</time></h6> <h6 class="post-author"><a href="' . $author_url . '">' . $author->display_name . '</a></h6>';
                         // Close meta box
                         echo $html_tags['meta_c'];
                     }
@@ -686,7 +686,7 @@ function network_latest_posts( $parameters ) {
                         $author = get_user_by('id',$field->post_author);
                         $format = (string)${'date_format_'.$all_blogkeys[$field->guid]};
                         $datepost = date_i18n($format, strtotime(trim( $field->post_date) ) );
-                        $blog_name = '<span class="blog-name"><a href="'.${'blog_url_'.$all_blogkeys[$field->guid]}.'">'.${'blog_name_'.$all_blogkeys[$field->guid]}."</a></span>";
+                        $blog_name = '<h6 class="blog-name"><a href="'.${'blog_url_'.$all_blogkeys[$field->guid]}.'">'.${'blog_name_'.$all_blogkeys[$field->guid]}."</a></h6>";
                         // The network's root (main blog) is called 'blog',
                         // so we have to set this up because the url ignores the root's subdirectory
                         if( $all_blogkeys[$field->guid] == 1 ) {
@@ -697,7 +697,7 @@ function network_latest_posts( $parameters ) {
                             $author_url = ${'blog_url_'.$all_blogkeys[$field->guid]}.'/author/'.$author->user_login;
                         }
                         // Print metainfo
-                        echo $blog_name . ' <span class="post-date date">' . $datepost . '</span> <span class="post-author"><a href="' . $author_url . '">' . $author->display_name . '</a></span>';
+                        echo $blog_name . ' <h6 class="post-date date">' . $datepost . '</h6> <h6 class="post-author"><a href="' . $author_url . '">' . $author->display_name . '</a></h6>';
                         // Close meta box
                         echo $html_tags['meta_c'];
                     }
@@ -833,7 +833,7 @@ function network_latest_posts( $parameters ) {
                         $author = get_user_by('id',$field->post_author);
                         $format = (string)${'date_format_'.$all_blogkeys[$field->guid]};
                         $datepost = date_i18n($format, strtotime(trim( $field->post_date) ) );
-                        $blog_name = '<span class="blog-name"><a href="'.${'blog_url_'.$all_blogkeys[$field->guid]}.'">'.${'blog_name_'.$all_blogkeys[$field->guid]}."</a></span>";
+                        $blog_name = '<h6 class="blog-name"><a href="'.${'blog_url_'.$all_blogkeys[$field->guid]}.'">'.${'blog_name_'.$all_blogkeys[$field->guid]}."</a></h6>";
                         // The network's root (main blog) is called 'blog',
                         // so we have to set this up because the url ignores the root's subdirectory
                         if( $all_blogkeys[$field->guid] == 1 ) {
@@ -844,7 +844,7 @@ function network_latest_posts( $parameters ) {
                             $author_url = ${'blog_url_'.$all_blogkeys[$field->guid]}.'/author/'.$author->user_login;
                         }
                         // Print metainfo
-                        echo $blog_name . ' <span class="post-date date">' . $datepost . '</span> <span class="post-author"><a href="' . $author_url . '">' . $author->display_name . '</a></span>';
+                        echo $blog_name . ' <h6 class="post-date date">' . $datepost . '</h6> <h6 class="post-author"><a href="' . $author_url . '">' . $author->display_name . '</a></h6>';
                         // Close meta box
                         echo $html_tags['meta_c'];
                     }
@@ -889,7 +889,7 @@ function network_latest_posts( $parameters ) {
                         $author = get_user_by('id',$field->post_author);
                         $format = (string)${'date_format_'.$all_blogkeys[$field->guid]};
                         $datepost = date_i18n($format, strtotime(trim( $field->post_date) ) );
-                        $blog_name = '<span class="blog-name"><a href="'.${'blog_url_'.$all_blogkeys[$field->guid]}.'">'.${'blog_name_'.$all_blogkeys[$field->guid]}."</a></span>";
+                        $blog_name = '<h6 class="blog-name"><a href="'.${'blog_url_'.$all_blogkeys[$field->guid]}.'">'.${'blog_name_'.$all_blogkeys[$field->guid]}."</a></h6>";
                         // The network's root (main blog) is called 'blog',
                         // so we have to set this up because the url ignores the root's subdirectory
                         if( $all_blogkeys[$field->guid] == 1 ) {
@@ -900,7 +900,7 @@ function network_latest_posts( $parameters ) {
                             $author_url = ${'blog_url_'.$all_blogkeys[$field->guid]}.'/author/'.$author->user_login;
                         }
                         // Print metainfo
-                        echo $blog_name . ' <span class="post-date date">' . $datepost . '</span> <span class="post-author"><a href="' . $author_url . '">' . $author->display_name . '</a></span>';
+                        echo $blog_name . ' <h6 class="post-date date">' . $datepost . '</h6> <h6 class="post-author"><a href="' . $author_url . '">' . $author->display_name . '</a></h6>';
                         // Close meta box
                         echo $html_tags['meta_c'];
                     }                    // Close Caption
@@ -1045,8 +1045,8 @@ function nlp_display_type($display_type, $instance, $wrapper_list_css, $wrapper_
                 'item_c' => "</li>",
                 'content_o' => "<article id=$nlp_instance class='$wrapper_block_css clearfix'>", //need class name
                 'content_c' => "</article>",
-                'meta_o' => "<span class='meta'>",
-                'meta_c' => "</span>",
+                'meta_o' => "<div class='meta'>",
+                'meta_c' => "</div>",
                 'thumbnail_o' => "<div class='post-image'>",
                 'thumbnail_c' => "</div>",
                 'thumbnail_io' => "",
@@ -1070,8 +1070,8 @@ function nlp_display_type($display_type, $instance, $wrapper_list_css, $wrapper_
                 'item_c' => "</li>",
                 'content_o' => "<article id=$nlp_instance class='$wrapper_block_css clearfix'>",
                 'content_c' => "</article>",
-                'meta_o' => "<span class='meta'>",
-                'meta_c' => "</span>",
+                'meta_o' => "<div class='meta'>",
+                'meta_c' => "</div>",
                 'thumbnail_o' => "<footer class='post-footer'>", // Used for category list
                 'thumbnail_c' => "</footer>", // Used for category list
                 'thumbnail_io' => "<div class'post-image'",
@@ -1095,8 +1095,8 @@ function nlp_display_type($display_type, $instance, $wrapper_list_css, $wrapper_
                 'item_c' => "</article>",
                 'content_o' => "",
                 'content_c' => "",
-                'meta_o' => "<header class='post-header'><span class='meta'>",
-                'meta_c' => "</span></header>",
+                'meta_o' => "<header class='post-header'><div class='meta'>",
+                'meta_c' => "</div></header>",
                 'thumbnail_o' => "<footer class='post-footer'>", // Used for category list
                 'thumbnail_c' => "</footer>", // Used for category list
                 'thumbnail_io' => "<div class='post-image'>",
@@ -1120,8 +1120,8 @@ function nlp_display_type($display_type, $instance, $wrapper_list_css, $wrapper_
                 'item_c' => "</li>",
                 'content_o' => "<article id=$nlp_instance class='$wrapper_block_css clearfix'>",
                 'content_c' => "</article>",
-                'meta_o' => "<span class='nlposts-ulist-meta'>",
-                'meta_c' => "</span>",
+                'meta_o' => "<div class='nlposts-ulist-meta'>",
+                'meta_c' => "</div>",
                 'thumbnail_o' => "",
                 'thumbnail_c' => "",
                 'thumbnail_io' => "<div class'post-image'",
