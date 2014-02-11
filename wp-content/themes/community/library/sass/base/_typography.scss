@@ -92,6 +92,8 @@ h6, %h6 {
     @include font-size(14);
 	@include breakpoint(medium) {@include font-size(16);}
 	@extend %caps;
+	margin: .5em 0;
+	line-height: 1.2;
 }
 
 

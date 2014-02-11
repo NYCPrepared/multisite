@@ -209,10 +209,11 @@ POSTS & CONTENT STYLES
     .post-footer {
         @extend %caps;
     	@include breakpoint(medium) {@include span-columns(2 of 12);}
+    	h6 {
+        	color: $quiet-color;
+    	}
     	p, li {
-        	margin: .75em 0;
-        	line-height: 1.4;
-        	@include font-size(15);
+        	@extend %h6;
         	color: $quiet-color;
     	}
     	a, a:visited {
