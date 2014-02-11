@@ -42,7 +42,6 @@ SEARCH FORM
 ******************************************************************/
 
 .search-form {
-    margin: 10px 0px;
     width: 100%;
     @include breakpoint(medium) {display: inline-block; width: auto; float: right;}
 }
@@ -53,13 +52,13 @@ SEARCH FORM
 	max-height: 0;
     @include transition(max-height 0.2s ease-in-out);
     &.active {
-    	max-height: 30px;
+    	max-height: 50px;
     }
     @include breakpoint(medium) {max-height: none;}
 }
 
 #searchform {
-    padding: 0;
+    padding: 10px 0;
     background: transparent;
     label {
         display: none;
