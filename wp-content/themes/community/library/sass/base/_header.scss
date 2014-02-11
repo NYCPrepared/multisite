@@ -56,8 +56,9 @@
 .js .main-nav {
 	overflow: hidden;
 	max-height: 0;
+    @include transition(max-height 0.2s ease-in-out);
     &.active {
-    	max-height: 15em;
+    	max-height: 160px;
     }
     @include breakpoint(medium) {max-height: none;}
 }

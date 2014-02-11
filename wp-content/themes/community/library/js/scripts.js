@@ -81,7 +81,6 @@ jQuery(document).ready(function($) {
 			thisHref = $this.attr('href');
         $this.toggleClass('active');
         $(thisHref).toggleClass('active');
-        $(thisHref).slideToggle(400);
         return false;
     });
 
