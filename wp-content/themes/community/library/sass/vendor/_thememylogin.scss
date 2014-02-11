@@ -2,15 +2,19 @@
 
 .login {
 	padding: 0 0 20px;
+	p {
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        color: $text-color;
+	}
 	p.error {
-    	padding: 20px;
         background-color: lighten($red, 30);
-    	color: $headline-color;
     }
     p.message {
-        padding: 20px;
         background-color: lighten($yellow, 30);
-        color: $text-color;
+    }
+    form label {
+        margin-bottom: 0;
     }
 }
 
@@ -34,6 +38,13 @@
         background-color: lighten($green, 30);
         border-color: $green !important;
     }
+}
+
+
+.tml-action-links li {
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px 10px 0;
 }
 
 

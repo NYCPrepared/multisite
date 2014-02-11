@@ -53,7 +53,6 @@ POSTS & CONTENT STYLES
 	}
 	p:first-child {
         @extend %h3;
-        margin-top: 2em;
     }
 
 	ul, ol, table, dl {}
