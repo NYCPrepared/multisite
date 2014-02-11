@@ -51,6 +51,9 @@ SEARCH FORM
 .js .search-form {
 	overflow: hidden;
 	max-height: 0;
+    &.active {
+    	max-height: 15em;
+    }
     @include breakpoint(medium) {max-height: none;}
 }
 

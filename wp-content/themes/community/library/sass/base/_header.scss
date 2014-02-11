@@ -28,9 +28,6 @@
     z-index: $layer4;
     background: $white;
     @include breakpoint(medium) {position: static; display: inline-block; padding-right: 10px; background: transparent;}
-    &.active {
-    	max-height: 15em;
-    }
 	li {
         @include font-size(18);
         line-height: 1;
@@ -59,6 +56,9 @@
 .js .main-nav {
 	overflow: hidden;
 	max-height: 0;
+    &.active {
+    	max-height: 15em;
+    }
     @include breakpoint(medium) {max-height: none;}
 }
 
