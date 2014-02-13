@@ -1,6 +1,4 @@
-// BXSLIDER PLUGIN 
-
-
+// BOX SLIDER PLUGIN 
 
 #news-module.module,
 #events-module.module {
@@ -14,3 +12,19 @@
     }   
 }
 
+
+.bx-wrapper .bx-controls-direction {
+    a {
+        @include font-size(22); 
+        @include font-icon-base($family:"ios7-icon"); 
+        background-image: none;
+    }
+    .bx-prev {
+        @extend %ios7-left;
+        left: -32px;
+    }
+    .bx-next {
+        @extend %ios7-right;
+        right: 32px;
+    }
+}
