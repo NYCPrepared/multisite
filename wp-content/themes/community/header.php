@@ -57,7 +57,7 @@
 					<div class="search-form" id="search">
 					    <?php get_search_form(); ?>
 					</div>
-					<nav class="main-nav" id="nav" role="navigation">
+					<nav class="main-nav" id="global-nav" role="navigation">
 						<?php bones_main_nav(); ?>
 					</nav>
 
