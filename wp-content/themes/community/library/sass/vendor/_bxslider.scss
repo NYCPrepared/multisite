@@ -20,6 +20,9 @@
         color: $anchor-color;
         overflow: hidden;
     }
+    a:hover {
+        color: $anchor-hover;
+    }
     .bx-prev {
         @extend %ios7-left;
         left: -40px;
@@ -36,5 +39,6 @@
         height: 48px;
         margin-top: -24px;
         text-indent: 0;
+        line-height: 48px;
     }
 }
