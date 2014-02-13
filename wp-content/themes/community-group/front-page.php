@@ -22,14 +22,13 @@
 							<article id="news-page" class="post news siteid-3">
 								<header class="post-header">
 									<h3 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-									<div class="post-date date"><?php the_date(); ?></div>
-									<div class="post-author"><?php the_author(); ?></div>								
 								</header>
 								<section class="post-body">
 									<div class="post-image"><?php echo get_the_post_thumbnail($page->ID, 'medium'); ?></div>
 									<div class="post-excerpt"><?php the_excerpt(); ?></div>
 								</section>
 								<footer class="post-footer meta">
+									<div class="post-date date"><?php the_date(); ?></div>
 									<?php echo get_the_category_list(); ?>
 								</footer>
 							</article>
