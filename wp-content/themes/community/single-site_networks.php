@@ -3,6 +3,8 @@
 			<div id="content">
 
 				<div id="inner-content" class="wrap clearfix">
+					
+					<?php get_sidebar ('site_networks'); ?>
 
 					<div id="main" class="clearfix" role="main">
 
@@ -42,7 +44,6 @@
 
 								</header>
 
-								<?php get_sidebar ('site_networks'); ?>
 
 								<section class="entry-content clearfix" itemprop="articleBody">
 
