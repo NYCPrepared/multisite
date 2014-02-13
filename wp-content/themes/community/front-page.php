@@ -18,9 +18,13 @@
 						<article class="home-feature clearfix">
 
 							<script type="text/javascript">
+
 							jQuery(document).ready(function(){
-							  jQuery('#featured').slippry({pause: 5000})
-							  adaptiveHeight: false
+							  jQuery('.featured-posts').bxSlider({
+							    mode: 'fade',
+							    captions: true,
+							    pager: false
+							  });
 							});
 							</script>
 
@@ -45,7 +49,7 @@
 
 								<li class="featured-post">
 									<a href="<?php echo $permalink; ?>" title="<?php echo get_the_title();?>">
-									<?php echo get_the_post_thumbnail($post->ID, 'large', $imagearg); ?>
+									<?php echo get_the_post_thumbnail($post->ID, 'full', $imagearg); ?>
 									</a>
 								</li>
 								
