@@ -72,7 +72,7 @@ class CommunityRSSWidget extends WP_Widget {
                         </a></h3>
                     </header>
                     <section class="post-body">
-                        <div class="post-excerpt"><?php echo $excerpt; ?> <a href="<?php echo esc_url( $item->get_permalink() ); ?>">...</a></div>
+                        <div class="post-excerpt"><?php echo $excerpt; ?> <a href="<?php echo esc_url( $item->get_permalink() ); ?>" target="_blank">...</a></div>
                     </section>
                     <footer class="post-footer">
                         <div class="meta post-date"><?php echo date_i18n(get_option('date_format'),strtotime($item->get_date()));?></div>
