@@ -15,14 +15,10 @@
 
 .bx-wrapper .bx-controls-direction {
     a {
-        @include font-size(36); 
         @include font-icon-base($family:"ios7-icon"); 
         background: none;
         color: $anchor-color;
-        height: 48px;
         overflow: hidden;
-        margin-top: -24px;
-        text-indent: 0;
     }
     .bx-prev {
         @extend %ios7-left;
@@ -31,5 +27,14 @@
     .bx-next {
         @extend %ios7-right;
         right: -40px;
+    }
+}
+
+.home-modules .bx-wrapper .bx-controls-direction {
+    a {
+        @include font-size(36); 
+        height: 48px;
+        margin-top: -24px;
+        text-indent: 0;
     }
 }
