@@ -15,30 +15,9 @@
 								</div>
 							</header>
 
-							<?php query_posts('posts_per_page=2'); ?>
+							<?php// query_posts('posts_per_page=10'); ?>
 
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-
-							<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article">
-
-								<header class="article-header">
-
-									<h2 class="h2"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-
-								</header>
-
-								<section class="entry-content clearfix">
-									<?php the_content(); ?>
-								</section>
-
-								<footer class="article-footer">
-									<p class="tags"><?php the_tags( '<span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '' ); ?></p>
-
-								</footer>
-
-								<?php // comments_template(); // uncomment if you want to use them ?>
-
-							</article>
 
 							<article id="news-page" class="post news siteid-3">
 								<header class="post-header">
