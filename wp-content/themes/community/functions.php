@@ -1,11 +1,8 @@
 <?php
 /*
-Author: Eddie Machado
-URL: htp://themble.com/bones/
+Author: Pea, Glocal
+URL: htp://glocal.coop
 
-This is where you can drop your custom functions or
-just edit things like thumbnail sizes, header images,
-sidebars, comments, ect.
 */
 
 /************* FUNCTION TO CHECK IF PLUGINS ARE ACTIVE ***************/
@@ -294,6 +291,26 @@ function bones_wpsearch($form) {
 	</form>';
 	return $form;
 } // don't remove this bracket!
+
+
+function community_navigation() {
+
+	//store the current blog_id being viewed
+	global $blog_id;
+	$current_blog_id = $blog_id;
+
+	//switch to the main blog which will have an id of 1
+	switch_to_blog(1);
+
+	//output the WordPress navigation menu
+	$community_nav = bones_main_nav();
+
+	//switch back to the current blog being viewed
+	switch_to_blog($current_blog_id);
+
+	return $community_nav;
+}
+
 
 
 // /**************************
