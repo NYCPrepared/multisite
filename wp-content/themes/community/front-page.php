@@ -87,6 +87,18 @@
 						}
 						?>
 
+						<script type="text/javascript">
+						jQuery(document).ready(function(){
+						  jQuery('.news-list').bxSlider({
+						    slideWidth: 5000,
+						    minSlides: 2,
+						    maxSlides: 2,
+						    slideMargin: 10,
+						    pager: false
+						  });
+						});
+						</script>
+
 						<?php
 						if(function_exists( 'network_latest_posts' )) {
 
@@ -106,6 +118,19 @@
 							$recent_posts = network_latest_posts($parameters);
 						}
 						?>
+
+						<script type="text/javascript">
+						jQuery(document).ready(function(){
+						  jQuery('.events-list').bxSlider({
+						    slideWidth: 5000,
+						    minSlides: 4,
+						    maxSlides: 4,
+						    slideMargin: 10,
+						    pager: false
+						  });
+						});
+						</script>
+
 						<?php // Check to see if Events Manager is active. If not don't display this module.
 						if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
 						<article id="events-module" class="module row events clearfix">
