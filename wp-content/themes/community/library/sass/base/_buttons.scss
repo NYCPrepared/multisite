@@ -3,14 +3,14 @@
 
 a, 
 a:visited {
-	color: $anchor;
+	color: $anchor-color;
     text-decoration: none; 
     cursor: pointer;     
     @include transition(all 0.25s ease);
     
 	&:hover, 
 	&:focus {
-		color: $navy;
+		color: $anchor-hover;
 	}
 
 	/* on click */
@@ -47,7 +47,7 @@ button,
     padding: .5em 2em;
     text-align: center;
     border: 0;
-    background: $teal;
+    background: $anchor-color;
     color: $white;
     display: inline-block;
     &:link,

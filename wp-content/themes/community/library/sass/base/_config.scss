@@ -31,7 +31,8 @@ $gray0: #fffdf7;
 // Tutorial: how to use color variables properly:
 // http://sachagreif.com/sass-color-variables/
 
-$anchor: $teal;
+$anchor-color: $teal;
+$anchor-hover: $navy;
 $headline-color: $gray1;
 $text-color: $gray2;
 $quiet-color: $gray6;
