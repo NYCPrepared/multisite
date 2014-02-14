@@ -8,35 +8,98 @@ Author URI: http://glocal.coop
 Text Domain: network-landing-pages
 */
 
+include_once('metaboxes/metabox-functions.php');
+
+/**************************
+CUSTOM NETWORK COLUMNS
+**************************/
+
+add_filter( 'manage_edit-network_columns', 'community_edit_network_columns' ) ;
+
+function community_edit_network_columns( $columns ) {
+
+	$columns = array(
+		'cb' => '<input type="checkbox" />',
+		'title' => __( 'Network Name' ),
+		'community_network_sites' => __( 'Sites' ),
+		'thumbnail' => __( 'Banner' ),
+		'date' => __( 'Date' )
+	);
+
+	return $columns;
+}
+
+
+add_action( 'manage_network_posts_custom_column', 'community_manage_network_columns', 10, 2 );
+
+function community_manage_network_columns( $column, $post_id ) {
+	global $post;
+
+	switch( $column ) {
+
+		/* If displaying the 'site' column. */
+		case 'community_network_sites' :
+
+			/* Get the post meta. */
+			$blog_ids = get_post_meta($post_id, 'community_network_sites');
+
+			/* If there are sites assigned, display them as a list */
+			if (!empty($blog_ids)) {
+
+				echo '<ul>';
+				foreach ($blog_ids as $blog_id) {
+					$blog_details = get_blog_details($blog_id);
+					echo '<li class="blog-' . $blog_id . '">';
+					echo $blog_details->blogname . ' (ID: ' . $blog_id . ')';
+					echo '</li>';
+				}
+				echo '</ul>';
+				// $sites = implode(", ", $blog_ids);
+
+			/* Else display a message */
+			} else {
+
+				echo __( 'None Assigned' );
+
+			}	
+			
+			break;
+
+		/* If displaying the 'image' column. */
+		case 'thumbnail' :
+
+			/* Get the network banner. */
+			echo get_the_post_thumbnail($page->ID, array(120,120));
+
+			break;
+
+		/* Just break out of the switch statement for everything else. */
+		default :
+			break;
+	}
+}
 
 /**************************
 NETWORKS CONTENT TYPE
 **************************/
 
-// If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
-}
-
-if ( ! function_exists('network_landing_pages') ) {
-
-// Register Custom Post Type
-function network_landing_pages() {
+// Register Post Type
+function community_networks() {
 
 	$labels = array(
-		'name'                => _x( 'Site Networks', 'Post Type General Name', 'network_landing_pages' ),
-		'singular_name'       => _x( 'Site Network', 'Post Type Singular Name', 'network_landing_pages' ),
-		'menu_name'           => __( 'Networks', 'network_landing_pages' ),
-		'parent_item_colon'   => __( 'Parent Item:', 'network_landing_pages' ),
-		'all_items'           => __( 'All Networks', 'network_landing_pages' ),
-		'view_item'           => __( 'View Network', 'network_landing_pages' ),
-		'add_new_item'        => __( 'Add New Network', 'network_landing_pages' ),
-		'add_new'             => __( 'Add New', 'network_landing_pages' ),
-		'edit_item'           => __( 'Edit Network', 'network_landing_pages' ),
-		'update_item'         => __( 'Update Network', 'network_landing_pages' ),
-		'search_items'        => __( 'Search Network', 'network_landing_pages' ),
-		'not_found'           => __( 'Not found', 'network_landing_pages' ),
-		'not_found_in_trash'  => __( 'Not found in Trash', 'network_landing_pages' ),
+		'name'                => _x( 'Networks', 'Post Type General Name', 'community_networks' ),
+		'singular_name'       => _x( 'Network', 'Post Type Singular Name', 'community_networks' ),
+		'menu_name'           => __( 'Networks', 'community_networks' ),
+		'parent_item_colon'   => __( 'Parent Network:', 'community_networks' ),
+		'all_items'           => __( 'All Networks', 'community_networks' ),
+		'view_item'           => __( 'View Network', 'community_networks' ),
+		'add_new_item'        => __( 'Add New Network', 'community_networks' ),
+		'add_new'             => __( 'Add New', 'community_networks' ),
+		'edit_item'           => __( 'Edit Network', 'community_networks' ),
+		'update_item'         => __( 'Update Network', 'community_networks' ),
+		'search_items'        => __( 'Search Network', 'community_networks' ),
+		'not_found'           => __( 'Not found', 'community_networks' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'community_networks' ),
 	);
 	$rewrite = array(
 		'slug'                => 'network',
@@ -45,13 +108,20 @@ function network_landing_pages() {
 		'feeds'               => true,
 	);
 	$capabilities = array(
-		'manage_options'      => 'manage_options',
+		'edit_post'           => 'manage_network',
+		'read_post'           => 'read_post',
+		'delete_post'         => 'manage_network',
+		'edit_posts'          => 'manage_network',
+		'edit_others_posts'   => 'manage_network',
+		'publish_posts'       => 'manage_network',
+		'read_private_posts'  => 'manage_network',
 	);
 	$args = array(
-		'label'               => __( 'network_landing_pages', 'network_landing_pages' ),
-		'description'         => __( 'Post type that collects MS sites into network groupings', 'network_landing_pages' ),
+		'label'               => __( 'network', 'community_networks' ),
+		'description'         => __( 'Post type that collects MS sites into network groupings', 'community_networks' ),
 		'labels'              => $labels,
-		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'permalink' ),
+		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', ),
+		'taxonomies'          => array( 'network_sites' ),
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,
@@ -59,34 +129,86 @@ function network_landing_pages() {
 		'show_in_nav_menus'   => true,
 		'show_in_admin_bar'   => true,
 		'menu_position'       => 80,
-		'menu_icon'           => '',
+		'menu_icon'           => 'dashicons-networking',
 		'can_export'          => true,
-		'has_archive'         => false,
+		'has_archive'         => true,
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
-		'query_var'           => '',
+		'query_var'           => 'network',
 		'rewrite'             => $rewrite,
 		'capabilities'        => $capabilities,
+		// 'register_meta_box_cb' => 'register_field_group'
 	);
-	register_post_type( 'network_landing_pages', $args );
+	register_post_type( 'network', $args );
 
 }
 
 // Hook into the 'init' action
-add_action( 'init', 'network_landing_pages', 0 );
-
-}
+add_action( 'init', 'community_networks', 0 );
 
 
 /**************************
-SITE NETWORKS METABOXES
+NETWORKS CUSTOM FIELDS
 **************************/
 
-require plugin_dir_path( __FILE__ ) . '/metaboxes/metabox-functions.php';
+// Fields are in metaboxes/metabox-functions.php
 
 
+/**************************
+NETWORKS SITES LIST WIDGET
+**************************/
 
+class Network_Sites_Widget extends WP_Widget {
+  function Network_Sites_Widget(){
+  	$widget_ops = array('classname'=>'Network_Sites_Widget','description'=>'Display list of sites associated with a network');
+    $this->WP_Widget('Network_Sites_Widget','Network Sites',$widget_ops);
+  }
 
+  function form($instance){
+  	$instance = wp_parse_args((array)$instance,array('title'=>''));
+    $title = $instance['title'];
+?>
+  <p><label for="<?php echo $this->get_field_id('title'); ?>">Title:<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo attribute_escape($title); ?>"/></label></p>
+<?php
+  }
 
+  function update($new_instance,$old_instance){
+  	$instance = $old_instance;
+    $instance['title'] = $new_instance['title'];
+    return $instance;
+  }
+
+  function widget($args,$instance){
+	extract($args, EXTR_SKIP);
+
+	$post_id = get_the_ID();
+	// echo $post_id;
+    $sites = get_post_meta($post_id, 'community_network_sites');
+    // var_dump($sites);
+
+    if(!empty($sites)) {
+ 
+	    echo $before_widget;
+	    $title = empty($instance['title']) ? '': apply_filters('widget_title',$instance['title']);
+	 
+	    if(!empty($title))
+			echo $before_title . $title . $after_title;
+			echo '<ul class="network-sites">';
+			foreach ($sites as $site) {
+			  $blog_details = get_blog_details($site);
+			  echo '<li class="blog-' . $site . '">';
+			  echo '<a href="' . $blog_details->siteurl . '">';
+			  echo $blog_details->blogname;
+			  echo '</a>';
+			  echo '</li>';
+			}
+			echo '</ul>';
+		 
+		    echo $after_widget;   
+	}
+
+  }
+}
+add_action('widgets_init',create_function('','return register_widget("Network_Sites_Widget");'));
 
 ?>

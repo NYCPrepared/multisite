@@ -7,27 +7,13 @@
 							global $wp_query;
 							$post_obj = $wp_query->get_queried_object();
 							$page_ID = $post_obj->ID;
-							$website_url = get_post_meta($page_ID, '_community_websiteurl', true );
+							$website_url = get_post_meta($page_ID, 'community_websiteurl', true );
 
 							if($website_url) { ?>
 
 								<a href="<?php echo $website_url; ?>" target="_blank" class="button">Visit Our Website</a>
 
 							<?php } ?>
-					</div>
-
-					<div id="network-site-list" class="widget primary network site-list">
-						<ul>
-							<?php 
-							$sites = get_post_meta($page_ID, '_community_network_sites');
-
-							foreach ($sites as $key => $value) {
-								$site = get_blog_details($value); ?>
-								
-								<li><a href="?php echo $site->siteurl; ?>"><?php echo $site->blogname; ?></a></li>
-
-							<?php } ?>
-						</ul>
 					</div>
 
 					<?php if ( is_active_sidebar( 'sidebar1' ) ) : ?>

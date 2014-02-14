@@ -2,7 +2,6 @@
 /*
 Author: Pea, Glocal
 URL: htp://glocal.coop
-
 */
 
 /************* FUNCTION TO CHECK IF PLUGINS ARE ACTIVE ***************/
@@ -91,9 +90,9 @@ function bones_register_sidebars() {
 		'id' => 'home-sidebar',
 		'name' => __( 'Home Sidebar', 'bonestheme' ),
 		'description' => __( 'A homepage widget area.', 'bonestheme' ),
-		'before_widget' => '<div id="%1$s" class="widget home-sidebar %2$s">',
+		'before_widget' => '<div id="%1$s" class="home-sidebar">',
 		'after_widget' => '</div>',
-		'before_title' => '<h4 class="widgettitle">',
+		'before_title' => '<h4 class="module-heading">',
 		'after_title' => '</h4>',
 	));
 	register_sidebar(array(

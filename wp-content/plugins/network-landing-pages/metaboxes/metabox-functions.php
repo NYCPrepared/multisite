@@ -17,8 +17,7 @@ add_filter( 'cmb_meta_boxes', 'cmb_community_metaboxes' );
  */
 function cmb_community_metaboxes( array $meta_boxes ) {
 
-	// Start with an underscore to hide fields from custom fields list
-	$prefix = '_community_';
+	$prefix = 'community_';
 
 	// Pull all the categories into an array
 	$options_categories = array();
@@ -42,9 +41,9 @@ function cmb_community_metaboxes( array $meta_boxes ) {
 	$meta_boxes['sites_metabox'] = array(
 		'id'         => 'sites_metabox',
 		'title'      => __( 'Sites', 'community' ),
-		'pages'      => array( 'site_networks', ), // Post type
-		'context'    => 'side',
-		'priority'   => 'high',
+		'pages'      => array( 'network', ), // Post type
+		'context'    => 'normal',
+		'priority'   => 'core',
 		'show_names' => false, // Show field names on the left
 		// 'cmb_styles' => true, // Enqueue the CMB stylesheet on the frontend
 		'fields'     => array(
@@ -61,7 +60,7 @@ function cmb_community_metaboxes( array $meta_boxes ) {
 	$meta_boxes['contact_metabox'] = array(
 		'id'         => 'contact_metabox',
 		'title'      => __( 'Contact Information', 'community' ),
-		'pages'      => array( 'site_networks', ), // Post type
+		'pages'      => array( 'network', ), // Post type
 		'context'    => 'side',
 		'priority'   => 'high',
 		'show_names' => true, // Show field names on the left

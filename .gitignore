@@ -1,5 +1,6 @@
 .htaccess
 .DS_Store
+*.bak
 wp-content/uploads/
 wp-content/blogs.dir/
 wp-content/upgrade/
