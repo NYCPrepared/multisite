@@ -71,7 +71,7 @@ jQuery(document).ready(function($) {
 	// add all your scripts here
 	
 	   
-    // toggle nav for small screens 
+    // TOGGLE NAV FOR SMALL SCREENS 
     // based on pattern by Brad Frost
     $('body').addClass('js');
     var $menulinks = $('#nav-anchors').find('a');

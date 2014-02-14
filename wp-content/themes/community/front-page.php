@@ -100,7 +100,7 @@
 						    slideMargin: 10,
 						    pager: false
 						  });
-                          var responsive_viewport = $(window).width();
+                          var responsive_viewport = jQuery(window).width();
                           if (responsive_viewport > 320) {
                               jQuery('.news-list').reloadSlider({
 						        mode: 'horizontal',
@@ -143,7 +143,7 @@
 						    slideMargin: 10,
 						    pager: false
 						  });
-                          var responsive_viewport = $(window).width();
+                          var responsive_viewport = jQuery(window).width();
                           if (responsive_viewport > 320) {
                               jQuery('.events-list').reloadSlider({
 						        mode: 'horizontal',

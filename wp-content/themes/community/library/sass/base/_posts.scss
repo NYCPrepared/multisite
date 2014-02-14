@@ -134,9 +134,9 @@ POSTS & CONTENT STYLES
     background-size: cover; 
     padding: 20px;
     margin-bottom: 0;
-    height: 300px;
+    height: 150px;
     overflow: hidden;
-	@include breakpoint(small) {@include span-columns(8); height: 160px;}
+	@include breakpoint(small) {@include span-columns(8); height: 300px;}
 }
 
 .highlights-list {
