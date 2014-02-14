@@ -16,6 +16,7 @@
 
 .social-links {
     float: right;
+    margin-right: 5px;
 }
 
 
@@ -23,18 +24,23 @@
     background: $gray8;
     .search-form {
         float: right;
-        margin: 0 10px;
+        margin: 0 5px;
     }
     li {
         display: inline-block;
+        margin: 0;
     }
     li a {
         display: block;
-        padding: 5px 10px;
-        color: $white;
+        padding: 5px 15px;
         @extend %caps;
         &:hover {
             background: $anchor-color;
+            color: $white;
         }
     }
+}
+
+.community-group #inner-header {
+    border: 0;
 }

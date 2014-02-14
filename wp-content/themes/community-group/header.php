@@ -41,7 +41,7 @@
         
 	</head>
 
-	<body <?php body_class(); ?>>
+	<body <?php body_class('community-group'); ?>>
 
 		<div id="container">
 
