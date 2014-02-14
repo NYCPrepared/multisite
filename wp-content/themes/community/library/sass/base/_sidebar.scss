@@ -3,9 +3,6 @@
 SIDEBARS & ASIDES
 *********************/
 
-.sidebar {
-	margin-top: 2.2em;
-}
 
 .widgettitle {
 	margin: 0 0 0.75em;
@@ -17,7 +14,7 @@ SIDEBARS & ASIDES
 .widget {
 	padding: 20px;
 	margin: 0 0 20px;
-    background: $gray3;
+    background: $gray5;
     color: $white;
 	a, a:visited {
 		color: $white;
@@ -70,6 +67,20 @@ SIDEBARS & ASIDES
     }
 }
 
+.sidebar .button, 
+.sidebar input[type='submit'] {
+    background: $gray3;
+    background: rgba(0,0,0,.6);
+    font-weight: 700;
+    @include font-size(16);
+    &:hover {
+        background: $white;
+        color: $text-color;
+    }
+}
+
+// EVENT MANAGER
+
 .widget_recent_entries,
 .widget_em_widget {
     li {
@@ -80,16 +91,16 @@ SIDEBARS & ASIDES
     }
 }
 
+// ARCHIVE, META
 
-.sidebar .button, 
-.sidebar input[type='submit'] {
-    background: $gray3;
-    background: rgba(0,0,0,.6);
-    font-weight: 700;
-    @include font-size(16);
-    &:hover {
-        background: $white;
-        color: $text-color;
+.widget_archive, 
+.widget_meta {
+    li {
+        width: 49%;
+        display: inline-block;
+        white-space: nowrap;
+        @include font-size(18);
+        line-height: 1.1;
     }
 }
 
