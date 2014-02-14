@@ -1,0 +1,21 @@
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+
+
+
+.community-network .sidebar .widget {
+	&:first-child {
+		background: $green;
+	}
+	&:nth-child(2) {
+		background: $teal;
+	}
+	&:nth-child(3) {
+		background: $blue;
+	}
+	&:nth-child(4) {
+		background: $navy;
+	}
+}

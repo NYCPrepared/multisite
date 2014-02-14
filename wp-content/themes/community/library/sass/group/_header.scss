@@ -28,12 +28,15 @@
 	@include breakpoint(small) {left: -20px;}
     a {
         color: $headline-color;
+        &:hover {
+            color: $anchor-color;
+        }
     }
 }
 
 .social-links {
     float: right;
-    margin: 7px 15px;
+    margin: 5px 15px;
 }
 
 
@@ -44,6 +47,7 @@
         margin: 0 5px;
     }
     li {
+        font-size: 100%;
         display: inline-block;
         margin: 0;
         margin-right: -2px; // remove space caused by inline-block
