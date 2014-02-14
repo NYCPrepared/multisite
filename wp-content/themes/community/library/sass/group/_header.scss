@@ -1,9 +1,14 @@
 // GROUP HEADER
 
+.site-banner img {
+    @extend %image-border;
+}
+
 .site-name {
-    margin: 10px 0;
+    margin: 10px 0 20px;
     line-height: 1;
     @extend %caps;
+    @extend h2;
     a {
         color: $headline-color;
     }
@@ -15,11 +20,10 @@
 
 
 .site-nav {
+    background: $gray8;
     .search-form {
         float: right;
-    }
-    ul {
-        background: $gray8;
+        margin: 0 10px;
     }
     li {
         display: inline-block;

@@ -62,12 +62,12 @@
 					    <?php get_search_form(); ?>
 					</div>
 					<nav class="main-nav" id="global-nav" role="navigation">
-					<?php
-					if(function_exists('community_navigation')) {
-						$global_nav = community_navigation();
-						echo $global_nav;
-					}
-					?>
+    					<?php
+    					if(function_exists('community_navigation')) {
+    						$global_nav = community_navigation();
+    						echo $global_nav;
+    					}
+    					?>
 					</nav>
 
 					<div class="site-banner">
