@@ -14,8 +14,9 @@
 .site-banner {
     @extend %image-border;
     height: 150px;
+    overflow: hidden;
     background-color: $gray8;
-	@include breakpoint(medium) {height: auto; max-height: 300px;}
+	@include breakpoint(medium) {height: auto; min-height: 140px; max-height: 300px;}
     img {
         height: 100%;
         width: auto;

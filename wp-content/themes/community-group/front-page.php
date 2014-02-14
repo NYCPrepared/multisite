@@ -21,7 +21,7 @@
 
 							<article class="post news siteid-3">
 								<header class="post-header">
-									<div class="post-date date"><?php the_date(); ?></div>
+									<div class="post-date date"><?php the_date('M j, Y'); ?></div>
 									<?php echo get_the_category_list(); ?>
 								</header>
 								<section class="post-body">
