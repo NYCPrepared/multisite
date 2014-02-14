@@ -13,6 +13,40 @@
 }
 
 
+.bx-wrapper {
+    .bx-viewport {
+        box-shadow: inherit;
+    }    
+    .bx-caption {
+        background: rgba(255,255,255,.8);
+        bottom: 10px;
+        span {
+            color: $text-color;
+            @extend %sans;
+            @extend %p;
+        }
+    }
+}
+
+
+.sy-pager {
+    margin-top: 10px;
+    li {
+        width: .75em;
+        height: .75em;
+        margin: 0 .75em 0 0;
+        a {
+            background: $gray8;
+        }
+        &.sy-active a {
+            background-color: $gray3;
+        }
+    }
+}
+
+
+
+
 .bx-wrapper .bx-controls-direction {
     a {
         @include font-icon-base($family:"ios7-icon"); 
