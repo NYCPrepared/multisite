@@ -1,9 +1,15 @@
 // GROUP HEADER
 
-.community-group #inner-header {
-    border-bottom: 0;
-    position: relative;
-}
+.community-group,
+.community-partner {
+    #inner-header {
+        border-bottom: 0;
+        position: relative;
+    }    
+    h1.h2 {
+        display: none;
+    }
+} 
 
 .site-banner {
     @extend %image-border;
@@ -41,7 +47,7 @@
 
 
 .site-nav {
-    background: $text-color;
+    background: $gray3;
     .search-form {
         float: right;
         margin: 0 5px;
@@ -70,8 +76,4 @@
         background: $anchor-color;
         border-color: $anchor-color;
     }
-}
-
-.community-group h1.h2 {
-    display: none;
 }

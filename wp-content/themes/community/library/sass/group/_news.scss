@@ -1,0 +1,39 @@
+// NEWS FEED
+
+.community-group,
+.community-partner {
+    .news-post {
+        border-top: 1px solid $gray7;
+        padding: 20px;
+        @include fill-parent;
+        clear: both;
+    }    
+    .post-header,
+    .post-footer {
+        @extend %caps;
+    	@include breakpoint(medium) {@include span-columns(2 of 12);}
+    	h6 {
+        	color: $quiet-color;
+    	}
+    	p, li {
+        	@extend h6;
+        	color: $quiet-color;
+    	}
+    	a, a:visited {
+        	color: $quiet-color;
+        	&:hover {
+            	color: $text-color;
+        	}
+    	}
+    }
+    .post-body {
+        padding-bottom: 10px;
+    	@include breakpoint(medium) {@include span-columns(8 of 12);}
+    	p {
+        	margin: .75em 0;
+    	}
+    }
+    .post-title {
+        margin: 0;
+    }
+}
