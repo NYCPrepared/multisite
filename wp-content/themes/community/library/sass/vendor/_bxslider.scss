@@ -1,46 +1,41 @@
 // BOX SLIDER PLUGIN 
 
-
-
-.sy-pager {
-    margin-top: 10px;
-    li {
-        width: .75em;
-        height: .75em;
-        margin: 0 .75em 0 0;
+div.bx-wrapper {
+    .bx-viewport {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        left: 0;
+    }
+    .bx-caption {
+        background: rgba(255,255,255,.8);
+        bottom: 10px;
+        span {
+            color: $text-color;
+            @extend %sans;
+            @extend %p;
+        }
+    }   
+    .bx-pager.bx-default-pager {
         a {
             background: $gray8;
         }
-        &.sy-active a {
-            background-color: $gray3;
+        a:hover, 
+        a.active {
+            background: $gray3;
         }
     }
 }
 
 
-// HOME PAGE NEWS & EVENTS
+// HOME PAGE FEATURE
 
-article.home-feature,
-.news.module,
-.events.module {
-    .bx-wrapper {
-        .bx-viewport {
-            background: transparent;
-            border: none;
-            box-shadow: none;
-            left: 0;
-        }
-        .bx-caption {
-            background: rgba(255,255,255,.8);
-            bottom: 10px;
-            span {
-                color: $text-color;
-                @extend %sans;
-                @extend %p;
-            }
-        }   
-    }   
+article.home-feature div.bx-wrapper .bx-viewport {
+    border: 5px solid $white;
 }
+
+
+// LEFT/RIGHT BUTTONS
 
 .bx-wrapper .bx-controls-direction {
     a {
