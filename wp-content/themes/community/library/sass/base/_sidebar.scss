@@ -11,7 +11,7 @@ SIDEBARS & ASIDES
 	margin: 0 0 0.75em;
 	color: $white;
     color: rgba(255,255,255,.7);
-    @extend %h6;
+    @extend h6;
 }
 
 .widget {
@@ -73,7 +73,7 @@ SIDEBARS & ASIDES
 .widget_recent_entries,
 .widget_em_widget {
     li {
-        @extend %h4;
+        @extend h4;
         li {
     		@include font-size(18);
         }

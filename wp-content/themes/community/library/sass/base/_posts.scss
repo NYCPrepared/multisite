@@ -52,7 +52,7 @@ POSTS & CONTENT STYLES
     	max-width: 40em;
 	}
 	p:first-child {
-        @extend %h3;
+        @extend h3;
     }
 
 	ul, ol, table, dl {}
@@ -122,7 +122,7 @@ POSTS & CONTENT STYLES
 .news, 
 .events, 
 .sites {
-    .module-heading {@extend %p; @extend %caps;}    
+    .module-heading {@extend p; @extend %caps;}    
 } 
 
 
@@ -153,7 +153,7 @@ POSTS & CONTENT STYLES
     }
     .post-title {
         margin: .25em 0 0;
-        @extend %h4;
+        @extend h4;
     }
     .post-excerpt {
         margin: .25em 0 .5em;
@@ -216,7 +216,7 @@ POSTS & CONTENT STYLES
         	color: $quiet-color;
     	}
     	p, li {
-        	@extend %h6;
+        	@extend h6;
         	color: $quiet-color;
     	}
     	a, a:visited {

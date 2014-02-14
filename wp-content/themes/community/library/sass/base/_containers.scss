@@ -71,7 +71,10 @@ div[role='main'].news-feed {
 
 .home-feature {
     @include breakpoint(medium) {
-        @include span-columns(12); 
+        @include span-columns(12);
+        // hide FOUT
+        max-height: 444px;
+        overflow: hidden; 
     }
 }
 .home-intro {

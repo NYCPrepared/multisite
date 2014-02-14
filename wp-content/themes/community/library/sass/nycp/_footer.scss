@@ -29,7 +29,7 @@
 }
 
 .tagline-NYCP {
-    @extend %h6;
+    @extend h6;
     @include font-size(13);
     vertical-align: middle;
     white-space: nowrap;

@@ -8,7 +8,7 @@
         margin-bottom: 20px;
         color: $text-color;
         border: 0;
-        @extend %p;
+        @extend p;
 	}
 	p.error {
         background-color: lighten($red, 30);
