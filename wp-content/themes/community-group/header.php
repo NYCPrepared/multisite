@@ -73,20 +73,20 @@
 					<div class="site-banner">
 						<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
 					</div>
-					<h1 class="site-name">
-						<a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a>
-					</h1>
 					<ul class="social-links icons-NYCP">
 					    <li class="twitter"><a href="" target="_blank"></a></li>
 					    <li class="facebook"><a href="" target="_blank"></a></li>
                     </ul>
+					<h1 class="site-name">
+						<a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a>
+					</h1>
 					<?php // bloginfo('description'); ?>
 
 					<nav class="site-nav" id="local-nav" role="navigation">
-						<?php bones_main_nav(); ?>
 						<div class="search-form" id="search">
 						    <?php get_search_form(); ?>
 						</div
+						<?php bones_main_nav(); ?>
 					</nav>
 
 				</div>

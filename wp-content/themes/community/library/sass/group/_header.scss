@@ -1,0 +1,36 @@
+// GROUP HEADER
+
+.site-name {
+    margin: 10px 0;
+    line-height: 1;
+    @extend %caps;
+    a {
+        color: $headline-color;
+    }
+}
+
+.social-links {
+    float: right;
+}
+
+
+.site-nav {
+    .search-form {
+        float: right;
+    }
+    ul {
+        background: $gray8;
+    }
+    li {
+        display: inline-block;
+    }
+    li a {
+        display: block;
+        padding: 5px 10px;
+        color: $white;
+        @extend %caps;
+        &:hover {
+            background: $anchor-color;
+        }
+    }
+}
