@@ -8,10 +8,23 @@
         @include fill-parent;
         clear: both;
     }    
-    .post-header,
+    .post-header {
+        @include fill-parent;
+        clear: both;
+    }
+    .post-title {
+        margin: 0;
+    }
+    .post-body {
+        padding-bottom: 10px;
+    	@include breakpoint(medium) {@include span-columns(9 of 12);}
+    	p {
+        	margin: .75em 0;
+    	}
+    }
     .post-footer {
         @extend %caps;
-    	@include breakpoint(medium) {@include span-columns(2 of 12);}
+    	@include breakpoint(medium) {@include span-columns(3 of 12);}
     	h6 {
         	color: $quiet-color;
     	}
@@ -25,15 +38,5 @@
             	color: $text-color;
         	}
     	}
-    }
-    .post-body {
-        padding-bottom: 10px;
-    	@include breakpoint(medium) {@include span-columns(8 of 12);}
-    	p {
-        	margin: .75em 0;
-    	}
-    }
-    .post-title {
-        margin: 0;
     }
 }

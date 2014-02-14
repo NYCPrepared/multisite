@@ -6,7 +6,7 @@
 
 						<?php get_sidebar(); ?>
 
-						<div id="main" class="first clearfix" role="main">
+						<div id="main" class="partner-main first clearfix" role="main">
 
 							<?php dynamic_sidebar( 'home-sidebar' ); ?>
 

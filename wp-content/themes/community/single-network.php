@@ -41,7 +41,7 @@
 
 					<?php get_sidebar ('site_networks'); ?>
 
-					<div id="main" class="clearfix" role="main">
+					<div id="main" class="network-main clearfix" role="main">
 
 						<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
