@@ -22,8 +22,7 @@
 							jQuery(document).ready(function(){
 							  jQuery('.featured-posts').bxSlider({
 							    mode: 'fade',
-							    captions: true,
-							    pager: false
+							    captions: true
 							  });
 							});
 							</script>

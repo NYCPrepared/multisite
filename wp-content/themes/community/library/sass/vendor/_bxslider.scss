@@ -1,32 +1,5 @@
 // BOX SLIDER PLUGIN 
 
-#news-module.module,
-#events-module.module {
-    .bx-wrapper {
-        .bx-viewport {
-            background: transparent;
-            border: none;
-            box-shadow: none;
-            left: 0;
-        }
-    }   
-}
-
-
-.bx-wrapper {
-    .bx-viewport {
-        box-shadow: inherit;
-    }    
-    .bx-caption {
-        background: rgba(255,255,255,.8);
-        bottom: 10px;
-        span {
-            color: $text-color;
-            @extend %sans;
-            @extend %p;
-        }
-    }
-}
 
 
 .sy-pager {
@@ -45,7 +18,29 @@
 }
 
 
+// HOME PAGE NEWS & EVENTS
 
+article.home-feature,
+.news.module,
+.events.module {
+    .bx-wrapper {
+        .bx-viewport {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            left: 0;
+        }
+        .bx-caption {
+            background: rgba(255,255,255,.8);
+            bottom: 10px;
+            span {
+                color: $text-color;
+                @extend %sans;
+                @extend %p;
+            }
+        }   
+    }   
+}
 
 .bx-wrapper .bx-controls-direction {
     a {
