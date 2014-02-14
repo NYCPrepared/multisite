@@ -52,7 +52,7 @@ class CommunityRSSWidget extends WP_Widget {
         
         <?php echo $before_widget; ?>
             <?php if ( $maxitems == 0 ) : ?>
-                <article id="partner-page" class="post news">
+                <article id="partner-page" class="partner post news">
                     <?php _e( 'No items', 'community-rss-widget' ); ?>
                 </article>
             <?php else : ?>
@@ -63,7 +63,7 @@ class CommunityRSSWidget extends WP_Widget {
                 $excerpt = wp_html_excerpt( $content, 320 );
                 ?>
 
-                <article class="post news">
+                <article class="partner post news">
 
                     <header class="post-header">
                         <h3 class="post-title"><a href="<?php echo esc_url( $item->get_permalink() ); ?>"
