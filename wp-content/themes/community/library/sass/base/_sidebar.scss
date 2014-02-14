@@ -5,7 +5,7 @@ SIDEBARS & ASIDES
 
 
 .widgettitle {
-	margin: 0 0 0.75em;
+	margin: -5px 0 0.5em;
 	color: $white;
     color: rgba(255,255,255,.7);
     @extend h6;
@@ -32,7 +32,7 @@ SIDEBARS & ASIDES
 	ul {
     	border-top: 1px solid $text-color;
     	border-top: 1px solid rgba(0,0,0,.1);
-    	margin: 0 0 5px;
+    	margin: 0;
 	}
 	li {
     	border-bottom: 1px solid $text-color;
@@ -79,6 +79,14 @@ SIDEBARS & ASIDES
     }
 }
 
+
+// SEARCH
+
+.widget_search {
+    padding: 0 20px;
+}
+
+
 // EVENT MANAGER
 
 .widget_recent_entries,
@@ -99,7 +107,7 @@ SIDEBARS & ASIDES
         width: 49%;
         display: inline-block;
         white-space: nowrap;
-        @include font-size(18);
+        @include font-size(15);
         line-height: 1.1;
     }
 }

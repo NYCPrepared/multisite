@@ -7,13 +7,16 @@ POSTS & CONTENT STYLES
 	footer {}
 
 } 
-.single-title,
-.page-title {}
+
+.page-title,
+.archive-title {
+    @extend %caps;
+    @extend h3;
+    line-height: 1.1;
+    margin: .5em 0 1.3em;
+}
 
 .single-title {}
-.page-title {margin: .25em 0;}
-.archive-title {}
-
 
 .entry-title.single-title {
     margin-bottom: .3em;

@@ -30,7 +30,12 @@ a:visited {
 }
 
 
-
+.excerpt-read-more {
+    font-size: 80%;
+    white-space: nowrap;
+    padding-left: 5px;
+    @extend %caps;
+}
 
 
 // BUTTONS

@@ -9,7 +9,7 @@
         clear: both;
     }    
     .post-header {
-        @include fill-parent;
+    	@include breakpoint(medium) {@include span-columns(9 of 12);}
         clear: both;
     }
     .post-title {
@@ -19,7 +19,8 @@
         padding-bottom: 10px;
     	@include breakpoint(medium) {@include span-columns(9 of 12);}
     	p {
-        	margin: .75em 0;
+        	margin: .25em 0 .75em;
+        	line-height: 1.5;
     	}
     }
     .post-footer {
