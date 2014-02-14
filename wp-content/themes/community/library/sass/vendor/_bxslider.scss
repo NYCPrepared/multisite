@@ -13,7 +13,7 @@ div.bx-wrapper {
         span {
             color: $text-color;
             @extend %sans;
-            @extend %p;
+            @extend h4;
         }
     }   
     .bx-pager.bx-default-pager {

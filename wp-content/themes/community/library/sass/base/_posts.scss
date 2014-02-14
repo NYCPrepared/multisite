@@ -136,7 +136,7 @@ POSTS & CONTENT STYLES
     margin-bottom: 0;
     height: 300px;
     overflow: hidden;
-	@include breakpoint(small) {@include span-columns(8);}
+	@include breakpoint(small) {@include span-columns(8); height: 160px;}
 }
 
 .highlights-list {
@@ -247,10 +247,11 @@ POSTS & CONTENT STYLES
     li {
         background: $white;
         margin-top: 0;
-        margin-bottom: 0;
+        margin-bottom: 20px;
         padding: 0;
         height: 240px;
         overflow: hidden;
+    	@include breakpoint(tiny) {@include span-columns(8);}
     	@include breakpoint(small) {@include span-columns(4);}
     }
     .site-image {

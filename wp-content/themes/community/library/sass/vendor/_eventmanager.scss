@@ -160,8 +160,11 @@ ul.event-categories {
         li {
             background: $teal;
             color: $white;
+            max-height: 100px; 
+            overflow: hidden;
             @include transition(background 0.25s ease);
-            @include breakpoint(medium) {@include span-columns(4); display: inline-block; max-height: 100px; overflow: hidden;}
+        	@include breakpoint(tiny) {@include span-columns(8); display: inline-block; }
+        	@include breakpoint(small) {@include span-columns(4);}
             &:hover {
                 background: $navy;
                 cursor: pointer;
@@ -175,7 +178,7 @@ ul.event-categories {
         color: white;
         border-right: 1px solid $white;
         border-right: 1px solid rgba(255,255,255,.3);
-        margin: 0;
+        margin: 0 10px 0 0;
         padding: 10px 0;
         line-height: 1.1;
         .event-date {
@@ -185,9 +188,11 @@ ul.event-categories {
     }
     .event-title {
         width: 70%;
-        margin: 0 0 0 28%;
+        margin: 0;
         padding: 10px 0;
-        @include breakpoint(medium) {@include font-size(20); line-height: 1.3;}
+        max-height: 90px; 
+        overflow: hidden;
+        @include breakpoint(tiny) {@include font-size(20); line-height: 1.3; }
         a {
             display: block;
             color: $white;

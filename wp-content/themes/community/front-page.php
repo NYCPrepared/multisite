@@ -22,6 +22,7 @@
 							jQuery(document).ready(function(){
 							  jQuery('.featured-posts').bxSlider({
 							    mode: 'fade',
+							    adaptiveHeight: true,
 							    captions: true
 							  });
 							});
@@ -99,6 +100,11 @@
 						    slideMargin: 10,
 						    pager: false
 						  });
+                          if (responsive_viewport < 481) {
+                              slider.reloadSlider({
+						        mode: 'vertical'
+                              });
+                          } 
 						});
 						</script>
 

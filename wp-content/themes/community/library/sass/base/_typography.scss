@@ -60,35 +60,35 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
-h1, %h1 {
+h1 {
     @include font-size(36);
 	@include breakpoint(medium) {@include font-size(48);}
 }
 
-h2, %h2 {
+h2 {
     @include font-size(28);
 	@include breakpoint(medium) {@include font-size(38);}
 	margin-bottom: 0.375em;
 }
 
-h3, %h3 {
+h3 {
     @include font-size(24);
 	@include breakpoint(medium) {@include font-size(30);}
     margin-bottom: 0.125em;
 }
 
-h4, %h4 {
+h4 {
     @include font-size(20);
 	@include breakpoint(medium) {@include font-size(24);}
 }
 
-h5, %h5 {
+h5 {
     @include font-size(16);
 	@include breakpoint(medium) {@include font-size(20);}
     font-weight: bold;
 }
 
-h6, %h6 {
+h6 {
     @include font-size(14);
 	@include breakpoint(medium) {@include font-size(16);}
 	@extend %caps;
@@ -98,7 +98,7 @@ h6, %h6 {
 
 
 
-p, %p {
+p {
     @include font-size(16);
 	@include breakpoint(medium) {@include font-size(18);}
 	line-height: 1.8;
