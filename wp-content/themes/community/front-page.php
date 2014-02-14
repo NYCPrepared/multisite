@@ -94,17 +94,21 @@
 						<script type="text/javascript">
 						jQuery(document).ready(function(){
 						  jQuery('.news-list').bxSlider({
-						    slideWidth: 5000,
+						    mode: 'vertical',
 						    minSlides: 2,
 						    maxSlides: 2,
-						    mode: 'vertical',
 						    slideMargin: 10,
 						    pager: false
 						  });
                           var responsive_viewport = $(window).width();
                           if (responsive_viewport > 320) {
                               jQuery('.news-list').reloadSlider({
-						        mode: 'horizontal'
+						        mode: 'horizontal',
+        					    slideWidth: 5000,
+        					    minSlides: 2,
+        					    maxSlides: 2,
+        					    slideMargin: 10,
+        					    pager: false
                               });
                           } 
 						});
@@ -133,7 +137,7 @@
 						<script type="text/javascript">
 						jQuery(document).ready(function(){
 						  jQuery('.events-list').bxSlider({
-						    slideWidth: 5000,
+						    mode: 'vertical',
 						    minSlides: 4,
 						    maxSlides: 4,
 						    slideMargin: 10,
@@ -142,7 +146,12 @@
                           var responsive_viewport = $(window).width();
                           if (responsive_viewport > 320) {
                               jQuery('.events-list').reloadSlider({
-						        mode: 'horizontal'
+						        mode: 'horizontal',
+        					    slideWidth: 5000,
+        					    minSlides: 4,
+        					    maxSlides: 4,
+        					    slideMargin: 10,
+        					    pager: false
                               });
                           } 
 						});
