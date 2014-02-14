@@ -1,14 +1,32 @@
 // GROUP HEADER
 
-.site-banner img {
+.community-group #inner-header {
+    border-bottom: 0;
+    position: relative;
+}
+
+.site-banner {
     @extend %image-border;
+    height: 150px;
+	@include breakpoint(medium) {height: 300px;}
+    img {
+        height: 100%;
+        width: auto;
+    }
 }
 
 .site-name {
-    margin: 10px 0 20px;
-    line-height: 1;
     @extend %caps;
     @extend h2;
+    line-height: 1;
+    margin: 0;
+    padding: 20px;
+    background: white;
+    line-height: 1;
+    position: absolute;
+    top: 80px;
+    left: -10px;
+	@include breakpoint(small) {left: -20px;}
     a {
         color: $headline-color;
     }
@@ -16,7 +34,7 @@
 
 .social-links {
     float: right;
-    margin-right: 5px;
+    margin: 7px 15px;
 }
 
 
@@ -29,7 +47,7 @@
     li {
         display: inline-block;
         margin: 0;
-        margin-right: -3px; // remove space caused by inline-block
+        margin-right: -2px; // remove space caused by inline-block
         &.current-menu-item a {
             background: $anchor-color;
             color: $white;
@@ -45,10 +63,10 @@
             color: $white;
         }
     }
-}
-
-.community-group #inner-header {
-    border-bottom: 0;
+    #searchform #searchsubmit {
+        background: $anchor-color;
+        border-color: $anchor-color;
+    }
 }
 
 .community-group h1.h2 {

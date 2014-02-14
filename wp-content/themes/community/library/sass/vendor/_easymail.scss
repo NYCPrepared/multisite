@@ -1,12 +1,7 @@
 // signup form
 
 .alo_easymail_widget_form {
-    padding: 20px 0;
-    border-top: 1px solid $white;
-    border-bottom: 1px solid $white;
-    border-color: rgba(255,255,255,.5);
     display: inline-block;
-    background: transparent;
     td, label {
         font-size: 16px;
         vertical-align: top;
@@ -24,6 +19,23 @@
         padding: 0 5px;
         width: 100%;
     }
+    .input-submit {
+        width: 100%;
+        margin-top: .5em;
+        padding: .5em 1em;
+        @include font-size(15);
+    }
+}
+
+
+// sidebar version
+
+.sidebar .alo_easymail_widget_form {
+    padding: 20px 0;
+    background: transparent;
+    border-top: 1px solid $white;
+    border-bottom: 1px solid $white;
+    border-color: rgba(255,255,255,.5);
 }
 
 

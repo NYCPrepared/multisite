@@ -7,13 +7,18 @@ POSTS & CONTENT STYLES
 	footer {}
 
 } 
-
 .single-title,
 .page-title {}
 
 .single-title {}
 .page-title {margin: .25em 0;}
 .archive-title {}
+
+
+.entry-title.single-title {
+    margin-bottom: .3em;
+}
+
 
 
 /* want to style individual post classes? Booya! */
@@ -29,6 +34,7 @@ POSTS & CONTENT STYLES
 
 // post date and author name
 .byline {
+    margin: 0;
     color: $quiet-color;
 	@extend %caps;
 	@include font-size(15);
