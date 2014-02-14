@@ -66,17 +66,15 @@ class CommunityRSSWidget extends WP_Widget {
                 <article class="partner post news">
 
                     <header class="post-header">
+                        <div class="meta post-date"><?php echo date_i18n(get_option('date_format'),strtotime($item->get_date()));?></div>
+                    </header>
+                    <section class="post-body">
                         <h3 class="post-title"><a href="<?php echo esc_url( $item->get_permalink() ); ?>"
                             title="<?php printf( __( 'Posted %s', 'community-rss-widget' ), $item->get_date('j F Y | g:i a') ); ?>">
                             <?php echo esc_html( $item->get_title() ); ?>
                         </a></h3>
-                    </header>
-                    <section class="post-body">
                         <div class="post-excerpt"><?php echo $excerpt; ?> <a href="<?php echo esc_url( $item->get_permalink() ); ?>" target="_blank">...</a></div>
                     </section>
-                    <footer class="post-footer">
-                        <div class="meta post-date"><?php echo date_i18n(get_option('date_format'),strtotime($item->get_date()));?></div>
-                    </footer>
 
                 </article>
 
