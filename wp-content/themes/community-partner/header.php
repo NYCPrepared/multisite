@@ -80,14 +80,7 @@
 					<h1 class="site-name">
 						<a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a>
 					</h1>
-					<?php // bloginfo('description'); ?>
 
-					<nav class="site-nav" id="local-nav" role="navigation">
-						<div class="search-form" id="search">
-						    <?php get_search_form(); ?>
-						</div
-						<?php bones_main_nav(); ?>
-					</nav>
 
 				</div>
 
