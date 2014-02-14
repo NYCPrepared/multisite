@@ -1,5 +1,4 @@
 
-				<div id="post-list" class="posts clearfix">
 
 					<?php if ( is_active_sidebar( 'home-sidebar' ) ) : ?>
 
@@ -14,5 +13,3 @@
 						</div>
 
 					<?php endif; ?>
-
-				</div>
