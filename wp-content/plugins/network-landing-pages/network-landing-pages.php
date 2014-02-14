@@ -8,8 +8,73 @@ Author URI: http://glocal.coop
 Text Domain: network-landing-pages
 */
 
-define( 'ACF_LITE', true );
-include_once('advanced-custom-fields/acf.php');
+include_once('metaboxes/metabox-functions.php');
+
+
+add_filter( 'manage_edit-network_columns', 'community_edit_network_columns' ) ;
+
+function community_edit_network_columns( $columns ) {
+
+	$columns = array(
+		'cb' => '<input type="checkbox" />',
+		'title' => __( 'Network Name' ),
+		'community_network_sites' => __( 'Sites' ),
+		'thumbnail' => __( 'Banner' ),
+		'date' => __( 'Date' )
+	);
+
+	return $columns;
+}
+
+
+add_action( 'manage_network_posts_custom_column', 'community_manage_network_columns', 10, 2 );
+
+function community_manage_network_columns( $column, $post_id ) {
+	global $post;
+
+	switch( $column ) {
+
+		/* If displaying the 'site' column. */
+		case 'community_network_sites' :
+
+			/* Get the post meta. */
+			$blog_ids = get_post_meta($post_id, 'community_network_sites');
+
+			/* If there are sites assigned, display them as a list */
+			if (!empty($blog_ids)) {
+
+				echo '<ul>';
+				foreach ($blog_ids as $blog_id) {
+					$blog_details = get_blog_details($blog_id);
+					echo '<li class="blog-' . $blog_id . '">';
+					echo $blog_details->blogname . ' (ID: ' . $blog_id . ')';
+					echo '</li>';
+				}
+				echo '</ul>';
+				// $sites = implode(", ", $blog_ids);
+
+			/* Else display a message */
+			} else {
+
+				echo __( 'None Assigned' );
+
+			}	
+			
+			break;
+
+		/* If displaying the 'image' column. */
+		case 'thumbnail' :
+
+			/* Get the network banner. */
+			echo get_the_post_thumbnail($page->ID, array(120,120));
+
+			break;
+
+		/* Just break out of the switch statement for everything else. */
+		default :
+			break;
+	}
+}
 
 /**************************
 NETWORKS CONTENT TYPE
@@ -61,12 +126,12 @@ function community_networks() {
 		'show_in_nav_menus'   => true,
 		'show_in_admin_bar'   => true,
 		'menu_position'       => 80,
-		'menu_icon'           => '',
+		'menu_icon'           => 'dashicons-networking',
 		'can_export'          => true,
 		'has_archive'         => true,
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
-		'query_var'           => '',
+		'query_var'           => 'network',
 		'rewrite'             => $rewrite,
 		'capabilities'        => $capabilities,
 		// 'register_meta_box_cb' => 'register_field_group'
@@ -80,240 +145,10 @@ add_action( 'init', 'community_networks', 0 );
 
 
 /**************************
-NETWORKS TAXONOMY
-**************************/
-
-// // Register Custom Taxonomy
-// function community_sites() {
-
-// 	$labels = array(
-// 		'name'                       => _x( 'Sites', 'Taxonomy General Name', 'network_sites' ),
-// 		'singular_name'              => _x( 'Site', 'Taxonomy Singular Name', 'network_sites' ),
-// 		'menu_name'                  => __( 'Sites', 'network_sites' ),
-// 		'all_items'                  => __( 'All Sites', 'network_sites' ),
-// 		'parent_item'                => __( 'Parent Site', 'network_sites' ),
-// 		'parent_item_colon'          => __( 'Parent Site:', 'network_sites' ),
-// 		'new_item_name'              => __( 'New Site Name', 'network_sites' ),
-// 		'add_new_item'               => __( 'Add New Site', 'network_sites' ),
-// 		'edit_item'                  => __( 'Edit Site', 'network_sites' ),
-// 		'update_item'                => __( 'Update Site', 'network_sites' ),
-// 		'separate_items_with_commas' => __( 'Separate site with commas', 'network_sites' ),
-// 		'search_items'               => __( 'Search Sites', 'network_sites' ),
-// 		'add_or_remove_items'        => __( 'Add or remove sites', 'network_sites' ),
-// 		'choose_from_most_used'      => __( 'Choose from the most used sites', 'network_sites' ),
-// 		'not_found'                  => __( 'Not Found', 'network_sites' ),
-// 	);
-// 	$rewrite = array(
-// 		'slug'                       => 'site',
-// 		'with_front'                 => false,
-// 		'hierarchical'               => false,
-// 	);
-// 	$capabilities = array(
-// 		'manage_terms'               => 'manage_categories',
-// 		'edit_terms'                 => 'manage_categories',
-// 		'delete_terms'               => 'manage_categories',
-// 		'assign_terms'               => 'manage_categories',
-// 	);
-// 	$args = array(
-// 		'labels'                     => $labels,
-// 		'hierarchical'               => true,
-// 		'public'                     => true,
-// 		'show_ui'                    => true,
-// 		'show_admin_column'          => true,
-// 		'show_in_nav_menus'          => true,
-// 		'show_tagcloud'              => true,
-// 		'query_var'                  => 'network_sites',
-// 		'rewrite'                    => $rewrite,
-// 		'capabilities'               => $capabilities,
-// 	);
-// 	register_taxonomy( 'network_sites', 'network', $args );
-
-// }
-
-// // Hook into the 'init' action
-// add_action( 'init', 'community_sites', 0 );
-
-
-/**************************
 NETWORKS CUSTOM FIELDS
 **************************/
 
-if(function_exists("register_field_group")) {
-
-	// Pull all the sites into an array
-	$options_sites = array();
-	$options_sites_obj = wp_get_sites('offset=1');
-	foreach ($options_sites_obj as $site) {
-		$site_id = $site['blog_id'];
-		$site_details = get_blog_details($site_id);
-		$options_sites[$site_id] = $site_details->blogname;
-	}
-	
-	register_field_group(
-		array (
-		'id' => 'acf_site',
-		'title' => 'Site',
-		'fields' => array (
-			array (
-				'key' => 'network_sites',
-				'label' => 'Sites',
-				'name' => 'network_sites',
-				'type' => 'checkbox',
-				'choices' => $options_sites,
-				'default_value' => '',
-				'layout' => 'vertical',
-			),
-		),
-		'location' => array (
-			array (
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'network',
-					'order_no' => 0,
-					'group_no' => 0,
-				),
-			),
-		),
-		'options' => array (
-			'position' => 'acf_after_title',
-			'layout' => 'default',
-			'hide_on_screen' => array (
-				0 => 'permalink',
-				1 => 'excerpt',
-				2 => 'custom_fields',
-				3 => 'discussion',
-				4 => 'comments',
-				5 => 'revisions',
-				6 => 'slug',
-				7 => 'author',
-				8 => 'format',
-				9 => 'categories',
-				10 => 'tags',
-				11 => 'send-trackbacks',
-			),
-		),
-		'menu_order' => 0,
-	));
-
-	register_field_group(
-		array (
-		'id' => 'network_contact-information',
-		'title' => 'Contact Information',
-		'fields' => array (
-			array (
-				'key' => 'network_facebook',
-				'label' => 'Facebook',
-				'name' => 'network_facebook',
-				'type' => 'text',
-				'default_value' => '',
-				'placeholder' => 'https://evilproprietarysocialnetwork.com',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
-			),
-			array (
-				'key' => 'network_twitter',
-				'label' => 'Twitter',
-				'name' => 'network_twitter',
-				'type' => 'text',
-				'default_value' => '',
-				'placeholder' => 'https://twitter.com',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
-			),
-			array (
-				'key' => 'network_email',
-				'label' => 'Email',
-				'name' => 'network_email',
-				'type' => 'email',
-				'default_value' => '',
-				'placeholder' => 'name@email.com',
-				'prepend' => '',
-				'append' => '',
-			),
-		),
-		'location' => array (
-			array (
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'network',
-					'order_no' => 10,
-					'group_no' => 10,
-				),
-			),
-		),
-		'options' => array (
-			'position' => 'side',
-			'layout' => 'default',
-			'hide_on_screen' => array (
-				0 => 'permalink',
-				1 => 'excerpt',
-				2 => 'custom_fields',
-				3 => 'discussion',
-				4 => 'comments',
-				5 => 'revisions',
-				6 => 'slug',
-				7 => 'author',
-				8 => 'format',
-				9 => 'categories',
-				10 => 'tags',
-				11 => 'send-trackbacks',
-			),
-		),
-		'menu_order' => 0,
-	));
-
-	// Add location field to volunteer posts
-	register_field_group(
-		array (
-		'id' => 'network_location',
-		'title' => 'Location',
-		'fields' => array (
-			array (
-				'key' => 'volunteer_location',
-				'label' => 'Volunteer Location',
-				'name' => 'volunteer_location',
-				'type' => 'text',
-				'default_value' => '',
-				'placeholder' => 'Rockaway, New York',
-				'prepend' => '',
-				'append' => '',
-				'formatting' => 'none',
-				'maxlength' => '',
-			),
-		),
-		'location' => array (
-			array (
-				array (
-					'param' => 'post_type',
-					'operator' => '==',
-					'value' => 'post',
-					'order_no' => 0,
-					'group_no' => 0,
-				),
-				array (
-					'param' => 'post_category',
-					'operator' => '==',
-					'value' => '10',
-					'order_no' => 1,
-					'group_no' => 0,
-				),
-			),
-		),
-		'options' => array (
-			'position' => 'side',
-			'layout' => 'default',
-			'hide_on_screen' => array (
-			),
-		),
-		'menu_order' => 0,
-	));
-}
+// Fields are in metaboxes/metabox-functions.php
 
 
 
