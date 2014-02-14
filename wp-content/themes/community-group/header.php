@@ -49,7 +49,11 @@
 
 				<div id="inner-header" class="wrap clearfix">
 
- 					<p class="domain-title"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
+					<?php  // Get the site info for the main site
+					$blog_details = get_blog_details(1);
+					?>
+
+ 					<p class="domain-title"><a href="<?php echo $blog_details->siteurl; ?>" rel="nofollow"><?php echo $blog_details->blogname; ?></a></p>
 					<ul id="nav-anchors" class="nav-anchors">
                     	<li><a href="#nav" class="menu-anchor" id="menu-anchor" title="menu"></a></li>
                     	<li><a href="#search" class="search-anchor" id="search-anchor" title="search"></a></li>
