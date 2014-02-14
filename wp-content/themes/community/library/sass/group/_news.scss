@@ -9,7 +9,7 @@
     }    
     .post-header {
         @extend %caps;
-    	@include breakpoint(medium) {@include span-columns(3 of 12);}
+    	@include breakpoint(medium) {@include span-columns(2 of 12);}
     	h6 {
         	color: $quiet-color;
     	}
