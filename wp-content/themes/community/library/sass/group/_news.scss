@@ -5,25 +5,9 @@
     .post.news {
         border-top: 1px solid $gray7;
         padding: 20px 0;
-        @include fill-parent;
         clear: both;
     }    
     .post-header {
-    	@include breakpoint(medium) {@include span-columns(9 of 12);}
-        clear: both;
-    }
-    .post-title {
-        margin: 0;
-    }
-    .post-body {
-        padding-bottom: 10px;
-    	@include breakpoint(medium) {@include span-columns(9 of 12);}
-    	p {
-        	margin: .25em 0 .75em;
-        	line-height: 1.5;
-    	}
-    }
-    .post-footer {
         @extend %caps;
     	@include breakpoint(medium) {@include span-columns(3 of 12);}
     	h6 {
@@ -38,6 +22,17 @@
         	&:hover {
             	color: $text-color;
         	}
+    	}
+    }
+    .post-title {
+        margin: 0;
+    }
+    .post-body {
+        padding-bottom: 10px;
+    	@include breakpoint(medium) {@include span-columns(9 of 12);}
+    	p {
+        	margin: .25em 0 1em;
+        	line-height: 1.5;
     	}
     }
 }
