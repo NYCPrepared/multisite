@@ -2,9 +2,9 @@
 
 .community-group,
 .community-partner {
-    .news-post {
+    .post.news {
         border-top: 1px solid $gray7;
-        padding: 20px;
+        padding: 20px 0;
         @include fill-parent;
         clear: both;
     }    
