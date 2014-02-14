@@ -21,7 +21,7 @@
 
 
 .site-nav {
-    background: $gray8;
+    background: $gray7;
     .search-form {
         float: right;
         margin: 0 5px;
@@ -29,10 +29,16 @@
     li {
         display: inline-block;
         margin: 0;
+        margin-right: -3px; // remove space caused by inline-block
+        &.current-menu-item a {
+            background: $anchor-color;
+            color: $white;
+        }
     }
     li a {
         display: block;
-        padding: 5px 15px;
+        padding: 7px 15px;
+        color: $white;
         @extend %caps;
         &:hover {
             background: $anchor-color;
@@ -42,5 +48,9 @@
 }
 
 .community-group #inner-header {
-    border: 0;
+    border-bottom: 0;
+}
+
+.community-group h1.h2 {
+    display: none;
 }
