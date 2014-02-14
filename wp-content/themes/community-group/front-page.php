@@ -7,19 +7,19 @@
 						<div id="main" class="group-main first clearfix" role="main">
 
 							<header class="page-header">
-								<h2 class="page-title">Latest News</h2>
 								<div class="social-links">
 									<ul>
 										<li class="rss"><a href="/feed" target="_blank"></a></li>
 									</ul>
 								</div>
+								<h2 class="page-title">Latest News</h2>
 							</header>
 
 							<?php// query_posts('posts_per_page=10'); ?>
 
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-							<article class="post news-post siteid-3">
+							<article class="post news siteid-3">
 								<header class="post-header">
 									<h3 class="post-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 								</header>

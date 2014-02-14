@@ -10,15 +10,8 @@
 						<?php $meta = get_post_meta(get_the_ID()); ?>
 
 						<header class="network-header">
-							<?php if ( has_post_thumbnail() ) { ?>
-								<div class="network banner"><?php the_post_thumbnail('full'); ?></div>
-							<?php } else { ?>
-								<div class="network no-banner"> </div>
-							<?php } ?>
-
-							<h1 class="entry-title single-title" itemprop="headline"><?php the_title(); ?></h1>
-
-								<ul class="social-links">
+						
+                            <ul class="social-links">
 								<?php 
 								$facebook_url = get_post_meta($post->ID, 'community_facebookurl', true );
 								$twitter_url = get_post_meta($post->ID, 'community_twitterurl', true );
@@ -28,10 +21,17 @@
 								if($twitter_url) {
 								  echo '<li class="twitter icon"><a href="' . $twitter_url . '"><span> </span></a></li>';
 								} 
-
 								?>
-
 							</ul>
+
+							<?php if ( has_post_thumbnail() ) { ?>
+								<div class="network banner"><?php the_post_thumbnail('full'); ?></div>
+							<?php } else { ?>
+								<div class="network no-banner"> </div>
+							<?php } ?>
+
+							<h1 class="entry-title single-title" itemprop="headline"><?php the_title(); ?></h1>
+							
 						</header>
 
 					</article>	
