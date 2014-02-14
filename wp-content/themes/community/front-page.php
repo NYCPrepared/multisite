@@ -97,12 +97,14 @@
 						    slideWidth: 5000,
 						    minSlides: 2,
 						    maxSlides: 2,
+						    mode: 'vertical',
 						    slideMargin: 10,
 						    pager: false
 						  });
-                          if (responsive_viewport < 481) {
-                              slider.reloadSlider({
-						        mode: 'vertical'
+                          var responsive_viewport = $(window).width();
+                          if (responsive_viewport > 320) {
+                              jQuery('.news-list').reloadSlider({
+						        mode: 'horizontal'
                               });
                           } 
 						});
@@ -137,6 +139,12 @@
 						    slideMargin: 10,
 						    pager: false
 						  });
+                          var responsive_viewport = $(window).width();
+                          if (responsive_viewport > 320) {
+                              jQuery('.events-list').reloadSlider({
+						        mode: 'horizontal'
+                              });
+                          } 
 						});
 						</script>
 
