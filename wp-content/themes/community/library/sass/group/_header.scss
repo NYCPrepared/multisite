@@ -18,11 +18,10 @@
 .site-name {
     @extend %caps;
     @extend h2;
-    line-height: 1;
+    line-height: 1.1;
     margin: 0;
     padding: 20px;
-    background: white;
-    line-height: 1;
+    background: $white;
     position: absolute;
     top: 80px;
     left: -10px;
@@ -39,7 +38,7 @@
 
 
 .site-nav {
-    background: $gray7;
+    background: $text-color;
     .search-form {
         float: right;
         margin: 0 5px;
