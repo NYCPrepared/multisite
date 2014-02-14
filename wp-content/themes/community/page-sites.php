@@ -41,7 +41,7 @@
 										<ul id="filter site-networks">
 											<li id="network-all">All Networks</li>
 											<?php
-											$networks = get_posts('post_type=site_networks');
+											$networks = get_posts('post_type=network');
 											foreach ($networks as $network) {											
 											?>
 												<li id="network-<?php echo $network->post_name; ?>"><?php echo $network->post_title; ?></li>
@@ -75,7 +75,7 @@
 												'post_type'              => 'site_networks',
 												'meta_query'             => array(
 													array(
-														'key'       => '_community_network_sites',
+														'key'       => 'community_network_sites',
 														'value'     => $site_id,
 														'compare'   => '=',
 													),
