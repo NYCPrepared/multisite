@@ -17,8 +17,7 @@ add_filter( 'cmb_meta_boxes', 'cmb_community_metaboxes' );
  */
 function cmb_community_metaboxes( array $meta_boxes ) {
 
-	// Start with an underscore to hide fields from custom fields list
-	$prefix = '_community_';
+	$prefix = 'community_';
 
 	// Pull all the categories into an array
 	$options_categories = array();
