@@ -32,13 +32,12 @@ $sans:        "Lato", Helvetica, Verdana, sans-serif;
   font-size: $size / 16 + rem;
 }
 
-
 html {
     font-size: 100%; // 16px 
 }
 
 body {
-    @include font-size(16);
+    @include font-size($body-size);
     @extend %sans;
     line-height: 1.6;
     color: $text-color;
@@ -60,38 +59,40 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+
+
 h1 {
     line-height: 1.2;
-    @include font-size(36);
-	@include breakpoint(medium) {@include font-size(48);}
+    @include font-size($h1-size);
+	@include breakpoint(medium) {@include font-size($h1-size-xl);}
 }
 
 h2 {
-    @include font-size(28);
-	@include breakpoint(medium) {@include font-size(38);}
+    @include font-size($h2-size);
+	@include breakpoint(medium) {@include font-size($h2-size-xl);}
 	margin-bottom: 0.375em;
 }
 
 h3 {
-    @include font-size(24);
-	@include breakpoint(medium) {@include font-size(30);}
+    @include font-size($h3-size);
+	@include breakpoint(medium) {@include font-size($h3-size-xl);}
     margin-bottom: 0.125em;
 }
 
 h4 {
-    @include font-size(20);
-	@include breakpoint(medium) {@include font-size(24);}
+    @include font-size($h4-size);
+	@include breakpoint(medium) {@include font-size($h4-size-xl);}
 }
 
 h5 {
-    @include font-size(16);
-	@include breakpoint(medium) {@include font-size(20);}
+    @include font-size($body-size);
+	@include breakpoint(medium) {@include font-size($body-size-xl);}
     font-weight: bold;
 }
 
 h6 {
-    @include font-size(14);
-	@include breakpoint(medium) {@include font-size(16);}
+    @include font-size($caption-size);
+	@include breakpoint(medium) {@include font-size($caption-size-xl);}
 	@extend %caps;
 	margin: .5em 0;
 	line-height: 1.2;
@@ -100,33 +101,36 @@ h6 {
 
 
 p {
-    @include font-size(16);
-	@include breakpoint(medium) {@include font-size(18);}
+    @include font-size($body-size);
+	@include breakpoint(medium) {@include font-size($body-size-xl);}
 	line-height: 1.8;
 }
 
+
 li, dt, dd {
-    @include font-size(16);
-	@include breakpoint(medium) {@include font-size(18);}
+    @include font-size($body-size);
+	@include breakpoint(medium) {@include font-size($body-size-xl);}
     @extend %sans;
 	line-height: 1.8;
 	margin-bottom: .8em;
 }
 
 input, label, textarea {
-    @include font-size(16);
-	@include breakpoint(medium) {@include font-size(18);}
+    @include font-size($body-size);
+	@include breakpoint(medium) {@include font-size($body-size-xl);}
     @extend %sans;
 	line-height: 1.4;
 	margin-bottom: .75em;
 }
 
 small {
-    @include font-size(13);
-	@include breakpoint(medium) {@include font-size(15);}
+    @include font-size($small-size);
+	@include breakpoint(medium) {@include font-size($small-size-xl);}
     @extend %sans;
 	line-height: 1.4;
 }
+
+
 
 b, strong {
   font-weight: 700;
@@ -164,8 +168,8 @@ kbd,
 pre,
 samp {
     font-family: 'Courier New', Courier, monospace;
-    @include font-size(16);
-	@include breakpoint(medium) {@include font-size(18);}
+    @include font-size($body-size);
+	@include breakpoint(medium) {@include font-size($body-size-xl);}
 }
 
 pre {
