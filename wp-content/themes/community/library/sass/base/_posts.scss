@@ -46,6 +46,11 @@ POSTS & CONTENT STYLES
     }
 }
 
+// enlarge intro paragraph
+.single-post .entry-content p:first-child {
+    @extend h4;
+}
+
 
 // post content 
 .entry-content {
@@ -60,9 +65,6 @@ POSTS & CONTENT STYLES
 	p {
     	max-width: 40em;
 	}
-	p:first-child {
-        @extend h3;
-    }
 
 	ul, ol, table, dl {}
 	ul, ol {

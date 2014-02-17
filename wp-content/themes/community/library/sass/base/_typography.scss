@@ -110,7 +110,7 @@ li, dt, dd {
 	@include breakpoint(medium) {@include font-size(18);}
     @extend %sans;
 	line-height: 1.8;
-	margin-bottom: 1em;
+	margin-bottom: .8em;
 }
 
 input, label, textarea {
@@ -139,9 +139,9 @@ i, em {
 
 
 ul, ol {
-    margin: 0 0 2.4em;
-    li {
-        margin-bottom: .8em;
+    margin: 1.6em 0;
+    ul, ol {
+        margin: .8em 0 1.6em;
     }
 }
 
