@@ -46,7 +46,10 @@ POSTS & CONTENT STYLES
     }
 }
 
-// enlarge intro paragraph
+// single blog post
+.single-post .entry-content {
+    padding-top: 40px;
+}
 .single-post .entry-content p:first-child {
     @extend h4;
 }
@@ -94,7 +97,7 @@ POSTS & CONTENT STYLES
     	margin-left: 375px;
 	}
 	img {
-		margin: 0 0 1.5em 0;
+		margin: 0 0 20px 0;
 		max-width: 100%;
 		height: auto;
 	}
@@ -225,7 +228,7 @@ POSTS & CONTENT STYLES
     	@include breakpoint(medium) {@include span-columns(2 of 12);}
     	h6, p, li {
         	@extend small;
-        	color: $quiet-color;
+        	color: $gray5;
         	display: inline-block;
         	&:after {
             	content: ' / ';
