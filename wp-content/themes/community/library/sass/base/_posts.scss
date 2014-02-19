@@ -13,7 +13,7 @@ POSTS & CONTENT STYLES
     @extend %caps;
     @extend h3;
     line-height: 1.1;
-    margin: .5em 0 1.3em;
+    margin: .5em 0;
 }
 
 .single-title {}
@@ -223,11 +223,8 @@ POSTS & CONTENT STYLES
     .post-footer {
         @extend %caps;
     	@include breakpoint(medium) {@include span-columns(2 of 12);}
-    	h6 {
-        	color: $quiet-color;
-    	}
-    	p, li {
-        	@extend h6;
+    	h6, p, li {
+        	@extend small;
         	color: $quiet-color;
     	}
     	a, a:visited {

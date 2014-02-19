@@ -166,7 +166,9 @@ COMMENT FORM STYLES
 }
 
 /* logged in comments */
-.comments-logged-in-as {}
+.comments-logged-in-as {
+    margin: 0;
+}
 
 /* allowed tags */
 #allowed_tags {
