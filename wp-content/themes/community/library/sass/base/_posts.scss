@@ -226,6 +226,12 @@ POSTS & CONTENT STYLES
     	h6, p, li {
         	@extend small;
         	color: $quiet-color;
+        	display: inline-block;
+        	&:after {
+            	content: ' / ';
+            	letter-spacing: 5px;
+        	}
+            @include breakpoint(medium) {display: block; &:after {content: none;}}
     	}
     	a, a:visited {
         	color: $quiet-color;
@@ -238,7 +244,7 @@ POSTS & CONTENT STYLES
         padding-bottom: 10px;
     	@include breakpoint(medium) {@include span-columns(8 of 12);}
     	p {
-        	margin: .75em 0;
+        	margin: .25em 0 .75em;
     	}
     }
     .post-title {
