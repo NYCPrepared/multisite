@@ -17,7 +17,7 @@ div.css-search {
         position: relative;
         div {
             display: block;
-            @include breakpoint(medium) {display: inline;}
+            @include breakpoint(tiny) {display: inline;}
         }
         div.em-search-field {
             background: transparent;
@@ -53,9 +53,10 @@ div.css-search {
             padding: 0;
             border: 0;
             margin: 0;
+            top: auto;
             bottom: 12px;
             right: 0;
-            @include breakpoint(medium) {bottom: auto; top: 10px;}
+            @include breakpoint(tiny) {bottom: auto; top: 10px;}
             img {
                 display: none;
             }
@@ -91,6 +92,10 @@ div.css-search {
     }
     .em-title-cell {
         min-width: 55%;
+        p {
+            color: $gray5;
+            font-size: $caption-size;
+        }
     }
     .em-excerpt-cell {
         min-width: 30%;
@@ -99,6 +104,7 @@ div.css-search {
     .event-title, 
     p {
         margin: 0;
+        line-height: 1.5;
     }
     a {
         color: $teal;
