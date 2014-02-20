@@ -68,6 +68,15 @@ div.css-search {
         padding: 10px 20px 10px 0;
         border-top: 1px solid $gray8;
     }
+    .em-time-cell {
+        min-width: 15%;
+    }
+    .em-title-cell {
+        min-width: 55%;
+    }
+    .em-excerpt-cell {
+        min-width: 30%;
+    }
     .event-start,
     .event-title, 
     p {
