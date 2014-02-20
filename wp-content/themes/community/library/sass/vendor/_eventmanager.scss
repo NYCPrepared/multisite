@@ -129,9 +129,15 @@ div.css-search {
         max-height: 150px;
         overflow: hidden;
         @include breakpoint(small) {max-height: 300px;}
+        img {
+            border: 0;
+        }
     }
     .event-details {
         @include breakpoint(small) {float: left; width: 33%;}
+        h4 span {
+            @include breakpoint(small) {display: block;}
+        }
     }
     .em-location-map-container {
         border: $image-border;
