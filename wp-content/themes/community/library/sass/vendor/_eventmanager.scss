@@ -135,12 +135,33 @@ div.css-search {
     }
     .event-details {
         @include breakpoint(small) {float: left; width: 33%;}
+        
         h4 span {
             @include breakpoint(small) {display: block;}
         }
     }
+    .date-time, 
+    .location {
+        margin: .75em 0;
+    }
+    .tools {
+        margin-top: 2em;
+    }
+    .event-description {
+        margin: 2em 0;
+        @include breakpoint(small) {padding-left: 34%;}        
+    }
+    .event-map {
+        width: 100%;
+        margin-bottom: 2em;
+        max-height: 300px;
+        @include breakpoint(small) {padding-left: 34%;}        
+    }
     .em-location-map-container {
         border: $image-border;
+    }
+    .event-footer {
+        clear: both;
     }
 }
 
