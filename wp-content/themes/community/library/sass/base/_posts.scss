@@ -237,7 +237,7 @@ POSTS & CONTENT STYLES
             @include breakpoint(medium) {display: block; &:after {content: none;}}
     	}
     	a, a:visited {
-        	color: $quiet-color;
+        	color: $gray5;
         	&:hover {
             	color: $text-color;
         	}
