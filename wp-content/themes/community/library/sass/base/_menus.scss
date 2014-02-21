@@ -15,7 +15,6 @@ site so our css is cleaner and more scalable.
 .nav {
     margin: 0;
 	li {
-        @extend %sans;
         margin: 0;
         white-space: nowrap;
 		a {

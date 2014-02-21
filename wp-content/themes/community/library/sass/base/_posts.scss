@@ -10,7 +10,8 @@ POSTS & CONTENT STYLES
 
 .page-title,
 .archive-title {
-    @extend %caps;
+    text-transform: uppercase; 
+        letter-spacing: $caps-spacing;
     @extend h3;
     line-height: 1.1;
     margin: .25em 0 .75em;
@@ -39,7 +40,8 @@ POSTS & CONTENT STYLES
 .byline {
     margin: 0;
     color: $quiet-color;
-	@extend %caps;
+	text-transform: uppercase; 
+        letter-spacing: $caps-spacing;
 	@include font-size(15);
     a {
         color: $quiet-color;
@@ -51,7 +53,9 @@ POSTS & CONTENT STYLES
     padding-top: 40px;
 }
 .single-post .entry-content p:first-child {
-    @extend h4;
+    @include font-size($h4-size-s);
+	@include breakpoint(medium) {@include font-size($h4-size-m);}
+	@include breakpoint(large) {@include font-size($h4-size-l);}
 }
 
 
@@ -136,7 +140,8 @@ POSTS & CONTENT STYLES
 .news, 
 .events, 
 .sites {
-    .module-heading {@extend p; @extend %caps;}    
+    .module-heading {@extend p; text-transform: uppercase; 
+        letter-spacing: $caps-spacing;}    
 } 
 
 
@@ -173,8 +178,9 @@ POSTS & CONTENT STYLES
         margin: .25em 0 .5em;
     }
     .location {
-        @extend %caps;
-        @extend %small;
+        text-transform: uppercase; 
+        letter-spacing: $caps-spacing;
+        @extend small;
         color: $quiet-color;
         white-space: nowrap;
         margin-left: 3px;
@@ -204,8 +210,9 @@ POSTS & CONTENT STYLES
         margin:  .25em 0 .5em;
     }
     .post-date {
-        @extend %caps;
-        @extend %small;
+        text-transform: uppercase; 
+        letter-spacing: $caps-spacing;
+        @extend small;
         color: $quiet-color;
         white-space: nowrap;
         margin-left: 3px;
@@ -224,7 +231,8 @@ POSTS & CONTENT STYLES
     }    
     .post-header,
     .post-footer {
-        @extend %caps;
+        text-transform: uppercase; 
+        letter-spacing: $caps-spacing;
     	@include breakpoint(medium) {@include span-columns(2 of 12);}
     	h6, p, li {
         	@extend small;
@@ -279,14 +287,15 @@ POSTS & CONTENT STYLES
         display: block;
     }
     .site-title {
-        @extend %caps;
+        text-transform: uppercase; 
+        letter-spacing: $caps-spacing;
         margin: 0;
         padding: 5px 10px 0;
     }
     .site-meta {
         margin: 0;
         padding: 0 10px 10px;
-        @extend %small;
+        @extend small;
         color: $quiet-color;
     }
 }

@@ -78,7 +78,8 @@
 
 .copyright {
     @include font-size(10);
-    text-transform: uppercase; letter-spacing: $caps-spacing;
+    text-transform: uppercase; 
+        letter-spacing: $caps-spacing;
     color: $gray4;
     display: inline-block;
     margin: 15px 0;

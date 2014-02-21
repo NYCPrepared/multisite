@@ -99,7 +99,8 @@ div.css-search {
         @include fill-parent;
         @include breakpoint(tiny) {display: block;}
         div {
-            text-transform: uppercase; letter-spacing: $caps-spacing;
+            text-transform: uppercase; 
+        letter-spacing: $caps-spacing;
             @include breakpoint(tiny) {display: inline; padding-right: 5px;}
         }
         .event-list-date {

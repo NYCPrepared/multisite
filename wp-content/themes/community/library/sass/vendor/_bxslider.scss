@@ -15,7 +15,7 @@ div.bx-wrapper {
         bottom: 10px;
         span {
             color: $text-color;
-            @extend %sans;
+            font-family: $sans;
             @extend h4;
             margin: 0;
         }

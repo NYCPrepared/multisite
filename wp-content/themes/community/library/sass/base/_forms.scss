@@ -20,7 +20,8 @@ input[type='email'] {
 
 input[type='submit'] {
     @include transition(all 0.2s ease-in-out);
-    text-transform: uppercase; letter-spacing: $caps-spacing;
+    text-transform: uppercase; 
+        letter-spacing: $caps-spacing;
     -webkit-appearance: button;
     cursor: pointer;
     border: 0;

@@ -2,7 +2,8 @@
 
 .logo-NYCP {
     @include font-size(18);
-    text-transform: uppercase; letter-spacing: $caps-spacing;
+    text-transform: uppercase; 
+        letter-spacing: $caps-spacing;
     font-weight: 700;
     white-space: nowrap;
     display: inline-block; 
@@ -29,8 +30,9 @@
 }
 
 .tagline-NYCP {
-    @extend h6;
     @include font-size(13);
+	text-transform: uppercase;
+	letter-spacing: $caps-spacing;
     vertical-align: middle;
     white-space: nowrap;
     color: $gray5;
@@ -63,6 +65,11 @@
         }
         a {
             display: inline-block;
+        }
+        a:hover {
+            padding: 0.5em 20px 0.5em 0;
+            background: transparent;
+            color: $text-color;
         }
     }
 }

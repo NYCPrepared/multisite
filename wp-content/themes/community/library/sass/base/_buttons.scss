@@ -34,7 +34,8 @@ a:visited {
     font-size: 80%;
     white-space: nowrap;
     padding-left: 5px;
-    text-transform: uppercase; letter-spacing: $caps-spacing;
+    text-transform: uppercase; 
+        letter-spacing: $caps-spacing;
 }
 
 
@@ -46,7 +47,8 @@ button,
 .button {
     @include transition(all 0.25s ease);
     @include font-size(14);
-	text-transform: uppercase; letter-spacing: $caps-spacing;
+	text-transform: uppercase; 
+        letter-spacing: $caps-spacing;
     line-height: 1.2;
 	font-weight: 700;
     padding: .5em 2em;
@@ -78,39 +80,6 @@ button,
 %button-small {
     @include font-size(15);
     padding: .25em 1em;
-}
-
-
-
-// colored buttons
-
-.btn-navy {
-    @extend .btn;
-    @include flip-button($navy);
-}
-.btn-blue {
-    @extend .btn;
-    @include flip-button($blue);
-}
-.btn-teal {
-    @extend .btn;
-    @include flip-button($teal);
-}
-.btn-green {
-    @extend .btn;
-    @include flip-button($green);
-}
-.btn-yellow {
-    @extend .btn;
-    @include flip-button($yellow);
-}
-.btn-orange {
-    @extend .btn;
-    @include flip-button($orange);
-}
-.btn-red {
-    @extend .btn;
-    @include flip-button($red);
 }
 
 

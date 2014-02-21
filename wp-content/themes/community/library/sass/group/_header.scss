@@ -12,7 +12,7 @@
 } 
 
 .site-banner {
-    @extend %image-border;
+    border: $frame-border;
     height: 150px;
     overflow: hidden;
     background-color: $gray8;
@@ -24,7 +24,8 @@
 }
 
 .site-name {
-    text-transform: uppercase; letter-spacing: $caps-spacing;
+    text-transform: uppercase; 
+        letter-spacing: $caps-spacing;
     @extend h2;
     line-height: 1.1;
     margin: 0;
@@ -76,7 +77,8 @@
         display: block;
         padding: 7px 15px;
         color: $white;
-        text-transform: uppercase; letter-spacing: $caps-spacing;
+        text-transform: uppercase; 
+        letter-spacing: $caps-spacing;
         &:hover {
             background: $anchor-color;
             color: $white;

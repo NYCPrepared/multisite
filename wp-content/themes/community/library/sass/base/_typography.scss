@@ -92,14 +92,15 @@ h5 {
     @include font-size($body-size-s);
 	@include breakpoint(medium) {@include font-size($body-size-m);}
 	@include breakpoint(large) {@include font-size($body-size-l);}
-    font-weight: bold;
+    font-weight: 700;
 }
 
 h6 {
     @include font-size($caption-size-s);
 	@include breakpoint(medium) {@include font-size($caption-size-m);}
 	@include breakpoint(large) {@include font-size($caption-size-l);}
-	@extend %caps;
+	text-transform: uppercase;
+	letter-spacing: $caps-spacing;
 }
 
 
@@ -155,7 +156,6 @@ blockquote {
     padding: 0 10% 0 0;
     margin: 1.5em 0;
     p, li {
-    	@include font-size(23);
     	color: $gray5;
         font-style: italic;
     }
