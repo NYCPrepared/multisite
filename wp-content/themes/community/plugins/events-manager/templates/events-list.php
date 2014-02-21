@@ -12,30 +12,29 @@ $args = apply_filters('em_content_events_args', $args);
 
 $args['format_header'] = '
 <header class="event-list-header">
-	<div class="event-list-date">Date</div>
-	<div class="event-list-name">Name</div>
-	<div class="event-list-description">Description</div>
+	<h6 class="event-list-date">Date</h6>
+	<h6 class="event-list-description">Description</h6>
 </header>
 ';
 
 $args['format'] = '
 <article id="event-#_EVENTID" class="post event">
 	<header class="post-header event-header">
-		<div class="meta">
-			<div class="event-day">#l</div>
-			<div class="event-date">#F #j</div>
-			<div class="event-time">#g:#i#a</div>
-		</div>
+		<h4 class="meta">
+			<span class="event-day">#l</span>
+			<span class="event-date">#F #j</span>
+			<span class="event-time">#g:#i#a</span>
+		</h4>
 	</header>
 	<section class="post-body event-content">
-		<h3 class="post-title event-title">#_EVENTLINK</h3>
-		<div class="event-location">{has_location}
-		<p class="event-location-name">#_LOCATIONNAME</p>
-		<p class="event-location-street">#_LOCATIONADDRESS</p>
-		<p class="event-location-city">#_LOCATIONTOWN #_LOCATIONSTATE</p>
-		{/has_location}</div>
-		<div class="post-excerpt event-description">#_EVENTEXCERPT{25,...}</div>
 		<div class="post-image event-image">{has_image}#_EVENTIMAGE{/has_image}</div>
+		<h3 class="post-title event-title">#_EVENTLINK</h3>
+		{has_location}<h6 class="event-location">
+		    <span class="event-location-name">#_LOCATIONNAME</span>
+            <span class="event-location-street">#_LOCATIONADDRESS</span>
+            <span class="event-location-city">#_LOCATIONTOWN #_LOCATIONSTATE</span>
+		</h6>{/has_location}
+		<p class="post-excerpt event-description">#_EVENTEXCERPT{25,...}</p>
 	</section>
 </article>
 ';

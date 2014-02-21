@@ -83,6 +83,13 @@ div.css-search {
 // events list
 .css-events-list {
     @include fill-parent;
+    p {
+        margin: 0;
+        line-height: 1.5;
+    }
+    a {
+        color: $teal;
+    }
     .event {
         border-top: 1px solid $quiet-color;
         padding: 10px 0;
@@ -96,40 +103,34 @@ div.css-search {
             @include breakpoint(tiny) {display: inline; padding-right: 5px;}
         }
         .event-list-date {
-            @include breakpoint(small) {@include span-columns(3);}
+            @include breakpoint(small) {@include span-columns(2);}
         }
     }
     .event-header {
-        @include breakpoint(small) {@include span-columns(3);}
-        div {
-            display: inline;
+        @include breakpoint(small) {@include span-columns(2);}
+        span {
             padding-right: 5px;
             @include breakpoint(tiny) {display: block;}
         }
     }
     .event-content {
-        @include breakpoint(small) {@include span-columns(13);}
+        @include breakpoint(small) {@include span-columns(14);}
+    }
+    .event-image {
+        @include breakpoint(medium) {float: right; width: 33%; height: auto;}
     }
     .event-title {
         margin: .25em 0;
     }
-    .event-location p {
-        margin: 0;
+    .event-location {
         color: $quiet-color;
-        @include breakpoint(tiny) {display: block; margin-right: 10px; &:after {content: ' /'}}
+        span {
+            display: block;
+            @include breakpoint(tiny) {display: inline; margin-right: 10px; &:after {content: ', '}}
+        }
     }
     .event-description {
         margin: .5em 0;
-    }
-    .event-image {
-        @include breakpoint(medium) {@include span-columns(4 of 13);}
-    }
-    p {
-        margin: 0;
-        line-height: 1.5;
-    }
-    a {
-        color: $teal;
     }
 }
 
