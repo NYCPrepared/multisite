@@ -8,26 +8,17 @@
 
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-							<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> role="article">
+							<header class="article-header">
+								<h1 class="page-title"><?php the_title(); ?></h1>
+							</header>
 
-								<header class="article-header">
+							<section class="entry-content clearfix">
+								<?php the_content(); ?>
+							</section>
 
-									<h1 class="page-title"><?php the_title(); ?></h1>
+							<footer class="article-footer"></footer>
 
-								</header>
-
-								<section class="entry-content clearfix">
-									<?php the_content(); ?>
-								</section>
-
-								<footer class="article-footer">
-									<p class="tags"><?php the_tags( '<span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '' ); ?></p>
-
-								</footer>
-
-								<?php // comments_template(); // uncomment if you want to use them ?>
-
-							</article>
+							<?php // comments_template(); // uncomment if you want to use them ?>
 
 							<?php endwhile; ?>
 

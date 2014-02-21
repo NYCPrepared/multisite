@@ -19,7 +19,7 @@ $args['format_header'] = '
 ';
 
 $args['format'] = '
-<article id="event-list" class="events">
+<article id="event-#_EVENTID" class="post event">
 	<header class="post-header event-header">
 		<div class="meta">
 			<div class="event-day">#l</div>
@@ -40,7 +40,7 @@ $args['format'] = '
 </article>
 ';
 
-if( get_option('dbem_css_evlist') ) echo "<div class='css-events-list'>";
+if( get_option('dbem_css_evlist') ) echo "<div class='css-events-list event-list'>";
 
 echo EM_Events::output( $args );
 
