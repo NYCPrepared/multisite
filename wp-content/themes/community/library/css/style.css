@@ -3184,14 +3184,15 @@ div.css-search {
   .css-events-list .event-list-header {
     display: none;
     width: 100%; }
-    @media (min-width: 321px) {
+    @media (min-width: 481px) {
       .css-events-list .event-list-header {
         display: block; } }
-    .css-events-list .event-list-header div {
+    .css-events-list .event-list-header span {
+      display: inline;
       text-transform: uppercase;
       letter-spacing: 1px; }
       @media (min-width: 321px) {
-        .css-events-list .event-list-header div {
+        .css-events-list .event-list-header span {
           display: inline;
           padding-right: 5px; } }
     @media (min-width: 481px) {
@@ -3218,7 +3219,7 @@ div.css-search {
     margin: .5em 0; }
   .css-events-list .event-header span {
     padding-right: 5px; }
-    @media (min-width: 321px) {
+    @media (min-width: 481px) {
       .css-events-list .event-header span {
         display: block; } }
   @media (min-width: 481px) {
@@ -3229,13 +3230,15 @@ div.css-search {
       width: 87.28027%; }
       .css-events-list .event-content:last-child {
         margin-right: 0; } }
-  @media (min-width: 769px) {
-    .css-events-list .event-image {
-      float: right;
-      width: 33%;
-      height: auto;
-      max-height: 300px;
-      margin-left: 20px; } }
+  .css-events-list .event-image {
+    border: 5px solid white; }
+    @media (min-width: 769px) {
+      .css-events-list .event-image {
+        float: right;
+        width: 33%;
+        height: auto;
+        max-height: 300px;
+        margin-left: 20px; } }
   .css-events-list .event-title {
     margin: .25em 0; }
   .css-events-list .event-location {
