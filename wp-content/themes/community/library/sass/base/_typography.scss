@@ -7,7 +7,6 @@
 // http://css-tricks.com/watch-your-font-weight/
 
 $sans:        "Lato", Helvetica, Verdana, sans-serif;
-
 $caps-spacing: 1px;
 
 
@@ -119,9 +118,10 @@ li, dt, dd {
 	@include breakpoint(large) {@include font-size($body-size-l); max-width: 40em; line-height: 1.75;}
 }
 
-input, label, textarea {
+input, label, select, textarea {
     @include font-size($body-size-s);
 	margin-bottom: .75em;
+	font-family: $sans;
 	@include breakpoint(medium) {@include font-size($body-size-m);}
 	@include breakpoint(large) {@include font-size($body-size-l);}
 }

@@ -890,16 +890,17 @@ li, dt, dd {
       max-width: 40em;
       line-height: 1.75; } }
 
-input, label, textarea {
+input, label, select, textarea {
   font-size: 16px;
   font-size: 1rem;
-  margin-bottom: .75em; }
+  margin-bottom: .75em;
+  font-family: "Lato", Helvetica, Verdana, sans-serif; }
   @media (min-width: 769px) {
-    input, label, textarea {
+    input, label, select, textarea {
       font-size: 17px;
       font-size: 1.0625rem; } }
   @media (min-width: 1025px) {
-    input, label, textarea {
+    input, label, select, textarea {
       font-size: 18px;
       font-size: 1.125rem; } }
 
@@ -2348,9 +2349,20 @@ img, video, object {
     margin: 0;
     padding: 0px 10px 10px; }
 
+/******************************************************************
+ FORMS 
+******************************************************************/
 form {
   background: #e6e4df;
   padding: 40px; }
+  form p, form .news .module-heading, .news form .module-heading,
+  form .events .module-heading,
+  .events form .module-heading,
+  form .sites .module-heading,
+  .sites form .module-heading, form .login p.error, .login form p.error,
+  form .login p.message,
+  .login form p.message {
+    margin-bottom: .25em; }
 
 fieldset {
   border: 0;
@@ -2383,7 +2395,7 @@ input[type='submit'] {
     color: #333231; }
 
 /******************************************************************
-SEARCH FORM 
+ SEARCH FORM 
 ******************************************************************/
 .search-form {
   width: 100%; }
@@ -3048,7 +3060,8 @@ article.home-feature div.bx-wrapper .bx-viewport {
 div.css-search {
   background: transparent;
   border-color: #d1cfcb;
-  padding: 0; }
+  padding: 0;
+  max-width: 800px; }
   div.css-search div.em-search-main {
     position: relative; }
     div.css-search div.em-search-main div {
@@ -3245,7 +3258,8 @@ div.css-search {
 .single-event .event-image {
   border: 5px solid white;
   max-height: 150px;
-  overflow: hidden; }
+  overflow: hidden;
+  margin-bottom: 1.5em; }
   @media (min-width: 481px) {
     .single-event .event-image {
       max-height: 300px; } }

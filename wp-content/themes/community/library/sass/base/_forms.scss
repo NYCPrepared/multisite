@@ -1,9 +1,14 @@
 
-// FORMS
+/******************************************************************
+ FORMS 
+******************************************************************/
 
 form {
     background: $gray8;
     padding: 40px;
+    p {
+        margin-bottom: .25em; // since Wordpress wraps everything in paragraph tags
+    }
 }
 
 fieldset {
@@ -39,7 +44,7 @@ input[type='submit'] {
 }
 
 /******************************************************************
-SEARCH FORM 
+ SEARCH FORM 
 ******************************************************************/
 
 .search-form {
