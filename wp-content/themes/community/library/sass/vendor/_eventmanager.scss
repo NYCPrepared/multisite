@@ -6,6 +6,10 @@
 //     display: none;
 // }
 
+.page-events #main {
+    width: 100%;
+}
+
 
 // EVENTS SEARCH
 
@@ -90,10 +94,6 @@ div.css-search {
     a {
         color: $teal;
     }
-    .event {
-        border-top: 1px solid $quiet-color;
-        padding: 10px 0;
-    }
     .event-list-header {
         display: none;
         @include fill-parent;
@@ -106,8 +106,16 @@ div.css-search {
             @include breakpoint(small) {@include span-columns(2);}
         }
     }
+    .event {
+        border-top: 1px solid $quiet-color;
+        padding: 10px 0;
+        @include fill-parent;
+    }
     .event-header {
         @include breakpoint(small) {@include span-columns(2);}
+        .meta {
+            margin: .5em 0;
+        }
         span {
             padding-right: 5px;
             @include breakpoint(tiny) {display: block;}
@@ -117,7 +125,7 @@ div.css-search {
         @include breakpoint(small) {@include span-columns(14);}
     }
     .event-image {
-        @include breakpoint(medium) {float: right; width: 33%; height: auto;}
+        @include breakpoint(medium) {float: right; width: 33%; height: auto; max-height: 300px; margin-left: 20px;}
     }
     .event-title {
         margin: .25em 0;
@@ -126,7 +134,8 @@ div.css-search {
         color: $quiet-color;
         span {
             display: block;
-            @include breakpoint(tiny) {display: inline; margin-right: 10px; &:after {content: ', '}}
+            @include breakpoint(tiny) {display: inline; padding-right: 5px; &:after {content: ' /';}}
+            &:last-child:after {content: '';}
         }
     }
     .event-description {
