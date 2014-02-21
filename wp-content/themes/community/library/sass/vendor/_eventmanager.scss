@@ -83,28 +83,32 @@ div.css-search {
 // events list
 .css-events-list {
     @include fill-parent;
-    .events {
+    .event {
         border-top: 1px solid $quiet-color;
         padding: 10px 0;
     }
     .event-list-header {
         display: none;
+        @include fill-parent;
         @include breakpoint(tiny) {display: block;}
         div {
             @extend %caps;
             @include breakpoint(tiny) {display: inline; padding-right: 5px;}
         }
+        .event-list-date {
+            @include breakpoint(small) {@include span-columns(3);}
+        }
     }
     .event-header {
-        @include breakpoint(small) {@include span-columns(4);}
-    }
-    .meta div {
-        display: inline;
-        padding-right: 5px;
-        @include breakpoint(tiny) {display: block;}
+        @include breakpoint(small) {@include span-columns(3);}
+        div {
+            display: inline;
+            padding-right: 5px;
+            @include breakpoint(tiny) {display: block;}
+        }
     }
     .event-content {
-        @include breakpoint(small) {@include span-columns(12);}
+        @include breakpoint(small) {@include span-columns(13);}
     }
     .event-title {
         margin: .25em 0;
@@ -116,6 +120,9 @@ div.css-search {
     }
     .event-description {
         margin: .5em 0;
+    }
+    .event-image {
+        @include breakpoint(medium) {@include span-columns(4 of 13);}
     }
     p {
         margin: 0;
