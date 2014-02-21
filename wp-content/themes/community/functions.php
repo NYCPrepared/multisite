@@ -311,76 +311,18 @@ function community_navigation() {
 }
 
 
+/************* Add Slug to Body Class *****************/
 
-// /**************************
-// SITE NETWORKS CONTENT TYPE
-// **************************/
-
-// if ( ! function_exists('site_networks') ) {
-
-// // Register Custom Post Type
-// function site_networks() {
-
-// 	$labels = array(
-// 		'name'                => _x( 'Site Networks', 'Post Type General Name', 'site_networks' ),
-// 		'singular_name'       => _x( 'Site Network', 'Post Type Singular Name', 'site_networks' ),
-// 		'menu_name'           => __( 'Networks', 'site_networks' ),
-// 		'parent_item_colon'   => __( 'Parent Item:', 'site_networks' ),
-// 		'all_items'           => __( 'All Networks', 'site_networks' ),
-// 		'view_item'           => __( 'View Network', 'site_networks' ),
-// 		'add_new_item'        => __( 'Add New Network', 'site_networks' ),
-// 		'add_new'             => __( 'Add New', 'site_networks' ),
-// 		'edit_item'           => __( 'Edit Network', 'site_networks' ),
-// 		'update_item'         => __( 'Update Network', 'site_networks' ),
-// 		'search_items'        => __( 'Search Network', 'site_networks' ),
-// 		'not_found'           => __( 'Not found', 'site_networks' ),
-// 		'not_found_in_trash'  => __( 'Not found in Trash', 'site_networks' ),
-// 	);
-// 	$rewrite = array(
-// 		'slug'                => 'network',
-// 		'with_front'          => true,
-// 		'pages'               => true,
-// 		'feeds'               => true,
-// 	);
-// 	$capabilities = array(
-// 		'manage_options'      => 'manage_options',
-// 	);
-// 	$args = array(
-// 		'label'               => __( 'site_networks', 'site_networks' ),
-// 		'description'         => __( 'Post type that collects MS sites into network groupings', 'site_networks' ),
-// 		'labels'              => $labels,
-// 		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'permalink' ),
-// 		'hierarchical'        => false,
-// 		'public'              => true,
-// 		'show_ui'             => true,
-// 		'show_in_menu'        => true,
-// 		'show_in_nav_menus'   => true,
-// 		'show_in_admin_bar'   => true,
-// 		'menu_position'       => 80,
-// 		'menu_icon'           => '',
-// 		'can_export'          => true,
-// 		'has_archive'         => false,
-// 		'exclude_from_search' => false,
-// 		'publicly_queryable'  => true,
-// 		'query_var'           => '',
-// 		'rewrite'             => $rewrite,
-// 		'capabilities'        => $capabilities,
-// 	);
-// 	register_post_type( 'site_networks', $args );
-
-// }
-
-// // Hook into the 'init' action
-// add_action( 'init', 'site_networks', 0 );
-
-// }
-
-
-// /**************************
-// SITE NETWORKS METABOXES
-// **************************/
-
-// require_once 'library/metaboxes/metabox-functions.php';
+// Add specific CSS class by filter
+add_filter('body_class','community_class_names');
+function community_class_names($classes) {
+	// add 'class-name' to the $classes array
+	global $post; 
+	$post_slug_class = $post->post_name; 
+	$classes[] = $post_slug_class . ' page-' . $post_slug_class;
+	// return the $classes array
+	return $classes;
+}
 
 
 
