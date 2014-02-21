@@ -149,7 +149,7 @@ div.css-search {
     }
     .event-description {
         margin: 2em 0;
-        @include breakpoint(small) {padding-left: 34%;}        
+        @include breakpoint(small) {padding-left: 34%; padding-right: 20px;}        
     }
     .event-map {
         width: 100%;
