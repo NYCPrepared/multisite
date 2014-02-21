@@ -326,5 +326,4 @@ function community_class_names($classes) {
 
 
 
-
 ?>
