@@ -2,7 +2,7 @@
 
 .logo-NYCP {
     @include font-size(18);
-    @extend %caps;
+    text-transform: uppercase; letter-spacing: $caps-spacing;
     font-weight: 700;
     white-space: nowrap;
     display: inline-block; 

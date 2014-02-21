@@ -34,7 +34,7 @@ a:visited {
     font-size: 80%;
     white-space: nowrap;
     padding-left: 5px;
-    @extend %caps;
+    text-transform: uppercase; letter-spacing: $caps-spacing;
 }
 
 
@@ -46,7 +46,7 @@ button,
 .button {
     @include transition(all 0.25s ease);
     @include font-size(14);
-	@extend %caps;
+	text-transform: uppercase; letter-spacing: $caps-spacing;
     line-height: 1.2;
 	font-weight: 700;
     padding: .5em 2em;

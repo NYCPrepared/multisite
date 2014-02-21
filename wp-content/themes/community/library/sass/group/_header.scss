@@ -24,7 +24,7 @@
 }
 
 .site-name {
-    @extend %caps;
+    text-transform: uppercase; letter-spacing: $caps-spacing;
     @extend h2;
     line-height: 1.1;
     margin: 0;
@@ -76,7 +76,7 @@
         display: block;
         padding: 7px 15px;
         color: $white;
-        @extend %caps;
+        text-transform: uppercase; letter-spacing: $caps-spacing;
         &:hover {
             background: $anchor-color;
             color: $white;

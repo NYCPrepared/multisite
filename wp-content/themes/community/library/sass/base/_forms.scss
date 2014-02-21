@@ -20,7 +20,7 @@ input[type='email'] {
 
 input[type='submit'] {
     @include transition(all 0.2s ease-in-out);
-    @extend %caps;
+    text-transform: uppercase; letter-spacing: $caps-spacing;
     -webkit-appearance: button;
     cursor: pointer;
     border: 0;
@@ -167,7 +167,6 @@ COMMENT FORM STYLES
 
 /* logged in comments */
 .comments-logged-in-as {
-    margin: 0;
     line-height: 1;
 }
 

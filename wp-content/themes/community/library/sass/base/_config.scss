@@ -41,27 +41,36 @@ $hr-color: $gray6;
 
 
 // TYPE SIZES
+// http://typecast.com/blog/a-more-modern-scale-for-web-typography
 
-$h1-size: 36;
-$h2-size: 28;
-$h3-size: 24;
-$h4-size: 20;
-$body-size: 16;
-$caption-size: 14;
-$small-size: 12;
+$h1-size-s: 32;
+$h2-size-s: 26;
+$h3-size-s: 22;
+$h4-size-s: 18;
+$body-size-s: 16;
+$caption-size-s: 14;
+$small-size-s: 12;
 
-$h1-size-xl: 48;
-$h2-size-xl: 38;
-$h3-size-xl: 30;
-$h4-size-xl: 24;
-$body-size-xl: 18;
-$caption-size-xl: 16;
-$small-size-xl: 14;
+$h1-size-m: 40;
+$h2-size-m: 32;
+$h3-size-m: 26;
+$h4-size-m: 21;
+$body-size-m: 17;
+$caption-size-m: 15;
+$small-size-m: 13;
+
+$h1-size-l: 48;
+$h2-size-l: 36;
+$h3-size-l: 28;
+$h4-size-l: 22;
+$body-size-l: 18;
+$caption-size-l: 16;
+$small-size-l: 14;
 
 
 // BORDERS
 
-$image-border: 5px solid $white;
+$frame-border: 5px solid $white;
 
 
 // LAYERS
@@ -125,13 +134,6 @@ $max-width: 1200px;
     content: "";
     display: table;
     clear: both;
-}
-
-
-// IMAGE FRAME
-
-%image-border {
-    border: 5px solid $white;
 }
 
 

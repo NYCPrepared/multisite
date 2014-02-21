@@ -8,7 +8,7 @@
         clear: both;
     }    
     .post-header {
-        @extend %caps;
+        text-transform: uppercase; letter-spacing: $caps-spacing;
     	@include breakpoint(medium) {@include span-columns(2 of 12);}
     	h6 {
         	color: $quiet-color;
