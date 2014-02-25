@@ -27,7 +27,7 @@ $args['format'] = '
 		</h4>
 	</header>
 	<section class="post-body event-content">
-		<div class="post-image event-image">{has_image}#_EVENTIMAGE{/has_image}</div>
+		{has_image}<div class="post-image event-image">#_EVENTIMAGE</div>{/has_image}
 		<h3 class="post-title event-title">#_EVENTLINK</h3>
 		{has_location}<h6 class="event-location">
 		    <span class="event-location-name">#_LOCATIONNAME</span>
