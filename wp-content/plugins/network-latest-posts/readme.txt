@@ -1,19 +1,20 @@
 === Network Latest Posts ===
-Contributors: L'Elite
-Donate link: http://laelite.info
+Plugin Name: Latest Network Posts
+Description: Display the latest posts from the blogs in your network using it as a function, shortcode or widget. Based on Network Latest Posts plugin (http://en.8elite.com/network-latest-posts).
 Tags: recent posts, shortcode, widget, network, latest posts
-Requires at least: 3.0
-Tested up to: 3.8
-Stable tag: 3.5.5
+Author: Pea, Glocal
+Author URI: http://glocal.coop
+Version: 13
+License: GPL
+
 
 This plugin allows you to pull all the recent posts from the blogs in your WordPress network and display them in your main site (or internal sites)
 
 == Description ==
 
 This plugin pull the recent posts from all the blogs in your network and displays them in your main site (or any internal site) using shortcodes or widgets.
-For further details please visit: http://en.8elite.com/network-latest-posts [English] http://es.8elite.com/network-latest-posts [Espanol] http://fr.8elite.com/network-latest-posts [Francais].
 
-This plugin works with Wordpress 3 Network (multisites) Looking for single install versions? http://single-latest-posts.laelitenetwork.com
+This plugin works with Wordpress 3 Network (multisites).
 
 == Installation ==
 
@@ -65,8 +66,7 @@ are replaced by the default values or those passed using the widget form or the 
 
 = Shortcode Options =
 
-This is an just an example with the default values which means I could have used `[nlposts]` instead, but this will show you how the parameters
-are passed. For more examples please visit the Network Latest Post website.
+This is an just an example with the default values which means I could have used `[nlposts]` instead, but this will show you how the parameters are passed.
 
 `[nlposts title=NULL
           number_posts=10
@@ -107,6 +107,7 @@ are passed. For more examples please visit the Network Latest Post website.
           honor_sticky=FALSE
 ]`
 
+List of Parameters
 * @title              : Widget/Shortcode main title (section title)
 * @number_posts       : Number of posts BY blog to retrieve. Ex: 10 means, retrieve 10 posts for each blog found in the network
 * @time_frame         : Period of time to retrieve the posts from in days. Ex: 5 means, find all articles posted in the last 5 days
@@ -118,29 +119,29 @@ are passed. For more examples please visit the Network Latest Post website.
 * @thumbnail_wh       : Thumbnails size, width and height in pixels, while using the shortcode or a function this parameter must be passed like: '80x80'
 * @thumbnail_class    : Thumbnail class, set a custom class (alignleft, alignright, center, etc)
 * @thumbnail_filler   : Placeholder to use if the post's thumbnail couldn't be found, options: placeholder, kittens, puppies (what?.. I can be funny sometimes)
-* @thumbnail_custom   : Pull thumbnails from custom fields (true or false), thumbnail parameter must be true
-* @thumbnail_field    : Custom field which contains the custom thumbnail URL
-* @thumbnail_url      : Custom thumbnail filler URL
+* @thumbnail_custom   : Pull thumbnails from custom fields
+* @thumbnail_field    : Specify the custom field for thumbnail URL
+* @thumbnail_url      : Custom thumbnail URL
 * @custom_post_type   : Specify a custom post type: post, page or something-you-invented
 * @category           : Category or categories you want to display. Ex: cats,dogs means, retrieve posts containing the categories cats or dogs
 * @tag                : Same as categoy WordPress treats both taxonomies the same way; by the way, you can pass one or many (separated by commas)
 * @paginate           : Display results by pages, if used then the parameter posts_per_page must be specified, otherwise pagination won't be displayed
 * @posts_per_page     : Set the number of posts to display by page (paginate must be activated)
-* @display_content    : Display post content instead of excerpt (false by default)
-* @excerpt_length     : Set the excerpt's length in case you think it's too long for your needs Ex: 40 means, 40 words (55 by default)
+* @display_content    : When true then post content will be displayed instead of excertps
+* @excerpt_length     : Set the excerpt's length in case you think it's too long for your needs Ex: 40 means, 40 words
 * @auto_excerpt       : If true then it will generate an excerpt from the post content, it's useful for those who forget to use the Excerpt field in the post edition page
 * @excerpt_trail      : Set the type of trail you want to append to the excerpts: text, image. The text will be _more_, the image is inside the plugin's img directory and it's called excerpt_trail.png
 * @full_meta          : Display the date and the author of the post, for the date/time each blog time format will be used
 * @sort_by_date       : Sorting capabilities, this will take all posts found (regardless their blogs) and sort them in order of recency, putting newest first
 * @sort_by_blog       : Sort by blog ID
-* @sorting_order      : Specify the sorting order: 'newer' means from newest to oldest posts, 'older' means from oldest to newest. asc/desc are used when blog ID is true
+* @sorting_order      : Specify the sorting order: 'newer' means from newest to oldest posts, 'older' means from oldest to newest. Asc and desc for blog IDs
 * @sorting_limit      : Limit the number of posts to display. Ex: 5 means display 5 posts from all those found (even if 20 were found, only 5 will be displayed)
 * @post_status        : Specify the status of the posts you want to display: publish, new, pending, draft, auto-draft, future, private, inherit, trash
-* @css_style          : Use a custom CSS style instead of the one included by default, useful if you want to customize the front-end display: filename (without extension), this file must be located where your active theme CSS style is located, this parameter should be used only once by page (it will affect all shorcodes/widgets included in that page)
+* @css_style          : Use a custom CSS style instead of the one included by default, useful if you want to customize the front-end display: filename (without extension), this file must be located where your active theme CSS style is located
 * @wrapper_list_css   : Custom CSS classes for the list wrapper
 * @wrapper_block_css  : Custom CSS classes for the block wrapper
 * @instance           : This parameter is intended to differenciate each instance of the widget/shortcode/function you use, it's required in order for the asynchronous pagination links to work
-* @random             : Pull random articles
+* @random             : Pull random posts (possible values: true or false, false by default)
 * @post_ignore        : Post ID(s) to ignore (default null) comma separated values ex: 1 or 1,2,3 > ignore posts ID 1 or 1,2,3 (post ID 1 = Hello World)
 * @alert_msg          : Alert Message when NLPosts can't find posts matching the values specified by user
 * @use_pub_date       : Display the most recently published posts first regardless of the blog they come from
