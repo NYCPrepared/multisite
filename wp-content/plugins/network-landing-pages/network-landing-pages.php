@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Network Landing Pages
-Description: Makes Landing pages
+Description: Makes a custom post type called Networks. Network posts can have sites associated with them so that it serves as a landing page for a Network grouping of sites. The page can contain a custom header image (featured image), a description and contact fields. The post type can be further customized as needed.
 Version: 1
 Author: Pea, Glocal
 Author URI: http://glocal.coop
