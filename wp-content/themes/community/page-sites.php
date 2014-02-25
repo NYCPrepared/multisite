@@ -18,13 +18,13 @@
 										<?php // This is currently using a plugin based on Blog Topics, should be changed if we decide to use something else
 
 										if (function_exists('cets_get_used_topics')) { ?>
-										<ul id="filter site-categories">
-											<li id="category-all">All Categories</li>
+										<ul id="filter site-topics">
+											<li id="category-all">All Topics</li>
 											<?php
 											$topics = cets_get_used_topics();
 											foreach ($topics as $topic) {											
 											?>
-												<li id="category-<?php echo $topic->slug; ?>"><?php echo $topic->topic_name; ?></li>
+												<li id="topic-<?php echo $topic->slug; ?>"><?php echo $topic->topic_name; ?></li>
 											<?php } ?>
 										</ul>
 										<?php } ?>
@@ -94,7 +94,7 @@
 												$topic_name = cets_get_blog_topic_name($site_id);
 												$topic_slug = cets_get_blog_topic_slug($site_id); 
 											} ?>
-											<li class="site-<?php echo $site_slug; ?> category-<?php if($location_name) { echo $topic_slug; } ?> network-<?php foreach($network_query as $post){ echo $post->post_name;} ?> location-<?php if($location_name) { echo $location_slug; } ?> ">
+											<li class="site-<?php echo $site_slug; ?> topic-<?php if($location_name) { echo $topic_slug; } ?> network-<?php foreach($network_query as $post){ echo $post->post_name;} ?> location-<?php if($location_name) { echo $location_slug; } ?> ">
 												<div class="site-image <?php if(!$site_image) { echo 'no-image'; } ?>"><?php if($site_image) { ?><img src="<?php echo $site_image; ?>" class="site-image"><?php } ?></div>
 												<h3 class="site-title"><a href="<?php echo $site_details->siteurl; ?>"><?php echo $site_details->blogname; ?></a></h3>
 												<div class="meta site-network"><a href="/network/<?php foreach ($network_query as $post) { echo $post->post_name;} ?>/"><?php foreach($network_query as $post){ echo $post->post_title;} ?></a></div>
