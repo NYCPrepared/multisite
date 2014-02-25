@@ -83,10 +83,6 @@
 												),
 											);
 											$network_query = new WP_Query( $args );
-											echo $site_id;
-
-											// Get Site ID
-											// 
 											
 											?>
 											<?php 
