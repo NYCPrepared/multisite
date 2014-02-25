@@ -21,7 +21,7 @@
 
 									<ul class="post-list">
 									<?php
-									$posts = get_posts('post_type=site_networks');
+									$posts = get_posts('post_type=network');
 									foreach ($posts as $post) {
 									?>
 
