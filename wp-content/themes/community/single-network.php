@@ -65,7 +65,6 @@
 										'wrapper_block_css'=> 'network-posts',
 										'instance'         => 'network-posts',
 										'blog_id'          => $blog_list,
-										'category'         => 'News',
 										'number_posts'     => '25', 
 									);
 									// Execute

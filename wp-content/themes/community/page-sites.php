@@ -71,9 +71,9 @@
 											$site_path = $site_details->path;
 											$site_slug = trim($site_path,'/');
 
-											// Find Network pages that are assciated with this site
+											// Find Network pages that are associated with this site
 											$args = array (
-												'post_type'              => 'site_networks',
+												'post_type'              => 'network',
 												'meta_query'             => array(
 													array(
 														'key'       => 'community_network_sites',
@@ -83,6 +83,11 @@
 												),
 											);
 											$network_query = new WP_Query( $args );
+											echo $site_id;
+
+											// Get Site ID
+											// 
+											
 											?>
 											<?php 
 											if(function_exists('glo_get_blog_location_name')) { 
@@ -94,7 +99,7 @@
 												$topic_name = cets_get_blog_topic_name($site_id);
 												$topic_slug = cets_get_blog_topic_slug($site_id); 
 											} ?>
-											<li class="site-<?php echo $site_slug; ?> topic-<?php if($location_name) { echo $topic_slug; } ?> network-<?php foreach($network_query as $post){ echo $post->post_name;} ?> location-<?php if($location_name) { echo $location_slug; } ?> ">
+											<li class="id-<?php echo $site_id; ?> site-<?php echo $site_slug; ?> topic-<?php if($location_name) { echo $topic_slug; } ?> network-<?php foreach($network_query as $post){ echo $post->post_name;} ?> location-<?php if($location_name) { echo $location_slug; } ?> ">
 												<div class="site-image <?php if(!$site_image) { echo 'no-image'; } ?>"><?php if($site_image) { ?><img src="<?php echo $site_image; ?>" class="site-image"><?php } ?></div>
 												<h3 class="site-title"><a href="<?php echo $site_details->siteurl; ?>"><?php echo $site_details->blogname; ?></a></h3>
 												<div class="meta site-network"><a href="/network/<?php foreach ($network_query as $post) { echo $post->post_name;} ?>/"><?php foreach($network_query as $post){ echo $post->post_title;} ?></a></div>
