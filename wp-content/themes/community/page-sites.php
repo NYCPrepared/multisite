@@ -19,7 +19,7 @@
 
 										if (function_exists('cets_get_used_topics')) { ?>
 										<ul id="filter site-topics">
-											<li id="category-all">All Topics</li>
+											<li id="topic-all">All Topics</li>
 											<?php
 											$topics = cets_get_used_topics();
 											foreach ($topics as $topic) {											
