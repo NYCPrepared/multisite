@@ -48,7 +48,6 @@ div.css-search {
         }
         div.em-search-geo {
             @extend %ios7-pin;
-            display: none;
             @include breakpoint(tiny) {display: inline-block;}
         }
         .em-search-submit {
@@ -103,7 +102,7 @@ div.css-search {
     .event-header {
         @include breakpoint(small) {@include span-columns(2);}
         .meta {
-            margin: .5em 0;
+            margin: .35em 0;
             line-height: 1.5;
         }
         span {
@@ -132,6 +131,7 @@ div.css-search {
     }
     .event-location {
         color: $quiet-color;
+        margin-bottom: 1em;
         span {
             display: block;
             @include breakpoint(tiny) {display: inline; padding-right: 5px; &:after {content: ' /';}}
@@ -139,7 +139,7 @@ div.css-search {
         }
     }
     .event-description {
-        margin: .5em 0;
+        margin-bottom: 1em;
     }
 }
 
