@@ -3132,7 +3132,7 @@ div.css-search {
       display: none; }
       @media (min-width: 321px) {
         div.css-search div.em-search-main div.em-search-geo {
-          display: block; } }
+          display: inline-block; } }
     div.css-search div.em-search-main .em-search-submit {
       font-size: 28px;
       font-size: 1.75rem;
@@ -3157,9 +3157,6 @@ div.css-search {
         display: inline-block;
         color: inherit;
         vertical-align: middle; }
-      @media (min-width: 321px) {
-        div.css-search div.em-search-main .em-search-submit {
-          top: auto; } }
       div.css-search div.em-search-main .em-search-submit img {
         display: none; }
       div.css-search div.em-search-main .em-search-submit:hover {
@@ -3195,12 +3192,16 @@ div.css-search {
       .css-events-list .event-header:last-child {
         margin-right: 0; } }
   .css-events-list .event-header .meta {
-    margin: .5em 0; }
+    margin: .5em 0;
+    line-height: 1.5; }
   .css-events-list .event-header span {
     padding-right: 5px; }
     @media (min-width: 481px) {
       .css-events-list .event-header span {
         display: block; } }
+  .css-events-list .event-header .event-time {
+    font-size: 75%;
+    margin-top: .75em; }
   @media (min-width: 481px) {
     .css-events-list .event-content {
       display: block;
@@ -3212,7 +3213,8 @@ div.css-search {
   .css-events-list .event-image {
     border: 5px solid white; }
     .css-events-list .event-image img {
-      display: block; }
+      display: block;
+      margin: 0; }
     @media (min-width: 769px) {
       .css-events-list .event-image {
         float: right;
@@ -3222,7 +3224,10 @@ div.css-search {
         margin-left: 20px;
         margin-bottom: 10px; } }
   .css-events-list .event-title {
-    margin: .25em 0; }
+    margin: .75em 0 .25em; }
+    @media (min-width: 769px) {
+      .css-events-list .event-title {
+        margin-top: .25em; } }
   .css-events-list .event-location {
     color: #b8b6b2; }
     .css-events-list .event-location span {
@@ -3237,6 +3242,15 @@ div.css-search {
         content: ''; }
   .css-events-list .event-description {
     margin: .5em 0; }
+
+#em-wrapper > p:last-child, .news #em-wrapper > .module-heading:last-child,
+.events #em-wrapper > .module-heading:last-child,
+.sites #em-wrapper > .module-heading:last-child {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-top: 20px;
+  clear: both;
+  color: #d1cfcb; }
 
 .single-event .byline {
   display: none; }
