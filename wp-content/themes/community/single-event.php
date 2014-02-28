@@ -39,11 +39,15 @@
 									<div class="tools"><a href="<?php echo $EM_Event->output('#_EVENTICALURL'); ?>" class="add-to-calendar button">Add to Calendar</a></div>
 								</section>
 
-								<section class="event-description"><?php echo $EM_Event->output('#_EVENTNOTES'); ?></section>
+								<section class="event-description">
+								
+								    <?php echo $EM_Event->output('#_EVENTNOTES'); ?>
+								
+    								<?php if($EM_Event->location_id) { ?>
+    								<div class="event-map"><?php echo $EM_Event->output('#_MAP'); ?></div>
+    								<?php } ?>
 
-								<?php if($EM_Event->location_id) { ?>
-								<section class="event-map"><?php echo $EM_Event->output('#_MAP'); ?></section>
-								<?php } ?>
+								</section>
 
 								<footer class="event-footer">
 									<div class="meta categories"><?php echo $EM_Event->output('#_EVENTCATEGORIES'); ?></div>
