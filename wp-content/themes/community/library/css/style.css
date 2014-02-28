@@ -2355,7 +2355,10 @@ img, video, object {
 ******************************************************************/
 form {
   background: #e6e4df;
-  padding: 40px; }
+  padding: 20px; }
+  @media (min-width: 481px) {
+    form {
+      padding: 40px; } }
   form p, form .news .module-heading, .news form .module-heading,
   form .events .module-heading,
   .events form .module-heading,
@@ -3262,7 +3265,8 @@ div.css-search {
     .single-event .event-image {
       max-height: 300px; } }
   .single-event .event-image img {
-    border: 0; }
+    border: 0;
+    display: block; }
 @media (min-width: 481px) {
   .single-event .event-details {
     float: left;
@@ -3276,9 +3280,26 @@ div.css-search {
     display: block; } }
 .single-event .date-time,
 .single-event .location {
-  margin: .75em 0; }
+  margin: .75em 0;
+  line-height: 1.5; }
+  @media (min-width: 481px) {
+    .single-event .date-time,
+    .single-event .location {
+      margin-bottom: 1.5em; } }
+  .single-event .date-time span,
+  .single-event .location span {
+    margin-right: 5px; }
+.single-event .event-time,
+.single-event .location-address {
+  font-size: 75%;
+  margin-top: .75em;
+  display: block; }
 .single-event .tools {
-  margin-top: 2em; }
+  margin: 1.5em 0;
+  margin-right: 10px; }
+  @media (min-width: 481px) {
+    .single-event .tools {
+      margin-top: 2.25em; } }
 .single-event .event-description {
   margin: 2em 0; }
   @media (min-width: 481px) {

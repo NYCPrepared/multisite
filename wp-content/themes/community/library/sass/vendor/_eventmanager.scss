@@ -167,11 +167,11 @@ div.css-search {
         @include breakpoint(small) {max-height: 300px;}
         img {
             border: 0;
+            display: block;
         }
     }
     .event-details {
         @include breakpoint(small) {float: left; width: 33%;}
-        
         h4 span {
             @include breakpoint(small) {display: block;}
         }
@@ -179,9 +179,22 @@ div.css-search {
     .date-time, 
     .location {
         margin: .75em 0;
+        line-height: 1.5;
+        @include breakpoint(small) {margin-bottom: 1.5em;}        
+        span {
+            margin-right: 5px;
+        }
+    }
+    .event-time,
+    .location-address {
+        font-size: 75%;
+        margin-top: .75em;
+        display: block;
     }
     .tools {
-        margin-top: 2em;
+        margin: 1.5em 0;
+        margin-right: 10px;
+        @include breakpoint(small) {margin-top: 2.25em;}        
     }
     .event-description {
         margin: 2em 0;

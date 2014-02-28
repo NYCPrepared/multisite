@@ -5,7 +5,8 @@
 
 form {
     background: $gray8;
-    padding: 40px;
+    padding: 20px;
+    @include breakpoint(small) {padding: 40px;}        
     p {
         margin-bottom: .25em; // since Wordpress wraps everything in paragraph tags
     }
