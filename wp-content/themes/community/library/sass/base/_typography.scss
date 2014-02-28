@@ -40,7 +40,7 @@ ul, ol, dd,
 p, figure,
 pre, table, fieldset, hr{
     margin-top: 0;
-    margin-bottom: 1.5rem; // equal to body line-height for vertical rhythm
+    margin-bottom: 1.5rem; // equal to body line-height to create vertical rhythm
 }
 
 
@@ -122,6 +122,7 @@ input, label, select, textarea {
     @include font-size($body-size-s);
 	margin-bottom: .75em;
 	font-family: $sans;
+	font-weight: 300;
 	@include breakpoint(medium) {@include font-size($body-size-m);}
 	@include breakpoint(large) {@include font-size($body-size-l);}
 }

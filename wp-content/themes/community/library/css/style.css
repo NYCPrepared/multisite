@@ -894,7 +894,8 @@ input, label, select, textarea {
   font-size: 16px;
   font-size: 1rem;
   margin-bottom: .75em;
-  font-family: "Lato", Helvetica, Verdana, sans-serif; }
+  font-family: "Lato", Helvetica, Verdana, sans-serif;
+  font-weight: 300; }
   @media (min-width: 769px) {
     input, label, select, textarea {
       font-size: 17px;
@@ -3064,11 +3065,6 @@ div.css-search {
   max-width: 800px; }
   div.css-search div.em-search-main {
     position: relative; }
-    div.css-search div.em-search-main div {
-      display: block; }
-      @media (min-width: 321px) {
-        div.css-search div.em-search-main div {
-          display: inline; } }
     div.css-search div.em-search-main div.em-search-field {
       background: transparent;
       padding: 0;
@@ -3132,6 +3128,11 @@ div.css-search {
             div.css-search div.em-search-main div.em-search-field input:-ms-input-placeholder {
               font-size: 24px;
               font-size: 1.5rem; } }
+    div.css-search div.em-search-main div.em-search-geo {
+      display: none; }
+      @media (min-width: 321px) {
+        div.css-search div.em-search-main div.em-search-geo {
+          display: block; } }
     div.css-search div.em-search-main .em-search-submit {
       font-size: 28px;
       font-size: 1.75rem;
@@ -3144,8 +3145,7 @@ div.css-search {
       padding: 0;
       border: 0;
       margin: 0;
-      top: auto;
-      bottom: 12px;
+      top: 7px;
       right: 0; }
       div.css-search div.em-search-main .em-search-submit:before {
         font-family: "ios7-icon";
@@ -3159,8 +3159,7 @@ div.css-search {
         vertical-align: middle; }
       @media (min-width: 321px) {
         div.css-search div.em-search-main .em-search-submit {
-          bottom: auto;
-          top: 10px; } }
+          top: auto; } }
       div.css-search div.em-search-main .em-search-submit img {
         display: none; }
       div.css-search div.em-search-main .em-search-submit:hover {
@@ -3182,27 +3181,7 @@ div.css-search {
   .css-events-list a {
     color: #00a99d; }
   .css-events-list .event-list-header {
-    display: none;
-    width: 100%; }
-    @media (min-width: 481px) {
-      .css-events-list .event-list-header {
-        display: block; } }
-    .css-events-list .event-list-header span {
-      display: inline;
-      text-transform: uppercase;
-      letter-spacing: 1px; }
-      @media (min-width: 321px) {
-        .css-events-list .event-list-header span {
-          display: inline;
-          padding-right: 5px; } }
-    @media (min-width: 481px) {
-      .css-events-list .event-list-header .event-list-date {
-        display: block;
-        float: left;
-        margin-right: 1.75788%;
-        width: 10.96186%; }
-        .css-events-list .event-list-header .event-list-date:last-child {
-          margin-right: 0; } }
+    display: none; }
   .css-events-list .event {
     border-top: 1px solid #b8b6b2;
     padding: 10px 0;
@@ -3232,13 +3211,16 @@ div.css-search {
         margin-right: 0; } }
   .css-events-list .event-image {
     border: 5px solid white; }
+    .css-events-list .event-image img {
+      display: block; }
     @media (min-width: 769px) {
       .css-events-list .event-image {
         float: right;
         width: 33%;
         height: auto;
         max-height: 300px;
-        margin-left: 20px; } }
+        margin-left: 20px;
+        margin-bottom: 10px; } }
   .css-events-list .event-title {
     margin: .25em 0; }
   .css-events-list .event-location {
