@@ -3292,8 +3292,11 @@ div.css-search {
 .single-event .event-time,
 .single-event .location-address {
   font-size: 75%;
-  margin-top: .75em;
   display: block; }
+  @media (min-width: 481px) {
+    .single-event .event-time,
+    .single-event .location-address {
+      margin-top: .75em; } }
 .single-event .tools {
   margin: 1.5em 0;
   margin-right: 10px; }
@@ -3308,14 +3311,15 @@ div.css-search {
       padding-right: 20px; } }
 .single-event .event-map {
   width: 100%;
+  height: 220px;
+  overflow: hidden;
   margin-bottom: 2em; }
   @media (min-width: 481px) {
     .single-event .event-map {
       padding-left: 34%; } }
 .single-event .em-location-map-container {
-  border: 5px solid white;
   width: 100%;
-  height: 220px; }
+  height: 100%; }
 .single-event .event-footer {
   clear: both; }
 
