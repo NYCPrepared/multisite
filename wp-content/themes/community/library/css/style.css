@@ -3515,6 +3515,11 @@ ul.event-categories {
   #nav_menu-3 ul,
   #nav_menu-2 ul {
     border-top: 0; }
+  #nav_menu-5 a:hover,
+  #nav_menu-4 a:hover,
+  #nav_menu-3 a:hover,
+  #nav_menu-2 a:hover {
+    color: #333231; }
   #nav_menu-5 li:first-child,
   #nav_menu-4 li:first-child,
   #nav_menu-3 li:first-child,
@@ -3539,12 +3544,15 @@ ul.event-categories {
     #nav_menu-4 li:first-child:before,
     #nav_menu-3 li:first-child:before,
     #nav_menu-2 li:first-child:before {
-      -webkit-transition: border-color 0.25s ease;
-      -moz-transition: border-color 0.25s ease;
-      transition: border-color 0.25s ease; }
-    #nav_menu-5 li:first-child:hover:before,
+      -webkit-transition: color 0.25s ease;
+      -moz-transition: color 0.25s ease;
+      transition: color 0.25s ease; }
+    #nav_menu-5 li:first-child:hover a, #nav_menu-5 li:first-child:hover:before,
+    #nav_menu-4 li:first-child:hover a,
     #nav_menu-4 li:first-child:hover:before,
+    #nav_menu-3 li:first-child:hover a,
     #nav_menu-3 li:first-child:hover:before,
+    #nav_menu-2 li:first-child:hover a,
     #nav_menu-2 li:first-child:hover:before {
       color: #333231; }
     #nav_menu-5 li:first-child a,

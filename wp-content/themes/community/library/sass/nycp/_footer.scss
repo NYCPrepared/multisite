@@ -53,13 +53,17 @@
     ul {
         border-top: 0;
     }
+    a:hover {
+        color: $text-color;
+    }
     li:first-child {
         @include font-size(28); 
         @include font-icon-base($family:"ios7-icon", $margin: 10px, $color: $teal); 
         padding-top: 0;
         &:before {
-            @include transition (border-color 0.25s ease);
+            @include transition (color 0.25s ease);
         }
+        &:hover a,
         &:hover:before {
             color: $text-color;
         }
