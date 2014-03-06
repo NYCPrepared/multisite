@@ -4,7 +4,11 @@ Author: Pea, Glocal
 URL: htp://glocal.coop
 */
 
-require_once( 'library/community-rss-widget.php' );
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
+// require_once( 'library/community-rss-widget.php' );
+
+// Custom header support
 
 $args = array(
 	'flex-width'    => true,
@@ -12,13 +16,19 @@ $args = array(
 	'flex-height'    => true,
 	'height'        => 0,
 );
+
 add_theme_support( 'custom-header', $args );
 
+// Remove default RSS feed widget
 
-function unregister_default_wp_widgets() {
-    unregister_widget('WP_Widget_RSS');
+if ( is_plugin_active('partner-rss-feed/partner-rss-widget.php') ) { 
+// If the partner rss feed is active, hide the default feed widget
+
+	function unregister_default_wp_widgets() {
+	    unregister_widget('WP_Widget_RSS');
+	}
+	add_action('widgets_init', 'unregister_default_wp_widgets', 1);
+
 }
-add_action('widgets_init', 'unregister_default_wp_widgets', 1);
-
 
 ?>

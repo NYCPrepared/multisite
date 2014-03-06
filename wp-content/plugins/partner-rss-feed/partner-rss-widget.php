@@ -1,21 +1,21 @@
 <?php
 /*
-Plugin Name: Community RSS Feed
+Plugin Name: Partner RSS Feed
 Description: This plugin will display a customized RSS feed.
 Version: 1
 Author: Pea, Glocal
 Author URI: http://glocal.coop
-Text Domain: community-rss-widget
+Text Domain: partner-rss-widget
   
 */
 
 /**
- * CommunityRSSWidget Class
+ * PartnerRSSWidget Class
  */
-class CommunityRSSWidget extends WP_Widget {
+class PartnerRSSWidget extends WP_Widget {
     /** constructor */
-    function CommunityRSSWidget() {
-        parent::WP_Widget(false, $name = 'Community RSS Widget');  
+    function PartnerRSSWidget() {
+        parent::WP_Widget(false, $name = 'Partner RSS Widget');  
     }
 
     /** @see WP_Widget::widget */
@@ -32,7 +32,7 @@ class CommunityRSSWidget extends WP_Widget {
         ?>
 
         <header class="page-header">
-            <h2 class="page-title"><?php _e( $title, 'community-rss-widget' ); ?></h2>
+            <h2 class="page-title"><?php _e( $title, 'partner-rss-widget' ); ?></h2>
         </header>
 
         <?php // Get RSS Feed(s)
@@ -53,7 +53,7 @@ class CommunityRSSWidget extends WP_Widget {
         <?php echo $before_widget; ?>
             <?php if ( $maxitems == 0 ) : ?>
                 <article id="partner-page" class="partner post news">
-                    <?php _e( 'No items', 'community-rss-widget' ); ?>
+                    <?php _e( 'No items', 'partner-rss-widget' ); ?>
                 </article>
             <?php else : ?>
             <?php foreach ( $rss_items as $item ) : ?>
@@ -70,7 +70,7 @@ class CommunityRSSWidget extends WP_Widget {
                     </header>
                     <section class="post-body">
                         <h3 class="post-title"><a href="<?php echo esc_url( $item->get_permalink() ); ?>"
-                            title="<?php printf( __( 'Posted %s', 'community-rss-widget' ), $item->get_date('j F Y | g:i a') ); ?>">
+                            title="<?php printf( __( 'Posted %s', 'partner-rss-widget' ), $item->get_date('j F Y | g:i a') ); ?>" target="_blank">
                             <?php echo esc_html( $item->get_title() ); ?>
                         </a></h3>
                         <div class="post-excerpt"><?php echo $excerpt; ?> <a href="<?php echo esc_url( $item->get_permalink() ); ?>" target="_blank">...</a></div>
@@ -104,8 +104,8 @@ class CommunityRSSWidget extends WP_Widget {
     <?php 
     }
 
-} // class CommunityRSSWidget
-// register CommunityRSSWidget widget
-add_action('widgets_init', create_function('', 'return register_widget("CommunityRSSWidget");'));
+} // class PartnerRSSWidget
+// register PartnerRSSWidget widget
+add_action('widgets_init', create_function('', 'return register_widget("PartnerRSSWidget");'));
 
 ?>
