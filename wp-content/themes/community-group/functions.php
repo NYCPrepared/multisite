@@ -6,9 +6,10 @@ URL: htp://glocal.coop
 
 $args = array(
 	'flex-width'    => true,
-	'width'         => 0,
+	'width'         => 960,
 	'flex-height'    => true,
-	'height'        => 0,
+	'height'        => 300,
+	'header-text'   => false,
 );
 add_theme_support( 'custom-header', $args );
 

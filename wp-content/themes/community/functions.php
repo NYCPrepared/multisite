@@ -291,6 +291,7 @@ function bones_wpsearch($form) {
 	return $form;
 } // don't remove this bracket!
 
+/************* Get Global Navigation from Site 1 *****************/
 
 function community_navigation() {
 
@@ -309,6 +310,25 @@ function community_navigation() {
 
 	return $community_nav;
 }
+
+/************* Get Custom Header Images from Other Sites *****************/
+
+function community_get_site_image($site_id) {
+	//store the current blog_id being viewed
+	global $blog_id;
+	$current_blog_id = $blog_id;
+
+	//switch to the main blog designated in $site_id
+	switch_to_blog($site_id);
+
+	$site_image = get_custom_header();
+
+	//switch back to the current blog being viewed
+	switch_to_blog($current_blog_id);
+
+	return $site_image->thumbnail_url;
+}
+
 
 
 /************* Add Slug to Body Class *****************/

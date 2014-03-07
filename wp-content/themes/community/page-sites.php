@@ -95,8 +95,13 @@
 												$topic_name = cets_get_blog_topic_name($site_id);
 												$topic_slug = cets_get_blog_topic_slug($site_id); 
 											} ?>
+											<?php
+											if(function_exists('community_get_site_image')) {
+												$header = community_get_site_image($site_id);
+											} ?>
+
 											<li class="id-<?php echo $site_id; ?> site-<?php echo $site_slug; ?> topic-<?php if($location_name) { echo $topic_slug; } ?> network-<?php foreach($network_query as $post){ echo $post->post_name;} ?> location-<?php if($location_name) { echo $location_slug; } ?> ">
-												<div class="site-image <?php if(!$site_image) { echo 'no-image'; } ?>"><?php if($site_image) { ?><img src="<?php echo $site_image; ?>" class="site-image"><?php } ?></div>
+												<div class="site-image <?php if(!$header) { echo 'no-image'; } ?>"><?php if($header) { ?><img src="<?php echo $header; ?>" class="site-image"><?php } ?></div>
 												<h3 class="site-title"><a href="<?php echo $site_details->siteurl; ?>"><?php echo $site_details->blogname; ?></a></h3>
 												<div class="meta site-network"><a href="/network/<?php foreach ($network_query as $post) { echo $post->post_name;} ?>/"><?php foreach($network_query as $post){ echo $post->post_title;} ?></a></div>
 												<div class="meta site-location"><?php if($location_name) { echo $location_name; } ?></div>
