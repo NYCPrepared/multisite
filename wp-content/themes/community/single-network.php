@@ -39,11 +39,7 @@
 					<?php endwhile; ?>
 					<?php endif; ?>
 
-					<?php if ( is_active_sidebar( 'site_networks' ) ) { ?>
-
-						<?php get_sidebar ('site_networks'); ?>
-
-					<?php } ?>
+					<?php get_sidebar ('site_networks'); ?>
 
 					<div id="main" class="network-main clearfix" role="main">
 
