@@ -114,6 +114,36 @@
 									
 								</section>
 
+								<section class="entry-content clearfix" itemprop="articleBody" rel="main">
+
+									<ul class="network-list">
+										<?php
+											$networks = get_posts('post_type=network');
+											foreach ($networks as $network) {
+												setup_postdata($post);
+												$thumbnail = get_the_post_thumbnail($network->ID, 'thumbnail');
+												$content = get_the_content(' ...');
+												$permalink = get_permalink($network->ID);
+												if(function_exists('get_excerpt_by_id')) {
+													$excerpt = get_excerpt_by_id($network->ID, '25');
+												} else {
+													$excerpt = $network->post_content;
+												}
+
+											?>
+												<li id="network-<?php echo $network->post_name; ?>">
+													<div class="network-image post-image"><?php echo $thumbnail; ?></div>
+													<h3 class="network-title post-title"><a href="<?php echo $permalink; ?>"><?php echo $network->post_title; ?></a></h3>
+													<div class="network-excerpt post-excerpt">
+														<?php echo $excerpt; ?>
+													</div>
+												</li>
+											<?php } ?>
+
+									</ul>
+									
+								</section>
+
 								<footer class="article-footer">
 
 									<?php ?>
