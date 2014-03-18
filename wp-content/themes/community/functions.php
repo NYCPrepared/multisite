@@ -329,8 +329,6 @@ function community_get_site_image($site_id) {
 	return $site_image->thumbnail_url;
 }
 
-
-
 /************* Add Slug to Body Class *****************/
 
 // Add specific CSS class by filter
@@ -342,6 +340,25 @@ function community_class_names($classes) {
 	$classes[] = $post_slug_class . ' page-' . $post_slug_class;
 	// return the $classes array
 	return $classes;
+}
+
+/************* Custom Excerpt *****************/
+
+function get_excerpt_by_id($post_id, $length='55', $trailer=' ...') {
+	$the_post = get_post($post_id); //Gets post ID
+	$the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
+	$excerpt_length = $length; //Sets excerpt length by word count
+	$the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); //Strips tags and images
+	$words = explode(' ', $the_excerpt, $excerpt_length + 1);
+
+	if(count($words) > $excerpt_length) :
+		array_pop($words);
+		$trailer = '<a href="' . get_permalink($post_id) . '">' . $trailer . '</a>';
+		array_push($words, $trailer);
+		$the_excerpt = implode(' ', $words);
+	endif;
+	// $the_excerpt = '<p>' . $the_excerpt . '</p>';
+	return $the_excerpt;
 }
 
 
