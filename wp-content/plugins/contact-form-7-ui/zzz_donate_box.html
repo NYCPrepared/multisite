@@ -1,0 +1,119 @@
+<!-- v.1.0.1 -->
+<style>
+    .app_donation_box00 {
+        margin: 0;
+        padding:5px;
+        background-color: #ffffcc;
+    }
+</style>
+
+<div class="app_donation_box">
+    <script>
+        /*
+    based on the ww_recurring checkbox's status we'll submit the correct form.
+    1st one is regular
+    2nd is the recurring
+        <br/>
+        <label for="ww_recurring"> <input type="checkbox" id="ww_recurring" name="ww_recurring" value="1" /> I love your work so much so I am going to donate every month! </label>
+        https://www.paypalobjects.com/en_US/ebook/subscriptions/html.html
+         */
+
+
+        function app_handle_donation() {
+            // validation of the amount field
+            var chosen_form;
+            var amt = jQuery('#my_amount').val();
+            amt = amt.replace(/[\s\,]/, ''); // no spaces/commas
+            amt = amt.replace(/\.$/, ''); // no dots at the end
+
+            var is_num = /^\d+(\.\d{0,2})?$/;
+
+            if (amt <= 0 || !is_num.test(amt)) {
+                alert('Invalid amount. You entered: ' + (amt || 'an empty string') + '');
+                jQuery('#my_amount').focus();
+        
+                return false;
+            }
+
+            chosen_form = jQuery('#ww_recurring').is(':checked') ? jQuery('#form_donate_regularly') : jQuery('#form_donate_once');
+            jQuery('#amount',  jQuery(chosen_form)).val(amt);
+            jQuery(chosen_form).submit();
+
+            return false;
+        }
+    </script>
+
+    <noscript>
+    <div class="error">This page cannot function properly without JavaScript!</div>
+    </noscript>
+
+    <!--<h2>Donation</h2>-->
+    <p>Software development is costly. Please consider donating to support this and future plugins. </p>
+
+    %%MSG%%
+
+    $<input type="text" id="my_amount" name="my_amount" value="%%AMOUNT%%" style="width:58px !important;" /> USD
+    <br/>
+    <label for="ww_recurring"> <input type="checkbox" id="ww_recurring" name="ww_recurring" value="1" /> I love your work so much so I am going to donate every month! </label>
+
+    <div>
+        <input type="image" src="http://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!"
+               onclick="return app_handle_donation();" onerror="this.src='%%PLUGIN_URL%%/zzz_media/btn_donate_LG.gif';" />
+    </div>
+
+    <!-- normal form -->
+    <form name="form_donate_once" id="form_donate_once" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+        <input type="hidden" name="cmd" value="_xclick" />
+        <input type="hidden" name="business" value="%%BUSINESS_EMAIL%%" />
+        <input type="hidden" name="item_name" value="%%ITEM_NAME%%" />
+        <input type="hidden" name="custom" value="%%CUSTOM%%" />
+        <input type="hidden" name="notify_url" value="%%NOTIFY_URL%%" />
+        <input type="hidden" name="return" value="%%RETURN_URL%%" />
+        <input type="hidden" name="cancel_return" value="%%CANCEL_URL%%" />
+        <input type="hidden" id="amount" name="amount" value="0" />
+        <input type="hidden" name="no_shipping" value="1" />
+        <input type="hidden" name="rm" value="2" />
+        <input type="hidden" name="currency_code" value="USD" />
+    </form>
+    <!-- /normal form -->
+
+    <!-- monthly form : https://www.paypalobjects.com/en_US/ebook/subscriptions/html.html -->
+    <form name="form_donate_regularly" id="form_donate_regularly" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+        <input type="hidden" name="cmd" value="_xclick-subscriptions" />
+
+        <input type="hidden" id="amount" name="a3" value="0" />
+        <input type="hidden" name="t3" value="M" />
+        <input type="hidden" name="p3" value="1" />
+
+        <input type="hidden" name="business" value="%%BUSINESS_EMAIL%%" />
+        <input type="hidden" name="item_number" value="%%ITEM_NAME_REGULARLY%%" />
+        <input type="hidden" name="custom" value="%%CUSTOM%%" />
+        <input type="hidden" name="item_name" value="%%ITEM_NAME_REGULARLY%%" />
+        <input type="hidden" name="currency_code" value="USD" />
+        <input type="hidden" name="no_note" value="1" />
+        <input type="hidden" name="no_shipping" value="1" />
+        <input type="hidden" name="rm" value="2" />
+        <input type="hidden" name="sra" value="1" />
+        <input type="hidden" name="src" value="1" />
+        <input type="hidden" name="notify_url" value="%%NOTIFY_URL%%" />
+        <input type="hidden" name="return" value="%%RETURN_URL%%" />
+        <input type="hidden" name="cancel_return" value="%%CANCEL_URL%%" />
+    </form>
+    <!-- /monthly form -->
+
+    <div>
+        <span class="social_links">
+            <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Ffacebook.com%2FOrbisius&amp;width=250&amp;height=100&amp;colorscheme=light&amp;show_faces=false&amp;border_color&amp;stream=true&amp;header=true&amp;appId=142797889159780" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:250px; height:100px;" allowTransparency="true"></iframe>
+
+
+            <a href="https://twitter.com/Orbisius" class=
+            "twitter-follow-button" data-show-count="false">Follow @Orbisius</a>
+
+            <script type="text/javascript">
+            //<![CDATA[
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+            //]]>
+            </script>
+		</span>
+    </div>
+</div>

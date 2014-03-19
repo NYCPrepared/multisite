@@ -1,0 +1,24 @@
+
+.app_hide {
+	display: none;
+}
+
+.success, .app_success {
+    color: green;
+}
+
+.app_error, .app_delete_button {
+    color: red;
+}
+
+/*.app_message_box {
+    _margin: 5px 5px 15px;
+    margin: 0;
+    padding:5px;
+    background-color: #ffffcc;
+}*/
+
+/* .asterisk is for the *naked* newsletter signup form (mailchimp) */
+.asterisk, .app_asterisk {
+    color: red;
+}

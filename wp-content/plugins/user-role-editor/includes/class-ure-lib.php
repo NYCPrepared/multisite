@@ -140,7 +140,7 @@ class Ure_Lib extends Garvs_WP_Lib {
     public function editor() {
 
         if (!$this->editor_init0()) {
-            $this->show_message(__('Error: wrong request', 'URE'));
+            $this->show_message(esc_html__('Error: wrong request', 'URE'));
             return false;
         }                
         $this->process_user_request();
@@ -172,18 +172,18 @@ class Ure_Lib extends Garvs_WP_Lib {
 <!-- popup dialogs markup -->
 <div id="ure_add_role_dialog" class="ure-modal-dialog" style="padding: 10px;">
   <form id="ure_add_role_form" name="ure_add_role_form" method="POST">    
-    <div class="ure-label"><?php echo __('Role name (ID): ', 'ure'); ?></div>
+    <div class="ure-label"><?php esc_html_e('Role name (ID): ', 'ure'); ?></div>
     <div class="ure-input"><input type="text" name="user_role_id" id="user_role_id" size="25"/></div>
-    <div class="ure-label"><?php echo __('Display Role Name: ', 'ure'); ?></div>
+    <div class="ure-label"><?php esc_html_e('Display Role Name: ', 'ure'); ?></div>
     <div class="ure-input"><input type="text" name="user_role_name" id="user_role_name" size="25"/></div>
-    <div class="ure-label"><?php echo __('Make copy of: ', 'ure'); ?></div>
+    <div class="ure-label"><?php esc_html_e('Make copy of: ', 'ure'); ?></div>
     <div class="ure-input"><?php echo $this->role_to_copy_html; ?></div>        
   </form>
 </div>
 
 <div id="ure_delete_role_dialog" class="ure-modal-dialog">
   <div style="padding:10px;">
-    <div class="ure-label"><?php _e('Select Role:', 'ure');?></div>
+    <div class="ure-label"><?php esc_html_e('Select Role:', 'ure');?></div>
     <div class="ure-input"><?php echo $this->role_delete_html; ?></div>
   </div>
 </div>
@@ -198,14 +198,14 @@ class Ure_Lib extends Garvs_WP_Lib {
 
 <div id="ure_delete_capability_dialog" class="ure-modal-dialog">
   <div style="padding:10px;">
-    <div class="ure-label"><?php _e('Delete:', 'ure');?></div>
+    <div class="ure-label"><?php esc_html_e('Delete:', 'ure');?></div>
     <div class="ure-input"><?php echo $this->capability_remove_html; ?></div>
   </div>  
 </div>
 
 <div id="ure_add_capability_dialog" class="ure-modal-dialog">
   <div style="padding:10px;">
-    <div class="ure-label"><?php echo __('Capability name (ID): ', 'ure'); ?></div>
+    <div class="ure-label"><?php esc_html_e('Capability name (ID): ', 'ure'); ?></div>
     <div class="ure-input"><input type="text" name="capability_id" id="capability_id" size="25"/></div>
   </div>  
 </div>     
@@ -319,7 +319,8 @@ class Ure_Lib extends Garvs_WP_Lib {
     protected function init_current_role_name() {
         
         if (!isset($this->roles[$_POST['user_role']])) {
-            $mess = __('Error: ', 'ure') . __('Role', 'ure') . ' <em>' . esc_html($_POST['user_role']) . '</em> ' . __('does not exist', 'ure');
+            $mess = esc_html__('Error: ', 'ure') . esc_html__('Role', 'ure') . ' <em>' . esc_html($_POST['user_role']) . '</em> ' . 
+                    esc_html__('does not exist', 'ure');
             $this->current_role = '';
             $this->current_role_name = '';
         } else {
@@ -362,27 +363,27 @@ class Ure_Lib extends Garvs_WP_Lib {
                     $mess .= '<br/>';
                 }
                 if (!$this->apply_to_all) {
-                    $mess = __('Role is updated successfully', 'ure');
+                    $mess = esc_html__('Role is updated successfully', 'ure');
                 } else {
-                    $mess = __('Roles are updated for all network', 'ure');
+                    $mess = esc_html__('Roles are updated for all network', 'ure');
                 }
             } else {
                 if ($mess) {
                     $mess .= '<br/>';
                 }
-                $mess = __('Error occured during role(s) update', 'ure');
+                $mess = esc_html__('Error occured during role(s) update', 'ure');
             }
         } else {
             if ($this->update_user($this->user_to_edit)) {
                 if ($mess) {
                     $mess .= '<br/>';
                 }
-                $mess = __('User capabilities are updated successfully', 'ure');
+                $mess = esc_html__('User capabilities are updated successfully', 'ure');
             } else {
                 if ($mess) {
                     $mess .= '<br/>';
                 }
-                $mess = __('Error occured during user update', 'ure');
+                $mess = esc_html__('Error occured during user update', 'ure');
             }
         }
         return $mess;
@@ -437,7 +438,7 @@ class Ure_Lib extends Garvs_WP_Lib {
             } else if ($action == 'delete-user-capability') {
                 $this->notification = $this->delete_capability();
             } else if ($action == 'roles_restore_note') {
-                $this->notification = __('User Roles are restored to WordPress default values. ', 'ure');
+                $this->notification = esc_html__('User Roles are restored to WordPress default values. ', 'ure');
             } else if ($action == 'update') {
                 $this->roles = $this->get_user_roles();
                 $this->init_full_capabilities();
@@ -1239,7 +1240,7 @@ class Ure_Lib extends Garvs_WP_Lib {
                <div id="ure_service_tools">
 <?php
                 do_action('ure_role_edit_toolbar_service');
-                if (!is_multisite() || 
+                if (!$this->multisite || 
                     (is_main_site( get_current_blog_id()) || (is_network_admin() && is_super_admin()))
                    ) {
 ?>                   
@@ -1335,7 +1336,8 @@ class Ure_Lib extends Garvs_WP_Lib {
         }
         // end of switch
         if (!empty($url)) {
-            $link = '<a href="' . $url . '" title="read about ' . $capability . ' user capability" target="new"><img src="' . URE_PLUGIN_URL . '/images/help.png" alt="' . __('Help', 'ure') . '" /></a>';
+            $link = '<a href="' . $url . '" title="read about ' . $capability . ' user capability" target="new"><img src="' . 
+                    URE_PLUGIN_URL . '/images/help.png" alt="' . esc_html__('Help', 'ure') . '" /></a>';
         } else {
             $link = '';
         }
@@ -1397,7 +1399,7 @@ class Ure_Lib extends Garvs_WP_Lib {
         if (!isset($this->full_capabilities[$cap_id])) {
             $cap = array();
             $cap['inner'] = $cap_id;
-            $cap['human'] = __($this->convert_caps_to_readable($cap_id), 'ure');
+            $cap['human'] = esc_html__($this->convert_caps_to_readable($cap_id), 'ure');
             if (isset($this->built_in_wp_caps[$cap_id])) {
                 $cap['wp_core'] = true;
             } else {
@@ -1685,7 +1687,7 @@ class Ure_Lib extends Garvs_WP_Lib {
         fclose($fh);
 
         if ($show_message) {
-            $this->show_message('Error! ' . __('Error is occur. Please check the log file.', 'ure'));
+            $this->show_message('Error! ' . esc_html__('Error is occur. Please check the log file.', 'ure'));
         }
     }
     // end of log_event()
@@ -1747,7 +1749,7 @@ class Ure_Lib extends Garvs_WP_Lib {
                     $wp_roles = new WP_Roles();
                 }
                 if (isset($wp_roles->roles[$user_role_id])) {
-                    return sprintf('Error! ' . __('Role %s exists already', 'ure'), $user_role_id);
+                    return sprintf('Error! ' . esc_html__('Role %s exists already', 'ure'), $user_role_id);
                 }
                 $user_role_id = strtolower($user_role_id);
                 $this->current_role = $user_role_id;
@@ -1762,9 +1764,9 @@ class Ure_Lib extends Garvs_WP_Lib {
                 // add new role to the roles array      
                 $result = add_role($user_role_id, $user_role_name, $capabilities);
                 if (!isset($result) || empty($result)) {
-                    $mess = 'Error! ' . __('Error is encountered during new role create operation', 'ure');
+                    $mess = 'Error! ' . esc_html__('Error is encountered during new role create operation', 'ure');
                 } else {
-                    $mess = sprintf(__('Role %s is created successfully', 'ure'), $user_role_name);
+                    $mess = sprintf(esc_html__('Role %s is created successfully', 'ure'), $user_role_name);
                 }
             }
         }
@@ -1833,11 +1835,11 @@ class Ure_Lib extends Garvs_WP_Lib {
                 $result = $this->delete_wp_roles(array($role));
             }
             if (empty($result)) {
-                $mess = 'Error! ' . __('Error encountered during role delete operation', 'ure');
+                $mess = 'Error! ' . esc_html__('Error encountered during role delete operation', 'ure');
             } elseif ($role==-1) {
-                $mess = sprintf(__('Unused roles are deleted successfully', 'ure'), $role);
+                $mess = sprintf(esc_html__('Unused roles are deleted successfully', 'ure'), $role);
             } else {
-                $mess = sprintf(__('Role %s is deleted successfully', 'ure'), $role);
+                $mess = sprintf(esc_html__('Role %s is deleted successfully', 'ure'), $role);
             }
             unset($_POST['user_role']);
         }
@@ -1862,13 +1864,13 @@ class Ure_Lib extends Garvs_WP_Lib {
         if (!empty($_POST['user_role_id'])) {
             $user_role_id = $_POST['user_role_id'];
             unset($_POST['user_role_id']);
-            $errorMessage = 'Error! ' . __('Error encountered during default role change operation', 'ure');
+            $errorMessage = 'Error! ' . esc_html__('Error encountered during default role change operation', 'ure');
             if (isset($wp_roles->role_objects[$user_role_id]) && $user_role_id !== 'administrator') {
                 $result = update_option('default_role', $user_role_id);
                 if (empty($result)) {
                     $mess = $errorMessage;
                 } else {
-                    $mess = sprintf(__('Default role for new users is set to %s successfully', 'ure'), $wp_roles->role_names[$user_role_id]);
+                    $mess = sprintf(esc_html__('Default role for new users is set to %s successfully', 'ure'), $wp_roles->role_names[$user_role_id]);
                 }
             } else {
                 $mess = $errorMessage;
@@ -2063,7 +2065,7 @@ class Ure_Lib extends Garvs_WP_Lib {
             // sanitize user input for security
             $valid_name = preg_match('/[A-Za-z0-9_\-]*/', $user_capability, $match);
             if (!$valid_name || ($valid_name && ($match[0] != $user_capability))) { // some non-alphanumeric charactes found!    
-                return 'Error! ' . __('Error: Capability name must contain latin characters and digits only!', 'ure');
+                return 'Error! ' . esc_html__('Error: Capability name must contain latin characters and digits only!', 'ure');
                 ;
             }
 
@@ -2076,9 +2078,9 @@ class Ure_Lib extends Garvs_WP_Lib {
                 $administrator = $wp_roles->get_role('administrator');
                 if (!$administrator->has_cap($user_capability)) {
                     $wp_roles->add_cap('administrator', $user_capability);
-                    $mess = sprintf(__('Capability %s is added successfully', 'ure'), $user_capability);
+                    $mess = sprintf(esc_html__('Capability %s is added successfully', 'ure'), $user_capability);
                 } else {
-                    $mess = sprintf('Error! ' . __('Capability %s exists already', 'ure'), $user_capability);
+                    $mess = sprintf('Error! ' . esc_html__('Capability %s exists already', 'ure'), $user_capability);
                 }
             }
         }
@@ -2103,7 +2105,7 @@ class Ure_Lib extends Garvs_WP_Lib {
             $capability_id = $_POST['user_capability_id'];
             $caps_to_remove = $this->get_caps_to_remove();
             if (!is_array($caps_to_remove) || count($caps_to_remove) == 0 || !isset($caps_to_remove[$capability_id])) {
-                return sprintf(__('Error! You do not have permission to delete this capability: %s!', 'ure'), $capability_id);
+                return sprintf(esc_html__('Error! You do not have permission to delete this capability: %s!', 'ure'), $capability_id);
             }
 
             // process users
@@ -2122,7 +2124,7 @@ class Ure_Lib extends Garvs_WP_Lib {
                 }
             }
 
-            $mess = sprintf(__('Capability %s is removed successfully', 'ure'), $capability_id);
+            $mess = sprintf(esc_html__('Capability %s is removed successfully', 'ure'), $capability_id);
         }
 
         return $mess;
@@ -2279,7 +2281,7 @@ class Ure_Lib extends Garvs_WP_Lib {
         }
         $this->role_default_html = '<select id="default_user_role" name="default_user_role" '. $select_style .'>';
         $this->role_to_copy_html = '<select id="user_role_copy_from" name="user_role_copy_from" style="width: '. $select_width .'px">
-            <option value="none" selected="selected">' . __('None', 'ure') . '</option>';
+            <option value="none" selected="selected">' . esc_html__('None', 'ure') . '</option>';
         $this->role_select_html = '<select id="user_role" name="user_role" onchange="ure_role_change(this.value);">';
         foreach ($this->roles as $key => $value) {
             $selected1 = $this->option_selected($key, $this->current_role);
@@ -2304,9 +2306,9 @@ class Ure_Lib extends Garvs_WP_Lib {
         if ($roles_can_delete && count($roles_can_delete) > 0) {
             $this->role_delete_html = '<select id="del_user_role" name="del_user_role" width="200" style="width: 200px">';
             foreach ($roles_can_delete as $key => $value) {
-                $this->role_delete_html .= '<option value="' . $key . '">' . __($value, 'ure') . '</option>';
+                $this->role_delete_html .= '<option value="' . $key . '">' . esc_html__($value, 'ure') . '</option>';
             }
-            $this->role_delete_html .= '<option value="-1" style="color: red;">' . __('Delete All Unused Roles', 'ure') . '</option>';
+            $this->role_delete_html .= '<option value="-1" style="color: red;">' . esc_html__('Delete All Unused Roles', 'ure') . '</option>';
             $this->role_delete_html .= '</select>';
         } else {
             $this->role_delete_html = '';
@@ -2330,7 +2332,7 @@ class Ure_Lib extends Garvs_WP_Lib {
 
         // print the 'no role' option. Make it selected if the user has no role yet.        
         $selected = ( empty($user_primary_role) ) ? 'selected="selected"' : '';
-        echo '<option value="" '. $selected.'>' . __('&mdash; No role for this site &mdash;') . '</option>';
+        echo '<option value="" '. $selected.'>' . esc_html__('&mdash; No role for this site &mdash;') . '</option>';
 ?>
         </select>
 <?php        

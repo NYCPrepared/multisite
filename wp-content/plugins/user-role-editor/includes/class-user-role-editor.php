@@ -197,9 +197,9 @@ class User_Role_Editor {
 
         if ($screen->base == 'user-edit' || $screen->base == 'user-edit-network') { // editing a user profile
             if (!is_super_admin($current_user->ID) && is_super_admin($profileuser->ID)) { // trying to edit a superadmin while himself is less than a superadmin
-                wp_die(__('You do not have permission to edit this user.'));
+                wp_die(esc_html__('You do not have permission to edit this user.'));
             } elseif (!( is_user_member_of_blog($profileuser->ID, get_current_blog_id()) && is_user_member_of_blog($current_user->ID, get_current_blog_id()) )) { // editing user and edited user aren't members of the same blog
-                wp_die(__('You do not have permission to edit this user.'));
+                wp_die(esc_html__('You do not have permission to edit this user.'));
             }
         }
     }
@@ -340,7 +340,7 @@ class User_Role_Editor {
 		if ($current_user->has_cap($this->key_capability)) {
           $actions['capabilities'] = '<a href="' . 
                   wp_nonce_url("users.php?page=users-".URE_PLUGIN_FILE."&object=user&amp;user_id={$user->ID}", "ure_user_{$user->ID}") . 
-                  '">' . __('Capabilities', 'ure') . '</a>';
+                  '">' . esc_html__('Capabilities', 'ure') . '</a>';
         }      
     }
 
@@ -433,7 +433,7 @@ class User_Role_Editor {
     {
 
         if ($file == plugin_basename(dirname(URE_PLUGIN_FULL_PATH).'/'.URE_PLUGIN_FILE)) {
-            $settings_link = "<a href='options-general.php?page=settings-".URE_PLUGIN_FILE."'>" . __('Settings', 'ure') . "</a>";
+            $settings_link = "<a href='options-general.php?page=settings-".URE_PLUGIN_FILE."'>" . esc_html__('Settings', 'ure') . "</a>";
             array_unshift($links, $settings_link);
         }
 
@@ -446,7 +446,7 @@ class User_Role_Editor {
     public function plugin_row_meta($links, $file) {
 
         if ($file == plugin_basename(dirname(URE_PLUGIN_FULL_PATH) .'/'.URE_PLUGIN_FILE)) {
-            $links[] = '<a target="_blank" href="http://role-editor.com/changelog">' . __('Changelog', 'ure') . '</a>';
+            $links[] = '<a target="_blank" href="http://role-editor.com/changelog">' . esc_html__('Changelog', 'ure') . '</a>';
         }
 
         return $links;
@@ -468,7 +468,7 @@ class User_Role_Editor {
         $screen_help = new Ure_Screen_Help();
         $screen->add_help_tab( array(
             'id'	=> 'overview',
-            'title'	=> __('Overview'),
+            'title'	=> esc_html__('Overview'),
             'content'	=> $screen_help->get_settings_help('overview')
             ));
     }
@@ -613,7 +613,7 @@ class User_Role_Editor {
 
     public function settings() {
         if (!current_user_can($this->key_capability)) {
-            __( 'You do not have sufficient permissions to manage options for User Role Editor.', 'ure' );
+            esc_html__( 'You do not have sufficient permissions to manage options for User Role Editor.', 'ure' );
         }
         $action = $this->get_settings_action();
         switch ($action) {
@@ -680,7 +680,7 @@ class User_Role_Editor {
         }
         $ure_key_capability = $this->lib->get_key_capability();
         if (!$this->lib->user_has_capability($current_user, $ure_key_capability)) {
-            die(__('Insufficient permissions to work with User Role Editor', 'ure'));
+            die(esc_html__('Insufficient permissions to work with User Role Editor', 'ure'));
         }
 
         $this->lib->editor();
@@ -802,7 +802,8 @@ class User_Role_Editor {
             }
         }
         $output = $this->lib->roles_text($roles);
-        echo $output . '&nbsp;&nbsp;&gt;&gt;&nbsp;<a href="' . wp_nonce_url("users.php?page=users-".URE_PLUGIN_FILE."&object=user&amp;user_id={$user->ID}", "ure_user_{$user->ID}") . '">' . __('Edit', 'ure') . '</a>';
+        echo $output . '&nbsp;&nbsp;&gt;&gt;&nbsp;<a href="' . wp_nonce_url("users.php?page=users-".URE_PLUGIN_FILE."&object=user&amp;user_id={$user->ID}", "ure_user_{$user->ID}") . '">' . 
+                esc_html__('Edit', 'ure') . '</a>';
         ?>
         			</td>
         		</tr>
@@ -820,7 +821,7 @@ class User_Role_Editor {
      */
     public function user_role_column($columns = array()) {
 
-        $columns['ure_roles'] = __('Other Roles', 'ure');
+        $columns['ure_roles'] = esc_html__('Other Roles', 'ure');
 
         return $columns;
     }
