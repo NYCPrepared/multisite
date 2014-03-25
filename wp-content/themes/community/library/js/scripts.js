@@ -13,20 +13,22 @@ slow the page load.
 
 // IE8 ployfill for GetComputed Style (for Responsive Script below)
 if (!window.getComputedStyle) {
-	window.getComputedStyle = function(el, pseudo) {
+	window.getComputedStyle = function(el) {
 		this.el = el;
 		this.getPropertyValue = function(prop) {
 			var re = /(\-([a-z]){1})/g;
-			if (prop == 'float') prop = 'styleFloat';
+			if (prop === 'float') {
+				prop = 'styleFloat';
+			}
 			if (re.test(prop)) {
 				prop = prop.replace(re, function () {
 					return arguments[2].toUpperCase();
 				});
 			}
 			return el.currentStyle[prop] ? el.currentStyle[prop] : null;
-		}
+		};
 		return this;
-	}
+	};
 }
 
 // as the page loads, call these scripts
@@ -70,17 +72,17 @@ jQuery(document).ready(function($) {
 	
 	// add all your scripts here
 	
-	   
+
     // TOGGLE NAV FOR SMALL SCREENS 
     // based on pattern by Brad Frost
     $('body').addClass('js');
     var $menulinks = $('#nav-anchors').find('a');
     $menulinks.click(function(e) {
         e.preventDefault();
-		var $this = $(this),
-			thisHref = $this.attr('href');
+		var $this = $(this);
+		var $thisHref = $this.attr('href');
         $this.toggleClass('active');
-        $(thisHref).toggleClass('active');
+        $thisHref.toggleClass('active');
         return false;
     });
 
