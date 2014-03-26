@@ -1543,6 +1543,12 @@ site so our css is cleaner and more scalable.
     .nav-anchors {
       display: none; } }
 
+#nav-anchors-local a {
+  color: white; }
+  #nav-anchors-local a:hover {
+    background: #00a99d;
+    color: white; }
+
 /******************************************************************
 FILTER MENUS
 ******************************************************************/

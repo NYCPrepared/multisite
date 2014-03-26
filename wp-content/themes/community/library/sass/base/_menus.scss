@@ -46,6 +46,14 @@ site so our css is cleaner and more scalable.
     @include breakpoint(medium) {display: none;}
 }
 
+#nav-anchors-local a {
+    color: $white;
+    &:hover {
+        background: $anchor-color;
+        color: $white;
+    }
+}
+
 
 /******************************************************************
 FILTER MENUS

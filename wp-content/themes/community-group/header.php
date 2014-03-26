@@ -92,7 +92,7 @@
                     </ul>
 					<div class="search-form" id="search-local">
 					    <?php get_search_form(); ?>
-					</div
+					</div>
 					<nav role="navigation" class="site-nav" id="nav-local">
 						<?php bones_main_nav(); ?>
 					</nav>
