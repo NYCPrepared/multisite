@@ -79,10 +79,10 @@ jQuery(document).ready(function($) {
     var $menulinks = $('#nav-anchors').find('a');
     $menulinks.click(function(e) {
         e.preventDefault();
-		var $this = $(this);
-		var $thisHref = $this.attr('href');
-        $this.toggleClass('active');
-        $thisHref.toggleClass('active');
+		var $anchor = $(this);
+		var $target = $anchor.attr('href');
+        $anchor.toggleClass('active');
+        $target.toggleClass('active');
         return false;
     });
 
