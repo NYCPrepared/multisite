@@ -1206,7 +1206,9 @@ div[role='main'].news-feed {
   -moz-transition: max-height 0.2s ease-in-out;
   transition: max-height 0.2s ease-in-out; }
   .js .main-nav.active {
-    max-height: 160px; }
+    max-height: 160px;
+    overflow: visible;
+    background: white; }
   @media (min-width: 769px) {
     .js .main-nav {
       max-height: none; } }

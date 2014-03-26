@@ -59,6 +59,8 @@
     @include transition(max-height 0.2s ease-in-out);
     &.active {
     	max-height: 160px;
+    	overflow: visible;
+    	background: white;
     }
     @include breakpoint(medium) {max-height: none;}
 }

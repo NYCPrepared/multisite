@@ -54,14 +54,16 @@
 					?>
 
  					<p class="domain-title"><a href="<?php echo $blog_details->siteurl; ?>" rel="nofollow"><?php echo $blog_details->blogname; ?></a></p>
-					<ul id="nav-anchors" class="nav-anchors">
-                    	<li><a href="#nav" class="menu-anchor" id="menu-anchor" title="menu"></a></li>
-                    	<li><a href="#search" class="search-anchor" id="search-anchor" title="search"></a></li>
+
+
+					<ul class="nav-anchors" id="nav-anchors-global">
+                    	<li><a href="#nav" class="menu-anchor" id="menu-anchor-global" title="menu"></a></li>
+                    	<li><a href="#search" class="search-anchor" id="search-anchor-global" title="search"></a></li>
                     </ul>
-					<div class="search-form" id="search">
+					<div class="search-form" id="search-global">
 					    <?php get_search_form(); ?>
 					</div>
-					<nav class="main-nav" id="global-nav" role="navigation">
+					<nav role="navigation" class="main-nav" id="nav-global">
     					<?php
     					if(function_exists('community_navigation')) {
     						$global_nav = community_navigation();
@@ -69,6 +71,7 @@
     					}
     					?>
 					</nav>
+
 
 					<div class="site-banner">
 						<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
@@ -82,12 +85,18 @@
 					</h1>
 					<?php // bloginfo('description'); ?>
 
-					<nav class="site-nav" id="local-nav" role="navigation">
-						<div class="search-form" id="search">
-						    <?php get_search_form(); ?>
-						</div
+
+					<ul class="nav-anchors" id="nav-anchors-local" >
+                    	<li><a href="#nav" class="menu-anchor" id="menu-anchor-local" title="menu"></a></li>
+                    	<li><a href="#search" class="search-anchor" id="search-anchor-local" title="search"></a></li>
+                    </ul>
+					<div class="search-form" id="search-local">
+					    <?php get_search_form(); ?>
+					</div
+					<nav role="navigation" class="site-nav" id="nav-local">
 						<?php bones_main_nav(); ?>
 					</nav>
+
 
 				</div>
 
