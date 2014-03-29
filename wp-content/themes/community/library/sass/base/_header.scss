@@ -35,6 +35,7 @@
     a {
         display: block;
         padding: 10px;
+        color: $white;
         @include font-icon-base($family:"ios7-icon"); 
     }
     .menu-anchor {
@@ -58,7 +59,24 @@
 		
 .nav-global {
     background: transparent;
-	li {
+    a {
+        color: $text-color;
+    }
+    a:hover {
+        color: $anchor-color;
+    }
+    .search-form {
+        float: right;
+    }
+    .nav {
+        position: absolute;
+        left: 0;
+        top: 54px;
+        z-index: $layer4;
+        background: $white;
+        @include breakpoint(medium) {position: static; padding-right: 5px; background: transparent;}
+    }
+	.nav li {
         @include font-size(18);
         line-height: 1;
         @include breakpoint(medium) {@include font-size(14); display: inline-block;}
@@ -75,21 +93,12 @@
             @include breakpoint(medium) {background: transparent; color: $teal;}
 		}
 	}
-	li.current-menu-item, li.current_page_item, li.current-page-ancestor {
+	.nav li.current-menu-item, 
+	.nav li.current_page_item, 
+	.nav li.current-page-ancestor {
     	display: none;
         @include breakpoint(medium) {display: inline-block;}
 	}
-    .search-form {
-        float: right;
-    }
-    .nav {
-        position: absolute;
-        left: 0;
-        top: 54px;
-        z-index: $layer4;
-        background: $white;
-        @include breakpoint(medium) {position: static; padding-right: 5px; background: transparent;}
-    }
 }
 
 // site nav
@@ -101,25 +110,27 @@
         float: right;
         margin: 0 5px;
     }
-    li {
+    .nav li {
         font-size: 100%;
-        display: inline-block;
+        display: block;
         margin: 0;
         margin-right: -2px; // remove space caused by inline-block
+        @include breakpoint(medium) {display: inline-block;}
         &.current-menu-item a {
             background: $anchor-color;
             color: $white;
         }
     }
-    li a {
+    .nav li a {
         display: block;
         padding: 7px 15px;
-        color: $white;
+        color: $anchor-color;
         text-transform: uppercase; 
         letter-spacing: $caps-spacing;
+        @include breakpoint(medium) {color: $white;}
         &:hover {
-            background: $anchor-color;
-            color: $white;
+            color: $text-color;
+            @include breakpoint(medium) {background: $anchor-color; color: $white;}
         }
     }
     #searchform #searchsubmit {

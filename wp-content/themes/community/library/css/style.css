@@ -1166,7 +1166,8 @@ div[role='main'].news-feed {
     float: right; }
   .nav-anchors a {
     display: block;
-    padding: 10px; }
+    padding: 10px;
+    color: white; }
     .nav-anchors a:before {
       font-family: "ios7-icon";
       font-style: normal;
@@ -1193,37 +1194,10 @@ div[role='main'].news-feed {
 
 .nav-global {
   background: transparent; }
-  .nav-global li {
-    font-size: 18px;
-    font-size: 1.125rem;
-    line-height: 1; }
-    @media (min-width: 769px) {
-      .nav-global li {
-        font-size: 14px;
-        font-size: 0.875rem;
-        display: inline-block; } }
-    .nav-global li a,
-    .nav-global li a:visited {
-      padding: 10px 20px;
-      color: #333231; }
-      @media (min-width: 769px) {
-        .nav-global li a,
-        .nav-global li a:visited {
-          padding: 15px 10px; } }
-    .nav-global li a:focus,
-    .nav-global li a:hover {
-      background: #333231;
-      color: white; }
-      @media (min-width: 769px) {
-        .nav-global li a:focus,
-        .nav-global li a:hover {
-          background: transparent;
-          color: #00a99d; } }
-  .nav-global li.current-menu-item, .nav-global li.current_page_item, .nav-global li.current-page-ancestor {
-    display: none; }
-    @media (min-width: 769px) {
-      .nav-global li.current-menu-item, .nav-global li.current_page_item, .nav-global li.current-page-ancestor {
-        display: inline-block; } }
+  .nav-global a {
+    color: #333231; }
+  .nav-global a:hover {
+    color: #00a99d; }
   .nav-global .search-form {
     float: right; }
   .nav-global .nav {
@@ -1237,6 +1211,41 @@ div[role='main'].news-feed {
         position: static;
         padding-right: 5px;
         background: transparent; } }
+  .nav-global .nav li {
+    font-size: 18px;
+    font-size: 1.125rem;
+    line-height: 1; }
+    @media (min-width: 769px) {
+      .nav-global .nav li {
+        font-size: 14px;
+        font-size: 0.875rem;
+        display: inline-block; } }
+    .nav-global .nav li a,
+    .nav-global .nav li a:visited {
+      padding: 10px 20px;
+      color: #333231; }
+      @media (min-width: 769px) {
+        .nav-global .nav li a,
+        .nav-global .nav li a:visited {
+          padding: 15px 10px; } }
+    .nav-global .nav li a:focus,
+    .nav-global .nav li a:hover {
+      background: #333231;
+      color: white; }
+      @media (min-width: 769px) {
+        .nav-global .nav li a:focus,
+        .nav-global .nav li a:hover {
+          background: transparent;
+          color: #00a99d; } }
+  .nav-global .nav li.current-menu-item,
+  .nav-global .nav li.current_page_item,
+  .nav-global .nav li.current-page-ancestor {
+    display: none; }
+    @media (min-width: 769px) {
+      .nav-global .nav li.current-menu-item,
+      .nav-global .nav li.current_page_item,
+      .nav-global .nav li.current-page-ancestor {
+        display: inline-block; } }
 
 .nav-local {
   background: #4d4c4a;
@@ -1244,23 +1253,32 @@ div[role='main'].news-feed {
   .nav-local .search-form {
     float: right;
     margin: 0 5px; }
-  .nav-local li {
+  .nav-local .nav li {
     font-size: 100%;
-    display: inline-block;
+    display: block;
     margin: 0;
     margin-right: -2px; }
-    .nav-local li.current-menu-item a {
+    @media (min-width: 769px) {
+      .nav-local .nav li {
+        display: inline-block; } }
+    .nav-local .nav li.current-menu-item a {
       background: #00a99d;
       color: white; }
-  .nav-local li a {
+  .nav-local .nav li a {
     display: block;
     padding: 7px 15px;
-    color: white;
+    color: #00a99d;
     text-transform: uppercase;
     letter-spacing: 1px; }
-    .nav-local li a:hover {
-      background: #00a99d;
-      color: white; }
+    @media (min-width: 769px) {
+      .nav-local .nav li a {
+        color: white; } }
+    .nav-local .nav li a:hover {
+      color: #333231; }
+      @media (min-width: 769px) {
+        .nav-local .nav li a:hover {
+          background: #00a99d;
+          color: white; } }
   .nav-local #searchform #searchsubmit {
     background: #00a99d;
     border-color: #00a99d; }
