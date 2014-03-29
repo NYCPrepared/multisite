@@ -8,26 +8,56 @@
 .domain-title {
     @include font-size(18);
     line-height: 1;
+    display: none;
 	float: left;
     margin: 0;
     white-space: nowrap;
-    @include breakpoint(medium) {@include font-size(14);}
+    @include breakpoint(medium) {@include font-size(14); display: block;}
     a, a:visited {
         display: block;
         color: $text-color;
         font-weight: 700;
-        padding: 15px 10px 15px 0;
+        padding: 15px 10px 15px 5px;
     }
 }
+
+// buttons to reveal full menus
+
+.nav-anchors {
+    margin: 0;
+    li {
+        display: inline-block;
+        margin: 0;
+    }
+    li:last-child {
+        float: right;
+    }   
+    a {
+        display: block;
+        padding: 10px;
+        @include font-icon-base($family:"ios7-icon"); 
+    }
+    .menu-anchor {
+        @extend %ios7-down;
+        @include font-size(16); 
+        &:before {
+            float: right;
+            margin-left: 7px;
+            margin-top: 2px;
+        }
+    }
+    .search-anchor {
+        @extend %ios7-search;
+        @include font-size(22); 
+    }
+    @include breakpoint(medium) {display: none;}
+}
+
 		
+// main nav
 		
-.main-nav {
-    position: absolute;
-    right: 10px;
-    top: 54px;
-    z-index: $layer4;
-    background: $white;
-    @include breakpoint(medium) {position: static; display: inline-block; padding-right: 10px; background: transparent;}
+.nav-global {
+    background: transparent;
 	li {
         @include font-size(18);
         line-height: 1;
@@ -49,11 +79,59 @@
     	display: none;
         @include breakpoint(medium) {display: inline-block;}
 	}
+    .search-form {
+        float: right;
+    }
+    .nav {
+        position: absolute;
+        left: 0;
+        top: 54px;
+        z-index: $layer4;
+        background: $white;
+        @include breakpoint(medium) {position: static; padding-right: 5px; background: transparent;}
+    }
+}
+
+// site nav
+
+.nav-local {
+    background: $gray3;
+    height: 44px;
+    .search-form {
+        float: right;
+        margin: 0 5px;
+    }
+    li {
+        font-size: 100%;
+        display: inline-block;
+        margin: 0;
+        margin-right: -2px; // remove space caused by inline-block
+        &.current-menu-item a {
+            background: $anchor-color;
+            color: $white;
+        }
+    }
+    li a {
+        display: block;
+        padding: 7px 15px;
+        color: $white;
+        text-transform: uppercase; 
+        letter-spacing: $caps-spacing;
+        &:hover {
+            background: $anchor-color;
+            color: $white;
+        }
+    }
+    #searchform #searchsubmit {
+        background: $anchor-color;
+        border-color: $anchor-color;
+    }
 }
 
 
-// body gets .js class on load 
-.js .main-nav {
+// body gets .js class on load, prep nav for responsive behavior 
+
+.js .nav {
 	overflow: hidden;
 	max-height: 0;
     @include transition(max-height 0.2s ease-in-out);

@@ -54,14 +54,14 @@
 					?>
 
  					<p class="domain-title"><a href="<?php echo $blog_details->siteurl; ?>" rel="nofollow"><?php echo $blog_details->blogname; ?></a></p>
-					<ul id="nav-anchors" class="nav-anchors">
-                    	<li><a href="#nav" class="menu-anchor" id="menu-anchor" title="menu"></a></li>
-                    	<li><a href="#search" class="search-anchor" id="search-anchor" title="search"></a></li>
-                    </ul>
-					<div class="search-form" id="search">
-					    <?php get_search_form(); ?>
-					</div>
-					<nav class="main-nav" id="global-nav" role="navigation">
+					<nav role="navigation" class="nav-global">
+    					<ul class="nav-anchors js-anchors">
+                        	<li><a href="#menu-main-navigation" class="menu-anchor" title="menu"></a></li>
+                        	<li><a href="#search-global" class="search-anchor" title="search"></a></li>
+                        </ul>
+    					<div class="search-form" id="search">
+    					    <?php get_search_form(); ?>
+    					</div>
     					<?php
     					if(function_exists('community_navigation')) {
     						$global_nav = community_navigation();
@@ -70,16 +70,14 @@
     					?>
 					</nav>
 
+
 					<div class="site-banner">
-						<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
+					    <div class="banner-inner">
+						    <img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
+					    </div>
+                        <h1 class="site-name"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></h1>
 					</div>
-					<ul class="social-links icons-NYCP">
-					    <li class="twitter"><a href="" target="_blank"></a></li>
-					    <li class="facebook"><a href="" target="_blank"></a></li>
-                    </ul>
-					<h1 class="site-name">
-						<a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a>
-					</h1>
+					<?php // bloginfo('description'); ?>
 
 
 				</div>

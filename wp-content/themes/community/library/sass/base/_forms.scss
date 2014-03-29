@@ -50,7 +50,10 @@ input[type='submit'] {
 
 .search-form {
     width: 100%;
-    @include breakpoint(medium) {display: inline-block; width: auto; float: right;}
+    margin: 0;
+    padding: 0;
+    background: $gray8;
+    @include breakpoint(medium) {display: inline-block; width: auto; float: right; background: transparent;}
 }
 
 // body gets .js class on load
@@ -66,7 +69,8 @@ input[type='submit'] {
 
 #searchform {
     background: transparent;
-    padding: 0 0 10px;
+    margin: 5px;
+    padding: 0;
     @include breakpoint(medium) {padding-top: 10px;}
     label {
         display: none;

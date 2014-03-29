@@ -556,19 +556,19 @@ dd {
   -o-font-smoothing: antialiased;
   font-smoothing: antialiased; }
 
-.social-links .email a:before {
+.nav-social .email a:before {
   content: '\2709'; }
 
-.social-links .rss a:before {
+.nav-social .rss a:before {
   content: '\E73A'; }
 
-.social-links .github a:before {
+.nav-social .github a:before {
   content: '\F300'; }
 
-.social-links .twitter a:before {
+.nav-social .twitter a:before {
   content: '\F309'; }
 
-.social-links .facebook a:before {
+.nav-social .facebook a:before {
   content: '\F30C'; }
 
 #nav_menu-5 li:first-child:before {
@@ -1142,75 +1142,141 @@ div[role='main'].news-feed {
   font-size: 18px;
   font-size: 1.125rem;
   line-height: 1;
+  display: none;
   float: left;
   margin: 0;
   white-space: nowrap; }
   @media (min-width: 769px) {
     .domain-title {
       font-size: 14px;
-      font-size: 0.875rem; } }
+      font-size: 0.875rem;
+      display: block; } }
   .domain-title a, .domain-title a:visited {
     display: block;
     color: #333231;
     font-weight: 700;
-    padding: 15px 10px 15px 0; }
+    padding: 15px 10px 15px 5px; }
 
-.main-nav {
-  position: absolute;
-  right: 10px;
-  top: 54px;
-  z-index: 4;
-  background: white; }
-  @media (min-width: 769px) {
-    .main-nav {
-      position: static;
+.nav-anchors {
+  margin: 0; }
+  .nav-anchors li {
+    display: inline-block;
+    margin: 0; }
+  .nav-anchors li:last-child {
+    float: right; }
+  .nav-anchors a {
+    display: block;
+    padding: 10px; }
+    .nav-anchors a:before {
+      font-family: "ios7-icon";
+      font-style: normal;
+      font-size: inherit;
+      line-height: inherit;
+      margin-right: 0;
+      text-align: center;
       display: inline-block;
-      padding-right: 10px;
-      background: transparent; } }
-  .main-nav li {
+      color: inherit;
+      vertical-align: middle; }
+  .nav-anchors .menu-anchor {
+    font-size: 16px;
+    font-size: 1rem; }
+    .nav-anchors .menu-anchor:before {
+      float: right;
+      margin-left: 7px;
+      margin-top: 2px; }
+  .nav-anchors .search-anchor {
+    font-size: 22px;
+    font-size: 1.375rem; }
+  @media (min-width: 769px) {
+    .nav-anchors {
+      display: none; } }
+
+.nav-global {
+  background: transparent; }
+  .nav-global li {
     font-size: 18px;
     font-size: 1.125rem;
     line-height: 1; }
     @media (min-width: 769px) {
-      .main-nav li {
+      .nav-global li {
         font-size: 14px;
         font-size: 0.875rem;
         display: inline-block; } }
-    .main-nav li a,
-    .main-nav li a:visited {
+    .nav-global li a,
+    .nav-global li a:visited {
       padding: 10px 20px;
       color: #333231; }
       @media (min-width: 769px) {
-        .main-nav li a,
-        .main-nav li a:visited {
+        .nav-global li a,
+        .nav-global li a:visited {
           padding: 15px 10px; } }
-    .main-nav li a:focus,
-    .main-nav li a:hover {
+    .nav-global li a:focus,
+    .nav-global li a:hover {
       background: #333231;
       color: white; }
       @media (min-width: 769px) {
-        .main-nav li a:focus,
-        .main-nav li a:hover {
+        .nav-global li a:focus,
+        .nav-global li a:hover {
           background: transparent;
           color: #00a99d; } }
-  .main-nav li.current-menu-item, .main-nav li.current_page_item, .main-nav li.current-page-ancestor {
+  .nav-global li.current-menu-item, .nav-global li.current_page_item, .nav-global li.current-page-ancestor {
     display: none; }
     @media (min-width: 769px) {
-      .main-nav li.current-menu-item, .main-nav li.current_page_item, .main-nav li.current-page-ancestor {
+      .nav-global li.current-menu-item, .nav-global li.current_page_item, .nav-global li.current-page-ancestor {
         display: inline-block; } }
+  .nav-global .search-form {
+    float: right; }
+  .nav-global .nav {
+    position: absolute;
+    left: 0;
+    top: 54px;
+    z-index: 4;
+    background: white; }
+    @media (min-width: 769px) {
+      .nav-global .nav {
+        position: static;
+        padding-right: 5px;
+        background: transparent; } }
 
-.js .main-nav {
+.nav-local {
+  background: #4d4c4a;
+  height: 44px; }
+  .nav-local .search-form {
+    float: right;
+    margin: 0 5px; }
+  .nav-local li {
+    font-size: 100%;
+    display: inline-block;
+    margin: 0;
+    margin-right: -2px; }
+    .nav-local li.current-menu-item a {
+      background: #00a99d;
+      color: white; }
+  .nav-local li a {
+    display: block;
+    padding: 7px 15px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px; }
+    .nav-local li a:hover {
+      background: #00a99d;
+      color: white; }
+  .nav-local #searchform #searchsubmit {
+    background: #00a99d;
+    border-color: #00a99d; }
+
+.js .nav {
   overflow: hidden;
   max-height: 0;
   -webkit-transition: max-height 0.2s ease-in-out;
   -moz-transition: max-height 0.2s ease-in-out;
   transition: max-height 0.2s ease-in-out; }
-  .js .main-nav.active {
+  .js .nav.active {
     max-height: 160px;
     overflow: visible;
     background: white; }
   @media (min-width: 769px) {
-    .js .main-nav {
+    .js .nav {
       max-height: none; } }
 
 li.current-menu-item,
@@ -1287,11 +1353,11 @@ li.current_page_item a:hover {
   .footer-slug .wrap {
     max-width: 1200px; }
 
-.social-links {
+.nav-social {
   margin: 15px 15px 15px 0;
   padding: 0;
   float: left; }
-  .social-links li {
+  .nav-social li {
     font-size: 40px;
     font-size: 2.5rem;
     display: inline-block;
@@ -1302,18 +1368,18 @@ li.current_page_item a:hover {
     line-height: 30px;
     text-align: center;
     border-radius: 0; }
-  .social-links a {
+  .nav-social a {
     display: block;
     height: 100%;
     line-height: 22px; }
-  .social-links .facebook a {
+  .nav-social .facebook a {
     background: #247cc9;
     border-color: #247cc9;
     color: white !important; }
-    .social-links .facebook a:hover, .social-links .facebook a:focus {
+    .nav-social .facebook a:hover, .nav-social .facebook a:focus {
       background: white;
       color: #247cc9 !important; }
-    .social-links .facebook a:before {
+    .nav-social .facebook a:before {
       font-family: "entypo-social";
       font-style: normal;
       font-size: inherit;
@@ -1323,14 +1389,14 @@ li.current_page_item a:hover {
       display: inline-block;
       color: inherit;
       vertical-align: middle; }
-  .social-links .twitter a {
+  .nav-social .twitter a {
     background: #29abe2;
     border-color: #29abe2;
     color: white !important; }
-    .social-links .twitter a:hover, .social-links .twitter a:focus {
+    .nav-social .twitter a:hover, .nav-social .twitter a:focus {
       background: white;
       color: #29abe2 !important; }
-    .social-links .twitter a:before {
+    .nav-social .twitter a:before {
       font-family: "entypo-social";
       font-style: normal;
       font-size: inherit;
@@ -1340,14 +1406,14 @@ li.current_page_item a:hover {
       display: inline-block;
       color: inherit;
       vertical-align: middle; }
-  .social-links .github a {
+  .nav-social .github a {
     background: #00a99d;
     border-color: #00a99d;
     color: white !important; }
-    .social-links .github a:hover, .social-links .github a:focus {
+    .nav-social .github a:hover, .nav-social .github a:focus {
       background: white;
       color: #00a99d !important; }
-    .social-links .github a:before {
+    .nav-social .github a:before {
       font-family: "entypo-social";
       font-style: normal;
       font-size: inherit;
@@ -1357,14 +1423,14 @@ li.current_page_item a:hover {
       display: inline-block;
       color: inherit;
       vertical-align: middle; }
-  .social-links .email a {
+  .nav-social .email a {
     background: #22b573;
     border-color: #22b573;
     color: white !important; }
-    .social-links .email a:hover, .social-links .email a:focus {
+    .nav-social .email a:hover, .nav-social .email a:focus {
       background: white;
       color: #22b573 !important; }
-    .social-links .email a:before {
+    .nav-social .email a:before {
       font-family: "entypo";
       font-style: normal;
       font-size: inherit;
@@ -1374,14 +1440,14 @@ li.current_page_item a:hover {
       display: inline-block;
       color: inherit;
       vertical-align: middle; }
-  .social-links .rss a {
+  .nav-social .rss a {
     background: #ff931e;
     border-color: #ff931e;
     color: white !important; }
-    .social-links .rss a:hover, .social-links .rss a:focus {
+    .nav-social .rss a:hover, .nav-social .rss a:focus {
       background: white;
       color: #ff931e !important; }
-    .social-links .rss a:before {
+    .nav-social .rss a:before {
       font-family: "entypo";
       font-style: normal;
       font-size: inherit;
@@ -1517,37 +1583,6 @@ site so our css is cleaner and more scalable.
     .nav li a {
       display: block;
       text-decoration: none; }
-
-.nav-anchors {
-  float: right;
-  margin: 0; }
-  .nav-anchors li {
-    display: inline-block;
-    margin: 0; }
-  .nav-anchors a {
-    display: block;
-    padding: .25em .5em;
-    font-size: 22px;
-    font-size: 1.375rem; }
-    .nav-anchors a:before {
-      font-family: "ios7-icon";
-      font-style: normal;
-      font-size: inherit;
-      line-height: inherit;
-      margin-right: 0;
-      text-align: center;
-      display: inline-block;
-      color: inherit;
-      vertical-align: middle; }
-  @media (min-width: 769px) {
-    .nav-anchors {
-      display: none; } }
-
-#nav-anchors-local a {
-  color: white; }
-  #nav-anchors-local a:hover {
-    background: #00a99d;
-    color: white; }
 
 /******************************************************************
 FILTER MENUS
@@ -2410,12 +2445,16 @@ input[type='submit'] {
  SEARCH FORM 
 ******************************************************************/
 .search-form {
-  width: 100%; }
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #e6e4df; }
   @media (min-width: 769px) {
     .search-form {
       display: inline-block;
       width: auto;
-      float: right; } }
+      float: right;
+      background: transparent; } }
 
 .js .search-form {
   overflow: hidden;
@@ -2431,7 +2470,8 @@ input[type='submit'] {
 
 #searchform {
   background: transparent;
-  padding: 0 0 10px; }
+  margin: 5px;
+  padding: 0; }
   @media (min-width: 769px) {
     #searchform {
       padding-top: 10px; } }
@@ -2785,15 +2825,28 @@ style a page via class
 
 .site-banner {
   border: 5px solid white;
+  width: 100%;
   height: 150px;
-  overflow: hidden;
-  background-color: #e6e4df; }
+  clear: both;
+  overflow: visible;
+  position: relative; }
   @media (min-width: 769px) {
     .site-banner {
       height: auto;
       min-height: 140px;
       max-height: 300px; } }
-  .site-banner img {
+
+.banner-inner {
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  background-color: #e6e4df; }
+  @media (min-width: 769px) {
+    .banner-inner {
+      height: auto;
+      min-height: 130px;
+      max-height: 290px; } }
+  .banner-inner img {
     height: 100%;
     width: auto; }
 
@@ -2805,52 +2858,24 @@ style a page via class
   padding: 20px;
   background: white;
   position: absolute;
-  top: 80px;
-  left: -10px; }
-  @media (min-width: 481px) {
-    .site-name {
-      left: -20px; } }
+  top: 20px;
+  left: -20px;
+  z-index: 2; }
   .site-name a {
     color: #1a1919; }
     .site-name a:hover {
       color: #00a99d; }
 
-.social-links {
+.nav-social {
   float: right;
   margin: 5px 15px; }
-  .social-links ul {
+  .nav-social ul {
     margin: 0; }
 
-.community-partner .header .social-links {
+.community-partner .header .nav-social {
   position: absolute;
   right: 0;
   top: 0; }
-
-.site-nav {
-  background: #4d4c4a; }
-  .site-nav .search-form {
-    float: right;
-    margin: 0 5px; }
-  .site-nav li {
-    font-size: 100%;
-    display: inline-block;
-    margin: 0;
-    margin-right: -2px; }
-    .site-nav li.current-menu-item a {
-      background: #00a99d;
-      color: white; }
-  .site-nav li a {
-    display: block;
-    padding: 7px 15px;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 1px; }
-    .site-nav li a:hover {
-      background: #00a99d;
-      color: white; }
-  .site-nav #searchform #searchsubmit {
-    background: #00a99d;
-    border-color: #00a99d; }
 
 .community-group .post.news,
 .community-partner .post.news {

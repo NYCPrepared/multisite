@@ -56,14 +56,14 @@
  					<p class="domain-title"><a href="<?php echo $blog_details->siteurl; ?>" rel="nofollow"><?php echo $blog_details->blogname; ?></a></p>
 
 
-					<ul class="nav-anchors" id="nav-anchors-global">
-                    	<li><a href="#nav" class="menu-anchor" id="menu-anchor-global" title="menu"></a></li>
-                    	<li><a href="#search" class="search-anchor" id="search-anchor-global" title="search"></a></li>
-                    </ul>
-					<div class="search-form" id="search-global">
-					    <?php get_search_form(); ?>
-					</div>
-					<nav role="navigation" class="main-nav" id="nav-global">
+					<nav role="navigation" class="nav-global">
+    					<ul class="nav-anchors js-anchors">
+                        	<li><a href="#menu-main-navigation" class="menu-anchor" title="menu">Multisite</a></li>
+                        	<li><a href="#search-global" class="search-anchor" title="search"></a></li>
+                        </ul>
+    					<div class="search-form" id="search-global">
+    					    <?php get_search_form(); ?>
+    					</div>
     					<?php
     					if(function_exists('community_navigation')) {
     						$global_nav = community_navigation();
@@ -74,30 +74,24 @@
 
 
 					<div class="site-banner">
-						<img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
+					    <div class="banner-inner">
+						    <img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
+					    </div>
+                        <h1 class="site-name"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></h1>
 					</div>
-					<ul class="social-links icons-NYCP">
-					    <li class="twitter"><a href="" target="_blank"></a></li>
-					    <li class="facebook"><a href="" target="_blank"></a></li>
-                    </ul>
-					<h1 class="site-name">
-						<a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a>
-					</h1>
 					<?php // bloginfo('description'); ?>
 
 
-					<ul class="nav-anchors" id="nav-anchors-local" >
-                    	<li><a href="#nav" class="menu-anchor" id="menu-anchor-local" title="menu"></a></li>
-                    	<li><a href="#search" class="search-anchor" id="search-anchor-local" title="search"></a></li>
-                    </ul>
-					<div class="search-form" id="search-local">
-					    <?php get_search_form(); ?>
-					</div>
-					<nav role="navigation" class="site-nav" id="nav-local">
-						<?php bones_main_nav(); ?>
-					</nav>
+    				<nav role="navigation" class="nav-local">
+    					<ul class="nav-anchors js-anchors">
+                        	<li><a href="#menu-main-navigation-1" class="menu-anchor" title="menu">MENU</a></li>
+                        	<li><a href="#search-local" class="search-anchor" title="search"></a></li>
+                        </ul>
+    					<div class="search-form" id="search-local">
+    					    <?php get_search_form(); ?>
+    					</div>
+                        <?php bones_main_nav(); ?>
+    				</nav>
 
-
-				</div>
 
 			</header>

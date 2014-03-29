@@ -77,13 +77,13 @@ jQuery(document).ready(function($) {
     // TOGGLE NAV FOR SMALL SCREENS 
     // based on pattern by Brad Frost
     $('body').addClass('js');
-    var $menulinks = $('#nav-anchors').find('a');
+    var $menulinks = $('.js-anchors').find('a');
     $menulinks.click(function(e) {
         e.preventDefault();
-		var $this = $(this),
-			thisHref = $this.attr('href');
-        $this.toggleClass('active');
-        $(thisHref).toggleClass('active');
+		var $link = $(this),
+			target = $link.attr('href');
+        $link.toggleClass('active');
+        $(target).toggleClass('active');
         return false;
     });
 
