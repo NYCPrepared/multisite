@@ -56,7 +56,7 @@
  					<p class="domain-title"><a href="<?php echo $blog_details->siteurl; ?>" rel="nofollow"><?php echo $blog_details->blogname; ?></a></p>
 					<nav role="navigation" class="nav-global">
     					<ul class="nav-anchors js-anchors">
-                        	<li><a href="#menu-main-navigation" class="menu-anchor" title="menu"></a></li>
+                        	<li><a href="#menu-main-navigation" class="menu-anchor" title="menu"><?php echo $blog_details->blogname; ?></a></li>
                         	<li><a href="#search-global" class="search-anchor" title="search"></a></li>
                         </ul>
     					<div class="search-form" id="search">

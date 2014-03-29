@@ -58,7 +58,7 @@
 
 					<nav role="navigation" class="nav-global">
     					<ul class="nav-anchors js-anchors">
-                        	<li><a href="#menu-main-navigation" class="menu-anchor" title="menu">Multisite</a></li>
+                        	<li><a href="#menu-main-navigation" class="menu-anchor" title="menu"><?php echo $blog_details->blogname; ?></a></li>
                         	<li><a href="#search-global" class="search-anchor" title="search"></a></li>
                         </ul>
     					<div class="search-form" id="search-global">
