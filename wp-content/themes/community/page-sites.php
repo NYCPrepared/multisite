@@ -14,6 +14,8 @@
 
 									<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
 
+									<h2 class="section-title" itemprop="subheadline">Sites</h2>
+
 									<div class="filters">
 										<?php // This is currently using a plugin based on Blog Topics, should be changed if we decide to use something else
 
@@ -58,6 +60,10 @@
 								</header>
 
 								<section class="entry-content clearfix" itemprop="articleBody" rel="main">
+
+									<header class="article-header">
+										<h2 class="section-title" itemprop="subheadline">Networks</h2>
+									</header>
 
 									<ul class="sites-list">
 										<?php
