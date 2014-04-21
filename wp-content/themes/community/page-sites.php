@@ -61,10 +61,6 @@
 
 								<section class="entry-content clearfix" itemprop="articleBody" rel="main">
 
-									<header class="article-header">
-										<h2 class="section-title" itemprop="subheadline">Networks</h2>
-									</header>
-
 									<ul class="sites-list">
 										<?php
 										$sites = wp_get_sites('offset=1');
@@ -121,6 +117,10 @@
 								</section>
 
 								<section class="entry-content clearfix" itemprop="articleBody" rel="main">
+
+									<header class="article-header">
+										<h2 class="section-title" itemprop="subheadline">Networks</h2>
+									</header>
 
 									<ul class="network-list">
 										<?php
