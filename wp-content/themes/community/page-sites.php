@@ -17,30 +17,6 @@
 									<h2 class="section-title" itemprop="subheadline">Sites</h2>
 
 									<div class="filters">
-										<?php // This is currently using a plugin based on Blog Topics, should be changed if we decide to use something else
-
-										if (function_exists('cets_get_used_topics')) { ?>
-										<ul id="filter site-topics">
-											<li id="topic-all">All Topics</li>
-											<?php
-											$topics = cets_get_used_topics();
-											foreach ($topics as $topic) {											
-											?>
-												<li id="topic-<?php echo $topic->slug; ?>"><?php echo $topic->topic_name; ?></li>
-											<?php } ?>
-										</ul>
-										<?php } ?>
-										<?php if (function_exists('glo_get_used_locations')) { ?>
-										<ul id="filter site-locations">
-											<li id="location-all">All Locations</li>
-											<?php
-											$locations = glo_get_used_locations();
-											foreach ($locations as $location) {											
-											?>
-												<li id="location-<?php echo $location->slug; ?>"><?php echo $location->location_name; ?></li>
-											<?php } ?>
-										</ul>
-										<?php } ?>
 										<ul id="filter site-networks">
 											<li id="network-all">All Networks</li>
 											<?php
@@ -87,27 +63,17 @@
 											$network_query = new WP_Query( $args );
 											
 											?>
-											<?php 
-											if(function_exists('glo_get_blog_location_name')) { 
-												$location_name = glo_get_blog_location_name($site_id);
-												$location_slug = glo_get_blog_location_slug($site_id); 
-											} ?>
-											<?php 
-											if(function_exists('cets_get_blog_topic_name')) { 
-												$topic_name = cets_get_blog_topic_name($site_id);
-												$topic_slug = cets_get_blog_topic_slug($site_id); 
-											} ?>
 											<?php
 											if(function_exists('community_get_site_image')) {
 												$header = community_get_site_image($site_id);
 											} ?>
 
-											<li class="id-<?php echo $site_id; ?> site-<?php echo $site_slug; ?> topic-<?php if($location_name) { echo $topic_slug; } ?> network-<?php foreach($network_query as $post){ echo $post->post_name;} ?> location-<?php if($location_name) { echo $location_slug; } ?> ">
+											<li class="id-<?php echo $site_id; ?> site-<?php echo $site_slug; ?>  network-<?php foreach($network_query as $post){ echo $post->post_name;} ?>  ">
 												<div class="site-image <?php if(!$header) { echo 'no-image'; } ?>"><?php if($header) { ?><img src="<?php echo $header; ?>" class="site-image"><?php } ?></div>
 												<h3 class="site-title"><a href="<?php echo $site_details->siteurl; ?>"><?php echo $site_details->blogname; ?></a></h3>
 												<div class="meta site-network"><a href="/network/<?php foreach ($network_query as $post) { echo $post->post_name;} ?>/"><?php foreach($network_query as $post){ echo $post->post_title;} ?></a></div>
-												<div class="meta site-location"><?php if($location_name) { echo $location_name; } ?></div>
-												<div class="meta site-topic"><?php if($location_name) { echo $topic_name; } ?></div>
+												<div class="meta site-location"></div>
+												<div class="meta site-topic"></div>
 											</li>
 
 										<?php } ?>
