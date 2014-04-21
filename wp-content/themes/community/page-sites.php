@@ -105,7 +105,7 @@
 											?>
 												<li id="network-<?php echo $network->post_name; ?>">
 													<div class="network-image post-image"><?php echo $thumbnail; ?></div>
-													<h3 class="network-title post-title"><a href="<?php echo $permalink; ?>"><?php echo $network->post_title; ?></a></h3>
+													<h3 class="network-title site-title post-title"><a href="<?php echo $permalink; ?>"><?php echo $network->post_title; ?></a></h3>
 													<div class="network-excerpt post-excerpt">
 														<?php echo $excerpt; ?>
 													</div>
