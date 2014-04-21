@@ -122,7 +122,7 @@
 										<h2 class="section-title" itemprop="subheadline">Networks</h2>
 									</header>
 
-									<ul class="network-list">
+									<ul class="network-list sites-list">
 										<?php
 											$networks = get_posts('post_type=network');
 											foreach ($networks as $network) {
