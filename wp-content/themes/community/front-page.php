@@ -75,11 +75,11 @@
 						if(function_exists( 'network_latest_posts' )) {
 
 							$parameters = array(
-							'title'         => 'Requests',
+							'title'         => 'Volunteer',
 							'title_only'    => 'false',
 							'auto_excerpt'  => 'true',
 							'full_meta'		=> 'true',
-							'category'         => 'requests',          // Widget title
+							'category'         => 'volunteer',          // Widget title
 							'number_posts'     => 2,
 							'wrapper_list_css' => 'highlights-list',
 							'wrapper_block_css'=> 'module row highlights', //The wrapper classe
