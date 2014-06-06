@@ -14,6 +14,12 @@
 				<div id="inner-content" class="wrap clearfix">
 
 					<section class="home-main clearfix">
+						<article class="home-intro">
+							<!-- Displays any content entered in the page used as the front page -->
+							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+								<?php the_content(); ?>
+							<?php endwhile; endif; ?>
+						</article>
 						<article class="home-feature clearfix">
 
 							<script type="text/javascript">
@@ -58,12 +64,6 @@
 
 							</ul>
 
-						</article>
-						<article class="home-intro">
-							<!-- Displays any content entered in the page used as the front page -->
-							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-								<?php the_content(); ?>
-							<?php endwhile; endif; ?>
 						</article>
 					</section>
 
