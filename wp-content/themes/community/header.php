@@ -50,6 +50,8 @@
 				<div id="inner-header" class="wrap clearfix">
 
  					<p class="domain-title"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
+					<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
+
 					<nav role="navigation" class="nav-global">
     					<ul class="nav-anchors js-anchors">
                         	<li><a href="#menu-main-navigation" class="menu-anchor" title="menu"><?php bloginfo('name'); ?></a></li>
@@ -60,8 +62,6 @@
     					</div>
 						<?php bones_main_nav(); ?>
 					</nav>
-
-					<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
 
 					<?php // if you'd like to use the site description you can un-comment it below ?>
 					<?php // bloginfo('description'); ?>

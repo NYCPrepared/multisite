@@ -2,9 +2,7 @@
 NAVIGATION STYLES
 *********************/
 
-/******************************************************************
-NAVIGATION
-******************************************************************/
+// NAVIGATION
 
 /*
 all navs have a .nav class applied via the wp_menu function; this 
@@ -24,143 +22,57 @@ site so our css is cleaner and more scalable.
 	} 
 }
 
+// TOGGLE MENUS
 
-/* filter menus */
-
-a.filter-link {
-    display: block;
-    padding: 1em;
-}
-.filter, 
-.filter > ul ul {
-	clear: both;
-	-webkit-transition: all 0.3s ease-out;  
-	-moz-transition: all 0.3s ease-out;
-	-ms-transition: all 0.3s ease-out;
-	-o-transition: all 0.3s ease-out;
-	transition: all 0.3s ease-out;
-}
-.js .filter, 
-.js .filter > ul ul {
-	overflow: hidden;
-	max-height: 0;
-	background: rgba(0,0,0,0.1);
-}
-.filter.active, .js .filter > ul ul.active {
-	max-height: 55em;
-}
-.filter > ul {
-	border-top: 1px solid #808080;
-}
-.filter li a {
-	color: #000;
-	display: block;
-	padding: 0.8em;
-	border-bottom: 1px solid #808080;
-	position: relative;
-}
-.filter li.has-subnav > a:after {
-	content: '+';
-	position: absolute;
-	top: 0;
-	right: 0;
-	display: block;
-	font-size: 1.5em;
-	padding: 0.25em 0.5em;
-}
-.filter li.has-subnav > a.active:after {
-	content: "-";
-}
-
-
-@media screen and (min-width: 48.25em) {
-	.pattern {
-		overflow: visible;
-	}
-	a.filter-link {
-	   display: none;
-	}
-	.js .filter {
-		max-height: none;
-		overflow: visible;
-		background: none;
-	}
-	.filter ul {
-		margin: 0 0 0 -0.25em;
-		border: 0;
-	}
-	.filter li a {
-		border: 0;
-	}
-	.filter li.has-subnav > a {
-		padding-right: 2em;
-	}
-	.filter li.has-subnav > a:after {
-		content: ">";
-		font-size: 1em;
-		padding: 0.8em 0.5em;
-	}
-	.filter .level-1 > li.has-subnav > a:after {
-		content: "?";
-	}
-	.filter > ul li {
-		margin: 0 0.25em;
-	}
-	.filter > ul > li {
-		display: inline-block;
-		position: relative;
-	}
-}
-/******************************************************************
-FILTER MENUS
-******************************************************************/
-
-.filters {
-    @include fill-parent;
-    margin-bottom: 30px;
-    ul {
-        @include transition(height 0.25s ease);
-        @include breakpoint(md) {@include span-columns(4);}
-    	&:first-child {
-    		background: $green;
-    	}
-    	&:nth-child(2) {
-    		background: $teal;
-    		left: 25%;
-    	}
-    	&:nth-child(3) {
-    		background: $blue;
-    		left: 50%;
-    	}
-    	&:nth-child(4) {
-    		background: $navy;
-    		left: 75%;
-    	}
-    	&:hover {
-        	height: auto;
-        	cursor: pointer;
-    	}
-        li {
-            display: block;
-            padding: 5px 10px;
-            margin: 0;
+.toggle {
+    float: right;
+    li {
+        display: inline-block;
+        color: $anchor-color;
+        padding: 3px 8px;
+        text-transform: uppercase;
+        letter-spacing: $caps-spacing;
+        &.current {
             background: $white;
             color: $text-color;
-            &:first-child {
-                @include font-icon-base($family:"ios7-icon"); 
-                @include font-size(16);
-                @extend %ios7-down;
-                background: transparent;
-                color: $white;
-            }
+        }
+        &:hover {
+            background: $white;
+            cursor: pointer;
+        }
+    }
+}
+
+// FILTER MENUS
+
+.filter {
+    margin-bottom: $space;
+    @include transition(height 0.25s ease);
+	@include breakpoint(sm) {@include span-columns(8);}
+	@include breakpoint(lg) {@include span-columns(4);}
+	&:hover {
+    	height: auto;
+    	cursor: pointer;
+	}
+    li {
+        display: block;
+        padding: 5px 10px;
+        margin: 0;
+        background: $white;
+        color: $text-color;
+        @include font-size($epsilon);
+        &:first-child {
+            @include font-icon-base($family:"ios7-icon"); 
+            @include font-size($zeta);
+            @extend %ios7-down;
+            background: $anchor-color;
+            color: $white;
         }
     }
 }
 
 
-/******************************************************************
-PAGINATION
-******************************************************************/
+// PAGINATION
 
 .pagination,
 .wp-prev-next {

@@ -9,7 +9,8 @@ POSTS & CONTENT STYLES
 } 
 
 .page-title,
-.archive-title {
+.archive-title,
+.section-title {
     text-transform: uppercase; 
     letter-spacing: $caps-spacing;
     @extend h3;
@@ -58,7 +59,7 @@ POSTS & CONTENT STYLES
 
 
 // post content 
-.entry-content {
+.post .entry-content {
     h1 {
         margin-bottom: 0;
     }
@@ -266,6 +267,7 @@ POSTS & CONTENT STYLES
 
 .sites-list {
     clear: both;
+    padding: 0;
     @include fill-parent;
     li {
         background: $white;
@@ -274,8 +276,8 @@ POSTS & CONTENT STYLES
         padding: 0;
         height: 240px;
         overflow: hidden;
-    	@include breakpoint(tiny) {@include span-columns(8);}
-    	@include breakpoint(sm) {@include span-columns(4);}
+    	@include breakpoint(xs) {@include span-columns(8);}
+    	@include breakpoint(md) {@include span-columns(4);}
     }
     .site-image {
         width: 100%;
@@ -289,11 +291,12 @@ POSTS & CONTENT STYLES
         letter-spacing: $caps-spacing;
         margin: 0;
         padding: 5px 10px 0;
+        @include font-size($epsilon);
     }
     .site-meta {
         margin: 0;
         padding: 0 10px 10px;
-        @extend small;
+        @include font-size($milli);
         color: $quiet-color;
     }
 }
@@ -312,7 +315,7 @@ POSTS & CONTENT STYLES
         i {
             @include font-icon-base($family:"ios7-icon"); 
             @extend %ios7-store;
-            @include font-size(48);
+            @include font-size($alpha);
             line-height: 1;
         }
     }

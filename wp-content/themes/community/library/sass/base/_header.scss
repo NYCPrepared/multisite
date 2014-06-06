@@ -59,6 +59,7 @@
 		
 .nav-global {
     background: transparent;
+    position: relative;
     a {
         color: $text-color;
     }
@@ -71,7 +72,7 @@
     .nav {
         position: absolute;
         left: 0;
-        top: 54px;
+        top: 50px;
         z-index: $layer4;
         background: $white;
         @include breakpoint(md) {position: static; padding-right: 5px; background: transparent;}

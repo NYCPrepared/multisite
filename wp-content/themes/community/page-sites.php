@@ -4,7 +4,7 @@
 
 				<div id="inner-content" class="wrap clearfix">
 
-						<div id="main" class="first clearfix" role="main">
+						<div id="main" class="first clearfix">
 
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -12,49 +12,23 @@
 
 								<header class="article-header">
 
+									<ul class="toggle">
+										<li id="view-grid" class="current">Grid</li>
+										<li id="view-list">List</li>
+									</ul>
+
 									<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
 
+									<ul class="filter site-networks">
+										<li id="network-all">All Networks</li>
+										<?php
+										$networks = get_posts('post_type=network');
+										foreach ($networks as $network) {											
+										?>
+                                        <li id="network-<?php echo $network->post_name; ?>"><?php echo $network->post_title; ?></li>
+										<?php } ?>
+									</ul>
 
-                                        <button class="filter-link">Filter <span>&#9660;</span></button>
-                                		<div class="filters">
-                                			<ul class="filter level-1 site-networks">
-                                				<li id="network-all" class="has-subnav"><a href="#">All networks</a>
-                                					<ul class="level-2">
-            											<?php
-            											$networks = get_posts('post_type=network');
-            											foreach ($networks as $network) {											
-            											?>
-                                                        <li id="network-<?php echo $network->post_name; ?>"><?php echo $network->post_title; ?></li>
-            											<?php } ?>
-                                					</ul>
-                                				</li>
-                                				<li id="filter site-view" class="has-subnav"><a href="#">View</a>
-                                					<ul class="level-2">
-                                						<li id="view-grid"><a href="#">Grid</a></li>
-                                						<li id="view-list"><a href="#">List</a></li>
-                                					</ul>
-                                				</li>
-                                
-                                			</ul>
-                                		</div>
-
-
-									<div class="filters">
-										<ul id="filter site-networks">
-											<li id="network-all">All Networks</li>
-											<?php
-											$networks = get_posts('post_type=network');
-											foreach ($networks as $network) {											
-											?>
-												<li id="network-<?php echo $network->post_name; ?>"><?php echo $network->post_title; ?></li>
-											<?php } ?>
-										</ul>
-										<ul id="filter site-view">
-											<li id="view-grid">Grid</li>
-											<li id="view-list">List</li>
-										</ul>
-
-									</div>
 
 								</header>
 

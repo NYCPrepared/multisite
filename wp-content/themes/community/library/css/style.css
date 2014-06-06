@@ -112,13 +112,15 @@ h2, .site-name {
   margin: 0.83em 0; }
 
 h3, .page-title,
-.archive-title {
+.archive-title,
+.section-title {
   font-size: 1.17em;
   margin: 1em 0; }
 
 h4, .widget_recent_entries li,
 .widget_em_widget li, .highlights-list .post-title, .wp-biographia-text h3, .wp-biographia-text .page-title,
-.wp-biographia-text .archive-title, div.bx-wrapper .bx-caption span {
+.wp-biographia-text .archive-title,
+.wp-biographia-text .section-title, div.bx-wrapper .bx-caption span {
   font-size: 1em;
   margin: 1.33em 0; }
 
@@ -234,7 +236,7 @@ small, .highlights-list .location, .news-list .post-date, .news-feed .post-heade
 .events .news-feed .post-footer .module-heading,
 .news-feed .post-footer .sites .module-heading,
 .sites .news-feed .post-footer .module-heading,
-.news-feed .post-footer li, .sites-list .site-meta {
+.news-feed .post-footer li {
   font-size: 75%; }
 
 /*
@@ -503,7 +505,7 @@ small, .highlights-list .location, .news-list .post-date, .news-feed .post-heade
 .events .news-feed .post-footer .module-heading,
 .news-feed .post-footer .sites .module-heading,
 .sites .news-feed .post-footer .module-heading,
-.news-feed .post-footer li, .sites-list .site-meta, .small {
+.news-feed .post-footer li, .small {
   font-size: 75%; }
 
 ul, ol {
@@ -598,7 +600,7 @@ div.css-search div.em-search-main div.em-search-geo:before {
 .bx-wrapper .bx-controls-direction .bx-prev:before {
   content: ''; }
 
-.nav-anchors .menu-anchor:before, .filters ul li:first-child:before {
+.nav-anchors .menu-anchor:before, .filter li:first-child:before {
   content: ''; }
 
 .clearfix:after {
@@ -634,9 +636,11 @@ body {
   color: #333231; }
 
 h1, h2, .site-name, h3, .page-title,
-.archive-title, h4, .widget_recent_entries li,
+.archive-title,
+.section-title, h4, .widget_recent_entries li,
 .widget_em_widget li, .highlights-list .post-title, .wp-biographia-text h3, .wp-biographia-text .page-title,
-.wp-biographia-text .archive-title, div.bx-wrapper .bx-caption span, h5, h6, .widgettitle, .community-group .post-header p, .community-group .post-header .news .module-heading, .news .community-group .post-header .module-heading,
+.wp-biographia-text .archive-title,
+.wp-biographia-text .section-title, div.bx-wrapper .bx-caption span, h5, h6, .widgettitle, .community-group .post-header p, .community-group .post-header .news .module-heading, .news .community-group .post-header .module-heading,
 .community-group .post-header .events .module-heading,
 .events .community-group .post-header .module-heading,
 .community-group .post-header .sites .module-heading,
@@ -654,9 +658,11 @@ h1, h2, .site-name, h3, .page-title,
   color: #1a1919;
   margin-bottom: 24px; }
   h1 a, h2 a, .site-name a, h3 a, .page-title a,
-  .archive-title a, h4 a, .widget_recent_entries li a,
+  .archive-title a,
+  .section-title a, h4 a, .widget_recent_entries li a,
   .widget_em_widget li a, .highlights-list .post-title a, .wp-biographia-text h3 a, .wp-biographia-text .page-title a,
-  .wp-biographia-text .archive-title a, div.bx-wrapper .bx-caption span a, h5 a, h6 a, .widgettitle a, .community-group .post-header p a, .community-group .post-header .news .module-heading a, .news .community-group .post-header .module-heading a,
+  .wp-biographia-text .archive-title a,
+  .wp-biographia-text .section-title a, div.bx-wrapper .bx-caption span a, h5 a, h6 a, .widgettitle a, .community-group .post-header p a, .community-group .post-header .news .module-heading a, .news .community-group .post-header .module-heading a,
   .community-group .post-header .events .module-heading a,
   .events .community-group .post-header .module-heading a,
   .community-group .post-header .sites .module-heading a,
@@ -702,13 +708,15 @@ h1, h2, .site-name, h6, .widgettitle, .community-group .post-header p, .communit
 .events .news-feed .post-footer .module-heading,
 .news-feed .post-footer .sites .module-heading,
 .sites .news-feed .post-footer .module-heading,
-.news-feed .post-footer li, .sites-list .site-meta {
+.news-feed .post-footer li {
   line-height: 1.2; }
 
 h3, .page-title,
-.archive-title, h4, .widget_recent_entries li,
+.archive-title,
+.section-title, h4, .widget_recent_entries li,
 .widget_em_widget li, .highlights-list .post-title, .wp-biographia-text h3, .wp-biographia-text .page-title,
-.wp-biographia-text .archive-title, div.bx-wrapper .bx-caption span, h5 {
+.wp-biographia-text .archive-title,
+.wp-biographia-text .section-title, div.bx-wrapper .bx-caption span, h5 {
   line-height: 1.3; }
 
 h1 {
@@ -720,13 +728,15 @@ h2, .site-name {
   font-size: 2.25rem; }
 
 h3, .page-title,
-.archive-title {
+.archive-title,
+.section-title {
   font-size: 28px;
   font-size: 1.75rem; }
 
 h4, .widget_recent_entries li,
 .widget_em_widget li, .highlights-list .post-title, .wp-biographia-text h3, .wp-biographia-text .page-title,
-.wp-biographia-text .archive-title, div.bx-wrapper .bx-caption span {
+.wp-biographia-text .archive-title,
+.wp-biographia-text .section-title, div.bx-wrapper .bx-caption span {
   font-size: 22px;
   font-size: 1.375rem; }
 
@@ -796,7 +806,7 @@ small, .highlights-list .location, .news-list .post-date, .news-feed .post-heade
 .events .news-feed .post-footer .module-heading,
 .news-feed .post-footer .sites .module-heading,
 .sites .news-feed .post-footer .module-heading,
-.news-feed .post-footer li, .sites-list .site-meta, .milli {
+.news-feed .post-footer li, .milli {
   font-size: 14px;
   font-size: 0.875rem; }
 
@@ -990,7 +1000,8 @@ div[role='main'].news-feed {
       display: none; } }
 
 .nav-global {
-  background: transparent; }
+  background: transparent;
+  position: relative; }
   .nav-global a {
     color: #333231; }
   .nav-global a:hover {
@@ -1000,7 +1011,7 @@ div[role='main'].news-feed {
   .nav-global .nav {
     position: absolute;
     left: 0;
-    top: 54px;
+    top: 50px;
     z-index: 4;
     background: white; }
     @media (min-width: 769px) {
@@ -1382,9 +1393,6 @@ SIDEBARS & ASIDES
 /*********************
 NAVIGATION STYLES
 *********************/
-/******************************************************************
-NAVIGATION
-******************************************************************/
 /*
 all navs have a .nav class applied via the wp_menu function; this 
 is so we can easily write one group of styles for the navs on the 
@@ -1399,144 +1407,69 @@ site so our css is cleaner and more scalable.
       display: block;
       text-decoration: none; }
 
-/* filter menus */
-a.filter-link {
-  display: block;
-  padding: 1em; }
-
-.filter,
-.filter > ul ul {
-  clear: both;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -ms-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out; }
-
-.js .filter,
-.js .filter > ul ul {
-  overflow: hidden;
-  max-height: 0;
-  background: rgba(0, 0, 0, 0.1); }
-
-.filter.active, .js .filter > ul ul.active {
-  max-height: 55em; }
-
-.filter > ul {
-  border-top: 1px solid #808080; }
-
-.filter li a {
-  color: #000;
-  display: block;
-  padding: 0.8em;
-  border-bottom: 1px solid #808080;
-  position: relative; }
-
-.filter li.has-subnav > a:after {
-  content: '+';
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: block;
-  font-size: 1.5em;
-  padding: 0.25em 0.5em; }
-
-.filter li.has-subnav > a.active:after {
-  content: "-"; }
-
-@media screen and (min-width: 48.25em) {
-  .pattern {
-    overflow: visible; }
-
-  a.filter-link {
-    display: none; }
-
-  .js .filter {
-    max-height: none;
-    overflow: visible;
-    background: none; }
-
-  .filter ul {
-    margin: 0 0 0 -0.25em;
-    border: 0; }
-
-  .filter li a {
-    border: 0; }
-
-  .filter li.has-subnav > a {
-    padding-right: 2em; }
-
-  .filter li.has-subnav > a:after {
-    content: ">";
-    font-size: 1em;
-    padding: 0.8em 0.5em; }
-
-  .filter .level-1 > li.has-subnav > a:after {
-    content: "?"; }
-
-  .filter > ul li {
-    margin: 0 0.25em; }
-
-  .filter > ul > li {
+.toggle {
+  float: right; }
+  .toggle li {
     display: inline-block;
-    position: relative; } }
-/******************************************************************
-FILTER MENUS
-******************************************************************/
-.filters {
-  width: 100%;
-  margin-bottom: 30px; }
-  .filters ul {
-    -webkit-transition: height 0.25s ease;
-    -moz-transition: height 0.25s ease;
-    transition: height 0.25s ease; }
-    @media (min-width: 769px) {
-      .filters ul {
-        display: block;
-        float: left;
-        margin-right: 1.75788%;
-        width: 23.68159%; }
-        .filters ul:last-child {
-          margin-right: 0; } }
-    .filters ul:first-child {
-      background: #22b573; }
-    .filters ul:nth-child(2) {
-      background: #00a99d;
-      left: 25%; }
-    .filters ul:nth-child(3) {
-      background: #29abe2;
-      left: 50%; }
-    .filters ul:nth-child(4) {
-      background: #247cc9;
-      left: 75%; }
-    .filters ul:hover {
-      height: auto;
-      cursor: pointer; }
-    .filters ul li {
-      display: block;
-      padding: 5px 10px;
-      margin: 0;
+    color: #00a99d;
+    padding: 3px 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px; }
+    .toggle li.current {
       background: white;
       color: #333231; }
-      .filters ul li:first-child {
-        font-size: 16px;
-        font-size: 1rem;
-        background: transparent;
-        color: white; }
-        .filters ul li:first-child:before {
-          font-family: "ios7-icon";
-          font-style: normal;
-          font-size: inherit;
-          line-height: inherit;
-          margin-right: 0;
-          text-align: center;
-          display: inline-block;
-          color: inherit;
-          vertical-align: middle; }
+    .toggle li:hover {
+      background: white;
+      cursor: pointer; }
 
-/******************************************************************
-PAGINATION
-******************************************************************/
+.filter {
+  margin-bottom: 24px;
+  -webkit-transition: height 0.25s ease;
+  -moz-transition: height 0.25s ease;
+  transition: height 0.25s ease; }
+  @media (min-width: 481px) {
+    .filter {
+      display: block;
+      float: left;
+      margin-right: 1.75788%;
+      width: 49.12106%; }
+      .filter:last-child {
+        margin-right: 0; } }
+  @media (min-width: 1025px) {
+    .filter {
+      display: block;
+      float: left;
+      margin-right: 1.75788%;
+      width: 23.68159%; }
+      .filter:last-child {
+        margin-right: 0; } }
+  .filter:hover {
+    height: auto;
+    cursor: pointer; }
+  .filter li {
+    display: block;
+    padding: 5px 10px;
+    margin: 0;
+    background: white;
+    color: #333231;
+    font-size: 18px;
+    font-size: 1.125rem; }
+    .filter li:first-child {
+      font-size: 16px;
+      font-size: 1rem;
+      background: #00a99d;
+      color: white; }
+      .filter li:first-child:before {
+        font-family: "ios7-icon";
+        font-style: normal;
+        font-size: inherit;
+        line-height: inherit;
+        margin-right: 0;
+        text-align: center;
+        display: inline-block;
+        color: inherit;
+        vertical-align: middle; }
+
 .pagination,
 .wp-prev-next {
   margin: 1.1em 0 2.2em; }
@@ -1644,7 +1577,8 @@ button,
 POSTS & CONTENT STYLES
 *********************/
 .page-title,
-.archive-title {
+.archive-title,
+.section-title {
   text-transform: uppercase;
   letter-spacing: 1px;
   line-height: 1.1;
@@ -1683,56 +1617,57 @@ POSTS & CONTENT STYLES
   font-size: 22px;
   font-size: 1.375rem; }
 
-.entry-content {
+.post .entry-content {
   /*
   image alignment on a screen this size may be
   a bit difficult. It's set to start aligning
   and floating images at the next breakpoint,
   but it's up to you. Feel free to change it up.
   */ }
-  .entry-content h1 {
+  .post .entry-content h1 {
     margin-bottom: 0; }
-  .entry-content h2, .entry-content .site-name, .entry-content h3, .entry-content .page-title,
-  .entry-content .archive-title, .entry-content h4, .entry-content .widget_recent_entries li, .widget_recent_entries .entry-content li,
-  .entry-content .widget_em_widget li,
-  .widget_em_widget .entry-content li, .entry-content .highlights-list .post-title, .highlights-list .entry-content .post-title, .entry-content .wp-biographia-text h3, .wp-biographia-text .entry-content h3, .entry-content .wp-biographia-text .page-title, .wp-biographia-text .entry-content .page-title,
-  .entry-content .wp-biographia-text .archive-title,
-  .wp-biographia-text .entry-content .archive-title, .entry-content div.bx-wrapper .bx-caption span, div.bx-wrapper .bx-caption .entry-content span {
+  .post .entry-content h2, .post .entry-content .site-name, .post .entry-content h3, .post .entry-content .page-title,
+  .post .entry-content .archive-title,
+  .post .entry-content .section-title, .post .entry-content h4, .post .entry-content .widget_recent_entries li, .widget_recent_entries .post .entry-content li,
+  .post .entry-content .widget_em_widget li,
+  .widget_em_widget .post .entry-content li, .post .entry-content .highlights-list .post-title, .highlights-list .post .entry-content .post-title, .post .entry-content .wp-biographia-text h3, .wp-biographia-text .post .entry-content h3, .post .entry-content .wp-biographia-text .page-title, .wp-biographia-text .post .entry-content .page-title,
+  .post .entry-content .wp-biographia-text .archive-title,
+  .wp-biographia-text .post .entry-content .archive-title,
+  .post .entry-content .wp-biographia-text .section-title,
+  .wp-biographia-text .post .entry-content .section-title, .post .entry-content div.bx-wrapper .bx-caption span, div.bx-wrapper .bx-caption .post .entry-content span {
     margin-top: 1.8em; }
-  .entry-content p, .entry-content .news .module-heading, .news .entry-content .module-heading,
-  .entry-content .events .module-heading,
-  .events .entry-content .module-heading,
-  .entry-content .sites .module-heading,
-  .sites .entry-content .module-heading, .entry-content .login p.error, .login .entry-content p.error,
-  .entry-content .login p.message,
-  .login .entry-content p.message {
+  .post .entry-content p, .post .entry-content .news .module-heading, .news .post .entry-content .module-heading,
+  .post .entry-content .events .module-heading,
+  .events .post .entry-content .module-heading,
+  .post .entry-content .sites .module-heading,
+  .sites .post .entry-content .module-heading {
     max-width: 40em; }
-  .entry-content ul, .entry-content ol {
+  .post .entry-content ul, .post .entry-content ol {
     padding: 0 40px; }
-  .entry-content ul {
+  .post .entry-content ul {
     list-style: square; }
-  .entry-content ol {
+  .post .entry-content ol {
     list-style: decimal; }
-  .entry-content dl {
+  .post .entry-content dl {
     border-top: 1px solid white;
     padding-top: 1em; }
-  .entry-content dt {
+  .post .entry-content dt {
     float: left; }
-  .entry-content dd {
+  .post .entry-content dd {
     margin-left: 375px; }
-  .entry-content img {
+  .post .entry-content img {
     margin: 0 0 20px 0;
     max-width: 100%;
     height: auto; }
-  .entry-content .alignleft, .entry-content img.alignleft {
+  .post .entry-content .alignleft, .post .entry-content img.alignleft {
     float: left;
     margin-right: 40px;
     margin-bottom: 20px; }
-  .entry-content .alignright, .entry-content img.alignright {
+  .post .entry-content .alignright, .post .entry-content img.alignright {
     float: right;
     margin-left: 40px;
     margin-bottom: 20px; }
-  .entry-content video, .entry-content object {
+  .post .entry-content video, .post .entry-content object {
     max-width: 100%;
     height: auto; }
 
@@ -2168,6 +2103,7 @@ POSTS & CONTENT STYLES
 
 .sites-list {
   clear: both;
+  padding: 0;
   width: 100%; }
   .sites-list li {
     background: white;
@@ -2176,7 +2112,15 @@ POSTS & CONTENT STYLES
     padding: 0;
     height: 240px;
     overflow: hidden; }
-    @media (min-width: 481px) {
+    @media (min-width: 321px) {
+      .sites-list li {
+        display: block;
+        float: left;
+        margin-right: 1.75788%;
+        width: 49.12106%; }
+        .sites-list li:last-child {
+          margin-right: 0; } }
+    @media (min-width: 769px) {
       .sites-list li {
         display: block;
         float: left;
@@ -2194,10 +2138,14 @@ POSTS & CONTENT STYLES
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0;
-    padding: 5px 10px 0; }
+    padding: 5px 10px 0;
+    font-size: 18px;
+    font-size: 1.125rem; }
   .sites-list .site-meta {
     margin: 0;
     padding: 0 10px 10px;
+    font-size: 14px;
+    font-size: 0.875rem;
     color: #b8b6b2; }
 
 #site-promo {
@@ -2463,9 +2411,7 @@ COMMENT FORM STYLES
     .respond-form form li .sites .news-feed .post-footer .module-heading,
     .sites .news-feed .post-footer .respond-form form li .module-heading,
     .respond-form form li .news-feed .post-footer li,
-    .news-feed .post-footer .respond-form form li li,
-    .respond-form form li .sites-list .site-meta,
-    .sites-list .respond-form form li .site-meta {
+    .news-feed .post-footer .respond-form form li li {
       display: none; }
   .respond-form form input[type=text],
   .respond-form form input[type=email],
@@ -2849,7 +2795,8 @@ style a page via class
   margin-left: 120px; }
 
 .wp-biographia-text h3, .wp-biographia-text .page-title,
-.wp-biographia-text .archive-title {
+.wp-biographia-text .archive-title,
+.wp-biographia-text .section-title {
   margin: .5em 0; }
 
 .wp-biographia-container-around {
@@ -3046,6 +2993,9 @@ div.css-search {
             div.css-search div.em-search-main div.em-search-field input:-ms-input-placeholder {
               font-size: 24px;
               font-size: 1.5rem; } }
+    @media (min-width: 321px) {
+      div.css-search div.em-search-main div.em-search-geo {
+        display: inline-block; } }
     div.css-search div.em-search-main .em-search-submit {
       font-size: 28px;
       font-size: 1.75rem;
@@ -3146,6 +3096,12 @@ div.css-search {
     margin-bottom: 1em; }
     .css-events-list .event-location span {
       display: block; }
+      @media (min-width: 321px) {
+        .css-events-list .event-location span {
+          display: inline;
+          padding-right: 5px; }
+          .css-events-list .event-location span:after {
+            content: ' /'; } }
       .css-events-list .event-location span:last-child:after {
         content: ''; }
   .css-events-list .event-description {
@@ -3182,7 +3138,9 @@ div.css-search {
   .single-event .event-details .widget_em_widget li span,
   .widget_em_widget .single-event .event-details li span, .single-event .event-details .highlights-list .post-title span, .highlights-list .single-event .event-details .post-title span, .single-event .event-details .wp-biographia-text h3 span, .wp-biographia-text .single-event .event-details h3 span, .single-event .event-details .wp-biographia-text .page-title span, .wp-biographia-text .single-event .event-details .page-title span,
   .single-event .event-details .wp-biographia-text .archive-title span,
-  .wp-biographia-text .single-event .event-details .archive-title span, .single-event .event-details div.bx-wrapper .bx-caption span span, div.bx-wrapper .bx-caption .single-event .event-details span span {
+  .wp-biographia-text .single-event .event-details .archive-title span,
+  .single-event .event-details .wp-biographia-text .section-title span,
+  .wp-biographia-text .single-event .event-details .section-title span, .single-event .event-details div.bx-wrapper .bx-caption span span, div.bx-wrapper .bx-caption .single-event .event-details span span {
     display: block; } }
 .single-event .date-time,
 .single-event .location {
@@ -3275,6 +3233,15 @@ ul.event-categories {
   -webkit-transition: background 0.25s ease;
   -moz-transition: background 0.25s ease;
   transition: background 0.25s ease; }
+  @media (min-width: 321px) {
+    .home-modules .events-list li {
+      display: block;
+      float: left;
+      margin-right: 1.75788%;
+      width: 49.12106%;
+      display: inline-block; }
+      .home-modules .events-list li:last-child {
+        margin-right: 0; } }
   @media (min-width: 481px) {
     .home-modules .events-list li {
       display: block;
@@ -3305,6 +3272,11 @@ ul.event-categories {
   padding: 10px 0;
   max-height: 90px;
   overflow: hidden; }
+  @media (min-width: 321px) {
+    .home-modules .event-title {
+      font-size: 20px;
+      font-size: 1.25rem;
+      line-height: 1.3; } }
   .home-modules .event-title a {
     display: block;
     color: white; }
