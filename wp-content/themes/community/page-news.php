@@ -12,7 +12,7 @@
 
 								<header class="article-header">
 
-									<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
+									<h1 class="post-title" itemprop="headline"><?php the_title(); ?></h1>
 
 								</header>
 

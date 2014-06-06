@@ -1424,6 +1424,7 @@ site so our css is cleaner and more scalable.
 
 .filter {
   margin-bottom: 24px;
+  height: 40px;
   -webkit-transition: height 0.25s ease;
   -moz-transition: height 0.25s ease;
   transition: height 0.25s ease; }

@@ -47,6 +47,7 @@ site so our css is cleaner and more scalable.
 
 .filter {
     margin-bottom: $space;
+    height: 40px;
     @include transition(height 0.25s ease);
 	@include breakpoint(sm) {@include span-columns(8);}
 	@include breakpoint(lg) {@include span-columns(4);}
