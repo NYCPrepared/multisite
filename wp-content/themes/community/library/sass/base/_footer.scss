@@ -1,10 +1,10 @@
 // FOOTER
 
 .footer {
-    background: $gray8;
+    background: $base8;
     .global {
         padding: 30px 0;
-        @include breakpoint(medium) {position: relative;}
+        @include breakpoint(md) {position: relative;}
     }
 }
 
@@ -20,7 +20,7 @@
 .footer .widget {
     background: $white;
     margin-bottom: 30px;   
-	@include breakpoint(small) {@include span-columns(4);}
+	@include breakpoint(sm) {@include span-columns(4);}
 	ul {
     	margin-bottom: 0;
 	}
@@ -40,7 +40,7 @@
 // SOCIAL LINKS AND COPYRIGHT
 
 .footer-slug {
-    background: $gray7;
+    background: $base7;
     clear: both;
     .wrap {
         max-width: 1200px;
@@ -80,10 +80,10 @@
     @include font-size(10);
     text-transform: uppercase; 
         letter-spacing: $caps-spacing;
-    color: $gray4;
+    color: $base4;
     display: inline-block;
     margin: 15px 0;
     height: 30px;
     line-height: 30px;
-	@include breakpoint(medium) {@include font-size(12);}
+	@include breakpoint(md) {@include font-size(12);}
 }

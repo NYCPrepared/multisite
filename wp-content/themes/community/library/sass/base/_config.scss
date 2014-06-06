@@ -1,6 +1,13 @@
 // STARTER VARIABLES AND MIXINS
 
 
+// GRID (BOURBON NEAT) -- neat.bourbon.io/docs
+
+@import "neat/neat-helpers";
+$grid-columns: 16;
+$max-width: 1200px;
+
+
 // COLORS
 
 $navy: #247cc9;
@@ -16,16 +23,16 @@ $black: #000;
 $white: #fff;
 
 // shades of beige -- HSB(43, 3, X)
-$gray1: #1a1919;
-$gray2: #333231;
-$gray3: #4d4c4a;
-$gray4: #757472;
-$gray5: #999894;
-$gray6: #b8b6b2;
-$gray7: #d1cfcb;
-$gray8: #e6e4df;
-$gray9: #f5f3ed;
-$gray0: #fffdf7;
+$base1: #1a1919;
+$base2: #333231;
+$base3: #4d4c4a;
+$base4: #757472;
+$base5: #999894;
+$base6: #b8b6b2;
+$base7: #d1cfcb;
+$base8: #e6e4df;
+$base9: #f5f3ed;
+$base0: #fffdf7;
 
 
 // Tutorial: how to use color variables properly:
@@ -33,39 +40,36 @@ $gray0: #fffdf7;
 
 $anchor-color: $teal;
 $anchor-hover: $navy;
-$headline-color: $gray1;
-$text-color: $gray2;
-$quiet-color: $gray6;
+$headline-color: $base1;
+$text-color: $base2;
+$quiet-color: $base6;
 $loud-color: $black;
-$hr-color: $gray6;
+$hr-color: $base6;
 
 
 // TYPE SIZES
-// http://typecast.com/blog/a-more-modern-scale-for-web-typography
+// http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css/
 
-$h1-size-s: 32;
-$h2-size-s: 26;
-$h3-size-s: 22;
-$h4-size-s: 18;
-$body-size-s: 16;
-$caption-size-s: 14;
-$small-size-s: 12;
+$giga: 80;
+$mega: 72;
+$kilo: 64;
 
-$h1-size-m: 40;
-$h2-size-m: 32;
-$h3-size-m: 26;
-$h4-size-m: 21;
-$body-size-m: 17;
-$caption-size-m: 15;
-$small-size-m: 13;
+$alpha: 48; // h1
+$beta: 36; // h2
+$gamma: 28; // h3
+$delta: 22; // h4
+$epsilon: 18; // h5, p
+$zeta: 16; // h6
 
-$h1-size-l: 48;
-$h2-size-l: 36;
-$h3-size-l: 28;
-$h4-size-l: 22;
-$body-size-l: 18;
-$caption-size-l: 16;
-$small-size-l: 14;
+$milli: 14; 
+
+
+// SPACING
+
+$space: 24px; // equal to body line-height
+$space2: 48px;
+$space3: 72px; 
+$space-half: 12px; 
 
 
 // BORDERS
@@ -83,14 +87,6 @@ $layer5: 5; // lightbox content
 
 
 
-// GRID (BOURBON NEAT) //
-// so great! read the docs:
-// neat.bourbon.io/docs/
-
-$grid-columns: 16;
-$max-width: 1200px;
-
-
 // MIXINS 
 // read the Bourbon docs for all kinds of well-tested mixins 
 // check there before adding new ones
@@ -102,16 +98,16 @@ $max-width: 1200px;
 // set breakpoints where your content breaks, not particular devices
 
 @mixin breakpoint($point) {
-	@if $point == tiny {
+	@if $point == xs {
 		@media (min-width: 321px)  { @content; } 
 	}
-	@if $point == small {
+	@if $point == sm {
 		@media (min-width: 481px) { @content; }
 	}
-	@if $point == medium {
+	@if $point == md {
 		@media (min-width: 769px) { @content; }
 	}
-	@if $point == large {
+	@if $point == lg {
 		@media (min-width: 1025px) { @content; }
 	}
 	@else if $point == xl {
@@ -140,7 +136,7 @@ $max-width: 1200px;
 
 // NOTCHED LINE
 
-@mixin notch($size, $border: $gray5, $fill: $gray9){
+@mixin notch($size, $border: $base5, $fill: $base9){
     position: relative;
     a:before,
     a:after {

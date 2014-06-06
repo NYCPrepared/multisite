@@ -6,9 +6,9 @@
 // if you're going to use webfonts, be sure to check your weights
 // http://css-tricks.com/watch-your-font-weight/
 
-$sans:        "Lato", Helvetica, Verdana, sans-serif;
+$sans: "Lato", Helvetica, Verdana, sans-serif;
+$mono: "Courier New", Courier, monospace;
 $caps-spacing: 1px;
-
 
 
 // FONT SIZING
@@ -20,27 +20,17 @@ $caps-spacing: 1px;
 }
 
 html {
-    font-size: 100%; // 16px 
+    line-height: 1.5;
+    font-size: 80%;
+	@include breakpoint(md) {font-size: 90%;}
+	@include breakpoint(lg) {font-size: 100%;} // 16px
 }
 
 body {
-    @include font-size($body-size-s);
     font-family: $sans;
     font-weight: 300;
     line-height: 1.5;
     color: $text-color;
-}
-
-
-// FONT SPACING
-// http://csswizardry.com/2012/06/single-direction-margin-declarations/
-
-h1, h2, h3, h4, h5, h6, hgroup,
-ul, ol, dd,
-p, figure,
-pre, table, fieldset, hr{
-    margin-top: 0;
-    margin-bottom: 1.5rem; // equal to body line-height to create vertical rhythm
 }
 
 
@@ -50,6 +40,7 @@ h1, h2, h3, h4, h5, h6 {
 	text-rendering: optimizelegibility;
 	font-weight: 300;
     color: $headline-color;
+    margin-bottom: $space;
 	a {
 		text-decoration: none;
 	}
@@ -64,73 +55,54 @@ h3, h4, h5 {
 
 
 h1 {
-    @include font-size($h1-size-s);
-	@include breakpoint(medium) {@include font-size($h1-size-m);}
-	@include breakpoint(large) {@include font-size($h1-size-l);}
+    @include font-size($alpha);
 }
 
 h2 {
-    @include font-size($h2-size-s);
-	@include breakpoint(medium) {@include font-size($h2-size-m);}
-	@include breakpoint(large) {@include font-size($h2-size-l);}
+    @include font-size($beta);
 }
 
 h3 {
-    @include font-size($h3-size-s);
-	@include breakpoint(medium) {@include font-size($h3-size-m);}
-	@include breakpoint(large) {@include font-size($h3-size-l);}
+    @include font-size($gamma);
 }
 
 h4 {
-    @include font-size($h4-size-s);
-	@include breakpoint(medium) {@include font-size($h4-size-m);}
-	@include breakpoint(large) {@include font-size($h4-size-l);}
+    @include font-size($delta);
 }
 
 h5 {
-    @include font-size($body-size-s);
-	@include breakpoint(medium) {@include font-size($body-size-m);}
-	@include breakpoint(large) {@include font-size($body-size-l);}
-    font-weight: 700;
+    @include font-size($epsilon);
 }
 
 h6 {
-    @include font-size($caption-size-s);
-	@include breakpoint(medium) {@include font-size($caption-size-m);}
-	@include breakpoint(large) {@include font-size($caption-size-l);}
+    @include font-size($zeta);
 	text-transform: uppercase;
 	letter-spacing: $caps-spacing;
 }
 
 
+// OTHER
 
-p {
-    @include font-size($body-size-s);
-	@include breakpoint(medium) {@include font-size($body-size-m);}
-	@include breakpoint(large) {@include font-size($body-size-l); max-width: 40em; line-height: 1.75;}
+p, li, dt, dd {
+    margin-bottom: $space;
+    @include font-size($epsilon);
+	@include breakpoint(lg) {max-width: 40em; line-height: 1.75;}
 }
 
 
-li, dt, dd {
-    @include font-size($body-size-s);
-	margin-bottom: .75em;
-	@include breakpoint(medium) {@include font-size($body-size-m);}
-	@include breakpoint(large) {@include font-size($body-size-l); max-width: 40em; line-height: 1.75;}
+li {
+	margin-bottom: $space-half;
 }
 
 input, label, select, textarea {
-    @include font-size($body-size-s);
+    @include font-size($epsilon);
 	margin-bottom: .75em;
 	font-family: $sans;
 	font-weight: 300;
-	@include breakpoint(medium) {@include font-size($body-size-m);}
-	@include breakpoint(large) {@include font-size($body-size-l);}
 }
 
-small {
-    @include font-size($small-size-s);
-	@include breakpoint(medium) {@include font-size($small-size-m);}
-	@include breakpoint(large) {@include font-size($small-size-l);}
+small, .milli {
+    @include font-size(14);
 }
 
 
@@ -146,18 +118,18 @@ i, em {
 
 
 ul, ol {
-    margin: 0 0 1.5em;
+    margin: 0 0 $space;
     ul, ol {
-        margin: .75em 0 1.5em;
+        margin: $space-half 0 $space;
     }
 }
 
 
 blockquote {
     padding: 0 10% 0 0;
-    margin: 1.5em 0;
+    margin: $space 0;
     p, li {
-    	color: $gray5;
+    	color: $base5;
         font-style: italic;
     }
 }
@@ -166,17 +138,15 @@ code,
 kbd,
 pre,
 samp {
-    font-family: 'Courier New', Courier, monospace;
-    @include font-size($body-size-s);
-	@include breakpoint(medium) {@include font-size($body-size-m);}
-	@include breakpoint(large) {@include font-size($body-size-l);}
+    font-family: $mono;
+    @include font-size($epsilon);
 }
 
 pre {
-    padding: 1em 1.5em;
-    margin: 1.5em 0;
+    padding: 1em $space;
+    margin: $space 0;
     display: block;
-    background: $gray2;
+    background: $base2;
     color: $white;
 }
 

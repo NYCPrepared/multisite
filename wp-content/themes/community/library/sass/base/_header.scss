@@ -6,13 +6,13 @@
 }
 
 .domain-title {
-    @include font-size(18);
+    @include font-size($epsilon);
     line-height: 1;
     display: none;
 	float: left;
     margin: 0;
     white-space: nowrap;
-    @include breakpoint(medium) {@include font-size(14); display: block;}
+    @include breakpoint(md) {@include font-size(14); display: block;}
     a, a:visited {
         display: block;
         color: $text-color;
@@ -51,7 +51,7 @@
         @extend %ios7-search;
         @include font-size(22); 
     }
-    @include breakpoint(medium) {display: none;}
+    @include breakpoint(md) {display: none;}
 }
 
 		
@@ -74,37 +74,37 @@
         top: 54px;
         z-index: $layer4;
         background: $white;
-        @include breakpoint(medium) {position: static; padding-right: 5px; background: transparent;}
+        @include breakpoint(md) {position: static; padding-right: 5px; background: transparent;}
     }
 	.nav li {
-        @include font-size(18);
+        @include font-size($epsilon);
         line-height: 1;
-        @include breakpoint(medium) {@include font-size(14); display: inline-block;}
+        @include breakpoint(md) {@include font-size(14); display: inline-block;}
 		a, 
 		a:visited {
 		    padding: 10px 20px;
             color: $text-color;
-            @include breakpoint(medium) {padding: 15px 10px;}
+            @include breakpoint(md) {padding: 15px 10px;}
 		}
         a:focus,
 		a:hover {
     		background: $text-color;
     		color: $white;
-            @include breakpoint(medium) {background: transparent; color: $teal;}
+            @include breakpoint(md) {background: transparent; color: $teal;}
 		}
 	}
 	.nav li.current-menu-item, 
 	.nav li.current_page_item, 
 	.nav li.current-page-ancestor {
     	display: none;
-        @include breakpoint(medium) {display: inline-block;}
+        @include breakpoint(md) {display: inline-block;}
 	}
 }
 
 // site nav
 
 .nav-local {
-    background: $gray3;
+    background: $base3;
     height: 44px;
     .search-form {
         float: right;
@@ -115,7 +115,7 @@
         display: block;
         margin: 0;
         margin-right: -2px; // remove space caused by inline-block
-        @include breakpoint(medium) {display: inline-block;}
+        @include breakpoint(md) {display: inline-block;}
         &.current-menu-item a {
             background: $anchor-color;
             color: $white;
@@ -127,10 +127,10 @@
         color: $anchor-color;
         text-transform: uppercase; 
         letter-spacing: $caps-spacing;
-        @include breakpoint(medium) {color: $white;}
+        @include breakpoint(md) {color: $white;}
         &:hover {
             color: $text-color;
-            @include breakpoint(medium) {background: $anchor-color; color: $white;}
+            @include breakpoint(md) {background: $anchor-color; color: $white;}
         }
     }
     #searchform #searchsubmit {
@@ -151,7 +151,7 @@
     	overflow: visible;
     	background: white;
     }
-    @include breakpoint(medium) {max-height: none;}
+    @include breakpoint(md) {max-height: none;}
 }
 
 

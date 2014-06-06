@@ -8,15 +8,15 @@
   // Grayscale button
   @if $base-color == grayscale($base-color) {
     @if $style == simple {
-      @include simple($base-color, $grayscale: true);
+      @include simple($base-color, $basescale: true);
     }
 
     @else if $style == shiny {
-      @include shiny($base-color, $grayscale: true);
+      @include shiny($base-color, $basescale: true);
     }
 
     @else if $style == pill {
-      @include pill($base-color, $grayscale: true);
+      @include pill($base-color, $basescale: true);
     }
   }
 
@@ -44,7 +44,7 @@
 
 // Simple Button
 //************************************************************************//
-@mixin simple($base-color, $grayscale: false) {
+@mixin simple($base-color, $basescale: false) {
   $color:         hsl(0, 0, 100%);
   $border:        adjust-color($base-color, $saturation:  9%,  $lightness: -14%);
   $inset-shadow:  adjust-color($base-color, $saturation: -8%,  $lightness:  15%);
@@ -56,7 +56,7 @@
     $text-shadow: adjust-color($base-color, $saturation: 10%, $lightness: 4%);
   }
 
-  @if $grayscale == true {
+  @if $basescale == true {
     $border:        grayscale($border);
     $inset-shadow:  grayscale($inset-shadow);
     $stop-gradient: grayscale($stop-gradient);
@@ -81,7 +81,7 @@
     $inset-shadow-hover:  adjust-color($base-color, $saturation: -7%, $lightness:  5%);
     $stop-gradient-hover: adjust-color($base-color, $saturation:  8%, $lightness: -14%);
 
-    @if $grayscale == true {
+    @if $basescale == true {
       $base-color-hover:    grayscale($base-color-hover);
       $inset-shadow-hover:  grayscale($inset-shadow-hover);
       $stop-gradient-hover: grayscale($stop-gradient-hover);
@@ -96,7 +96,7 @@
     $border-active:       adjust-color($base-color, $saturation: 9%, $lightness: -14%);
     $inset-shadow-active: adjust-color($base-color, $saturation: 7%, $lightness: -17%);
 
-    @if $grayscale == true {
+    @if $basescale == true {
       $border-active:       grayscale($border-active);
       $inset-shadow-active: grayscale($inset-shadow-active);
     }
@@ -109,7 +109,7 @@
 
 // Shiny Button
 //************************************************************************//
-@mixin shiny($base-color, $grayscale: false) {
+@mixin shiny($base-color, $basescale: false) {
   $color:         hsl(0, 0, 100%);
   $border:        adjust-color($base-color, $red: -117, $green: -111, $blue: -81);
   $border-bottom: adjust-color($base-color, $red: -126, $green: -127, $blue: -122);
@@ -124,7 +124,7 @@
     $text-shadow: adjust-color($base-color, $saturation: 10%, $lightness: 4%);
   }
 
-  @if $grayscale == true {
+  @if $basescale == true {
     $border:        grayscale($border);
     $border-bottom: grayscale($border-bottom);
     $fourth-stop:   grayscale($fourth-stop);
@@ -154,7 +154,7 @@
     $third-stop-hover:  adjust-color($base-color, $red: -93, $green: -85, $blue: -66);
     $fourth-stop-hover: adjust-color($base-color, $red: -86, $green: -80, $blue: -63);
 
-    @if $grayscale == true {
+    @if $basescale == true {
       $first-stop-hover:  grayscale($first-stop-hover);
       $second-stop-hover: grayscale($second-stop-hover);
       $third-stop-hover:  grayscale($third-stop-hover);
@@ -171,7 +171,7 @@
   &:active:not(:disabled) {
     $inset-shadow-active: adjust-color($base-color, $red: -111, $green: -116, $blue: -122);
 
-    @if $grayscale == true {
+    @if $basescale == true {
       $inset-shadow-active: grayscale($inset-shadow-active);
     }
 
@@ -182,7 +182,7 @@
 
 // Pill Button
 //************************************************************************//
-@mixin pill($base-color, $grayscale: false) {
+@mixin pill($base-color, $basescale: false) {
   $color:         hsl(0, 0, 100%);
   $border-bottom: adjust-color($base-color, $hue:  8, $saturation: -11%, $lightness: -26%);
   $border-sides:  adjust-color($base-color, $hue:  4, $saturation: -21%, $lightness: -21%);
@@ -196,7 +196,7 @@
     $text-shadow: adjust-color($base-color, $saturation: 10%, $lightness: 4%);
   }
 
-  @if $grayscale == true {
+  @if $basescale == true {
     $border-bottom: grayscale($border-bottom);
     $border-sides:  grayscale($border-sides);
     $border-top:    grayscale($border-top);
@@ -230,7 +230,7 @@
     $stop-gradient-hover: adjust-color($base-color, $hue:  8, $saturation: -4%,    $lightness: -15.5%);
     $text-shadow-hover:   adjust-color($base-color, $hue:  5, $saturation: -5%,    $lightness: -22%);
 
-    @if $grayscale == true {
+    @if $basescale == true {
       $base-color-hover:    grayscale($base-color-hover);
       $border-bottom:       grayscale($border-bottom);
       $border-sides:        grayscale($border-sides);
@@ -256,7 +256,7 @@
     $inset-shadow-active:  adjust-color($base-color, $hue: 9,  $saturation:  2%,   $lightness: -21.5%);
     $text-shadow-active:   adjust-color($base-color, $hue: 5,  $saturation: -12%,  $lightness: -21.5%);
 
-    @if $grayscale == true {
+    @if $basescale == true {
       $active-color:         grayscale($active-color);
       $border-active:        grayscale($border-active);
       $border-bottom-active: grayscale($border-bottom-active);

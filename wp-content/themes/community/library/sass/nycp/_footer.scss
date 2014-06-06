@@ -1,7 +1,7 @@
 // NYCP FOOTER
 
 .logo-NYCP {
-    @include font-size(18);
+    @include font-size($epsilon);
     text-transform: uppercase; 
         letter-spacing: $caps-spacing;
     font-weight: 700;
@@ -35,7 +35,7 @@
 	letter-spacing: $caps-spacing;
     vertical-align: middle;
     white-space: nowrap;
-    color: $gray5;
+    color: $base5;
 }
 
 

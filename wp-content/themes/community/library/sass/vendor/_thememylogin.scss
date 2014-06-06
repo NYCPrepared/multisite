@@ -22,8 +22,8 @@
 }
 
 #pass-strength-result {
-    background-color: $gray8;
-    border-color: $gray6 !important;
+    background-color: $base8;
+    border-color: $base6 !important;
     &.bad {
         background-color: lighten($orange, 30);
         border-color: $orange !important;

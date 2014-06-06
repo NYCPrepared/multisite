@@ -1,6 +1,8 @@
 // BOX SLIDER PLUGIN 
 
 div.bx-wrapper {
+    position: relative;
+    margin: 20px auto;
     .bx-viewport {
         background: transparent;
         border: none;
@@ -10,9 +12,13 @@ div.bx-wrapper {
     .bxslider {
         margin: 0;
     }
+    .featured-post {
+        max-width: none;
+    }
     .bx-caption {
         background: rgba(255,255,255,.8);
         bottom: 10px;
+        width: 100%;
         span {
             color: $text-color;
             font-family: $sans;
@@ -21,12 +27,19 @@ div.bx-wrapper {
         }
     }   
     .bx-pager.bx-default-pager {
+        position: absolute;
+        bottom: 12px;
+        right: 15px;
+        width: 30%;
+        z-index: 100;
+        text-align: right;
         a {
-            background: $gray8;
+            background: $base9;
+            text-indent: 9999px; // reverse b/c text-align right
         }
         a:hover, 
         a.active {
-            background: $gray3;
+            background: $base2;
         }
     }
 }
@@ -36,6 +49,8 @@ div.bx-wrapper {
 
 article.home-feature div.bx-wrapper .bx-viewport {
     border: 5px solid $white;
+    background: $base2;
+
 }
 
 

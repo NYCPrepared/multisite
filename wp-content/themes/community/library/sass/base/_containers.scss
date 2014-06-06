@@ -9,7 +9,7 @@ body {
   width: 100%;
   margin: 0;
   padding: 0;
-  background: $gray9;
+  background: $base9;
 }
 
 
@@ -46,13 +46,13 @@ hr {
 
 // sidebar
 div[role='complementary'] {
-	@include breakpoint(medium) {@include span-columns(4);}
+	@include breakpoint(md) {@include span-columns(4);}
 }
 
 // main
 div[role='main'] {
     padding-bottom: 60px; 
-	@include breakpoint(medium) {@include span-columns(12); }
+	@include breakpoint(md) {@include span-columns(12); }
     // single page template 
     .page-template-page-iframe-php & {
         @include span-columns(16); 
@@ -70,17 +70,9 @@ div[role='main'].news-feed {
 // HOME PAGE 
 
 .home-feature {
-    @include breakpoint(medium) {
-        @include span-columns(12);
-        // hide FOUT
-        max-height: 444px;
-        overflow: hidden; 
-    }
-}
-.home-intro {
-    @include breakpoint(medium) {
-        @include span-columns(4); 
-    }
+    max-height: 480px;
+    overflow: hidden; 
+    border-top: 1px solid $hr-color;
 }
 
 .home-modules {

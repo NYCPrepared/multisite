@@ -18,15 +18,15 @@
     clear: both;
     overflow: visible;
     position: relative;
-	@include breakpoint(medium) {height: auto; min-height: 140px; max-height: 300px;}
+	@include breakpoint(md) {height: auto; min-height: 140px; max-height: 300px;}
 }
 
 .banner-inner {
     width: 100%;
     height: 140px;
     overflow: hidden;
-    background-color: $gray8;
-	@include breakpoint(medium) {height: auto; min-height: 130px; max-height: 290px;}
+    background-color: $base8;
+	@include breakpoint(md) {height: auto; min-height: 130px; max-height: 290px;}
     img {
         height: 100%;
         width: auto;

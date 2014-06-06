@@ -11,7 +11,7 @@ POSTS & CONTENT STYLES
 .page-title,
 .archive-title {
     text-transform: uppercase; 
-        letter-spacing: $caps-spacing;
+    letter-spacing: $caps-spacing;
     @extend h3;
     line-height: 1.1;
     margin: .25em 0 .75em;
@@ -53,9 +53,7 @@ POSTS & CONTENT STYLES
     padding-top: 40px;
 }
 .single-post .entry-content p:first-child {
-    @include font-size($h4-size-s);
-	@include breakpoint(medium) {@include font-size($h4-size-m);}
-	@include breakpoint(large) {@include font-size($h4-size-l);}
+    @include font-size(22);
 }
 
 
@@ -133,7 +131,7 @@ POSTS & CONTENT STYLES
 }
 
 .home .post-excerpt {
-    @include font-size(18);
+    @include font-size($epsilon);
     line-height: 1.5;
 }
 
@@ -149,13 +147,13 @@ POSTS & CONTENT STYLES
 
 .highlights .module-heading {
     color: $white;
-    background: $gray7 url('http://dev.sites.nycprepared.org/wp-content/uploads/2014/01/CarolinaKroon7.png') no-repeat center center;
+    background: $base7 url('http://dev.sites.nycprepared.org/wp-content/uploads/2014/01/CarolinaKroon7.png') no-repeat center center;
     background-size: cover; 
     padding: 20px;
     margin-bottom: 0;
     height: 150px;
     overflow: hidden;
-	@include breakpoint(small) {@include span-columns(8); height: 300px;}
+	@include breakpoint(sm) {@include span-columns(8); height: 300px;}
 }
 
 .highlights-list {
@@ -163,12 +161,12 @@ POSTS & CONTENT STYLES
     height: 300px;
     overflow-y: scroll;
     margin: 0;
-	@include breakpoint(small) {@include span-columns(8);}
+	@include breakpoint(sm) {@include span-columns(8);}
     li {
-        border-bottom: 1px solid $gray8;
+        border-bottom: 1px solid $base8;
         padding: 10px;
         margin-bottom: 0;
-        @include breakpoint(small) {padding: 10px 20px;}
+        @include breakpoint(sm) {padding: 10px 20px;}
     }
     .post-title {
         margin: .25em 0 0;
@@ -201,7 +199,7 @@ POSTS & CONTENT STYLES
         padding: 10px;
         height: 300px;
         overflow: hidden;
-    	@include breakpoint(small) {@include span-columns(8); padding: 10px 20px;}
+    	@include breakpoint(sm) {@include span-columns(8); padding: 10px 20px;}
     }
     .post-title {
         margin: .25em 0 0;
@@ -224,7 +222,7 @@ POSTS & CONTENT STYLES
 
 .news-feed {
     article {
-        border-top: 1px solid $gray7;
+        border-top: 1px solid $base7;
         padding-top: 20px;
         @include fill-parent;
         clear: both;
@@ -233,19 +231,19 @@ POSTS & CONTENT STYLES
     .post-footer {
         text-transform: uppercase; 
         letter-spacing: $caps-spacing;
-    	@include breakpoint(medium) {@include span-columns(2 of 12);}
+    	@include breakpoint(md) {@include span-columns(2 of 12);}
     	h6, p, li {
         	@extend small;
-        	color: $gray5;
+        	color: $base5;
         	display: inline-block;
         	&:after {
             	content: ' / ';
             	letter-spacing: 5px;
         	}
-            @include breakpoint(medium) {display: block; &:after {content: none;}}
+            @include breakpoint(md) {display: block; &:after {content: none;}}
     	}
     	a, a:visited {
-        	color: $gray5;
+        	color: $base5;
         	&:hover {
             	color: $text-color;
         	}
@@ -253,7 +251,7 @@ POSTS & CONTENT STYLES
     }
     .post-body {
         padding-bottom: 10px;
-    	@include breakpoint(medium) {@include span-columns(8 of 12);}
+    	@include breakpoint(md) {@include span-columns(8 of 12);}
     	p {
         	margin: .25em 0 .75em;
     	}
@@ -277,13 +275,13 @@ POSTS & CONTENT STYLES
         height: 240px;
         overflow: hidden;
     	@include breakpoint(tiny) {@include span-columns(8);}
-    	@include breakpoint(small) {@include span-columns(4);}
+    	@include breakpoint(sm) {@include span-columns(4);}
     }
     .site-image {
         width: 100%;
         height: auto;
         min-height: 180px;
-        background: $gray7;
+        background: $base7;
         display: block;
     }
     .site-title {
@@ -319,7 +317,7 @@ POSTS & CONTENT STYLES
         }
     }
     .button {
-        background: $gray1;
+        background: $base1;
         background: rgba(0,0,0,.3);
         &:hover {
             background: $white;

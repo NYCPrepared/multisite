@@ -4,9 +4,9 @@
 ******************************************************************/
 
 form {
-    background: $gray8;
+    background: $base8;
     padding: 20px;
-    @include breakpoint(small) {padding: 40px;}        
+    @include breakpoint(sm) {padding: 40px;}        
     p {
         margin-bottom: .25em; // since Wordpress wraps everything in paragraph tags
     }
@@ -32,7 +32,7 @@ input[type='submit'] {
     cursor: pointer;
     border: 0;
     border-radius: 5px;
-    background: $gray2;
+    background: $base2;
     color: $white;
     line-height: 1.2;
     white-space: inherit;
@@ -40,7 +40,7 @@ input[type='submit'] {
     padding: .6em 2em;
     &:hover {
         background: $white;
-        color: $gray2;
+        color: $base2;
     }
 }
 
@@ -52,8 +52,8 @@ input[type='submit'] {
     width: 100%;
     margin: 0;
     padding: 0;
-    background: $gray8;
-    @include breakpoint(medium) {display: inline-block; width: auto; float: right; background: transparent;}
+    background: $base8;
+    @include breakpoint(md) {display: inline-block; width: auto; float: right; background: transparent;}
 }
 
 // body gets .js class on load
@@ -64,19 +64,19 @@ input[type='submit'] {
     &.active {
     	max-height: 50px;
     }
-    @include breakpoint(medium) {max-height: none;}
+    @include breakpoint(md) {max-height: none;}
 }
 
 #searchform {
     background: transparent;
     margin: 5px;
     padding: 0;
-    @include breakpoint(medium) {padding-top: 10px;}
+    @include breakpoint(md) {padding-top: 10px;}
     label {
         display: none;
     }
     #s {
-        @include font-size(18);
+        @include font-size($epsilon);
         line-height: 1;
         width: 270px;
         display: inline-block;
@@ -85,7 +85,7 @@ input[type='submit'] {
         padding: 5px;
         margin: 0;
         vertical-align: top;
-        @include breakpoint(medium) {@include font-size(14); width: 140px; height: 24px; line-height: 24px; padding: 2px 5px;}
+        @include breakpoint(md) {@include font-size(14); width: 140px; height: 24px; line-height: 24px; padding: 2px 5px;}
     }
     #searchsubmit {
         @include font-icon-base($family:"ios7-icon"); 
@@ -98,13 +98,13 @@ input[type='submit'] {
         padding: 0;
         margin-left: -4px;
         vertical-align: top;
-        background: $gray3;
-        border: 1px solid $gray3;
+        background: $base3;
+        border: 1px solid $base3;
         border-radius: 0;
-        @include breakpoint(medium) {@include font-size(16); height: 24px; width: 24px; line-height: 24px; }
+        @include breakpoint(md) {@include font-size(16); height: 24px; width: 24px; line-height: 24px; }
         &:hover {
             background: $white;
-            border-color: $gray6;
+            border-color: $base6;
         }
     }
 }
@@ -132,14 +132,14 @@ COMMENT FORM STYLES
 		textarea {
 			padding: 4px 8px;
 			background: $white;
-			border: 1px solid $gray6;
+			border: 1px solid $base6;
 			&:focus {
 				border-color: $blue;
 			}
 			&:invalid {
 				outline: none;
 				border-color: $red;
-				background-color: $gray0;
+				background-color: $base0;
 				-webkit-box-shadow: none;
 				   -moz-box-shadow: none;
 				    -ms-box-shadow: none;

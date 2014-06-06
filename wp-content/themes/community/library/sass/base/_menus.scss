@@ -120,7 +120,7 @@ FILTER MENUS
     margin-bottom: 30px;
     ul {
         @include transition(height 0.25s ease);
-        @include breakpoint(medium) {@include span-columns(4);}
+        @include breakpoint(md) {@include span-columns(4);}
     	&:first-child {
     		background: $green;
     	}

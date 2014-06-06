@@ -16,11 +16,11 @@
 .em-events-search-form {
     background: white;
     padding: 2px 10px;
-    @include breakpoint(small) {padding: 2px 20px;}
+    @include breakpoint(sm) {padding: 2px 20px;}
 }
 div.css-search {
     background: transparent;
-    border-color: $gray7;
+    border-color: $base7;
     padding: 0;
     max-width: 800px;
     div.em-search-main {
@@ -30,16 +30,16 @@ div.css-search {
             padding: 0;
             @include font-icon-base($family:"ios7-icon"); 
             @include font-size(28);
-            @include breakpoint(small) {@include font-size(36);}
+            @include breakpoint(sm) {@include font-size(36);}
             input {
                 @include font-size(20);
                 color: $quiet-color;
-                @include breakpoint(small) {@include font-size(24);}
+                @include breakpoint(sm) {@include font-size(24);}
                 @include placeholder {
                     @include font-size(20);
                     line-height: 16px;
                     color: $quiet-color;
-                    @include breakpoint(small) {@include font-size(24);}
+                    @include breakpoint(sm) {@include font-size(24);}
                 }
             }
         }
@@ -54,7 +54,7 @@ div.css-search {
             @include font-icon-base($family:"ios7-icon"); 
             @include font-size(28);
             @extend %ios7-search;
-            background: $gray5;
+            background: $base5;
             box-shadow: inherit;
             height: 40px;
             width: 40px;
@@ -100,14 +100,14 @@ div.css-search {
         clear: both;
     }
     .event-header {
-        @include breakpoint(small) {@include span-columns(2);}
+        @include breakpoint(sm) {@include span-columns(2);}
         .meta {
             margin: .35em 0;
             line-height: 1.5;
         }
         span {
             padding-right: 5px;
-            @include breakpoint(small) {display: block;}
+            @include breakpoint(sm) {display: block;}
         }
         .event-time {
             font-size: 75%;
@@ -115,7 +115,7 @@ div.css-search {
         }
     }
     .event-content {
-        @include breakpoint(small) {@include span-columns(14);}
+        @include breakpoint(sm) {@include span-columns(14);}
     }
     .event-image {
         border: $frame-border;  
@@ -123,11 +123,11 @@ div.css-search {
             display: block;
             margin: 0;
         }
-        @include breakpoint(medium) {float: right; width: 33%; height: auto; max-height: 300px; margin-left: 20px; margin-bottom: 10px;}
+        @include breakpoint(md) {float: right; width: 33%; height: auto; max-height: 300px; margin-left: 20px; margin-bottom: 10px;}
     }
     .event-title {
         margin: .75em 0 .25em;
-        @include breakpoint(medium) {margin-top: .25em;}
+        @include breakpoint(md) {margin-top: .25em;}
     }
     .event-location {
         color: $quiet-color;
@@ -149,7 +149,7 @@ div.css-search {
     letter-spacing: 1px;
     padding-top: 20px;
     clear: both;
-    color: $gray7;
+    color: $base7;
 }
 
 
@@ -164,23 +164,23 @@ div.css-search {
         max-height: 150px;
         overflow: hidden;
         margin-bottom: 1.5em;
-        @include breakpoint(small) {max-height: 300px;}
+        @include breakpoint(sm) {max-height: 300px;}
         img {
             border: 0;
             display: block;
         }
     }
     .event-details {
-        @include breakpoint(small) {float: left; width: 33%;}
+        @include breakpoint(sm) {float: left; width: 33%;}
         h4 span {
-            @include breakpoint(small) {display: block;}
+            @include breakpoint(sm) {display: block;}
         }
     }
     .date-time, 
     .location {
         margin: .75em 0;
         line-height: 1.5;
-        @include breakpoint(small) {margin-bottom: 1.5em;}        
+        @include breakpoint(sm) {margin-bottom: 1.5em;}        
         span {
             margin-right: 5px;
         }
@@ -189,16 +189,16 @@ div.css-search {
     .location-address {
         font-size: 75%;
         display: block;
-        @include breakpoint(small) {margin-top: .75em;}        
+        @include breakpoint(sm) {margin-top: .75em;}        
     }
     .tools {
         margin: 1.5em 0;
         margin-right: 10px;
-        @include breakpoint(small) {margin-top: 2.25em;}        
+        @include breakpoint(sm) {margin-top: 2.25em;}        
     }
     .event-description {
         margin: 2em 0;
-        @include breakpoint(small) {padding-left: 34%; padding-right: 20px;}        
+        @include breakpoint(sm) {padding-left: 34%; padding-right: 20px;}        
     }
     .event-map {
         border: $frame-border;
@@ -227,7 +227,7 @@ ul.event-categories {
 // booking form
 .em-booking {
     margin: 10px 0px 30px 0px;
-    background: $gray8;
+    background: $base8;
     background: rgba(0,0,0,.1);
 }
 .em-booking-form-details {
@@ -259,7 +259,7 @@ ul.event-categories {
 }
 .em-calendar td.eventless-pre,
 .em-calendar td.eventless-post {
-    color: $gray5;
+    color: $base5;
 }
 
 .all-events-link {
@@ -280,7 +280,7 @@ ul.event-categories {
             overflow: hidden;
             @include transition(background 0.25s ease);
         	@include breakpoint(tiny) {@include span-columns(8); display: inline-block; }
-        	@include breakpoint(small) {@include span-columns(4);}
+        	@include breakpoint(sm) {@include span-columns(4);}
             &:hover {
                 background: $navy;
                 cursor: pointer;
