@@ -1,24 +1,6 @@
 // BASE STYLES
 // variations are in _posts partial
 
-
-// TYPEFACES
-// if you're going to use webfonts, be sure to check your weights
-// http://css-tricks.com/watch-your-font-weight/
-
-$sans: "Lato", Helvetica, Verdana, sans-serif;
-$mono: "Courier New", Courier, monospace;
-$caps-spacing: 1px;
-
-
-// FONT SIZING
-// http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
-
-@mixin font-size($size: 16){
-  font-size: $size + px;
-  font-size: $size / 16 + rem;
-}
-
 html {
     line-height: 1.5;
     font-size: 80%;
@@ -34,12 +16,22 @@ body {
 }
 
 
+// FONT SIZING
+// http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
+
+@mixin font-size($size: 16){
+  font-size: $size + px;
+  font-size: $size / 16 + rem;
+}
+
+
 // HEADERS
 
 h1, h2, h3, h4, h5, h6 {
 	text-rendering: optimizelegibility;
 	font-weight: 300;
     color: $headline-color;
+    margin-top: 0;
     margin-bottom: $space;
 	a {
 		text-decoration: none;
@@ -56,6 +48,9 @@ h3, h4, h5 {
 
 h1 {
     @include font-size($alpha);
+    .home-intro & {
+        margin: 0;
+    }
 }
 
 h2 {
@@ -77,13 +72,14 @@ h5 {
 h6 {
     @include font-size($zeta);
 	text-transform: uppercase;
-	letter-spacing: $caps-spacing;
+	letter-spacing: $tracking;
 }
 
 
 // OTHER
 
 p, li, dt, dd {
+    margin-top: 0;
     margin-bottom: $space;
     @include font-size($epsilon);
 	@include breakpoint(lg) {max-width: 40em; line-height: 1.75;}
@@ -101,11 +97,17 @@ input, label, select, textarea {
 	font-weight: 300;
 }
 
-small, .milli {
-    @include font-size(14);
+small {
+    @include font-size($micro);
+}
+
+.milli {
+    @include font-size($milli);
 }
 
 
+// if you're going to use webfonts, be sure to check your weights
+// http://css-tricks.com/watch-your-font-weight/
 
 b, strong {
   font-weight: 700;
@@ -151,9 +153,4 @@ pre {
 }
 
 
-// CUSTOM PAGES
-
-.home-intro h1 {
-    margin: 0;
-}
 

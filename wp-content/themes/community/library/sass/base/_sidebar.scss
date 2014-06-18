@@ -8,7 +8,7 @@ SIDEBARS & ASIDES
 	margin: -5px 0 0.5em;
 	color: $white;
     color: rgba(255,255,255,.7);
-    @extend h6;
+    @include font-size($zeta);
 }
 
 .widget {
@@ -92,7 +92,7 @@ SIDEBARS & ASIDES
 .widget_recent_entries,
 .widget_em_widget {
     li {
-        @extend h4;
+        @include font-size($delta);
         li {
     		@include font-size($epsilon);
         }

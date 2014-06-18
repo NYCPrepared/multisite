@@ -107,20 +107,15 @@ h1 {
   font-size: 2em;
   margin: 0.67em 0; }
 
-h2, .site-name {
+h2 {
   font-size: 1.5em;
   margin: 0.83em 0; }
 
-h3, .page-title,
-.archive-title,
-.section-title {
+h3 {
   font-size: 1.17em;
   margin: 1em 0; }
 
-h4, .widget_recent_entries li,
-.widget_em_widget li, .highlights-list .post-title, .wp-biographia-text h3, .wp-biographia-text .page-title,
-.wp-biographia-text .archive-title,
-.wp-biographia-text .section-title, div.bx-wrapper .bx-caption span {
+h4 {
   font-size: 1em;
   margin: 1.33em 0; }
 
@@ -128,19 +123,7 @@ h5 {
   font-size: 0.83em;
   margin: 1.67em 0; }
 
-h6, .widgettitle, .community-group .post-header p, .community-group .post-header .news .module-heading, .news .community-group .post-header .module-heading,
-.community-group .post-header .events .module-heading,
-.events .community-group .post-header .module-heading,
-.community-group .post-header .sites .module-heading,
-.sites .community-group .post-header .module-heading, .community-group .post-header li,
-.community-partner .post-header p,
-.community-partner .post-header .news .module-heading,
-.news .community-partner .post-header .module-heading,
-.community-partner .post-header .events .module-heading,
-.events .community-partner .post-header .module-heading,
-.community-partner .post-header .sites .module-heading,
-.sites .community-partner .post-header .module-heading,
-.community-partner .post-header li {
+h6 {
   font-size: 0.75em;
   margin: 2.33em 0; }
 
@@ -217,26 +200,7 @@ q:after {
   content: '';
   content: none; }
 
-small, .highlights-list .location, .news-list .post-date, .news-feed .post-header h6, .news-feed .post-header .widgettitle, .news-feed .news .community-group .post-header .module-heading,
-.news-feed .events .community-group .post-header .module-heading,
-.news-feed .sites .community-group .post-header .module-heading,
-.news-feed .news .community-partner .post-header .module-heading,
-.news-feed .events .community-partner .post-header .module-heading,
-.news-feed .sites .community-partner .post-header .module-heading, .news-feed .post-header p, .news-feed .post-header .news .module-heading, .news .news-feed .post-header .module-heading,
-.news-feed .post-header .events .module-heading,
-.events .news-feed .post-header .module-heading,
-.news-feed .post-header .sites .module-heading,
-.sites .news-feed .post-header .module-heading, .news-feed .post-header li,
-.news-feed .post-footer h6,
-.news-feed .post-footer .widgettitle,
-.news-feed .post-footer p,
-.news-feed .post-footer .news .module-heading,
-.news .news-feed .post-footer .module-heading,
-.news-feed .post-footer .events .module-heading,
-.events .news-feed .post-footer .module-heading,
-.news-feed .post-footer .sites .module-heading,
-.sites .news-feed .post-footer .module-heading,
-.news-feed .post-footer li {
+small {
   font-size: 75%; }
 
 /*
@@ -486,26 +450,7 @@ b, strong, .strong {
 dfn, em, .em {
   font-style: italic; }
 
-small, .highlights-list .location, .news-list .post-date, .news-feed .post-header h6, .news-feed .post-header .widgettitle, .news-feed .news .community-group .post-header .module-heading,
-.news-feed .events .community-group .post-header .module-heading,
-.news-feed .sites .community-group .post-header .module-heading,
-.news-feed .news .community-partner .post-header .module-heading,
-.news-feed .events .community-partner .post-header .module-heading,
-.news-feed .sites .community-partner .post-header .module-heading, .news-feed .post-header p, .news-feed .post-header .news .module-heading, .news .news-feed .post-header .module-heading,
-.news-feed .post-header .events .module-heading,
-.events .news-feed .post-header .module-heading,
-.news-feed .post-header .sites .module-heading,
-.sites .news-feed .post-header .module-heading, .news-feed .post-header li,
-.news-feed .post-footer h6,
-.news-feed .post-footer .widgettitle,
-.news-feed .post-footer p,
-.news-feed .post-footer .news .module-heading,
-.news .news-feed .post-footer .module-heading,
-.news-feed .post-footer .events .module-heading,
-.events .news-feed .post-footer .module-heading,
-.news-feed .post-footer .sites .module-heading,
-.sites .news-feed .post-footer .module-heading,
-.news-feed .post-footer li, .small {
+small, .small {
   font-size: 75%; }
 
 ul, ol {
@@ -635,108 +580,36 @@ body {
   line-height: 1.5;
   color: #333231; }
 
-h1, h2, .site-name, h3, .page-title,
-.archive-title,
-.section-title, h4, .widget_recent_entries li,
-.widget_em_widget li, .highlights-list .post-title, .wp-biographia-text h3, .wp-biographia-text .page-title,
-.wp-biographia-text .archive-title,
-.wp-biographia-text .section-title, div.bx-wrapper .bx-caption span, h5, h6, .widgettitle, .community-group .post-header p, .community-group .post-header .news .module-heading, .news .community-group .post-header .module-heading,
-.community-group .post-header .events .module-heading,
-.events .community-group .post-header .module-heading,
-.community-group .post-header .sites .module-heading,
-.sites .community-group .post-header .module-heading, .community-group .post-header li,
-.community-partner .post-header p,
-.community-partner .post-header .news .module-heading,
-.news .community-partner .post-header .module-heading,
-.community-partner .post-header .events .module-heading,
-.events .community-partner .post-header .module-heading,
-.community-partner .post-header .sites .module-heading,
-.sites .community-partner .post-header .module-heading,
-.community-partner .post-header li {
+h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizelegibility;
   font-weight: 300;
   color: #1a1919;
+  margin-top: 0;
   margin-bottom: 24px; }
-  h1 a, h2 a, .site-name a, h3 a, .page-title a,
-  .archive-title a,
-  .section-title a, h4 a, .widget_recent_entries li a,
-  .widget_em_widget li a, .highlights-list .post-title a, .wp-biographia-text h3 a, .wp-biographia-text .page-title a,
-  .wp-biographia-text .archive-title a,
-  .wp-biographia-text .section-title a, div.bx-wrapper .bx-caption span a, h5 a, h6 a, .widgettitle a, .community-group .post-header p a, .community-group .post-header .news .module-heading a, .news .community-group .post-header .module-heading a,
-  .community-group .post-header .events .module-heading a,
-  .events .community-group .post-header .module-heading a,
-  .community-group .post-header .sites .module-heading a,
-  .sites .community-group .post-header .module-heading a, .community-group .post-header li a,
-  .community-partner .post-header p a,
-  .community-partner .post-header .news .module-heading a,
-  .news .community-partner .post-header .module-heading a,
-  .community-partner .post-header .events .module-heading a,
-  .events .community-partner .post-header .module-heading a,
-  .community-partner .post-header .sites .module-heading a,
-  .sites .community-partner .post-header .module-heading a,
-  .community-partner .post-header li a {
+  h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
     text-decoration: none; }
 
-h1, h2, .site-name, h6, .widgettitle, .community-group .post-header p, .community-group .post-header .news .module-heading, .news .community-group .post-header .module-heading,
-.community-group .post-header .events .module-heading,
-.events .community-group .post-header .module-heading,
-.community-group .post-header .sites .module-heading,
-.sites .community-group .post-header .module-heading, .community-group .post-header li,
-.community-partner .post-header p,
-.community-partner .post-header .news .module-heading,
-.news .community-partner .post-header .module-heading,
-.community-partner .post-header .events .module-heading,
-.events .community-partner .post-header .module-heading,
-.community-partner .post-header .sites .module-heading,
-.sites .community-partner .post-header .module-heading,
-.community-partner .post-header li, small, .highlights-list .location, .news-list .post-date, .news-feed .post-header h6, .news-feed .post-header .widgettitle, .news-feed .news .community-group .post-header .module-heading,
-.news-feed .events .community-group .post-header .module-heading,
-.news-feed .sites .community-group .post-header .module-heading,
-.news-feed .news .community-partner .post-header .module-heading,
-.news-feed .events .community-partner .post-header .module-heading,
-.news-feed .sites .community-partner .post-header .module-heading, .news-feed .post-header p, .news-feed .post-header .news .module-heading, .news .news-feed .post-header .module-heading,
-.news-feed .post-header .events .module-heading,
-.events .news-feed .post-header .module-heading,
-.news-feed .post-header .sites .module-heading,
-.sites .news-feed .post-header .module-heading, .news-feed .post-header li,
-.news-feed .post-footer h6,
-.news-feed .post-footer .widgettitle,
-.news-feed .post-footer p,
-.news-feed .post-footer .news .module-heading,
-.news .news-feed .post-footer .module-heading,
-.news-feed .post-footer .events .module-heading,
-.events .news-feed .post-footer .module-heading,
-.news-feed .post-footer .sites .module-heading,
-.sites .news-feed .post-footer .module-heading,
-.news-feed .post-footer li {
+h1, h2, h6, small {
   line-height: 1.2; }
 
-h3, .page-title,
-.archive-title,
-.section-title, h4, .widget_recent_entries li,
-.widget_em_widget li, .highlights-list .post-title, .wp-biographia-text h3, .wp-biographia-text .page-title,
-.wp-biographia-text .archive-title,
-.wp-biographia-text .section-title, div.bx-wrapper .bx-caption span, h5 {
+h3, h4, h5 {
   line-height: 1.3; }
 
 h1 {
   font-size: 48px;
   font-size: 3rem; }
+  .home-intro h1 {
+    margin: 0; }
 
-h2, .site-name {
+h2 {
   font-size: 36px;
   font-size: 2.25rem; }
 
-h3, .page-title,
-.archive-title,
-.section-title {
+h3 {
   font-size: 28px;
   font-size: 1.75rem; }
 
-h4, .widget_recent_entries li,
-.widget_em_widget li, .highlights-list .post-title, .wp-biographia-text h3, .wp-biographia-text .page-title,
-.wp-biographia-text .archive-title,
-.wp-biographia-text .section-title, div.bx-wrapper .bx-caption span {
+h4 {
   font-size: 22px;
   font-size: 1.375rem; }
 
@@ -744,19 +617,7 @@ h5 {
   font-size: 18px;
   font-size: 1.125rem; }
 
-h6, .widgettitle, .community-group .post-header p, .community-group .post-header .news .module-heading, .news .community-group .post-header .module-heading,
-.community-group .post-header .events .module-heading,
-.events .community-group .post-header .module-heading,
-.community-group .post-header .sites .module-heading,
-.sites .community-group .post-header .module-heading, .community-group .post-header li,
-.community-partner .post-header p,
-.community-partner .post-header .news .module-heading,
-.news .community-partner .post-header .module-heading,
-.community-partner .post-header .events .module-heading,
-.events .community-partner .post-header .module-heading,
-.community-partner .post-header .sites .module-heading,
-.sites .community-partner .post-header .module-heading,
-.community-partner .post-header li {
+h6 {
   font-size: 16px;
   font-size: 1rem;
   text-transform: uppercase;
@@ -766,6 +627,7 @@ p, .news .module-heading,
 .events .module-heading,
 .sites .module-heading, .login p.error,
 .login p.message, li, dt, dd {
+  margin-top: 0;
   margin-bottom: 24px;
   font-size: 18px;
   font-size: 1.125rem; }
@@ -787,26 +649,11 @@ input, label, select, textarea {
   font-family: "Lato", Helvetica, Verdana, sans-serif;
   font-weight: 300; }
 
-small, .highlights-list .location, .news-list .post-date, .news-feed .post-header h6, .news-feed .post-header .widgettitle, .news-feed .news .community-group .post-header .module-heading,
-.news-feed .events .community-group .post-header .module-heading,
-.news-feed .sites .community-group .post-header .module-heading,
-.news-feed .news .community-partner .post-header .module-heading,
-.news-feed .events .community-partner .post-header .module-heading,
-.news-feed .sites .community-partner .post-header .module-heading, .news-feed .post-header p, .news-feed .post-header .news .module-heading, .news .news-feed .post-header .module-heading,
-.news-feed .post-header .events .module-heading,
-.events .news-feed .post-header .module-heading,
-.news-feed .post-header .sites .module-heading,
-.sites .news-feed .post-header .module-heading, .news-feed .post-header li,
-.news-feed .post-footer h6,
-.news-feed .post-footer .widgettitle,
-.news-feed .post-footer p,
-.news-feed .post-footer .news .module-heading,
-.news .news-feed .post-footer .module-heading,
-.news-feed .post-footer .events .module-heading,
-.events .news-feed .post-footer .module-heading,
-.news-feed .post-footer .sites .module-heading,
-.sites .news-feed .post-footer .module-heading,
-.news-feed .post-footer li, .milli {
+small {
+  font-size: 12px;
+  font-size: 0.75rem; }
+
+.milli {
   font-size: 14px;
   font-size: 0.875rem; }
 
@@ -848,9 +695,6 @@ pre {
   display: block;
   background: #333231;
   color: white; }
-
-.home-intro h1 {
-  margin: 0; }
 
 html,
 body {
@@ -1074,7 +918,7 @@ div[role='main'].news-feed {
       color: white; }
   .nav-local .nav li a {
     display: block;
-    padding: 7px 15px;
+    padding: 8px 15px;
     color: #00a99d;
     text-transform: uppercase;
     letter-spacing: 1px; }
@@ -1305,7 +1149,9 @@ SIDEBARS & ASIDES
 .widgettitle {
   margin: -5px 0 0.5em;
   color: white;
-  color: rgba(255, 255, 255, 0.7); }
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  font-size: 1rem; }
 
 .widget {
   padding: 20px;
@@ -1367,10 +1213,14 @@ SIDEBARS & ASIDES
 .widget_search {
   padding: 0 20px; }
 
-.widget_recent_entries li li,
-.widget_em_widget li li {
-  font-size: 18px;
-  font-size: 1.125rem; }
+.widget_recent_entries li,
+.widget_em_widget li {
+  font-size: 22px;
+  font-size: 1.375rem; }
+  .widget_recent_entries li li,
+  .widget_em_widget li li {
+    font-size: 18px;
+    font-size: 1.125rem; }
 
 .widget_archive li,
 .widget_meta li {
@@ -1582,6 +1432,8 @@ POSTS & CONTENT STYLES
 .section-title {
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-size: 28px;
+  font-size: 1.75rem;
   line-height: 1.1;
   margin: .25em 0 .75em; }
 
@@ -1627,15 +1479,7 @@ POSTS & CONTENT STYLES
   */ }
   .post .entry-content h1 {
     margin-bottom: 0; }
-  .post .entry-content h2, .post .entry-content .site-name, .post .entry-content h3, .post .entry-content .page-title,
-  .post .entry-content .archive-title,
-  .post .entry-content .section-title, .post .entry-content h4, .post .entry-content .widget_recent_entries li, .widget_recent_entries .post .entry-content li,
-  .post .entry-content .widget_em_widget li,
-  .widget_em_widget .post .entry-content li, .post .entry-content .highlights-list .post-title, .highlights-list .post .entry-content .post-title, .post .entry-content .wp-biographia-text h3, .wp-biographia-text .post .entry-content h3, .post .entry-content .wp-biographia-text .page-title, .wp-biographia-text .post .entry-content .page-title,
-  .post .entry-content .wp-biographia-text .archive-title,
-  .wp-biographia-text .post .entry-content .archive-title,
-  .post .entry-content .wp-biographia-text .section-title,
-  .wp-biographia-text .post .entry-content .section-title, .post .entry-content div.bx-wrapper .bx-caption span, div.bx-wrapper .bx-caption .post .entry-content span {
+  .post .entry-content h2, .post .entry-content h3, .post .entry-content h4 {
     margin-top: 1.8em; }
   .post .entry-content p, .post .entry-content .news .module-heading, .news .post .entry-content .module-heading,
   .post .entry-content .events .module-heading,
@@ -1726,12 +1570,16 @@ POSTS & CONTENT STYLES
       .highlights-list li {
         padding: 10px 20px; } }
   .highlights-list .post-title {
-    margin: .25em 0 0; }
+    margin: .25em 0 0;
+    font-size: 22px;
+    font-size: 1.375rem; }
   .highlights-list .post-excerpt {
     margin: .25em 0 .5em; }
   .highlights-list .location {
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-size: 12px;
+    font-size: 0.75rem;
     color: #b8b6b2;
     white-space: nowrap;
     margin-left: 3px; }
@@ -1762,8 +1610,10 @@ POSTS & CONTENT STYLES
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #b8b6b2;
-  white-space: nowrap;
-  margin-left: 3px; }
+  white-space: nowrap; }
+.news-list .meta h6 {
+  display: inline-block;
+  margin-right: 6px; }
 
 .news-feed article {
   border-top: 1px solid #d1cfcb;
@@ -1784,69 +1634,12 @@ POSTS & CONTENT STYLES
       .news-feed .post-header:last-child,
       .news-feed .post-footer:last-child {
         margin-right: 0; } }
-  .news-feed .post-header h6, .news-feed .post-header .widgettitle, .news-feed .community-group .post-header p, .community-group .news-feed .post-header p, .news-feed .community-group .post-header .news .module-heading, .community-group .news-feed .post-header .news .module-heading, .news-feed .news .community-group .post-header .module-heading, .news .community-group .news-feed .post-header .module-heading,
-  .news-feed .community-group .post-header .events .module-heading,
-  .community-group .news-feed .post-header .events .module-heading,
-  .news-feed .events .community-group .post-header .module-heading,
-  .events .community-group .news-feed .post-header .module-heading,
-  .news-feed .community-group .post-header .sites .module-heading,
-  .community-group .news-feed .post-header .sites .module-heading,
-  .news-feed .sites .community-group .post-header .module-heading,
-  .sites .community-group .news-feed .post-header .module-heading, .news-feed .community-group .post-header li, .community-group .news-feed .post-header li,
-  .news-feed .community-partner .post-header p,
-  .community-partner .news-feed .post-header p,
-  .news-feed .community-partner .post-header .news .module-heading,
-  .community-partner .news-feed .post-header .news .module-heading,
-  .news-feed .news .community-partner .post-header .module-heading,
-  .news .community-partner .news-feed .post-header .module-heading,
-  .news-feed .community-partner .post-header .events .module-heading,
-  .community-partner .news-feed .post-header .events .module-heading,
-  .news-feed .events .community-partner .post-header .module-heading,
-  .events .community-partner .news-feed .post-header .module-heading,
-  .news-feed .community-partner .post-header .sites .module-heading,
-  .community-partner .news-feed .post-header .sites .module-heading,
-  .news-feed .sites .community-partner .post-header .module-heading,
-  .sites .community-partner .news-feed .post-header .module-heading,
-  .news-feed .community-partner .post-header li,
-  .community-partner .news-feed .post-header li, .news-feed .post-header p, .news-feed .post-header .news .module-heading, .news .news-feed .post-header .module-heading,
+  .news-feed .post-header h6, .news-feed .post-header p, .news-feed .post-header .news .module-heading, .news .news-feed .post-header .module-heading,
   .news-feed .post-header .events .module-heading,
   .events .news-feed .post-header .module-heading,
   .news-feed .post-header .sites .module-heading,
   .sites .news-feed .post-header .module-heading, .news-feed .post-header li,
   .news-feed .post-footer h6,
-  .news-feed .post-footer .widgettitle,
-  .news-feed .post-footer .community-group .post-header p,
-  .community-group .post-header .news-feed .post-footer p,
-  .news-feed .post-footer .community-group .post-header .news .module-heading,
-  .community-group .post-header .news .news-feed .post-footer .module-heading,
-  .news-feed .post-footer .news .community-group .post-header .module-heading,
-  .news .community-group .post-header .news-feed .post-footer .module-heading,
-  .news-feed .post-footer .community-group .post-header .events .module-heading,
-  .community-group .post-header .events .news-feed .post-footer .module-heading,
-  .news-feed .post-footer .events .community-group .post-header .module-heading,
-  .events .community-group .post-header .news-feed .post-footer .module-heading,
-  .news-feed .post-footer .community-group .post-header .sites .module-heading,
-  .community-group .post-header .sites .news-feed .post-footer .module-heading,
-  .news-feed .post-footer .sites .community-group .post-header .module-heading,
-  .sites .community-group .post-header .news-feed .post-footer .module-heading,
-  .news-feed .post-footer .community-group .post-header li,
-  .community-group .post-header .news-feed .post-footer li,
-  .news-feed .post-footer .community-partner .post-header p,
-  .community-partner .post-header .news-feed .post-footer p,
-  .news-feed .post-footer .community-partner .post-header .news .module-heading,
-  .community-partner .post-header .news .news-feed .post-footer .module-heading,
-  .news-feed .post-footer .news .community-partner .post-header .module-heading,
-  .news .community-partner .post-header .news-feed .post-footer .module-heading,
-  .news-feed .post-footer .community-partner .post-header .events .module-heading,
-  .community-partner .post-header .events .news-feed .post-footer .module-heading,
-  .news-feed .post-footer .events .community-partner .post-header .module-heading,
-  .events .community-partner .post-header .news-feed .post-footer .module-heading,
-  .news-feed .post-footer .community-partner .post-header .sites .module-heading,
-  .community-partner .post-header .sites .news-feed .post-footer .module-heading,
-  .news-feed .post-footer .sites .community-partner .post-header .module-heading,
-  .sites .community-partner .post-header .news-feed .post-footer .module-heading,
-  .news-feed .post-footer .community-partner .post-header li,
-  .community-partner .post-header .news-feed .post-footer li,
   .news-feed .post-footer p,
   .news-feed .post-footer .news .module-heading,
   .news .news-feed .post-footer .module-heading,
@@ -1855,71 +1648,16 @@ POSTS & CONTENT STYLES
   .news-feed .post-footer .sites .module-heading,
   .sites .news-feed .post-footer .module-heading,
   .news-feed .post-footer li {
+    font-size: 12px;
+    font-size: 0.75rem;
     color: #999894;
     display: inline-block; }
-    .news-feed .post-header h6:after, .news-feed .post-header .widgettitle:after, .news-feed .community-group .post-header p:after, .community-group .news-feed .post-header p:after, .news-feed .community-group .post-header .news .module-heading:after, .community-group .news-feed .post-header .news .module-heading:after, .news-feed .news .community-group .post-header .module-heading:after, .news .community-group .news-feed .post-header .module-heading:after,
-    .news-feed .community-group .post-header .events .module-heading:after,
-    .community-group .news-feed .post-header .events .module-heading:after,
-    .news-feed .events .community-group .post-header .module-heading:after,
-    .events .community-group .news-feed .post-header .module-heading:after,
-    .news-feed .community-group .post-header .sites .module-heading:after,
-    .community-group .news-feed .post-header .sites .module-heading:after,
-    .news-feed .sites .community-group .post-header .module-heading:after,
-    .sites .community-group .news-feed .post-header .module-heading:after, .news-feed .community-group .post-header li:after, .community-group .news-feed .post-header li:after,
-    .news-feed .community-partner .post-header p:after,
-    .community-partner .news-feed .post-header p:after,
-    .news-feed .community-partner .post-header .news .module-heading:after,
-    .community-partner .news-feed .post-header .news .module-heading:after,
-    .news-feed .news .community-partner .post-header .module-heading:after,
-    .news .community-partner .news-feed .post-header .module-heading:after,
-    .news-feed .community-partner .post-header .events .module-heading:after,
-    .community-partner .news-feed .post-header .events .module-heading:after,
-    .news-feed .events .community-partner .post-header .module-heading:after,
-    .events .community-partner .news-feed .post-header .module-heading:after,
-    .news-feed .community-partner .post-header .sites .module-heading:after,
-    .community-partner .news-feed .post-header .sites .module-heading:after,
-    .news-feed .sites .community-partner .post-header .module-heading:after,
-    .sites .community-partner .news-feed .post-header .module-heading:after,
-    .news-feed .community-partner .post-header li:after,
-    .community-partner .news-feed .post-header li:after, .news-feed .post-header p:after, .news-feed .post-header .news .module-heading:after, .news .news-feed .post-header .module-heading:after,
+    .news-feed .post-header h6:after, .news-feed .post-header p:after, .news-feed .post-header .news .module-heading:after, .news .news-feed .post-header .module-heading:after,
     .news-feed .post-header .events .module-heading:after,
     .events .news-feed .post-header .module-heading:after,
     .news-feed .post-header .sites .module-heading:after,
     .sites .news-feed .post-header .module-heading:after, .news-feed .post-header li:after,
     .news-feed .post-footer h6:after,
-    .news-feed .post-footer .widgettitle:after,
-    .news-feed .post-footer .community-group .post-header p:after,
-    .community-group .post-header .news-feed .post-footer p:after,
-    .news-feed .post-footer .community-group .post-header .news .module-heading:after,
-    .community-group .post-header .news .news-feed .post-footer .module-heading:after,
-    .news-feed .post-footer .news .community-group .post-header .module-heading:after,
-    .news .community-group .post-header .news-feed .post-footer .module-heading:after,
-    .news-feed .post-footer .community-group .post-header .events .module-heading:after,
-    .community-group .post-header .events .news-feed .post-footer .module-heading:after,
-    .news-feed .post-footer .events .community-group .post-header .module-heading:after,
-    .events .community-group .post-header .news-feed .post-footer .module-heading:after,
-    .news-feed .post-footer .community-group .post-header .sites .module-heading:after,
-    .community-group .post-header .sites .news-feed .post-footer .module-heading:after,
-    .news-feed .post-footer .sites .community-group .post-header .module-heading:after,
-    .sites .community-group .post-header .news-feed .post-footer .module-heading:after,
-    .news-feed .post-footer .community-group .post-header li:after,
-    .community-group .post-header .news-feed .post-footer li:after,
-    .news-feed .post-footer .community-partner .post-header p:after,
-    .community-partner .post-header .news-feed .post-footer p:after,
-    .news-feed .post-footer .community-partner .post-header .news .module-heading:after,
-    .community-partner .post-header .news .news-feed .post-footer .module-heading:after,
-    .news-feed .post-footer .news .community-partner .post-header .module-heading:after,
-    .news .community-partner .post-header .news-feed .post-footer .module-heading:after,
-    .news-feed .post-footer .community-partner .post-header .events .module-heading:after,
-    .community-partner .post-header .events .news-feed .post-footer .module-heading:after,
-    .news-feed .post-footer .events .community-partner .post-header .module-heading:after,
-    .events .community-partner .post-header .news-feed .post-footer .module-heading:after,
-    .news-feed .post-footer .community-partner .post-header .sites .module-heading:after,
-    .community-partner .post-header .sites .news-feed .post-footer .module-heading:after,
-    .news-feed .post-footer .sites .community-partner .post-header .module-heading:after,
-    .sites .community-partner .post-header .news-feed .post-footer .module-heading:after,
-    .news-feed .post-footer .community-partner .post-header li:after,
-    .community-partner .post-header .news-feed .post-footer li:after,
     .news-feed .post-footer p:after,
     .news-feed .post-footer .news .module-heading:after,
     .news .news-feed .post-footer .module-heading:after,
@@ -1931,69 +1669,12 @@ POSTS & CONTENT STYLES
       content: ' / ';
       letter-spacing: 5px; }
     @media (min-width: 769px) {
-      .news-feed .post-header h6, .news-feed .post-header .widgettitle, .news-feed .community-group .post-header p, .community-group .news-feed .post-header p, .news-feed .community-group .post-header .news .module-heading, .community-group .news-feed .post-header .news .module-heading, .news-feed .news .community-group .post-header .module-heading, .news .community-group .news-feed .post-header .module-heading,
-      .news-feed .community-group .post-header .events .module-heading,
-      .community-group .news-feed .post-header .events .module-heading,
-      .news-feed .events .community-group .post-header .module-heading,
-      .events .community-group .news-feed .post-header .module-heading,
-      .news-feed .community-group .post-header .sites .module-heading,
-      .community-group .news-feed .post-header .sites .module-heading,
-      .news-feed .sites .community-group .post-header .module-heading,
-      .sites .community-group .news-feed .post-header .module-heading, .news-feed .community-group .post-header li, .community-group .news-feed .post-header li,
-      .news-feed .community-partner .post-header p,
-      .community-partner .news-feed .post-header p,
-      .news-feed .community-partner .post-header .news .module-heading,
-      .community-partner .news-feed .post-header .news .module-heading,
-      .news-feed .news .community-partner .post-header .module-heading,
-      .news .community-partner .news-feed .post-header .module-heading,
-      .news-feed .community-partner .post-header .events .module-heading,
-      .community-partner .news-feed .post-header .events .module-heading,
-      .news-feed .events .community-partner .post-header .module-heading,
-      .events .community-partner .news-feed .post-header .module-heading,
-      .news-feed .community-partner .post-header .sites .module-heading,
-      .community-partner .news-feed .post-header .sites .module-heading,
-      .news-feed .sites .community-partner .post-header .module-heading,
-      .sites .community-partner .news-feed .post-header .module-heading,
-      .news-feed .community-partner .post-header li,
-      .community-partner .news-feed .post-header li, .news-feed .post-header p, .news-feed .post-header .news .module-heading, .news .news-feed .post-header .module-heading,
+      .news-feed .post-header h6, .news-feed .post-header p, .news-feed .post-header .news .module-heading, .news .news-feed .post-header .module-heading,
       .news-feed .post-header .events .module-heading,
       .events .news-feed .post-header .module-heading,
       .news-feed .post-header .sites .module-heading,
       .sites .news-feed .post-header .module-heading, .news-feed .post-header li,
       .news-feed .post-footer h6,
-      .news-feed .post-footer .widgettitle,
-      .news-feed .post-footer .community-group .post-header p,
-      .community-group .post-header .news-feed .post-footer p,
-      .news-feed .post-footer .community-group .post-header .news .module-heading,
-      .community-group .post-header .news .news-feed .post-footer .module-heading,
-      .news-feed .post-footer .news .community-group .post-header .module-heading,
-      .news .community-group .post-header .news-feed .post-footer .module-heading,
-      .news-feed .post-footer .community-group .post-header .events .module-heading,
-      .community-group .post-header .events .news-feed .post-footer .module-heading,
-      .news-feed .post-footer .events .community-group .post-header .module-heading,
-      .events .community-group .post-header .news-feed .post-footer .module-heading,
-      .news-feed .post-footer .community-group .post-header .sites .module-heading,
-      .community-group .post-header .sites .news-feed .post-footer .module-heading,
-      .news-feed .post-footer .sites .community-group .post-header .module-heading,
-      .sites .community-group .post-header .news-feed .post-footer .module-heading,
-      .news-feed .post-footer .community-group .post-header li,
-      .community-group .post-header .news-feed .post-footer li,
-      .news-feed .post-footer .community-partner .post-header p,
-      .community-partner .post-header .news-feed .post-footer p,
-      .news-feed .post-footer .community-partner .post-header .news .module-heading,
-      .community-partner .post-header .news .news-feed .post-footer .module-heading,
-      .news-feed .post-footer .news .community-partner .post-header .module-heading,
-      .news .community-partner .post-header .news-feed .post-footer .module-heading,
-      .news-feed .post-footer .community-partner .post-header .events .module-heading,
-      .community-partner .post-header .events .news-feed .post-footer .module-heading,
-      .news-feed .post-footer .events .community-partner .post-header .module-heading,
-      .events .community-partner .post-header .news-feed .post-footer .module-heading,
-      .news-feed .post-footer .community-partner .post-header .sites .module-heading,
-      .community-partner .post-header .sites .news-feed .post-footer .module-heading,
-      .news-feed .post-footer .sites .community-partner .post-header .module-heading,
-      .sites .community-partner .post-header .news-feed .post-footer .module-heading,
-      .news-feed .post-footer .community-partner .post-header li,
-      .community-partner .post-header .news-feed .post-footer li,
       .news-feed .post-footer p,
       .news-feed .post-footer .news .module-heading,
       .news .news-feed .post-footer .module-heading,
@@ -2003,69 +1684,12 @@ POSTS & CONTENT STYLES
       .sites .news-feed .post-footer .module-heading,
       .news-feed .post-footer li {
         display: block; }
-        .news-feed .post-header h6:after, .news-feed .post-header .widgettitle:after, .news-feed .community-group .post-header p:after, .community-group .news-feed .post-header p:after, .news-feed .community-group .post-header .news .module-heading:after, .community-group .news-feed .post-header .news .module-heading:after, .news-feed .news .community-group .post-header .module-heading:after, .news .community-group .news-feed .post-header .module-heading:after,
-        .news-feed .community-group .post-header .events .module-heading:after,
-        .community-group .news-feed .post-header .events .module-heading:after,
-        .news-feed .events .community-group .post-header .module-heading:after,
-        .events .community-group .news-feed .post-header .module-heading:after,
-        .news-feed .community-group .post-header .sites .module-heading:after,
-        .community-group .news-feed .post-header .sites .module-heading:after,
-        .news-feed .sites .community-group .post-header .module-heading:after,
-        .sites .community-group .news-feed .post-header .module-heading:after, .news-feed .community-group .post-header li:after, .community-group .news-feed .post-header li:after,
-        .news-feed .community-partner .post-header p:after,
-        .community-partner .news-feed .post-header p:after,
-        .news-feed .community-partner .post-header .news .module-heading:after,
-        .community-partner .news-feed .post-header .news .module-heading:after,
-        .news-feed .news .community-partner .post-header .module-heading:after,
-        .news .community-partner .news-feed .post-header .module-heading:after,
-        .news-feed .community-partner .post-header .events .module-heading:after,
-        .community-partner .news-feed .post-header .events .module-heading:after,
-        .news-feed .events .community-partner .post-header .module-heading:after,
-        .events .community-partner .news-feed .post-header .module-heading:after,
-        .news-feed .community-partner .post-header .sites .module-heading:after,
-        .community-partner .news-feed .post-header .sites .module-heading:after,
-        .news-feed .sites .community-partner .post-header .module-heading:after,
-        .sites .community-partner .news-feed .post-header .module-heading:after,
-        .news-feed .community-partner .post-header li:after,
-        .community-partner .news-feed .post-header li:after, .news-feed .post-header p:after, .news-feed .post-header .news .module-heading:after, .news .news-feed .post-header .module-heading:after,
+        .news-feed .post-header h6:after, .news-feed .post-header p:after, .news-feed .post-header .news .module-heading:after, .news .news-feed .post-header .module-heading:after,
         .news-feed .post-header .events .module-heading:after,
         .events .news-feed .post-header .module-heading:after,
         .news-feed .post-header .sites .module-heading:after,
         .sites .news-feed .post-header .module-heading:after, .news-feed .post-header li:after,
         .news-feed .post-footer h6:after,
-        .news-feed .post-footer .widgettitle:after,
-        .news-feed .post-footer .community-group .post-header p:after,
-        .community-group .post-header .news-feed .post-footer p:after,
-        .news-feed .post-footer .community-group .post-header .news .module-heading:after,
-        .community-group .post-header .news .news-feed .post-footer .module-heading:after,
-        .news-feed .post-footer .news .community-group .post-header .module-heading:after,
-        .news .community-group .post-header .news-feed .post-footer .module-heading:after,
-        .news-feed .post-footer .community-group .post-header .events .module-heading:after,
-        .community-group .post-header .events .news-feed .post-footer .module-heading:after,
-        .news-feed .post-footer .events .community-group .post-header .module-heading:after,
-        .events .community-group .post-header .news-feed .post-footer .module-heading:after,
-        .news-feed .post-footer .community-group .post-header .sites .module-heading:after,
-        .community-group .post-header .sites .news-feed .post-footer .module-heading:after,
-        .news-feed .post-footer .sites .community-group .post-header .module-heading:after,
-        .sites .community-group .post-header .news-feed .post-footer .module-heading:after,
-        .news-feed .post-footer .community-group .post-header li:after,
-        .community-group .post-header .news-feed .post-footer li:after,
-        .news-feed .post-footer .community-partner .post-header p:after,
-        .community-partner .post-header .news-feed .post-footer p:after,
-        .news-feed .post-footer .community-partner .post-header .news .module-heading:after,
-        .community-partner .post-header .news .news-feed .post-footer .module-heading:after,
-        .news-feed .post-footer .news .community-partner .post-header .module-heading:after,
-        .news .community-partner .post-header .news-feed .post-footer .module-heading:after,
-        .news-feed .post-footer .community-partner .post-header .events .module-heading:after,
-        .community-partner .post-header .events .news-feed .post-footer .module-heading:after,
-        .news-feed .post-footer .events .community-partner .post-header .module-heading:after,
-        .events .community-partner .post-header .news-feed .post-footer .module-heading:after,
-        .news-feed .post-footer .community-partner .post-header .sites .module-heading:after,
-        .community-partner .post-header .sites .news-feed .post-footer .module-heading:after,
-        .news-feed .post-footer .sites .community-partner .post-header .module-heading:after,
-        .sites .community-partner .post-header .news-feed .post-footer .module-heading:after,
-        .news-feed .post-footer .community-partner .post-header li:after,
-        .community-partner .post-header .news-feed .post-footer li:after,
         .news-feed .post-footer p:after,
         .news-feed .post-footer .news .module-heading:after,
         .news .news-feed .post-footer .module-heading:after,
@@ -2139,14 +1763,14 @@ POSTS & CONTENT STYLES
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0;
-    padding: 5px 10px 0;
+    padding: 5px 10px 3px;
     font-size: 18px;
     font-size: 1.125rem; }
   .sites-list .site-meta {
     margin: 0;
     padding: 0 10px 10px;
-    font-size: 14px;
-    font-size: 0.875rem;
+    font-size: 11px;
+    font-size: 0.6875rem;
     color: #b8b6b2; }
 
 #site-promo {
@@ -2286,11 +1910,8 @@ input[type='submit'] {
 
 #searchform {
   background: transparent;
-  margin: 5px;
+  margin: 10px;
   padding: 0; }
-  @media (min-width: 769px) {
-    #searchform {
-      padding-top: 10px; } }
   #searchform label {
     display: none; }
   #searchform #s {
@@ -2356,63 +1977,7 @@ COMMENT FORM STYLES
     clear: both;
     margin-bottom: 0.7335em; }
     .respond-form form li label,
-    .respond-form form li small,
-    .respond-form form li .highlights-list .location,
-    .highlights-list .respond-form form li .location,
-    .respond-form form li .news-list .post-date,
-    .news-list .respond-form form li .post-date,
-    .respond-form form li .news-feed .post-header h6,
-    .news-feed .post-header .respond-form form li h6,
-    .respond-form form li .news-feed .post-header .widgettitle,
-    .news-feed .post-header .respond-form form li .widgettitle,
-    .respond-form form li .news-feed .news .community-group .post-header .module-heading,
-    .news-feed .news .community-group .post-header .respond-form form li .module-heading,
-    .respond-form form li .news-feed .events .community-group .post-header .module-heading,
-    .news-feed .events .community-group .post-header .respond-form form li .module-heading,
-    .respond-form form li .news-feed .sites .community-group .post-header .module-heading,
-    .news-feed .sites .community-group .post-header .respond-form form li .module-heading,
-    .respond-form form li .news-feed .news .community-partner .post-header .module-heading,
-    .news-feed .news .community-partner .post-header .respond-form form li .module-heading,
-    .respond-form form li .news-feed .events .community-partner .post-header .module-heading,
-    .news-feed .events .community-partner .post-header .respond-form form li .module-heading,
-    .respond-form form li .news-feed .sites .community-partner .post-header .module-heading,
-    .news-feed .sites .community-partner .post-header .respond-form form li .module-heading,
-    .respond-form form li .news-feed .post-header p,
-    .news-feed .post-header .respond-form form li p,
-    .respond-form form li .news-feed .post-header .news .module-heading,
-    .news-feed .post-header .news .respond-form form li .module-heading,
-    .respond-form form li .news .news-feed .post-header .module-heading,
-    .news .news-feed .post-header .respond-form form li .module-heading,
-    .respond-form form li .news-feed .post-header .events .module-heading,
-    .news-feed .post-header .events .respond-form form li .module-heading,
-    .respond-form form li .events .news-feed .post-header .module-heading,
-    .events .news-feed .post-header .respond-form form li .module-heading,
-    .respond-form form li .news-feed .post-header .sites .module-heading,
-    .news-feed .post-header .sites .respond-form form li .module-heading,
-    .respond-form form li .sites .news-feed .post-header .module-heading,
-    .sites .news-feed .post-header .respond-form form li .module-heading,
-    .respond-form form li .news-feed .post-header li,
-    .news-feed .post-header .respond-form form li li,
-    .respond-form form li .news-feed .post-footer h6,
-    .news-feed .post-footer .respond-form form li h6,
-    .respond-form form li .news-feed .post-footer .widgettitle,
-    .news-feed .post-footer .respond-form form li .widgettitle,
-    .respond-form form li .news-feed .post-footer p,
-    .news-feed .post-footer .respond-form form li p,
-    .respond-form form li .news-feed .post-footer .news .module-heading,
-    .news-feed .post-footer .news .respond-form form li .module-heading,
-    .respond-form form li .news .news-feed .post-footer .module-heading,
-    .news .news-feed .post-footer .respond-form form li .module-heading,
-    .respond-form form li .news-feed .post-footer .events .module-heading,
-    .news-feed .post-footer .events .respond-form form li .module-heading,
-    .respond-form form li .events .news-feed .post-footer .module-heading,
-    .events .news-feed .post-footer .respond-form form li .module-heading,
-    .respond-form form li .news-feed .post-footer .sites .module-heading,
-    .news-feed .post-footer .sites .respond-form form li .module-heading,
-    .respond-form form li .sites .news-feed .post-footer .module-heading,
-    .sites .news-feed .post-footer .respond-form form li .module-heading,
-    .respond-form form li .news-feed .post-footer li,
-    .news-feed .post-footer .respond-form form li li {
+    .respond-form form li small {
       display: none; }
   .respond-form form input[type=text],
   .respond-form form input[type=email],
@@ -2667,6 +2232,8 @@ style a page via class
 .site-name {
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-size: 36px;
+  font-size: 2.25rem;
   line-height: 1.1;
   margin: 0;
   padding: 20px;
@@ -2706,31 +2273,12 @@ style a page via class
       display: block;
       float: left;
       margin-right: 2.35765%;
-      width: 14.70196%; }
+      width: 23.23176%; }
       .community-group .post-header:last-child,
       .community-partner .post-header:last-child {
         margin-right: 0; } }
-  .community-group .post-header h6, .community-group .post-header .widgettitle, .community-group .post-header p, .community-group .post-header .news .module-heading, .news .community-group .post-header .module-heading,
-  .community-group .post-header .events .module-heading,
-  .events .community-group .post-header .module-heading,
-  .community-group .post-header .sites .module-heading,
-  .sites .community-group .post-header .module-heading, .community-group .post-header li,
-  .community-group .news .community-partner .post-header .module-heading,
-  .community-group .events .community-partner .post-header .module-heading,
-  .community-group .sites .community-partner .post-header .module-heading,
-  .community-partner .post-header h6,
-  .community-partner .post-header .widgettitle,
-  .community-partner .news .community-group .post-header .module-heading,
-  .community-partner .events .community-group .post-header .module-heading,
-  .community-partner .sites .community-group .post-header .module-heading,
-  .community-partner .post-header p,
-  .community-partner .post-header .news .module-heading,
-  .news .community-partner .post-header .module-heading,
-  .community-partner .post-header .events .module-heading,
-  .events .community-partner .post-header .module-heading,
-  .community-partner .post-header .sites .module-heading,
-  .sites .community-partner .post-header .module-heading,
-  .community-partner .post-header li {
+  .community-group .post-header h6,
+  .community-partner .post-header h6 {
     color: #b8b6b2; }
   .community-group .post-header p, .community-group .post-header .news .module-heading, .news .community-group .post-header .module-heading,
   .community-group .post-header .events .module-heading,
@@ -2745,6 +2293,8 @@ style a page via class
   .community-partner .post-header .sites .module-heading,
   .sites .community-partner .post-header .module-heading,
   .community-partner .post-header li {
+    font-size: 16px;
+    font-size: 1rem;
     color: #b8b6b2; }
   .community-group .post-header a, .community-group .post-header a:visited,
   .community-partner .post-header a,
@@ -2787,18 +2337,11 @@ style a page via class
 
 .wp-biographia-container-top {
   background: transparent !important;
-  border-top: 1px solid #d1cfcb !important;
-  border-bottom: 1px solid #d1cfcb !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
   margin: 30px 0;
-  padding: 20px 0; }
-
-.wp-biographia-text {
-  margin-left: 120px; }
-
-.wp-biographia-text h3, .wp-biographia-text .page-title,
-.wp-biographia-text .archive-title,
-.wp-biographia-text .section-title {
-  margin: .5em 0; }
+  padding: 0; }
 
 .wp-biographia-container-around {
   background: transparent;
@@ -2807,12 +2350,35 @@ style a page via class
 .wp-biographia-container-none {
   background: transparent; }
 
+.wp-biographia-pic {
+  background: transparent;
+  border: 0;
+  padding: 5px !important;
+  height: 90px !important;
+  width: 90px !important; }
+
+.wp-biographia-avatar {
+  max-width: 80px;
+  height: auto;
+  display: block; }
+
+.wp-biographia-text {
+  margin-left: 100px; }
+
+.wp-biographia-text h3 {
+  font-size: 18px;
+  font-size: 1.125rem;
+  margin: .5em 0 0; }
+
 .wp-biographia-links ul {
   padding: 0; }
-.wp-biographia-links li a {
-  padding: 0 10px; }
-.wp-biographia-links li:first-child a {
-  padding-left: 0; }
+.wp-biographia-links li {
+  font-size: 14px;
+  font-size: 0.875rem;
+  padding: 0;
+  margin-right: 10px; }
+.wp-biographia-links li:first-child {
+  display: none; }
 
 div.bx-wrapper {
   position: relative;
@@ -2833,6 +2399,8 @@ div.bx-wrapper {
     div.bx-wrapper .bx-caption span {
       color: #333231;
       font-family: "Lato", Helvetica, Verdana, sans-serif;
+      font-size: 22px;
+      font-size: 1.375rem;
       margin: 0; }
   div.bx-wrapper .bx-pager.bx-default-pager {
     position: absolute;
@@ -3135,13 +2703,7 @@ div.css-search {
     float: left;
     width: 33%; } }
 @media (min-width: 481px) {
-  .single-event .event-details h4 span, .single-event .event-details .widget_recent_entries li span, .widget_recent_entries .single-event .event-details li span,
-  .single-event .event-details .widget_em_widget li span,
-  .widget_em_widget .single-event .event-details li span, .single-event .event-details .highlights-list .post-title span, .highlights-list .single-event .event-details .post-title span, .single-event .event-details .wp-biographia-text h3 span, .wp-biographia-text .single-event .event-details h3 span, .single-event .event-details .wp-biographia-text .page-title span, .wp-biographia-text .single-event .event-details .page-title span,
-  .single-event .event-details .wp-biographia-text .archive-title span,
-  .wp-biographia-text .single-event .event-details .archive-title span,
-  .single-event .event-details .wp-biographia-text .section-title span,
-  .wp-biographia-text .single-event .event-details .section-title span, .single-event .event-details div.bx-wrapper .bx-caption span span, div.bx-wrapper .bx-caption .single-event .event-details span span {
+  .single-event .event-details h4 span {
     display: block; } }
 .single-event .date-time,
 .single-event .location {

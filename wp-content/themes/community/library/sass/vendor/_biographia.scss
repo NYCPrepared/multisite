@@ -2,21 +2,12 @@
 
 .wp-biographia-container-top {
 	background: transparent !important; // override inline styling
-	border-top: 1px solid $base7 !important; // override inline styling
-	border-bottom: 1px solid $base7 !important; // override inline styling
+	background: rgba(255,255,255,.7) !important; // override inline styling
+	border-top: 0 !important; // override inline styling
+	border-bottom: 0 !important; // override inline styling
 	margin: 30px 0;
-	padding: 20px 0;
+	padding: 0;
 }
-
-.wp-biographia-text {
-    margin-left: 120px;
-}
-
-.wp-biographia-text h3 {
-    @extend h4;
-    margin: .5em 0;
-}
-
 .wp-biographia-container-around {
 	background: transparent;
 	border-color: $hr-color;
@@ -26,14 +17,42 @@
 	background: transparent;
 }
 
+.wp-biographia-pic {
+    background: transparent;
+    border: 0;
+	padding: 5px !important; // override inline styling
+	height: 90px !important; // override inline styling
+	width: 90px !important; // override inline styling
+}
+.wp-biographia-avatar {
+    max-width: 80px;
+    height: auto;
+    display: block;
+}
+
+
+.wp-biographia-text {
+    margin-left: 100px;
+}
+
+.wp-biographia-text h3 {
+    @include font-size($epsilon);
+    margin: .5em 0 0;
+}
+
+
 .wp-biographia-links {
     ul {
         padding: 0;
     }
-    li a {
-        padding: 0 10px;
+    li {
+        @include font-size($milli);
+        padding: 0;
+        margin-right: 10px;
     }
-    li:first-child a {
-        padding-left: 0;
+    li:first-child {
+        display: none; // hide "mail" link
     }
 }
+
+

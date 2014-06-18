@@ -22,7 +22,7 @@ div.bx-wrapper {
         span {
             color: $text-color;
             font-family: $sans;
-            @extend h4;
+            @include font-size($delta);
             margin: 0;
         }
     }   

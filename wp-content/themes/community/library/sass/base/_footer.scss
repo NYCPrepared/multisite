@@ -79,7 +79,7 @@
 .copyright {
     @include font-size(10);
     text-transform: uppercase; 
-        letter-spacing: $caps-spacing;
+        letter-spacing: $tracking;
     color: $base4;
     display: inline-block;
     margin: 15px 0;

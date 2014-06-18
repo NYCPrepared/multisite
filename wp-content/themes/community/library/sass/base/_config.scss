@@ -47,6 +47,14 @@ $loud-color: $black;
 $hr-color: $base6;
 
 
+// TYPEFACES
+
+$sans: "Lato", Helvetica, Verdana, sans-serif;
+$mono: "Courier New", Courier, monospace;
+$tracking: 1px;
+$tracking-loose: 2px;
+
+
 // TYPE SIZES
 // http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css/
 
@@ -62,14 +70,18 @@ $epsilon: 18; // h5, p
 $zeta: 16; // h6
 
 $milli: 14; 
+$micro: 12; 
+$nano: 11; 
 
 
 // SPACING
 
+$space-triple: 72px; 
+$space-double: 48px;
 $space: 24px; // equal to body line-height
-$space2: 48px;
-$space3: 72px; 
 $space-half: 12px; 
+$space-third: 8px; 
+$space-fourth: 6px; 
 
 
 // BORDERS

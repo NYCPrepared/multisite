@@ -9,13 +9,13 @@
     }    
     .post-header {
         text-transform: uppercase; 
-        letter-spacing: $caps-spacing;
-    	@include breakpoint(md) {@include span-columns(2 of 12);}
+        letter-spacing: $tracking;
+    	@include breakpoint(md) {@include span-columns(3 of 12);}
     	h6 {
         	color: $quiet-color;
     	}
     	p, li {
-        	@extend h6;
+        	@include font-size($zeta);
         	color: $quiet-color;
     	}
     	a, a:visited {

@@ -124,10 +124,10 @@
     }
     .nav li a {
         display: block;
-        padding: 7px 15px;
+        padding: 8px 15px;
         color: $anchor-color;
         text-transform: uppercase; 
-        letter-spacing: $caps-spacing;
+        letter-spacing: $tracking;
         @include breakpoint(md) {color: $white;}
         &:hover {
             color: $text-color;

@@ -31,7 +31,7 @@ site so our css is cleaner and more scalable.
         color: $anchor-color;
         padding: 3px 8px;
         text-transform: uppercase;
-        letter-spacing: $caps-spacing;
+        letter-spacing: $tracking;
         &.current {
             background: $white;
             color: $text-color;

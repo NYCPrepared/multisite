@@ -3,7 +3,7 @@
 .logo-NYCP {
     @include font-size($epsilon);
     text-transform: uppercase; 
-        letter-spacing: $caps-spacing;
+        letter-spacing: $tracking;
     font-weight: 700;
     white-space: nowrap;
     display: inline-block; 
@@ -32,7 +32,7 @@
 .tagline-NYCP {
     @include font-size(13);
 	text-transform: uppercase;
-	letter-spacing: $caps-spacing;
+	letter-spacing: $tracking;
     vertical-align: middle;
     white-space: nowrap;
     color: $base5;

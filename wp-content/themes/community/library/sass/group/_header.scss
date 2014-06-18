@@ -35,8 +35,8 @@
 
 .site-name {
     text-transform: uppercase; 
-    letter-spacing: $caps-spacing;
-    @extend h2;
+    letter-spacing: $tracking;
+    @include font-size($beta);
     line-height: 1.1;
     margin: 0;
     padding: 20px;

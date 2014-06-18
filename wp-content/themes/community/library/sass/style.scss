@@ -32,12 +32,12 @@
 @import "base/wordpress";
 
 
-// GROUP THEME
+// GROUP THEME -- partials stay in this theme to share mixins
 @import "group/header";
 @import "group/news";
 
 
-// PARTNER THEME
+// PARTNER THEME -- partials stay in this theme to share mixins
 
 
 // VENDOR PLUGINS/ADD-ONS

@@ -12,8 +12,8 @@ POSTS & CONTENT STYLES
 .archive-title,
 .section-title {
     text-transform: uppercase; 
-    letter-spacing: $caps-spacing;
-    @extend h3;
+    letter-spacing: $tracking;
+    @include font-size($gamma);
     line-height: 1.1;
     margin: .25em 0 .75em;
 }
@@ -42,7 +42,7 @@ POSTS & CONTENT STYLES
     margin: 0;
     color: $quiet-color;
 	text-transform: uppercase; 
-        letter-spacing: $caps-spacing;
+        letter-spacing: $tracking;
 	@include font-size(15);
     a {
         color: $quiet-color;
