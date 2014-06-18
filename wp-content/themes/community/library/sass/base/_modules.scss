@@ -1,5 +1,5 @@
 
-//LISTS
+// MODULES
 
 
 // HOME PAGE POSTS
@@ -18,7 +18,9 @@
 .news, 
 .events, 
 .sites {
-    .module-heading {@extend p; text-transform: uppercase; 
+    .module-heading {
+        @include font-size($epsilon);
+        text-transform: uppercase; 
         letter-spacing: $tracking;}    
 } 
 

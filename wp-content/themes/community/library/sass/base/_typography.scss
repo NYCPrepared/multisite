@@ -86,10 +86,6 @@ p, li, dt, dd {
 }
 
 
-li {
-	margin-bottom: $space-half;
-}
-
 input, label, select, textarea {
     @include font-size($epsilon);
 	margin-bottom: .75em;
@@ -119,12 +115,21 @@ i, em {
 
 
 
+// clear lists; style typographic lists in _posts .content
+
 ul, ol {
-    margin: 0 0 $space;
+    margin: 0;
+    padding: 0;
+    list-style: none;
     ul, ol {
         margin: $space-half 0 $space;
     }
 }
+
+li {
+	margin-bottom: $space-half;
+}
+
 
 
 blockquote {
