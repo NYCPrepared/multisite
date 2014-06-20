@@ -164,10 +164,14 @@
     }
     .site-image {
         width: 100%;
-        height: auto;
-        min-height: 180px;
+        height: 180px;
         background: $base7;
         display: block;
+        overflow: hidden;
+        img {
+            height: 100%;
+            width: auto;
+        }
     }
     .site-title {
         text-transform: uppercase; 

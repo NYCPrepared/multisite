@@ -28,8 +28,8 @@
     background-color: $base8;
 	@include breakpoint(md) {height: auto; min-height: 130px; max-height: 290px;}
     img {
-        height: 100%;
-        width: auto;
+        width: 100%;
+        height: auto;
     }
 }
 

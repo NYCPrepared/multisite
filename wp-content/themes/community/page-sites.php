@@ -1,5 +1,9 @@
 <?php get_header(); ?>
 
+<!-- isotope -->
+<script src="<?php echo get_template_directory_uri(); ?>/library/js/isotope.pkgd.min.js"></script>
+        		        
+
 			<div id="content">
 
 				<div id="inner-content" class="wrap clearfix">
@@ -12,20 +16,20 @@
 
 								<header class="article-header">
 
-									<ul class="toggle">
-										<li id="view-grid" class="current">Grid</li>
-										<li id="view-list">List</li>
+									<ul class="toggle js-buttons" id="toggle">
+										<li id="view-grid" data-view="grid" class="is-checked">Grid</li>
+										<li id="view-list" data-view="list">List</li>
 									</ul>
 
 									<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
 
-									<ul class="filter site-networks">
-										<li id="network-all">All Networks</li>
+									<ul class="filter site-networks js-buttons" id="filter">
+										<li id="network-all" data-filter="*">All Networks</li>
 										<?php
 										$networks = get_posts('post_type=network');
 										foreach ($networks as $network) {											
 										?>
-                                        <li id="network-<?php echo $network->post_name; ?>"><?php echo $network->post_title; ?></li>
+                                        <li id="network-<?php echo $network->post_name; ?>" data-filter="network-<?php echo $network->post_name; ?>"><?php echo $network->post_title; ?></li>
 										<?php } ?>
 									</ul>
 
@@ -65,12 +69,12 @@
 												$header = community_get_site_image($site_id);
 											} ?>
 
-											<li class="id-<?php echo $site_id; ?> site-<?php echo $site_slug; ?>  network-<?php foreach($network_query as $post){ echo $post->post_name;} ?>  ">
+											<li class="js-site id-<?php echo $site_id; ?> site-<?php echo $site_slug; ?>  network-<?php foreach($network_query as $post){ echo $post->post_name;} ?>  ">
 												<div class="site-image <?php if(!$header) { echo 'no-image'; } ?>"><?php if($header) { ?><img src="<?php echo $header; ?>" class="site-image"><?php } ?></div>
 												<h3 class="site-title"><a href="<?php echo $site_details->siteurl; ?>"><?php echo $site_details->blogname; ?></a></h3>
-												<div class="meta site-network"><a href="/network/<?php foreach ($network_query as $post) { echo $post->post_name;} ?>/"><?php foreach($network_query as $post){ echo $post->post_title;} ?></a></div>
-												<div class="meta site-location"></div>
-												<div class="meta site-topic"></div>
+												<h6 class="meta site-network"><a href="/network/<?php foreach ($network_query as $post) { echo $post->post_name;} ?>/"><?php foreach($network_query as $post){ echo $post->post_title;} ?></a></h6>
+												<h6 class="meta site-location"></h6>
+												<h6 class="meta site-topic"></h6>
 											</li>
 
 										<?php } ?>
@@ -103,9 +107,9 @@
 												<li id="network-<?php echo $network->post_name; ?>">
 													<div class="network-image post-image"><?php echo $thumbnail; ?></div>
 													<h3 class="network-title site-title post-title"><a href="<?php echo $permalink; ?>"><?php echo $network->post_title; ?></a></h3>
-													<div class="network-excerpt post-excerpt">
+													<h6 class="network-excerpt post-excerpt">
 														<?php echo $excerpt; ?>
-													</div>
+													</h6>
 												</li>
 											<?php } ?>
 
@@ -147,4 +151,38 @@
 
 			</div>
 
+<script>
+$( function() {
+  // init Isotope
+  var $container = $('.sites-list').isotope({
+    itemSelector: '.js-site',
+    layoutMode: 'masonry'
+  });
+
+  // bind filter button click
+  $('#filter').on( 'click', 'button', function() {
+    var filterValue = $( this ).attr('data-filter');
+    // use filterFn if matches value
+    filterValue = filterFns[ filterValue ] || filterValue;
+    $container.isotope({ filter: filterValue });
+  });
+
+  // bind sort button click
+  $('#toggle').on( 'click', 'button', function() {
+    var viewValue = $(this).attr('data-view');
+    $container.isotope({ sortBy: viewValue });
+  });
+  
+  // change is-checked class on buttons
+  $('.js-buttons').each( function( i, buttonGroup ) {
+    var $buttonGroup = $( buttonGroup );
+    $buttonGroup.on( 'click', 'button', function() {
+      $buttonGroup.find('.is-checked').removeClass('is-checked');
+      $( this ).addClass('is-checked');
+    });
+  });
+  
+});
+
+</script>
 <?php get_footer(); ?>
