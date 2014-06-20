@@ -32,7 +32,7 @@ site so our css is cleaner and more scalable.
         padding: 3px 8px;
         text-transform: uppercase;
         letter-spacing: $tracking;
-        &.current {
+        &.is-on {
             background: $white;
             color: $text-color;
         }
@@ -47,12 +47,13 @@ site so our css is cleaner and more scalable.
 
 .filter {
     margin-bottom: $space;
-    height: 40px;
-    @include transition(height 0.25s ease);
+    max-height: 33px;
+    overflow: hidden;
+    @include transition(max-height 0.25s ease);
 	@include breakpoint(sm) {@include span-columns(8);}
 	@include breakpoint(lg) {@include span-columns(4);}
 	&:hover {
-    	height: auto;
+    	max-height: 100px;
     	cursor: pointer;
 	}
     li {
@@ -62,7 +63,11 @@ site so our css is cleaner and more scalable.
         background: $white;
         color: $text-color;
         @include font-size($epsilon);
-        &:first-child {
+        &:hover {
+            background: $base7;
+            color: $text-color;
+        }
+        &.is-on {
             @include font-icon-base($family:"ios7-icon"); 
             @include font-size($zeta);
             @extend %ios7-down;
