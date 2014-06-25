@@ -82,7 +82,7 @@
 				<section class="entry-content clearfix" itemprop="articleBody" rel="main">
 
 					<header class="article-header">
-						<h2 class="section-title" itemprop="subheadline">Networks</h2>
+						<h2 itemprop="subheadline">Networks</h2>
 					</header>
 
 					<ul class="networks-list">
@@ -114,7 +114,7 @@
 
 				<footer class="article-footer">
 
-					<h3 class="section-title" itemprop="subheadline">Join the directory</h3>
+					<h3 itemprop="subheadline">Join the directory</h3>
 					<a class="button" href="/register" title="Register">Register</a>
 
 				</footer>

@@ -68,3 +68,23 @@
 }
 
 
+// NETWORKS
+
+.network-header {
+    .social-links {
+        float: right;
+    }
+    .banner {
+        background: $white;
+        padding: $space;
+        margin-bottom: $space;
+        @include breakpoint(md) {@include span-columns(4);}
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    .entry-title {
+        padding-top: 1em;
+    }
+}
