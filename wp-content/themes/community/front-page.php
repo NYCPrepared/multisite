@@ -175,7 +175,7 @@
 						<?php } ?>
 						<article id="sites-module" class="module row sites clearfix">
 							<h2 class="module-heading"><a href="/sites/">Sites</a></h2>
-							<ul class="sites-list grid">
+							<ul class="sites-list view-grid">
 
 							<?php
 							foreach ($sites as $site) {
@@ -188,9 +188,9 @@
 								?>
 							
 								<li id="site-<?php echo $site_id; ?>">
-    								<img class="post-image site-image" src="<?php echo $header; ?>">
-									<h3 class="post-title site-title"><a href="<?php echo $site_details->path; ?>" title="<?php echo $site_details->blogname; ?>"><?php echo $site_details->blogname; ?></a></h3>
-									<h6 class="site-meta modified"><span class="modified-title">Last updated</span> <time><?php echo date_i18n(get_option('date_format') ,strtotime($site_details->last_updated));?></time></h6>
+								    <div class="item-image <?php if(!$header) { echo 'no-image'; } ?>" style="background-image: url('<?php if($header) { echo $header; } ?>');"></div>
+									<h3 class="item-title"><a href="<?php echo $site_details->path; ?>" title="<?php echo $site_details->blogname; ?>"><?php echo $site_details->blogname; ?></a></h3>
+									<h6 class="meta item-modified"><span class="modified-title">Last updated</span> <time><?php echo date_i18n(get_option('date_format') ,strtotime($site_details->last_updated));?></time></h6>
 								</li>
 							
                             <?php } ?>

@@ -45,14 +45,14 @@ site so our css is cleaner and more scalable.
 
 // FILTER MENUS
 
-$f-height: 2.5em;
+$f-height: 2.5em; // set variable for this menu
 
 .filter {
-    margin-bottom: $space;
     max-height: $f-height;
     padding-top: $f-height; // allow for absolutely-positioned .is-on item
     overflow: hidden;
     position: relative;
+    margin-bottom: $space;
     @include transition(max-height 0.25s ease); // slide down and up
 	@include breakpoint(sm) {@include span-columns(8);}
 	@include breakpoint(lg) {@include span-columns(4);}
@@ -61,8 +61,9 @@ $f-height: 2.5em;
     	cursor: pointer;
 	}
     li {
+        line-height: $f-height;
         display: block;
-        padding: .5em 1em;
+        padding: 0 1em;
         margin: 0;
         background: $white;
         color: $text-color;

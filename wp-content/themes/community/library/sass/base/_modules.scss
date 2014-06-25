@@ -158,28 +158,25 @@
         margin-top: 0;
         margin-bottom: 20px;
         padding: 0;
-        height: 260px;
         overflow: hidden;
     }
-    .site-image {
+    .item-image {
+        display: block;
         width: 100%;
         height: 180px;
-        background: $base7;
-        display: block;
-        overflow: hidden;
-        img {
-            height: 100%;
-            width: auto;
-        }
+        background-color: $base7;
+        background-size: cover;
+        background-position: center center;
+        // image is added in php
     }
-    .site-title {
+    .item-title {
         text-transform: uppercase; 
         letter-spacing: $tracking;
         margin: 0;
         padding: 5px 10px 3px;
         @include font-size($epsilon);
     }
-    h6 {
+    .meta {
         margin: 0;
         padding: 0 10px 10px;
         @include font-size($nano);
@@ -187,6 +184,7 @@
     }
 }
 .sites-list.view-grid li {
+    height: 260px;
 	@include breakpoint(xs) {@include span-columns(8);}
 	@include breakpoint(md) {@include span-columns(4);}
 }
@@ -196,13 +194,13 @@
         height: 100px;
         width: 100%;
     }
-    .site-image {
+    .item-image {
     	height: 100%; 
     	width: 100px; 
     	float: left; 
     	margin-right: $space-half;
     }    
-    .site-title {
+    .item-title {
         padding-top: $space-half;
     }
 }

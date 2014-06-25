@@ -66,11 +66,11 @@
 							} ?>
 
 							<li class="isomote id-<?php echo $site_id; ?> site-<?php echo $site_slug; ?> network-<?php foreach($network_query as $post){ echo $post->post_name;} ?>  ">
-								<div class="site-image <?php if(!$header) { echo 'no-image'; } ?>"><?php if($header) { ?><img src="<?php echo $header; ?>" class="site-image"><?php } ?></div>
-								<h3 class="site-title"><a href="<?php echo $site_details->siteurl; ?>"><?php echo $site_details->blogname; ?></a></h3>
-								<h6 class="meta site-network"><a href="/network/<?php foreach ($network_query as $post) { echo $post->post_name;} ?>/"><?php foreach($network_query as $post){ echo $post->post_title;} ?></a></h6>
-								<h6 class="meta site-location"></h6>
-								<h6 class="meta site-topic"></h6>
+								<div class="item-image <?php if(!$header) { echo 'no-image'; } ?>" style="background-image: url('<?php if($header) { echo $header; } ?>');"></div>
+								<h3 class="item-title"><a href="<?php echo $site_details->siteurl; ?>"><?php echo $site_details->blogname; ?></a></h3>
+								<h6 class="meta item-network"><a href="/network/<?php foreach ($network_query as $post) { echo $post->post_name;} ?>/"><?php foreach($network_query as $post){ echo $post->post_title;} ?></a></h6>
+								<h6 class="meta item-location"></h6>
+								<h6 class="meta item-topic"></h6>
 							</li>
 
 						<?php } ?>
@@ -101,9 +101,9 @@
 
 							?>
 							<li id="network-<?php echo $network->post_name; ?>">
-								<div class="network-image post-image"><?php echo $thumbnail; ?></div>
-								<h3 class="network-title site-title post-title"><a href="<?php echo $permalink; ?>"><?php echo $network->post_title; ?></a></h3>
-								<h6 class="network-excerpt post-excerpt"><?php echo $excerpt; ?></h6>
+								<div class="item-image" style="background-image: url('<?php echo $thumbnail; ?>');"></div>
+								<h3 class="item-title"><a href="<?php echo $permalink; ?>"><?php echo $network->post_title; ?></a></h3>
+								<h6 class="meta item-excerpt"><?php echo $excerpt; ?></h6>
 							</li>
 							<?php } ?>
 
@@ -113,7 +113,8 @@
 
 				<footer class="article-footer">
 
-					<?php ?>
+					<h3 class="section-title" itemprop="subheadline">Join the directory</h3>
+					<a class="button" href="/register" title="Register">Register</a>
 
 				</footer>
 
