@@ -123,6 +123,7 @@
 
 							</article>
 
+
 							<?php endwhile; else : ?>
 
 									<article id="post-not-found" class="hentry clearfix">
