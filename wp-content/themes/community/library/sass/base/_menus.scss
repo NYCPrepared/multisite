@@ -66,6 +66,7 @@ $f-height: 2.5em;
         margin: 0;
         background: $white;
         color: $text-color;
+        white-space: nowrap;
         @include font-size($zeta);
         &:hover {
             background: lighten($anchor-color, 10);
