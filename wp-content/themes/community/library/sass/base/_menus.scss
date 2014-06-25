@@ -45,27 +45,31 @@ site so our css is cleaner and more scalable.
 
 // FILTER MENUS
 
+$f-height: 2.5em;
+
 .filter {
     margin-bottom: $space;
-    max-height: 33px;
+    max-height: $f-height;
+    padding-top: $f-height; // allow for absolutely-positioned .is-on item
     overflow: hidden;
-    @include transition(max-height 0.25s ease);
+    position: relative;
+    @include transition(max-height 0.25s ease); // slide down and up
 	@include breakpoint(sm) {@include span-columns(8);}
 	@include breakpoint(lg) {@include span-columns(4);}
 	&:hover {
-    	max-height: 100px;
+    	max-height: 10em;
     	cursor: pointer;
 	}
     li {
         display: block;
-        padding: 5px 10px;
+        padding: .5em 1em;
         margin: 0;
         background: $white;
         color: $text-color;
-        @include font-size($epsilon);
+        @include font-size($zeta);
         &:hover {
-            background: $base7;
-            color: $headline-color;
+            background: lighten($anchor-color, 10);
+            color: $white;
         }
         &.is-on {
             @include font-icon-base($family:"ios7-icon"); 
@@ -73,6 +77,12 @@ site so our css is cleaner and more scalable.
             @extend %ios7-down;
             background: $anchor-color;
             color: $white;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            &:before {
+                float: right;
+            }
         }
     }
 }

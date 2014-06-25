@@ -186,18 +186,25 @@
         color: $quiet-color;
     }
 }
-.sites-list.grid li {
+.sites-list.view-grid li {
 	@include breakpoint(xs) {@include span-columns(8);}
 	@include breakpoint(md) {@include span-columns(4);}
 }
-.sites-list.list {
+.sites-list.view-list {
     clear: both;
     li {
         height: 100px;
+        width: 100%;
     }
     .site-image {
-    	@include breakpoint(xs) {width: 100px; height: 100%; float: left; margin-right: $space;}
+    	height: 100%; 
+    	width: 100px; 
+    	float: left; 
+    	margin-right: $space-half;
     }    
+    .site-title {
+        padding-top: $space-half;
+    }
 }
 
 .networks-list li {
