@@ -148,7 +148,8 @@
 
 // SITES PROMO
 
-.sites-list {
+.sites-list,
+.networks-list {
     clear: both;
     padding: 0;
     @include fill-parent;
@@ -159,8 +160,6 @@
         padding: 0;
         height: 240px;
         overflow: hidden;
-    	@include breakpoint(xs) {@include span-columns(8);}
-    	@include breakpoint(md) {@include span-columns(4);}
     }
     .site-image {
         width: 100%;
@@ -180,14 +179,32 @@
         padding: 5px 10px 3px;
         @include font-size($epsilon);
     }
-    .site-meta {
+    h6 {
         margin: 0;
         padding: 0 10px 10px;
         @include font-size($nano);
         color: $quiet-color;
     }
 }
+.sites-list.grid li {
+	@include breakpoint(xs) {@include span-columns(8);}
+	@include breakpoint(md) {@include span-columns(4);}
+}
+.sites-list.list {
+    clear: both;
+    li {
+        height: 100px;
+    }
+    .site-image {
+    	@include breakpoint(xs) {width: 100px; height: 100%; float: left; margin-right: $space;}
+    }    
+}
 
+.networks-list li {
+	@include breakpoint(md) {@include span-columns(8);}
+}
+
+// create a site promo
 #site-promo {
     background: $yellow;
     padding: 20px;
@@ -215,3 +232,5 @@
         }
     }
 }
+
+

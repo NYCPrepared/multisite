@@ -65,7 +65,7 @@ site so our css is cleaner and more scalable.
         @include font-size($epsilon);
         &:hover {
             background: $base7;
-            color: $text-color;
+            color: $headline-color;
         }
         &.is-on {
             @include font-icon-base($family:"ios7-icon"); 

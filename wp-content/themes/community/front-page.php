@@ -175,7 +175,7 @@
 						<?php } ?>
 						<article id="sites-module" class="module row sites clearfix">
 							<h2 class="module-heading"><a href="/sites/">Sites</a></h2>
-							<ul class="sites-list">
+							<ul class="sites-list grid">
 
 							<?php
 							foreach ($sites as $site) {

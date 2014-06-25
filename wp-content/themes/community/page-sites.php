@@ -10,31 +10,33 @@
 
 			<article id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> itemscope itemtype="http://schema.org/BlogPosting">
 
+
 				<header class="article-header">
 
-					<ul class="toggle js-buttons" id="toggle">
-						<li data-view="grid" class="is-on">Grid</li>
-						<li data-view="list">List</li>
+					<ul class="toggle js-menu" id="toggle">
+						<li data-view="masonry" class="grid is-on">Grid</li>
+						<li data-view="vertical" class="list">List</li>
 					</ul>
 
 					<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
 
-					<ul class="filter js-buttons" id="filter">
+					<ul class="filter js-menu" id="filter">
 						<li id="network-all" data-filter="*" class="is-on">All Networks</li>
-						<?php
-						$networks = get_posts('post_type=network');
-						foreach ($networks as $network) {											
-						?>
+					<?php
+					$networks = get_posts('post_type=network');
+					foreach ($networks as $network) {											
+					?>
                         <li id="network-<?php echo $network->post_name; ?>" data-filter="network-<?php echo $network->post_name; ?>"><?php echo $network->post_title; ?></li>
-						<?php } ?>
+					<?php } ?>
 					</ul>
 
 
 				</header>
 
+
 				<section class="entry-content clearfix" itemprop="articleBody" rel="main">
 
-					<ul class="sites-list" id="isotope">
+					<ul class="sites-list grid" id="isotope">
 						<?php
 						$sites = wp_get_sites('offset=1');
 
@@ -44,12 +46,13 @@
 							$site_options = get_blog_option($site_id, 'theme_mods_community-group');
 							$site_image = $site_options['community_site_image'];
 							$site_path = $site_details->path;
-							$site_slug = trim($site_path,'/');
+							$site_slug = str_replace('/','',$site_path);
+
 
 							// Find Network pages that are associated with this site
 							$args = array (
-								'post_type'              => 'network',
-								'meta_query'             => array(
+								'post_type'         => 'network',
+								'meta_query'        => array(
 									array(
 										'key'       => 'community_network_sites',
 										'value'     => $site_id,
@@ -65,7 +68,7 @@
 								$header = community_get_site_image($site_id);
 							} ?>
 
-							<li class="js-site id-<?php echo $site_id; ?> site-<?php echo $site_slug; ?>  network-<?php foreach($network_query as $post){ echo $post->post_name;} ?>  ">
+							<li class="node id-<?php echo $site_id; ?> site-<?php echo $site_slug; ?>  network-<?php foreach($network_query as $post){ echo $post->post_name;} ?>  ">
 								<div class="site-image <?php if(!$header) { echo 'no-image'; } ?>"><?php if($header) { ?><img src="<?php echo $header; ?>" class="site-image"><?php } ?></div>
 								<h3 class="site-title"><a href="<?php echo $site_details->siteurl; ?>"><?php echo $site_details->blogname; ?></a></h3>
 								<h6 class="meta site-network"><a href="/network/<?php foreach ($network_query as $post) { echo $post->post_name;} ?>/"><?php foreach($network_query as $post){ echo $post->post_title;} ?></a></h6>
@@ -85,7 +88,7 @@
 						<h2 class="section-title" itemprop="subheadline">Networks</h2>
 					</header>
 
-					<ul class="network-list sites-list">
+					<ul class="networks-list">
 						<?php
 							$networks = get_posts('post_type=network');
 							foreach ($networks as $network) {
@@ -112,6 +115,7 @@
 					</ul>
 					
 				</section>
+
 
 				<footer class="article-footer">
 
@@ -148,44 +152,56 @@
 </div>
 
 
+<!-- jQuery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
 <!-- isotope -->
 <script src="<?php echo get_template_directory_uri(); ?>/library/js/isotope.pkgd.min.js"></script>
-
 <script>
+
 $(document).ready(function() {
-    
-    var $container = $('#isotope');
-    $container.isotope({
-        itemSelector: 'li',
-        layoutMode: 'masonry'
-    });
 
-  // bind filter button click
-    $('#filter').on( 'click', 'li', function() {
-      var $filterValue = $(this).attr('data-filter');
-      $container.isotope({ filter: $filterValue });
-    });
-
-  /*
-  // bind view button click
-  $('#toggle').on( 'click', 'li', function() {
-    $(this).toggleClass('is-on');
-    var $viewValue = $(this).attr('data-view');
-    $container.toggleClass({ $viewValue });
-    $container.isotope({  });
-  });
+  var $container = $('#isotope');
   
-  // change is-checked class on buttons
-  $('.js-buttons').each( function( i, buttonGroup ) {
-    var $buttonGroup = $( buttonGroup );
-    $buttonGroup.on( 'click', 'button', function() {
-      $buttonGroup.find('.is-checked').removeClass('is-checked');
-      $( this ).addClass('is-checked');
+  // init Isotope
+  $container.isotope({
+    itemSelector: 'js-item',
+    layoutMode: 'masonry'
+  });
+
+  // change is-on classes
+  $('.js-menu').each(function(i, focus) {
+    var $focus = $(focus);
+    $focus.on('click', 'li', function() {
+      $focus.find('.is-on').removeClass('is-on');
+      $(this).addClass('is-on');
     });
   });
-*/
-  
+
+  // change view
+  $('#toggle').on('click', 'li', function() {
+    if ($(this).hasClass('grid')) {
+        $('#isotope').removeClass('list').addClass('grid');
+    }
+    else if($(this).hasClass('list')) {
+        $('#isotope').removeClass('grid').addClass('list');
+    }
+    var viewValue = $(this).attr('data-view');
+    $container.isotope({ layoutMode: viewValue });
+  });
+
+  // filter
+  $('#filter').on( 'click', 'li', function() {
+    var filterValue = $(this).attr('data-filter');
+    $container.isotope({ filter: filterValue });
+  });
+
+
+
 });
 
 </script>
+
+
+
 <?php get_footer(); ?>
