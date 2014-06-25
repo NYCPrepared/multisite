@@ -1,0 +1,162 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: form_maker\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-15 15:45+0400\n"
+"PO-Revision-Date: 2012-08-15 18:16+0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Bulgarian\n"
+"X-Poedit-SearchPath-0: C:\\wamp\\www\\wordpress3\\wp-content\\plugins\\Form_Maker\n"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:69
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:92
+msgid "Error, incorrect Security code."
+msgstr "Грешка, неправилно Код за сигурност."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:239
+msgid "The file exceeds the allowed size of"
+msgstr "Файлът превишава допустимия размер на"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:261
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:986
+msgid "Sorry, you are not allowed to upload this type of file."
+msgstr "За съжаление, не е позволено да се качите на този тип файл."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:277
+msgid "Error, file cannot be moved."
+msgstr "Грешка, файлът не може да бъде преместен."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:407
+#, php-format
+msgid "This field %s requires a unique entry and this value was already submitted."
+msgstr "Това поле %s изисква уникален влизане и тази стойност вече е изпратена."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:442
+msgid "Nothing was submitted."
+msgstr "Нищо не беше представен."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:723
+msgid "Error, email was not sent."
+msgstr "Грешка, електронна поща не е изпратено."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:725
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:728
+msgid "Your form was successfully submitted."
+msgstr "Вашият форма е успешно изпратена."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:942
+msgid "Title"
+msgstr "Наименование"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:943
+msgid "First"
+msgstr "Първа"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:944
+msgid "Last"
+msgstr "Дата на последния одит. "
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:945
+msgid "Middle"
+msgstr "Среден"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:946
+msgid "January"
+msgstr "януари"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:947
+msgid "February"
+msgstr "февруари"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:948
+msgid "March"
+msgstr "март"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:949
+msgid "April"
+msgstr "април"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:950
+msgid "May"
+msgstr "Май"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:951
+msgid "June"
+msgstr "юни"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:952
+msgid "July"
+msgstr "юли"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:953
+msgid "August"
+msgstr "август"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:954
+msgid "September"
+msgstr "септември"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:955
+msgid "October"
+msgstr "октомври"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:956
+msgid "November"
+msgstr "ноември"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:957
+msgid "December"
+msgstr "декември"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:958
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:318
+msgid "Street Address"
+msgstr "Улица"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:959
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:319
+msgid "Street Address Line 2"
+msgstr "Адрес Ред 2"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:960
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:320
+msgid "City"
+msgstr "Sofia"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:961
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:321
+msgid "State / Province / Region"
+msgstr "Щат / Провинция / Регион"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:962
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:322
+msgid "Postal / Zip Code"
+msgstr "Пощенски / Zip код"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:963
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:323
+msgid "Country"
+msgstr "Държава"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:964
+msgid "Area Code"
+msgstr "Регионалния код"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:965
+msgid "Phone Number"
+msgstr "Телефонен номер"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:987
+msgid "This is not a valid email address."
+msgstr "Това не е валиден имейл адрес."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:989
+msgid "field is required."
+msgstr "Полето е задължително."
+

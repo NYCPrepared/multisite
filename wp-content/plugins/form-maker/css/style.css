@@ -1,0 +1,47 @@
+.field_buttons {
+  background-color: #00AAF1;
+  border-radius: 0px;
+  cursor: pointer;
+  height: 75px;
+  margin: 1px;
+  padding: 2px;
+  width: 87px;
+}
+
+#edit_div>table>tr {
+  vertical-align: top;
+}
+
+#edit_div>table>tr>td {
+  border-bottom: 1px dotted #D1C8C8;
+  padding-bottom: 10px;
+}
+
+.field_buttons:hover {
+  background-color: #0E83EB;
+}
+
+.element_toolbar {
+  background-color:#F0F0F0
+  margin: 0px;
+  padding: 0px;
+}
+
+.element_toolbar img {
+  margin: 2px;
+}
+
+.no_spacing {
+  border-spacing: 0px;
+  float: left;
+  padding-right: 10px !important;
+}
+
+.toolbar_padding {
+  padding-right: 20px;
+}
+
+.page_toolbar {
+  cursor:pointer;
+  width:30px;
+}
