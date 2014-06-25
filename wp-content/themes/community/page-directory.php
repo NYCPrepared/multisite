@@ -101,7 +101,8 @@
 
 							?>
 							<li id="network-<?php echo $network->post_name; ?>">
-								<div class="item-image" style="background-image: url('<?php echo $thumbnail; ?>');"></div>
+							    <!-- TODO: change php below to load image URL, not <img> element -->
+								<div class="item-image" style="background-image: url(' <?php echo $thumbnail; ?> ');"></div>
 								<h3 class="item-title"><a href="<?php echo $permalink; ?>"><?php echo $network->post_title; ?></a></h3>
 								<h6 class="meta item-excerpt"><?php echo $excerpt; ?></h6>
 							</li>
