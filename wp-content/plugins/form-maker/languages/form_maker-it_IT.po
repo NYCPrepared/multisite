@@ -1,0 +1,162 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: form_maker\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-15 16:02+0400\n"
+"PO-Revision-Date: 2012-08-15 18:12+0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-SearchPath-0: C:\\wamp\\www\\wordpress3\\wp-content\\plugins\\Form_Maker\n"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:69
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:92
+msgid "Error, incorrect Security code."
+msgstr "Errore, codice di protezione errato."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:239
+msgid "The file exceeds the allowed size of"
+msgstr "Il file supera la dimensione consentita di"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:261
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:986
+msgid "Sorry, you are not allowed to upload this type of file."
+msgstr "Spiacenti, non sei autorizzato a caricare questo tipo di file."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:277
+msgid "Error, file cannot be moved."
+msgstr "Errore, il file non possono essere spostati."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:407
+#, php-format
+msgid "This field %s requires a unique entry and this value was already submitted."
+msgstr "Questo campo %s richiede una voce unica e questo valore è stato già presentato."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:442
+msgid "Nothing was submitted."
+msgstr "Nulla è stato presentato."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:723
+msgid "Error, email was not sent."
+msgstr "Errore, e-mail non è stato inviato."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:725
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:728
+msgid "Your form was successfully submitted."
+msgstr "Il modulo è stato inviato correttamente."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:942
+msgid "Title"
+msgstr "Titolo"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:943
+msgid "First"
+msgstr ".first"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:944
+msgid "Last"
+msgstr "L'anno"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:945
+msgid "Middle"
+msgstr "Centrale"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:946
+msgid "January"
+msgstr "Gennaio"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:947
+msgid "February"
+msgstr "febbraio"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:948
+msgid "March"
+msgstr "marzo"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:949
+msgid "April"
+msgstr "aprile"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:950
+msgid "May"
+msgstr "Maggio"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:951
+msgid "June"
+msgstr "giugno"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:952
+msgid "July"
+msgstr "luglio"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:953
+msgid "August"
+msgstr "agosto"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:954
+msgid "September"
+msgstr "settembre"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:955
+msgid "October"
+msgstr "ottobre"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:956
+msgid "November"
+msgstr "novembre"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:957
+msgid "December"
+msgstr "Dicembre"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:958
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:318
+msgid "Street Address"
+msgstr "Indirizzo:"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:959
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:319
+msgid "Street Address Line 2"
+msgstr "Via Riga indirizzo 2"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:960
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:320
+msgid "City"
+msgstr "Città"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:961
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:321
+msgid "State / Province / Region"
+msgstr "Stato / Provincia / Regione"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:962
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:322
+msgid "Postal / Zip Code"
+msgstr "CAP"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:963
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:323
+msgid "Country"
+msgstr "Paese"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:964
+msgid "Area Code"
+msgstr "Prefisso teleselettivo"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:965
+msgid "Phone Number"
+msgstr "Telefono"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:987
+msgid "This is not a valid email address."
+msgstr "Questo non è un indirizzo email valido."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:989
+msgid "field is required."
+msgstr "campo è obbligatorio."
+

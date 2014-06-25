@@ -1,0 +1,162 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: form_maker\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-15 16:07+0400\n"
+"PO-Revision-Date: 2012-08-15 18:05+0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Malay\n"
+"X-Poedit-SearchPath-0: C:\\wamp\\www\\wordpress3\\wp-content\\plugins\\Form_Maker\n"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:69
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:92
+msgid "Error, incorrect Security code."
+msgstr "Kesilapan, kod salah Keselamatan."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:239
+msgid "The file exceeds the allowed size of"
+msgstr "Fail melebihi saiz yang dibenarkan"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:261
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:986
+msgid "Sorry, you are not allowed to upload this type of file."
+msgstr "Maaf, anda tidak dibenarkan untuk memuat naik fail jenis ini."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:277
+msgid "Error, file cannot be moved."
+msgstr "Kesilapan, fail tidak boleh digerakkan."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:407
+#, php-format
+msgid "This field %s requires a unique entry and this value was already submitted."
+msgstr "Bidang %s memerlukan catatan yang unik dan nilai ini telah dihantar."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:442
+msgid "Nothing was submitted."
+msgstr "Tiada apa-apa jua telah dikemukakan."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:723
+msgid "Error, email was not sent."
+msgstr "Kesilapan, e-mel tidak dihantar."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:725
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:728
+msgid "Your form was successfully submitted."
+msgstr "Borang anda telah berjaya diserahkan."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:942
+msgid "Title"
+msgstr "Tajuk:"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:943
+msgid "First"
+msgstr "Pertama"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:944
+msgid "Last"
+msgstr "terakhir"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:945
+msgid "Middle"
+msgstr "Tengah"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:946
+msgid "January"
+msgstr "Januari"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:947
+msgid "February"
+msgstr "Februari"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:948
+msgid "March"
+msgstr "Mac"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:949
+msgid "April"
+msgstr "April"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:950
+msgid "May"
+msgstr "Boleh"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:951
+msgid "June"
+msgstr "Jun"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:952
+msgid "July"
+msgstr "Julai"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:953
+msgid "August"
+msgstr "Ogos"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:954
+msgid "September"
+msgstr "September"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:955
+msgid "October"
+msgstr "Oktober"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:956
+msgid "November"
+msgstr "November"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:957
+msgid "December"
+msgstr "Disember"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:958
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:318
+msgid "Street Address"
+msgstr "Street Address"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:959
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:319
+msgid "Street Address Line 2"
+msgstr "Street Alamat Baris 2"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:960
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:320
+msgid "City"
+msgstr "Bandar:"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:961
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:321
+msgid "State / Province / Region"
+msgstr "Negeri / Daerah / Wilayah"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:962
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:322
+msgid "Postal / Zip Code"
+msgstr "Pos / Zip Code"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:963
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/Submissions.html.php:323
+msgid "Country"
+msgstr "negara"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:964
+msgid "Area Code"
+msgstr "Kod Kawasan"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:965
+msgid "Phone Number"
+msgstr "Nombor Telefon"
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:987
+msgid "This is not a valid email address."
+msgstr "Ini bukan alamat e-mel yang sah."
+
+#: C:\wamp\www\wordpress3\wp-content\plugins\Form_Maker/front_end_form_maker.php:989
+msgid "field is required."
+msgstr "medan yang diperlukan."
+
