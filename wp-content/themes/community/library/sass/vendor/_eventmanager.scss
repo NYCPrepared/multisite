@@ -251,22 +251,37 @@ ul.event-categories {
 .em-calendar {
     width: 100%;
     margin-bottom: 20px;
+    a, a:hover {
+        padding: 0;
+    }
+    td.eventful-today,
+    td.eventless-today {
+        background: transparent !important;
+        border: 1px solid $white;
+    }
+    td.eventless-pre,
+    td.eventless-post {
+        color: $base5;
+    }
+    
+    td.eventful a, 
+    td.eventful-today a {
+        color: white;
+        background: $anchor-color;
+        &:hover {
+            background-color: lighten($anchor-color, 10);
+        }
+    }
 }
 
-.em-calendar td.eventless-today {
-    background: transparent !important;
-    border: 1px solid $white;
-}
-.em-calendar td.eventless-pre,
-.em-calendar td.eventless-post {
-    color: $base5;
-}
 
 .all-events-link {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 14px;
 }
+
+
 
 // HOME PAGE MODULE
 

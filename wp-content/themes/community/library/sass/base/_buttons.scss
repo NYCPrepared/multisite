@@ -48,7 +48,7 @@ button,
     @include transition(all 0.25s ease);
     @include font-size(14);
 	text-transform: uppercase; 
-        letter-spacing: $tracking;
+    letter-spacing: $tracking;
     line-height: 1.2;
 	font-weight: 700;
     padding: .5em 2em;
@@ -64,7 +64,7 @@ button,
     &:hover,
     &:focus {
         background: lighten($anchor-color, 10);
-        color: $white;
+        color: $white !important;
     }
     @include breakpoint(md) {@include font-size(16);}
 }
