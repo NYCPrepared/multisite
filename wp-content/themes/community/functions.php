@@ -221,7 +221,15 @@ add_action( 'after_setup_theme', 'community_theme_features' );
 ENQUEUE AND REGISTER SCRIPTS AND STYLES
 ***************************************/
 
+
 function community_scripts_and_styles() {
+
+	// deregister WP jquery
+	wp_deregister_script( 'jquery' );
+	wp_deregister_script( 'jquery-ui-draggable' );
+
+	// Hosted jquery
+	wp_register_script( 'jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', array(), '', true );
 
 	// Responsive Slider Script
 	wp_register_script( 'responsive-slider-script', get_template_directory_uri() . '/library/boxslider/jquery.bxslider.min.js', array(), '', true );
@@ -229,13 +237,21 @@ function community_scripts_and_styles() {
 	// Responsive Slider Styles
 	wp_register_style( 'responsive-slider-stylesheet', get_template_directory_uri() . '/library/boxslider/jquery.bxslider.css');
 
+	// Isotype Script
+	wp_register_script( 'isotope-script', get_template_directory_uri() . '/library/js/isotope.pkgd.min.js', array(), '', true );
+
+
    // enqueue styles and scripts
+    wp_enqueue_script( 'jquery' );
     wp_enqueue_script( 'responsive-slider-script' );
+    wp_enqueue_script( 'isotope-script' );
+
     wp_enqueue_style( 'responsive-slider-stylesheet' );
 
 }
 
-add_action( 'wp_enqueue_scripts', 'community_scripts_and_styles' );
+if ( !is_admin() ) add_action( 'wp_enqueue_scripts', 'community_scripts_and_styles' );
+
 
 /*************************
 OPTIONS FRAMEWORK FUNCTION
