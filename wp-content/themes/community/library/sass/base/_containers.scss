@@ -51,8 +51,11 @@ hr {
 
 // ONE-COLUMN CONTENT 
 
-div[role='main'].main-news {
-    @include fill-parent;
+.home-start,
+div[role='main'].main-news,
+.sites-list,
+.networks-list {
+    @include row();
 }
 
 
@@ -78,10 +81,18 @@ div[role='main'] {
 
 // CUSTOM CONTAINERS 
 
+.home-intro {
+    background: $white;
+    margin: 20px 0;
+    @include pad($space);
+	@include breakpoint(md) {@include span-columns(4); }
+}
+
 .home-feature {
     max-height: 480px;
     overflow: hidden; 
     border-top: 1px solid $hr-color;
+	@include breakpoint(md) {@include span-columns(12); border: 0;}
 }
 
 .home-modules {

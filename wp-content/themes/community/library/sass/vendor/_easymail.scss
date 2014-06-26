@@ -25,18 +25,22 @@
         padding: .5em 1em;
         @include font-size(15);
     }
+
+    // sidebar version
+    .sidebar & {
+        padding: 20px 0;
+        background: transparent;
+        border-top: 1px solid $white;
+        border-bottom: 1px solid $white;
+        border-color: rgba(255,255,255,.5);
+        color: $white;
+        td {
+            white-space: normal;
+        }
+    }
+    
 }
 
-
-// sidebar version
-
-.sidebar .alo_easymail_widget_form {
-    padding: 20px 0;
-    background: transparent;
-    border-top: 1px solid $white;
-    border-bottom: 1px solid $white;
-    border-color: rgba(255,255,255,.5);
-}
 
 
 // list selection table
@@ -44,4 +48,5 @@
 .alo_easymail_lists_table {
     font-size: 14px;
     margin-top: 20px;
+
 }

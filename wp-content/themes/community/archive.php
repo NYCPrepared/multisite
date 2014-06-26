@@ -2,7 +2,7 @@
 
 	<div id="content">
 
-		<div id="inner-content" class="wrap">
+		<div id="inner-content">
 
 			<div role="main" id="main" class="main-archive">
 

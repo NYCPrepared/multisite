@@ -2,9 +2,9 @@
 
 <div id="content">
 
-	<div id="inner-content" class="wrap clearfix">
+	<div id="inner-content">
 
-		<div id="main" class="first clearfix">
+		<div id="main">
 
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -19,6 +19,12 @@
 
 					<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
 
+				</header>
+
+				<section class="entry-content" itemprop="articleBody" rel="main">
+
+				    <h4 class="subtitle">Sites</h4>
+
 					<ul class="filter js-menu">
 						<li data-filter="*" class="is-on">All Networks</li>
 						<?php
@@ -28,11 +34,6 @@
                         <li data-filter=".network-<?php echo $network->post_name; ?>"><?php echo $network->post_title; ?></li>
 						<?php } ?>
 					</ul>
-
-
-				</header>
-
-				<section class="entry-content clearfix" itemprop="articleBody" rel="main">
 
 					<ul class="sites-list view-grid" id="isotope">
 						<?php
@@ -79,11 +80,9 @@
 					
 				</section>
 
-				<section class="entry-content clearfix" itemprop="articleBody" rel="main">
+				<section class="entry-content" itemprop="articleBody" rel="main">
 
-					<header class="article-header">
-						<h2 itemprop="subheadline">Networks</h2>
-					</header>
+				    <h4 class="subtitle">Networks</h4>
 
 					<ul class="networks-list">
 						<?php
@@ -113,12 +112,12 @@
 					
 				</section>
 
-				<footer class="article-footer">
+				<section class="promo-directory">
 
-					<h3 itemprop="subheadline">Join the directory</h3>
+				    <h4 class="subtitle">Join the directory</h4>
 					<a class="button" href="/register" title="Register">Register</a>
 
-				</footer>
+				</section>
 
 				<?php comments_template(); ?>
 

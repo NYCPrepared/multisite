@@ -2,27 +2,24 @@
 
 	<div id="content">
 
-		<div id="inner-content" class="wrap">
+		<div id="inner-content">
 
-			<div id="intro" class="first" role="intro">
+			<div id="intro" role="intro" class="intro-news">
 
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-				<article role="article" id="post-<?php the_ID(); ?>" <?php post_class( 'clearfix' ); ?> itemscope itemtype="http://schema.org/BlogPosting">
+				<article role="article" class="post" id="post-<?php the_ID(); ?>" itemscope itemtype="http://schema.org/BlogPosting">
 
-					<header class="article-header">
-
+					<header class="post-header">
 						<h1 class="post-title" itemprop="headline"><?php the_title(); ?></h1>
-
 					</header>
 
-					<section class="entry-content" itemprop="articleBody">
+					<section class="post-body" itemprop="articleBody">
 						<?php the_content(); ?>
 					</section>
 
-					<footer class="article-footer">
+					<footer class="post-footer">
 						<?php the_tags( '<h6 class="tags">' . __( 'Tags:', 'bonestheme' ) . '</h6> ', ', ', '' ); ?>
-
 					</footer>
 
 				</article>
@@ -46,9 +43,9 @@
 				'thumbnail_wh'	   => 'medium',
 				'thumbnail_class'  => 'post-image',
 				'wrapper_list_css' => 'post-list',
-				'wrapper_block_css'=> 'news', //The wrapper classe
-				'instance'         => 'news-page', //The wrapper ID
-				'paginate'         => 'true',        // Paginate results
+				'wrapper_block_css'=> 'news-articles', //  wrapper class to add
+				'instance'         => 'news-articles', // wrapper ID to add
+				'paginate'         => 'true',        // paginate results
 		        'posts_per_page'   => 25, 
 				);
 				// Execute

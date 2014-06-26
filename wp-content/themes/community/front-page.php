@@ -13,7 +13,7 @@
 
 	<div id="inner-content">
 
-		<section class="home-lead">
+		<section class="home-start">
 		
 			<article class="home-intro">
 				<!-- Displays any content entered in the page used as the front page -->
@@ -82,7 +82,7 @@
 				'auto_excerpt'  => 'true',
 				'full_meta'		=> 'true',
 				'category'         => 'requests',          // Widget title
-				'number_posts'     => 2,
+				'number_posts'     => 9,
 				'wrapper_list_css' => 'highlights-list',
 				'wrapper_block_css'=> 'module row highlights', //The wrapper classe
 				'instance'         => 'highlights-module', //The wrapper ID

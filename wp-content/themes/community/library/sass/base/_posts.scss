@@ -15,8 +15,18 @@ POSTS & CONTENT STYLES
     letter-spacing: $tracking;
     @include font-size($gamma);
     line-height: 1.1;
-    margin: .25em 0 .75em;
+    margin: $space 0;
 }
+
+.subtitle {
+    text-transform: uppercase; 
+    letter-spacing: $tracking;
+    color: $text-color;
+    .directory & {
+        margin-top: $space-double;
+    }
+}
+
 
 .single-title {}
 
@@ -58,7 +68,7 @@ POSTS & CONTENT STYLES
 }
 
 
-// post content 
+// single blog post content 
 .post .entry-content {
     h1 {
         margin-bottom: 0;

@@ -2,11 +2,11 @@
 
 	<div id="content">
 
-		<div id="inner-content" class="wrap">
+		<div id="inner-content">
 
 			<?php get_sidebar(); ?>
 
-			<div id="main" class="partner-main" role="main">
+			<div role="main" id="main" class="main-partner">
 
 				<?php get_sidebar('partner-home'); ?>
 

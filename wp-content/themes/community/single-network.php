@@ -52,7 +52,7 @@
 
 	<div id="content">
 
-		<div id="inner-content" class="wrap">
+		<div id="inner-content">
 
 
 			<?php get_sidebar ('site_networks'); ?>
@@ -60,47 +60,34 @@
 
 			<div role="main" id="main" class="main-network">
 
-                <h2>News across this network</h2>
+                <h4 class="subtitle">News in this network</h4>
 
-				<article role="article" class="post news" id="post-<?php the_ID(); ?>" itemscope itemtype="http://schema.org/BlogPosting">
+				<?php
 
-					<section class="post-body" itemprop="articleBody">
+				$blog_ids = get_post_meta($post->ID, 'community_network_sites');
+				$blog_list = implode(",", $blog_ids);									
 
+				if(function_exists( 'network_latest_posts' )) {
 
-						<?php
+					$parameters = array(
+						'title'         => '',
+						'title_only'    => 'false',
+						'auto_excerpt'  => 'true',
+						'full_meta'		=> 'true',
+						'thumbnail'        => 'true',
+						'thumbnail_wh'	   => 'medium',
+						'thumbnail_class'  => 'post-image',
+						'wrapper_block_css'=> 'network-posts', // wrapper class to add
+						'instance'         => 'network-posts', // wrapper id to add
+						'blog_id'          => $blog_list,
+						'number_posts'     => '25', 
+					);
+					// Execute
+					$posts = network_latest_posts($parameters);
+				}
 
-						$blog_ids = get_post_meta($post->ID, 'community_network_sites');
-						$blog_list = implode(",", $blog_ids);									
+				?> 
 
-						if(function_exists( 'network_latest_posts' )) {
-
-							$parameters = array(
-								'title'         => '',
-								'title_only'    => 'false',
-								'auto_excerpt'  => 'true',
-								'full_meta'		=> 'true',
-								'thumbnail'        => 'true',
-								'thumbnail_wh'	   => 'medium',
-								'thumbnail_class'  => 'post-image',
-								'wrapper_block_css'=> 'network-posts',
-								'instance'         => 'network-posts',
-								'blog_id'          => $blog_list,
-								'number_posts'     => '25', 
-							);
-							// Execute
-							$posts = network_latest_posts($parameters);
-						}
-
-						?> 
-
-					</section>
-
-					<footer class="article-footer">
-						<?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
-
-					</footer>
-
-				</article>
 
 			</div>
 
