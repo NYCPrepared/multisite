@@ -2,9 +2,9 @@
 
 			<div id="content">
 
-				<div id="inner-content" class="wrap clearfix">
+				<div id="inner-content" class="wrap">
 
-						<div id="main" class="first clearfix" role="main">
+						<div id="main" class="first" role="main">
 
 							<?php if (is_category()) { ?>
 								<h1 class="archive-title h2">
@@ -54,7 +54,7 @@
 
 								</header>
 
-								<section class="entry-content clearfix">
+								<section class="entry-content">
 
 									<?php the_post_thumbnail( 'bones-thumb-300' ); ?>
 
@@ -83,7 +83,7 @@
 
 							<?php else : ?>
 
-									<article id="post-not-found" class="hentry clearfix">
+									<article id="post-not-found" class="hentry">
 										<header class="article-header">
 											<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
 										</header>

@@ -2,7 +2,7 @@
 
 	<div id="content">
 
-		<div id="inner-content" class="wrap clearfix">
+		<div id="inner-content" class="wrap">
 
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 			
@@ -44,13 +44,13 @@
 			<?php get_sidebar ('site_networks'); ?>
 
 
-			<div id="main" class="network-main clearfix" role="main">
+			<div id="main" class="network-main" role="main">
 
                 <h2>News across this network</h2>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
-					<section class="entry-content clearfix" itemprop="articleBody">
+					<section class="entry-content" itemprop="articleBody">
 
 
 						<?php

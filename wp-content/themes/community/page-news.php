@@ -2,9 +2,9 @@
 
 	<div id="content">
 
-		<div id="inner-content" class="wrap clearfix">
+		<div id="inner-content" class="wrap">
 
-			<div id="intro" class="first clearfix" role="intro">
+			<div id="intro" class="first" role="intro">
 
 				<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -16,7 +16,7 @@
 
 					</header>
 
-					<section class="entry-content clearfix" itemprop="articleBody">
+					<section class="entry-content" itemprop="articleBody">
 						<?php the_content(); ?>
 					</section>
 
@@ -32,7 +32,7 @@
 			</div>
 			
 			
-			<div id="main" class="content news-feed first clearfix" role="main">
+			<div id="main" class="content news-feed first" role="main">
 			<?php
 			if(function_exists( 'network_latest_posts' )) {
 

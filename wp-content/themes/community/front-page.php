@@ -11,16 +11,16 @@
 
 			<div id="content">
 
-				<div id="inner-content" class="wrap clearfix">
+				<div id="inner-content" class="wrap">
 
-					<section class="home-main clearfix">
+					<section class="home-main">
 						<article class="home-intro">
 							<!-- Displays any content entered in the page used as the front page -->
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 								<?php the_content(); ?>
 							<?php endwhile; endif; ?>
 						</article>
-						<article class="home-feature clearfix">
+						<article class="home-feature">
 
 							<script type="text/javascript">
 
@@ -67,7 +67,7 @@
 						</article>
 					</section>
 
-					<section class="home-modules clearfix">
+					<section class="home-modules">
 						<?php if ( is_multisite() ) { // Check to see if multisite is active. If not, display a recent posts and events module for this site. ?> 
 						<?php $sites = wp_get_sites('offset=1'); // Set up variable that holds array of sites ?>
 	
@@ -156,7 +156,7 @@
 
 						<?php // Check to see if Events Manager is active. If not don't display this module.
 						if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
-						<article id="events-module" class="module row events clearfix">
+						<article id="events-module" class="module row events">
 							<h2 class="module-heading"><a href="/events/">Events</a></h2>
 							<ul class="events-list">
 								<?php
@@ -173,9 +173,9 @@
 							</ul>
 						</article>
 						<?php } ?>
-						<article id="sites-module" class="module row sites clearfix">
+						<article id="sites-module" class="module row sites">
 							<h2 class="module-heading"><a href="/sites/">Sites</a></h2>
-							<ul class="sites-list view-grid">
+							<ul class="sites-list">
 
 							<?php
 							foreach ($sites as $site) {
@@ -188,7 +188,7 @@
 								?>
 							
 								<li id="site-<?php echo $site_id; ?>">
-								    <div class="item-image <?php if(!$header) { echo 'no-image'; } ?>" style="background-image: url('<?php if($header) { echo $header; } ?>');"></div>
+								    <a href="<?php echo $site_details->path; ?>" title="<?php echo $site_details->blogname; ?>" class="item-image <?php if(!$header) { echo 'no-image'; } ?>" style="background-image: url('<?php if($header) { echo $header; } ?>');"></a>
 									<h3 class="item-title"><a href="<?php echo $site_details->path; ?>" title="<?php echo $site_details->blogname; ?>"><?php echo $site_details->blogname; ?></a></h3>
 									<h6 class="meta item-modified"><span class="modified-title">Last updated</span> <time><?php echo date_i18n(get_option('date_format') ,strtotime($site_details->last_updated));?></time></h6>
 								</li>
@@ -206,7 +206,7 @@
 
 						<?php } else { // If multisite isn't enabled, show a recent posts module for the site ?>
 
-						<article id="news-module" class="module row news clearfix">
+						<article id="news-module" class="module row news">
 							<h2 class="module-heading"><a href="/news/">News</a></h2>
 							<ul class="news-list">
 								<?php 
@@ -230,7 +230,7 @@
 						</article>
 						<?php // Check to see if Events Manager is active. If not don't display this module.
 						if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
-						<article id="events-module" class="module row events clearfix">
+						<article id="events-module" class="module row events">
 							<h2 class="module-heading"><a href="/events/">Events</a></h2>
 							<ul class="events-list">
 								<?php

@@ -164,7 +164,8 @@ $(document).ready(function() {
   // init Isotope
   $container.isotope({
     itemSelector: '.isomote',
-    layoutMode: 'masonry'
+    layoutMode: 'masonry',
+    masonry: {columnWidth: 285, gutter: 20}
   });
 
   // filter

@@ -35,7 +35,7 @@ a:visited {
     white-space: nowrap;
     padding-left: 5px;
     text-transform: uppercase; 
-        letter-spacing: $tracking;
+    letter-spacing: $tracking;
 }
 
 
@@ -83,9 +83,22 @@ button,
 }
 
 
-// CUSTOM PAGES
+// CUSTOM INSTANCES
 
 .home-intro .button {
     margin-bottom: 10px;
     margin-right: 10px;
+}
+
+
+.sidebar .button, 
+.sidebar input[type='submit'] {
+    background: $base3;
+    background: rgba(0,0,0,.6);
+    font-weight: 700;
+    @include font-size(16);
+    &:hover {
+        background: $white;
+        color: $text-color;
+    }
 }

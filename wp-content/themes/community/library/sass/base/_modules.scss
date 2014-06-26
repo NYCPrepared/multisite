@@ -146,10 +146,10 @@
 }
 
 
-// SITES PROMO
+// SITES GRID
 
-.sites-list,
-.networks-list {
+.networks-list,
+.sites-list {
     clear: both;
     padding: 0;
     @include fill-parent;
@@ -158,7 +158,11 @@
         margin-top: 0;
         margin-bottom: 20px;
         padding: 0;
+        height: 260px;
         overflow: hidden;
+    	@include span-columns(8); 
+    	@include omega(2n);
+    	@include breakpoint(md) {@include omega-reset(2n); @include span-columns(4); @include omega(4n);}
     }
     li:hover {
         box-shadow: 0 $space-third $space 0 rgba(0,0,0,.2);
@@ -175,6 +179,9 @@
         background-repeat: no-repeat;
         // image is added in php
     }
+    a {
+        display: block;
+    }
     .item-title {
         text-transform: uppercase; 
         letter-spacing: $tracking;
@@ -189,40 +196,15 @@
         color: $quiet-color;
     }
 }
-.sites-list.view-grid li {
-    height: 260px;
-	@include breakpoint(xs) {@include span-columns(8);}
-	@include breakpoint(md) {@include span-columns(4);}
-}
-.sites-list.view-list {
-    clear: both;
-    li {
-        height: 100px;
-        width: 100%;
-    }
-    .item-image {
-    	height: 100%; 
-    	width: 100px; 
-    	float: left; 
-    	margin-right: $space-half;
-    }    
-    .item-title {
-        padding-top: $space-half;
-    }
-}
 
-.networks-list li {
-	@include breakpoint(xs) {@include span-columns(8);}
-	@include breakpoint(md) {@include span-columns(4);}
-	.item-image {
-    	background-size: contain;
-    	background-color: $white;
-    	margin: $space-half;
-	}
+.networks-list .item-image {
+	background-size: contain;
+	background-color: $white;
+	margin: $space-half;
 }
 
 
-// create a site promo
+// 'create a site' promo
 #site-promo {
     background: $yellow;
     padding: 20px;
@@ -249,8 +231,34 @@
             color: $orange;
         }
     }
+    &:hover {
+        box-shadow: none;
+    }
 }
 
-.directory .page {
-    padding-bottom: $space-double;
+
+// isotope modules -- widths and margins determined in JS
+
+#isotope.view-grid {
+    li {
+        width: 285px;
+        margin-right: 20px;
+    }
 }
+
+#isotope.view-list {
+    li {
+        width: 100%;
+        height: 100px;
+    }
+    .item-image {
+    	height: 100%; 
+    	width: 100px; 
+    	float: left; 
+    	margin-right: $space-half;
+    }    
+    .item-title {
+        padding-top: $space-half;
+    }
+}
+
