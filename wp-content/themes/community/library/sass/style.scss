@@ -25,10 +25,12 @@
 @import "base/header";
 @import "base/footer";
 @import "base/sidebar";
+@import "base/banners";
 @import "base/menus";
 @import "base/buttons";
 @import "base/posts";
 @import "base/modules";
+@import "base/news";
 @import "base/images";
 @import "base/forms";
 @import "base/comments";
@@ -48,11 +50,7 @@
 @import "nycp/footer";
 @import "nycp/sidebar";
 
-// GROUP THEME -- partials stay in this theme to share mixins
-@import "group/header";
-@import "group/news";
 
-// PARTNER THEME -- partials stay in this theme to share mixins
 
 
 

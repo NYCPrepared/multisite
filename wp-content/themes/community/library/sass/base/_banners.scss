@@ -1,15 +1,20 @@
-// GROUP HEADER
+// HEADER BANNERS
 
-.community-group,
-.community-partner {
-    #inner-header {
-        border-bottom: 0;
+.header-local {
+    padding-top: $space;
+    .inner-header {
         position: relative;
     }    
+    .nav-social {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
     h1.h2 {
         display: none;
     }
 } 
+
 
 .site-banner {
     border: $frame-border;
@@ -59,12 +64,6 @@
     ul {
         margin: 0;
     }
-}
-
-.community-partner .header .nav-social {
-    position: absolute;
-    right: 0;
-    top: 0;
 }
 
 

@@ -26,28 +26,37 @@ hr {
 }
 
 
-// modules
-// use Bourbon Neat grid
+// FULL-WIDTH ROWS
+// for bg colors etc 
 
 #content {
     padding-top: 20px;
+    .directory & {
+        padding-bottom: $space-double;
+    }
 }
 
 
-.wrap {
-	width: 90%;
-	margin: 0 auto;
-}
+// OUTER CONTAINERS
+// centered, w/max-width, using Bourbon Neat grid
 
-#inner-header,
+.inner-header,
 #inner-content,
-#inner-footer,
-.section-inner,
-.home-main {
+.inner-footer {
     @include outer-container;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 
+// ONE-COLUMN CONTENT 
+
+div[role='main'].main-news {
+    @include fill-parent;
+}
+
+
+// TWO-COLUMN CONTENT 
 
 // sidebar
 div[role='complementary'] {
@@ -60,19 +69,14 @@ div[role='main'] {
 	@include breakpoint(md) {@include span-columns(12); }
     // single page template 
     .page-template-page-iframe-php & {
-        @include span-columns(16); 
+        @include fill-parent; 
         padding: 0;
     }
 }
 
-// full-width pages 
-
-div[role='main'].news-feed {
-    @include fill-parent;
-}
 
 
-// HOME PAGE 
+// CUSTOM CONTAINERS 
 
 .home-feature {
     max-height: 480px;
@@ -89,8 +93,3 @@ div[role='main'].news-feed {
 }
 
 
-// DIRECTORY
-
-.directory .page {
-    padding-bottom: $space-double;
-}

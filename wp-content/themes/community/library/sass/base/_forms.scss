@@ -48,12 +48,12 @@ input[type='submit'] {
  SEARCH FORM 
 ******************************************************************/
 
+// div containing form
 .search-form {
     width: 100%;
     margin: 0;
     padding: 0;
-    background: $base8;
-    @include breakpoint(md) {display: inline-block; width: auto; float: right; background: transparent;}
+    @include breakpoint(md) {display: inline-block; width: auto; float: right; }
 }
 
 // body gets .js class on load
@@ -67,9 +67,10 @@ input[type='submit'] {
     @include breakpoint(md) {max-height: none;}
 }
 
+// form element
 #searchform {
     background: transparent;
-    margin: 10px;
+    margin: 10px 0;
     padding: 0;
     label {
         display: none;

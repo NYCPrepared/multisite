@@ -51,33 +51,6 @@
 }
 
 
-
-// NOTCHED LINE
-
-@mixin notch($size, $border: $base5, $fill: $base9){
-    position: relative;
-    a:before,
-    a:after {
-        position: absolute;
-        content: '';
-        height: 0px;
-        left: 50%;
-        bottom: -1px;
-        border-color: transparent;
-    }
-    a:before {
-        border-bottom-color: $border;
-        border-width: $size;
-        margin-left: -$size;
-    }
-    a:after {
-        border-bottom-color: $fill;
-        border-width: $size - 1;
-        margin-left: -$size + 1;
-    }
-}
-
-
 // BUTTON THAT FLIPS BG/TEXT COLORS ON HOVER
 
 @mixin flip-button($color){

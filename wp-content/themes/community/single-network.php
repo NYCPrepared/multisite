@@ -1,56 +1,70 @@
 <?php get_header(); ?>
 
+
+    <header class="header-local">
+    
+    	<div class="inner-header wrap">
+    
+    		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+    		
+    		<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    			<?php $meta = get_post_meta(get_the_ID()); ?>
+    
+    			<header class="network-header">
+    			
+                    <ul class="social-links">
+    					<?php 
+    					$facebook_url = get_post_meta($post->ID, 'community_facebookurl', true );
+    					$twitter_url = get_post_meta($post->ID, 'community_twitterurl', true );
+    					if($facebook_url) {
+    					  echo '<li class="facebook icon"><a href="' . $facebook_url . '"><span> </span></a></li>';
+    					} 
+    					if($twitter_url) {
+    					  echo '<li class="twitter icon"><a href="' . $twitter_url . '"><span> </span></a></li>';
+    					} 
+    					?>
+    				</ul>
+    
+    				<?php if ( has_post_thumbnail() ) { ?>
+    					<div class="network banner"><?php the_post_thumbnail('full'); ?></div>
+    				<?php } else { ?>
+    					<div class="network no-banner"> </div>
+    				<?php } ?>
+    
+    				<h1 class="entry-title single-title" itemprop="headline"><?php the_title(); ?></h1>
+    				
+    			</header>
+    
+    		</article>	
+    
+    		<?php endwhile; ?>
+    		<?php endif; ?>
+    
+    
+    
+    	</div>
+    
+    </header>
+
+
+
+
 	<div id="content">
 
 		<div id="inner-content" class="wrap">
-
-			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-			
-			<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
-
-				<?php $meta = get_post_meta(get_the_ID()); ?>
-
-				<header class="network-header">
-				
-                    <ul class="social-links">
-						<?php 
-						$facebook_url = get_post_meta($post->ID, 'community_facebookurl', true );
-						$twitter_url = get_post_meta($post->ID, 'community_twitterurl', true );
-						if($facebook_url) {
-						  echo '<li class="facebook icon"><a href="' . $facebook_url . '"><span> </span></a></li>';
-						} 
-						if($twitter_url) {
-						  echo '<li class="twitter icon"><a href="' . $twitter_url . '"><span> </span></a></li>';
-						} 
-						?>
-					</ul>
-
-					<?php if ( has_post_thumbnail() ) { ?>
-						<div class="network banner"><?php the_post_thumbnail('full'); ?></div>
-					<?php } else { ?>
-						<div class="network no-banner"> </div>
-					<?php } ?>
-
-					<h1 class="entry-title single-title" itemprop="headline"><?php the_title(); ?></h1>
-					
-				</header>
-
-			</article>	
-
-			<?php endwhile; ?>
-			<?php endif; ?>
 
 
 			<?php get_sidebar ('site_networks'); ?>
 
 
-			<div id="main" class="network-main" role="main">
+			<div role="main" id="main" class="main-network">
 
                 <h2>News across this network</h2>
 
-				<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+				<article role="article" class="post news" id="post-<?php the_ID(); ?>" itemscope itemtype="http://schema.org/BlogPosting">
 
-					<section class="entry-content" itemprop="articleBody">
+					<section class="post-body" itemprop="articleBody">
 
 
 						<?php

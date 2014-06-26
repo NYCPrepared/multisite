@@ -1,55 +1,55 @@
-// HEADER
+// HEADERS
 
 
-#inner-header {
-    border-bottom: 1px solid $hr-color;
+.header-global {
+    background: $base0;
 }
 
 .domain-title {
-    @include font-size($epsilon);
-    line-height: 1;
     display: none;
+    @include font-size($zeta);
+    line-height: 1;
 	float: left;
     margin: 0;
     white-space: nowrap;
-    @include breakpoint(md) {@include font-size(14); display: block;}
+    @include breakpoint(md) {display: block;}
     a, a:visited {
         display: block;
         color: $text-color;
         font-weight: 700;
-        padding: 15px 10px 15px 5px;
+        padding: 20px 20px 20px 0;
     }
 }
 
-// buttons to reveal full menus
+// mobile buttons to reveal full menus
 
 .nav-anchors {
     margin: 0;
     li {
         display: inline-block;
         margin: 0;
+        &:last-child {
+            float: right;
+        }   
     }
-    li:last-child {
-        float: right;
-    }   
-    a {
-        display: block;
-        padding: 10px;
-        color: $white;
+    .anchor-menu {
         @include font-icon-base($family:"ios7-icon"); 
-    }
-    .menu-anchor {
         @extend %ios7-down;
-        @include font-size(16); 
+        @include font-size($epsilon); 
+        display: block;
+        padding: 20px 0;
         &:before {
             float: right;
             margin-left: 7px;
             margin-top: 2px;
         }
     }
-    .search-anchor {
+    .anchor-search {
+        @include font-icon-base($family:"ios7-icon"); 
         @extend %ios7-search;
-        @include font-size(22); 
+        @include font-size($delta); 
+        display: block;
+        padding: 16px 0;
     }
     @include breakpoint(md) {display: none;}
 }
@@ -68,24 +68,25 @@
     }
     .search-form {
         float: right;
+        border-top: 1px solid $base9;
+        @include breakpoint(md) {border: 0; padding: 5px 0;}
     }
     .nav {
         position: absolute;
         left: 0;
-        top: 50px;
+        top: 60px;
         z-index: $layer4;
         background: $white;
         @include breakpoint(md) {position: static; padding-right: 5px; background: transparent;}
     }
 	.nav li {
-        @include font-size($epsilon);
         line-height: 1;
-        @include breakpoint(md) {@include font-size(14); display: inline-block;}
+        @include breakpoint(md) {display: inline-block; @include font-size($zeta);}
 		a, 
 		a:visited {
 		    padding: 10px 20px;
             color: $text-color;
-            @include breakpoint(md) {padding: 15px 10px;}
+            @include breakpoint(md) {padding: 20px 10px;}
 		}
         a:focus,
 		a:hover {
@@ -98,8 +99,38 @@
 	.nav li.current_page_item, 
 	.nav li.current-page-ancestor {
     	display: none;
+        position: relative;
         @include breakpoint(md) {display: inline-block;}
+        &:after {
+            content: '';
+            height: 0;
+            width: 0;
+            position: absolute;
+            top: auto;
+            left: 50%;
+            bottom: 0;
+            z-index: $layer1;
+            border: solid transparent;
+            border-bottom-color: $base9;
+            border-width: 10px;
+            margin-left: -10px;
+        }
+        a {
+            color: $anchor-color;
+        }
 	}
+}
+
+
+
+// disable hover for current page but not its ancestors
+
+li.current-menu-item,
+li.current_page_item {
+    a:hover {
+        color: $text-color;
+        cursor: default;
+    }
 }
 
 // site nav
@@ -157,21 +188,4 @@
 
 
 
-// active item
 
-li.current-menu-item,
-li.current_page_item,
-li.current-page-ancestor {
-    @include notch(8px);
-}
-
-
-// disable hover for current page but not its ancestors
-
-li.current-menu-item,
-li.current_page_item {
-    a:hover {
-        color: $text-color;
-        cursor: default;
-    }
-}
