@@ -66,9 +66,9 @@
 							} ?>
 
 							<li class="isomote id-<?php echo $site_id; ?> site-<?php echo $site_slug; ?> network-<?php foreach($network_query as $post){ echo $post->post_name;} ?>  ">
-								<div class="item-image <?php if(!$header) { echo 'no-image'; } ?>" style="background-image: url('<?php if($header) { echo $header; } ?>');"></div>
+								<a href="<?php echo $site_details->siteurl; ?>" class="item-image <?php if(!$header) { echo 'no-image'; } ?>" style="background-image: url('<?php if($header) { echo $header; } ?>');"></a>
 								<h3 class="item-title"><a href="<?php echo $site_details->siteurl; ?>"><?php echo $site_details->blogname; ?></a></h3>
-								<h6 class="meta item-network"><a href="/network/<?php foreach ($network_query as $post) { echo $post->post_name;} ?>/"><?php foreach($network_query as $post){ echo $post->post_title;} ?></a></h6>
+								<h6 class="meta item-network"><?php foreach($network_query as $post){ echo $post->post_title;} ?></h6>
 								<h6 class="meta item-location"></h6>
 								<h6 class="meta item-topic"></h6>
 							</li>
@@ -103,7 +103,7 @@
 
 							?>
 							<li id="network-<?php echo $network->post_name; ?>">
-								<div class="item-image" style="background-image: url(' <?php echo $thumbnail; ?> ');"></div>
+								<a href="<?php echo $permalink; ?>" class="item-image" style="background-image: url(' <?php echo $thumbnail; ?> ');"></a>
 								<h3 class="item-title"><a href="<?php echo $permalink; ?>"><?php echo $network->post_title; ?></a></h3>
 								<h6 class="meta item-excerpt"><?php echo $excerpt; ?></h6>
 							</li>

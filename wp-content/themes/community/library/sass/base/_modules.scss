@@ -160,6 +160,11 @@
         padding: 0;
         overflow: hidden;
     }
+    li:hover {
+        box-shadow: 0 $space-third $space 0 rgba(0,0,0,.2);
+        position: relative;
+        z-index: $layer4;
+    }
     .item-image {
         display: block;
         width: 100%;
@@ -212,6 +217,7 @@
 	.item-image {
     	background-size: contain;
     	background-color: $white;
+    	margin: $space-half;
 	}
 }
 
