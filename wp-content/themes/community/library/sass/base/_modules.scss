@@ -167,6 +167,7 @@
         background-color: $base7;
         background-size: cover;
         background-position: center center;
+        background-repeat: no-repeat;
         // image is added in php
     }
     .item-title {
@@ -206,8 +207,14 @@
 }
 
 .networks-list li {
-	@include breakpoint(md) {@include span-columns(8);}
+	@include breakpoint(xs) {@include span-columns(8);}
+	@include breakpoint(md) {@include span-columns(4);}
+	.item-image {
+    	background-size: contain;
+    	background-color: $white;
+	}
 }
+
 
 // create a site promo
 #site-promo {

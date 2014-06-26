@@ -78,7 +78,7 @@
         background: $white;
         padding: $space;
         margin-bottom: $space;
-        @include breakpoint(md) {@include span-columns(4);}
+        @include breakpoint(sm) {@include span-columns(4);}
         img {
             width: 100%;
             height: auto;
