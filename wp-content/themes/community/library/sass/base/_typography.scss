@@ -56,9 +56,6 @@ h6, small {
 
 h1 {
     @include font-size($alpha);
-    .home-intro & {
-        margin: 0;
-    }
 }
 
 h2 {

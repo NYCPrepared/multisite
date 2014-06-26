@@ -63,8 +63,8 @@ button,
     }
     &:hover,
     &:focus {
-        background: $white;
-        color: $text-color;
+        background: lighten($anchor-color, 10);
+        color: $white;
     }
     @include breakpoint(md) {@include font-size(16);}
 }
