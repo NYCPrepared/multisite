@@ -18,8 +18,6 @@
 
 					<section class="entry-content clearfix">
 
-						<h2 class="section-title">News from this network</h2>
-						
 						<ul class="post-list">
 						<?php
 						$posts = get_posts('post_type=network');

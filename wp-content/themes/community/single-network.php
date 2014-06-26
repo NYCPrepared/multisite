@@ -1,91 +1,97 @@
 <?php get_header(); ?>
 
-			<div id="content">
+	<div id="content">
 
-				<div id="inner-content" class="wrap clearfix">
+		<div id="inner-content" class="wrap clearfix">
 
-					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-					<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
-		
-						<?php $meta = get_post_meta(get_the_ID()); ?>
+			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+			
+			<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
-						<header class="network-header">
-						
-                            <ul class="social-links">
-								<?php 
-								$facebook_url = get_post_meta($post->ID, 'community_facebookurl', true );
-								$twitter_url = get_post_meta($post->ID, 'community_twitterurl', true );
-								if($facebook_url) {
-								  echo '<li class="facebook icon"><a href="' . $facebook_url . '"><span> </span></a></li>';
-								} 
-								if($twitter_url) {
-								  echo '<li class="twitter icon"><a href="' . $twitter_url . '"><span> </span></a></li>';
-								} 
-								?>
-							</ul>
+				<?php $meta = get_post_meta(get_the_ID()); ?>
 
-							<?php if ( has_post_thumbnail() ) { ?>
-								<div class="network banner"><?php the_post_thumbnail('full'); ?></div>
-							<?php } else { ?>
-								<div class="network no-banner"> </div>
-							<?php } ?>
+				<header class="network-header">
+				
+                    <ul class="social-links">
+						<?php 
+						$facebook_url = get_post_meta($post->ID, 'community_facebookurl', true );
+						$twitter_url = get_post_meta($post->ID, 'community_twitterurl', true );
+						if($facebook_url) {
+						  echo '<li class="facebook icon"><a href="' . $facebook_url . '"><span> </span></a></li>';
+						} 
+						if($twitter_url) {
+						  echo '<li class="twitter icon"><a href="' . $twitter_url . '"><span> </span></a></li>';
+						} 
+						?>
+					</ul>
 
-							<h1 class="entry-title single-title" itemprop="headline"><?php the_title(); ?></h1>
-							
-						</header>
+					<?php if ( has_post_thumbnail() ) { ?>
+						<div class="network banner"><?php the_post_thumbnail('full'); ?></div>
+					<?php } else { ?>
+						<div class="network no-banner"> </div>
+					<?php } ?>
 
-					</article>	
+					<h1 class="entry-title single-title" itemprop="headline"><?php the_title(); ?></h1>
+					
+				</header>
 
-					<?php endwhile; ?>
-					<?php endif; ?>
+			</article>	
 
-					<?php get_sidebar ('site_networks'); ?>
+			<?php endwhile; ?>
+			<?php endif; ?>
 
-					<div id="main" class="network-main clearfix" role="main">
 
-						<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+			<?php get_sidebar ('site_networks'); ?>
 
-							<section class="entry-content clearfix" itemprop="articleBody">
 
-								<?php
+			<div id="main" class="network-main clearfix" role="main">
 
-								$blog_ids = get_post_meta($post->ID, 'community_network_sites');
-								$blog_list = implode(",", $blog_ids);									
+                <h2>News across this network</h2>
 
-								if(function_exists( 'network_latest_posts' )) {
+				<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
-									$parameters = array(
-										'title'         => '',
-										'title_only'    => 'false',
-										'auto_excerpt'  => 'true',
-										'full_meta'		=> 'true',
-										'thumbnail'        => 'true',
-										'thumbnail_wh'	   => 'medium',
-										'thumbnail_class'  => 'post-image',
-										'wrapper_block_css'=> 'network-posts',
-										'instance'         => 'network-posts',
-										'blog_id'          => $blog_list,
-										'number_posts'     => '25', 
-									);
-									// Execute
-									$posts = network_latest_posts($parameters);
-								}
+					<section class="entry-content clearfix" itemprop="articleBody">
 
-								?> 
 
-							</section>
+						<?php
 
-							<footer class="article-footer">
-								<?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
+						$blog_ids = get_post_meta($post->ID, 'community_network_sites');
+						$blog_list = implode(",", $blog_ids);									
 
-							</footer>
+						if(function_exists( 'network_latest_posts' )) {
 
-						</article>
+							$parameters = array(
+								'title'         => '',
+								'title_only'    => 'false',
+								'auto_excerpt'  => 'true',
+								'full_meta'		=> 'true',
+								'thumbnail'        => 'true',
+								'thumbnail_wh'	   => 'medium',
+								'thumbnail_class'  => 'post-image',
+								'wrapper_block_css'=> 'network-posts',
+								'instance'         => 'network-posts',
+								'blog_id'          => $blog_list,
+								'number_posts'     => '25', 
+							);
+							// Execute
+							$posts = network_latest_posts($parameters);
+						}
 
-					</div>
+						?> 
 
-				</div>
+					</section>
+
+					<footer class="article-footer">
+						<?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
+
+					</footer>
+
+				</article>
 
 			</div>
+
+		</div>
+
+	</div>
 
 <?php get_footer(); ?>

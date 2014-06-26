@@ -26,23 +26,31 @@ body {
 
 
 // HEADERS
+// note: use only BOTTOM margins for spacing, for easier management, a la @csswizardry
 
 h1, h2, h3, h4, h5, h6 {
 	text-rendering: optimizelegibility;
 	font-weight: 300;
     color: $headline-color;
     margin-top: 0;
-    margin-bottom: $space;
 	a {
 		text-decoration: none;
 	}
 }
 
-h1, h2, h6, small {
+h1, h2 {
     line-height: 1.2;
+    margin-bottom: $space;
 }
+
 h3, h4, h5 {
     line-height: 1.3;
+    margin-bottom: $space;
+}
+
+h6, small {
+    line-height: 1.2;
+    margin-bottom: $space-half;
 }
 
 
@@ -88,7 +96,7 @@ p, li, dt, dd {
 
 input, label, select, textarea {
     @include font-size($epsilon);
-	margin-bottom: .75em;
+	margin-bottom: $space-half;
 	font-family: $sans;
 	font-weight: 300;
 }
@@ -102,7 +110,7 @@ small {
 }
 
 
-// if you're going to use webfonts, be sure to check your weights
+// if you're using webfonts, be sure to check your weights
 // http://css-tricks.com/watch-your-font-weight/
 
 b, strong {
@@ -122,7 +130,7 @@ ul, ol {
     padding: 0;
     list-style: none;
     ul, ol {
-        margin: $space-half 0 $space;
+        margin: 0 $space $space-half;
     }
 }
 
