@@ -46,7 +46,7 @@
 
 		<header class="header-global">
 
-			<div class="inner-header">
+			<div class="wrap">
 
 					<p class="domain-title"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 				<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>

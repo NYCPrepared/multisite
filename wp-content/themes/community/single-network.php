@@ -3,7 +3,7 @@
 
     <header class="header-local">
     
-    	<div class="inner-header wrap">
+    	<div class="wrap">
     
     		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     		
@@ -50,9 +50,9 @@
 
 
 
-	<div id="content">
+	<main>
 
-		<div id="inner-content">
+		<div class="wrap">
 
 
 			<?php get_sidebar ('site_networks'); ?>
@@ -93,6 +93,6 @@
 
 		</div>
 
-	</div>
+	</main>
 
 <?php get_footer(); ?>

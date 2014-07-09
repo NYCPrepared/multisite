@@ -1,6 +1,6 @@
 			<footer class="footer" role="contentinfo">
 
-				<div class="inner-footer">
+				<div class="wrap">
 
 					<section class="global site-meta first">
 						<h2 class="footer-logo"><a class="logo-NYCP" href="http://nycprepared.org">NYC<span>Prepared</span></a><span class="tagline-NYCP"><?php bloginfo('description'); ?></span></h2>
@@ -35,7 +35,7 @@
 
 			<footer class="footer-slug">
 			
-			    <div class="inner-footer">
+			    <div class="wrap">
 					<ul class="nav-social" id="social-NYCP">
 					    <li class="email"><a href="mailto:info@nycprepared.org" target="_blank"></a></li>
 					    <li class="github"><a href="https://github.com/NYCPrepared" target="_blank"></a></li>

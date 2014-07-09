@@ -1,11 +1,9 @@
-/* COMMUNITY CSS */
-/* This stylesheet was written in Sass and compiled locally */
+// COMMUNITY CSS 
+// This stylesheet was written in Sass and compiled locally 
 
 
-// RESET
-// http://nicolasgallagher.com/about-normalize-css/
+// RESET -- nicolasgallagher.com/about-normalize-css/
 @import "partials/normalize";
-
 
 // PARTIALS
 @import "partials/bourbon/bourbon";
@@ -14,9 +12,9 @@
 @import "partials/config";
 
 // WEB FONTS
-@import "webfonts/mixins";
-@import "webfonts/entypo";
-@import "webfonts/ios7";
+@import "partials/webfonts";
+@import "partials/entypo";
+@import "partials/ios7";
 
 
 // MODULES
@@ -47,6 +45,7 @@
 
 
 // CUSTOM THEME
+// if you've forked this theme, delete this folder and add your own
 @import "nycp/footer";
 @import "nycp/sidebar";
 

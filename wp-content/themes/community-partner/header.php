@@ -47,13 +47,14 @@
 
 		<header class="header-global">
 
-			<div class="inner-header">
+			<div class="wrap">
 
 				<?php // Get the site info for the main site
 				$blog_details = get_blog_details(1);
 				?>
 
-					<p class="domain-title"><a href="<?php echo $blog_details->siteurl; ?>" rel="nofollow"><?php echo $blog_details->blogname; ?></a></p>
+				<p class="domain-title"><a href="<?php echo $blog_details->siteurl; ?>" rel="nofollow"><?php echo $blog_details->blogname; ?></a></p>
+				
 				<nav role="navigation" class="nav-global">
 					<ul class="nav-anchors js-anchors">
                     	<li><a href="#menu-main-navigation" class="anchor-menu" title="menu"><?php echo $blog_details->blogname; ?></a></li>
@@ -77,7 +78,7 @@
 
 		<header class="header-local" role="banner">
 
-			<div class="inner-header">
+			<div class="wrap">
 
 				<div class="site-banner">
 				    <div class="banner-inner">

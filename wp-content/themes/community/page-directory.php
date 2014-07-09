@@ -1,8 +1,8 @@
 <?php get_header(); ?>
 
-<div id="content">
+<main>
 
-	<div id="inner-content">
+	<div class="wrap">
 
 		<div id="main">
 
@@ -146,7 +146,7 @@
 
 	</div>
 
-</div>
+</main>
 
 <script>
 $(document).ready(function() {

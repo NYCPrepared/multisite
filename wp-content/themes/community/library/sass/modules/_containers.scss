@@ -26,10 +26,10 @@ hr {
 }
 
 
-// FULL-WIDTH ROWS
+// FULL-WIDTH ROWS (header, main, footer)
 // for bg colors etc 
 
-#content {
+main {
     padding-top: 20px;
     .directory & {
         padding-bottom: $space-double;
@@ -37,15 +37,11 @@ hr {
 }
 
 
-// OUTER CONTAINERS
+// CENTERED CONTAINERS
 // centered, w/max-width, using Bourbon Neat grid
 
-.inner-header,
-#inner-content,
-.inner-footer {
+.wrap {
     @include outer-container;
-    margin-left: 5%;
-    margin-right: 5%;
 }
 
 

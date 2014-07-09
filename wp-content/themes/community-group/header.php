@@ -43,63 +43,63 @@
 
 <body <?php body_class('community-group'); ?>>
 
-	<div id="container">
+<div id="container">
 
-		<header class="header-global">
+	<header class="header-global">
 
-			<div class="inner-header">
+		<div class="wrap">
 
-				<?php  // Get the site info for the main site
-				$blog_details = get_blog_details(1);
-				?>
+			<?php  // Get the site info for the main site
+			$blog_details = get_blog_details(1);
+			?>
 
-					<p class="domain-title"><a href="<?php echo $blog_details->siteurl; ?>" rel="nofollow"><?php echo $blog_details->blogname; ?></a></p>
+				<p class="domain-title"><a href="<?php echo $blog_details->siteurl; ?>" rel="nofollow"><?php echo $blog_details->blogname; ?></a></p>
 
 
-				<nav role="navigation" class="nav-global">
-					<ul class="nav-anchors js-anchors">
-                    	<li><a href="#menu-main-navigation" class="anchor-menu" title="menu"><?php echo $blog_details->blogname; ?></a></li>
-                    	<li><a href="#search-global" class="anchor-search" title="search"></a></li>
-                    </ul>
-					<div class="search-form" id="search-global">
-					    <?php get_search_form(); ?>
-					</div>
-					<?php
-					if(function_exists('community_navigation')) {
-						$global_nav = community_navigation();
-						echo $global_nav;
-					}
-					?>
-				</nav>
-
-			</div>
-
-		</header>
-
-		<header class="header-local" role="banner">
-
-			<div class="inner-header">
-
-				<div class="site-banner">
-				    <div class="banner-inner">
-					    <img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
-				    </div>
-                    <h1 class="site-name"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></h1>
+			<nav role="navigation" class="nav-global">
+				<ul class="nav-anchors js-anchors">
+                	<li><a href="#menu-main-navigation" class="anchor-menu" title="menu"><?php echo $blog_details->blogname; ?></a></li>
+                	<li><a href="#search-global" class="anchor-search" title="search"></a></li>
+                </ul>
+				<div class="search-form" id="search-global">
+				    <?php get_search_form(); ?>
 				</div>
-				<?php // bloginfo('description'); ?>
+				<?php
+				if(function_exists('community_navigation')) {
+					$global_nav = community_navigation();
+					echo $global_nav;
+				}
+				?>
+			</nav>
 
+		</div>
 
-				<nav role="navigation" class="nav-local">
-					<ul class="nav-anchors js-anchors">
-                    	<li><a href="#menu-main-navigation-1" class="anchor-menu" title="menu">MENU</a></li>
-                    	<li><a href="#search-local" class="anchor-search" title="search"></a></li>
-                    </ul>
-					<div class="search-form" id="search-local">
-					    <?php get_search_form(); ?>
-					</div>
-                    <?php bones_main_nav(); ?>
-				</nav>
+	</header>
 
+	<header class="header-local" role="banner">
+
+		<div class="wrap">
+
+			<div class="site-banner">
+			    <div class="banner-inner">
+				    <img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
+			    </div>
+                <h1 class="site-name"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></h1>
 			</div>
+			<?php // bloginfo('description'); ?>
 
-		</header>
+
+			<nav role="navigation" class="nav-local">
+				<ul class="nav-anchors js-anchors">
+                	<li><a href="#menu-main-navigation-1" class="anchor-menu" title="menu">MENU</a></li>
+                	<li><a href="#search-local" class="anchor-search" title="search"></a></li>
+                </ul>
+				<div class="search-form" id="search-local">
+				    <?php get_search_form(); ?>
+				</div>
+                <?php bones_main_nav(); ?>
+			</nav>
+
+		</div>
+
+	</header>

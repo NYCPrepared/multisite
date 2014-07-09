@@ -1,5 +1,5 @@
 			<footer class="footer" role="contentinfo">
-				<div class="inner-footer">
+				<div class="wrap">
 
 					<section class="global site-meta first">
 						<a href="http://nycprepared.org"><img src="/multisite/wp-content/themes/community/library/images/NYCPbadgeKO.png" alt="NYCPbadgeKO" width="140" height="140" /></a>
@@ -29,7 +29,7 @@
 
            <!-- TODO: USE GROUP'S INFO -->
 			<footer class="footer-slug">
-			    <div class="inner-footer">
+			    <div class="wrap">
 			    
 					<ul class="nav-social" id="social-group">
 					    <li class="email"><a href="mailto:info@[GROUP]" target="_blank"></a></li>

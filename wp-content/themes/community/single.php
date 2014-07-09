@@ -1,61 +1,61 @@
 <?php get_header(); ?>
 
-			<div id="content">
+<main>
 
-				<div id="inner-content" class="wrap clearfix">
+	<div class="wrap">
 
-					<div id="main" class="clearfix" role="main">
+		<div id="main" role="main">
 
-						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-							<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
+				<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article" itemscope itemtype="http://schema.org/BlogPosting">
 
-								<header class="article-header">
+					<header class="article-header">
 
-									<h1 class="entry-title single-title" itemprop="headline"><?php the_title(); ?></h1>
-									<p class="byline vcard"><?php
-										printf( __( 'Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&amp;</span> filed under %4$s.', 'bonestheme' ), get_the_time( 'Y-m-j' ), get_the_time( get_option('date_format')), bones_get_the_author_posts_link(), get_the_category_list(', ') );
-									?></p>
+						<h1 class="entry-title single-title" itemprop="headline"><?php the_title(); ?></h1>
+						<p class="byline vcard"><?php
+							printf( __( 'Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&amp;</span> filed under %4$s.', 'bonestheme' ), get_the_time( 'Y-m-j' ), get_the_time( get_option('date_format')), bones_get_the_author_posts_link(), get_the_category_list(', ') );
+						?></p>
 
-								</header>
+					</header>
 
-								<section class="entry-content clearfix" itemprop="articleBody">
-									<?php the_content(); ?>
-								</section>
+					<section class="entry-content clearfix" itemprop="articleBody">
+						<?php the_content(); ?>
+					</section>
 
-								<footer class="article-footer">
-									<?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
+					<footer class="article-footer">
+						<?php the_tags( '<p class="tags"><span class="tags-title">' . __( 'Tags:', 'bonestheme' ) . '</span> ', ', ', '</p>' ); ?>
 
-								</footer>
+					</footer>
 
-								<?php comments_template(); ?>
+					<?php comments_template(); ?>
 
-							</article>
+				</article>
 
-						<?php endwhile; ?>
+			<?php endwhile; ?>
 
-						<?php else : ?>
+			<?php else : ?>
 
-							<article id="post-not-found" class="hentry clearfix">
-									<header class="article-header">
-										<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
-									</header>
-									<section class="entry-content">
-										<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
-									</section>
-									<footer class="article-footer">
-											<p><?php _e( 'This is the error message in the single.php template.', 'bonestheme' ); ?></p>
-									</footer>
-							</article>
+				<article id="post-not-found" class="hentry clearfix">
+						<header class="article-header">
+							<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
+						</header>
+						<section class="entry-content">
+							<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
+						</section>
+						<footer class="article-footer">
+								<p><?php _e( 'This is the error message in the single.php template.', 'bonestheme' ); ?></p>
+						</footer>
+				</article>
 
-						<?php endif; ?>
+			<?php endif; ?>
 
-					</div>
+		</div>
 
-					<?php get_sidebar(); ?>
+		<?php get_sidebar(); ?>
 
-				</div>
+	</div>
 
-			</div>
+</main>
 
 <?php get_footer(); ?>

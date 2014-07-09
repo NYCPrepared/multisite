@@ -9,9 +9,9 @@
 
 <?php get_header(); ?>
 
-<div id="content">
+<main>
 
-	<div id="inner-content">
+	<div class="wrap">
 
 		<section class="home-start">
 		
@@ -266,6 +266,6 @@
 
 	</div>
 
-</div>
+</main>
 
 <?php get_footer(); ?>

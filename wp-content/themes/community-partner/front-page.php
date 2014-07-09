@@ -1,19 +1,19 @@
 <?php get_header(); ?>
 
-	<div id="content">
+<main>
 
-		<div id="inner-content">
+	<div class="wrap">
 
-			<?php get_sidebar(); ?>
+		<?php get_sidebar(); ?>
 
-			<div role="main" id="main" class="main-partner">
+		<div class="main-partner">
 
-				<?php get_sidebar('partner-home'); ?>
-
-			</div>
+			<?php get_sidebar('partner-home'); ?>
 
 		</div>
 
 	</div>
+
+</main>
 
 <?php get_footer(); ?>
