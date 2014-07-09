@@ -4,13 +4,14 @@
 
 // RESET
 // http://nicolasgallagher.com/about-normalize-css/
-@import "vendor/normalize";
+@import "partials/normalize";
 
 
-// MIXINS
-@import "mixins/bourbon/bourbon";
-@import "mixins/neat/neat";
-@import "mixins/custom";
+// PARTIALS
+@import "partials/bourbon/bourbon";
+@import "partials/neat/neat";
+@import "partials/custom";
+@import "partials/config";
 
 // WEB FONTS
 @import "webfonts/mixins";
@@ -18,32 +19,31 @@
 @import "webfonts/ios7";
 
 
-// BASE ELEMENTS
-@import "base/config";
-@import "base/typography";
-@import "base/wordpress";
-@import "base/containers";
-@import "base/header";
-@import "base/footer";
-@import "base/sidebar";
-@import "base/banners";
-@import "base/menus";
-@import "base/buttons";
-@import "base/posts";
-@import "base/modules";
-@import "base/news";
-@import "base/images";
-@import "base/forms";
-@import "base/comments";
-@import "base/alerts";
+// MODULES
+@import "modules/typography";
+@import "modules/wordpress";
+@import "modules/containers";
+@import "modules/header";
+@import "modules/footer";
+@import "modules/sidebar";
+@import "modules/banners";
+@import "modules/menus";
+@import "modules/buttons";
+@import "modules/posts";
+@import "modules/modules";
+@import "modules/news";
+@import "modules/images";
+@import "modules/forms";
+@import "modules/comments";
+@import "modules/alerts";
 
 
-// VENDOR PLUGINS/ADD-ONS
-@import "vendor/biographia";
-@import "vendor/bxslider";
-@import "vendor/easymail";
-@import "vendor/eventmanager";
-@import "vendor/thememylogin";
+// PLUGINS/ADD-ONS
+@import "plugins/biographia";
+@import "plugins/bxslider";
+@import "plugins/easymail";
+@import "plugins/eventmanager";
+@import "plugins/thememylogin";
 
 
 // CUSTOM THEME
