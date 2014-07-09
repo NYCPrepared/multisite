@@ -45,17 +45,8 @@ hr {
 }
 
 
-// ONE-COLUMN CONTENT 
 
-main.main-news,
-.home-start,
-.sites-list,
-.networks-list {
-    @include row();
-}
-
-
-// TWO-COLUMN CONTENT 
+// CONTENT COLUMNS
 
 // main
 main {
@@ -74,6 +65,15 @@ div[role='complementary'] {
 	@include breakpoint(md) {@include span-columns(4);}
 }
 
+
+// ONE-COLUMN CONTENT 
+
+main.main-news,
+.home-start,
+.sites-list,
+.networks-list {
+    @include row();
+}
 
 
 // CUSTOM CONTAINERS 
