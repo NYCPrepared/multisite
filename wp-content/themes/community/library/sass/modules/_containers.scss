@@ -26,10 +26,10 @@ hr {
 }
 
 
-// FULL-WIDTH ROWS (header, main, footer)
+// FULL-WIDTH ROWS (header, .content, footer)
 // for bg colors etc 
 
-main {
+.content {
     padding-top: 20px;
     .directory & {
         padding-bottom: $space-double;
@@ -47,8 +47,8 @@ main {
 
 // ONE-COLUMN CONTENT 
 
+main.main-news,
 .home-start,
-div[role='main'].main-news,
 .sites-list,
 .networks-list {
     @include row();
@@ -57,13 +57,8 @@ div[role='main'].main-news,
 
 // TWO-COLUMN CONTENT 
 
-// sidebar
-div[role='complementary'] {
-	@include breakpoint(md) {@include span-columns(4);}
-}
-
 // main
-div[role='main'] {
+main {
     padding-bottom: 60px; 
 	@include breakpoint(md) {@include span-columns(12); }
     // single page template 
@@ -71,6 +66,12 @@ div[role='main'] {
         @include fill-parent; 
         padding: 0;
     }
+}
+
+// sidebar
+aside,
+div[role='complementary'] {
+	@include breakpoint(md) {@include span-columns(4);}
 }
 
 

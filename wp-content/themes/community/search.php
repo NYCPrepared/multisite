@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
-<main>
+<div class="content">
 
 	<div class="wrap">
 
-		<div id="main" class="first" role="main">
+		<main class="first" role="main">
 			<h1 class="archive-title"><span><?php _e( 'Search Results for:', 'bonestheme' ); ?></span> <?php echo esc_attr(get_search_query()); ?></h1>
 
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -60,12 +60,12 @@
 
 				<?php endif; ?>
 
-			</div>
+			</main>
 
-				<?php get_sidebar(); ?>
+			<?php get_sidebar(); ?>
 
 		</div>
 
-</main>
+</div>
 
 <?php get_footer(); ?>

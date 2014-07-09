@@ -77,7 +77,7 @@ do_action( 'before_signup_form' );
 ?>
 
 
-<main class="widecolumn">
+<div class="content widecolumn">
 
     <div class="mu_register">
     <?php
@@ -727,7 +727,7 @@ do_action( 'before_signup_form' );
     ?>
     </div>
 
-</main>
+</div>
 
 <?php
 /**

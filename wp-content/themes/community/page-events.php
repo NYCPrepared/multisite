@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
-<main>
+<div class="content">
 
 	<div class="wrap">
 
-		<div id="main" class="first" role="main">
+		<main class="first" role="main">
 
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -49,10 +49,10 @@
 
 			<?php endif; ?>
 
-		</div>
+		</main>
 
 	</div>
 
-</main>
+</div>
 
 <?php get_footer(); ?>

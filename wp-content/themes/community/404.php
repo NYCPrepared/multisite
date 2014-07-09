@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
-<main>
+<div class="content">
 
 	<div class="wrap">
 
-		<div id="main" class="first" role="main">
+		<main class="first" role="main">
 
 			<article id="post-not-found" class="hentry clearfix">
 
@@ -34,10 +34,10 @@
 
 			</article>
 
-		</div>
+		</main>
 
 	</div>
 
-</main>
+</div>
 
 <?php get_footer(); ?>

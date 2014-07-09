@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main>
+<div class="content">
 
 	<div class="wrap">
 
@@ -29,7 +29,7 @@
 		</div>
 		
 		
-		<div role="main" id="main" class="main-news" >
+		<main class="main-news" >
 		<?php
 		if(function_exists( 'network_latest_posts' )) {
 
@@ -53,10 +53,10 @@
 		}
 		?>
 
-		</div>
+		</main>
 
 	</div>
 
-</main>
+</div>
 
 <?php get_footer(); ?>

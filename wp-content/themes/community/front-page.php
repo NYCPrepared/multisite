@@ -9,7 +9,7 @@
 
 <?php get_header(); ?>
 
-<main>
+<div class="content">
 
 	<div class="wrap">
 
@@ -266,6 +266,6 @@
 
 	</div>
 
-</main>
+</div>
 
 <?php get_footer(); ?>

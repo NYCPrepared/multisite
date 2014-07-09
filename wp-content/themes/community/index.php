@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
-<main>
+<div class="content">
 
 	<div class="wrap">
 
-		<div id="main" role="main">
+		<main role="main">
 
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -58,12 +58,12 @@
 
 			<?php endif; ?>
 
-		</div>
+		</main>
 
 		<?php get_sidebar(); ?>
 
 	</div>
 
-</main>
+</div>
 
 <?php get_footer(); ?>

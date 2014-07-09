@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
-<main>
+<div class="content">
 
 	<div class="wrap">
 
-		<div role="main" id="main" class="main-group">
+		<main role="main" class="main-group">
 
 			<header class="main-header">
 				<div class="social-links">
@@ -72,12 +72,12 @@
             </div>
             
             
-		</div>
+		</main>
 
 		<?php get_sidebar(); ?>
 
 	</div>
 
-</main>
+</div>
 
 <?php get_footer(); ?>

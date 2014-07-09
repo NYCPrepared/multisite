@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
-<main>
+<div class="content">
 
 	<div class="wrap">
 
-		<div role="main" id="main" class="main-archive">
+		<main class="main-archive">
 
 			<?php if (is_category()) { ?>
 				<h1 class="archive-title h2">
@@ -100,12 +100,12 @@
 
 			<?php endif; ?>
 
-		</div>
+		</main>
 
 		<?php get_sidebar(); ?>
 
     </div>
 
-</main>
+</div>
 
 <?php get_footer(); ?>
