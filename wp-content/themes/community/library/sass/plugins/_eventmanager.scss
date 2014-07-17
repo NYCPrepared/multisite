@@ -293,6 +293,7 @@ table.em-calendar {
             color: $white;
             max-height: 100px; 
             overflow: hidden;
+            margin-bottom: 20px;
             @include transition(background 0.25s ease);
         	@include breakpoint(xs) {@include span-columns(8); @include omega(2n); display: inline-block; }
         	@include breakpoint(sm) {@include span-columns(4); @include omega-reset(2n); @include omega(4n);}
