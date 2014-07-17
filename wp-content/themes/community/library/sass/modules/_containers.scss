@@ -102,6 +102,7 @@ main.main-news,
 .home-modules {
     padding-bottom: 30px;
     .row {
+        clear: both;
         border-top: 1px solid $hr-color;
         padding: 20px 0;
     }

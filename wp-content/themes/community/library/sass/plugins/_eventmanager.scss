@@ -294,11 +294,21 @@ table.em-calendar {
             max-height: 100px; 
             overflow: hidden;
             @include transition(background 0.25s ease);
-        	@include breakpoint(xs) {@include span-columns(8); display: inline-block; }
-        	@include breakpoint(sm) {@include span-columns(4);}
+        	@include breakpoint(xs) {@include span-columns(8); @include omega(2n); display: inline-block; }
+        	@include breakpoint(sm) {@include span-columns(4); @include omega-reset(2n); @include omega(4n);}
             &:hover {
                 background: $navy;
                 cursor: pointer;
+            }
+        }
+        .event-promo {
+            background: lighten($teal, 10);
+            height: 100px;
+            a {
+                display: block;
+                color: $white;
+                text-align: center;
+                line-height: 95px;
             }
         }
     }

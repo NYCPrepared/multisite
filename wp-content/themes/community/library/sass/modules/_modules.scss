@@ -21,7 +21,8 @@
     .module-heading {
         @include font-size($epsilon);
         text-transform: uppercase; 
-        letter-spacing: $tracking;}    
+        letter-spacing: $tracking;
+    }    
 } 
 
 
@@ -39,15 +40,13 @@
 }
 
 .highlights-list {
-    background: $white;
     height: 300px;
     overflow-y: scroll;
     margin: 0;
 	@include breakpoint(sm) {@include span-columns(8);}
     li {
-        border-bottom: 1px solid $base8;
+        background: $white;
         padding: 10px;
-        margin-bottom: 0;
         @include breakpoint(sm) {padding: 10px 20px;}
     }
     .post-title {
@@ -131,35 +130,32 @@
 }
 
 
-// 'create a site' promo
-#site-promo {
+// directory promo
+#directory-promo {
     background: $yellow;
-    padding: 20px;
+    text-align: center;
     .post-title {
         color: $white;
-        margin: 0;
+        margin: 50px 0 0;
     }
     .promo-icons {
         padding: 10px 0;
         color: $white;
         white-space: nowrap;
-        i {
+        .icon {
             @include font-icon-base($family:"ios7-icon"); 
             @extend %ios7-store;
             @include font-size($alpha);
             line-height: 1;
         }
     }
-    .button {
-        background: $base1;
-        background: rgba(0,0,0,.3);
+    a {
+        display: block;
+        padding: 20px;
+        height: 100%;
         &:hover {
-            background: $white;
-            color: $orange;
+            background: $orange;
         }
-    }
-    &:hover {
-        box-shadow: none;
     }
 }
 

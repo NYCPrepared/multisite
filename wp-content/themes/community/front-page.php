@@ -134,6 +134,7 @@
 			}
 			?>
 
+			<!-- removing sliders for now
 			<script type="text/javascript">
 			jQuery(document).ready(function(){
 			  jQuery('.events-list').bxSlider({
@@ -155,6 +156,7 @@
               } 
 			});
 			</script>
+			-->
 
 			<?php // Check to see if Events Manager is active. If not don't display this module.
 			if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
@@ -162,7 +164,7 @@
 				<h2 class="module-heading"><a href="/events/">Events</a></h2>
 				<ul class="events-list">
 					<?php
-					$events = EM_Events::output(array('limit'=>5, 
+					$events = EM_Events::output(array('limit'=>7, 
 						'format'=>'<li>
 						<h6 class="event-start">
     				        <time class="event-month" datetime="#M">#M</time>
@@ -172,11 +174,14 @@
 						<h3 class="post-title event-title">#_EVENTLINK</h3>
 						</li>'));?>
 					<?php echo $events; ?>
+					<li class="event-promo"><h3 class="promo-title"><a href="/events" title="Calendar">View all events</a></h3></li>
 				</ul>
 			</article>
 			<?php } ?>
+			
+			
 			<article id="sites-module" class="module row sites">
-				<h2 class="module-heading"><a href="/sites/">Sites</a></h2>
+				<h2 class="module-heading"><a href="/directory">Sites</a></h2>
 				<ul class="sites-list">
 
 				<?php
@@ -197,10 +202,11 @@
 				
                 <?php } ?>
 
-					<li id="site-promo">
-						<h3 class="post-title">Join the community</h3>
-						<div class="promo-icons"><i></i><i></i><i></i><i></i></div>
-						<a class="button" href="/register" title="Create a site">Create a Site</a>
+					<li id="directory-promo">
+						<a href="/directory" title="Directory">
+    						<h3 class="post-title">Join the community</h3>
+    						<div class="promo-icons"><i class="icon"></i><i class="icon"></i><i class="icon"></i><i class="icon"></i></div>
+						</a>
 					</li>
 
 				</ul>
