@@ -185,6 +185,8 @@
 				<ul class="sites-list">
 
 				<?php
+				$counter = 0; 
+
 				foreach ($sites as $site) {
 					$site_id = $site['blog_id'];
 					$site_details = get_blog_details($site_id);
@@ -200,7 +202,9 @@
 						<h6 class="meta item-modified"><span class="modified-title">Last updated</span> <time><?php echo date_i18n(get_option('date_format') ,strtotime($site_details->last_updated));?></time></h6>
 					</li>
 				
-                <?php } ?>
+				<?php
+                    if (++$counter == 7) break;
+                } ?>
 
 					<li id="directory-promo">
 						<a href="/directory" title="Directory">
