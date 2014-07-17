@@ -32,7 +32,7 @@
     color: $white;
     background: $base7 url('http://dev.sites.nycprepared.org/wp-content/uploads/2014/01/CarolinaKroon7.png') no-repeat center center;
     background-size: cover; 
-    padding: 20px;
+    padding: 22px;
     margin-bottom: 0;
     height: 150px;
     overflow: hidden;
@@ -43,6 +43,29 @@
     height: 300px;
     overflow-y: scroll;
     margin: 0;
+    padding-right: 22px;
+    position: relative;
+    &:before, 
+    &:after {
+        font-family: 'ios7-icon';
+        color: $teal;
+        font-size: 18px;
+        position: absolute;
+        right: 0;
+    }
+    &:before {
+        content: '';
+        top: 0;
+        width: 11px;
+        height: 100%;
+        background: $base8;
+        text-indent: -3px;
+    } 
+    &:after {
+        content: '';
+        bottom: 0;
+        right: -4px;
+    }
 	@include breakpoint(sm) {@include span-columns(8);}
     li {
         background: $white;
