@@ -42,8 +42,8 @@
 .highlights-list {
     height: 300px;
     overflow-y: scroll;
+    overflow-x: hidden;
     margin: 0;
-    padding-right: 22px;
     position: relative;
     &:before, 
     &:after {
@@ -70,6 +70,7 @@
     li {
         background: $white;
         padding: 10px;
+        margin-right: 22px;
         @include breakpoint(sm) {padding: 10px 20px;}
     }
     .post-title {
