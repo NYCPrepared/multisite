@@ -31,7 +31,7 @@
 						$networks = get_posts('post_type=network');
 						foreach ($networks as $network) {											
 						?>
-                        <li data-filter=".network-<?php echo $network->post_name; ?>"><?php echo $network->post_title; ?></li>
+	                        <li data-filter=".network-<?php echo $network->post_name; ?>"><?php echo $network->post_title; ?></li>
 						<?php } ?>
 					</ul>
 
