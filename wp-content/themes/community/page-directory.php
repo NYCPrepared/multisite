@@ -47,6 +47,9 @@
 							$site_path = $site_details->path;
 							$site_slug = str_replace('/','',$site_path);
 
+							// Get post count for each site
+							$site_details = get_blog_details($site_id);
+
 							// Find Network pages that are associated with this site
 							$args = array (
 								'post_type'         => 'network',
@@ -59,7 +62,7 @@
 								),
 							);
 							$network_query = new WP_Query( $args );
-							
+
 							?>
 							<?php
 							if(function_exists('community_get_site_image')) {
@@ -70,7 +73,13 @@
 								<a href="<?php echo $site_details->siteurl; ?>" class="item-image <?php if(!$header) { echo 'no-image'; } ?>" style="background-image: url('<?php if($header) { echo $header; } ?>');"></a>
 								<h3 class="item-title"><a href="<?php echo $site_details->siteurl; ?>"><?php echo $site_details->blogname; ?></a></h3>
 								<h6 class="meta item-network"><?php foreach($network_query as $post){ echo $post->post_title;} ?></h6>
-								<h6 class="meta item-location"></h6>
+								<h6 class="meta">
+								<?php
+									if($site_details->post_count) {
+										echo 'Posts: ' . $site_details->post_count;
+									}
+								?>
+								</h6>
 								<h6 class="meta item-topic"></h6>
 							</li>
 
