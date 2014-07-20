@@ -76,7 +76,7 @@
 					'full_meta'		=> 'true',
 					'thumbnail'        => 'true',
 					'thumbnail_wh'	   => 'medium',
-					'thumbnail_class'  => 'post-image',
+					'thumbnail_class'  => 'post-media',
 					'wrapper_block_css'=> 'network-posts', // wrapper class to add
 					'instance'         => 'network-posts', // wrapper id to add
 					'blog_id'          => $blog_list,
