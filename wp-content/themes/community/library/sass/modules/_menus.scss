@@ -108,7 +108,9 @@ $f-height: 2.5em; // set variable for this menu
 	margin: 1.1em 0 2.2em;
 }
 .pagination{
-    text-align: center;
+    clear: both;
+    border-top: 1px solid $hr-color;
+    padding-top: $space-half;
     ul {
         display: inline-block;
         white-space: nowrap;

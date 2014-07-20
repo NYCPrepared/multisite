@@ -52,6 +52,10 @@ hr {
 main {
     padding-bottom: 60px; 
 	@include breakpoint(md) {@include span-columns(12); }
+    // clear right margin if right column
+    &:last-child {
+        @include omega();
+    }
     // single column layout 
     .page-template-page-iframe-php &,
     .directory &,
@@ -63,7 +67,11 @@ main {
 // sidebar
 aside,
 div[role='complementary'] {
-	@include breakpoint(md) {@include span-columns(4); @include omega();}
+	@include breakpoint(md) {@include span-columns(4); }
+    // clear right margin if right column
+    &:last-child {
+        @include omega();
+    }
 }
 
 

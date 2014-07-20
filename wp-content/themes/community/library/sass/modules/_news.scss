@@ -82,27 +82,33 @@
 
 // NEWS POSTS (list on network page)
 
+.main-network .subtitle {
+    @include font-size($epsilon);
+    letter-spacing: $tracking-loose;
+    margin-bottom: $space-half;
+}
+
 .network-posts {
     ul {
         border-bottom: 1px solid $base7;
     }
     li {
         border-top: 1px solid $base7;
-        padding: 20px 0 10px;
+        padding: $space-32 $space $space-34;
         max-width: none;
         @include fill-parent;
         clear: both;
     }    
     .post-title {
-    	@include font-size($gamma);
+    	@include font-size($beta);
     	margin-bottom: $space-fourth;
     }
     .post-excerpt {
-    	@include font-size($epsilon);
+    	@include font-size($delta);
     	margin-bottom: $space-half;
     }
     .meta h6 {
-    	@include font-size($micro);
+    	@include font-size($milli);
     	color: $base5;
     	display: inline-block;
     	&:after {
