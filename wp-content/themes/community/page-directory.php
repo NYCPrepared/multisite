@@ -35,6 +35,12 @@
 						<?php } ?>
 					</ul>
 
+					<ul class="sort js-menu">
+						<li data-sort="id" data-ascending="false" class="is-on">Most Recently Added</li>
+						<li data-sort="slug" data-ascending="true">Alphabetically</li>
+						<li data-sort="posts" data-ascending="false">Most Active</li>
+					</ul>
+
 					<ul class="sites-list view-grid" id="isotope">
 						<?php
 						$sites = wp_get_sites('offset=1');
@@ -69,11 +75,11 @@
 								$header = community_get_site_image($site_id);
 							} ?>
 
-							<li class="isomote id-<?php echo $site_id; ?> site-<?php echo $site_slug; ?> network-<?php foreach($network_query as $post){ echo $post->post_name;} ?>  ">
+							<li class="isomote id-<?php echo $site_id; ?> site-<?php echo $site_slug; ?> network-<?php foreach($network_query as $post){ echo $post->post_name;} ?>" data-id="<?php echo $site_id ?>" data-slug="<?php echo $site_slug ?>" data-posts="<?php echo $site_details->post_count; ?>">
 								<a href="<?php echo $site_details->siteurl; ?>" class="item-image <?php if(!$header) { echo 'no-image'; } ?>" style="background-image: url('<?php if($header) { echo $header; } ?>');"></a>
 								<h3 class="item-title"><a href="<?php echo $site_details->siteurl; ?>"><?php echo $site_details->blogname; ?></a></h3>
 								<h6 class="meta item-network"><?php foreach($network_query as $post){ echo $post->post_title;} ?></h6>
-								<h6 class="meta">
+								<h6 class="meta item-posts">
 								<?php
 									if($site_details->post_count) {
 										echo 'Posts: ' . $site_details->post_count;
@@ -166,7 +172,12 @@ $(document).ready(function() {
   $container.isotope({
     itemSelector: '.isomote',
     layoutMode: 'masonry',
-    masonry: {columnWidth: 285, gutter: 20}
+    masonry: {columnWidth: 285, gutter: 20},
+    getSortData: {
+        id: '[data-id]', 
+        title: '[data-title]', 
+        posts: '[data-posts]'
+    }
   });
 
   // filter
@@ -174,6 +185,14 @@ $(document).ready(function() {
     var filterValue = $(this).attr('data-filter');
     $container.isotope({ filter: filterValue });
   });
+
+  // sort
+  $('.sort').on( 'click', 'li', function() {
+    var sortValue = $(this).attr('data-sort');
+    var sortOrder = $(this).attr('data-ascending');
+    $container.isotope({ sortBy: sortValue, sortAscending: sortOrder  });
+  });
+  
 
   // change view
   $('.toggle').on('click', 'li', function() {

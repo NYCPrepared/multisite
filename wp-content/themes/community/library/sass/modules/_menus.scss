@@ -55,7 +55,8 @@ ul.children {
 
 $f-height: 2.5em; // set variable for this menu
 
-.filter {
+.filter, 
+.sort {
     max-height: $f-height;
     padding-top: $f-height; // allow for absolutely-positioned .is-on item
     overflow: hidden;
