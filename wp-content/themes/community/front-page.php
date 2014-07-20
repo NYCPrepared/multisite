@@ -82,7 +82,18 @@
 				} else {
 					$categorytitle = 'Latest';
 				}
-				// get_categories (not get_the_category)
+			}
+
+			if(function_exists('community_home_header')) {
+				$heading = community_home_header(); // Get the header text from theme customization 
+				if(!empty($heading)) {
+					$postheading = $heading;
+				} elseif(!empty($postcategory)) {
+					$postheading = $postcategory;
+				}
+				else {
+					$postheading = 'Latest';
+				}
 			}
 			?>
 
@@ -90,7 +101,7 @@
 			if(function_exists( 'network_latest_posts' )) {
 
 				$parameters = array(
-				'title'         => $categorytitle,
+				'title'         => $postheading,
 				'title_only'    => 'false',
 				'auto_excerpt'  => 'true',
 				'full_meta'		=> 'true',
