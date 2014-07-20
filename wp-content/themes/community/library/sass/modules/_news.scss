@@ -103,11 +103,24 @@
     	@include font-size($beta);
     	margin-bottom: $space-fourth;
     }
+    .post-image {
+        float: left;
+        margin-top: $space-fourth;
+        margin-right: $space;
+        margin-bottom: $space-fourth;
+        img {
+            display: block;
+            border: $frame-border;
+        }
+    }
     .post-excerpt {
     	@include font-size($delta);
     	margin-bottom: $space-half;
     }
-    .meta h6 {
+    .meta {
+        clear: both;
+    }
+    h6 {
     	@include font-size($milli);
     	color: $base5;
     	display: inline-block;
