@@ -73,15 +73,28 @@
 			<?php if ( is_multisite() ) { // Check to see if multisite is active. If not, display a recent posts and events module for this site. ?> 
 			<?php $sites = wp_get_sites('offset=1'); // Set up variable that holds array of sites ?>
 
+			<?php 
+			if(function_exists('community_home_category')) {
+				$postcategory = community_home_category(); // Get the category from theme customization 
+				$categoryid = get_option("community_options");
+				if(!empty($postcategory)) {
+					$categorytitle = $postcategory;
+				} else {
+					$categorytitle = 'Latest';
+				}
+				// get_categories (not get_the_category)
+			}
+			?>
+
 			<?php
 			if(function_exists( 'network_latest_posts' )) {
 
 				$parameters = array(
-				'title'         => 'Requests',
+				'title'         => $categorytitle,
 				'title_only'    => 'false',
 				'auto_excerpt'  => 'true',
 				'full_meta'		=> 'true',
-				'category'         => 'requests',          // Widget title
+				'category'         => $postcategory,          // Widget title
 				'number_posts'     => 9,
 				'wrapper_list_css' => 'highlights-list',
 				'wrapper_block_css'=> 'module row highlights', //The wrapper classe

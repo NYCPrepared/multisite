@@ -397,6 +397,85 @@ function get_excerpt_by_id($post_id, $length='55', $trailer=' ...') {
 	return $the_excerpt;
 }
 
+/***************************
+THEME CUSTOMIZATION FUNCTION
+***************************/
+
+/**
+ * NARGA Category Drop Down List Class
+ *
+ * modified dropdown-pages from wp-includes/class-wp-customize-control.php
+ *
+ * @since NARGA v1.0
+ */
+if ( class_exists( 'WP_Customize_Control' ) ) {
+	class WP_Customize_Dropdown_Categories_Control extends WP_Customize_Control {
+	    public $type = 'dropdown-categories';	
+	 
+	    public function render_content() {
+	        $dropdown = wp_dropdown_categories( 
+	            array( 
+	                'name'             => '_customize-dropdown-categories-' . $this->id,
+	                'echo'             => 0,
+	                'hide_empty'       => false,
+	                'show_option_none' => '&mdash; ' . __('Select', 'community') . ' &mdash;',
+	                'hide_if_empty'    => false,
+	                'selected'         => $this->value(),
+	            )
+	        );
+	 
+	        $dropdown = str_replace('<select', '<select ' . $this->get_link(), $dropdown );
+	 
+	        printf( 
+	            '<label class="customize-control-select"><span class="customize-control-title">%s</span> %s</label>',
+	            $this->label,
+	            $dropdown
+	        );
+	    }
+	}
+}
+
+function community_customize_register( $wp_customize ) {
+	// Section
+	// Homepage - Post Categories
+	$wp_customize->add_section( 'community_homepage' , array(
+	    'title'      => __( 'Homepage', 'community' ),
+	    'priority'   => 30,
+	) );
+
+	// Setting
+	$wp_customize->add_setting('community_options[featured_category]', array(
+        'default'        => '',
+        'type'           => 'option',
+        'capability'     => 'manage_options',
+    ) );
+
+	// Control
+    $wp_customize->add_control( new WP_Customize_Dropdown_Categories_Control( $wp_customize, 'community_featured_category', array( 
+        'label'    => __('Homepage Post Category', 'community'),
+        'section'  => 'community_homepage',
+        'type'     => 'dropdown-categories',
+        'settings' => 'community_options[featured_category]',
+        'priority' => 1,
+    ) ) );
+
+	// Look & Feel - To be implemented later
+
+
+}
+add_action( 'customize_register', 'community_customize_register' );
+
+
+// Return the category name selected in theme customization
+function community_home_category() {
+	$homecategory = get_option("community_options");
+	if (!empty($homecategory)) {
+	    foreach ($homecategory as $key => $option)
+	        $options[$key] = $option;
+	    	$categoryname = get_cat_name($option);
+	}
+	return $categoryname;
+}
 
 
 ?>
