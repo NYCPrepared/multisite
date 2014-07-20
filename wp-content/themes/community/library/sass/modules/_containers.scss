@@ -52,12 +52,10 @@ hr {
 main {
     padding-bottom: 60px; 
 	@include breakpoint(md) {@include span-columns(12); }
-    // single page template 
-    .page-template-page-iframe-php & {
-        @include fill-parent; 
-        padding: 0;
-    }
-    .directory & {
+    // single column layout 
+    .page-template-page-iframe-php &,
+    .directory &,
+    .news & {
         @include fill-parent;
     }
 }
@@ -65,7 +63,7 @@ main {
 // sidebar
 aside,
 div[role='complementary'] {
-	@include breakpoint(md) {@include span-columns(4);}
+	@include breakpoint(md) {@include span-columns(4); @include omega();}
 }
 
 

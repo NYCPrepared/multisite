@@ -43,8 +43,8 @@
 			'thumbnail_wh'	   => 'medium',
 			'thumbnail_class'  => 'post-image',
 			'wrapper_list_css' => 'post-list',
-			'wrapper_block_css'=> 'news-articles', //  wrapper class to add
-			'instance'         => 'news-articles', // wrapper ID to add
+			'wrapper_block_css'=> '', //  wrapper class to add
+			'instance'         => '', // wrapper ID to add
 			'paginate'         => 'true',        // paginate results
 	        'posts_per_page'   => 25, 
 			);

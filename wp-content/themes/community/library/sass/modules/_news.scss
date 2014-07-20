@@ -37,7 +37,7 @@
 
 // NEWS ARTICLES (single page)
 
-.news-articles {
+.main-news {
     .post {
         border-top: 1px solid $base7;
         padding-top: 20px;
@@ -94,11 +94,11 @@
         clear: both;
     }    
     .post-title {
-    	@include font-size($beta);
+    	@include font-size($gamma);
     	margin-bottom: $space-fourth;
     }
     .post-excerpt {
-    	@include font-size($delta);
+    	@include font-size($epsilon);
     	margin-bottom: $space-half;
     }
     .meta h6 {
