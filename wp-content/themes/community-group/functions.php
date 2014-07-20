@@ -14,6 +14,9 @@ $args = array(
 add_theme_support( 'custom-header', $args );
 
 
+// Remove theme customization settings for child theme
+
+remove_action( 'customize_register', 'community_customize_register' );
 
 
 
