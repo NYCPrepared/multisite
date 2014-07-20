@@ -32,4 +32,8 @@ if ( is_plugin_active('partner-rss-feed/partner-rss-widget.php') ) {
 
 }
 
+// Remove theme customization settings for child theme
+
+remove_action( 'customize_register', 'community_customize_register' );
+
 ?>
