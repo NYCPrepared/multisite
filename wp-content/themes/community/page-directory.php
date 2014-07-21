@@ -36,9 +36,9 @@
 					</ul>
 
 					<ul class="sort js-menu">
-						<li data-sort="id" data-ascending="false" class="is-on">Most Recently Added</li>
-						<li data-sort="slug" data-ascending="true">Alphabetically</li>
-						<li data-sort="posts" data-ascending="false">Most Active</li>
+						<li data-sort="id" class="is-on">Most Recently Added</li>
+						<li data-sort="slug">Alphabetically</li>
+						<li data-sort="posts">Most Active</li>
 					</ul>
 
 					<ul class="sites-list view-grid" id="isotope">
@@ -172,12 +172,21 @@ $(document).ready(function() {
   $container.isotope({
     itemSelector: '.isomote',
     layoutMode: 'masonry',
-    masonry: {columnWidth: 285, gutter: 20},
+    masonry: {
+        columnWidth: 285, 
+        gutter: 20
+    },
     getSortData: {
         id: '[data-id]', 
-        title: '[data-title]', 
+        slug: '[data-slug]', 
         posts: '[data-posts]'
-    }
+    },
+    sortAscending: {
+        id: false,
+        slug: true,
+        posts: false
+    },
+    sortBy: 'id'
   });
 
   // filter
@@ -189,8 +198,9 @@ $(document).ready(function() {
   // sort
   $('.sort').on( 'click', 'li', function() {
     var sortValue = $(this).attr('data-sort');
-    var sortOrder = $(this).attr('data-ascending');
-    $container.isotope({ sortBy: sortValue, sortAscending: sortOrder  });
+    $container.isotope({ 
+        sortBy: sortValue
+    });
   });
   
 
