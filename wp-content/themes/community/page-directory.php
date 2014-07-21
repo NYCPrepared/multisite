@@ -82,7 +82,7 @@
 								<h6 class="meta item-posts">
 								<?php
 									if($site_details->post_count) {
-										echo 'Posts: ' . $site_details->post_count;
+										echo $site_details->post_count . ' posts';
 									}
 								?>
 								</h6>
