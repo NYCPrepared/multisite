@@ -515,13 +515,11 @@ function community_hack_wp_title_for_home( $title ) {
   return $title;
 }
 
-
-add_action( 'after_setup_theme', 'remove_theme_customization_community'); 
+// Remove unused menus
+add_action( 'after_setup_theme', 'remove_theme_customization_community', 20); 
 
 function remove_theme_customization_community() {
 
-    remove_theme_support( 'menus' );
-    unregister_nav_menu( 'main-nav' );
 	unregister_nav_menu( 'secondary-nav' );
 	unregister_nav_menu( 'utility-nav' );
 	unregister_nav_menu( 'footer-links' );
