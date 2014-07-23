@@ -87,7 +87,7 @@
 					$postheading = $postcategory;
 				}
 				else {
-					$postheading = 'Latest';
+					$postheading = 'Latest'; // Fallback header text. Change to whatever you'd like.
 				}
 			}
 			?>
