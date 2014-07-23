@@ -16,7 +16,7 @@ add_theme_support( 'custom-header', $args );
 
 // Remove theme customization settings for child theme
 
-remove_action( 'customize_register', 'community_customize_register', 20 );
+remove_action( 'customize_register', 'community_customize_register', 100 );
 
 
 // Remove menu customization on child themes
@@ -34,7 +34,6 @@ function remove_theme_customization_community_group() {
 			'site-nav' => __( 'The Main Site Menu', 'community-group' ),
 		)
 	);
-
 }
 
 
