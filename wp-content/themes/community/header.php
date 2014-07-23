@@ -59,7 +59,10 @@
 					<div class="search-form" id="search-global">
 					    <?php get_search_form(); ?>
 					</div>
-					<?php bones_main_nav(); ?>
+
+					<?php
+					//This is the global navigation that appears across all sites in the WP network
+					bones_main_nav(); ?>
 				</nav>
 
 				<?php // if you'd like to use the site description you can un-comment it below ?>
