@@ -108,7 +108,7 @@
         margin-top: 0;
         margin-bottom: 20px;
         padding: 0;
-        height: 280px;
+        height: 285px;
         overflow: hidden;
     	@include span-columns(8); 
     	@include omega(2n);
@@ -160,7 +160,7 @@
     text-align: center;
     .post-title {
         color: $white;
-        margin: 50px 0 0;
+        margin: 25% 0 0;
     }
     .promo-icons {
         padding: 10px 0;

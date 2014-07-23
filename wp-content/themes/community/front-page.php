@@ -49,13 +49,13 @@
 						$title = get_the_title();
 						// $post_meta = get_post_meta($post->ID, 'community_volunteer_location', true);
 						$imagearg = array(
-							'title'	=> trim(strip_tags($title)),
+                            'title'	=> trim(strip_tags($title)),
 							'alt'	=> trim(strip_tags($title))
 						);
 					?>
 
-					<li class="featured-post">
-						<a href="<?php echo $permalink; ?>" title="<?php echo get_the_title();?>">
+					<li class="featured-post" style="background-image: url('http://localhost/multisite/wp-content/uploads/2014/01/enie.png');">
+						<a href="<?php echo $permalink; ?>" title="<?php echo get_the_title();?>" >
 						<?php echo get_the_post_thumbnail($post->ID, 'full', $imagearg); ?>
 						</a>
 					</li>

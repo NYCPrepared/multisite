@@ -14,6 +14,12 @@ div.bx-wrapper {
     }
     .featured-post {
         max-width: none;
+        min-height: 390px;
+        background-size: cover;
+        background-position: center center;
+    }
+    a {
+        display: block;
     }
     .bx-caption {
         background: rgba(255,255,255,.8);
