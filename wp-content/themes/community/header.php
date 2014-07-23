@@ -11,7 +11,7 @@
 	<?php // Google Chrome Frame for IE ?>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<title><?php wp_title(''); ?></title>
+	<title><?php wp_title( '|', true, 'right' ); echo get_bloginfo( 'name' ); ?></title>
 
 	<?php // mobile meta (hooray!) ?>
 	<meta name="HandheldFriendly" content="True">
@@ -59,7 +59,10 @@
 					<div class="search-form" id="search-global">
 					    <?php get_search_form(); ?>
 					</div>
-					<?php bones_main_nav(); ?>
+
+					<?php
+					//This is the global navigation that appears across all sites in the WP network
+					bones_main_nav(); ?>
 				</nav>
 
 				<?php // if you'd like to use the site description you can un-comment it below ?>

@@ -77,11 +77,6 @@
 			if(function_exists('community_home_category')) {
 				$postcategory = community_home_category(); // Get the category from theme customization 
 				$categoryid = get_option("community_options");
-				if(!empty($postcategory)) {
-					$categorytitle = $postcategory;
-				} else {
-					$categorytitle = 'Latest';
-				}
 			}
 
 			if(function_exists('community_home_header')) {
@@ -92,7 +87,7 @@
 					$postheading = $postcategory;
 				}
 				else {
-					$postheading = 'Latest';
+					$postheading = 'Latest'; // Fallback header text. Change to whatever you'd like.
 				}
 			}
 			?>

@@ -34,6 +34,19 @@ if ( is_plugin_active('partner-rss-feed/partner-rss-widget.php') ) {
 
 // Remove theme customization settings for child theme
 
-remove_action( 'customize_register', 'community_customize_register' );
+remove_action( 'customize_register', 'community_customize_register', 20 );
+
+// Remove menu customization on child themes
+
+add_action( 'after_setup_theme', 'remove_theme_customization_community_partner', 20 ); 
+
+function remove_theme_customization_community_partner() {
+
+    unregister_nav_menu( 'main-nav' );
+	unregister_nav_menu( 'secondary-nav' );
+	unregister_nav_menu( 'utility-nav' );
+	unregister_nav_menu( 'footer-links' );
+
+}
 
 ?>

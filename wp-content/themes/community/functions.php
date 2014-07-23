@@ -476,6 +476,7 @@ function community_customize_register( $wp_customize ) {
         'label'      => __('Homepage Posts Heading', 'community'),
         'section'    => 'community_homepage',
         'settings'   => 'post_heading',
+        'type' => 'text',
     ));
  
 
@@ -505,5 +506,25 @@ function community_home_header() {
 	return $homeheading;
 }
 
+// Hack to fix title on static homepage
+add_filter( 'wp_title', 'community_hack_wp_title_for_home' );
+
+function community_hack_wp_title_for_home( $title ) {
+  if( empty( $title ) && ( is_home() || is_front_page() ) ) {
+    return __( 'Home', 'community' ) . ' | ';
+  }
+  return $title;
+}
+
+// Remove unused menus
+add_action( 'after_setup_theme', 'remove_theme_customization_community', 20); 
+
+function remove_theme_customization_community() {
+
+	unregister_nav_menu( 'secondary-nav' );
+	unregister_nav_menu( 'utility-nav' );
+	unregister_nav_menu( 'footer-links' );
+
+}
 
 ?>
