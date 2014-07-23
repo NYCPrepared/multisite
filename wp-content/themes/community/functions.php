@@ -476,6 +476,7 @@ function community_customize_register( $wp_customize ) {
         'label'      => __('Homepage Posts Heading', 'community'),
         'section'    => 'community_homepage',
         'settings'   => 'post_heading',
+        'type' => 'text',
     ));
  
 
