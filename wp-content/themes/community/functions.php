@@ -527,4 +527,36 @@ function remove_theme_customization_community() {
 
 }
 
+/*********************
+SHORTCODE TO DISPLAY DROP-DOWN OF POSTS IN CONTACT 7
+*********************/
+
+// wpcf7_add_shortcode('postdropdown', 'createbox', true);
+// function createbox($tag){
+
+// 	$name = $tag['name'];
+// 	$options = (array) $tag['options'];
+// 	$values = (array) $tag['values'];
+
+// 	foreach ($options as $option) {
+// 		if (preg_match('%^(\d*)[/x](\d*)$%i', $option, $matches)) {
+// 			$size_att = (int) $matches[1];
+// 			$maxlen_att = (int) $matches[2];
+// 		}
+// 	}
+
+// 	$args = array('post_type' => 'network' );
+// 	$output = "<select name='".$name."' id='".$name."'><option></option>";
+// 	$query2 = new WP_Query( $args );
+
+// 	// The 2nd Loop
+// 	while( $query2->have_posts()):
+// 		$query2->next_post();
+// 		$output .= "<option value='$title'>".get_the_title( $query2->post->ID )."</option>";
+// 	endwhile;
+// 	$output .= "</select>";
+
+// 	return $output;
+// }
+
 ?>
