@@ -4,136 +4,33 @@ NAVIGATION STYLES
 
 // NAVIGATION
 
-/* all nav lists have a .nav class applied via the wp_menu function,
-so we can easily write one group of styles and keep our css cleaner 
-and more scalable. */
+/*
+all navs have a .nav class applied via the wp_menu function; this 
+is so we can easily write one group of styles for the navs on the 
+site so our css is cleaner and more scalable.
+*/
  
- 
-// remember: mobile first 
-
-.nav,
-.sub-menu {
+.nav {
     margin: 0;
-    clear: both;
-	@include transition(all 0.3s ease-out);
-	
-    // after js has loaded
-    .js & {
-    	overflow: hidden;
-    	max-height: 0;
-    }	
-    
-    // selected
-    &.active {
-    	max-height: 160px;
-    	overflow: visible;
-    	background: white;
-    }
+	li {
+        margin: 0;
+        white-space: nowrap;
+		a {
+			display: block;
+			text-decoration: none;
+		}
+	} 
 }
 
-.nav li {
-    display: block;
+ul.children {
     margin: 0;
-    white-space: nowrap;
-	a {
-		display: block;
-		text-decoration: none;
-    	color: $anchor-color;
-    	padding: 0.8em;
-    	border-bottom: 1px solid $base8;
-    	position: relative;
-	}
-}
-
-.menu-item-has-children > a {
-    &:after {
-    	content: '+';
-    	position: absolute;
-    	top: 0;
-    	right: 0;
-    	display: block;
-    	font-size: 1.5em;
-    	padding: 0.25em 0.5em;
-    }
-    &.active:after {
-    	content: "-";
+    li {
+        display: block;
     }
 }
 
-// active state
-.nav.active, 
-.js .sub-menu.active {
-	max-height: 55em;
-}
 
-
-
-
-// breakpoint: switch to horizontal layout
-@include breakpoint(md) {
-
-    .nav {
-        li {
-            display: inline-block; 
-            margin-right: -2px; // remove space caused by inline-block
-        }
-        
-        // after js has loaded
-        .js & {
-            max-height: none;
-        }
-        
-    }
-    
-	.js .nav, 
-	.js .sub-menu {
-		max-height: none;
-		overflow: visible;
-		background: none;
-	}
-	.js .sub-menu {
-		background: #808080;
-		display: none;
-	}
-	.js .sub-menu li:hover > ul {
-		display: block;
-	}
-	.sub-menu {
-		margin: 0 0 0 -0.25em;
-		border: 0;
-	}
-	.nav li a {
-		border: 0;
-	}
-	.nav li.menu-item-has-children > a {
-		padding-right: 2em;
-    	&:after {
-    		content: ">";
-    		font-size: 1em;
-    		padding: 0.8em 0.5em;
-    	}
-	}
-	.nav .level-1 > li.menu-item-has-children > a:after {
-		content: "▼";
-	}
-	.sub-menu li {
-		margin: 0 0.25em;
-	}
-	.sub-menu > li {
-		display: inline-block;
-		position: relative;
-	}
-}
-
-
-
-
-
-
-
-
-
-// TOGGLE MENUS (on directory)
+// TOGGLE MENUS
 
 .toggle {
     float: right;
@@ -154,7 +51,7 @@ and more scalable. */
     }
 }
 
-// FILTER MENUS (on directory)
+// FILTER MENUS
 
 $f-height: 2.5em; // set variable for this menu
 

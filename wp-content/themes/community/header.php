@@ -48,7 +48,7 @@
 
 			<div class="wrap">
 
-				<p class="domain-title"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
+					<p class="domain-title"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 				<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
 
 				<nav role="navigation" class="nav-global">

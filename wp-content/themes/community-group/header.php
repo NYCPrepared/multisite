@@ -100,10 +100,10 @@
 				</div>
 				<?php wp_nav_menu( array( 
 					'theme_location' => 'site-nav',
-					'container' => false,                  // remove nav container
-					'container_class' => 'menu',           // class of container (should you choose to use it)
-					'menu_class' => 'nav',                 // adding custom nav class
-					'depth' => 0,                          // limit the depth of the nav
+					'container' => false,                           // remove nav container
+					'container_class' => 'menu clearfix',           // class of container (should you choose to use it)
+					'menu_class' => 'nav clearfix',                 // adding custom nav class
+					'depth' => 0,                                   // limit the depth of the nav
 				 ) ); ?>
 			</nav>
 

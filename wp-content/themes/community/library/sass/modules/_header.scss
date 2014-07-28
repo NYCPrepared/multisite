@@ -143,12 +143,18 @@ li.current_page_item {
         margin: 0 5px;
     }
     .nav li {
+        font-size: 100%;
+        display: block;
+        margin: 0;
+        margin-right: -2px; // remove space caused by inline-block
+        @include breakpoint(md) {display: inline-block;}
         &.current-menu-item a {
             background: $anchor-color;
             color: $white;
         }
     }
     .nav li a {
+        display: block;
         padding: 8px 15px;
         color: $anchor-color;
         text-transform: uppercase; 
@@ -166,7 +172,19 @@ li.current_page_item {
 }
 
 
+// body gets .js class on load, prep nav for responsive behavior 
 
+.js .nav {
+	overflow: hidden;
+	max-height: 0;
+    @include transition(max-height 0.2s ease-in-out);
+    &.active {
+    	max-height: 160px;
+    	overflow: visible;
+    	background: white;
+    }
+    @include breakpoint(md) {max-height: none;}
+}
 
 
 
