@@ -74,11 +74,13 @@ jQuery(document).ready(function($) {
 
 
 	
-    // TOGGLE NAV FOR SMALL SCREENS 
-    // based on pattern by Brad Frost
+    // MULTI-LEVEL RESPONSIVE NAV
+    // based on codepen.io/bradfrost/full/qwJvF
+    
     $('body').addClass('js');
-    var $menulinks = $('.js-anchors').find('a');
-    $menulinks.click(function(e) {
+    
+    var $anchors = $('.js-anchors').find('a');
+    $anchors.click(function(e) {
         e.preventDefault();
 		var $link = $(this),
 			target = $link.attr('href');
@@ -86,7 +88,13 @@ jQuery(document).ready(function($) {
         $(target).toggleClass('active');
         return false;
     });
-
+    
+    var $parents = $('.menu-item-has-children > a');
+    $parents.click(function(e) {
+    	e.preventDefault();
+    	var $this = $(this);
+        $this.toggleClass('active').next('ul').toggleClass('active');
+    });
 
 	
  
