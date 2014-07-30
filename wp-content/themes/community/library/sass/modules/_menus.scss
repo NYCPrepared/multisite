@@ -4,14 +4,13 @@ NAVIGATION STYLES
 
 // NAVIGATION
 
-/*
-all navs have a .nav class applied via the wp_menu function; this 
-is so we can easily write one group of styles for the navs on the 
-site so our css is cleaner and more scalable.
-*/
+/* all nav lists (ul) have a .nav class applied via the wp_menu function; 
+this lets us write one group of styles for all navs so our css is 
+cleaner and more scalable. */
  
 .nav {
     margin: 0;
+    @include transition(max-height 0.2s ease-in-out);
 	li {
         margin: 0;
         white-space: nowrap;
@@ -22,12 +21,49 @@ site so our css is cleaner and more scalable.
 	} 
 }
 
-ul.children {
+// disable hover for current page but not its ancestors
+
+li.current-menu-item,
+li.current_page_item {
+    a:hover {
+        color: $text-color;
+        cursor: default;
+    }
+}
+
+// submenu
+
+.sub-menu {
     margin: 0;
     li {
         display: block;
     }
 }
+
+
+// body gets .js class on load, enabling responsive menu
+
+.js .nav {
+	overflow: hidden;
+	max-height: 0;
+    &.active {
+    	max-height: 160px;
+    	overflow: visible;
+    	background: white;
+    }
+    @include breakpoint(md) {max-height: none;}
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 // TOGGLE MENUS

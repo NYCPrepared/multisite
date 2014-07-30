@@ -123,15 +123,7 @@
 
 
 
-// disable hover for current page but not its ancestors
 
-li.current-menu-item,
-li.current_page_item {
-    a:hover {
-        color: $text-color;
-        cursor: default;
-    }
-}
 
 // site nav
 
@@ -172,19 +164,6 @@ li.current_page_item {
 }
 
 
-// body gets .js class on load, prep nav for responsive behavior 
-
-.js .nav {
-	overflow: hidden;
-	max-height: 0;
-    @include transition(max-height 0.2s ease-in-out);
-    &.active {
-    	max-height: 160px;
-    	overflow: visible;
-    	background: white;
-    }
-    @include breakpoint(md) {max-height: none;}
-}
 
 
 

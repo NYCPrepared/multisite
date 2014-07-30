@@ -56,7 +56,7 @@
 				<p class="domain-title"><a href="<?php echo $blog_details->siteurl; ?>" rel="nofollow"><?php echo $blog_details->blogname; ?></a></p>
 
 
-			<nav role="navigation" class="nav-global">
+			<nav role="navigation" class="menu-global">
 				<ul class="nav-anchors js-anchors">
                 	<li><a href="#menu-main-navigation" class="anchor-menu" title="menu"><?php echo $blog_details->blogname; ?></a></li>
                 	<li><a href="#search-global" class="anchor-search" title="search"></a></li>
@@ -90,7 +90,7 @@
 			<?php // bloginfo('description'); ?>
 
 
-			<nav role="navigation" class="nav-local">
+			<nav role="navigation" class="menu-local">
 				<ul class="nav-anchors js-anchors">
                 	<li><a href="#menu-main-navigation-1" class="anchor-menu" title="menu">MENU</a></li>
                 	<li><a href="#search-local" class="anchor-search" title="search"></a></li>
