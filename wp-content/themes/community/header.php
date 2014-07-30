@@ -51,7 +51,7 @@
 					<p class="domain-title"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 				<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
 
-				<nav role="navigation" class="menu-global">
+				<nav role="navigation" class="menu menu-global">
 					<ul class="nav-anchors js-anchors">
                     	<li><a href="#menu-main-navigation" class="anchor-menu" title="menu"><?php bloginfo('name'); ?></a></li>
                     	<li><a href="#search-global" class="anchor-search" title="search"></a></li>
