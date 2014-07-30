@@ -4,30 +4,129 @@ NAVIGATION STYLES
 
 // NAVIGATION
 
-/*
-all nav lists have a .menu class applied via the wp_menu 
-function, so we can easily write one group of styles 
-and our css is cleaner and more scalable.
-*/
+/* all nav lists have a .menu class applied via the 
+wp_menu function, so we can easily write one group of 
+styles and our css is cleaner and more scalable. */
  
-.menu {
+.menu, 
+.sub-menu {
+    clear: both;
     margin: 0;
+    @include transition(all 0.3s ease-out);
+}
+
+.menu {
 	li {
         margin: 0;
+        display: block;
         white-space: nowrap;
 		a {
 			display: block;
 			text-decoration: none;
+            color: $text-color;
+            padding: 0.8em;
+            border-bottom: 1px solid $hr-color;
+            position: relative;
+            &:hover {
+                color: $anchor-color;
+            }
 		}
 	} 
 }
 
-.sub-menu {
-    margin: 0;
-    li {
-        display: block;
+.menu-item-has-children {
+    // use > to select only the immediate child
+    > a:after {
+      content: '+';
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: block;
+      font-size: 1.5em;
+      padding: 0.25em 0.5em;
+    }
+    > a.active:after {
+      content: "-";
     }
 }
+
+
+
+// once javascript is confirmed
+.js {
+    .menu, 
+    .sub-menu {
+        overflow: hidden;
+        max-height: 0;
+        &.active {
+          max-height: 55em;
+        }
+    }
+}
+
+
+// NAVIGATION: HORIZONTAL
+@include breakpoint(md) {
+    
+    // after JS loads
+    .js {
+        .menu, 
+        .sub-menu {
+            max-height: none;
+            overflow: visible;
+            background: none;
+        }
+        .sub-menu {
+            display: none;
+        }
+        li:hover .sub-menu {
+            display: block;
+        }
+    }
+    
+    .menu {
+        margin: 0 0 0 -0.25em;
+        border: 0;
+        li {
+            margin: 0 0.25em;
+            display: inline-block;
+            position: relative;
+        }
+        li a {
+            border: 0;
+        }
+    }
+    
+    .menu-item-has-children {
+        a {
+            padding-right: 2em;
+        }
+        a:after {
+            content: "▼";
+            font-size: 1em;
+            padding: 0.8em 0.5em;
+        }
+    }
+    
+    .sub-menu {
+        position: absolute;
+        top: 0;
+        left: 12em;
+        width: 12em;
+        li {
+            position: relative;
+        }
+    }
+    
+    
+    
+}
+
+
+
+
+
+
 
 
 // TOGGLE MENUS
