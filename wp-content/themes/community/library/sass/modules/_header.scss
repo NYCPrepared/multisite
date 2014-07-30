@@ -71,7 +71,7 @@
         border-top: 1px solid $base9;
         @include breakpoint(md) {border: 0; padding: 5px 0;}
     }
-    .nav {
+    .menu {
         position: absolute;
         left: 0;
         top: 60px;
@@ -79,7 +79,7 @@
         background: $white;
         @include breakpoint(md) {position: static; padding-right: 5px; background: transparent;}
     }
-	.nav li {
+	.menu li {
         line-height: 1;
         @include breakpoint(md) {display: inline-block; @include font-size($zeta);}
 		a, 
@@ -95,9 +95,9 @@
             @include breakpoint(md) {background: transparent; color: $teal;}
 		}
 	}
-	.nav li.current-menu-item, 
-	.nav li.current_page_item, 
-	.nav li.current-page-ancestor {
+	.menu li.current-menu-item, 
+	.menu li.current_page_item, 
+	.menu li.current-page-ancestor {
     	display: none;
         position: relative;
         @include breakpoint(md) {display: inline-block;}
@@ -142,7 +142,7 @@ li.current_page_item {
         float: right;
         margin: 0 5px;
     }
-    .nav li {
+    .menu li {
         font-size: 100%;
         display: block;
         margin: 0;
@@ -153,7 +153,7 @@ li.current_page_item {
             color: $white;
         }
     }
-    .nav li a {
+    .menu li a {
         display: block;
         padding: 8px 15px;
         color: $anchor-color;
@@ -174,7 +174,7 @@ li.current_page_item {
 
 // body gets .js class on load, prep nav for responsive behavior 
 
-.js .nav {
+.js .menu {
 	overflow: hidden;
 	max-height: 0;
     @include transition(max-height 0.2s ease-in-out);

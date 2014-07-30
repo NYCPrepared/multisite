@@ -5,12 +5,12 @@ NAVIGATION STYLES
 // NAVIGATION
 
 /*
-all navs have a .nav class applied via the wp_menu function; this 
-is so we can easily write one group of styles for the navs on the 
-site so our css is cleaner and more scalable.
+all nav lists have a .menu class applied via the wp_menu 
+function, so we can easily write one group of styles 
+and our css is cleaner and more scalable.
 */
  
-.nav {
+.menu {
     margin: 0;
 	li {
         margin: 0;
@@ -22,7 +22,7 @@ site so our css is cleaner and more scalable.
 	} 
 }
 
-ul.children {
+.sub-menu {
     margin: 0;
     li {
         display: block;

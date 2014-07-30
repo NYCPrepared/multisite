@@ -56,11 +56,7 @@
 				<p class="domain-title"><a href="<?php echo $blog_details->siteurl; ?>" rel="nofollow"><?php echo $blog_details->blogname; ?></a></p>
 
 
-<<<<<<< HEAD
-			<nav role="navigation" class="menu menu-global">
-=======
 			<nav role="navigation" class="nav-global">
->>>>>>> parent of f70d829... change .nav-global and -local to .menu-global and -local
 				<ul class="nav-anchors js-anchors">
                 	<li><a href="#menu-main-navigation" class="anchor-menu" title="menu"><?php echo $blog_details->blogname; ?></a></li>
                 	<li><a href="#search-global" class="anchor-search" title="search"></a></li>
@@ -94,11 +90,7 @@
 			<?php // bloginfo('description'); ?>
 
 
-<<<<<<< HEAD
-			<nav role="navigation" class="menu menu-local">
-=======
 			<nav role="navigation" class="nav-local">
->>>>>>> parent of f70d829... change .nav-global and -local to .menu-global and -local
 				<ul class="nav-anchors js-anchors">
                 	<li><a href="#menu-main-navigation-1" class="anchor-menu" title="menu">MENU</a></li>
                 	<li><a href="#search-local" class="anchor-search" title="search"></a></li>
@@ -109,8 +101,7 @@
 				<?php wp_nav_menu( array( 
 					'theme_location' => 'site-nav',
 					'container' => false,                           // remove nav container
-					'container_class' => 'menu clearfix',           // class of container (should you choose to use it)
-					'menu_class' => 'nav clearfix',                 // adding custom nav class
+					'menu_class' => 'menu clearfix',                 // adding custom nav class
 					'depth' => 0,                                   // limit the depth of the nav
 				 ) ); ?>
 			</nav>
