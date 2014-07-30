@@ -78,8 +78,8 @@ jQuery(document).ready(function($) {
     // based on codepen.io/bradfrost/pen/qwJvF by Brad Frost
     $('body').addClass('js');
     
-    var $menuLink = $('.js-anchors').find('a');
-    $menuLink.click(function(e) {
+    var $menuToggle = $('.js-anchors').find('a');
+    $menuToggle.click(function(e) {
         e.preventDefault();
 		var $link = $(this),
 			target = $link.attr('href');
@@ -88,8 +88,8 @@ jQuery(document).ready(function($) {
         return false;
     });
 
-	var $parentLink = $('.menu-item-has-children > a');
-	$parentLink.click(function(e) {
+	var $parents = $('.menu-item-has-children > a');
+	$parents.click(function(e) {
 		e.preventDefault();
 		var $link = $(this);
 		$link.toggleClass('active').next('ul').toggleClass('active');
