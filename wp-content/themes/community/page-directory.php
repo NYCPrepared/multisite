@@ -12,14 +12,51 @@
 
 				<header class="article-header">
 
-					<ul class="toggle js-menu">
-						<li data-view="masonry" class="view-grid is-on">Grid</li>
-						<li data-view="vertical" class="view-list">List</li>
-					</ul>
-
 					<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
 
 				</header>
+
+
+				<section class="entry-content" itemprop="articleBody" rel="main">
+
+				    <h4 class="subtitle">Networks</h4>
+
+					<ul class="networks-list">
+						<?php
+							$networks = get_posts('post_type=network');
+							foreach ($networks as $network) {
+								setup_postdata($post);
+								// $thumbnail = get_the_post_thumbnail($network->ID, 'thumbnail'); 
+								$content = get_the_content(' ...');
+								$permalink = get_permalink($network->ID);
+								$thumbnailurl = wp_get_attachment_image_src( get_post_thumbnail_id($network->ID), 'full' );
+								$thumbnail = $thumbnailurl['0'];
+								if(function_exists('get_excerpt_by_id')) {
+									$excerpt = get_excerpt_by_id($network->ID, '25');
+								} else {
+									$excerpt = $network->post_content;
+								}
+
+							?>
+							<li id="network-<?php echo $network->post_name; ?>">
+								<a href="<?php echo $permalink; ?>" class="item-image" style="background-image: url(' <?php echo $thumbnail; ?> ');"></a>
+								<h3 class="item-title"><a href="<?php echo $permalink; ?>"><?php echo $network->post_title; ?></a></h3>
+								<h6 class="meta item-excerpt"><?php echo $excerpt; ?></h6>
+							</li>
+							<?php } ?>
+
+        					<li class="directory-promo" id="promo-network">
+        						<a href="/registration" title="Register your network">
+            						<h3 class="post-title">Register your network</h3>
+            						<div class="promo-icons"><i class="icon"></i></div>
+        						</a>
+        					</li>
+
+
+					</ul>
+					
+				</section>
+
 
 				<section class="entry-content" itemprop="articleBody" rel="main">
 
@@ -40,6 +77,12 @@
 						<li data-sort="slug">Alphabetically</li>
 						<li data-sort="posts">Most Active</li>
 					</ul>
+
+					<ul class="toggle js-menu">
+						<li data-view="masonry" class="view-grid is-on">Grid</li>
+						<li data-view="vertical" class="view-list">List</li>
+					</ul>
+
 
 					<ul class="sites-list view-grid" id="isotope">
 						<?php
@@ -91,47 +134,15 @@
 
 						<?php } ?>
 
-					</ul>
-					
-				</section>
-
-				<section class="entry-content" itemprop="articleBody" rel="main">
-
-				    <h4 class="subtitle">Networks</h4>
-
-					<ul class="networks-list">
-						<?php
-							$networks = get_posts('post_type=network');
-							foreach ($networks as $network) {
-								setup_postdata($post);
-								// $thumbnail = get_the_post_thumbnail($network->ID, 'thumbnail'); 
-								$content = get_the_content(' ...');
-								$permalink = get_permalink($network->ID);
-								$thumbnailurl = wp_get_attachment_image_src( get_post_thumbnail_id($network->ID), 'full' );
-								$thumbnail = $thumbnailurl['0'];
-								if(function_exists('get_excerpt_by_id')) {
-									$excerpt = get_excerpt_by_id($network->ID, '25');
-								} else {
-									$excerpt = $network->post_content;
-								}
-
-							?>
-							<li id="network-<?php echo $network->post_name; ?>">
-								<a href="<?php echo $permalink; ?>" class="item-image" style="background-image: url(' <?php echo $thumbnail; ?> ');"></a>
-								<h3 class="item-title"><a href="<?php echo $permalink; ?>"><?php echo $network->post_title; ?></a></h3>
-								<h6 class="meta item-excerpt"><?php echo $excerpt; ?></h6>
-							</li>
-							<?php } ?>
+        					<li class="isomote directory-promo" id="promo-builder">
+        						<a href="/sites/get-a-website" title="Get a website">
+            						<h3 class="post-title">Get a free website</h3>
+            						<div class="promo-icons"><i class="icon"></i></div>
+        						</a>
+        					</li>
 
 					</ul>
 					
-				</section>
-
-				<section class="promo-directory">
-
-				    <h4 class="subtitle">Join the directory</h4>
-					<a class="button" href="/register" title="Register">Register</a>
-
 				</section>
 
 				<?php comments_template(); ?>

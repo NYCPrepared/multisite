@@ -155,8 +155,8 @@
 
 
 // directory promo
-#directory-promo {
-    background: $yellow;
+
+.directory-promo {
     text-align: center;
     .post-title {
         color: $white;
@@ -168,7 +168,6 @@
         white-space: nowrap;
         .icon {
             @include font-icon-base($family:"ios7-icon"); 
-            @extend %ios7-store;
             @include font-size($alpha);
             line-height: 1;
         }
@@ -182,6 +181,20 @@
         }
     }
 }
+
+#promo-directory {
+    background: $yellow; 
+    .icon {@extend %ios7-store;}
+}
+#promo-network {
+    background: $yellow; 
+    .icon {@extend %ios7-card;}
+} 
+#promo-builder {
+    background: $green; 
+    .icon {@extend %ios7-sites;}
+    a:hover {background: $teal;}
+} 
 
 
 // isotope modules -- widths and margins determined in JS
