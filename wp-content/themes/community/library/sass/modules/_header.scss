@@ -7,12 +7,12 @@
 
 .domain-title {
     display: none;
+    @include breakpoint(md) {display: block;}
     @include font-size($zeta);
     line-height: 1;
 	float: left;
     margin: 0;
     white-space: nowrap;
-    @include breakpoint(md) {display: block;}
     a, a:visited {
         display: block;
         color: $text-color;
@@ -51,11 +51,10 @@
         display: block;
         padding: 16px 0;
     }
-    @include breakpoint(md) {display: none;}
 }
 
 		
-// main nav
+// GLOBAL NAV
 		
 .nav-global {
     background: transparent;
@@ -69,71 +68,111 @@
     .search-form {
         float: right;
         border-top: 1px solid $base9;
-        @include breakpoint(md) {border: 0; padding: 5px 0;}
     }
-    .nav {
+    
+    .menu {
         position: absolute;
+        z-index: $layer4;
         left: 0;
         top: 60px;
-        z-index: $layer4;
         background: $white;
-        @include breakpoint(md) {position: static; padding-right: 5px; background: transparent;}
-    }
-	.nav li {
-        line-height: 1;
-        @include breakpoint(md) {display: inline-block; @include font-size($zeta);}
 		a, 
 		a:visited {
 		    padding: 10px 20px;
             color: $text-color;
-            @include breakpoint(md) {padding: 20px 10px;}
 		}
         a:focus,
 		a:hover {
     		background: $text-color;
     		color: $white;
-            @include breakpoint(md) {background: transparent; color: $teal;}
 		}
-	}
-	.nav li.current-menu-item, 
-	.nav li.current_page_item, 
-	.nav li.current-page-ancestor {
-    	display: none;
-        position: relative;
-        @include breakpoint(md) {display: inline-block;}
-        &:after {
-            content: '';
-            height: 0;
-            width: 0;
-            position: absolute;
-            top: auto;
-            left: 50%;
-            bottom: 0;
-            z-index: $layer1;
-            border: solid transparent;
-            border-bottom-color: $base9;
-            border-width: 10px;
-            margin-left: -10px;
-        }
-        a {
-            color: $anchor-color;
-        }
-	}
-}
-
-
-
-// disable hover for current page but not its ancestors
-
-li.current-menu-item,
-li.current_page_item {
-    a:hover {
-        color: $text-color;
-        cursor: default;
+    	li.current-menu-item, 
+    	li.current_page_item, 
+    	li.current-page-ancestor {
+        	display: none;
+    	}
     }
 }
 
-// site nav
+// GLOBAL NAV -- BREAKPOINT 1
+
+@include breakpoint(md) {
+
+    .nav-anchors {
+        display: none;
+    }
+
+    .nav-global {
+        .search-form {
+            border: 0; 
+            padding: 5px 0;
+        }    
+        .menu {
+            position: static; 
+            padding-right: 5px; 
+            background: transparent;
+            li {
+                display: inline-block; 
+                @include font-size($zeta);
+            }
+            a {
+                padding: 20px 10px;
+            }
+            a:focus,
+            a:hover {
+                background: transparent; 
+                color: $teal;
+            }
+        	li.current-menu-item, 
+        	li.current_page_item, 
+        	li.current-page-ancestor {
+        	    display: inline-block;
+                position: relative;
+        	    // triangle 'on' state
+                &:after {
+                    position: absolute;
+                    content: '';
+                    height: 0;
+                    width: 0;
+                    top: auto;
+                    left: 50%;
+                    bottom: 0;
+                    z-index: $layer1;
+                    border: solid transparent;
+                    border-bottom-color: $base9;
+                    border-width: 10px;
+                    margin-left: -10px;
+                }
+                a {
+                    color: $anchor-color;
+                }
+        	}
+        }
+        .sub-menu {
+            left: -10px;
+            a {
+                padding: 10px 20px;
+            }
+            a:first-child {
+                border-top: 0;
+            }
+        }
+    }    
+    
+    // disable hover for current page but not its ancestors
+    li.current-menu-item,
+    li.current_page_item {
+        a:hover {
+            color: $text-color;
+            cursor: default;
+        }
+    }
+
+}
+
+
+
+// LOCAL NAV
 
 .nav-local {
     background: $base3;
@@ -142,50 +181,52 @@ li.current_page_item {
         float: right;
         margin: 0 5px;
     }
-    .nav li {
+    #searchform #searchsubmit {
+        background: $anchor-color;
+        border-color: $anchor-color;
+    }
+    .nav-anchors a {
+        padding: 11px 0;
+    }
+    .menu li {
         font-size: 100%;
-        display: block;
-        margin: 0;
-        margin-right: -2px; // remove space caused by inline-block
-        @include breakpoint(md) {display: inline-block;}
+        text-transform: uppercase; 
+        letter-spacing: $tracking;
+        a {
+            padding: 11px 15px;
+            color: $anchor-color;
+            &:hover {
+                color: $white;
+                background: $anchor-color;
+            }
+        }
         &.current-menu-item a {
             background: $anchor-color;
             color: $white;
         }
     }
-    .nav li a {
-        display: block;
-        padding: 8px 15px;
-        color: $anchor-color;
-        text-transform: uppercase; 
-        letter-spacing: $tracking;
-        @include breakpoint(md) {color: $white;}
-        &:hover {
-            color: $text-color;
-            @include breakpoint(md) {background: $anchor-color; color: $white;}
+}
+
+
+// LOCAL NAV -- BREAKPOINT 1
+
+@include breakpoint(md) {
+
+    .nav-local {
+        .menu {
+            li a {
+                color: $white;
+                padding: 14px 15px;
+            }    
+        }
+        .sub-menu {
+            li a {
+                color: $anchor-color;
+            }
         }
     }
-    #searchform #searchsubmit {
-        background: $anchor-color;
-        border-color: $anchor-color;
-    }
+
 }
-
-
-// body gets .js class on load, prep nav for responsive behavior 
-
-.js .nav {
-	overflow: hidden;
-	max-height: 0;
-    @include transition(max-height 0.2s ease-in-out);
-    &.active {
-    	max-height: 160px;
-    	overflow: visible;
-    	background: white;
-    }
-    @include breakpoint(md) {max-height: none;}
-}
-
 
 
 
