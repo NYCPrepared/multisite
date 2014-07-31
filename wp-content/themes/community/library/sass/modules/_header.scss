@@ -72,13 +72,10 @@
     
     .menu {
         position: absolute;
+        z-index: $layer4;
         left: 0;
         top: 60px;
-        z-index: $layer4;
         background: $white;
-    }
-	.menu li {
-        line-height: 1;
 		a, 
 		a:visited {
 		    padding: 10px 20px;
@@ -89,30 +86,12 @@
     		background: $text-color;
     		color: $white;
 		}
-	}
-	.menu li.current-menu-item, 
-	.menu li.current_page_item, 
-	.menu li.current-page-ancestor {
-    	display: none;
-        position: relative;
-        &:after {
-            content: '';
-            height: 0;
-            width: 0;
-            position: absolute;
-            top: auto;
-            left: 50%;
-            bottom: 0;
-            z-index: $layer1;
-            border: solid transparent;
-            border-bottom-color: $base9;
-            border-width: 10px;
-            margin-left: -10px;
-        }
-        a {
-            color: $anchor-color;
-        }
-	}
+    	li.current-menu-item, 
+    	li.current_page_item, 
+    	li.current-page-ancestor {
+        	display: none;
+    	}
+    }
 }
 
 // GLOBAL NAV -- BREAKPOINT 1
@@ -136,7 +115,7 @@
                 display: inline-block; 
                 @include font-size($zeta);
             }
-            a, a:visited {
+            a {
                 padding: 20px 10px;
             }
             a:focus,
@@ -148,7 +127,35 @@
         	li.current_page_item, 
         	li.current-page-ancestor {
         	    display: inline-block;
-            }    
+                position: relative;
+        	    // triangle 'on' state
+                &:after {
+                    position: absolute;
+                    content: '';
+                    height: 0;
+                    width: 0;
+                    top: auto;
+                    left: 50%;
+                    bottom: 0;
+                    z-index: $layer1;
+                    border: solid transparent;
+                    border-bottom-color: $base9;
+                    border-width: 10px;
+                    margin-left: -10px;
+                }
+                a {
+                    color: $anchor-color;
+                }
+        	}
+        }
+        .sub-menu {
+            left: -10px;
+            a {
+                padding: 10px 20px;
+            }
+            a:first-child {
+                border-top: 0;
+            }
         }
     }    
     
@@ -178,18 +185,19 @@
         background: $anchor-color;
         border-color: $anchor-color;
     }
+    .nav-anchors a {
+        padding: 11px 0;
+    }
     .menu li {
         font-size: 100%;
-        display: block;
-        margin: 0;
+        text-transform: uppercase; 
+        letter-spacing: $tracking;
         a {
-            display: block;
-            padding: 8px 15px;
+            padding: 11px 15px;
             color: $anchor-color;
-            text-transform: uppercase; 
-            letter-spacing: $tracking;
             &:hover {
-                color: $text-color;
+                color: $white;
+                background: $anchor-color;
             }
         }
         &.current-menu-item a {
@@ -206,17 +214,15 @@
 
     .nav-local {
         .menu {
-            li {
-                display: inline-block;
-                margin-right: -2px; // remove space caused by inline-block
-                a {
-                    color: $white;
-                }
-                a:hover {
-                    background: $anchor-color; 
-                    color: $white;
-                }
+            li a {
+                color: $white;
+                padding: 14px 15px;
             }    
+        }
+        .sub-menu {
+            li a {
+                color: $anchor-color;
+            }
         }
     }
 
