@@ -225,7 +225,7 @@
                     if (++$counter == 7) break;
                 } ?>
 
-					<li id="directory-promo">
+					<li class="directory-promo" id="promo-directory">
 						<a href="/directory" title="Directory">
     						<h3 class="post-title">Join the community</h3>
     						<div class="promo-icons"><i class="icon"></i><i class="icon"></i><i class="icon"></i><i class="icon"></i></div>
