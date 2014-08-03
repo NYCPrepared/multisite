@@ -18,33 +18,33 @@ SIDEBARS & ASIDES
 .widget {
 	padding: 20px;
 	margin: 0 0 20px;
-    background: $base5;
-    color: $white;
+  background: $base5;
+  color: $white;
 	a, a:visited {
 		color: $white;
 		font-weight: 300;
 		display: block;
-        padding: 0.5em 20px 0.5em 0;
+    padding: 0.5em 20px 0.5em 0;
 		&:hover {
-    		color: $white;
-    		padding-left: 15px;
-    		padding-right: 5px;
-            background: $text-color;
-            background: rgba(0,0,0,.1);
+  		color: $white;
+  		padding-left: 15px;
+  		padding-right: 5px;
+      background: $text-color;
+      background: rgba(0,0,0,.1);
 		}
 	}
 	ul {
-    	border-top: 1px solid $text-color;
-    	border-top: 1px solid rgba(0,0,0,.1);
-    	margin: 0;
+  	border-top: 1px solid $text-color;
+  	border-top: 1px solid rgba(0,0,0,.1);
+  	margin: 0;
 	}
 	li {
-    	border-bottom: 1px solid $text-color;
-    	border-bottom: 1px solid rgba(0,0,0,.1);
-        padding: 0;
-        margin: 0;
-        line-height: 1.3;
-        display: block;
+  	border-bottom: 1px solid $text-color;
+  	border-bottom: 1px solid rgba(0,0,0,.1);
+    padding: 0;
+    margin: 0;
+    line-height: 1.3;
+    display: block !important;
 		
 		/* deep nesting */
 		ul {
@@ -62,17 +62,17 @@ SIDEBARS & ASIDES
 		}
 	}
 	form {
-    	background: transparent;
-    	padding: 20px 0;
+  	background: transparent;
+  	padding: 20px 0;
 	}
 	label {
-        margin-bottom: 0;
-    }
-    input[type="text"], 
-    input[type="password"], 
-    input[type='email'] {
-        padding: 2px 5px;
-    }
+    margin-bottom: 0;
+  }
+  input[type="text"], 
+  input[type="password"], 
+  input[type='email'] {
+      padding: 2px 5px;
+  }
 }
 
 
@@ -88,12 +88,12 @@ SIDEBARS & ASIDES
 
 .widget_recent_entries,
 .widget_em_widget {
+  li {
+    @include font-size($delta);
     li {
-        @include font-size($delta);
-        li {
-    		@include font-size($epsilon);
-        }
+  		@include font-size($epsilon);
     }
+  }
 }
 
 // ARCHIVE, META

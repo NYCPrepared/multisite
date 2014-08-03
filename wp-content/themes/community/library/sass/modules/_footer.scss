@@ -18,8 +18,8 @@
 // footer widgets
 
 .footer .widget {
-    background: $white;
-    margin-bottom: 30px;   
+  background: $white;
+  margin-bottom: 30px;   
 	@include breakpoint(sm) {@include span-columns(4);}
 	ul {
     	margin-bottom: 0;
@@ -29,6 +29,7 @@
     	color: $text-color;
     	padding: 0;
     	margin: 0;
+    	display: block !important;
 	}
 	a, a:visited {
     	color: $teal;
