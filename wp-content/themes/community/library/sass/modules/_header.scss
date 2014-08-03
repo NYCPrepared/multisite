@@ -125,7 +125,6 @@
         	li.current-menu-item, 
         	li.current_page_item, 
         	li.current-page-ancestor {
-        	    display: inline-block;
                 position: relative;
         	    // triangle 'on' state
                 &:after {
