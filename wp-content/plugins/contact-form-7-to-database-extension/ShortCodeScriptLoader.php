@@ -40,10 +40,10 @@ abstract class ShortCodeScriptLoader extends ShortCodeLoader {
         add_action('wp_footer', array($this, 'addScriptWrapper'));
     }
 
-    public function handleShortcodeWrapper($atts) {
+    public function handleShortcodeWrapper($atts, $content = null) {
         // Flag that we need to add the script
         $this->doAddScript = true;
-        return $this->handleShortcode($atts);
+        return $this->handleShortcode($atts, $content);
     }
 
     // Defined in super-class:

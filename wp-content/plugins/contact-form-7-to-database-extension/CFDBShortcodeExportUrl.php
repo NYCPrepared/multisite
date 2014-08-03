@@ -24,10 +24,11 @@ require_once('ShortCodeLoader.php');
 class CFDBShortcodeExportUrl extends ShortCodeLoader {
 
     /**
-     * @param  $atts array of short code attributes
-     * @return string JSON. See ExportToJson.php
+     * @param $atts array of short code attributes
+     * @param $content string not used
+     * @return string export link
      */
-    public function handleShortcode($atts) {
+    public function handleShortcode($atts, $content = null) {
         $params = array();
         $params[] = admin_url('admin-ajax.php');
         $params[] = '?action=cfdb-export';

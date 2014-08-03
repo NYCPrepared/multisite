@@ -19,97 +19,74 @@
     If not, see <http://www.gnu.org/licenses/>.
 */
 
-class CFDBQueryResultIterator {
+require_once('CFDBAbstractQueryResultsIterator.php');
+
+class CFDBQueryResultIterator extends CFDBAbstractQueryResultsIterator {
 
     /**
-     * @var resource
+     * @var resource|mysqli_result
      */
     var $results;
 
     /**
-     * @var array
+     * @var boolean
      */
-    var $row;
-
-    /**
-     * @var string
-     */
-    var $submitTimeKeyName;
-
-    /**
-     * @var int
-     */
-    var $limitEnd;
-
-    /**
-     * @var int
-     */
-    var $idx;
-
-    /**
-     * @var int
-     */
-    var $limitStart;
-
-    /**
-     * @var array
-     */
-    var $columns;
-
-    /**
-     * @var array
-     */
-    var $displayColumns = array();
-
-    /**
-     * @var CF7DBPlugin
-     */
-    var $plugin;
-
-    /**
-     * @var CF7DBEvalutator|CF7FilterParser|CF7SearchEvaluator
-     */
-    var $rowFilter;
-
-    /**
-     * @var array
-     */
-//    var $fileColumns;
-
-    /**
-     * @var bool
-     */
-    var $onFirstRow = false;
+    var $useMysqli;
 
 
     /**
-     * @param  $sql string
-     * @param  $rowFilter CF7DBEvalutator|CF7FilterParser|CF7SearchEvaluator
-     * @param  $queryOptions array
+     * If you do not iterate over all the rows returned, be sure to call this function
+     * on all remaining rows to free resources.
+     * @return void
      */
-    public function query(&$sql, $rowFilter, $queryOptions = array()) {
-        $this->rowFilter = $rowFilter;
-        $this->results = null;
-        $this->row = null;
-        $this->plugin = new CF7DBPlugin();
-        $this->submitTimeKeyName = isset($queryOptions['submitTimeKeyName']) ? $queryOptions['submitTimeKeyName'] : null;
-        if (isset($queryOptions['limit'])) {
-            $limitVals = explode(',', $queryOptions['limit']);
-            if (isset($limitVals[1])) {
-                $this->limitStart = trim($limitVals[0]);
-                $this->limitEnd = $this->limitStart + trim($limitVals[1]);
+    public function freeResult() {
+        if ($this->results) {
+            if ($this->useMysqli) {
+                mysqli_free_result($this->results);
+            } else {
+                mysql_free_result($this->results);
             }
-            else if (isset($limitVals[0])) {
-                $this->limitEnd = trim($limitVals[0]);
-            }
+            $this->results = null;
         }
-        $this->idx = -1;
+    }
+    /**
+     * @return array associative
+     */
+    public function fetchRow() {
+        if ($this->useMysqli) {
+            return mysqli_fetch_assoc($this->results);
+        } else {
+            return mysql_fetch_assoc($this->results);
+        }
+    }
 
+    public function hasResults() {
+        return !empty($this->results);
+    }
+
+    /**
+     * @param $sql
+     * @param $queryOptions
+     * @return void
+     */
+    public function queryDataSource(&$sql, $queryOptions) {
         // For performance reasons, we bypass $wpdb so we can call mysql_unbuffered_query
-        $con = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD, true);
-        if (!$con) {
-            trigger_error("MySQL Connection failed: " . mysql_error(), E_USER_NOTICE);
-            return;
+
+        $this->useMysqli = $this->shouldUseMySqli();
+
+        $con = null;
+        if ($this->useMysqli) {
+            $con = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+            if (!$con) {
+                trigger_error("MySQL Connection failed: " . mysqli_error($con), E_USER_NOTICE);
+                return;
+            }
+        } else {
+            $con = mysql_connect(DB_HOST, DB_USER, DB_PASSWORD, true);
+            if (!$con) {
+                trigger_error("MySQL Connection failed: " . mysql_error($con), E_USER_NOTICE);
+                return;
+            }
         }
 
         // Target charset is in wp-config.php DB_CHARSET
@@ -124,124 +101,74 @@ class CFDBQueryResultIterator {
                         }
                     }
                     $wpdb->set_charset($con, DB_CHARSET, $collate);
-                }
-                else {
+                } else {
                     $setCharset = 'SET NAMES \'' . DB_CHARSET . '\'';
                     if (defined('DB_COLLATE')) {
                         if (DB_COLLATE != '') {
                             $setCharset = $setCharset . ' COLLATE \'' . DB_COLLATE . '\'';
                         }
                     }
-                    mysql_query($setCharset, $con);
+                    if ($this->useMysqli) {
+                        mysqli_query($con, $setCharset);
+                    } else {
+                        mysql_query($setCharset, $con);
+                    }
                 }
             }
         }
 
-        if (!mysql_select_db(DB_NAME, $con)) {
-            trigger_error('MySQL DB Select failed: ' . mysql_error(), E_USER_NOTICE);
-            return;
+        if (!$this->useMysqli) {
+            if (!mysql_select_db(DB_NAME, $con)) {
+                trigger_error('MySQL DB Select failed: ' . mysql_error(), E_USER_NOTICE);
+                return;
+            }
         }
 
         if (isset($queryOptions['unbuffered']) && $queryOptions['unbuffered'] === 'true') {
             // FYI: using mysql_unbuffered_query disrupted nested shortcodes if the nested one does a query also
-            $this->results = mysql_unbuffered_query($sql, $con);
-            if (!$this->results) {
-                trigger_error('mysql_unbuffered_query failed: ' . mysql_error(), E_USER_NOTICE);
-                return;
-            }
-        }
-        else {
-            $this->results = @mysql_query($sql, $con);
-            if (!$this->results) {
-                trigger_error('mysql_query failed. Try adding <code>unbuffered="true"</code> to your short code. <br/>' . mysql_error(), E_USER_WARNING);
-                return;
-            }
-        }
-
-
-        $this->columns = array();
-        $this->row = mysql_fetch_assoc($this->results);
-        if ($this->row) {
-            foreach (array_keys($this->row) as $aCol) {
-                // hide this metadata column
-                if ('fields_with_file' != $aCol) {
-                    $this->columns[] = $aCol;
+            if ($this->useMysqli) {
+                $this->results = mysqli_query($con, $sql, MYSQLI_USE_RESULT);
+                if (!$this->results) {
+                    trigger_error('mysqli_query failed: ' . mysql_error(), E_USER_NOTICE);
+                    return;
+                }
+            } else {
+                $this->results = mysql_unbuffered_query($sql, $con);
+                if (!$this->results) {
+                    trigger_error('mysql_unbuffered_query failed: ' . mysql_error(), E_USER_NOTICE);
+                    return;
                 }
             }
-            $this->onFirstRow = true;
-        }
-        else {
-            $this->onFirstRow = false;
-        }
-    }
-
-    /**
-     * Fetch next row into variable
-     * @return bool if next row exists
-     */
-    public function nextRow() {
-        if (!$this->results) {
-            return false;
-        }
-
-        while (true) {
-            if (!$this->onFirstRow) {
-                $this->row = mysql_fetch_assoc($this->results);
-            }
-            $this->onFirstRow = false;
-
-            if (!$this->row) {
-                mysql_free_result($this->results);
-                $this->results = null;
-                return false;
-            }
-
-            // Format the date
-            $submitTime = $this->row['Submitted'];
-            $this->row['submit_time'] = $submitTime;
-            $this->row['Submitted'] = $this->plugin->formatDate($submitTime);
-
-            // Determine if row is filtered
-            if ($this->rowFilter) {
-                $match = $this->rowFilter->evaluate($this->row);
-                if (!$match) {
-                    continue;
+        } else {
+            if ($this->useMysqli) {
+                $this->results = @mysqli_query($con, $sql);
+                if (!$this->results) {
+                    trigger_error('mysqli_query failed. Try adding <code>unbuffered="true"</code> to your short code. <br/>' . mysql_error(), E_USER_WARNING);
+                    return;
+                }
+            } else {
+                $this->results = @mysql_query($sql, $con);
+                if (!$this->results) {
+                    trigger_error('mysql_query failed. Try adding <code>unbuffered="true"</code> to your short code. <br/>' . mysql_error(), E_USER_WARNING);
+                    return;
                 }
             }
-
-            $this->idx += 1;
-            if ($this->limitStart && $this->idx < $this->limitStart) {
-                continue;
-            }
-            if ($this->limitEnd && $this->idx >= $this->limitEnd) {
-                while (mysql_fetch_array($this->results)) ;
-                mysql_free_result($this->results);
-                $this->results = null;
-                $this->row = null;
-                return false;
-            }
-
-            // Keep the unformatted submitTime if needed
-            if ($this->submitTimeKeyName) {
-                $this->row[$this->submitTimeKeyName] = $submitTime;
-            }
-            break;
-        }
-        if (!$this->row) {
-            mysql_free_result($this->results);
-            $this->results = null;
-        }
-        return $this->row ? true : false;
-    }
-
-    /**
-     * If you do not iterate over all the rows returned, be sure to call this function
-     * when done with the result set to free it.
-     * @return void
-     */
-    public function freeResults() {
-        if ($this->results) {
-            mysql_free_result($this->results);
         }
     }
+
+    public function shouldUseMySqli() {
+        // This code taken from wp-db.php and adapted
+        $use_mysqli = false;
+        if ( function_exists( 'mysqli_connect' ) ) {
+            if ( defined( 'WP_USE_EXT_MYSQL' ) ) {
+                $use_mysqli = ! WP_USE_EXT_MYSQL;
+            } elseif ( version_compare( phpversion(), '5.5', '>=' ) || ! function_exists( 'mysql_connect' ) ) {
+                $use_mysqli = true;
+            } elseif ( false !== strpos( $GLOBALS['wp_version'], '-' ) ) {
+                $use_mysqli = true;
+            }
+        }
+        return $use_mysqli;
+    }
+
 }

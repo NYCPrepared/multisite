@@ -38,7 +38,7 @@ class CFDBViewImportCsv extends CFDBView
 
         $forms = $plugin->getForms();
         $importUrl = admin_url('admin-ajax.php') . '?action=cfdb-importcsv';
-
+        $renameUrl = admin_url('admin-ajax.php') . '?action=cfdb-renameform';
 
         ?>
         <h2><?php _e('Import CSV File into Form', 'contact-form-7-to-database-extension'); ?></h2>
@@ -80,6 +80,19 @@ class CFDBViewImportCsv extends CFDBView
                     jQuery('#newformname').val(val);
                 });
         </script>
+        <form enctype="multipart/form-data" action="<?php echo $renameUrl; ?>" method="post">
+            <h2><?php _e('Rename Form', 'contact-form-7-to-database-extension'); ?></h2>
+            <select name="form" id="form">
+                <option value=""></option>
+                <?php
+                foreach ($forms as $formName) {
+                    echo "<option value=\"$formName\">$formName</option>";
+                }
+                ?>
+            </select>
+            <td><input type="text" name="newformname" id="renameformname" size="10"/></td>
+            <input type="submit" name="<?php _e('Rename', 'contact-form-7-to-database-extension'); ?>" id="renamesubmit" value="rename">
+        </form>
 
         <h2><?php _e('Backup Form to CSV File', 'contact-form-7-to-database-extension'); ?></h2>
         <ul>

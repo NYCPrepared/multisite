@@ -1,4 +1,5 @@
 <?php
+
 /*
     "Contact Form to Database" Copyright (C) 2013 Michael Simpson  (email : michael.d.simpson@gmail.com)
 
@@ -19,27 +20,64 @@
     If not, see <http://www.gnu.org/licenses/>.
 */
 
-include_once('CF7DBEvalutator.php');
+class CFDBFunctionEvaluator {
 
-class CFDBFunctionEvaluator implements CF7DBEvalutator {
+    /**
+     * @var CFDBValueConverter callback that can be used to pre-process values in the filter string
+     * passed into parse($filterString).
+     * For example, a function might take the value '$user_email' and replace it with an actual email address
+     * just prior to checking it against input data in call evaluate($data)
+     */
+    var $compValuePreprocessor;
 
-    var $functionName;
-
-    public function setFunction($functionName) {
-        $this->functionName = $functionName;
+    /**
+     * @param $compValuePreprocessor CFDBValueConverter
+     */
+    public function setCompValuePreprocessor($compValuePreprocessor) {
+        $this->compValuePreprocessor = $compValuePreprocessor;
     }
 
 
     /**
-     * Evaluate expression against input data. This is intended to mimic the search field on DataTables
-     * @param  $data array [ key => value ]
-     * @return boolean result of evaluating $data against expression
+     * @param $functionArray array ['function name', 'param1', 'param2', ...]
+     * @param $data array [name => value]
+     * @return mixed
      */
-    public function evaluate(&$data) {
-        if ($this->functionName) {
-            return call_user_func_array($this->functionName, array(&$data));
+    public function evaluateFunction($functionArray, &$data) {
+        $functionName = array_shift($functionArray);
+        for ($i = 0; $i < count($functionArray); $i++) {
+            $functionArray[$i] = $this->preprocessValues($functionArray[$i]);
+
+            // See if the parameter is a field name that can be dereferenced.
+            $functionArray[$i] = isset($data[$functionArray[$i]]) ?
+                    $data[$functionArray[$i]] :
+                    $functionArray[$i];
+
+            // Dereference PHP Constants
+            if (defined($functionArray[$i])) {
+                $functionArray[$i] = constant($functionArray[$i]);
+            }
         }
-        return true;
+        if (empty($functionArray)) {
+            // If function has no parameters, pass in the whole form entry associative array
+            $functionArray[] = $data;
+        }
+        return call_user_func_array($functionName, $functionArray);
+    }
+
+    /**
+     * @param $text string
+     * @return mixed
+     */
+    public function preprocessValues($text) {
+        if ($this->compValuePreprocessor) {
+            try {
+                $text = $this->compValuePreprocessor->convert($text);
+            } catch (Exception $ex) {
+                trigger_error($ex, E_USER_NOTICE);
+            }
+        }
+        return $text;
     }
 
 }

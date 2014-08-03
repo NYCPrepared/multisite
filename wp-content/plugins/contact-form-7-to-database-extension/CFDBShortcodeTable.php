@@ -41,11 +41,13 @@ class CFDBShortcodeTable extends ShortCodeLoader {
      * [cfdb-table form="your-form" filter="field1=value1&&field2!=value2"] (Logical AND the filters using '&&')
      * [cfdb-table form="your-form" filter="field1=value1||field2!=value2"] (Logical OR the filters using '||')
      * [cfdb-table form="your-form" filter="field1=value1&&field2!=value2||field3=value3&&field4=value4"] (Mixed &&, ||)
-     * @param  $atts array of short code attributes
-     * @return HTML output of shortcode
+     * @param $atts array of short code attributes
+     * @param $content string inner content of short code
+     * @return string HTML output of shortcode
      */
-    public function handleShortcode($atts) {
+    public function handleShortcode($atts, $content = null) {
         if (isset($atts['form'])) {
+            $atts['content'] = $content;
             $atts['canDelete'] = false;
             $atts['fromshortcode'] = true;
             require_once('ExportToHtmlTable.php');

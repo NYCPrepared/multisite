@@ -1,6 +1,6 @@
 <?php
 /*
-    "Contact Form to Database" Copyright (C) 2011-2012 Michael Simpson  (email : michael.d.simpson@gmail.com)
+    "Contact Form to Database" Copyright (C) 2011-2014 Michael Simpson  (email : michael.d.simpson@gmail.com)
 
     This file is part of Contact Form to Database.
 
@@ -19,6 +19,8 @@
     If not, see <http://www.gnu.org/licenses/>.
 */
 
+require_once('CFDBDeobfuscate.php');
+
 class CF7DBPluginExporter {
 
     static function doExportFromPost() {
@@ -26,35 +28,32 @@ class CF7DBPluginExporter {
         // Consolidate GET and POST parameters. Allow GET to override POST.
         $params = array_merge($_POST, $_GET);
 
+        if (array_key_exists('content', $params)) {
+            $params['content'] = stripslashes($params['content']);
+        }
+
         //print_r($params);
 
         // Assumes coming from CF7DBPlugin::whatsInTheDBPage()
         $key = '3fde789a'; //substr($_COOKIE['PHPSESSID'], - 5); // session_id() doesn't work
         if (isset($params['guser'])) {
-            $params['guser'] = mcrypt_decrypt(MCRYPT_3DES, $key, CF7DBPluginExporter::hexToStr($params['guser']), 'ecb');
+            $params['guser'] = CFDBDeobfuscate::deobfuscateHexString($params['guser'], $key);
         }
         if (isset($params['gpwd'])) {
-            $params['gpwd'] = mcrypt_decrypt(MCRYPT_3DES, $key, CF7DBPluginExporter::hexToStr($params['gpwd']), 'ecb');
+            $params['gpwd'] = CFDBDeobfuscate::deobfuscateHexString($params['gpwd'], $key);
         }
 
         if (!isset($params['enc'])) {
             $params['enc'] = 'CSVUTF8';
+        }
+        if (!isset($params['form'])) {
+            $params['form'] = '';
         }
         CF7DBPluginExporter::export(
             $params['form'],
             $params['enc'],
             $params);
     }
-
-// Taken from http://ditio.net/2008/11/04/php-string-to-hex-and-hex-to-string-functions/
-    static function hexToStr($hex) {
-        $string = '';
-        for ($i = 0; $i < strlen($hex) - 1; $i += 2) {
-            $string .= chr(hexdec($hex[$i] . $hex[$i + 1]));
-        }
-        return $string;
-    }
-
 
     static function export($formName, $encoding, $options) {
 
@@ -150,6 +149,11 @@ class CF7DBPluginExporter {
             case 'RSS':
                 require_once('ExportToRSS.php');
                 $exporter = new ExportToRSS();
+                $exporter->export($formName, $options);
+                break;
+            case 'ENTRY':
+                require_once('ExportEntry.php');
+                $exporter = new ExportEntry();
                 $exporter->export($formName, $options);
                 break;
             case 'CSVUTF8':

@@ -23,10 +23,11 @@ require_once('CFDBShortcodeValue.php');
 
 class CFDBShortcodeCount extends CFDBShortcodeValue {
 
-    public function handleShortcode($atts) {
+    public function handleShortcode($atts, $content = null) {
+        $atts['content'] = $content;
         $atts['function'] = 'count';
         unset($atts['show']);
         unset($atts['hide']);
-        return parent::handleShortcode($atts);
+        return parent::handleShortcode($atts, $content);
     }
 }

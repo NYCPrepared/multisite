@@ -99,7 +99,7 @@ class ExportToRSS extends ExportBase implements CFDBExport {
                 <title><?php echo $this->dataIterator->row[$titleColunm]; ?></title>
                 <description><?php
                     $rowUrl = htmlspecialchars(str_replace('{submit_time}', $this->dataIterator->row['submit_time'], $htmlSingleRow));
-                    foreach ($this->dataIterator->displayColumns as $aCol) {
+                    foreach ($this->dataIterator->getDisplayColumns() as $aCol) {
                         if ($aCol != 'Submitted') {
                             $cell = htmlspecialchars($this->dataIterator->row[$aCol], null, 'UTF-8');
                             echo "$aCol=$cell \n";

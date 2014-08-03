@@ -2,9 +2,9 @@
 /*
    Plugin Name: Contact Form DB
    Plugin URI: http://wordpress.org/extend/plugins/contact-form-7-to-database-extension/
-   Version: 2.6.3
+   Version: 2.8.6
    Author: Michael Simpson
-   Description: Save form submissions to the database from <a href="http://wordpress.org/extend/plugins/contact-form-7/">Contact Form 7</a>, <a href="http://wordpress.org/extend/plugins/si-contact-form/">Fast Secure Contact Form</a> and <a href="http://wordpress.org/extend/plugins/jetpack/">JetPack Contact Form</a>. Includes exports and short codes. | <a href="admin.php?page=CF7DBPluginSubmissions">Data</a> | <a href="admin.php?page=CF7DBPluginShortCodeBuilder">Short Codes</a> | <a href="admin.php?page=CF7DBPluginSettings">Settings</a> | <a href="http://cfdbplugin.com/">Reference</a>
+   Description: Save form submissions to the database from <a href="http://wordpress.org/extend/plugins/contact-form-7/">Contact Form 7</a>, <a href="http://wordpress.org/extend/plugins/si-contact-form/">Fast Secure Contact Form</a>, <a href="http://wordpress.org/extend/plugins/jetpack/">JetPack Contact Form</a> and <a href="http://www.gravityforms.com">Gravity Forms</a>. Includes exports and short codes. | <a href="admin.php?page=CF7DBPluginSubmissions">Data</a> | <a href="admin.php?page=CF7DBPluginShortCodeBuilder">Short Codes</a> | <a href="admin.php?page=CF7DBPluginSettings">Settings</a> | <a href="http://cfdbplugin.com/">Reference</a>
    Text Domain: contact-form-7-to-database-extension
    License: GPL3
   */
@@ -13,9 +13,7 @@
 $CF7DBPlugin_minimalRequiredPhpVersion = '5.0';
 
 /**
- * Check the PHP version and give a useful error message if the user's version is less than the required version
- * @return boolean true if version check passed. If false, triggers an error which WP will handle, by displaying
- * an error message on the Admin page
+ * echo error message indicating wrong minimum PHP version required
  */
 function CF7DBPlugin_noticePhpVersionWrong() {
     global $CF7DBPlugin_minimalRequiredPhpVersion;
@@ -26,7 +24,11 @@ function CF7DBPlugin_noticePhpVersionWrong() {
          '</div>';
 }
 
-
+/**
+ * Check the PHP version and give a useful error message if the user's version is less than the required version
+ * @return boolean true if version check passed. If false, triggers an error which WP will handle, by displaying
+ * an error message on the Admin page
+ */
 function CF7DBPlugin_PhpVersionCheck() {
     global $CF7DBPlugin_minimalRequiredPhpVersion;
     if (version_compare(phpversion(), $CF7DBPlugin_minimalRequiredPhpVersion) < 0) {

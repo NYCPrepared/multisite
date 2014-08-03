@@ -112,7 +112,6 @@
             padding-right: 5px; 
             background: transparent;
             li {
-                display: inline-block; 
                 @include font-size($zeta);
             }
             a {
