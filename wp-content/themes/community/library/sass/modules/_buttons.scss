@@ -1,12 +1,15 @@
 
 // LINKS
 
-a, 
-a:visited {
+a {
 	color: $anchor-color;
     text-decoration: none; 
     cursor: pointer;     
     @include transition(all 0.25s ease);
+    
+    &:visited {
+        color: inherit !important;
+    }
     
 	&:hover, 
 	&:focus {
