@@ -19,14 +19,17 @@
     If not, see <http://www.gnu.org/licenses/>.
 */
 
-include_once('CF7DBEvalutator.php');
+include_once('CFDBEvaluator.php');
 
-class CFDBCompositeEvaluator implements CF7DBEvalutator {
+class CFDBCompositeEvaluator implements CFDBEvaluator {
 
+    /**
+     * @var CFDBEvaluator[]
+     */
     var $evaluators;
 
     /**
-     * @param $evaluators array of CF7DBEvalutator
+     * @param $evaluators CFDBEvaluator[]
      */
     public function setEvaluators($evaluators) {
         $this->evaluators = $evaluators;

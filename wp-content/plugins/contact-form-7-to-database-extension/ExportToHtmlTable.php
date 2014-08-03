@@ -21,6 +21,7 @@
 
 require_once('ExportBase.php');
 require_once('CFDBExport.php');
+require_once('CFDBShortCodeContentParser.php');
 
 class ExportToHtmlTable extends ExportBase implements CFDBExport {
 
@@ -39,7 +40,8 @@ class ExportToHtmlTable extends ExportBase implements CFDBExport {
      * Echo a table of submitted form data
      * @param string $formName
      * @param array $options
-     * @return void
+     * @return void|string returns String when called from a short code,
+     * otherwise echo's output and returns void
      */
     public function export($formName, $options = null) {
         $this->setOptions($options);
@@ -113,6 +115,20 @@ class ExportToHtmlTable extends ExportBase implements CFDBExport {
         // Query DB for the data for that form
         $submitTimeKeyName = 'Submit_Time_Key';
         $this->setDataIterator($formName, $submitTimeKeyName);
+
+        // Break out sections: Before, Content, After
+        $before = '';
+        $content = '';
+        $after = '';
+        if (isset($options['content'])) {
+            $contentParser = new CFDBShortCodeContentParser;
+            list($before, $content, $after) = $contentParser->parseBeforeContentAfter($options['content']);
+        }
+
+        if ($before) {
+            // Allow for short codes in "before"
+            echo do_shortcode($before);
+        }
 
         if ($useDT) {
             $dtJsOptions = isset($options['dt_options']) ?
@@ -215,7 +231,7 @@ class ExportToHtmlTable extends ExportBase implements CFDBExport {
             <?php
 
             }
-            foreach ($this->dataIterator->displayColumns as $aCol) {
+            foreach ($this->dataIterator->getDisplayColumns() as $aCol) {
                 $colDisplayValue = $aCol;
                 if ($this->headers && isset($this->headers[$aCol])) {
                     $colDisplayValue = $this->headers[$aCol];
@@ -232,10 +248,13 @@ class ExportToHtmlTable extends ExportBase implements CFDBExport {
             $showLineBreaks = $this->plugin->getOption('ShowLineBreaksInDataTable');
             $showLineBreaks = 'false' != $showLineBreaks;
             while ($this->dataIterator->nextRow()) {
-                $submitKey = $this->dataIterator->row[$submitTimeKeyName];
+                $submitKey = '';
+                if (isset($this->dataIterator->row[$submitTimeKeyName])) {
+                    $submitKey = $this->dataIterator->row[$submitTimeKeyName];
+                }
                 ?>
                 <tr>
-                <?php if ($canDelete) { // Put in the delete checkbox ?>
+                <?php if ($canDelete && $submitKey) { // Put in the delete checkbox ?>
                     <td align="center">
                         <input type="checkbox" id="delete_<?php echo $submitKey ?>" name="<?php echo $submitKey ?>" value="row"/>
                     </td>
@@ -247,7 +266,7 @@ class ExportToHtmlTable extends ExportBase implements CFDBExport {
                 if (isset($this->dataIterator->row['fields_with_file']) && $this->dataIterator->row['fields_with_file'] != null) {
                     $fields_with_file = explode(',', $this->dataIterator->row['fields_with_file']);
                 }
-                foreach ($this->dataIterator->displayColumns as $aCol) {
+                foreach ($this->dataIterator->getDisplayColumns() as $aCol) {
                     $cell = $this->rawValueToPresentationValue(
                         $this->dataIterator->row[$aCol],
                         $showLineBreaks,
@@ -265,6 +284,11 @@ class ExportToHtmlTable extends ExportBase implements CFDBExport {
             </tbody>
         </table>
         <?php
+
+        if ($after) {
+            // Allow for short codes in "after"
+            echo do_shortcode($after);
+        }
 
         if ($this->isFromShortCode) {
             // If called from a shortcode, need to return the text,

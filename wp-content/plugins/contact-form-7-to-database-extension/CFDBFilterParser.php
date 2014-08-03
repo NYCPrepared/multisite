@@ -19,8 +19,8 @@
     If not, see <http://www.gnu.org/licenses/>.
 */
 
-include_once('CF7DBEvalutator.php');
-include_once('CF7DBValueConverter.php');
+include_once('CFDBEvaluator.php');
+require_once('CFDBParserBase.php');
 
 /**
  * Used to parse boolean expression strings like 'field1=value1&&field2=value2||field3=value3&&field4=value4'
@@ -29,20 +29,13 @@ include_once('CF7DBValueConverter.php');
  * $operator is any PHP comparison operator or '=' which is interpreted as '=='.
  * $value has a special case where if it is 'null' it is interpreted as the value null
  */
-class CF7FilterParser implements CF7DBEvalutator {
+class CFDBFilterParser extends CFDBParserBase implements CFDBEvaluator {
 
     /**
      * @var array of arrays of string where the top level array is broken down on the || delimiters
      */
     var $tree;
 
-    /**
-     * @var CF7DBValueConverter callback that can be used to pre-process values in the filter string
-     * passed into parseFilterString($filterString).
-     * For example, a function might take the value '$user_email' and replace it with an actual email address
-     * just prior to checking it against input data in call evaluate($data)
-     */
-    var $compValuePreprocessor;
 
     public function hasFilters() {
         return count($this->tree) > 0; // count is null-safe
@@ -92,7 +85,7 @@ class CF7FilterParser implements CF7DBEvalutator {
      * @param  $filterString string with delimiters && and/or ||
      * which each element being an array of strings broken on the && delimiter
      */
-    public function parseFilterString($filterString) {
+    public function parse($filterString) {
         $this->tree = array();
         $arrayOfORedStrings = $this->parseORs($filterString);
         foreach ($arrayOfORedStrings as $anANDString) {
@@ -100,40 +93,43 @@ class CF7FilterParser implements CF7DBEvalutator {
             $andSubTree = array();
             foreach ($arrayOfANDedStrings as $anExpressionString) {
                 $exprArray = $this->parseExpression($anExpressionString);
+                $count = count($exprArray);
+                if ($count > 0) {
+                    $exprArray[0] = $this->parseValidFunction($exprArray[0]);
+                    if ($count > 2) {
+                        $exprArray[2] = $this->parseValidFunction($exprArray[2]);
+                    } else if ($count > 1) {
+                        // e.g. "field=" which can happen if it was "field=$_POST(field)" with no $_POST['field'] set
+                        $exprArray[2] = null;
+                    } else {
+                        // Case of "function()" parse as if "function()==true"
+                        $exprArray[1] = '==';
+                        $exprArray[2] = true;
+                    }
+
+                    // if one side of the operation is a function and the other is 'true' or 'false'
+                    // then convert to Boolean true or false which signals to not try to dereference
+                    // true or false during evaluateComparison()
+                    if (is_array($exprArray[0])) {
+                        if ($exprArray[2] === 'true') {
+                            $exprArray[2] = true;
+                        } else if ($exprArray[2] === 'false') {
+                            $exprArray[2] = false;
+                        }
+                    }
+                    if (is_array($exprArray[2])) {
+                        if ($exprArray[0] === 'true') {
+                            $exprArray[0] = true;
+                        }
+                        if ($exprArray[0] === 'false') {
+                            $exprArray[0] = false;
+                        }
+                    }
+                }
                 $andSubTree[] = $exprArray;
             }
             $this->tree[] = $andSubTree;
         }
-    }
-
-    /**
-     * @param  $filterString
-     * @return array
-     */
-    public function parseORs($filterString) {
-        return preg_split('/\|\|/', $filterString, -1, PREG_SPLIT_NO_EMPTY);
-    }
-
-    /**
-     * @param  $filterString
-     * @return array
-     */
-    public function parseANDs($filterString) {
-        $retVal = preg_split('/&&/', $filterString, -1, PREG_SPLIT_NO_EMPTY);
-        if (count($retVal) == 1) {
-            // This took me a long time chase down. Looks like in some cases when using this in a
-            // WordPress web page, the text that gets here is '&#038;&#038;' rather than '&&'
-            // (But oddly, this is not always the case). So check for this case explicitly.
-            $retVal = preg_split('/&#038;&#038;/', $filterString, -1, PREG_SPLIT_NO_EMPTY);
-
-            // More recently, editor seems to replace with HTML codes
-            if (count($retVal) == 1) {
-                $retVal = preg_split('/&amp;&amp;/', $filterString, -1, PREG_SPLIT_NO_EMPTY);
-            }
-        }
-
-        //echo "<pre>Parsed '$filterString' into " . print_r($retVal, true) . '</pre>';
-        return $retVal;
     }
 
     /**
@@ -147,12 +143,11 @@ class CF7FilterParser implements CF7DBEvalutator {
         $comparisonExpression = str_replace('&gt;', '>', $comparisonExpression);
         $comparisonExpression = str_replace('&lt;', '<', $comparisonExpression);
         return preg_split('/(===)|(==)|(=)|(!==)|(!=)|(<>)|(<=)|(<)|(>=)|(>)|(~~)/',
-                          $comparisonExpression, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
+                $comparisonExpression, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
     }
 
-
     /**
-     * Evaluate expression against input data. Assumes parseFilterString was called to set up the expression to
+     * Evaluate expression against input data. Assumes parse was called to set up the expression to
      * evaluate. Expression should have key . operator . value tuples and input $data should have the same keys
      * with values to check against them.
      * For example, an expression in this object is 'name=john' and the input data has [ 'name' => 'john' ]. In
@@ -161,16 +156,8 @@ class CF7FilterParser implements CF7DBEvalutator {
      * @return boolean result of evaluating $data against expression tree
      */
     public function evaluate(&$data) {
-        if (function_exists('get_option')) {
-            $tz = get_option('CF7DBPlugin_Timezone'); // see CFDBPlugin->setTimezone()
-            if (!$tz) {
-                $tz =  get_option('timezone_string');
-            }
-            if ($tz) {
-                date_default_timezone_set($tz);
-            }
-        }
-        
+        $this->setTimezone();
+
         $retVal = true;
         if ($this->tree) {
             $retVal = false;
@@ -194,23 +181,42 @@ class CF7FilterParser implements CF7DBEvalutator {
 
     public function evaluateComparison($andExpr, &$data) {
         if (is_array($andExpr) && count($andExpr) == 3) {
-            $left = isset($data[$andExpr[0]]) ? $data[$andExpr[0]] : null;
-            $op = $andExpr[1];
-            $right = $andExpr[2];
-            if ($this->compValuePreprocessor) {
-                try {
-                    $right = $this->compValuePreprocessor->convert($right);
-                }
-                catch (Exception $ex) {
-                    trigger_error($ex, E_USER_NOTICE);
+            // $andExpr = [$left $op $right]
+
+            // Left operand
+            $left = $andExpr[0];
+            // Boolean type means it was set in parse in response
+            // to a filter like "function(x)" that was turned into an expression
+            // like "function(x) === true"
+            if ($left !== true && $left !== false) {
+                if (is_array($left)) { // function call
+                    $left = $this->functionEvaluator->evaluateFunction($left, $data);
+                } else {
+                    $left = $this->functionEvaluator->preprocessValues($left);
+                    // Dereference $left assuming it is the name of a form field
+                    // and set it to the value of the field. When not found make it null
+                    $left = isset($data[$left]) ? $data[$left] : null;
                 }
             }
-            if ($andExpr[0] == 'submit_time') {
+
+            // Operator
+            $op = $andExpr[1];
+
+            // Right operand
+            $right = $andExpr[2];
+            if (is_array($right)) { // function call
+                $right = $this->functionEvaluator->evaluateFunction($right, $data);
+            } else {
+                $right = $this->functionEvaluator->preprocessValues($right);
+            }
+
+            if ($andExpr[0] === 'submit_time') {
                 if (!is_numeric($right)) {
                     $right = strtotime($right);
                 }
             }
-            if (!$left && !$right) {
+
+            if ($left === null && $right === null) {
                 // Addresses case where 'Submitted Login' = $user_login but there exist some submissions
                 // with no 'Submitted Login' field. Without this clause, those rows where 'Submitted Login' == null
                 // would be returned when what we really want to is affirm that there is a 'Submitted Login' value ($left)
@@ -222,7 +228,6 @@ class CF7FilterParser implements CF7DBEvalutator {
         return false;
     }
 
-
     /**
      * @param  $left mixed
      * @param  $operator string representing any PHP comparison operator or '=' which is taken to mean '=='
@@ -230,7 +235,7 @@ class CF7FilterParser implements CF7DBEvalutator {
      * @return bool evaluation of comparison $left $operator $right
      */
     public function evaluateLeftOpRightComparison($left, $operator, $right) {
-        if ($right == 'null') {
+        if ($right === 'null') {
             // special case
             $right = null;
         }
@@ -288,19 +293,10 @@ class CF7FilterParser implements CF7DBEvalutator {
 
             default:
                 trigger_error("Invalid operator: '$operator'", E_USER_NOTICE);
-                $retVal = false;
                 break;
         }
 
         return $retVal;
-    }
-
-    /**
-     * @param  $converter CF7DBValueConverter
-     * @return void
-     */
-    public function setComparisonValuePreprocessor($converter) {
-        $this->compValuePreprocessor = $converter;
     }
 
 }

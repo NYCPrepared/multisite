@@ -141,6 +141,7 @@ class CFDBViewWhatsInDB extends CFDBView {
                     }
                     function exportData(encSelect) {
                         var enc = encSelect.options[encSelect.selectedIndex].value;
+                        var url;
                         if (enc == 'GSS') {
                             if (typeof jQuery == 'function') {
                                 try {
@@ -156,8 +157,13 @@ class CFDBViewWhatsInDB extends CFDBView {
                                 alert("<?php _e('Cannot perform operation because jQuery is not loaded in this page', 'contact-form-7-to-database-extension')?>");
                             }
                         }
+                        else if (enc == 'GLD') {
+                            alert("<?php _e('You will now be navigated to the builder page where it will generate a function to place in your Google Spreadsheet', 'contact-form-7-to-database-extension')?>");
+                            url = '<?php echo admin_url('admin.php') ?>?page=CF7DBPluginShortCodeBuilder&form=<?php echo urlencode($currSelection) ?>&enc=' + enc;
+                            location.href = url;
+                        }
                         else {
-                            var url = '<?php echo admin_url('admin-ajax.php') ?>?action=cfdb-export&form=<?php echo urlencode($currSelection) ?>&enc=' + enc;
+                            url = '<?php echo admin_url('admin-ajax.php') ?>?action=cfdb-export&form=<?php echo urlencode($currSelection) ?>&enc=' + enc;
                             var searchVal = getSearchFieldValue();
                             if (searchVal != null && searchVal != "") {
                                 url += '&search=' + encodeURIComponent(searchVal);
@@ -224,7 +230,7 @@ class CFDBViewWhatsInDB extends CFDBView {
                     <input name="exportButton" type="button"
                            value="<?php _e('Export', 'contact-form-7-to-database-extension'); ?>"
                            onclick="exportData(this.form.elements['enc'])"/>
-                    <span style="font-size: x-small;"><br /><?php echo '<a href="admin.php?page=' . $plugin->getSortCodeBuilderPageSlug() . '">' .
+                    <span style="font-size: x-small;"><br /><?php echo '<a href="admin.php?page=' . $plugin->getShortCodeBuilderPageSlug() . '">' .
                           __('Advanced Export', 'contact-form-7-to-database-extension') . '</a>' ?>
                 </form>
                 <?php } ?>
@@ -282,6 +288,7 @@ class CFDBViewWhatsInDB extends CFDBView {
                     oTable = jQuery('#<?php echo $tableHtmlId ?>').dataTable({ <?php // "sDom": 'Rlfrtip', // ColReorder ?>
                         "bJQueryUI": true,
                         "aaSorting": [],
+                        //"sScrollY": "400",
                         "bScrollCollapse": true,
                         "sScrollX":"100%",
                         "iDisplayLength": <?php echo $maxVisible ?>,
@@ -344,7 +351,17 @@ class CFDBViewWhatsInDB extends CFDBView {
             }
         }
         ?>
-    <div style="margin-top:1em"> <?php // Footer ?>
+        <script type="text/javascript">
+            (function ($) {
+                var url = "admin.php?page=<?php echo $plugin->getDBPageSlug() ?>&form_name=<?php echo urlencode($currSelection) ?>&submit_time=";
+                $('td[title="Submitted"] div').each(
+                        function () {
+                            var submitTime = $(this).attr('id').split(",");
+                            $(this).html('<a target="_cfdb_entry" href="' + url + submitTime[0] + '">' + $(this).html() + '</a>');
+                        })
+            })(jQuery);
+        </script>
+        <div style="margin-top:1em"> <?php // Footer ?>
         <table style="width:100%;">
             <tbody>
             <tr>
@@ -562,7 +579,7 @@ class CFDBViewWhatsInDB extends CFDBView {
     protected function createDatatableLengthMenuJavascriptString($maxVisible) {
         $numRowsMenu = array();
         $found = $maxVisible == -1;
-        foreach (array(10, 25, 50, 100) as $entry) {
+        foreach (array(1, 2, 3, 4, 5, 10, 25, 50, 100) as $entry) {
             if ($found) {
                 $numRowsMenu[] = $entry;
             } else {

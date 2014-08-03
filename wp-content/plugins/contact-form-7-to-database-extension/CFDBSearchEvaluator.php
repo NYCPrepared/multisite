@@ -19,9 +19,9 @@
     If not, see <http://www.gnu.org/licenses/>.
 */
 
-include_once('CF7DBEvalutator.php');
+include_once('CFDBEvaluator.php');
 
-class CF7SearchEvaluator implements CF7DBEvalutator {
+class CFDBSearchEvaluator implements CFDBEvaluator {
 
     var $search;
 

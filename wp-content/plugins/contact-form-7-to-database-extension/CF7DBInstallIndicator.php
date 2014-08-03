@@ -61,8 +61,7 @@ abstract class CF7DBInstallIndicator extends CF7DBOptionsManager {
      * Set a version string in the options. This is useful if you install upgrade and
      * need to check if an older version was installed to see if you need to do certain
      * upgrade housekeeping (e.g. changes to DB schema).
-     * @param  $version
-     * @return null
+     * @return string|null value of the version
      */
     protected function getVersionSaved() {
         return $this->getOption(self::optionVersion);
@@ -89,6 +88,7 @@ abstract class CF7DBInstallIndicator extends CF7DBOptionsManager {
     /**
      * Get a value for input key in the header section of main plugin file.
      * E.g. "Plugin Name", "Version", "Description", "Text Domain", etc.
+     * @param $key string header value name
      * @return string if found, otherwise null
      */
     public function getPluginHeaderValue($key) {
@@ -180,10 +180,16 @@ abstract class CF7DBInstallIndicator extends CF7DBOptionsManager {
      * Record the installed version to options.
      * This helps track was version is installed so when an upgrade is installed, it should call this when finished
      * upgrading to record the new current version
+     * @param $version string optional version string. If not set, uses $this->getVersion()
      * @return void
      */
-    protected function saveInstalledVersion() {
-        $this->setVersionSaved($this->getVersion());
+    protected function saveInstalledVersion($version = null) {
+        if (!$version) {
+            $version = $this->getVersion();
+        }
+        if ($version) {
+            $this->setVersionSaved($version);
+        }
     }
 
 }

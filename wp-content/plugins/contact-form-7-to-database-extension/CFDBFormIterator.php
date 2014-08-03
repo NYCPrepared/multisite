@@ -83,7 +83,7 @@ class CFDBFormIterator extends ExportBase implements CFDBExport {
                 }
             }
 
-            foreach ($this->dataIterator->displayColumns as $aCol) {
+            foreach ($this->dataIterator->getDisplayColumns() as $aCol) {
                 $row[$aCol] = $this->dataIterator->row[$aCol];
 
                 if ($aCol == 'filter'){

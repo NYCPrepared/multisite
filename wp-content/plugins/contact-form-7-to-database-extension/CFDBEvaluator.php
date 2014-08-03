@@ -19,7 +19,7 @@
     If not, see <http://www.gnu.org/licenses/>.
 */
 
-interface CF7DBEvalutator {
+interface CFDBEvaluator {
 
     /**
      * Evaluate expression against input data

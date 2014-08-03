@@ -1,5 +1,18 @@
 
-// MODULES
+
+// LISTS
+
+// standard page lists
+
+.entry-content ul {
+    list-style: square;
+    padding: 0 $space-double $space;
+}
+.entry-content ol {
+    list-style: decimal;
+    padding: 0 $space-double $space;
+}
+
 
 
 // HOME PAGE POSTS

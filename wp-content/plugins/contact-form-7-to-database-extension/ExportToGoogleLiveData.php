@@ -1,6 +1,6 @@
 <?php
 /*
-    "Contact Form to Database" Copyright (C) 2011-2012 Michael Simpson  (email : michael.d.simpson@gmail.com)
+    "Contact Form to Database" Copyright (C) 2011-2014 Michael Simpson  (email : michael.d.simpson@gmail.com)
 
     This file is part of Contact Form to Database.
 
@@ -37,7 +37,7 @@ class ExportToGoogleLiveData implements CFDBExport {
         $scriptLink = $pluginUrlDir . 'CFDBGoogleSSLiveData.php';
         $imageUrlDir = $pluginUrlDir . "help";
         $siteUrl = get_option('home');
-        $search = isset($options['search']) ? $options['search'] : '';
+        $userName = is_user_logged_in() ? wp_get_current_user()->user_login : 'user';
 
         ob_start();
         ?>
@@ -71,7 +71,7 @@ class ExportToGoogleLiveData implements CFDBExport {
                 left: 50px!important;
             }
         </style>
-        Setting up a Google Spreadsheet to pull in data from WordPress requires these manual steps:
+        <?php _e('Setting up a Google Spreadsheet to pull in data from WordPress requires these manual steps:', 'contact-form-7-to-database-extension'); ?>
         <table cellspacing="15px" cellpadding="15px">
             <tbody>
             <tr>
@@ -81,12 +81,12 @@ class ExportToGoogleLiveData implements CFDBExport {
                             <img src="<?php echo $imageUrlDir ?>/GoogleNewSS.png" alt="Create a new spreadsheet" height="100px" width="61px"/>
 
                             <div class="popup-content">
-                                <img src="<?php echo $imageUrlDir ?>/GoogleNewSS.png" alt="Create a new spreadsheet"/>
+                                <img src="<?php echo $imageUrlDir ?>/GoogleNewSS.png" alt="Create a new spreadsheet" height="75%" width="75%"/>
                             </div>
                         </a>
                     </div>
                 </td>
-                <td><p>Log into Google Docs and create a new Google Spreadsheet</p></td>
+                <td><p><?php _e('Log into Google Docs and create a new Google Spreadsheet', 'contact-form-7-to-database-extension'); ?></p></td>
             </tr>
             <tr>
                 <td>
@@ -95,12 +95,26 @@ class ExportToGoogleLiveData implements CFDBExport {
                             <img src="<?php echo $imageUrlDir ?>/GoogleOpenScriptEditor.png" alt="Create a new spreadsheet" height="69px" width="100px"/>
 
                             <div class="popup-content">
-                                <img src="<?php echo $imageUrlDir ?>/GoogleOpenScriptEditor.png" alt="Create a new spreadsheet"/>
+                                <img src="<?php echo $imageUrlDir ?>/GoogleOpenScriptEditor.png" alt="Create a new spreadsheet" height="75%" width="75%"/>
                             </div>
                         </a>
                     </div>
                 </td>
-                <td><p>Go to <b>Tools</b> menu -> <b>Scripts</b> -> <b>Script Editor...</b></p></td>
+                <td><p><?php _e('Go to <strong>Tools</strong> menu -> <strong>Script Editor...', 'contact-form-7-to-database-extension'); ?></p></td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="popup-trigger">
+                        <a href="<?php echo $imageUrlDir ?>/GoogleChooseSpreadsheet.png">
+                            <img src="<?php echo $imageUrlDir ?>/GoogleChooseSpreadsheet.png" alt="Choose Spreadsheet" height="69px" width="100px"/>
+
+                            <div class="popup-content">
+                                <img src="<?php echo $imageUrlDir ?>/GoogleChooseSpreadsheet.png" alt="GoogleChooseSpreadsheet Spreadsheet" height="75%" width="75%"/>
+                            </div>
+                        </a>
+                    </div>
+                </td>
+                <td><p><?php _e('Choose <strong>Spreadsheet</strong>', 'contact-form-7-to-database-extension'); ?></p></td>
             </tr>
             <tr>
                 <td>
@@ -109,15 +123,16 @@ class ExportToGoogleLiveData implements CFDBExport {
                             <img src="<?php echo $imageUrlDir ?>/GooglePasteScriptEditor.png" alt="Paste script text" height="68px" width="100px"/>
 
                             <div class="popup-content">
-                                <img src="<?php echo $imageUrlDir ?>/GooglePasteScriptEditor.png" alt="Paste script text"/>
+                                <img src="<?php echo $imageUrlDir ?>/GooglePasteScriptEditor.png" alt="Paste script text" height="75%" width="75%"/>
                             </div>
                         </a>
                     </div>
                 </td>
                 <td>
-                    <p>Delete any text that is already there</p>
-                    <p><b>Copy</b> the text from <a target="_gscript" href="<?php echo($scriptLink) ?>">THIS SCRIPT FILE</a> and <b>paste</b> it
-                    into the Google script editor</p>
+                    <p><?php _e('Delete any text that is already there', 'contact-form-7-to-database-extension'); ?></p>
+                    <p><?php _e('<strong>Copy</strong> the text from ', 'contact-form-7-to-database-extension'); ?>
+                        <a target="_gscript" href="<?php echo($scriptLink) ?>"><?php _e('THIS SCRIPT FILE', 'contact-form-7-to-database-extension'); ?></a>
+                        <?php _e('and <strong>paste</strong> it into the Google script editor', 'contact-form-7-to-database-extension'); ?></p>
                 </td>
             </tr>
             <tr>
@@ -127,13 +142,13 @@ class ExportToGoogleLiveData implements CFDBExport {
                             <img src="<?php echo $imageUrlDir ?>/GoogleSaveScriptEditor.png" alt="Create a new spreadsheet" height="100px" width="83px"/>
 
                             <div class="popup-content">
-                                <img src="<?php echo $imageUrlDir ?>/GoogleSaveScriptEditor.png" alt="Create a new spreadsheet"/>
+                                <img src="<?php echo $imageUrlDir ?>/GoogleSaveScriptEditor.png" alt="Create a new spreadsheet" height="75%" width="75%"/>
                             </div>
                         </a>
                     </div>
                 </td>
                 <td>
-                    <p><b>Save</b> and <b>close</b> the script editor.</p>
+                    <p><?php _e('<strong>Save</strong> the script', 'contact-form-7-to-database-extension'); ?></p>
                 </td>
             </tr>
             <tr>
@@ -143,20 +158,24 @@ class ExportToGoogleLiveData implements CFDBExport {
                             <img src="<?php echo $imageUrlDir ?>/GoogleEnterFormula.png" alt="Create a new spreadsheet" height="43px" width="100px"/>
 
                             <div class="popup-content">
-                                <img src="<?php echo $imageUrlDir ?>/GoogleEnterFormula.png" alt="Create a new spreadsheet"/>
+                                <img src="<?php echo $imageUrlDir ?>/GoogleEnterFormula.png" alt="Create a new spreadsheet" height="75%" width="75%"/>
                             </div>
                         </a>
                     </div>
                 </td>
                 <td>
-                    <p>Click on a cell A1 in the Spreadsheet (or any cell)</p>
-                    <p>Enter in the cell the formula:</p>
-                    <p><code><?php echo("=CF7ToDBData(\"$siteUrl\", \"$formName\", \"$search\", \"user\", \"pwd\")") ?></code></p>
-                    <p>Replacing <b>user</b> and <b>pwd</b> with your <u>WordPress</u> site user name and password</p>
+                    <p><?php _e('Click on a cell A1 in the Spreadsheet (or any cell)', 'contact-form-7-to-database-extension'); ?>
+                        <br/><?php _e('Enter in the cell the formula:', 'contact-form-7-to-database-extension'); ?>
+                        <br/><span style="background-color: yellow"><code><?php echo("=cfdbdata(\"$siteUrl\", \"$formName\", \"$userName\", \"&lt;password&gt;\")") ?></code></span>
+                        <br/><?php _e('Replace <strong>&lt;password&gt;</strong> with your <em>WordPress</em> password', 'contact-form-7-to-database-extension'); ?>
+                    </p>
+                    <?php
+                        $scBuilderPageUrl = $siteUrl . '/wp-admin/admin.php?page=CF7DBPluginShortCodeBuilder&enc=GLD&form=' . urlencode($formName);
+                    ?>
+                    <p>
+                        <a href="<?php echo $scBuilderPageUrl ?>" target="sc"><?php _e('Customize the output by creating a Google Spreadsheet Function call with additional options', 'contact-form-7-to-database-extension'); ?></a>
+                    </p>
                 </td>
-            </tr>
-            <tr>
-
             </tr>
             </tbody>
         </table>

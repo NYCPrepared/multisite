@@ -19,9 +19,9 @@
     If not, see <http://www.gnu.org/licenses/>.
 */
 
-require_once('CF7DBValueConverter.php');
+require_once('CFDBValueConverter.php');
 
-class DereferenceShortcodeVars implements CF7DBValueConverter {
+class DereferenceShortcodeVars implements CFDBValueConverter {
 
     public function convert($varString) {
         if ($varString == null) {

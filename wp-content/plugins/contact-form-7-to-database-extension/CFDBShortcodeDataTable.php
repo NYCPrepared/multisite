@@ -23,11 +23,12 @@ require_once('ShortCodeScriptLoader.php');
 
 class CFDBShortcodeDataTable extends ShortCodeScriptLoader {
 
-    public function handleShortcode($atts) {
+    public function handleShortcode($atts, $content = null) {
+        $atts['content'] = $content;
         $atts['useDT'] = true;
         require_once('CFDBShortcodeTable.php');
         $sc = new CFDBShortcodeTable();
-        return $sc->handleShortcode($atts);
+        return $sc->handleShortcode($atts, $content);
     }
 
     public function register($shortcodeName) {
@@ -38,7 +39,7 @@ class CFDBShortcodeDataTable extends ShortCodeScriptLoader {
         //     http://beerpla.net/2010/01/13/wordpress-plugin-development-how-to-include-css-and-javascript-conditionally-and-only-when-needed-by-the-posts/
         // But it appears to expects posts on the page and I'm concerned it will not work in all cases
 
-        // Just enqueuing it causes problems in some pages. Need a targetted way to do this. 
+        // Just enqueuing it causes problems in some pages. Need a targeted way to do this.
 //        wp_enqueue_style('datatables-demo', 'http://www.datatables.net/release-datatables/media/css/demo_table.css');
     }
 
