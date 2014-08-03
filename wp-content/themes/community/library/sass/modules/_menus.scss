@@ -30,15 +30,11 @@ styles and our css is cleaner and more scalable. */
 		text-decoration: none;
         color: $text-color;
         padding: 0.8em;
-        border-bottom: 1px solid $hr-alt;
         position: relative;
         &:focus,
         &:hover {
             color: $anchor-color;
         }
-	}
-	&:first-child a {
-        border-top: 1px solid $hr-alt;
 	}
 }
 
@@ -99,9 +95,6 @@ styles and our css is cleaner and more scalable. */
             margin-right: -2px; // remove space caused by inline-block
             position: relative;
         }
-        > li a {
-            border: 0;
-        }
     }
     
     .sub-menu {
@@ -118,9 +111,7 @@ styles and our css is cleaner and more scalable. */
             padding: 11px 0;
         }
     }
-    
-    
-    
+        
 }
 
 

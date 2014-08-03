@@ -13,7 +13,7 @@
 	float: left;
     margin: 0;
     white-space: nowrap;
-    a, a:visited {
+    a {
         display: block;
         color: $text-color;
         font-weight: 700;
@@ -76,11 +76,14 @@
         left: 0;
         top: 60px;
         background: $white;
-		a, 
-		a:visited {
+		a {
 		    padding: 10px 20px;
             color: $text-color;
+            border-bottom: 1px solid $hr-alt;
 		}
+    	&:first-child a {
+            border-top: 1px solid $hr-alt;
+    	}
         a:focus,
 		a:hover {
     		background: $text-color;
@@ -114,7 +117,8 @@
             li {
                 @include font-size($zeta);
             }
-            a {
+            > li a {
+                border: 0;
                 padding: 20px 10px;
             }
             a:focus,
