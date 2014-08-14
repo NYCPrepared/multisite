@@ -1,7 +1,0 @@
-<phpunit>
-    <testsuites>
-        <testsuite name="CFDB_Plugin_Tests">
-            <directory>.</directory>
-        </testsuite>
-    </testsuites>
-</phpunit>
