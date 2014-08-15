@@ -60,7 +60,7 @@ styles and our css is cleaner and more scalable. */
         max-height: 0;
         overflow: hidden;
         &.active {
-            max-height: 480px;
+          max-height: 480px;
         	overflow: visible;
         }
     }
@@ -100,7 +100,7 @@ styles and our css is cleaner and more scalable. */
     .sub-menu {
         background: $white;
         position: absolute;
-        z-index: $layer2;
+        z-index: 99; // to stay above carousel w/z-index of 50
         top: 100%;
         left: 0;
         width: 12em;
