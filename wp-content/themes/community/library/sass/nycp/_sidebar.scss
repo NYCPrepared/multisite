@@ -4,7 +4,7 @@ SIDEBARS & ASIDES
 *********************/
 
 
-
+// rainbow backgrounds
 .community-network .sidebar .widget {
 	&:first-child {
 		background: $green;
@@ -18,4 +18,20 @@ SIDEBARS & ASIDES
 	&:nth-child(4) {
 		background: $navy;
 	}
+}
+
+// sliding hover effect
+.sidebar .widget li a,
+.footer .widget li a {
+		padding-left: 0;
+		padding-right: 20px;
+    &:hover {
+  		padding-left: 15px;
+  		padding-right: 5px;
+      background: $text-color;
+      background: rgba(0,0,0,.1);
+    }
+}
+.footer .widget li a:hover {
+  color: $text-color;
 }

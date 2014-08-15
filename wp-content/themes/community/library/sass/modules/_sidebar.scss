@@ -15,22 +15,19 @@ SIDEBARS & ASIDES
     @include font-size($zeta);
 }
 
+
 .widget {
 	padding: 20px;
-	margin: 0 0 20px;
+	margin: 0 0 $space;
   background: $base5;
   color: $white;
 	a, a:visited {
 		color: $white;
 		font-weight: 300;
 		display: block;
-    padding: 0.5em 20px 0.5em 0;
+    padding: 0.5em 0;
 		&:hover {
   		color: $white;
-  		padding-left: 15px;
-  		padding-right: 5px;
-      background: $text-color;
-      background: rgba(0,0,0,.1);
 		}
 	}
 	ul {
@@ -74,7 +71,6 @@ SIDEBARS & ASIDES
       padding: 2px 5px;
   }
 }
-
 
 
 // SEARCH
