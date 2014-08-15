@@ -8,7 +8,6 @@
         padding: 10px;
         height: 300px;
         overflow: hidden;
-    	@include breakpoint(sm) {@include span-columns(8); padding: 10px 20px;}
     }
     .post-title {
         margin: .25em 0 0;
@@ -16,15 +15,25 @@
     .post-excerpt {
         margin:  .25em 0 .5em;
     }
+    .blog-name,
     .post-date {
-        text-transform: uppercase; 
-        letter-spacing: $tracking;
-        color: $quiet-color;
-        white-space: nowrap;
+      display: inline-block;
+      margin-right: $space-fourth;
+      white-space: nowrap;
+      color: $base4; 
+      @include font-size($micro);
+      a {
+        color: $base4;
+      }
     }
-    .meta h6 {
-        display: inline-block;
-        margin-right: $space-fourth;
+    .post-author {
+      display: none;
+    }
+    @include breakpoint(sm) {
+      li {
+        @include span-columns(8); 
+        padding: 10px 20px;
+      }
     }
 }
 
