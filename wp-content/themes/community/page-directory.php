@@ -17,9 +17,9 @@
 				</header>
 
 
-				<section class="entry-content" itemprop="articleBody" rel="main">
+				<section class="directory-content" itemprop="articleBody" rel="main">
 
-				    <h4 class="subtitle">Networks</h4>
+				  <h4 class="subtitle">Networks</h4>
 
 					<ul class="networks-list">
 						<?php
@@ -58,7 +58,7 @@
 				</section>
 
 
-				<section class="entry-content" itemprop="articleBody" rel="main">
+				<section class="directory-content" itemprop="articleBody" rel="main">
 
 				    <h4 class="subtitle">Sites</h4>
 
@@ -156,7 +156,7 @@
 						<header class="article-header">
 							<h1><?php _e( 'Oops, Post Not Found!', 'bonestheme' ); ?></h1>
 						</header>
-						<section class="entry-content">
+						<section class="directory-content">
 							<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'bonestheme' ); ?></p>
 						</section>
 						<footer class="article-footer">
