@@ -248,6 +248,10 @@ ul.event-categories {
 
 // WIDGET
 
+.widget_em_calendar .widgettitle {
+  display: none;
+}
+
 table.em-calendar {
     width: 100%;
     margin-bottom: 20px;
