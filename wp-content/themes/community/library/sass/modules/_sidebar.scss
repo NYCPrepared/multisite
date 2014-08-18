@@ -26,7 +26,7 @@ SIDEBARS & ASIDES
 
 .widget {
 	padding: 20px;
-	margin: 0 0 $space;
+	margin: 0 0 $space-half;
   background: $base5;
   color: $white;
 	a, 
@@ -85,7 +85,6 @@ SIDEBARS & ASIDES
 
 .community-partner .sidebar .widget {
   background: rgba(0,0,0,.3);
-  margin-bottom: $space-half;
 }
 
 
