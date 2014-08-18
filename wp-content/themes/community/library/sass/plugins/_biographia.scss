@@ -3,9 +3,9 @@
 .wp-biographia-container-top {
 	background: transparent !important; // override inline styling
 	background: rgba(255,255,255,.7) !important; // override inline styling
-	border-top: 0 !important; // override inline styling
+	border-top: 1px solid $hr-alt !important; // override inline styling
 	border-bottom: 0 !important; // override inline styling
-	margin: $space 0;
+	margin: 0;
 	padding: 0;
 }
 .wp-biographia-container-around {
@@ -20,7 +20,7 @@
 .wp-biographia-pic {
     background: transparent;
     border: 0;
-	padding: 5px !important; // override inline styling
+	padding: 5px 0 !important; // override inline styling
 	height: 70px !important; // override inline styling
 	width: 70px !important; // override inline styling
 }
@@ -33,6 +33,9 @@
 
 .wp-biographia-text {
     margin-left: 80px;
+    p {
+      display: none;
+    }
 }
 
 .wp-biographia-text h3 {

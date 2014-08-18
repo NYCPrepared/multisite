@@ -40,56 +40,13 @@
 
 
 // There are two types of news feeds.
-// 1. an unordered list of aggregated posts (on the network page)
-// 2. a dynamic series of articles (on the news page, group page, & partner page)
+// 1. a dynamic series of articles (on the news page, group page, & partner page)
+// 2. an unordered list of aggregated posts (on the network page)
 
 
-// NEWS ARTICLES (single page)
+// NEWS PAGE, PARTNER PAGE, GROUP HOME PAGE
 
-.main-news {
-    .post {
-        border-top: 1px solid $base7;
-        padding-top: 20px;
-        @include fill-parent;
-        clear: both;
-    }    
-    .post-header,
-    .post-footer {
-        text-transform: uppercase; 
-        letter-spacing: $tracking;
-    	@include breakpoint(md) {@include span-columns(2 of 12);}
-    	h6, p, li {
-        	@include font-size($micro);
-        	color: $base5;
-        	display: inline-block;
-        	&:after {
-            	content: ' / ';
-            	letter-spacing: 5px;
-        	}
-            @include breakpoint(md) {display: block; &:after {content: none;}}
-    	}
-    	a, a:visited {
-        	color: $base5;
-        	&:hover {
-            	color: $text-color;
-        	}
-    	}
-    }
-    .post-body {
-        padding-bottom: 10px;
-    	@include breakpoint(md) {@include span-columns(8 of 12);}
-    	p {
-        	margin: .25em 0 .75em;
-    	}
-    }
-    .post-title {
-        margin: 0;
-    }
-}
-
-// PARTNER THEME
-
-.partner.post {
+.post {
   @include row();
   margin-top: 0;
   margin-bottom: $space;
@@ -106,11 +63,15 @@
   .post-title {
     margin-bottom: $space-34;
   }
+  .post-date,
+  .post-categories li {
+    @include font-size($zeta);
+  }
 }
 
 
 
-// NEWS POSTS (list on network page)
+// NETWORK PAGE
 
 .main-network .subtitle {
     @include font-size($epsilon);
@@ -120,11 +81,9 @@
 
 
 .network-posts {
-    ul {
-        border-bottom: 1px solid $base7;
-    }
     li {
-        border-top: 1px solid $base7;
+        background: $white;
+        margin-bottom: $space;
         padding: $space-32 $space $space-34;
         max-width: none;
         @include fill-parent;
