@@ -27,17 +27,20 @@
  
 }
 .partner-banner {
+  padding: $space;
   .site-prefix,
   .site-name {
     text-transform: uppercase;
     letter-spacing: $tracking-loose;
   }
   .site-prefix {
-    margin-top: $space;
-    margin-bottom: $space-fourth;
+    margin-bottom: 3px;
     color: $base4;
   }
-  @include breakpoint(md) { @include span-columns(8);}
+  .site-name {
+    margin-left: -4px;
+  }
+  @include breakpoint(md) { @include span-columns(12);}
   
 }	
 

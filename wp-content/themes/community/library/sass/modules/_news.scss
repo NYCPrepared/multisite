@@ -90,18 +90,21 @@
 // PARTNER THEME
 
 .partner.post {
-  @include row(table);
+  @include row();
   margin-top: 0;
   margin-bottom: $space;
   background: $white;
   .post-header {
-    @include span-columns(1 of 8);
-    @include pad(0 0 0 24px);
+    @include span-columns(2 of 12);
+    @include pad(34px 0 24px 24px);
     color: $base4;
   }
   .post-body {
-    @include span-columns(7 of 8);
-    @include pad(24px);
+    @include span-columns(10 of 12);
+    @include pad(24px 24px 24px 0);
+  }
+  .post-title {
+    margin-bottom: $space-34;
   }
 }
 
