@@ -29,8 +29,14 @@ hr {
 // FULL-WIDTH ROWS (header, .content, footer)
 // for bg colors etc 
 
+.header-global,
+.footer,
+.footer-slug {
+  padding: 0 20px;
+}
+
 .content {
-    padding-top: 20px;
+    padding: 20px;
     .directory & {
         padding-bottom: $space-double;
     }
