@@ -47,7 +47,7 @@ div.css-search {
             @extend %ios7-search;
         }
         div.em-search-geo {
-            @extend %ios7-pin;
+            @extend %ios7-location;
             @include breakpoint(xs) {display: inline-block;}
         }
         .em-search-submit {
