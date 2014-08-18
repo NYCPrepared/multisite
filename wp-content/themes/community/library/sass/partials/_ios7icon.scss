@@ -20,7 +20,7 @@
 
 
 
-// versions for nav menu
+// versions for nav menus -- add title attribute to menu items
 
 [title^="icon-"]:before {
   font-family: 'ios7-icon';
@@ -42,8 +42,7 @@
 [title="icon-sites"]:before {content: '';}  
 [title="icon-data"]:before {content: '';}  
 [title="icon-book"]:before { content: '';} 
-[title="icon-truck"]:before {content: '';}  
-
+[title="icon-truck"]:before {content: ''; position: relative; top: -5px;}
 
 
  

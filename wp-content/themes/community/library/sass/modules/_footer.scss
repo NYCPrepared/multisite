@@ -17,6 +17,10 @@
 
 // footer widgets
 
+.footer .widgettitle {
+  display: none;
+}
+
 .footer .widget {
   background: $white;
   margin-bottom: 30px;   
