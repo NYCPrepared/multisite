@@ -3,9 +3,17 @@
 SIDEBARS & ASIDES
 *********************/
 
-.sidebar p {
-    line-height: 1.3;
-    @include font-size($zeta);
+.sidebar {
+  p {
+      line-height: 1.3;
+      @include font-size($zeta);
+  }
+	.menu a, 
+	.menu a:visited,
+	.menu a:hover {
+  	color: $white;
+	}
+  
 }
 
 .widgettitle {
@@ -30,11 +38,6 @@ SIDEBARS & ASIDES
 		&:hover {
   		color: $white;
 		}
-	}
-	.menu a, 
-	.menu a:visited,
-	.menu a:hover {
-  	color: $white;
 	}
 	ul {
   	border-bottom: 1px solid $text-color;
