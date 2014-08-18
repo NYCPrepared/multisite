@@ -87,6 +87,24 @@
     }
 }
 
+// PARTNER THEME
+
+.partner.post {
+  @include row(table);
+  margin-top: 0;
+  margin-bottom: $space;
+  background: $white;
+  .post-header {
+    @include span-columns(1 of 8);
+    @include pad(0 0 0 24px);
+    color: $base4;
+  }
+  .post-body {
+    @include span-columns(7 of 8);
+    @include pad(24px);
+  }
+}
+
 
 
 // NEWS POSTS (list on network page)
@@ -96,6 +114,7 @@
     letter-spacing: $tracking-loose;
     margin-bottom: $space-half;
 }
+
 
 .network-posts {
     ul {

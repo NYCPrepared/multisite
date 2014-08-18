@@ -81,6 +81,13 @@ SIDEBARS & ASIDES
   }
 }
 
+// partner version
+
+.community-partner .sidebar .widget {
+  background: rgba(0,0,0,.3);
+  margin-bottom: $space-half;
+}
+
 
 // SEARCH
 
@@ -106,10 +113,8 @@ SIDEBARS & ASIDES
 .widget_archive, 
 .widget_meta {
     li {
-        width: 49%;
-        display: inline-block;
         white-space: nowrap;
-        @include font-size(15);
+        @include font-size($zeta);
         line-height: 1.1;
     }
 }
