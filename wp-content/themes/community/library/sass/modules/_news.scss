@@ -69,6 +69,17 @@
   }
 }
 
+.main-news .post {
+  .post-header {
+    @include span-columns(4);
+  }
+  .post-body {
+    @include span-columns(8);
+  }
+  .post-footer {
+    @include span-columns(4);
+  }
+}
 
 
 // NETWORK PAGE
