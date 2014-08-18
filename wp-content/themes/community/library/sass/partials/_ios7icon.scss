@@ -20,3 +20,40 @@
 %ios7-up:before{ content:''; }
 %ios7-down:before{ content:''; }
 
+
+
+
+/* new */
+
+[title~="icon-"]:before {
+  font-family: 'ios7-icon';
+  src: url('fonts/ios7-icon.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-size: 32px;
+  -webkit-text-rendering: geometricPrecision;
+  -moz-text-rendering: geometricPrecision;
+  -ms-text-rendering: geometricPrecision;
+  -o-text-rendering: geometricPrecision;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+[title="icon-data"]:before {content: ''; font-family: 'ios7-icon';}  
+[title="icon-sites"]:before {content: '&#61875';}  
+[title="icon-openbook"]:before { content: '&#61854';} 
+[title="icon-store"]:before { content: '&#61772';} 
+[title="icon-truck"]:before {content: '&#61894';}  
+[title="icon-globe"]:before {content: '&#61838';}  
+[title="icon-mail"]:before {content: '&#61880';}  
+[title="icon-chat"]:before {content: '&#61704';}  
+[title="icon-phone"]:before {content: '&#61911';} 
+[title="icon-fax"]:before {content: '&#61830';} 
+[title="icon-newspaper"]:before {content: '&#61940';} 
+
+
+
+ 

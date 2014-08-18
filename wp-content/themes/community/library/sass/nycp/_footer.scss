@@ -3,12 +3,13 @@
 .logo-NYCP {
     @include font-size($epsilon);
     text-transform: uppercase; 
-        letter-spacing: $tracking;
+    letter-spacing: $tracking;
     font-weight: 700;
     white-space: nowrap;
     display: inline-block; 
     margin-right: 20px;
     color: $white;
+    @include transition (color 0.25s ease);
     span {
         display: inline-block;
         border: 3px solid $white;
