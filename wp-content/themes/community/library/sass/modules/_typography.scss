@@ -99,10 +99,6 @@ input, label, select, textarea {
 }
 
 small {
-    @include font-size($micro);
-}
-
-.milli {
     @include font-size($milli);
 }
 
