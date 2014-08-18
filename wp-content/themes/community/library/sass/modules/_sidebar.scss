@@ -31,13 +31,13 @@ SIDEBARS & ASIDES
 		}
 	}
 	ul {
-  	border-top: 1px solid $text-color;
-  	border-top: 1px solid rgba(0,0,0,.1);
+  	border-bottom: 1px solid $text-color;
+  	border-bottom: 1px solid rgba(0,0,0,.1);
   	margin: 0;
 	}
 	li {
-  	border-bottom: 1px solid $text-color;
-  	border-bottom: 1px solid rgba(0,0,0,.1);
+  	border-top: 1px solid $text-color;
+  	border-top: 1px solid rgba(0,0,0,.1);
     padding: 0;
     margin: 0;
     line-height: 1.3;

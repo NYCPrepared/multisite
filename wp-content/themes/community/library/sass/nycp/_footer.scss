@@ -3,12 +3,13 @@
 .logo-NYCP {
     @include font-size($epsilon);
     text-transform: uppercase; 
-        letter-spacing: $tracking;
+    letter-spacing: $tracking;
     font-weight: 700;
     white-space: nowrap;
     display: inline-block; 
     margin-right: 20px;
     color: $white;
+    @include transition (color 0.25s ease);
     span {
         display: inline-block;
         border: 3px solid $white;
@@ -40,27 +41,19 @@
 
 
 // service promo icons
-
-#nav_menu-5, 
-#nav_menu-4, 
-#nav_menu-3, 
-#nav_menu-2 {
-  .widgettitle {
-    @include font-size(28); 
-    @include font-icon-base($family:"ios7-icon");
-    margin: 0;
-    padding: 0 0 $space-third; 
-    color: $base3;
-    &:before {
-      color: $base3;
-      margin-right: $space-half;
-    }
+.footer .menu li:first-child {
+  @include font-size(28); 
+  @include font-icon-base($family:"ios7-icon");
+  margin: 0;
+  border-top: 0;
+  a {
+    padding: $space-third 0; 
+    margin-top: -$space-third;
+  }
+  a:before {
+    margin-right: $space-half;
   }
 }
 
-#nav_menu-5 .widgettitle {@extend %ios7-sites;}
-#nav_menu-4 .widgettitle {@extend %ios7-book;}
-#nav_menu-2 .widgettitle {@extend %ios7-data;}
-#nav_menu-3 .widgettitle {@extend %ios7-truck; &:before {position: relative; top: -5px;}}
 
 
