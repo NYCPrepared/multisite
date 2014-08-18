@@ -1,5 +1,11 @@
 // NYCP FOOTER
 
+
+.footer-logo {
+    margin: 0;
+    line-height: 30px;
+}
+
 .logo-NYCP {
     @include font-size($epsilon);
     text-transform: uppercase; 
