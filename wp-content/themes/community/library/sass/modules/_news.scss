@@ -73,13 +73,13 @@
 
 .main-news .post {
   .post-header {
-    @include span-columns(2);
+    @include span-columns(3);
   }
   .post-body {
-    @include span-columns(12);
+    @include span-columns(10);
   }
   .post-footer {
-    @include span-columns(2);
+    @include span-columns(3);
   }
 }
 
