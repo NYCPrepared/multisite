@@ -69,15 +69,17 @@
   }
 }
 
+// news page
+
 .main-news .post {
   .post-header {
-    @include span-columns(4);
+    @include span-columns(2);
   }
   .post-body {
-    @include span-columns(8);
+    @include span-columns(12);
   }
   .post-footer {
-    @include span-columns(4);
+    @include span-columns(2);
   }
 }
 
