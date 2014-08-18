@@ -35,3 +35,8 @@ SIDEBARS & ASIDES
 .footer .widget li a:hover {
   color: $text-color;
 }
+
+// don't show menu icons in sidebar
+.sidebar .widget .menu a:before {
+  display: none;
+}
