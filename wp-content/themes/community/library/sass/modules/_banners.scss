@@ -16,6 +16,42 @@
 } 
 
 
+// PARTNER BANNER
+
+.partner-logo {
+  img {
+    width: 100%;
+    height: auto;
+  }
+  @include breakpoint(md) { @include span-columns(4);}
+ 
+}
+.partner-banner {
+  padding: $space;
+  .site-prefix,
+  .site-name {
+    text-transform: uppercase;
+    letter-spacing: $tracking-loose;
+  }
+  .site-prefix {
+    margin-bottom: 3px;
+    color: $base4;
+  }
+  .site-name {
+    margin-left: -4px;
+  }
+  @include breakpoint(md) { @include span-columns(12);}
+  
+}	
+
+.community-partner .page-header {
+  display: none;
+}
+
+
+// GROUP BANNER
+
+
 .site-banner {
     border: $frame-border;
     width: 100%;
@@ -39,7 +75,7 @@
     }
 }
 
-.site-name {
+.site-banner .site-name {
     text-transform: uppercase; 
     letter-spacing: $tracking;
     @include font-size($beta);

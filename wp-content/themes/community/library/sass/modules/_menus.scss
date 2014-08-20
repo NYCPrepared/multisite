@@ -10,31 +10,33 @@ styles and our css is cleaner and more scalable. */
  
 .menu, 
 .sub-menu {
-    margin: 0;
-    width: 100%;
-    background: $white;
-    @include transition(all 0.3s ease-out);
+  margin: 0;
+  width: 100%;
+  background: $white;
+  @include transition(all 0.3s ease-out);
 }
 
 .sub-menu {
-    background: rgba(0,0,0,.05);
+  background: rgba(0,0,0,.05);
 }
 
-.menu li {
+.menu {  
+  li {
     margin: 0;
     display: block;
     white-space: nowrap;
     line-height: 1;
+  }
 	a {
 		display: block;
 		text-decoration: none;
-        color: $text-color;
-        padding: 0.8em;
-        position: relative;
-        &:focus,
-        &:hover {
-            color: $anchor-color;
-        }
+    color: $text-color;
+    padding: 0.8em;
+    position: relative;
+    &:focus,
+    &:hover {
+      color: $anchor-color;
+    }
 	}
 }
 
@@ -60,7 +62,7 @@ styles and our css is cleaner and more scalable. */
         max-height: 0;
         overflow: hidden;
         &.active {
-            max-height: 480px;
+          max-height: 480px;
         	overflow: visible;
         }
     }
@@ -100,7 +102,7 @@ styles and our css is cleaner and more scalable. */
     .sub-menu {
         background: $white;
         position: absolute;
-        z-index: $layer2;
+        z-index: 99; // to stay above carousel w/z-index of 50
         top: 100%;
         left: 0;
         width: 12em;

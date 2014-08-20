@@ -53,57 +53,38 @@
 }
 
 .highlights-list {
-    height: 300px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    margin: 0;
-    position: relative;
-    &:before, 
-    &:after {
-        font-family: 'ios7-icon';
-        color: $teal;
-        font-size: 18px;
-        position: absolute;
-        right: 0;
+  height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 0;
+  li {
+    background: $white;
+    padding: $space-third $space;
+    margin-bottom: 2px;
+  }
+  .post-title {
+    margin: 3px 0 -3px;
+    @include font-size($delta);
+  }
+  .post-excerpt,
+  .post-author {
+    display: none;
+  }
+  .blog-name,
+  .post-date {
+    display: inline-block;
+    @include font-size($micro);
+    white-space: nowrap;
+    margin: 0 $space-fourth 0 0;
+    color: $base4;
+    a {
+      color: $base4;
     }
-    &:before {
-        content: '';
-        top: 0;
-        width: 11px;
-        height: 100%;
-        background: $base8;
-        text-indent: -3px;
-    } 
-    &:after {
-        content: '';
-        bottom: 0;
-        right: -4px;
-    }
-	@include breakpoint(sm) {@include span-columns(8);}
-    li {
-        background: $white;
-        padding: 10px;
-        margin-right: 22px;
-        @include breakpoint(sm) {padding: 10px 20px;}
-    }
-    .post-title {
-        margin: .25em 0 0;
-        @include font-size($delta);
-    }
-    .post-excerpt {
-        margin: .25em 0 .5em;
-    }
-    .location {
-        text-transform: uppercase; 
-        letter-spacing: $tracking;
-        @include font-size($micro);
-        color: $quiet-color;
-        white-space: nowrap;
-        margin-left: 3px;
-    }
-    .meta {
-        display: none;
-    }
+  }
+
+	@include breakpoint(sm) {
+	  @include span-columns(8);
+  }
 }
 
 
@@ -117,12 +98,14 @@
     padding: 0;
     @include fill-parent;
     li {
-        background: $white;
-        margin-top: 0;
-        margin-bottom: 20px;
-        padding: 0;
-        height: 285px;
-        overflow: hidden;
+      background: $white;
+      margin-top: 0;
+      margin-bottom: 20px;
+      padding: 0;
+      height: 285px;
+      overflow: hidden;
+      box-shadow: 0 $space-third $space 0 rgba(0,0,0,0); // transparent
+      @include transition(box-shadow 0.25s ease);
     	@include span-columns(8); 
     	@include omega(2n);
     	@include breakpoint(md) {@include omega-reset(2n); @include span-columns(4); @include omega(4n);}
@@ -201,7 +184,7 @@
 }
 #promo-network {
     background: $yellow; 
-    .icon {@extend %ios7-card;}
+    .icon {@extend %ios7-profile;}
 } 
 #promo-builder {
     background: $green; 

@@ -8,7 +8,7 @@
 
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-			<article role="article" class="post" id="post-<?php the_ID(); ?>" itemscope itemtype="http://schema.org/BlogPosting">
+			<article role="article" id="post-<?php the_ID(); ?>" itemscope itemtype="http://schema.org/BlogPosting">
 
 				<header class="post-header">
 					<h1 class="post-title" itemprop="headline"><?php the_title(); ?></h1>

@@ -77,14 +77,14 @@
         top: 60px;
         background: $white;
 		a {
-		    padding: 10px 20px;
-            color: $text-color;
-            border-bottom: 1px solid $hr-alt;
+	    padding: 10px 20px;
+      color: $text-color;
+      border-bottom: 1px solid $hr-alt;
 		}
-    	&:first-child a {
-            border-top: 1px solid $hr-alt;
-    	}
-        a:focus,
+  	&:first-child a {
+      border-top: 1px solid $hr-alt;
+  	}
+    a:focus,
 		a:hover {
     		background: $text-color;
     		color: $white;
@@ -152,7 +152,7 @@
         }
         .sub-menu {
             left: -10px;
-            a {
+            li a {
                 padding: 10px 20px;
             }
             a:first-child {

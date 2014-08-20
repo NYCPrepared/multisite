@@ -29,8 +29,15 @@ hr {
 // FULL-WIDTH ROWS (header, .content, footer)
 // for bg colors etc 
 
+.header-global,
+.header-local,
+.footer,
+.footer-slug {
+  padding: 0 20px;
+}
+
 .content {
-    padding-top: 20px;
+    padding: 20px;
     .directory & {
         padding-bottom: $space-double;
     }
@@ -50,18 +57,18 @@ hr {
 
 // main
 main {
-    padding-bottom: 60px; 
-	@include breakpoint(md) {@include span-columns(12); }
-    // clear right margin if right column
-    &:last-child {
-        @include omega();
-    }
-    // single column layout 
-    .page-template-page-iframe-php &,
-    .directory &,
-    .news & {
-        @include fill-parent;
-    }
+  padding-bottom: 60px; 
+  @include breakpoint(md) {@include span-columns(12); }
+  // clear right margin if right column
+  &:last-child {
+      @include omega();
+  }
+  // single column layout 
+  .page-template-page-iframe-php &,
+  .directory &,
+  .news & {
+      @include fill-parent;
+  }
 }
 
 // sidebar

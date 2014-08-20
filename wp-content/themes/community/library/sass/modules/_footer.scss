@@ -8,14 +8,9 @@
     }
 }
 
-.footer-logo {
-    margin: 0;
-    line-height: 30px;
+.footer .widgettitle {
+  display: none;
 }
-
-
-
-// footer widgets
 
 .footer .widget {
   background: $white;
@@ -35,6 +30,7 @@
 	}
 	@include breakpoint(sm) {
 	  @include span-columns(4);
+	  margin-bottom: 0;
 }
 }
 

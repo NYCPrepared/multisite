@@ -6,11 +6,12 @@
 
 		<?php get_sidebar(); ?>
 
-		<div class="main-partner">
+		<main class="main-partner">
 
+      <?php // add RSS feed to the widget in the admin ?>
 			<?php get_sidebar('partner-home'); ?>
 
-		</div>
+		</main>
 
 	</div>
 
