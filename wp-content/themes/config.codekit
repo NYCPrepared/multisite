@@ -396,14 +396,16 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/community\/library\/images\/logo-nycp-sm.php": {
-		"fileType": 8192,
+	"\/community\/library\/images\/logo-nycp-badge.png": {
+		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/community\/library\/images\/logo-nycp-sm.php",
-		"outputAbbreviatedPath": "No Output Path",
+		"initialSize": 4029,
+		"inputAbbreviatedPath": "\/community\/library\/images\/logo-nycp-badge.png",
+		"outputAbbreviatedPath": "\/community\/library\/images\/logo-nycp-badge.png",
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
+		"outputPathIsSetByUser": 0,
+		"processed": 0
 		},
 	"\/community\/library\/images\/logo-nycp-sm.png": {
 		"fileType": 32768,
@@ -412,17 +414,6 @@
 		"initialSize": 1290,
 		"inputAbbreviatedPath": "\/community\/library\/images\/logo-nycp-sm.png",
 		"outputAbbreviatedPath": "\/community\/library\/images\/logo-nycp-sm.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/community\/library\/images\/logo-nycp-badge.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 4029,
-		"inputAbbreviatedPath": "\/community\/library\/images\/logo-nycp-badge.png",
-		"outputAbbreviatedPath": "\/community\/library\/images\/logo-nycp-badge.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -1108,6 +1099,22 @@
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/community\/library\/sass\/nycp\/_footer.scss",
 		"outputAbbreviatedPath": "\/community\/library\/sass\/css\/_footer.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/community\/library\/sass\/nycp\/_overview.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/community\/library\/sass\/nycp\/_overview.scss",
+		"outputAbbreviatedPath": "\/community\/library\/sass\/css\/_overview.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
