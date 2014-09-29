@@ -44,7 +44,8 @@ $pad-home: 40px;
     a {
         display: block;
         padding: 18px 36px;
-        @extend %condensed;
+        text-transform: uppercase;
+        letter-spacing: $tracking;
         text-decoration: none;
         text-align: center;
     }
@@ -78,7 +79,7 @@ $pad-home: 40px;
 
 .home-intro {
     @include fill-parent; 
-    background: $gray2 url('../images/nycp/bridge-large.jpg') no-repeat center center;
+    background: $base2 url('/wp-content/uploads/2014/09/bridge-large.jpg') no-repeat center center;
     background-size: cover;
     h1 {
         color: $white;
@@ -174,7 +175,7 @@ $pad-home: 40px;
     background: $navy;
 }
 .home-services {
-    background: $gray2;
+    background: $base2;
 }
 
 // lists of tools and services 
@@ -191,7 +192,7 @@ $pad-home: 40px;
             border: 5px solid $white;
         }
         p {
-            color: $gray2;
+            color: $base2;
         }
     }
     .wp-caption + br {
