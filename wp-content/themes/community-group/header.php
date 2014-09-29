@@ -53,7 +53,7 @@
 			$blog_details = get_blog_details(1);
 			?>
 
-				<p class="domain-title"><a href="<?php echo $blog_details->siteurl; ?>" rel="nofollow"><?php echo $blog_details->blogname; ?></a></p>
+			<a class="domain-logo" href="<?php echo home_url(); ?>" rel="nofollow"><img src="<?php echo get_template_directory_uri(); ?>/library/images/logo-nycp-sm.png" width="138" height="27" alt="NYC Prepared"/></a>
 
 
 			<nav role="navigation" class="nav-global">
