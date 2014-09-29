@@ -2,7 +2,7 @@
 				<div class="wrap">
 
 					<section class="global site-meta first">
-						<a href="http://nycprepared.org"><img src="/multisite/wp-content/themes/community/library/images/NYCPbadgeKO.png" alt="NYCPbadgeKO" width="140" height="140" /></a>
+						<a href="http://nycprepared.org"><img src="/multisite/wp-content/themes/community/library/images/logo-nycp-badge.png" alt="logo-nycp-badge" width="140" height="140" /></a>
 					</section>
 					
 					<section class="widgets">
