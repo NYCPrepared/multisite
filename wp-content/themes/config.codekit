@@ -396,6 +396,26 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/community\/library\/images\/logo-nycp-sm.php": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/community\/library\/images\/logo-nycp-sm.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/community\/library\/images\/logo-nycp-sm.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1290,
+		"inputAbbreviatedPath": "\/community\/library\/images\/logo-nycp-sm.png",
+		"outputAbbreviatedPath": "\/community\/library\/images\/logo-nycp-sm.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/community\/library\/images\/NYCPbadgeKO.png": {
 		"fileType": 32768,
 		"ignore": 0,

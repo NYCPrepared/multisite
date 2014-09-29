@@ -5,19 +5,17 @@
     background: $base0;
 }
 
-.domain-title {
+.domain-logo {
     display: none;
     @include breakpoint(md) {display: block;}
-    @include font-size($zeta);
-    line-height: 1;
-	float: left;
-    margin: 0;
-    white-space: nowrap;
-    a {
-        display: block;
-        color: $text-color;
-        font-weight: 700;
-        padding: 20px 20px 20px 0;
+    float: left;
+    margin-top: 15px;
+    margin-right: 15px;
+    img {
+      fill: $text-color; 
+    }
+    &:hover img {
+      fill: $anchor-color; 
     }
 }
 
