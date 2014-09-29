@@ -48,8 +48,7 @@
 
 			<div class="wrap">
 
-					<p class="domain-title"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
-				<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
+				<a class="domain-logo" href="<?php echo home_url(); ?>" rel="nofollow"><img src="<?php echo get_template_directory_uri(); ?>/library/images/logo-nycp-sm.png" width="138" height="27" alt="NYC Prepared"/></a>
 
 				<nav role="navigation" class="nav-global">
 					<ul class="nav-anchors js-anchors">
