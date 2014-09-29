@@ -54,7 +54,7 @@
 						);
 					?>
 
-					<li class="featured-post" style="background-image: url('http://localhost/multisite/wp-content/uploads/2014/01/enie.png');">
+					<li class="featured-post">
 						<a href="<?php echo $permalink; ?>" title="<?php echo get_the_title();?>" >
 						<?php echo get_the_post_thumbnail($post->ID, 'full', $imagearg); ?>
 						</a>
