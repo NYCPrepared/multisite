@@ -30,6 +30,9 @@ body.overview {
       text-align: center;
       margin-bottom: $space-third;
     }
+    p {
+      max-width: none;
+    }
   }
   section {
     @include row();
@@ -46,6 +49,25 @@ body.overview {
   .article-header {
     display: none;
   }   
+  .promo-intro {
+    @include span-columns(14);
+    @include shift(1); 
+    @include breakpoint(md) {
+      width: 75%;
+      margin-left: 12.5%; 
+  	}
+  }
+}
+
+
+.overview-intro {
+  background: $base2 url('/wp-content/uploads/2014/09/bridge-large.jpg') no-repeat center center;
+  background-size: cover;
+  h1 {
+    color: $white;
+    margin: 1.2em 0;
+    text-shadow: 0px 0px 20px rgba(0,0,0,0.6);
+  }
 }
 
 
@@ -85,17 +107,6 @@ body.overview {
   }
 }
 
-.overview-intro {
-  background: $base2 url('/wp-content/uploads/2014/09/bridge-large.jpg') no-repeat center center;
-  background-size: cover;
-  h1 {
-    color: $white;
-    margin: 1.2em 0;
-    text-shadow: 0px 0px 20px rgba(0,0,0,0.6);
-  }
-}
-
-
 
 
 .overview-value {
@@ -128,10 +139,6 @@ body.overview {
 .overview-advantage {
   background: $base8;
   padding-bottom: 0 !important;
-  p {
-      @include span-columns(12);
-      @include shift(2); 
-  }
   .size-full {
       width: 100%;
       max-height: 430px;
@@ -148,17 +155,8 @@ body.overview {
 .overview-community,
 .overview-services {
   color: $white;
-  .promo-intro {
-    @include span-columns(14);
-    @include shift(1); 
-    @include breakpoint(md) {
-      @include span-columns(12);
-      @include shift(2); 
-  	}
-  }
   h2, p {
     color: $white;
-    max-width: none;
   }
 }
 
