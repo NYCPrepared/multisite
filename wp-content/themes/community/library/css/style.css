@@ -2919,19 +2919,19 @@ body.overview .content {
     margin-bottom: 8px; }
   body.overview .content p {
     max-width: none; }
-body.overview section {
-  *zoom: 1;
-  display: block;
-  padding-top: 48px;
-  padding-bottom: 48px;
-  margin-bottom: 0; }
-  body.overview section:before, body.overview section:after {
-    content: " ";
-    display: table; }
-  body.overview section:after {
-    clear: both; }
-body.overview .section-inner {
-  width: 100%; }
+  body.overview .content section {
+    *zoom: 1;
+    display: block;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    margin-bottom: 0; }
+    body.overview .content section:before, body.overview .content section:after {
+      content: " ";
+      display: table; }
+    body.overview .content section:after {
+      clear: both; }
+  body.overview .content .section-inner {
+    width: 100%; }
 body.overview .entry-content {
   padding-top: 0; }
 body.overview .article-header {
