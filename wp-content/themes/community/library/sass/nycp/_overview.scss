@@ -96,6 +96,7 @@ body.overview {
 
 
 .overview-value {
+  background: $base9;
   .wp-caption {
     background: transparent;
     img {
@@ -122,6 +123,7 @@ body.overview {
 
 
 .overview-advantage {
+  background: $base9;
   padding-bottom: 0 !important;
   p {
       @include span-columns(12 of 16);

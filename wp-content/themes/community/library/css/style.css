@@ -2997,16 +2997,18 @@ body.overview .article-header {
     margin: 1.2em 0;
     text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6); }
 
-.overview-value .wp-caption {
-  background: transparent; }
-  .overview-value .wp-caption img {
-    border: 5px solid #fff; }
-  .overview-value .wp-caption p.wp-caption-text {
-    font-size: 18px;
-    font-size: 1.125rem;
-    line-height: 1.6;
-    text-align: left;
-    padding: 5px; }
+.overview-value {
+  background: #f5f3f0; }
+  .overview-value .wp-caption {
+    background: transparent; }
+    .overview-value .wp-caption img {
+      border: 5px solid #fff; }
+    .overview-value .wp-caption p.wp-caption-text {
+      font-size: 18px;
+      font-size: 1.125rem;
+      line-height: 1.6;
+      text-align: left;
+      padding: 5px; }
 
 .value-problem,
 .value-solution {
@@ -3030,6 +3032,7 @@ body.overview .article-header {
         margin-right: 0; } }
 
 .overview-advantage {
+  background: #f5f3f0;
   padding-bottom: 0 !important; }
   .overview-advantage p {
     display: block;
