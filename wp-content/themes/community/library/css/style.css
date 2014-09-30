@@ -2917,6 +2917,8 @@ body.overview .content {
   body.overview .content h2 {
     text-align: center;
     margin-bottom: 8px; }
+  body.overview .content p {
+    max-width: none; }
 body.overview section {
   *zoom: 1;
   display: block;
@@ -2934,6 +2936,26 @@ body.overview .entry-content {
   padding-top: 0; }
 body.overview .article-header {
   display: none; }
+body.overview .promo-intro {
+  display: block;
+  float: left;
+  margin-right: 1.7578775415%;
+  width: 87.2802653073%;
+  margin-left: 8.5298042998%; }
+  body.overview .promo-intro:last-child {
+    margin-right: 0; }
+  @media (min-width: 769px) {
+    body.overview .promo-intro {
+      width: 75%;
+      margin-left: 12.5%; } }
+
+.overview-intro {
+  background: #333231 url("/wp-content/uploads/2014/09/bridge-large.jpg") no-repeat center center;
+  background-size: cover; }
+  .overview-intro h1 {
+    color: #fff;
+    margin: 1.2em 0;
+    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6); }
 
 .overview-actions {
   list-style: none;
@@ -2991,14 +3013,6 @@ body.overview .article-header {
     background: #fff;
     color: #247cc9; }
 
-.overview-intro {
-  background: #333231 url("/wp-content/uploads/2014/09/bridge-large.jpg") no-repeat center center;
-  background-size: cover; }
-  .overview-intro h1 {
-    color: #fff;
-    margin: 1.2em 0;
-    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6); }
-
 .overview-value {
   background: #e6e4df; }
   .overview-value .wp-caption {
@@ -3036,14 +3050,6 @@ body.overview .article-header {
 .overview-advantage {
   background: #e6e4df;
   padding-bottom: 0 !important; }
-  .overview-advantage p {
-    display: block;
-    float: left;
-    margin-right: 1.7578775415%;
-    width: 74.5605306146%;
-    margin-left: 17.0596085997%; }
-    .overview-advantage p:last-child {
-      margin-right: 0; }
   .overview-advantage .size-full {
     width: 100%;
     max-height: 430px;
@@ -3057,38 +3063,12 @@ body.overview .article-header {
 .overview-community,
 .overview-services {
   color: #fff; }
-  .overview-tools .promo-intro,
-  .overview-community .promo-intro,
-  .overview-services .promo-intro {
-    display: block;
-    float: left;
-    margin-right: 1.7578775415%;
-    width: 87.2802653073%;
-    margin-left: 8.5298042998%; }
-    .overview-tools .promo-intro:last-child,
-    .overview-community .promo-intro:last-child,
-    .overview-services .promo-intro:last-child {
-      margin-right: 0; }
-    @media (min-width: 769px) {
-      .overview-tools .promo-intro,
-      .overview-community .promo-intro,
-      .overview-services .promo-intro {
-        display: block;
-        float: left;
-        margin-right: 1.7578775415%;
-        width: 74.5605306146%;
-        margin-left: 17.0596085997%; }
-        .overview-tools .promo-intro:last-child,
-        .overview-community .promo-intro:last-child,
-        .overview-services .promo-intro:last-child {
-          margin-right: 0; } }
   .overview-tools h2, .overview-tools p,
   .overview-community h2,
   .overview-community p,
   .overview-services h2,
   .overview-services p {
-    color: #fff;
-    max-width: none; }
+    color: #fff; }
 
 .overview-tools {
   background: #29abe2; }
