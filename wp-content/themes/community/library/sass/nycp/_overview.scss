@@ -23,10 +23,10 @@ body.overview {
     padding-top: 0;
     h1 {
       text-align: center;
+      font-weight: 700;
     }
     h2 {
       text-align: center;
-      padding-top: $space-32;
       margin-bottom: $space-third;
     }
   }
@@ -50,6 +50,8 @@ body.overview {
 .overview-actions {
   list-style: none;
   margin: 0;
+  padding: $space 0;
+  text-align: center;
   li {
       display: inline-block;
       margin: 5px;
@@ -115,14 +117,21 @@ body.overview {
         @include span-columns(6 of 16);
     }
 }
+.value-problem {
+    @include breakpoint(md) {
+      @include shift(0);
+    }
+}
 .value-solution {
     @include breakpoint(md) {
-        @include shift(2);
+      @include shift(2);
     }
 }
 
+
 .overview-advantage {
-  h2, p {
+  padding-bottom: 0;
+  p {
       @include span-columns(12 of 16);
       @include shift(2); 
   }
@@ -216,13 +225,9 @@ body.overview {
   	img {
       width: 30%;
       height: auto;
-      margin-right: 3%;
+      margin-left: 1.5%;
   	}
 	}
 }
 
-.overview-exit {
-  text-align: center;
-  padding: $space-double 0;
-}
 

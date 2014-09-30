@@ -2911,10 +2911,10 @@ SIDEBARS & ASIDES
 body.overview .content {
   padding-top: 0; }
   body.overview .content h1 {
-    text-align: center; }
+    text-align: center;
+    font-weight: 700; }
   body.overview .content h2 {
     text-align: center;
-    padding-top: 30px;
     margin-bottom: 8px; }
 body.overview section {
   *zoom: 1;
@@ -2934,7 +2934,9 @@ body.overview .article-header {
 
 .overview-actions {
   list-style: none;
-  margin: 0; }
+  margin: 0;
+  padding: 24px 0;
+  text-align: center; }
   .overview-actions li {
     display: inline-block;
     margin: 5px;
@@ -3027,25 +3029,31 @@ body.overview .article-header {
         margin-right: 0; } }
 
 @media (min-width: 769px) {
+  .value-problem {
+    margin-left: 0%; } }
+
+@media (min-width: 769px) {
   .value-solution {
     margin-left: 17.0596085997%; } }
 
-.overview-advantage h2, .overview-advantage p {
-  display: block;
-  float: left;
-  margin-right: 1.7578775415%;
-  width: 74.5605306146%;
-  margin-left: 17.0596085997%; }
-  .overview-advantage h2:last-child, .overview-advantage p:last-child {
-    margin-right: 0; }
-.overview-advantage .size-full {
-  width: 100%;
-  max-height: 430px;
-  overflow: hidden; }
-.overview-advantage img {
-  clear: both;
-  width: 100%;
-  height: auto; }
+.overview-advantage {
+  padding-bottom: 0; }
+  .overview-advantage p {
+    display: block;
+    float: left;
+    margin-right: 1.7578775415%;
+    width: 74.5605306146%;
+    margin-left: 17.0596085997%; }
+    .overview-advantage p:last-child {
+      margin-right: 0; }
+  .overview-advantage .size-full {
+    width: 100%;
+    max-height: 430px;
+    overflow: hidden; }
+  .overview-advantage img {
+    clear: both;
+    width: 100%;
+    height: auto; }
 
 .overview-tools,
 .overview-community,
@@ -3143,8 +3151,4 @@ body.overview .article-header {
     .community-promo img {
       width: 30%;
       height: auto;
-      margin-right: 3%; } }
-
-.overview-exit {
-  text-align: center;
-  padding: 48px 0; }
+      margin-left: 1.5%; } }
