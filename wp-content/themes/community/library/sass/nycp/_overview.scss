@@ -1,24 +1,6 @@
-
-body.overview {
-  .content {
-    padding-top: 0;
-  }
-  section {
-    @include row();
-  }
-  .article-header {
-    display: none;
-  }   
-  h1, h2 {
-    text-align: center;
-  }
-  h2 {
-    padding-top: $space;
-    margin-bottom: $space-fourth;
-  }
-}
-
+// CUSTOM MIXINS
 // rainbow buttons
+
 @mixin rainbow-button($color){
   a,
   a:visited {
@@ -33,18 +15,51 @@ body.overview {
   }
 }
 
+
+// OVERVIEW PAGE
+
+body.overview {
+  .content {
+    padding-top: 0;
+    h1 {
+      text-align: center;
+    }
+    h2 {
+      text-align: center;
+      padding-top: $space-32;
+      margin-bottom: $space-third;
+    }
+  }
+  section {
+    @include row();
+    padding-top: $space-double;
+    padding-bottom: $space-double;
+    margin-bottom: 0;
+  }
+  .section-inner {
+    @include fill-parent;
+  }
+  .article-header {
+    display: none;
+  }   
+}
+
+
 // calls to action (top and bottom)
 
 .overview-actions {
   list-style: none;
+  margin: 0;
   li {
-      @include font-size($delta);
+      display: inline-block;
+      margin: 5px;
+      @include font-size($epsilon);
       line-height: 1.2;
       white-space: nowrap;
   }
   a {
       display: block;
-      padding: 18px 36px;
+      padding: $space-34 $space-32;
       text-transform: uppercase;
       letter-spacing: $tracking;
       text-decoration: none;
@@ -64,22 +79,7 @@ body.overview {
   }
 }
 
-.overview-exit {
-  @include fill-parent; 
-  text-align: center;
-  padding: $space-double 0;
-  .overview-actions {
-    margin: 0;
-    li {
-        display: inline-block;
-        margin: 5px;
-    }
-  }
-}
-
-
 .overview-intro {
-  @include fill-parent; 
   background: $base2 url('/wp-content/uploads/2014/09/bridge-large.jpg') no-repeat center center;
   background-size: cover;
   h1 {
@@ -87,37 +87,28 @@ body.overview {
     margin: 1.2em 0;
     text-shadow: 0px 0px 20px rgba(0,0,0,0.6);
   }
-  .overview-actions {
-    @include span-columns(14);
-    @include shift(1);
-    @include breakpoint(md) {
-      @include span-columns(6); 
-      @include shift(0);
+}
+
+
+
+
+.overview-value {
+  .wp-caption {
+    background: transparent;
+    img {
+      border: 5px solid $white;
     }
-    @include breakpoint(lg) {
-      @include span-columns(4); 
+    p.wp-caption-text {
+      @include font-size($epsilon);
+      line-height: 1.6;
+      text-align: left;
+      padding: 5px;
     }
   }
 }
 
-.overview-value {
-    @include fill-parent; 
-    padding-bottom: 40px;
-    .wp-caption {
-        background: transparent;
-        img {
-            border: 5px solid $white;
-        }
-        p.wp-caption-text {
-            @include font-size($epsilon);
-            line-height: 1.6;
-            text-align: left;
-            padding: 5px;
-        }
-    }
-}
-
-.value-problem {
+.value-problem,
+.value-solution {
     @include span-columns(14 of 16);
     @include shift(1);
     @include breakpoint(md) {
@@ -125,86 +116,78 @@ body.overview {
     }
 }
 .value-solution {
-    @include span-columns(14 of 16);
-    @include shift(1);
     @include breakpoint(md) {
-        @include span-columns(6 of 16);
         @include shift(2);
     }
 }
 
 .overview-advantage {
-    @include fill-parent; 
-    h2, p {
-        @include span-columns(12 of 16);
-        @include shift(2); 
-    }
-    .size-full {
-        width: 100%;
-        max-height: 430px;
-        overflow: hidden;
-    }
-    img {
-        clear: both;
-        width: 100%;
-        height: auto;
-    }
+  h2, p {
+      @include span-columns(12 of 16);
+      @include shift(2); 
+  }
+  .size-full {
+      width: 100%;
+      max-height: 430px;
+      overflow: hidden;
+  }
+  img {
+      clear: both;
+      width: 100%;
+      height: auto;
+  }
 }
 
 .overview-tools,
 .overview-community,
 .overview-services {
-    @include fill-parent; 
-    padding-bottom: $space-double;
-    margin-bottom: 0;
+  color: $white;
+  .promo-intro {
+    @include span-columns(14 of 16);
+    @include shift(1); 
+    @include breakpoint(md) {
+      @include span-columns(12 of 16);
+      @include shift(2); 
+  	}
+  }
+  h2, p {
     color: $white;
-    .promo-intro {
-        @include span-columns(14 of 16);
-        @include shift(1); 
-        @include breakpoint(md) {
-          @include span-columns(12 of 16);
-          @include shift(2); 
-      	}
-    }
-    h2, p {
-        color: $white;
-    }
+  }
 }
 
 .overview-tools {
-    background: $blue;
+  background: $blue;
 }
 .overview-community {
-    background: $navy;
+  background: $navy;
 }
 .overview-services {
-    background: $base2;
+  background: $base2;
 }
 
 // lists of tools and services 
 .tools-promo,
 .services-promo {
-    @include fill-parent; 
-    text-align: center;
-    padding-top: $space-double / 2;
-    .wp-caption {
-        display: inline-block;
-        margin: 0 5px 10px;
-        img {
-            width: auto;
-            border: 5px solid $white;
-        }
-        p {
-            color: $base2;
-        }
+  text-align: center;
+  padding-top: $space;
+  .wp-caption {
+    display: inline-block;
+    margin: 0 5px 10px;
+    img {
+        width: auto;
+        border: 5px solid $white;
     }
-    .wp-caption + br {
-        display: none; // hide unintentional line breaks created by Wordpress
+    p {
+        color: $base2;
     }
+  }
+  .wp-caption + br {
+    display: none; // hide unintentional line breaks created by Wordpress
+  }
 }
 .tools-promo .wp-caption {
-    width: 235px;
-    height: 285px;
+  width: 235px;
+  height: 285px;
     
 }
 .services-promo .wp-caption {
@@ -229,12 +212,17 @@ body.overview {
     border: 5px solid white;
     margin-top: 20px;
   }
-	@include breakpoint(lg) {
+	@include breakpoint(md) {
   	img {
       width: 30%;
       height: auto;
       margin-right: 3%;
   	}
 	}
+}
+
+.overview-exit {
+  text-align: center;
+  padding: $space-double 0;
 }
 
