@@ -48,7 +48,7 @@
 
 			<div class="wrap">
 
-				<a class="domain-logo" href="<?php echo home_url(); ?>" rel="nofollow"><img src="<?php echo get_template_directory_uri(); ?>/library/images/logo-nycp-sm.png" width="138" height="27" alt="NYC Prepared"/></a>
+				<a class="domain-logo" href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/library/images/logo-nycp-sm.png" width="138" height="27" alt="NYC Prepared"/></a>
 
 				<nav role="navigation" class="nav-global">
 					<ul class="nav-anchors js-anchors">
