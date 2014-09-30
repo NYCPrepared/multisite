@@ -1,83 +1,81 @@
-// useful variables for this section
 
-$pad-home: 40px;
-
-
-// HOME PAGE
-
-.home {
-    #content {
-        padding-top: 0;
-    }
-    .article-header {
-        display: none;
-    }   
-    h1, h2 {
-        text-align: center;
-    }
+body.overview {
+  #content {
+    padding-top: 0;
+  }
+  .article-header {
+    display: none;
+  }   
+  h1, h2 {
+    text-align: center;
+  }
+  h2 {
+    padding-top: $space;
+    margin-bottom: $space-fourth;
+  }
 }
 
 // rainbow buttons
 @mixin rainbow-button($color){
-    a,
-    a:visited {
-        background: $color;
-        border: 3px solid $color;
-        color: $white;
-    }
-    a:hover,
-    a:focus {
-        background: $white;
-        color: $color;
-    }
+  a,
+  a:visited {
+      background: $color;
+      border: 3px solid $color;
+      color: $white;
+  }
+  a:hover,
+  a:focus {
+      background: $white;
+      color: $color;
+  }
 }
 
 // calls to action (top and bottom)
 
-.home-actions {
-    list-style: none;
+.overview-actions {
+  list-style: none;
+  li {
+      @include font-size($delta);
+      line-height: 1.2;
+      white-space: nowrap;
+  }
+  a {
+      display: block;
+      padding: 18px 36px;
+      text-transform: uppercase;
+      letter-spacing: $tracking;
+      text-decoration: none;
+      text-align: center;
+  }
+  li:nth-child(4n+1) {  
+      @include rainbow-button($green);
+  }
+  li:nth-child(4n+2) {  
+      @include rainbow-button($teal);
+  }
+  li:nth-child(4n+3) {  
+      @include rainbow-button($blue);
+  }
+  li:nth-child(4n+4) {  
+      @include rainbow-button($navy);
+  }
+}
+
+.overview-exit {
+  @include fill-parent; 
+  text-align: center;
+  padding: $space-double 0;
+  .overview-actions {
+    margin: 0;
     li {
-        @include font-size($delta);
-        line-height: 1.2;
-        white-space: nowrap;
+        display: inline-block;
+        margin: 5px;
     }
-    a {
-        display: block;
-        padding: 18px 36px;
-        text-transform: uppercase;
-        letter-spacing: $tracking;
-        text-decoration: none;
-        text-align: center;
-    }
-    li:nth-child(4n+1) {  
-        @include rainbow-button($green);
-    }
-    li:nth-child(4n+2) {  
-        @include rainbow-button($teal);
-    }
-    li:nth-child(4n+3) {  
-        @include rainbow-button($blue);
-    }
-    li:nth-child(4n+4) {  
-        @include rainbow-button($navy);
-    }
-}
-
-.home-exit {
-    @include fill-parent; 
-    text-align: center;
-    padding: $pad-home 0;
-    .home-actions {
-        margin: 0;
-        li {
-            display: inline-block;
-            margin: 5px;
-        }
-    }
+  }
 }
 
 
-.home-intro {
+.overview-intro {
   @include fill-parent; 
   background: $base2 url('/wp-content/uploads/2014/09/bridge-large.jpg') no-repeat center center;
   background-size: cover;
@@ -86,7 +84,7 @@ $pad-home: 40px;
     margin: 1.2em 0;
     text-shadow: 0px 0px 20px rgba(0,0,0,0.6);
   }
-  .home-actions {
+  .overview-actions {
     @include span-columns(14);
     @include shift(1);
     @include breakpoint(md) {
@@ -99,7 +97,7 @@ $pad-home: 40px;
   }
 }
 
-.home-value {
+.overview-value {
     @include fill-parent; 
     padding-bottom: 40px;
     .wp-caption {
@@ -132,7 +130,7 @@ $pad-home: 40px;
     }
 }
 
-.home-advantage {
+.overview-advantage {
     @include fill-parent; 
     h2, p {
         @include span-columns(12 of 16);
@@ -150,12 +148,11 @@ $pad-home: 40px;
     }
 }
 
-.home-tools,
-.home-community,
-.home-services {
+.overview-tools,
+.overview-community,
+.overview-services {
     @include fill-parent; 
-    clear: both;
-    padding-bottom: $pad-home;
+    padding-bottom: $space-double;
     margin-bottom: 0;
     color: $white;
     .promo-intro {
@@ -171,13 +168,13 @@ $pad-home: 40px;
     }
 }
 
-.home-tools {
+.overview-tools {
     background: $blue;
 }
-.home-community {
+.overview-community {
     background: $navy;
 }
-.home-services {
+.overview-services {
     background: $base2;
 }
 
@@ -186,7 +183,7 @@ $pad-home: 40px;
 .services-promo {
     @include fill-parent; 
     text-align: center;
-    padding-top: $pad-home / 2;
+    padding-top: $space-double / 2;
     .wp-caption {
         display: inline-block;
         margin: 0 5px 10px;
