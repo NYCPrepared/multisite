@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Network Latest Posts (Custom)
+Plugin Name: Network Posts (Custom)
 Description: Display the latest posts from the blogs in your network using it as a function, shortcode or widget. Based on Network Latest Posts plugin (http://en.8elite.com/network-latest-posts).
 Author: Pea, Glocal
 Author URI: http://glocal.coop
