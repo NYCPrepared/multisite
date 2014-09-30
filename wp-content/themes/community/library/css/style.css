@@ -2494,7 +2494,6 @@ div.css-search {
   .css-events-list .event-list-header {
     display: none; }
   .css-events-list .event {
-    border-top: 1px solid #b8b6b2;
     padding: 10px 0;
     clear: both; }
   @media (min-width: 481px) {
