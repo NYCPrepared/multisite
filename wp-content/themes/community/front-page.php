@@ -154,6 +154,7 @@
 				'auto_excerpt'  => 'true',
 				'full_meta'		=> 'true',
 				// 'category'         => 'news',
+				'excerpt_length'   => '20',
 				'number_posts'     => 2,
 				'wrapper_list_css' => 'news-list',
 				'wrapper_block_css'=> 'module row news', //The wrapper classe
