@@ -2910,32 +2910,41 @@ SIDEBARS & ASIDES
 
 body.overview .content {
   padding-top: 0; }
+  body.overview .content h1 {
+    text-align: center; }
+  body.overview .content h2 {
+    text-align: center;
+    padding-top: 30px;
+    margin-bottom: 8px; }
 body.overview section {
   *zoom: 1;
-  display: block; }
+  display: block;
+  padding-top: 48px;
+  padding-bottom: 48px;
+  margin-bottom: 0; }
   body.overview section:before, body.overview section:after {
     content: " ";
     display: table; }
   body.overview section:after {
     clear: both; }
+body.overview .section-inner {
+  width: 100%; }
 body.overview .article-header {
   display: none; }
-body.overview h1, body.overview h2 {
-  text-align: center; }
-body.overview h2 {
-  padding-top: 24px;
-  margin-bottom: 6px; }
 
 .overview-actions {
-  list-style: none; }
+  list-style: none;
+  margin: 0; }
   .overview-actions li {
-    font-size: 22px;
-    font-size: 1.375rem;
+    display: inline-block;
+    margin: 5px;
+    font-size: 18px;
+    font-size: 1.125rem;
     line-height: 1.2;
     white-space: nowrap; }
   .overview-actions a {
     display: block;
-    padding: 18px 36px;
+    padding: 18px 30px;
     text-transform: uppercase;
     letter-spacing: 1px;
     text-decoration: none;
@@ -2977,124 +2986,70 @@ body.overview h2 {
     background: #fff;
     color: #247cc9; }
 
-.overview-exit {
-  width: 100%;
-  text-align: center;
-  padding: 48px 0; }
-  .overview-exit .overview-actions {
-    margin: 0; }
-    .overview-exit .overview-actions li {
-      display: inline-block;
-      margin: 5px; }
-
 .overview-intro {
-  width: 100%;
   background: #333231 url("/wp-content/uploads/2014/09/bridge-large.jpg") no-repeat center center;
   background-size: cover; }
   .overview-intro h1 {
     color: #fff;
     margin: 1.2em 0;
     text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6); }
-  .overview-intro .overview-actions {
-    display: block;
-    float: left;
-    margin-right: 1.7578775415%;
-    width: 87.2802653073%;
-    margin-left: 8.5298042998%; }
-    .overview-intro .overview-actions:last-child {
-      margin-right: 0; }
-    @media (min-width: 769px) {
-      .overview-intro .overview-actions {
-        display: block;
-        float: left;
-        margin-right: 1.7578775415%;
-        width: 36.4013265366%;
-        margin-left: 0%; }
-        .overview-intro .overview-actions:last-child {
-          margin-right: 0; } }
-    @media (min-width: 1025px) {
-      .overview-intro .overview-actions {
-        display: block;
-        float: left;
-        margin-right: 1.7578775415%;
-        width: 23.6815918439%; }
-        .overview-intro .overview-actions:last-child {
-          margin-right: 0; } }
 
-.overview-value {
-  width: 100%;
-  padding-bottom: 40px; }
-  .overview-value .wp-caption {
-    background: transparent; }
-    .overview-value .wp-caption img {
-      border: 5px solid #fff; }
-    .overview-value .wp-caption p.wp-caption-text {
-      font-size: 18px;
-      font-size: 1.125rem;
-      line-height: 1.6;
-      text-align: left;
-      padding: 5px; }
+.overview-value .wp-caption {
+  background: transparent; }
+  .overview-value .wp-caption img {
+    border: 5px solid #fff; }
+  .overview-value .wp-caption p.wp-caption-text {
+    font-size: 18px;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    text-align: left;
+    padding: 5px; }
 
-.value-problem {
-  display: block;
-  float: left;
-  margin-right: 1.7578775415%;
-  width: 87.2802653073%;
-  margin-left: 8.5298042998%; }
-  .value-problem:last-child {
-    margin-right: 0; }
-  @media (min-width: 769px) {
-    .value-problem {
-      display: block;
-      float: left;
-      margin-right: 1.7578775415%;
-      width: 36.4013265366%; }
-      .value-problem:last-child {
-        margin-right: 0; } }
-
+.value-problem,
 .value-solution {
   display: block;
   float: left;
   margin-right: 1.7578775415%;
   width: 87.2802653073%;
   margin-left: 8.5298042998%; }
+  .value-problem:last-child,
   .value-solution:last-child {
     margin-right: 0; }
   @media (min-width: 769px) {
+    .value-problem,
     .value-solution {
       display: block;
       float: left;
       margin-right: 1.7578775415%;
-      width: 36.4013265366%;
-      margin-left: 17.0596085997%; }
+      width: 36.4013265366%; }
+      .value-problem:last-child,
       .value-solution:last-child {
         margin-right: 0; } }
 
-.overview-advantage {
-  width: 100%; }
-  .overview-advantage h2, .overview-advantage p {
-    display: block;
-    float: left;
-    margin-right: 1.7578775415%;
-    width: 74.5605306146%;
-    margin-left: 17.0596085997%; }
-    .overview-advantage h2:last-child, .overview-advantage p:last-child {
-      margin-right: 0; }
-  .overview-advantage .size-full {
-    width: 100%;
-    max-height: 430px;
-    overflow: hidden; }
-  .overview-advantage img {
-    clear: both;
-    width: 100%;
-    height: auto; }
+@media (min-width: 769px) {
+  .value-solution {
+    margin-left: 17.0596085997%; } }
+
+.overview-advantage h2, .overview-advantage p {
+  display: block;
+  float: left;
+  margin-right: 1.7578775415%;
+  width: 74.5605306146%;
+  margin-left: 17.0596085997%; }
+  .overview-advantage h2:last-child, .overview-advantage p:last-child {
+    margin-right: 0; }
+.overview-advantage .size-full {
+  width: 100%;
+  max-height: 430px;
+  overflow: hidden; }
+.overview-advantage img {
+  clear: both;
+  width: 100%;
+  height: auto; }
 
 .overview-tools,
 .overview-community,
 .overview-services {
-  width: 100%;
-  padding-bottom: 48px;
-  margin-bottom: 0;
   color: #fff; }
   .overview-tools .promo-intro,
   .overview-community .promo-intro,
@@ -3139,7 +3094,6 @@ body.overview h2 {
 
 .tools-promo,
 .services-promo {
-  width: 100%;
   text-align: center;
   padding-top: 24px; }
   .tools-promo .wp-caption,
@@ -3185,8 +3139,12 @@ body.overview h2 {
     margin-top: 20px; }
     .community-promo img:last-child {
       margin-right: 0; }
-  @media (min-width: 1025px) {
+  @media (min-width: 769px) {
     .community-promo img {
       width: 30%;
       height: auto;
       margin-right: 3%; } }
+
+.overview-exit {
+  text-align: center;
+  padding: 48px 0; }
