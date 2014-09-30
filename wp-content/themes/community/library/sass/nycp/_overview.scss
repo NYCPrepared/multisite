@@ -24,7 +24,7 @@ body.overview {
     h1 {
       text-align: center;
       font-weight: 700;
-      margin-bottom: $space-triple;
+      margin: $space * 4;
     }
     h2 {
       text-align: center;
@@ -39,6 +39,9 @@ body.overview {
   }
   .section-inner {
     @include fill-parent;
+  }
+  .entry-content {
+    padding-top: 0;
   }
   .article-header {
     display: none;
@@ -113,10 +116,10 @@ body.overview {
 
 .value-problem,
 .value-solution {
-    @include span-columns(14 of 16);
+    @include span-columns(14);
     @include shift(1);
     @include breakpoint(md) {
-        @include span-columns(6 of 16);
+        @include span-columns(6);
     }
 }
 
@@ -126,7 +129,7 @@ body.overview {
   background: $base8;
   padding-bottom: 0 !important;
   p {
-      @include span-columns(12 of 16);
+      @include span-columns(12);
       @include shift(2); 
   }
   .size-full {
@@ -146,10 +149,10 @@ body.overview {
 .overview-services {
   color: $white;
   .promo-intro {
-    @include span-columns(14 of 16);
+    @include span-columns(14);
     @include shift(1); 
     @include breakpoint(md) {
-      @include span-columns(12 of 16);
+      @include span-columns(12);
       @include shift(2); 
   	}
   }
@@ -173,7 +176,6 @@ body.overview {
 .tools-promo,
 .services-promo {
   text-align: center;
-  padding-top: $space;
   clear: both;
   .wp-caption {
     display: inline-block;
@@ -209,10 +211,9 @@ body.overview {
 
 // community images
 .community-promo {
-  padding-top: $space;
   clear: both;
   img {
-    @include span-columns(14 of 16);
+    @include span-columns(14);
   	@include shift(1); 
   	margin-right: 0;
     border: 5px solid white;
@@ -222,7 +223,7 @@ body.overview {
   	img {
       width: 30%;
       height: auto;
-      margin-left: 2%;
+      margin-left: 2.5%;
   	}
 	}
 }
