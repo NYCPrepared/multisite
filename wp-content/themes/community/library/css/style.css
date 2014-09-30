@@ -2998,7 +2998,7 @@ body.overview .article-header {
     text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6); }
 
 .overview-value {
-  background: #f5f3f0; }
+  background: #e6e4df; }
   .overview-value .wp-caption {
     background: transparent; }
     .overview-value .wp-caption img {
@@ -3032,7 +3032,7 @@ body.overview .article-header {
         margin-right: 0; } }
 
 .overview-advantage {
-  background: #f5f3f0;
+  background: #e6e4df;
   padding-bottom: 0 !important; }
   .overview-advantage p {
     display: block;
