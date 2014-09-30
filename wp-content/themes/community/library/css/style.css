@@ -2913,7 +2913,7 @@ body.overview .content {
   body.overview .content h1 {
     text-align: center;
     font-weight: 700;
-    margin-bottom: 48px; }
+    margin-bottom: 72px; }
   body.overview .content h2 {
     text-align: center;
     margin-bottom: 8px; }
@@ -3030,7 +3030,7 @@ body.overview .article-header {
         margin-right: 0; } }
 
 .overview-advantage {
-  padding-bottom: 0; }
+  padding-bottom: 0 !important; }
   .overview-advantage p {
     display: block;
     float: left;
@@ -3097,7 +3097,8 @@ body.overview .article-header {
 .tools-promo,
 .services-promo {
   text-align: center;
-  padding-top: 24px; }
+  padding-top: 24px;
+  clear: both; }
   .tools-promo .wp-caption,
   .services-promo .wp-caption {
     display: inline-block;
@@ -3129,7 +3130,7 @@ body.overview .article-header {
         font-size: 0.875rem; } }
 
 .community-promo {
-  margin-top: 24px;
+  padding-top: 24px;
   clear: both; }
   .community-promo img {
     display: block;
