@@ -38,9 +38,7 @@ body.overview {
     margin-bottom: 0;
   }
   .section-inner {
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    @include fill-parent;
   }
   .article-header {
     display: none;
@@ -120,11 +118,7 @@ body.overview {
         @include span-columns(6 of 16);
     }
 }
-.value-solution {
-    @include breakpoint(md) {
-      @include shift(2);
-    }
-}
+
 
 
 .overview-advantage {
@@ -212,7 +206,8 @@ body.overview {
 
 // community images
 .community-promo {
-  margin-top: 20px;
+  margin-top: $space;
+  clear: both;
   img {
     @include span-columns(14 of 16);
   	@include shift(1); 
@@ -224,7 +219,7 @@ body.overview {
   	img {
       width: 30%;
       height: auto;
-      margin-left: 1.5%;
+      margin-left: 2%;
   	}
 	}
 }
