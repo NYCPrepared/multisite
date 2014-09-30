@@ -2908,8 +2908,16 @@ SIDEBARS & ASIDES
 .sidebar .widget .menu a:before {
   display: none; }
 
-body.overview #content {
+body.overview .content {
   padding-top: 0; }
+body.overview section {
+  *zoom: 1;
+  display: block; }
+  body.overview section:before, body.overview section:after {
+    content: " ";
+    display: table; }
+  body.overview section:after {
+    clear: both; }
 body.overview .article-header {
   display: none; }
 body.overview h1, body.overview h2 {

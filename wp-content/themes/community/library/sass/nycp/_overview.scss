@@ -1,7 +1,10 @@
 
 body.overview {
-  #content {
+  .content {
     padding-top: 0;
+  }
+  section {
+    @include row();
   }
   .article-header {
     display: none;
