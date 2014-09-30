@@ -24,6 +24,7 @@ body.overview {
     h1 {
       text-align: center;
       font-weight: 700;
+      margin-bottom: $space-double;
     }
     h2 {
       text-align: center;
@@ -37,7 +38,9 @@ body.overview {
     margin-bottom: 0;
   }
   .section-inner {
-    @include fill-parent;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .article-header {
     display: none;
@@ -117,11 +120,6 @@ body.overview {
         @include span-columns(6 of 16);
     }
 }
-.value-problem {
-    @include breakpoint(md) {
-      @include shift(0);
-    }
-}
 .value-solution {
     @include breakpoint(md) {
       @include shift(2);
@@ -161,6 +159,7 @@ body.overview {
   }
   h2, p {
     color: $white;
+    max-width: none;
   }
 }
 
