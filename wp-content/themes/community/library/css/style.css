@@ -2929,9 +2929,7 @@ body.overview section {
   body.overview section:after {
     clear: both; }
 body.overview .section-inner {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto; }
+  width: 100%; }
 body.overview .article-header {
   display: none; }
 
@@ -3030,10 +3028,6 @@ body.overview .article-header {
       .value-problem:last-child,
       .value-solution:last-child {
         margin-right: 0; } }
-
-@media (min-width: 769px) {
-  .value-solution {
-    margin-left: 17.0596085997%; } }
 
 .overview-advantage {
   padding-bottom: 0; }
@@ -3135,7 +3129,8 @@ body.overview .article-header {
         font-size: 0.875rem; } }
 
 .community-promo {
-  margin-top: 20px; }
+  margin-top: 24px;
+  clear: both; }
   .community-promo img {
     display: block;
     float: left;
@@ -3151,4 +3146,4 @@ body.overview .article-header {
     .community-promo img {
       width: 30%;
       height: auto;
-      margin-left: 1.5%; } }
+      margin-left: 2%; } }
