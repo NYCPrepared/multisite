@@ -39,12 +39,12 @@ body.overview {
       padding-bottom: $space-double;
       margin-bottom: 0;
     }
+    .entry-content {
+      padding-top: 0;
+    }
     .section-inner {
       @include fill-parent;
     }
-  }
-  .entry-content {
-    padding-top: 0;
   }
   .article-header {
     display: none;

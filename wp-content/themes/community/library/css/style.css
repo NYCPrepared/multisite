@@ -2930,10 +2930,10 @@ body.overview .content {
       display: table; }
     body.overview .content section:after {
       clear: both; }
+  body.overview .content .entry-content {
+    padding-top: 0; }
   body.overview .content .section-inner {
     width: 100%; }
-body.overview .entry-content {
-  padding-top: 0; }
 body.overview .article-header {
   display: none; }
 body.overview .promo-intro {
