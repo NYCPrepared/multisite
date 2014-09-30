@@ -37,7 +37,7 @@ $pad-home: 40px;
 .home-actions {
     list-style: none;
     li {
-        @include font-size(20);
+        @include font-size($delta);
         line-height: 1.2;
         white-space: nowrap;
     }
@@ -78,24 +78,25 @@ $pad-home: 40px;
 
 
 .home-intro {
-    @include fill-parent; 
-    background: $base2 url('/wp-content/uploads/2014/09/bridge-large.jpg') no-repeat center center;
-    background-size: cover;
-    h1 {
-        color: $white;
-        margin: 1.2em 0;
-        text-shadow: 0px 0px 20px rgba(0,0,0,0.6);
+  @include fill-parent; 
+  background: $base2 url('/wp-content/uploads/2014/09/bridge-large.jpg') no-repeat center center;
+  background-size: cover;
+  h1 {
+    color: $white;
+    margin: 1.2em 0;
+    text-shadow: 0px 0px 20px rgba(0,0,0,0.6);
+  }
+  .home-actions {
+    @include span-columns(14);
+    @include shift(1);
+    @include breakpoint(md) {
+      @include span-columns(6); 
+      @include shift(0);
     }
-    .home-actions {
-        @include span-columns(4); 
-    	@include breakpoint(mama) {
-            @include span-columns(6); 
-        }
-    	@include breakpoint(baby) {
-            @include span-columns(14);
-            @include shift(1);
-        }
+    @include breakpoint(lg) {
+      @include span-columns(4); 
     }
+  }
 }
 
 .home-value {
@@ -107,7 +108,7 @@ $pad-home: 40px;
             border: 5px solid $white;
         }
         p.wp-caption-text {
-            @include font-size(18);
+            @include font-size($epsilon);
             line-height: 1.6;
             text-align: left;
             padding: 5px;
@@ -116,18 +117,18 @@ $pad-home: 40px;
 }
 
 .value-problem {
-    @include span-columns(6 of 16);
+    @include span-columns(14 of 16);
     @include shift(1);
-	@include breakpoint(baby) {
-        @include span-columns(14 of 16);
+    @include breakpoint(md) {
+        @include span-columns(6 of 16);
     }
 }
 .value-solution {
-    @include span-columns(6 of 16);
-    @include shift(2);
-	@include breakpoint(baby) {
-        @include span-columns(14 of 16);
-        @include shift(1);
+    @include span-columns(14 of 16);
+    @include shift(1);
+    @include breakpoint(md) {
+        @include span-columns(6 of 16);
+        @include shift(2);
     }
 }
 
@@ -153,15 +154,17 @@ $pad-home: 40px;
 .home-community,
 .home-services {
     @include fill-parent; 
+    clear: both;
     padding-bottom: $pad-home;
+    margin-bottom: 0;
     color: $white;
     .promo-intro {
-        @include span-columns(12 of 16);
-        @include shift(2); 
-    	@include breakpoint(baby) {
-            @include span-columns(14 of 16);
-        	@include shift(1); 
-    	}
+        @include span-columns(14 of 16);
+        @include shift(1); 
+        @include breakpoint(md) {
+          @include span-columns(12 of 16);
+          @include shift(2); 
+      	}
     }
     h2, p {
         color: $white;
@@ -205,33 +208,33 @@ $pad-home: 40px;
     
 }
 .services-promo .wp-caption {
+  width: 130px !important;
+  height: 153px !important;
+  @include breakpoint(lg) {
     width: 153px !important;
-    height: 153px !important;
     padding-top: 10px;
-	@include breakpoint(baby) {
-        width: 130px !important;
-        p {
-            @include font-size(14);
-        } 
-	}
+    p {
+      @include font-size($milli);
+    } 
+  }
 }
 
 // community images
 .community-promo {
+  margin-top: 20px;
+  img {
+    @include span-columns(14 of 16);
+  	@include shift(1); 
+  	margin-right: 0;
+    border: 5px solid white;
     margin-top: 20px;
-    img {
-        border: 5px solid white;
-        width: 30%;
-        height: auto;
-        margin-right: 3%;
-        margin-top: 20px;
-    }
-	@include breakpoint(baby) {
-    	img {
-            @include span-columns(14 of 16);
-        	@include shift(1); 
-        	margin-right: 0;
-    	}
+  }
+	@include breakpoint(lg) {
+  	img {
+      width: 30%;
+      height: auto;
+      margin-right: 3%;
+  	}
 	}
 }
 

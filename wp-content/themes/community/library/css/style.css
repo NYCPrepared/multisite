@@ -507,7 +507,7 @@ main {
         margin-right: 0; } }
   main:last-child {
     margin-right: 0; }
-  .page-template-page-iframe-php main, .directory main, .news main {
+  .page-template-page-iframe-php main, .page-template-default main, .directory main, .news main {
     width: 100%; }
 
 @media (min-width: 769px) {
@@ -2918,8 +2918,8 @@ SIDEBARS & ASIDES
 .home-actions {
   list-style: none; }
   .home-actions li {
-    font-size: 20px;
-    font-size: 1.25rem;
+    font-size: 22px;
+    font-size: 1.375rem;
     line-height: 1.2;
     white-space: nowrap; }
   .home-actions a {
@@ -2988,9 +2988,27 @@ SIDEBARS & ASIDES
     display: block;
     float: left;
     margin-right: 1.7578775415%;
-    width: 23.6815918439%; }
+    width: 87.2802653073%;
+    margin-left: 8.5298042998%; }
     .home-intro .home-actions:last-child {
       margin-right: 0; }
+    @media (min-width: 769px) {
+      .home-intro .home-actions {
+        display: block;
+        float: left;
+        margin-right: 1.7578775415%;
+        width: 36.4013265366%;
+        margin-left: 0%; }
+        .home-intro .home-actions:last-child {
+          margin-right: 0; } }
+    @media (min-width: 1025px) {
+      .home-intro .home-actions {
+        display: block;
+        float: left;
+        margin-right: 1.7578775415%;
+        width: 23.6815918439%; }
+        .home-intro .home-actions:last-child {
+          margin-right: 0; } }
 
 .home-value {
   width: 100%;
@@ -3010,19 +3028,36 @@ SIDEBARS & ASIDES
   display: block;
   float: left;
   margin-right: 1.7578775415%;
-  width: 36.4013265366%;
+  width: 87.2802653073%;
   margin-left: 8.5298042998%; }
   .value-problem:last-child {
     margin-right: 0; }
+  @media (min-width: 769px) {
+    .value-problem {
+      display: block;
+      float: left;
+      margin-right: 1.7578775415%;
+      width: 36.4013265366%; }
+      .value-problem:last-child {
+        margin-right: 0; } }
 
 .value-solution {
   display: block;
   float: left;
   margin-right: 1.7578775415%;
-  width: 36.4013265366%;
-  margin-left: 17.0596085997%; }
+  width: 87.2802653073%;
+  margin-left: 8.5298042998%; }
   .value-solution:last-child {
     margin-right: 0; }
+  @media (min-width: 769px) {
+    .value-solution {
+      display: block;
+      float: left;
+      margin-right: 1.7578775415%;
+      width: 36.4013265366%;
+      margin-left: 17.0596085997%; }
+      .value-solution:last-child {
+        margin-right: 0; } }
 
 .home-advantage {
   width: 100%; }
@@ -3047,7 +3082,9 @@ SIDEBARS & ASIDES
 .home-community,
 .home-services {
   width: 100%;
+  clear: both;
   padding-bottom: 40px;
+  margin-bottom: 0;
   color: #fff; }
   .home-tools .promo-intro,
   .home-community .promo-intro,
@@ -3055,12 +3092,25 @@ SIDEBARS & ASIDES
     display: block;
     float: left;
     margin-right: 1.7578775415%;
-    width: 74.5605306146%;
-    margin-left: 17.0596085997%; }
+    width: 87.2802653073%;
+    margin-left: 8.5298042998%; }
     .home-tools .promo-intro:last-child,
     .home-community .promo-intro:last-child,
     .home-services .promo-intro:last-child {
       margin-right: 0; }
+    @media (min-width: 769px) {
+      .home-tools .promo-intro,
+      .home-community .promo-intro,
+      .home-services .promo-intro {
+        display: block;
+        float: left;
+        margin-right: 1.7578775415%;
+        width: 74.5605306146%;
+        margin-left: 17.0596085997%; }
+        .home-tools .promo-intro:last-child,
+        .home-community .promo-intro:last-child,
+        .home-services .promo-intro:last-child {
+          margin-right: 0; } }
   .home-tools h2, .home-tools p,
   .home-community h2,
   .home-community p,
@@ -3102,15 +3152,31 @@ SIDEBARS & ASIDES
   height: 285px; }
 
 .services-promo .wp-caption {
-  width: 153px !important;
-  height: 153px !important;
-  padding-top: 10px; }
+  width: 130px !important;
+  height: 153px !important; }
+  @media (min-width: 1025px) {
+    .services-promo .wp-caption {
+      width: 153px !important;
+      padding-top: 10px; }
+      .services-promo .wp-caption p {
+        font-size: 14px;
+        font-size: 0.875rem; } }
 
 .community-promo {
   margin-top: 20px; }
   .community-promo img {
+    display: block;
+    float: left;
+    margin-right: 1.7578775415%;
+    width: 87.2802653073%;
+    margin-left: 8.5298042998%;
+    margin-right: 0;
     border: 5px solid white;
-    width: 30%;
-    height: auto;
-    margin-right: 3%;
     margin-top: 20px; }
+    .community-promo img:last-child {
+      margin-right: 0; }
+  @media (min-width: 1025px) {
+    .community-promo img {
+      width: 30%;
+      height: auto;
+      margin-right: 3%; } }
