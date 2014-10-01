@@ -74,6 +74,7 @@
 					'title_only'    => 'false',
 					'auto_excerpt'  => 'true',
 					'full_meta'		=> 'true',
+					'display_type'		=> 'ulist',
 					'thumbnail'        => 'true',
 					'thumbnail_wh'	   => 'medium',
 					'thumbnail_class'  => 'post-img',
