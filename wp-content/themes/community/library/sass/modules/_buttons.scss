@@ -48,27 +48,27 @@ a {
 
 button,
 .button {
-    @include transition(all 0.25s ease);
-    @include font-size($milli);
-	text-transform: uppercase; 
-    letter-spacing: $tracking-loose;
-    line-height: 1.2;
-	font-weight: 700;
-    padding: .75em 3em;
-    text-align: center;
-    border: 0;
-    background: $anchor-color;
+  @include transition(all 0.25s ease);
+  @include font-size($milli);
+  text-transform: uppercase; 
+  letter-spacing: $tracking-loose;
+  line-height: 1.2;
+  font-weight: 700;
+  padding: .75em 3em;
+  text-align: center;
+  border: 0;
+  background: $anchor-color;
+  color: $white;
+  display: inline-block;
+  &:link,
+  &:visited {
     color: $white;
-    display: inline-block;
-    &:link,
-    &:visited {
-        color: $white;
-    }
-    &:hover,
-    &:focus {
-        background: lighten($anchor-color, 10);
-        color: $white !important;
-    }
+  }
+  &:hover,
+  &:focus {
+    background: lighten($anchor-color, 10);
+    color: $white !important;
+  }
 }
 
 
@@ -96,11 +96,12 @@ button,
 
 .sidebar .button, 
 .sidebar input[type='submit'] {
-    background: $base3;
-    background: rgba(0,0,0,.6);
+    @include font-size($micro);
+    background: $base4;
+    background: rgba(0,0,0,.4);
     font-weight: 700;
     &:hover {
-        background: $base4;
-        background: rgba(0,0,0,.4);
+        background: $base3;
+        background: rgba(0,0,0,.6);
     }
 }

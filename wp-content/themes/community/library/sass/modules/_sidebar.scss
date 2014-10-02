@@ -19,8 +19,8 @@ SIDEBARS & ASIDES
 .widgettitle {
 	margin: -5px 0 0.5em;
 	color: $white;
-    color: rgba(255,255,255,.7);
-    @include font-size($zeta);
+  color: rgba(255,255,255,.7);
+  @include font-size($zeta);
 }
 
 
@@ -38,6 +38,9 @@ SIDEBARS & ASIDES
 		&:hover {
   		color: $white;
 		}
+	}
+	.button {
+  	padding: .75em 0;
 	}
 	ul {
   	border-bottom: 1px solid $text-color;

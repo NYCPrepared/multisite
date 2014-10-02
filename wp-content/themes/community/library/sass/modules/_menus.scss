@@ -48,8 +48,8 @@ styles and our css is cleaner and more scalable. */
     > a:before {
         float: right;
         margin-left: 6px;
-        margin-top: 3px;
-        @include font-size($milli); 
+        margin-top: 4px;
+        @include font-size($nano); 
     }
 }
 

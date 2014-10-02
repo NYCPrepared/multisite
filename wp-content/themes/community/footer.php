@@ -3,7 +3,7 @@
 				<div class="wrap">
 
 					<section class="global site-meta first">
-						<h2 class="footer-logo"><a class="logo-NYCP" href="http://nycprepared.org">NYC<span>Prepared</span></a><span class="tagline-NYCP"><?php bloginfo('description'); ?></span></h2>
+						<h2 class="footer-logo"><a class="logo-NYCP" href="<?php echo home_url(); ?>">NYC<span>Prepared</span></a><span class="tagline-NYCP"><?php bloginfo('description'); ?></span></h2>
 					</section>
 					
 					<section class="widgets">

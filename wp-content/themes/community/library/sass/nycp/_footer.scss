@@ -2,39 +2,57 @@
 
 
 .footer-logo {
-    margin: 0;
-    line-height: 30px;
+  margin: 0;
+  line-height: 30px;
 }
 
 .logo-NYCP {
-    @include font-size($epsilon);
-    text-transform: uppercase; 
-    letter-spacing: $tracking;
-    font-weight: 700;
-    white-space: nowrap;
-    display: inline-block; 
-    margin-right: 20px;
+  @include font-size($epsilon);
+  line-height: 1;
+  text-transform: uppercase; 
+  letter-spacing: $tracking;
+  font-weight: 700;
+  white-space: nowrap;
+  display: inline-block; 
+  margin-right: 20px;
+  color: $white;
+  @include transition (color 0.25s ease);
+  span {
+    display: inline-block;
+    border: 3px solid $white;
+    padding: 5px 7px;
+    margin-left: 5px;   
+    @include transition (border-color 0.25s ease);
+  }
+  &:visited {
     color: $white;
-    @include transition (color 0.25s ease);
+  }
+  &:hover,
+  &:focus, 
+  &:visited:hover {
+    color: $text-color;
     span {
-        display: inline-block;
-        border: 3px solid $white;
-        padding: 3px 5px;
-        margin-left: 5px;   
-        @include transition (border-color 0.25s ease);
+      border-color: $text-color;
     }
-    &:visited {
-        color: $white;
-    }
-    &:hover,
-    &:focus, 
-    &:visited:hover {
-        color: $text-color;
-        span {
-            border-color: $text-color;
-        }
-    }
+  }
 }
+
+header .logo-NYCP {
+  @include font-size($zeta);
+  color: $base3 !important;
+  margin-top: 13px; 
+  span {
+    border-color: $base3;
+    border-width: 2px;
+  }
+  &:hover {
+    color: $yellow; 
+    span {
+      border-color: $yellow;
+    }
+  }
+}
+
 
 .tagline-NYCP {
   @include font-size(13);

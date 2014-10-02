@@ -583,18 +583,14 @@ main.main-news,
 .header-global {
   background: #fcfdf9; }
 
-.domain-logo {
+.global-logo {
   display: none;
   float: left;
   margin-top: 15px;
   margin-right: 15px; }
   @media (min-width: 769px) {
-    .domain-logo {
-      display: block; } }
-  .domain-logo img {
-    fill: #333231; }
-  .domain-logo:hover img {
-    fill: #00a99d; }
+    .global-logo {
+      display: inline-block; } }
 
 .nav-anchors {
   margin: 0; }
@@ -710,9 +706,10 @@ main.main-news,
       .nav-global .menu li.current-page-ancestor a {
         color: #00a99d; }
   .nav-global .sub-menu {
-    left: -10px; }
+    left: 0;
+    background: #e6e4df; }
     .nav-global .sub-menu li a {
-      padding: 10px 20px; }
+      padding: 10px; }
     .nav-global .sub-menu a:first-child {
       border-top: 0; }
 
@@ -946,6 +943,8 @@ SIDEBARS & ASIDES
     .widget a:hover,
     .widget a:visited:hover {
       color: #fff; }
+  .widget .button {
+    padding: .75em 0; }
   .widget ul {
     border-bottom: 1px solid #333231;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -1171,9 +1170,9 @@ styles and our css is cleaner and more scalable. */
 .menu-item-has-children > a:before {
   float: right;
   margin-left: 6px;
-  margin-top: 3px;
-  font-size: 14px;
-  font-size: 0.875rem; }
+  margin-top: 4px;
+  font-size: 11px;
+  font-size: 0.6875rem; }
 
 .js .menu,
 .js .sub-menu {
@@ -1406,13 +1405,15 @@ button,
 
 .sidebar .button,
 .sidebar input[type='submit'] {
-  background: #4d4c4a;
-  background: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  font-size: 0.75rem;
+  background: #757472;
+  background: rgba(0, 0, 0, 0.4);
   font-weight: 700; }
   .sidebar .button:hover,
   .sidebar input[type='submit']:hover {
-    background: #757472;
-    background: rgba(0, 0, 0, 0.4); }
+    background: #4d4c4a;
+    background: rgba(0, 0, 0, 0.6); }
 
 /*********************
 POSTS & CONTENT STYLES
@@ -2827,6 +2828,7 @@ table.em-calendar {
 .logo-NYCP {
   font-size: 18px;
   font-size: 1.125rem;
+  line-height: 1;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 700;
@@ -2840,7 +2842,7 @@ table.em-calendar {
   .logo-NYCP span {
     display: inline-block;
     border: 3px solid #fff;
-    padding: 3px 5px;
+    padding: 5px 7px;
     margin-left: 5px;
     -webkit-transition: border-color 0.25s ease;
     -moz-transition: border-color 0.25s ease;
@@ -2851,6 +2853,19 @@ table.em-calendar {
     color: #333231; }
     .logo-NYCP:hover span, .logo-NYCP:focus span, .logo-NYCP:visited:hover span {
       border-color: #333231; }
+
+header .logo-NYCP {
+  font-size: 16px;
+  font-size: 1rem;
+  color: #4d4c4a !important;
+  margin-top: 13px; }
+  header .logo-NYCP span {
+    border-color: #4d4c4a;
+    border-width: 2px; }
+  header .logo-NYCP:hover {
+    color: #fbb03b; }
+    header .logo-NYCP:hover span {
+      border-color: #fbb03b; }
 
 .tagline-NYCP {
   font-size: 13px;

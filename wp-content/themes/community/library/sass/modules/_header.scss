@@ -5,19 +5,14 @@
     background: $base0;
 }
 
-.domain-logo {
-    display: none;
-    @include breakpoint(md) {display: block;}
-    float: left;
-    margin-top: 15px;
-    margin-right: 15px;
-    img {
-      fill: $text-color; 
-    }
-    &:hover img {
-      fill: $anchor-color; 
-    }
+.global-logo {
+  display: none;
+  @include breakpoint(md) {display: inline-block;}
+  float: left;
+  margin-top: 15px;
+  margin-right: 15px;
 }
+
 
 // mobile buttons to reveal full menus
 
@@ -93,74 +88,75 @@
 
 @include breakpoint(md) {
 
-    .nav-anchors {
-        display: none;
-    }
+  .nav-anchors {
+    display: none;
+  }
 
-    .nav-global {
-        .search-form {
-            border: 0; 
-            padding: 5px 0;
-        }    
-        .menu {
-            position: static; 
-            padding-right: 5px; 
-            background: transparent;
-            li {
-                @include font-size($zeta);
-            }
-            > li a {
-                border: 0;
-                padding: 20px 10px;
-            }
-            a:focus,
-            a:hover {
-                background: transparent; 
-                color: $teal;
-            }
-        	li.current-menu-item, 
-        	li.current_page_item, 
-        	li.current-page-ancestor {
-                position: relative;
-        	    // triangle 'on' state
-                &:after {
-                    position: absolute;
-                    content: '';
-                    height: 0;
-                    width: 0;
-                    top: auto;
-                    left: 50%;
-                    bottom: 0;
-                    z-index: $layer1;
-                    border: solid transparent;
-                    border-bottom-color: $base9;
-                    border-width: 10px;
-                    margin-left: -10px;
-                }
-                a {
-                    color: $anchor-color;
-                }
-        	}
-        }
-        .sub-menu {
-            left: -10px;
-            li a {
-                padding: 10px 20px;
-            }
-            a:first-child {
-                border-top: 0;
-            }
-        }
+  .nav-global {
+    .search-form {
+      border: 0; 
+      padding: 5px 0;
     }    
-    
-    // disable hover for current page but not its ancestors
-    li.current-menu-item,
-    li.current_page_item {
-        a:hover {
-            color: $text-color;
-            cursor: default;
+    .menu {
+      position: static; 
+      padding-right: 5px; 
+      background: transparent;
+      li {
+        @include font-size($zeta);
+      }
+      > li a {
+        border: 0;
+        padding: 20px 10px;
+      }
+      a:focus,
+      a:hover {
+        background: transparent; 
+        color: $teal;
+      }
+  	li.current-menu-item, 
+  	li.current_page_item, 
+  	li.current-page-ancestor {
+        position: relative;
+  	    // triangle 'on' state
+        &:after {
+          position: absolute;
+          content: '';
+          height: 0;
+          width: 0;
+          top: auto;
+          left: 50%;
+          bottom: 0;
+          z-index: $layer1;
+          border: solid transparent;
+          border-bottom-color: $base9;
+          border-width: 10px;
+          margin-left: -10px;
         }
+        a {
+          color: $anchor-color;
+        }
+    	}
     }
+    .sub-menu {
+      left: 0;
+      background: $base8;
+      li a {
+        padding: 10px;
+      }
+      a:first-child {
+        border-top: 0;
+      }
+    }
+  }    
+  
+  // disable hover for current page but not its ancestors
+  li.current-menu-item,
+  li.current_page_item {
+    a:hover {
+      color: $text-color;
+      cursor: default;
+    }
+  }
 
 }
 
