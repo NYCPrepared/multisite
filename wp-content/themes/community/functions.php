@@ -527,36 +527,39 @@ function remove_theme_customization_community() {
 
 }
 
-/*********************
-SHORTCODE TO DISPLAY DROP-DOWN OF POSTS IN CONTACT 7
-*********************/
+/************* FEATURED IMAGE PREVIEW IN ADMIN ********************/
 
-// wpcf7_add_shortcode('postdropdown', 'createbox', true);
-// function createbox($tag){
+// add_theme_support( 'post-thumbnails' ); // theme should support
+function community_add_post_thumbnail_column( $cols ) { // add the thumb column
+  // output feature thumb in the end
+  //$cols['community_post_thumb'] = __( 'Featured image', 'community' );
+  //return $cols;
+  // output feature thumb in a different column position
+  $cols_start = array_slice( $cols, 0, 2, true );
+  $cols_end   = array_slice( $cols, 2, null, true );
+  $custom_cols = array_merge(
+    $cols_start,
+    array( 'community_post_thumb' => __( 'Featured image', 'community' ) ),
+    $cols_end
+  );
+  return $custom_cols;
+}
+add_filter( 'manage_posts_columns', 'community_add_post_thumbnail_column', 5 ); // add the thumb column to posts
+add_filter( 'manage_pages_columns', 'community_add_post_thumbnail_column', 5 ); // add the thumb column to pages
 
-// 	$name = $tag['name'];
-// 	$options = (array) $tag['options'];
-// 	$values = (array) $tag['values'];
+function community_display_post_thumbnail_column( $col, $id ) { // output featured image thumbnail
+  switch( $col ){
+    case 'community_post_thumb':
+      if( function_exists( 'the_post_thumbnail' ) ) {
+        echo the_post_thumbnail( 'thumbnail' );
+      } else {
+        echo __( 'Not supported in theme', 'community' );
+      }
+      break;
+  }
+}
+add_action( 'manage_posts_custom_column', 'community_display_post_thumbnail_column', 5, 2 ); // add the thumb to posts
+add_action( 'manage_pages_custom_column', 'community_display_post_thumbnail_column', 5, 2 ); // add the thumb to pages
 
-// 	foreach ($options as $option) {
-// 		if (preg_match('%^(\d*)[/x](\d*)$%i', $option, $matches)) {
-// 			$size_att = (int) $matches[1];
-// 			$maxlen_att = (int) $matches[2];
-// 		}
-// 	}
-
-// 	$args = array('post_type' => 'network' );
-// 	$output = "<select name='".$name."' id='".$name."'><option></option>";
-// 	$query2 = new WP_Query( $args );
-
-// 	// The 2nd Loop
-// 	while( $query2->have_posts()):
-// 		$query2->next_post();
-// 		$output .= "<option value='$title'>".get_the_title( $query2->post->ID )."</option>";
-// 	endwhile;
-// 	$output .= "</select>";
-
-// 	return $output;
-// }
 
 ?>
