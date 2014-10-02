@@ -15,7 +15,7 @@ POSTS & CONTENT STYLES
     letter-spacing: $tracking;
     @include font-size($gamma);
     line-height: 1.1;
-    margin: $space 0;
+    margin: $space 0 $space-double;
 }
 
 .subtitle {
@@ -49,76 +49,76 @@ POSTS & CONTENT STYLES
 .tag-slug {}        /* style by tag (i.e. tag-news) */
 
 
+// general post
+.post {
+  padding: $space;
+}
+.post-image img {
+  width: 100%;
+  height: auto;
+}
+
+
 // post date and author name
 .byline {
-    margin: 0;
-    color: $quiet-color;
+  margin: 0;
+  color: $quiet-color;
 	text-transform: uppercase; 
-        letter-spacing: $tracking;
+  letter-spacing: $tracking;
 	@include font-size(15);
-    a {
-        color: $quiet-color;
-    }
+  a {
+    color: $quiet-color;
+  }
 }
 
 // single blog post
 .single-post {
-  .post {
-    padding: $space;
-  }
-  .post-image img {
-    width: 100%;
-    height: auto;
-  }
   .entry-content {
-      padding-top: 40px;
+    padding-top: 40px;
   }
   .entry-content p:first-child {
-      @include font-size(22);
+    @include font-size(22);
   }  
 }
 
 
 // single blog post content 
 .post .entry-content {
-    h1 {
-        margin-bottom: 0;
-    }
     
-    h2, h3, h4 {
-        margin-top: 1.8em;
-    }
+  h2, h3, h4 {
+    margin-top: 1.8em;
+  }
     
 	p {
-    	max-width: 40em;
+  	max-width: 40em;
 	}
 
 	ul, ol, table, dl {}
 	ul, ol {
-        padding: 0 40px;
+    padding: 0 40px;
 		li {
 		}
 	}
 	ul {
-        list-style: square;
+    list-style: square;
 		li {}
 	}
 	ol {
-        list-style: decimal;
+    list-style: decimal;
 		li {}
 	}
 	blockquote {
 		&:before {}
 	}
 	dl {
-    	border-top: 1px solid $white;
-        padding-top: 1em;
+  	border-top: 1px solid $white;
+    padding-top: 1em;
 	}
 	dt {
-    	float: left;
+  	float: left;
 	}
 	dd {
-    	margin-left: 375px;
+  	margin-left: 375px;
 	}
 	img {
 		margin: 0 0 20px 0;
