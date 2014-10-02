@@ -100,10 +100,10 @@ body.overview {
       @include rainbow-button($teal);
   }
   li:nth-child(4n+3) {  
-      @include rainbow-button($blue);
+      @include rainbow-button($sky);
   }
   li:nth-child(4n+4) {  
-      @include rainbow-button($navy);
+      @include rainbow-button($blue);
   }
 }
 
@@ -161,10 +161,10 @@ body.overview {
 }
 
 .overview-tools {
-  background: $blue;
+  background: $sky;
 }
 .overview-community {
-  background: $navy;
+  background: $blue;
 }
 .overview-services {
   background: $base2;

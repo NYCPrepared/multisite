@@ -10,8 +10,12 @@ $max-width: 1200px;
 
 // COLORS
 
-$navy: #247cc9;
-$blue: #29abe2;
+$fuschia: #c43b90;
+$purple: #9642a5;
+$indigo: #4747b0;
+$navy: #3756b8;
+$blue: #247cc9;
+$sky: #29abe2;
 $teal: #00a99d;
 $green: #22b573;
 $lime: #8cc63f;
@@ -39,7 +43,7 @@ $base0: #fcfdf9;
 // http://sachagreif.com/sass-color-variables/
 
 $anchor-color: $teal;
-$anchor-hover: $navy;
+$anchor-hover: $blue;
 $headline-color: $base1;
 $text-color: $base2;
 $quiet-color: $base6;
