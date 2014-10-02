@@ -28,10 +28,12 @@ POSTS & CONTENT STYLES
 }
 
 
-.single-title {}
+.single-title {
+}
 
 .entry-title.single-title {
-    margin-bottom: .3em;
+  margin-top: $space;
+  margin-bottom: .3em;
 }
 
 
@@ -60,11 +62,20 @@ POSTS & CONTENT STYLES
 }
 
 // single blog post
-.single-post .entry-content {
-    padding-top: 40px;
-}
-.single-post .entry-content p:first-child {
-    @include font-size(22);
+.single-post {
+  .post {
+    padding: $space;
+  }
+  .post-image img {
+    width: 100%;
+    height: auto;
+  }
+  .entry-content {
+      padding-top: 40px;
+  }
+  .entry-content p:first-child {
+      @include font-size(22);
+  }  
 }
 
 

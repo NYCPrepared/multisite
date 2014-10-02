@@ -1436,6 +1436,7 @@ POSTS & CONTENT STYLES
     margin-top: 48px; }
 
 .entry-title.single-title {
+  margin-top: 24px;
   margin-bottom: .3em; }
 
 /* want to style individual post classes? Booya! */
@@ -1457,9 +1458,13 @@ POSTS & CONTENT STYLES
   .byline a {
     color: #b8b6b2; }
 
+.single-post .post {
+  padding: 24px; }
+.single-post .post-image img {
+  width: 100%;
+  height: auto; }
 .single-post .entry-content {
   padding-top: 40px; }
-
 .single-post .entry-content p:first-child {
   font-size: 22px;
   font-size: 1.375rem; }
