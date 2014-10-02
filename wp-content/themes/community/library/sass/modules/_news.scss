@@ -53,12 +53,11 @@
   background: $white;
   .post-header {
     @include span-columns(2 of 12);
-    @include pad(34px 0 24px 24px);
+    @include pad(0 0 24px 0);
     color: $base4;
   }
   .post-body {
     @include span-columns(10 of 12);
-    @include pad(24px 24px 24px 0);
   }
   .post-title {
     margin-bottom: $space-34;

@@ -16,38 +16,6 @@
 } 
 
 
-// PARTNER BANNER
-
-.partner-logo {
-  img {
-    width: 100%;
-    height: auto;
-  }
-  @include breakpoint(md) { @include span-columns(4);}
- 
-}
-.partner-banner {
-  padding: $space;
-  .site-prefix,
-  .site-name {
-    text-transform: uppercase;
-    letter-spacing: $tracking-loose;
-  }
-  .site-prefix {
-    margin-bottom: 3px;
-    color: $base4;
-  }
-  .site-name {
-    margin-left: -4px;
-  }
-  @include breakpoint(md) { @include span-columns(12);}
-  
-}	
-
-.community-partner .page-header {
-  display: none;
-}
-
 
 // GROUP BANNER
 
@@ -96,24 +64,61 @@
 }
 
 
+// PARTNER BANNER
+
+.partner-logo {
+  padding: $space-fourth;
+  background: $white;
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  @include breakpoint(md) { @include span-columns(4);}
+ 
+}
+.partner-banner {
+  padding: $space;
+  .site-prefix,
+  .site-name {
+    text-transform: uppercase;
+    letter-spacing: $tracking-loose;
+  }
+  .site-prefix {
+    margin-bottom: 3px;
+    color: $base4;
+  }
+  .site-name {
+    margin-left: -4px;
+  }
+  @include breakpoint(md) { @include span-columns(12);}
+  
+}	
+
+.community-partner .page-header {
+  display: none;
+}
+
+
 
 // NETWORK PAGES
 
 .network-header {
-    .social-links {
-        float: right;
+  .social-links {
+    float: right;
+  }
+  .banner {
+    background: $white;
+    padding: $space-fourth;
+    margin-bottom: $space;
+    @include breakpoint(sm) {@include span-columns(4);}
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
-    .banner {
-        background: $white;
-        padding: $space;
-        margin-bottom: $space;
-        @include breakpoint(sm) {@include span-columns(4);}
-        img {
-            width: 100%;
-            height: auto;
-        }
-    }
-    .entry-title {
-        padding-top: 1em;
-    }
+  }
+  .entry-title {
+    padding-top: 1em;
+  }
 }

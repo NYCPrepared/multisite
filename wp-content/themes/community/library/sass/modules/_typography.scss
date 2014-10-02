@@ -73,7 +73,7 @@ h5 {
 }
 
 h6 {
-    @include font-size($zeta);
+  @include font-size($zeta);
 	text-transform: uppercase;
 	letter-spacing: $tracking;
 }
@@ -82,22 +82,22 @@ h6 {
 // OTHER
 
 p, li, dt, dd {
-    margin-top: 0;
-    margin-bottom: $space;
-    @include font-size($epsilon);
+  margin-top: 0;
+  margin-bottom: $space;
+  @include font-size($epsilon);
 	@include breakpoint(lg) {max-width: 40em; line-height: 1.75;}
 }
 
 
 input, label, select, textarea {
-    @include font-size($epsilon);
+  @include font-size($epsilon);
 	margin-bottom: $space-half;
 	font-family: $sans;
 	font-weight: 300;
 }
 
 small {
-    @include font-size($milli);
+  @include font-size($milli);
 }
 
 
@@ -109,7 +109,7 @@ b, strong {
 }
 
 i, em {
-    font-style: italic;
+  font-style: italic;
 }
 
 
@@ -117,12 +117,12 @@ i, em {
 // clear lists; style typographic lists in _posts 
 
 ul, ol {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    ul, ol {
-        margin: 0 $space $space-half;
-    }
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  ul, ol {
+    margin: 0 $space $space-half;
+  }
 }
 
 li {
@@ -132,28 +132,28 @@ li {
 
 
 blockquote {
-    padding: 0 10% 0 0;
-    margin: $space 0;
-    p, li {
-    	color: $base5;
-        font-style: italic;
-    }
+  padding: 0 10% 0 0;
+  margin: $space 0;
+  p, li {
+  	color: $base5;
+    font-style: italic;
+  }
 }
 
 code,
 kbd,
 pre,
 samp {
-    font-family: $mono;
-    @include font-size($epsilon);
+  font-family: $mono;
+  @include font-size($epsilon);
 }
 
 pre {
-    padding: 1em $space;
-    margin: $space 0;
-    display: block;
-    background: $base2;
-    color: $white;
+  padding: 1em $space;
+  margin: $space 0;
+  display: block;
+  background: $base2;
+  color: $white;
 }
 
 
