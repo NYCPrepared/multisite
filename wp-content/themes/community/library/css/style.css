@@ -2297,7 +2297,8 @@ div.bx-wrapper {
     text-align: right; }
     div.bx-wrapper .bx-pager.bx-default-pager a {
       background: #f5f3f0;
-      text-indent: 9999px; }
+      text-indent: -9999px;
+      text-align: left; }
     div.bx-wrapper .bx-pager.bx-default-pager a:hover,
     div.bx-wrapper .bx-pager.bx-default-pager a.active {
       background: #333231; }

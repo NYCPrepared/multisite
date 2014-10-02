@@ -45,7 +45,8 @@ div.bx-wrapper {
         text-align: right;
         a {
             background: $base9;
-            text-indent: 9999px; // reverse b/c text-align right
+            text-indent: -9999px;
+            text-align: left; // so numbers stay hidden 
         }
         a:hover, 
         a.active {
