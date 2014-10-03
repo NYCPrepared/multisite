@@ -587,7 +587,7 @@ main.main-news,
   display: none;
   float: left;
   margin-top: 15px;
-  margin-right: 15px; }
+  margin-right: 12px; }
   @media (min-width: 769px) {
     .global-logo {
       display: inline-block; } }
@@ -651,7 +651,7 @@ main.main-news,
     top: 60px;
     background: #fff; }
     .nav-global .menu a {
-      padding: 10px 20px;
+      padding: 10px 24px;
       color: #333231;
       border-bottom: 1px solid #e6e4df; }
     .nav-global .menu:first-child a {
@@ -677,18 +677,18 @@ main.main-news,
       font-size: 1rem; }
     .nav-global .menu > li a {
       border: 0;
-      padding: 20px 10px; }
+      padding: 20px 12px; }
     .nav-global .menu a:focus,
     .nav-global .menu a:hover {
       background: transparent;
       color: #00a99d; }
-    .nav-global .menu li.current-menu-item,
-    .nav-global .menu li.current_page_item,
-    .nav-global .menu li.current-page-ancestor {
+    .nav-global .menu > li.current-menu-item,
+    .nav-global .menu > li.current_page_item,
+    .nav-global .menu > li.current-page-ancestor {
       position: relative; }
-      .nav-global .menu li.current-menu-item:after,
-      .nav-global .menu li.current_page_item:after,
-      .nav-global .menu li.current-page-ancestor:after {
+      .nav-global .menu > li.current-menu-item:after,
+      .nav-global .menu > li.current_page_item:after,
+      .nav-global .menu > li.current-page-ancestor:after {
         position: absolute;
         content: '';
         height: 0;
@@ -701,15 +701,15 @@ main.main-news,
         border-bottom-color: #f5f3f0;
         border-width: 10px;
         margin-left: -10px; }
-      .nav-global .menu li.current-menu-item a,
-      .nav-global .menu li.current_page_item a,
-      .nav-global .menu li.current-page-ancestor a {
+      .nav-global .menu > li.current-menu-item a,
+      .nav-global .menu > li.current_page_item a,
+      .nav-global .menu > li.current-page-ancestor a {
         color: #00a99d; }
   .nav-global .sub-menu {
     left: 0;
     background: #e6e4df; }
     .nav-global .sub-menu li a {
-      padding: 10px; }
+      padding: 12px; }
     .nav-global .sub-menu a:first-child {
       border-top: 0; }
 
@@ -2862,7 +2862,7 @@ table.em-calendar {
   font-weight: 700;
   white-space: nowrap;
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 24px;
   color: #fff;
   -webkit-transition: color 0.25s ease;
   -moz-transition: color 0.25s ease;
@@ -2886,7 +2886,8 @@ header .logo-NYCP {
   font-size: 16px;
   font-size: 1rem;
   color: #4d4c4a !important;
-  margin-top: 13px; }
+  margin-top: 13px;
+  margin-right: 12px; }
   header .logo-NYCP span {
     border-color: #4d4c4a;
     border-width: 2px; }

@@ -14,7 +14,7 @@
   font-weight: 700;
   white-space: nowrap;
   display: inline-block; 
-  margin-right: 20px;
+  margin-right: $space;
   color: $white;
   @include transition (color 0.25s ease);
   span {
@@ -41,6 +41,7 @@ header .logo-NYCP {
   @include font-size($zeta);
   color: $base3 !important;
   margin-top: 13px; 
+  margin-right: $space-half;
   span {
     border-color: $base3;
     border-width: 2px;
