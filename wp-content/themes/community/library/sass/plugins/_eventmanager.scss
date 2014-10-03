@@ -7,75 +7,76 @@
 // }
 
 .page-events #main {
-    width: 100%;
+  width: 100%;
 }
 
 
 // EVENTS SEARCH
 
 .em-events-search-form {
-    background: white;
-    padding: 2px 10px;
-    @include breakpoint(sm) {padding: 2px 20px;}
+  background: white;
+  padding: 2px 10px;
+  @include breakpoint(sm) {padding: 2px 20px;}
 }
 div.css-search {
-    background: transparent;
-    border-color: $base7;
+  background: transparent;
+  border-radius: 0;
+  border: 5px solid $base8;
+  padding: 0;
+  max-width: 800px;
+  div.em-search-main {
+    position: relative;
+    div.em-search-field {
+      background: transparent;
+      padding: 0;
+      @include font-icon-base($family:"ios7-icon"); 
+      @include font-size(28);
+      @include breakpoint(sm) {@include font-size(36);}
+      input {
+        @include font-size(20);
+        color: $quiet-color;
+        @include breakpoint(sm) {@include font-size(24);}
+        @include placeholder {
+          @include font-size(20);
+          line-height: 16px;
+          color: $quiet-color;
+          @include breakpoint(sm) {@include font-size(24);}
+        }
+      }
+    }
+    div.em-search-text {
+      @extend %ios7-search;
+    }
+    div.em-search-geo {
+      @extend %ios7-location;
+      @include breakpoint(xs) {display: inline-block;}
+    }
+    .em-search-submit {
+      @include font-icon-base($family:"ios7-icon"); 
+      @include font-size(28);
+      @extend %ios7-search;
+      background: $base5;
+      box-shadow: inherit;
+      height: 40px;
+      width: 40px;
+      border-radius: 0;
+      text-shadow: none;
+      padding: 0;
+      border: 0;
+      margin: 0;
+      top: 7px;
+      right: 0;
+      img {
+        display: none;
+      }
+      &:hover {
+        background: $teal;
+      }
+    }
+  }
+  &.has-advanced div.em-search-main {
     padding: 0;
-    max-width: 800px;
-    div.em-search-main {
-        position: relative;
-        div.em-search-field {
-            background: transparent;
-            padding: 0;
-            @include font-icon-base($family:"ios7-icon"); 
-            @include font-size(28);
-            @include breakpoint(sm) {@include font-size(36);}
-            input {
-                @include font-size(20);
-                color: $quiet-color;
-                @include breakpoint(sm) {@include font-size(24);}
-                @include placeholder {
-                    @include font-size(20);
-                    line-height: 16px;
-                    color: $quiet-color;
-                    @include breakpoint(sm) {@include font-size(24);}
-                }
-            }
-        }
-        div.em-search-text {
-            @extend %ios7-search;
-        }
-        div.em-search-geo {
-            @extend %ios7-location;
-            @include breakpoint(xs) {display: inline-block;}
-        }
-        .em-search-submit {
-            @include font-icon-base($family:"ios7-icon"); 
-            @include font-size(28);
-            @extend %ios7-search;
-            background: $base5;
-            box-shadow: inherit;
-            height: 40px;
-            width: 40px;
-            border-radius: 0;
-            text-shadow: none;
-            padding: 0;
-            border: 0;
-            margin: 0;
-            top: 7px;
-            right: 0;
-            img {
-                display: none;
-            }
-            &:hover {
-                background: $teal;
-            }
-        }
-    }
-    &.has-advanced div.em-search-main {
-        padding: 0;
-    }
+  }
 }
 
 
@@ -95,7 +96,6 @@ div.css-search {
         display: none;
     }
     .event {
-        padding: 0;
         clear: both;
     }
     .event-header {

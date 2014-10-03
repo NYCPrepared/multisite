@@ -392,7 +392,7 @@ li {
   margin-bottom: 12px; }
 
 blockquote {
-  padding: 0 10% 0 0;
+  padding: 0 24px;
   margin: 24px 0; }
   blockquote p, blockquote li {
     color: #999894;
@@ -931,7 +931,7 @@ SIDEBARS & ASIDES
 
 .widget {
   padding: 20px;
-  margin: 0 0 12px;
+  margin: 0 0 8px;
   background: #999894;
   color: #fff; }
   .widget a,
@@ -1482,6 +1482,14 @@ POSTS & CONTENT STYLES
     margin-top: 1.8em; }
   .post .entry-content p {
     max-width: 40em; }
+  .post .entry-content a {
+    color: #333231;
+    border-bottom: 1px solid rgba(0, 169, 157, 0.2);
+    box-shadow: inset 0 -3px 0 rgba(0, 169, 157, 0.2); }
+    .post .entry-content a:hover {
+      color: #00a99d;
+      border-bottom-color: rgba(0, 169, 157, 0.1);
+      box-shadow: inset 0 -3px 0 rgba(0, 169, 157, 0.1); }
   .post .entry-content ul, .post .entry-content ol {
     padding: 0 40px; }
   .post .entry-content ul {
@@ -2217,9 +2225,8 @@ ALERTS AND NOTICES
 
 .wp-biographia-container-top {
   background: transparent !important;
-  background: rgba(255, 255, 255, 0.7) !important;
   border-top: 1px solid #e6e4df !important;
-  border-bottom: 0 !important;
+  border-bottom: 1px solid #e6e4df !important;
   margin: 0;
   padding: 0; }
 
@@ -2387,7 +2394,8 @@ article.home-feature div.bx-wrapper .bx-viewport {
 
 div.css-search {
   background: transparent;
-  border-color: #d1cfcb;
+  border-radius: 0;
+  border: 5px solid #e6e4df;
   padding: 0;
   max-width: 800px; }
   div.css-search div.em-search-main {
@@ -2499,7 +2507,6 @@ div.css-search {
   .css-events-list .event-list-header {
     display: none; }
   .css-events-list .event {
-    padding: 0;
     clear: both; }
   @media (min-width: 481px) {
     .css-events-list .event-header {

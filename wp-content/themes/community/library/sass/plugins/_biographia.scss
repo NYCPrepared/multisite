@@ -2,9 +2,8 @@
 
 .wp-biographia-container-top {
 	background: transparent !important; // override inline styling
-	background: rgba(255,255,255,.7) !important; // override inline styling
 	border-top: 1px solid $hr-alt !important; // override inline styling
-	border-bottom: 0 !important; // override inline styling
+	border-bottom: 1px solid $hr-alt !important; // override inline styling
 	margin: 0;
 	padding: 0;
 }
