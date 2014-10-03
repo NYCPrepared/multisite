@@ -161,7 +161,11 @@ body.about {
 .tools-promo .wp-caption {
   width: 235px;
   height: 285px;
-    
+  text-transform: uppercase;
+  letter-spacing: $tracking;
+  a {
+    color: $base2;
+  }
 }
 .services-promo .wp-caption {
   width: 130px !important;

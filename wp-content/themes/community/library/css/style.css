@@ -3112,7 +3112,11 @@ body.about .promo-intro {
 
 .tools-promo .wp-caption {
   width: 235px;
-  height: 285px; }
+  height: 285px;
+  text-transform: uppercase;
+  letter-spacing: 1px; }
+  .tools-promo .wp-caption a {
+    color: #333231; }
 
 .services-promo .wp-caption {
   width: 130px !important;
