@@ -2972,10 +2972,6 @@ SIDEBARS & ASIDES
 
 body.about .content {
   padding-top: 0; }
-  body.about .content h1 {
-    text-align: center;
-    font-weight: 700;
-    margin: 96px; }
   body.about .content h2 {
     text-align: center;
     margin-bottom: 8px; }
@@ -3013,16 +3009,19 @@ body.about .promo-intro {
 
 .overview-intro {
   background: #333231 url("/wp-content/uploads/2014/09/bridge-large.jpg") no-repeat center center;
-  background-size: cover; }
+  background-size: cover;
+  padding: 24px; }
 
 .intro-about {
   background: #fff;
-  background: rgba(255, 255, 255, 0.5);
-  margin: 24px;
+  background: rgba(255, 255, 255, 0.7);
   padding: 24px; }
+  .intro-about h1 {
+    font-size: 36px;
+    font-size: 2.25rem; }
   @media (min-width: 769px) {
     .intro-about {
-      width: 33%; } }
+      width: 50%; } }
 
 .overview-actions {
   list-style: none;

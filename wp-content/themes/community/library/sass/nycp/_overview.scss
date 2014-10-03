@@ -21,11 +21,6 @@
 body.about {
   .content {
     padding-top: 0;
-    h1 {
-      text-align: center;
-      font-weight: 700;
-      margin: $space * 4;
-    }
     h2 {
       text-align: center;
       margin-bottom: $space-third;
@@ -63,15 +58,18 @@ body.about {
 .overview-intro {
   background: $base2 url('/wp-content/uploads/2014/09/bridge-large.jpg') no-repeat center center;
   background-size: cover;
+  padding: $space;
 }
 
 .intro-about {
   background: $white;
-  background: rgba(255,255,255,.5);
-  margin: $space;
+  background: rgba(255,255,255,.7);
   padding: $space;
+  h1 {
+    @include font-size($beta);
+  }
   @include breakpoint(md) {
-    width: 33%;
+    width: 50%;
 	}
 }
 
