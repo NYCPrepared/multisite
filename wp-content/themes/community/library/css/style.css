@@ -2922,29 +2922,29 @@ header .logo-NYCP {
 /*********************
 SIDEBARS & ASIDES
 *********************/
-.community-network .sidebar .widget:first-child {
+.community-network .sidebar .widget:nth-child(12n + 1) {
   background: #22b573; }
-.community-network .sidebar .widget:nth-child(2) {
+.community-network .sidebar .widget:nth-child(12n + 2) {
   background: #00a99d; }
-.community-network .sidebar .widget:nth-child(3) {
+.community-network .sidebar .widget:nth-child(12n + 3) {
   background: #29abe2; }
-.community-network .sidebar .widget:nth-child(4) {
+.community-network .sidebar .widget:nth-child(12n + 4) {
   background: #247cc9; }
-.community-network .sidebar .widget:nth-child(5) {
+.community-network .sidebar .widget:nth-child(12n + 5) {
   background: #3756b8; }
-.community-network .sidebar .widget:nth-child(6) {
+.community-network .sidebar .widget:nth-child(12n + 6) {
   background: #4747b0; }
-.community-network .sidebar .widget:nth-child(7) {
+.community-network .sidebar .widget:nth-child(12n + 7) {
   background: #9642a5; }
-.community-network .sidebar .widget:nth-child(8) {
+.community-network .sidebar .widget:nth-child(12n + 8) {
   background: #c43b90; }
-.community-network .sidebar .widget:nth-child(9) {
+.community-network .sidebar .widget:nth-child(12n + 9) {
   background: #f15a24; }
-.community-network .sidebar .widget:nth-child(10) {
+.community-network .sidebar .widget:nth-child(12n + 10) {
   background: #ff931e; }
-.community-network .sidebar .widget:nth-child(11) {
+.community-network .sidebar .widget:nth-child(12n + 11) {
   background: #fbb03b; }
-.community-network .sidebar .widget:nth-child(12) {
+.community-network .sidebar .widget:nth-child(12n + 12) {
   background: #8cc63f; }
 
 .sidebar .widget li a,
