@@ -2594,19 +2594,22 @@ div.css-search {
   clear: both;
   color: #d1cfcb; }
 
+.single-event .event {
+  background: #fff;
+  padding: 24px; }
 .single-event .byline {
   display: none; }
 .single-event .event-image {
-  border: 5px solid #fff;
-  max-height: 150px;
+  max-height: 400px;
   overflow: hidden;
   margin-bottom: 1.5em; }
   @media (min-width: 481px) {
     .single-event .event-image {
       max-height: 300px; } }
   .single-event .event-image img {
-    border: 0;
-    display: block; }
+    display: block;
+    width: 100%;
+    height: auto; }
 @media (min-width: 481px) {
   .single-event .event-details {
     float: left;
