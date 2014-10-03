@@ -1950,9 +1950,10 @@ input[type='submit'] {
   text-transform: uppercase;
   letter-spacing: 1px;
   -webkit-appearance: button;
+  font-weight: 700;
   cursor: pointer;
   border: 0;
-  border-radius: 5px;
+  border-radius: 0;
   background: #333231;
   color: #fff;
   line-height: 1.2;
@@ -1960,7 +1961,7 @@ input[type='submit'] {
   margin: 0;
   padding: .6em 2em; }
   input[type='submit']:hover {
-    background: #fff;
+    background: #00a99d;
     color: #333231; }
 
 /******************************************************************
@@ -2052,10 +2053,14 @@ COMMENT FORM STYLES
 ******************************************************************/
 .respond-form {
   padding-bottom: 2.2em; }
+  .respond-form #comment-form-title {
+    margin: 8px 0;
+    border-top: 1px solid #e6e4df;
+    padding-top: 24px; }
   .respond-form form li {
     list-style-type: none;
     clear: both;
-    margin-bottom: 0.7335em; }
+    margin: 0 !important; }
     .respond-form form li label,
     .respond-form form li small {
       display: none; }
@@ -2118,6 +2123,12 @@ COMMENT STYLES
 ******************************************************************/
 /* h3 comment title */
 #comments {
+  margin-top: 48px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 16px;
+  font-size: 1rem;
+  color: #b8b6b2;
   /* number of comments span */ }
 
 .commentlist {
@@ -2134,8 +2145,7 @@ COMMENT STYLES
     clear: both;
     overflow: hidden;
     list-style-type: none;
-    margin-bottom: 1.5em;
-    padding: 0.7335em 10px;
+    max-width: none;
     /* end .commentlist li ul.children */ }
     .commentlist li:last-child {
       margin-bottom: 0; }
@@ -2143,20 +2153,21 @@ COMMENT STYLES
       margin: 0;
       /* variations */
       /* change number for different depth */ }
+  .commentlist .alert {
+    margin: 24px;
+    padding: 12px 24px; }
   .commentlist li[class*=depth-] {
     margin-top: 1.1em; }
   .commentlist li.depth-1 {
-    margin-left: 0;
-    margin-top: 0; }
+    margin: 0; }
+    .commentlist li.depth-1 article {
+      margin-bottom: 8px;
+      padding: 12px 24px;
+      background: #f5f3f0; }
   .commentlist li:not(.depth-1) {
-    margin-right: -10px;
-    margin-left: -10px;
+    margin-left: 24px;
     margin-top: 0;
     padding-bottom: 0; }
-  .commentlist .odd {
-    background: #eee; }
-  .commentlist .even {
-    background: #fefefe; }
   .commentlist .vcard {
     margin-left: 50px; }
     .commentlist .vcard cite.fn {
@@ -2184,13 +2195,15 @@ COMMENT STYLES
   .commentlist .comment-reply-link {
     text-decoration: none;
     float: right;
-    background: #4598bb;
-    padding: 3px 5px;
+    background: #00a99d;
+    padding: 6px 24px;
     color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     opacity: 0.65;
     margin-bottom: 10px;
-    font-weight: 700;
-    font-size: 0.9em; }
+    font-weight: 300;
+    font-size: 0.75em; }
     .commentlist .comment-reply-link:hover, .commentlist .comment-reply-link:focus {
       opacity: 1; }
 
@@ -2251,13 +2264,15 @@ ALERTS AND NOTICES
 
 .wp-biographia-text {
   margin-left: 80px; }
+  .wp-biographia-text h3 {
+    font-size: 18px;
+    font-size: 1.125rem;
+    margin: .5em 0 0; }
   .wp-biographia-text p {
     display: none; }
-
-.wp-biographia-text h3 {
-  font-size: 18px;
-  font-size: 1.125rem;
-  margin: .5em 0 0; }
+  .wp-biographia-text a, .wp-biographia-text a:hover {
+    border: none !important;
+    box-shadow: none !important; }
 
 .wp-biographia-links ul {
   padding: 0; }

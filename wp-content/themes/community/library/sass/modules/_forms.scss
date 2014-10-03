@@ -27,11 +27,12 @@ input[type='email'] {
 input[type='submit'] {
     @include transition(all 0.2s ease-in-out);
     text-transform: uppercase; 
-        letter-spacing: $tracking;
+    letter-spacing: $tracking;
     -webkit-appearance: button;
+    font-weight: 700;
     cursor: pointer;
     border: 0;
-    border-radius: 5px;
+    border-radius: 0;
     background: $base2;
     color: $white;
     line-height: 1.2;
@@ -39,7 +40,7 @@ input[type='submit'] {
     margin: 0;
     padding: .6em 2em;
     &:hover {
-        background: $white;
+        background: $anchor-color;
         color: $base2;
     }
 }
@@ -116,11 +117,16 @@ COMMENT FORM STYLES
 
 .respond-form {
 	padding-bottom: 2.2em;
+  #comment-form-title {
+    margin: $space-third 0;
+    border-top: 1px solid $base8;
+    padding-top: $space;
+  }
 	form {
 		li {
 			list-style-type: none;
 			clear: both;
-			margin-bottom: 0.7335em;
+			margin: 0 !important;
 			label,
 			small {
 				display: none;
