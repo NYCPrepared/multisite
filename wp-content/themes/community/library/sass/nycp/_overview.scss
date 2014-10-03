@@ -63,13 +63,14 @@ body.about {
 
 .intro-about {
   background: $white;
-  background: rgba(255,255,255,.7);
+  background: rgba(255,255,255,.8);
   padding: $space;
   h1 {
     @include font-size($beta);
   }
   p {
     margin-bottom: 0;
+    text-shadow: 0 0 4px white;
   }
   @include breakpoint(md) {
     width: 30%;
