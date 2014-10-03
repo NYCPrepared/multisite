@@ -58,7 +58,7 @@ body.about {
 .overview-intro {
   background: $base2 url('/wp-content/uploads/2014/09/bridge-large.jpg') no-repeat center center;
   background-size: cover;
-  padding: $space;
+  padding: $space !important;
 }
 
 .intro-about {
@@ -69,7 +69,7 @@ body.about {
     @include font-size($beta);
   }
   @include breakpoint(md) {
-    width: 50%;
+    width: 30%;
 	}
 }
 

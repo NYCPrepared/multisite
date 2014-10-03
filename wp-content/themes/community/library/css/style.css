@@ -3010,7 +3010,7 @@ body.about .promo-intro {
 .overview-intro {
   background: #333231 url("/wp-content/uploads/2014/09/bridge-large.jpg") no-repeat center center;
   background-size: cover;
-  padding: 24px; }
+  padding: 24px !important; }
 
 .intro-about {
   background: #fff;
@@ -3021,7 +3021,7 @@ body.about .promo-intro {
     font-size: 2.25rem; }
   @media (min-width: 769px) {
     .intro-about {
-      width: 50%; } }
+      width: 30%; } }
 
 .overview-actions {
   list-style: none;
