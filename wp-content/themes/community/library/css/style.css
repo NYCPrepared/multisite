@@ -3014,10 +3014,15 @@ body.about .promo-intro {
 .overview-intro {
   background: #333231 url("/wp-content/uploads/2014/09/bridge-large.jpg") no-repeat center center;
   background-size: cover; }
-  .overview-intro h1 {
-    color: #fff;
-    margin: 1.2em 0;
-    text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.6); }
+
+.intro-about {
+  background: #fff;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 24px;
+  padding: 24px; }
+  @media (min-width: 769px) {
+    .intro-about {
+      width: 33%; } }
 
 .overview-actions {
   list-style: none;
