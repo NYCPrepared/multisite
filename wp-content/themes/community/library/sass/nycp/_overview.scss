@@ -68,48 +68,13 @@ body.about {
   h1 {
     @include font-size($beta);
   }
+  p {
+    margin-bottom: 0;
+  }
   @include breakpoint(md) {
     width: 30%;
 	}
 }
-
-
-// calls to action (top and bottom)
-
-.overview-actions {
-  list-style: none;
-  margin: 0;
-  padding: $space 0;
-  text-align: center;
-  li {
-      display: inline-block;
-      margin: 5px;
-      @include font-size($epsilon);
-      line-height: 1.2;
-      white-space: nowrap;
-  }
-  a {
-      display: block;
-      padding: $space-34 $space-32;
-      text-transform: uppercase;
-      letter-spacing: $tracking;
-      text-decoration: none;
-      text-align: center;
-  }
-  li:nth-child(4n+1) {  
-      @include rainbow-button($green);
-  }
-  li:nth-child(4n+2) {  
-      @include rainbow-button($teal);
-  }
-  li:nth-child(4n+3) {  
-      @include rainbow-button($sky);
-  }
-  li:nth-child(4n+4) {  
-      @include rainbow-button($blue);
-  }
-}
-
 
 
 .overview-value {
@@ -228,5 +193,44 @@ body.about {
   	}
 	}
 }
+
+
+
+// calls to action 
+
+.overview-actions {
+  list-style: none;
+  margin: 0;
+  padding: $space 0;
+  text-align: center;
+  li {
+      display: inline-block;
+      margin: 5px;
+      @include font-size($epsilon);
+      line-height: 1.2;
+      white-space: nowrap;
+  }
+  a {
+      display: block;
+      padding: $space-34 $space-32;
+      text-transform: uppercase;
+      letter-spacing: $tracking;
+      text-decoration: none;
+      text-align: center;
+  }
+  li:nth-child(4n+1) {  
+      @include rainbow-button($green);
+  }
+  li:nth-child(4n+2) {  
+      @include rainbow-button($teal);
+  }
+  li:nth-child(4n+3) {  
+      @include rainbow-button($sky);
+  }
+  li:nth-child(4n+4) {  
+      @include rainbow-button($blue);
+  }
+}
+
 
 
