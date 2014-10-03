@@ -964,7 +964,10 @@ SIDEBARS & ASIDES
     .widget li li {
       border: 0;
       padding: 0;
-      color: #b8b6b2; }
+      color: #b8b6b2;
+      color: rgba(0, 0, 0, 0.5); }
+      .widget li li:last-child {
+        padding-bottom: 18px; }
     .widget li a {
       border: 0; }
   .widget form {

@@ -65,6 +65,10 @@ SIDEBARS & ASIDES
     		border: 0;
     		padding: 0;
     		color: $quiet-color;
+    		color: rgba(0,0,0,.5);
+    		&:last-child {
+      		padding-bottom: $space-34;
+    		}
 		}
 		a {
     		border: 0;
