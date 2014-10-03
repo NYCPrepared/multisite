@@ -2970,44 +2970,44 @@ SIDEBARS & ASIDES
 .sidebar .widget .menu a:before {
   display: none; }
 
-body.overview .content {
+body.about .content {
   padding-top: 0; }
-  body.overview .content h1 {
+  body.about .content h1 {
     text-align: center;
     font-weight: 700;
     margin: 96px; }
-  body.overview .content h2 {
+  body.about .content h2 {
     text-align: center;
     margin-bottom: 8px; }
-  body.overview .content p {
+  body.about .content p {
     max-width: none; }
-  body.overview .content section {
+  body.about .content section {
     *zoom: 1;
     display: block;
     padding-top: 48px;
     padding-bottom: 48px;
     margin-bottom: 0; }
-    body.overview .content section:before, body.overview .content section:after {
+    body.about .content section:before, body.about .content section:after {
       content: " ";
       display: table; }
-    body.overview .content section:after {
+    body.about .content section:after {
       clear: both; }
-  body.overview .content .entry-content {
+  body.about .content .entry-content {
     padding-top: 0; }
-  body.overview .content .section-inner {
+  body.about .content .section-inner {
     width: 100%; }
-body.overview .article-header {
+body.about .article-header {
   display: none; }
-body.overview .promo-intro {
+body.about .promo-intro {
   display: block;
   float: left;
   margin-right: 1.7578775415%;
   width: 87.2802653073%;
   margin-left: 8.5298042998%; }
-  body.overview .promo-intro:last-child {
+  body.about .promo-intro:last-child {
     margin-right: 0; }
   @media (min-width: 769px) {
-    body.overview .promo-intro {
+    body.about .promo-intro {
       width: 75%;
       margin-left: 12.5%; } }
 
