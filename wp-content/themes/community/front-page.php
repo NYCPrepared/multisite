@@ -73,11 +73,11 @@
 			<?php if ( is_multisite() ) { // Check to see if multisite is active. If not, display a recent posts and events module for this site. ?> 
 
 				<?php
-				// Get network-wide posts
+				// Get network-wide news
 				get_template_part( 'partials/home-module', 'news' ); ?>
 
 				<?php
-				// Get network-wide updates
+				// Get network-wide requests
 				get_template_part( 'partials/home-module', 'requests' ); ?>
 
 				<?php
