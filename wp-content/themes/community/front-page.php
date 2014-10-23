@@ -73,50 +73,6 @@
 			<?php if ( is_multisite() ) { // Check to see if multisite is active. If not, display a recent posts and events module for this site. ?> 
 			<?php $sites = wp_get_sites('offset=1'); // Set up variable that holds array of sites ?>
 
-			<?php 
-			if(function_exists('community_home_category')) {
-				$postcategory = community_home_category(); // Get the category from theme customization 
-				$categoryid = get_option("community_options");
-			}
-
-			if(function_exists('community_home_header')) {
-				$heading = community_home_header(); // Get the header text from theme customization 
-				if(!empty($heading)) {
-					$postheading = $heading;
-				} elseif(!empty($postcategory)) {
-					$postheading = $postcategory;
-				}
-				else {
-					$postheading = 'Latest'; // Fallback header text. Change to whatever you'd like.
-				}
-			}
-			?>
-
-			<article id="highlights-module" class="module row highlights clearfix">
-				<h2 class="module-heading"><?php echo $postheading ?></h2>
-
-			<?php
-			if(function_exists( 'network_latest_posts' )) {
-
-				$parameters = array(
-				'title'         => '',
-				'title_only'    => 'false',
-				'auto_excerpt'  => 'true',
-				'display_type'     => 'ulist',
-				'full_meta'		=> 'true',
-				'category'         => $postcategory,          // Widget title
-				'number_posts'     => 9,
-				'wrapper_list_css' => 'highlights-list',
-				'wrapper_block_css'=> 'module row highlights', //The wrapper classe
-				'instance'         => 'highlights-module', //The wrapper ID
-				);
-				// Execute
-				$hightlights_posts = network_latest_posts($parameters);
-			}
-			?>
-
-			</article>
-
 			<script type="text/javascript">
 			jQuery(document).ready(function(){
 				jQuery('.news-list').bxSlider({
@@ -144,26 +100,70 @@
 					<a href="/news/">News</a>
 				</h2>
 
-			<?php
-			if(function_exists( 'network_latest_posts' )) {
+				<?php
+				if(function_exists( 'network_latest_posts' )) {
 
-				$parameters = array(
-				'title'         => '',
-				'title_only'    => 'false',
-				'display_type'     => 'ulist',
-				'auto_excerpt'  => 'true',
-				'full_meta'		=> 'true',
-				// 'category'         => 'news',
-				'excerpt_length'   => '20',
-				'number_posts'     => 2,
-				'wrapper_list_css' => 'news-list',
-				'wrapper_block_css'=> 'module row news', //The wrapper classe
-				'instance'         => 'news-module', //The wrapper ID
-				);
-				// Execute
-				$recent_posts = network_latest_posts($parameters);
+					$parameters = array(
+					'title'         => '',
+					'title_only'    => 'false',
+					'display_type'     => 'ulist',
+					'auto_excerpt'  => 'true',
+					'full_meta'		=> 'true',
+					// 'category'         => 'news',
+					'excerpt_length'   => '20',
+					'number_posts'     => 2,
+					'wrapper_list_css' => 'news-list',
+					'wrapper_block_css'=> 'module row news', //The wrapper classe
+					'instance'         => 'news-module', //The wrapper ID
+					);
+					// Execute
+					$recent_posts = network_latest_posts($parameters);
+				}
+				?>
+			</article>
+
+			<?php 
+			if(function_exists('community_home_category')) {
+				$postcategory = community_home_category(); // Get the category from theme customization 
+				$categoryid = get_option("community_options");
+			}
+
+			if(function_exists('community_home_header')) {
+				$heading = community_home_header(); // Get the header text from theme customization 
+				if(!empty($heading)) {
+					$postheading = $heading;
+				} elseif(!empty($postcategory)) {
+					$postheading = $postcategory;
+				}
+				else {
+					$postheading = 'Latest'; // Fallback header text. Change to whatever you'd like.
+				}
 			}
 			?>
+
+			<article id="highlights-module" class="module row highlights clearfix">
+				<h2 class="module-heading"><?php echo $postheading ?></h2>
+
+				<?php
+				if(function_exists( 'network_latest_posts' )) {
+
+					$parameters = array(
+					'title'         => '',
+					'title_only'    => 'false',
+					'auto_excerpt'  => 'true',
+					'display_type'     => 'ulist',
+					'full_meta'		=> 'true',
+					'category'         => $postcategory,          // Widget title
+					'number_posts'     => 9,
+					'wrapper_list_css' => 'highlights-list',
+					'wrapper_block_css'=> 'module row highlights', //The wrapper classe
+					'instance'         => 'highlights-module', //The wrapper ID
+					);
+					// Execute
+					$hightlights_posts = network_latest_posts($parameters);
+				}
+				?>
+
 			</article>
 
 			<!-- removing sliders for now
@@ -196,7 +196,8 @@
 				<h2 class="module-heading"><a href="/events/">Events</a></h2>
 				<ul class="events-list">
 					<?php
-					$events = EM_Events::output(array('limit'=>7, 
+					$events = EM_Events::output(array(
+						'limit'=>7, 
 						'format'=>'<li>
 						<h6 class="event-start">
     				        <time class="event-month" datetime="#M">#M</time>
