@@ -5,7 +5,8 @@ if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
 	<ul class="events-list">
 		<?php
 		$events = EM_Events::output(array(
-			'limit'=>7, 
+			'limit'=>7,
+			'scope'=>'future',
 			'format'=>'<li>
 			<h6 class="event-start">
 		        <time class="event-month" datetime="#M">#M</time>
