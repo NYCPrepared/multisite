@@ -432,6 +432,9 @@ function em_add_options() {
             </td>
         </tr>',
 		'dbem_event_list_item_format_footer' => '</tbody></table>',
+		'dbem_event_list_groupby' => 0,
+		'dbem_event_list_groupby_format' => '',
+		'dbem_event_list_groupby_header_format' => '<h2>#s</h2>',
 		'dbem_display_calendar_in_events_page' => 0,
 		'dbem_single_event_format' => '<div style="float:right; margin:0px 0px 15px 15px;">#_LOCATIONMAP</div>
 <p>
@@ -510,6 +513,7 @@ function em_add_options() {
 		'dbem_category_event_list_limit' => 20,
 		'dbem_category_event_single_format' => '#_EVENTLINK - #_EVENTDATES - #_EVENTTIMES',
 		'dbem_category_no_event_message' => __('No events in this category', 'dbem'),
+		'dbem_category_default_color' => '#a8d144',
 		//Tags page options
 		'dbem_tags_default_limit' => 10,
 		'dbem_tags_default_orderby' => 'name',
@@ -536,6 +540,9 @@ function em_add_options() {
 		'dbem_rss_main_description' => get_bloginfo('description')." - ".__('Events', 'dbem'),
 		'dbem_rss_description_format' => "#_EVENTDATES - #_EVENTTIMES <br/>#_LOCATIONNAME <br/>#_LOCATIONADDRESS <br/>#_LOCATIONTOWN",
 		'dbem_rss_title_format' => "#_EVENTNAME",
+		'dbem_rss_scope' =>'future',
+		'dbem_rss_order' => get_option('dbem_events_default_order', 'ASC'), //get event order and orderby or use same new installation defaults
+		'dbem_rss_orderby' => get_option('dbem_events_default_orderby', 'event_start_date,event_start_time,event_name'),
 		'em_rss_pubdate' => date('D, d M Y H:i:s +0000'),
 		//iCal Stuff
 		'dbem_ical_limit' => 0,
@@ -554,7 +561,7 @@ function em_add_options() {
 		'dbem_rsvp_mail_port' => 465,
 		'dbem_smtp_host' => 'localhost',
 		'dbem_mail_sender_name' => '',
-		'dbem_rsvp_mail_send_method' => 'mail',
+		'dbem_rsvp_mail_send_method' => 'wp_mail',
 		'dbem_rsvp_mail_SMTPAuth' => 1,
 		'dbem_smtp_html' => 1,
 		'dbem_smtp_html_br' => 1,
@@ -814,12 +821,6 @@ function em_add_options() {
 	    //any past bookings that don't get updated will adhere to these two values when calculating prices
 	    update_option('dbem_legacy_bookings_tax_auto_add', get_option('dbem_bookings_tax_auto_add'));
 	    update_option('dbem_legacy_bookings_tax', get_option('dbem_bookings_tax'));
-	}
-	if( get_option('dbem_version') != '' && get_option('dbem_version') < 5.413 ){
-	    //copy registration email content into new setting
-	    ob_start();
-	    em_locate_template('emails/new-user.php',true);
-	    update_option('dbem_bookings_email_registration_body', ob_get_clean());
 	}
 	if( get_option('dbem_version') != '' && get_option('dbem_version') < 5.422 ){
 	    //copy registration email content into new setting

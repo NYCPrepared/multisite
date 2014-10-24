@@ -54,6 +54,7 @@ class EM_Event extends EM_Object{
 	var $event_rsvp_time = "00:00:00";
 	var $event_rsvp_spaces;
 	var $event_spaces;
+	var $event_private;
 	var $location_id;
 	var $recurrence_id;
 	var $event_status;
@@ -238,7 +239,7 @@ class EM_Event extends EM_Object{
 				if( is_multisite() && (is_numeric($results['blog_id']) || $results['blog_id']=='' ) ){
 				    if( $results['blog_id']=='' )  $results['blog_id'] = get_current_site()->blog_id;
 					$event_post = get_blog_post($results['blog_id'], $results['post_id']);
-					$search_by = $results['blog_id'];
+					$search_by = $this->blog_id = $results['blog_id'];
 				}else{
 					$event_post = get_post($results['post_id']);	
 				}
@@ -248,6 +249,7 @@ class EM_Event extends EM_Object{
 					    if( $search_by == '' ) $search_by = get_current_site()->blog_id;
 						//we've been given a blog_id, so we're searching for a post id
 						$event_post = get_blog_post($search_by, $id);
+						$this->blog_id = $search_by;
 					}else{
 						//search for the post id only
 						$event_post = get_post($id);
@@ -324,7 +326,11 @@ class EM_Event extends EM_Object{
 		}elseif( !empty($this->post_id) ){
 			//we have an orphan... show it, so that we can at least remove it on the front-end
 			global $wpdb;
-		    $event_array = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".EM_EVENTS_TABLE." WHERE post_id=%d",$this->post_id), ARRAY_A);
+			if( EM_MS_GLOBAL ){ //if MS Global mode enabled, make sure we search by blog too so there's no cross-post confusion
+				$event_array = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".EM_EVENTS_TABLE." WHERE post_id=%d && blog_id=%d",$this->post_id, $this->blog_id), ARRAY_A);
+			}else{
+				$event_array = $wpdb->get_row($wpdb->prepare("SELECT * FROM ".EM_EVENTS_TABLE." WHERE post_id=%d",$this->post_id), ARRAY_A);
+			}
 		    if( is_array($event_array) ){
 				$this->orphaned_event = true;
 				$this->post_id = $this->ID = $event_array['post_id'] = null; //reset post_id because it doesn't really exist
@@ -426,18 +432,30 @@ class EM_Event extends EM_Object{
 			//RSVP cuttoff TIME is set up above where start/end times are as well 
 			if( !$this->is_recurring() ){
 				if( get_option('dbem_bookings_tickets_single') && count($this->get_tickets()->tickets) == 1 ){
+					//single ticket mode will use the ticket end date/time as cut-off date/time
 			    	$EM_Ticket = $this->get_tickets()->get_first();
 			    	$this->event_rsvp_date = '';
 			    	if( !empty($EM_Ticket->end_timestamp) ){
 			    		$this->event_rsvp_date = date('Y-m-d', $EM_Ticket->end_timestamp);
 			    		$this->event_rsvp_time = date('H:i:00', $EM_Ticket->end_timestamp);
+			    	}else{
+			    		//no default ticket end time, so make it default to event start date/time
+			    		$this->event_rsvp_date = $this->event_start_date;
+			    		if( $this->event_all_day && empty($_POST['event_rsvp_date']) ){ $this->event_rsvp_time = '00:00:00'; } //all-day events start at 0 hour
 			    	}
 			    }else{
+			    	//if no rsvp cut-off date supplied, make it the event start date
 			    	$this->event_rsvp_date = ( !empty($_POST['event_rsvp_date']) ) ? wp_kses_data($_POST['event_rsvp_date']) : $this->event_start_date;
-			    	if( $this->event_all_day ){ $this->event_rsvp_time = '00:00:00'; } //all-day events start at 0 hour
+			    	if( $this->event_all_day && empty($_POST['event_rsvp_date']) ){ $this->event_rsvp_time = '00:00:00'; } //all-day events start at 0 hour
 			    }
-				if( empty($this->event_rsvp_date) ){ $this->event_rsvp_time = '00:00:00'; }
-				$this->rsvp_end = strtotime($this->event_rsvp_date." ".$this->event_rsvp_time, current_time('timestamp'));
+			    //create timestamp
+				if( empty($this->event_rsvp_date) ){ 
+					//falback in case nothing gets set for rsvp cut-off
+					$this->event_rsvp_time = '00:00:00';
+					$this->rsvp_end = 0; //empty value but timestamp compatible 
+				}else{
+					$this->rsvp_end = strtotime($this->event_rsvp_date." ".$this->event_rsvp_time, current_time('timestamp'));
+				}
 			}
 			$this->event_spaces = ( isset($_POST['event_spaces']) ) ? absint($_POST['event_spaces']):0;
 			$this->event_rsvp_spaces = ( isset($_POST['event_rsvp_spaces']) ) ? absint($_POST['event_rsvp_spaces']):0;
@@ -1167,10 +1185,11 @@ class EM_Event extends EM_Object{
 	function get_ical_url(){
 		global $wp_rewrite;
 		if( !empty($wp_rewrite) && $wp_rewrite->using_permalinks() ){
-			return trailingslashit($this->get_permalink()).'ical/';
+			$return = trailingslashit($this->get_permalink()).'ical/';
 		}else{
-			return em_add_get_params($this->get_permalink(), array('ical'=>1));
+			$return = em_add_get_params($this->get_permalink(), array('ical'=>1));
 		}
+		return apply_filters('em_event_get_ical_url', $return);
 	}
 	
 	function is_free( $now = false ){
@@ -1243,7 +1262,7 @@ class EM_Event extends EM_Object{
 		}
 	 	//First let's do some conditional placeholder removals
 	 	for ($i = 0 ; $i < EM_CONDITIONAL_RECURSIONS; $i++){ //you can add nested recursions by modifying this setting in your wp_options table
-			preg_match_all('/\{([a-zA-Z0-9_]+)\}(.+?)\{\/\1\}/s', $event_string, $conditionals);
+			preg_match_all('/\{([a-zA-Z0-9_\-]+)\}(.+?)\{\/\1\}/s', $event_string, $conditionals);
 			if( count($conditionals[0]) > 0 ){
 				//Check if the language we want exists, if not we take the first language there
 				foreach($conditionals[1] as $key => $condition){
@@ -1417,7 +1436,7 @@ class EM_Event extends EM_Object{
 							}else{
 								$image_size = explode(',', $placeholders[3][$key]);
 								$image_src = $this->image_url;
-								if( $this->array_is_numeric($image_size) && count($image_size) > 1 ){
+								if( self::array_is_numeric($image_size) && count($image_size) > 1 ){
 								    //get a thumbnail
 								    if( get_option('dbem_disable_timthumb') ){
 									    if( EM_MS_GLOBAL && get_current_blog_id() != $this->blog_id ){
@@ -1617,6 +1636,17 @@ class EM_Event extends EM_Object{
 						}else{
 							$replace = $bookings_link;	
 						}
+					}
+					break;
+				case '#_BOOKINGSCUTOFF':
+				case '#_BOOKINGSCUTOFFDATE':
+				case '#_BOOKINGSCUTOFFTIME':
+					$replace = '';
+					if ($this->event_rsvp && get_option('dbem_rsvp_enabled') && !empty($this->rsvp_end)) {
+						$replace_format = get_option('dbem_date_format').' '. get_option('dbem_time_format');
+						if( $result == '#_BOOKINGSCUTOFFDATE' ) $replace_format = get_option('dbem_date_format');
+						if( $result == '#_BOOKINGSCUTOFFTIME' ) $replace_format = get_option('dbem_time_format');
+						$replace = date($replace_format, $this->rsvp_end);
 					}
 					break;
 				//Contact Person
@@ -1894,6 +1924,7 @@ class EM_Event extends EM_Object{
 	 */
 	function save_events() {
 		global $wpdb;
+		$event_ids = $post_ids = array();
 		if( $this->can_manage('edit_events','edit_others_events') && $this->is_published() ){
 			do_action('em_event_save_events_pre', $this); //actions/filters only run if event is recurring
 			//Make template event index, post, and meta (and we just change event dates)
@@ -1924,8 +1955,6 @@ class EM_Event extends EM_Object{
 			//Let's start saving!
 			$this->delete_events(); //Delete old events beforehand, this will change soon
 			$event_saves = array();
-			$event_ids = array();
-			$post_ids = array();
 			$matching_days = $this->get_recurrence_days(); //Get days where events recur
 			if( count($matching_days) > 0 ){
 				//first save event post data
@@ -2023,6 +2052,7 @@ class EM_Event extends EM_Object{
 			 					$ticket[$k] = 'NULL';
 			 				}else{
 			 					$data_type = !empty($EM_Ticket->fields[$k]['type']) ? $EM_Ticket->fields[$k]['type']:'%s';
+			 					if(is_array($ticket[$k])) $v = serialize($ticket[$k]);
 			 					$ticket[$k] = $wpdb->prepare($data_type,$v);
 			 				}
 			 			}

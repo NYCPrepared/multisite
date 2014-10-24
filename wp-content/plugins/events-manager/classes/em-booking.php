@@ -437,8 +437,8 @@ class EM_Booking extends EM_Object{
 	    //reset price and taxes calculations
 	    $this->booking_price = $this->booking_taxes = null;
 	    //get post-tax price and save it to booking_price
-	    $this->booking_price = $this->get_price_post_taxes();
-	    return apply_filters('em_booking_calculate_price', $this->booking_price, $this);
+	    $this->booking_price = apply_filters('em_booking_calculate_price', $this->get_price_post_taxes(), $this);
+	    return $this->booking_price; 
 	}
 	
 	/* 
@@ -600,10 +600,12 @@ class EM_Booking extends EM_Object{
 			//This person is already included, so don't do anything
 		}elseif( is_object($EM_Person) && ($EM_Person->ID === $this->person_id || $this->booking_id == '') ){
 			$this->person = $EM_Person;
+			$this->person_id = $this->person->ID;
 		}elseif( is_numeric($this->person_id) ){
 			$this->person = new EM_Person($this->person_id);
 		}else{
 			$this->person = new EM_Person(0);
+			$this->person_id = $this->person->ID;
 		}
 		//if this user is the parent user of disabled registrations, replace user details here:
 		if( get_option('dbem_bookings_registration_disable') && $this->person->ID == get_option('dbem_bookings_registration_user') && (empty($this->person->loaded_no_user) || $this->person->loaded_no_user != $this->booking_id) ){
@@ -657,17 +659,24 @@ class EM_Booking extends EM_Object{
 	    }
 	    //Check the user name
 	    if( !empty($_REQUEST['user_name']) ){
-	    	$name_string = explode(' ',wp_kses($_REQUEST['user_name'], array()));
+	    	//split full name up and save full, first and last names
+	    	$user_data['user_name'] = wp_kses($_REQUEST['user_name'], array());
+	    	$name_string = explode(' ',$user_data['user_name']);
 	    	$user_data['first_name'] = array_shift($name_string);
 	    	$user_data['last_name'] = implode(' ', $name_string);
+	    }else{
+		    //Check the first/last name
+		    $name_string = array();
+		    if( !empty($_REQUEST['first_name']) ){
+		    	$user_data['first_name'] = $name_string[] = wp_kses($_REQUEST['first_name'], array()); 
+		    }
+		    if( !empty($_REQUEST['last_name']) ){
+		    	$user_data['last_name'] = $name_string[] = wp_kses($_REQUEST['last_name'], array());
+		    }
+		    if( !empty($name_string) ) $user_data['user_name'] = implode(' ', $name_string);
 	    }
-	    //Check the first/last name
-	    if( !empty($_REQUEST['first_name']) ){
-	    	$user_data['first_name'] = wp_kses($_REQUEST['first_name'], array());
-	    }
-	    if( !empty($_REQUEST['last_name']) ){
-	    	$user_data['last_name'] = wp_kses($_REQUEST['last_name'], array());
-	    }
+	    //Save full name
+	    if( !empty($user_data['first_name']) || !empty($user_data['last_name']) )
 	    //Check the phone
 	    if( !empty($_REQUEST['dbem_phone']) ){
 	    	$user_data['dbem_phone'] = wp_kses($_REQUEST['dbem_phone'], array());
@@ -994,12 +1003,17 @@ class EM_Booking extends EM_Object{
 			
 			//Send admin/contact emails if this isn't the event owner or an events admin
 			if( $email_admin && !empty($msg['admin']['subject']) && (!$this->can_manage() || (!empty($_REQUEST['action']) && $_REQUEST['action'] == 'booking_add') || $this->manage_override) ){ //emails won't be sent if admin is logged in unless they book themselves
-				if( get_option('dbem_bookings_contact_email') == 1 || get_option('dbem_bookings_notify_admin') ){
+				//get admin emails that need to be notified, hook here to add extra admin emails
+				$admin_emails = str_replace(' ','',get_option('dbem_bookings_notify_admin'));
+				$admin_emails = apply_filters('em_booking_admin_emails', explode(',', $admin_emails), $this); //supply emails as array
+				foreach($admin_emails as $key => $email){ if( !is_email($email) ) unset($admin_emails[$key]); } //remove bad emails
+				//proceed to email admins if need be
+				if( get_option('dbem_bookings_contact_email') == 1 || !empty($admin_emails) ){
 					//Only gets sent if this is a pending booking, unless approvals are disabled.
 					$msg['admin']['subject'] = $this->output($msg['admin']['subject'],'raw');
 					$msg['admin']['body'] = $this->output($msg['admin']['body'], $output_type);
 					//email contact
-					if( get_option('dbem_bookings_contact_email') == 1 ){
+					if( get_option('dbem_bookings_contact_email') == 1 && !empty($EM_Event->get_contact()->user_email) ){ //if contacts are enabled and user email exists
 						if( !$this->email_send( $msg['admin']['subject'], $msg['admin']['body'], $EM_Event->get_contact()->user_email) && current_user_can('list_users')){
 							$this->errors[] = __('Confirmation email could not be sent to contact person. Registrant should have gotten their email (only admin see this warning).','dbem');
 							$result = false;
@@ -1008,11 +1022,8 @@ class EM_Booking extends EM_Object{
 						}
 					}
 					//email admin
-					if( get_option('dbem_bookings_notify_admin') != '' && preg_match('/^([_\.0-9a-z-]+@([0-9a-z][0-9a-z-]+\.)+[a-z]{2,3},?)+$/', str_replace(' ', '', get_option('dbem_bookings_notify_admin'))) ){
-						$admin_emails = get_option('dbem_bookings_notify_admin');
-						$admin_emails = apply_filters('em_booking_admin_emails', explode(',', $admin_emails), $this); //supply emails as array
-						foreach($admin_emails as $key => $email){ $admin_emails[$key] = trim($email); } //strip whitespace
-						if( !$this->email_send( $msg['admin']['subject'], $msg['admin']['body'], $admin_emails) ){
+					if( !empty($admin_emails) ){
+						if( !$this->email_send( $msg['admin']['subject'], $msg['admin']['body'], $admin_emails) && current_user_can('list_users') ){
 							$this->errors[] = __('Confirmation email could not be sent to admin. Registrant should have gotten their email (only admin see this warning).','dbem');
 							$result = false;
 						}else{
@@ -1063,7 +1074,7 @@ class EM_Booking extends EM_Object{
 	/**
 	 * Can the user manage this event? 
 	 */
-	function can_manage(){
+	function can_manage( $owner_capability = false, $admin_capability = false, $user_to_check = false ){
 		return $this->get_event()->can_manage('manage_bookings','manage_others_bookings') || empty($this->booking_id) || !empty($this->manage_override);
 	}
 	

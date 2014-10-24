@@ -12,7 +12,7 @@ class EM_Locations extends EM_Object {
 	 * @param boolean $return_objects
 	 * @return array
 	 */
-	function get( $args = array(), $count=false ){
+	public static function get( $args = array(), $count=false ){
 		global $wpdb;
 		$events_table = EM_EVENTS_TABLE;
 		$locations_table = EM_LOCATIONS_TABLE;
@@ -96,7 +96,7 @@ class EM_Locations extends EM_Object {
 		return apply_filters('em_locations_get', $locations, $args);
 	}	
 	
-	function count( $args = array() ){
+	public static function count( $args = array() ){
 		return apply_filters('em_locations_count', self::get($args, true), $args);
 	}
 	
@@ -105,7 +105,7 @@ class EM_Locations extends EM_Object {
 	 * @param array $args
 	 * @return string
 	 */
-	function output( $args ){
+	public static function output( $args ){
 		global $EM_Location;
 		$EM_Location_old = $EM_Location; //When looping, we can replace EM_Location global with the current event in the loop
 		//Can be either an array for the get search or an array of EM_Location objects
@@ -149,8 +149,9 @@ class EM_Locations extends EM_Object {
 				$output =  $single_event_format_header .  $output . $single_event_format_footer;
 			}
 			//Pagination (if needed/requested)
-			if( !empty($args['pagination']) && !empty($limit) && $locations_count >= $limit ){
-				$output .= self::get_pagination_links($args, $locations_count, 'search_locations', self::get_default_search());
+			if( !empty($args['pagination']) && !empty($limit) && $locations_count > $limit ){
+				//output pagination links
+				$output .= self::get_pagination_links($args, $locations_count);
 			}
 		} else {
 			$output = get_option ( 'dbem_no_locations_message' );
@@ -160,7 +161,16 @@ class EM_Locations extends EM_Object {
 		return apply_filters('em_locations_output', $output, $locations, $args);		
 	}
 	
-	function delete( $args = array() ){
+	public static function get_pagination_links($args, $count, $search_action = 'search_locations', $default_args = array()){
+		//get default args if we're in a search, supply to parent since we can't depend on late static binding until WP requires PHP 5.3 or later
+		if( empty($default_args) && (!empty($args['ajax']) || !empty($_REQUEST['action']) && $_REQUEST['action'] == $search_action) ){
+			$default_args = self::get_default_search();
+			$default_args['limit'] = get_option('dbem_locations_default_limit'); //since we're paginating, get the default limit, which isn't obtained from get_default_search()
+		}
+		return parent::get_pagination_links($args, $count, $search_action, $default_args);
+	}
+	
+	public static function delete( $args = array() ){
 	    $locations = array();
 		if( !is_object(current($args)) ){
 		    //we've been given an array or search arguments to find the relevant locations to delete
@@ -176,8 +186,10 @@ class EM_Locations extends EM_Object {
 		return apply_filters('em_locations_delete', in_array(false, $results), $locations);
 	}
 	
-	public static function get_post_search($args = array(), $filter = false, $request = array()){
-		$return = parent::get_post_search($args, $filter, $request);
+	public static function get_post_search($args = array(), $filter = false, $request = array(), $accepted_args = array()){
+		//supply $accepted_args to parent argument since we can't depend on late static binding until WP requires PHP 5.3 or later
+		$accepted_args = !empty($accepted_args) ? $accepted_args : array_keys(self::get_default_search());
+		$return = parent::get_post_search($args, $filter, $request, $accepted_args);
 		//remove unwanted arguments or if not explicitly requested
 		if( empty($_REQUEST['scope']) && empty($request['scope']) && !empty($return['scope']) ){
 			unset($return['scope']);
@@ -190,7 +202,7 @@ class EM_Locations extends EM_Object {
 	 * @param array $args
 	 * @return array
 	 */
-	function build_sql_conditions( $args = array(), $count=false ){
+	public static function build_sql_conditions( $args = array(), $count=false ){
 	    self::$context = EM_POST_TYPE_LOCATION;
 		global $wpdb;
 		$events_table = EM_EVENTS_TABLE;
@@ -207,12 +219,15 @@ class EM_Locations extends EM_Object {
 			$conditions['eventful'] = "{$events_table}.event_id IS NOT NULL AND event_status=1";
 		}elseif( true == $args['eventless'] ){
 			$conditions['eventless'] = "{$events_table}.event_id IS NULL";
+			if( !empty($conditions['scope']) ) unset($conditions['scope']); //scope condition would render all queries return no results
 		}
 		//owner lookup
 		if( !empty($args['owner']) && is_numeric($args['owner'])){
 			$conditions['owner'] = "location_owner=".$args['owner'];
 		}elseif( !empty($args['owner']) && $args['owner'] == 'me' && is_user_logged_in() ){
 			$conditions['owner'] = 'location_owner='.get_current_user_id();
+		}elseif( self::array_is_numeric($args['owner']) ){
+			$conditions['owner'] = 'location_owner IN ('.implode(',',$args['owner']).')';
 		}
 		//blog id in events table
 		if( EM_MS_GLOBAL && !empty($args['blog']) ){
@@ -269,16 +284,19 @@ class EM_Locations extends EM_Object {
 	/* Overrides EM_Object method to apply a filter to result
 	 * @see wp-content/plugins/events-manager/classes/EM_Object#build_sql_orderby()
 	 */
-	function build_sql_orderby( $args, $accepted_fields, $default_order = 'ASC' ){
+	public static function build_sql_orderby( $args, $accepted_fields, $default_order = 'ASC' ){
 	    self::$context = EM_POST_TYPE_LOCATION;
 		return apply_filters( 'em_locations_build_sql_orderby', parent::build_sql_orderby($args, $accepted_fields, get_option('dbem_events_default_order')), $args, $accepted_fields, $default_order );
 	}
 	
 	/* 
 	 * Generate a search arguments array from defalut and user-defined.
-	 * @see wp-content/plugins/events-manager/classes/EM_Object::get_default_search()
+	 * @param array $array_or_defaults may be the array to override defaults
+	 * @param array $array
+	 * @return array
+	 * @uses EM_Object#get_default_search()
 	 */
-	function get_default_search($array = array()){
+	public static function get_default_search( $array_or_defaults = array(), $array = array() ){
 	    self::$context = EM_POST_TYPE_LOCATION;
 		$defaults = array(
 			'eventful' => false, //Locations that have an event (scope will also play a part here
@@ -295,6 +313,13 @@ class EM_Locations extends EM_Object {
 			'private_only' => false,
 			'post_id' => false
 		);
+		//sort out whether defaults were supplied or just the array of search values
+		if( empty($array) ){
+			$array = $array_or_defaults;
+		}else{
+			$defaults = array_merge($defaults, $array_or_defaults);
+		}
+		//specific functionality
 		if( EM_MS_GLOBAL ){
 			if( get_site_option('dbem_ms_mainblog_locations') ){
 			    //when searching in MS Global mode with all locations being stored on the main blog, blog_id becomes redundant as locations are stored in one blog table set
@@ -306,7 +331,7 @@ class EM_Locations extends EM_Object {
 		}
 		$array['eventful'] = ( !empty($array['eventful']) && $array['eventful'] == true );
 		$array['eventless'] = ( !empty($array['eventless']) && $array['eventless'] == true );
-		if( is_admin() ){
+		if( is_admin() && !defined('DOING_AJAX') ){
 			$defaults['owner'] = !current_user_can('read_others_locations') ? get_current_user_id():false;
 		}
 		return apply_filters('em_locations_get_default_search', parent::get_default_search($defaults, $array), $array, $defaults);
