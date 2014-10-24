@@ -1,5 +1,5 @@
 <?php
-// Template Name: Network News
+// Template Name: Network Posts
 // Description: Used to display network-wide posts in the WP multisite network.
 ?>
 
