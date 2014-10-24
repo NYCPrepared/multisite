@@ -1,3 +1,11 @@
+<?php 
+if(function_exists('glocal_customization_settings')) {
+	$community_settings = glocal_customization_settings();
+	$postcategory = implode(",", $community_settings['posts']['featured_category']);
+	$postnumber = $community_settings['posts']['number_posts'];
+} 
+?>
+
 <script type="text/javascript">
 jQuery(document).ready(function(){
 	jQuery('.news-list').bxSlider({
@@ -22,7 +30,13 @@ jQuery(document).ready(function(){
 
 <article id="news-module" class="module row news clearfix">
 	<h2 class="module-heading">
-		<a href="/news/">News</a>
+	<?php if(!empty($community_settings['posts']['posts_heading_link'])) { ?>
+		<a href="<?php echo $community_settings['posts']['posts_heading_link']; ?>">
+			<?php echo $community_settings['posts']['posts_heading']; ?>
+		</a>
+	<?php } else { ?>
+		<?php echo $community_settings['posts']['posts_heading']; ?>
+	<?php } ?>	
 	</h2>
 
 	<?php
@@ -34,13 +48,20 @@ jQuery(document).ready(function(){
 		'display_type'     => 'ulist',
 		'auto_excerpt'  => 'true',
 		'full_meta'		=> 'true',
-		// 'category'         => 'news',
 		'excerpt_length'   => '20',
-		'number_posts'     => 2,
 		'wrapper_list_css' => 'news-list',
 		'wrapper_block_css'=> 'module row news', //The wrapper classe
 		'instance'         => 'news-module', //The wrapper ID
 		);
+		// If a category was selected, limit to that category
+		if(!empty($postcategory)) {
+			$parameters['category'] = $postcategory;
+		}
+
+		// If number of posts is specified, limit to that number of posts
+		if(!empty($postnumber)) {
+			$parameters['number_posts'] = $postnumber;
+		}
 		// Execute
 		$recent_posts = network_latest_posts($parameters);
 	}
