@@ -20,3 +20,4 @@ if ( is_plugin_active('events-manager/events-manager.php') ) { ?>
 	</ul>
 </article>
 <?php } ?>
+
