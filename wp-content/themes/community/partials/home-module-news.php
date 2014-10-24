@@ -43,15 +43,16 @@ jQuery(document).ready(function(){
 	if(function_exists( 'network_latest_posts' )) {
 
 		$parameters = array(
-		'title'         => '',
-		'title_only'    => 'false',
-		'display_type'     => 'ulist',
-		'auto_excerpt'  => 'true',
-		'full_meta'		=> 'true',
-		'excerpt_length'   => '20',
-		'wrapper_list_css' => 'news-list',
-		'wrapper_block_css'=> 'module row news', //The wrapper classe
-		'instance'         => 'news-module', //The wrapper ID
+			'title'         => '',
+			'title_only'    => 'false',
+			'display_type'     => 'ulist',
+			'auto_excerpt'  => 'true',
+			'full_meta'		=> 'true',
+			'excerpt_length'   => '20',
+			'sort_by_date'	=> 'true',
+			'wrapper_list_css' => 'news-list',
+			'wrapper_block_css'=> 'module row news', //The wrapper class
+			'instance'         => 'news-module', //The wrapper ID
 		);
 		// If a category was selected, limit to that category
 		if(!empty($postcategory)) {

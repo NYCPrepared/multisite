@@ -3,9 +3,6 @@ if(function_exists('glocal_customization_settings')) {
 	$community_settings = glocal_customization_settings();
 	$postcategory = implode(",", $community_settings['updates']['featured_category']);
 	$postnumber = $community_settings['updates']['number_updates'];
-	// echo '<pre>';
-	// var_dump($community_settings);
-	// echo '</pre>';
 } 
 ?>
 
@@ -24,14 +21,15 @@ if(function_exists('glocal_customization_settings')) {
 	if(function_exists( 'network_latest_posts' )) {
 
 		$parameters = array(
-		'title'         => '',
-		'title_only'    => 'false',
-		'auto_excerpt'  => 'true',
-		'display_type'     => 'ulist',
-		'full_meta'		=> 'true',
-		'wrapper_list_css' => 'highlights-list',
-		'wrapper_block_css'=> 'module row highlights', //The wrapper classe
-		'instance'         => 'highlights-module', //The wrapper ID
+			'title'         => '',
+			'title_only'    => 'false',
+			'auto_excerpt'  => 'true',
+			'display_type'     => 'ulist',
+			'full_meta'		=> 'true',
+			'sort_by_date'	=> 'true',
+			'wrapper_list_css' => 'highlights-list',
+			'wrapper_block_css'=> 'module row highlights', //The wrapper class
+			'instance'         => 'highlights-module', //The wrapper ID
 		);
 		// If a category was selected, limit to that category
 		if(!empty($postcategory)) {
