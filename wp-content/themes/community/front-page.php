@@ -1,6 +1,5 @@
 <?php
-// Template: Front Page
-
+// Template: Home Page
 // This template makes heavy use of the Events Manager and Options Framework plugins and the recent-network-posts function (included in with this theme in recent-network-posts.php).
 // Without Events Manager, the events module (module 3) will not appear.
 // Without the recent-network-posts function, the network-wide posts (module 1 and module 2) will not appear

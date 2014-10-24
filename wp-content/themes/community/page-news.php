@@ -1,3 +1,8 @@
+<?php
+// Template Name: Network News
+// Description: Used to display network-wide posts in the WP multisite network.
+?>
+
 <?php get_header(); ?>
 
 <div class="content">

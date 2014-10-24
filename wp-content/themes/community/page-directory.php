@@ -1,3 +1,7 @@
+<?php
+// Template Name: Network Site Directory
+// Description: Used to display a listing for sites in the WP multsite network.
+?>
 <?php get_header(); ?>
 
 <div class="content">

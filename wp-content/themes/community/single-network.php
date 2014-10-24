@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-
 <header class="header-local">
 
 	<div class="wrap">
@@ -13,7 +12,7 @@
 
 			<header class="network-header">
 			
-        <ul class="social-links">
+		        <ul class="social-links">
 					<?php 
 					$facebook_url = get_post_meta($post->ID, 'community_facebookurl', true );
 					$twitter_url = get_post_meta($post->ID, 'community_twitterurl', true );
@@ -33,7 +32,7 @@
 				<?php } ?>
 
 				<h1 class="entry-title single-title" itemprop="headline"><?php the_title(); ?></h1>
-        <h4 class="subtitle">Network News</h4>
+		        <h4 class="subtitle">Network News</h4>
 				
 			</header>
 
