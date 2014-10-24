@@ -1,1 +1,0 @@
-<?php _deprecated_file( basename(__FILE__), '1.06.07', null, __( 'This file no longer needs to be included.' ) ); ?>
