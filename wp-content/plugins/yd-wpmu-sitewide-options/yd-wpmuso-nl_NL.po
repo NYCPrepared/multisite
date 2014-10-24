@@ -1,0 +1,60 @@
+# YD WPMU SITEWIDE OPTIONS PLUGIN.
+# Copyright (C) 2010 yann.com
+# This file is distributed under the same license as the yd-wpmu-sitewide-options package.
+# FIRST AUTHOR <yann@abc.fr>, 2010.
+# <a href="http://wordpress.org/tag/yd-wpmu-sitewide-options">
+#
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Project-Id-Version: yd-wpmu-sitewide-options\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: WordPressPluginGuide.com <info@wppg.me>\n"
+"Language-Team: Yann Dubois <yann@abc.fr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: yd-wpmu-sitewide-options.php:82
+#: yd-wpmu-sitewide-options.php:84
+msgid "YD WPMU Sitewide Options"
+msgstr "YD WPMU Sitewide Options"
+
+#: yd-wpmu-sitewide-options.php:97
+msgid "Action:"
+msgstr "Actie :"
+
+#: yd-wpmu-sitewide-options.php:98
+msgid "I should now"
+msgstr "Ik moet nu"
+
+#: yd-wpmu-sitewide-options.php:99
+#: yd-wpmu-sitewide-options.php:143
+msgid "Reset widget options"
+msgstr "Reset widget opties"
+
+#: yd-wpmu-sitewide-options.php:101
+msgid "Widget options are reset"
+msgstr "Widget opties worden gereset"
+
+#: yd-wpmu-sitewide-options.php:102
+#: yd-wpmu-sitewide-options.php:137
+msgid "Update widget options"
+msgstr "Aktualiseer widget opties"
+
+#: yd-wpmu-sitewide-options.php:104
+msgid "Widget options are updated"
+msgstr "Widget opties worden geaktualiseerd"
+
+#: yd-wpmu-sitewide-options.php:109
+msgid "Welcome to YD WPMU Site-wide Options Admin Page."
+msgstr "Welkom bij de YD WPMU Site-wide Options beheer pagina."
+
+#: yd-wpmu-sitewide-options.php:122
+msgid "Replicate these options site-wide:"
+msgstr "Repliceer deze opties voor de gehele site:"
+

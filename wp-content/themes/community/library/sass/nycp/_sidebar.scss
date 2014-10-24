@@ -1,0 +1,69 @@
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+
+
+// rainbow backgrounds
+.community-network .sidebar .widget {
+	&:nth-child(12n + 1) {
+		background: $green;
+	}
+	&:nth-child(12n + 2) {
+		background: $teal;
+	}
+	&:nth-child(12n + 3) {
+		background: $sky;
+	}
+	&:nth-child(12n + 4) {
+		background: $blue;
+	}
+	&:nth-child(12n + 5) {
+		background: $navy;
+	}
+	&:nth-child(12n + 6) {
+		background: $indigo;
+	}
+	&:nth-child(12n + 7) {
+		background: $purple;
+	}
+	&:nth-child(12n + 8) {
+		background: $fuschia;
+	}
+	&:nth-child(12n + 9) {
+		background: $red;
+	}
+	&:nth-child(12n + 10) {
+		background: $orange;
+	}
+	&:nth-child(12n + 11) {
+		background: $yellow;
+	}
+	&:nth-child(12n + 12) {
+		background: $lime;
+	}
+}
+
+
+
+
+// sliding hover effect
+.sidebar .widget li a,
+.footer .widget li a {
+	padding-left: 0;
+	padding-right: 20px;
+  &:hover {
+		padding-left: 15px;
+		padding-right: 5px;
+    background: $text-color;
+    background: rgba(0,0,0,.1);
+  }
+}
+.footer .widget li a:hover {
+  color: $text-color;
+}
+
+// don't show menu icons in sidebar
+.sidebar .widget .menu a:before {
+  display: none;
+}
