@@ -1,11 +1,10 @@
 === WP User Avatar ===
 
-Contributors: bangbay
-Donate link: http://siboliban.org/donate
-Tags: author image, author photo, author avatar, avatar, bbPress, profile avatar, profile image, user avatar, user image, user photo
+Contributors: flippercode
+Tags: author image, author photo, author avatar, avatar, bbPress, profile avatar, profile image, user avatar, user image, user photo, widget
 Requires at least: 3.6
-Tested up to: 3.8.1
-Stable tag: 1.8.10
+Tested up to: 3.9
+Stable tag: 1.9.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,17 +14,25 @@ Use any image from your WordPress Media Library as a custom user avatar. Add you
 
 WordPress currently only allows you to use custom avatars that are uploaded through [Gravatar](http://gravatar.com/). **WP User Avatar** enables you to use any photo uploaded into your Media Library as an avatar. This means you use the same uploader and library as your posts. No extra folders or image editing functions are necessary.
 
+**Maintained and Supported by Flipper Code**
+
+Flipper Code has been providing WordPress Services since 2008. Flipper Code expertise in [custom plugins development](http://codecanyon.net/user/flippercode/portfolio) and [wordpress websites development](http://www.flippercode.com/our-portfolio/).
+
 **WP User Avatar** also lets you:
 
 * Upload your own Default Avatar in your WP User Avatar settings.
 * Show the user's [Gravatar](http://gravatar.com/) avatar or Default Avatar if the user doesn't have a WP User Avatar image.
 * Disable [Gravatar](http://gravatar.com/) avatars and use only local avatars.
-* Use the <code>[avatar_upload]</code> shortcode to add a standalone uploader to a front page. This uploader is only visible to logged-in users.
+* Use the <code>[avatar_upload]</code> shortcode to add a standalone uploader to a front page or widget. This uploader is only visible to logged-in users.
 * Use the <code>[avatar]</code> shortcode in your posts. These shortcodes will work with any theme, whether it has avatar support or not.
 * Allow Contributors and Subscribers to upload their own avatars.
 * Limit upload file size and image dimensions for Contributors and Subscribers.
 
+Visit [WP User Avatar](http://wpuseravatar.com/) for more information and documentation.
+
 == Installation ==
+
+Visit [WP User Avatar](http://wpuseravatar.com/) for more information and documentation.
 
 1. Download, install, and activate the WP User Avatar plugin.
 2. On your profile edit page, click "Edit Image".
@@ -93,7 +100,11 @@ For comments, you must specify the $comment variable.
 
 = [avatar_upload] shortcode =
 
-You can use the <code>[avatar_upload]</code> shortcode to add a standalone uploader to a front page. This uploader is only visible to logged-in users. If you want to integrate the uploader into a profile edit page, see [Other Notes](http://wordpress.org/plugins/wp-user-avatar/other_notes/).
+You can use the <code>[avatar_upload]</code> shortcode to add a standalone uploader to a front page or widget. This uploader is only visible to logged-in users. If you want to integrate the uploader into a profile edit page, see [Other Notes](http://wordpress.org/plugins/wp-user-avatar/other_notes/).
+
+You can specify a user with the shortcode, but you must have <code>edit_user</code> capability for that particular user.
+
+`[avatar_upload user="admin"]`
 
 = [avatar] shortcode =
 
@@ -128,6 +139,8 @@ Returns true if the user has a WP User Avatar image. You must specify the user I
 ?>`
 
 == Frequently Asked Questions ==
+
+Visit [WP User Avatar](http://wpuseravatar.com/) for more information and documentation.
 
 = How do I use WP User Avatar? =
 
@@ -182,9 +195,13 @@ Yes, however, each site has its own avatar settings. If you set a WP User Avatar
 
 For Administrators, WP User Avatar adds a column with avatar thumbnails to your Users list table. If "Show Avatars" is enabled in your WP User Avatar settings, you will see avatars to the left of each username instead of in a new column.
 
-= Can I use the WP User Avatar uploader in a front page? =
+= Can I use the WP User Avatar uploader in a front page or widget? =
 
-Yes, you can use the <code>[avatar_upload]</code> shortcode to put a standalone uploader in a front page. This uploader is only visible to logged-in users. If you want to integrate the uploader into a profile edit page, see [Other Notes](http://wordpress.org/plugins/wp-user-avatar/other_notes/).
+Yes, you can use the <code>[avatar_upload]</code> shortcode to put a standalone uploader in a front page or widget. This uploader is only visible to logged-in users. If you want to integrate the uploader into a profile edit page, see [Other Notes](http://wordpress.org/plugins/wp-user-avatar/other_notes/).
+
+You can specify a user with the shortcode, but you must have <code>'edit_user'</code> capability to change the user's avatar.
+
+`[avatar_upload user="admin"]`
 
 = Can I insert WP User Avatar directly into a post? =
 
@@ -261,9 +278,13 @@ I've spent countless hours developing this plugin for free. If you're able to gi
 
 == Advanced Settings ==
 
+Visit [WP User Avatar](http://wpuseravatar.com/) for more information and documentation.
+
 = Add WP User Avatar to your own profile edit page =
 
-If you're building your own profile edit page, WP User Avatar is automatically added to the [show_user_profile](http://codex.wordpress.org/Plugin_API/Action_Reference/show_user_profile) and [edit_user_profile](http://codex.wordpress.org/Plugin_API/Action_Reference/show_user_profile) hooks. If you'd rather have WP User Avatar in its own section, you could add another hook:
+You can use the [avatar_upload] shortcode to add a standalone uploader to any page. It's best to use this uploader by itself and without other profile fields.
+
+If you're building your own profile edit page with other fields, WP User Avatar is automatically added to the [show_user_profile](http://codex.wordpress.org/Plugin_API/Action_Reference/show_user_profile) and [edit_user_profile](http://codex.wordpress.org/Plugin_API/Action_Reference/show_user_profile) hooks. If you'd rather have WP User Avatar in its own section, you could add another hook:
 
 `do_action('edit_user_avatar', $current_user);`
 
@@ -285,41 +306,36 @@ Then, to add WP User Avatar to that hook and remove it from the other hooks outs
 
 // Loads only outside of administration panel
 if(!is_admin()) {
-  add_action('init','my_avatar_filter');`
+  add_action('init','my_avatar_filter');
 }`
 
 = HTML Wrapper =
 
-You can change the HTML wrapper of the WP User Avatar section on your profile edit page by using the functions <code>wpua_before_avatar</code> and <code>wpua_after_avatar</code>. By default, the avatar code is structured like this:
+You can change the HTML wrapper of the WP User Avatar section by using the functions <code>wpua_before_avatar</code> and <code>wpua_after_avatar</code>. By default, the avatar code is structured like this:
 
-`<h3>Avatar</h3>
-<table class="form-table">
-  <tr>
-    <th><label for="wp_user_avatar">Image</label></th>
-    <td>
-      <input type="hidden" name="wp-user-avatar" id="wp-user-avatar" value="{attachmentID}" />
-      <p id="wpua-add-button">
-        <button type="button" class="button" id="wpua-add" name="wpua-add">Edit Image</button>
-      </p>
-      <p id="wpua-preview">
-        <img src="{imageURL}" alt="" />
-        Original Size
-      </p>
-      <p id="wpua-thumbnail">
-        <img src="{imageURL}" alt="" />
-        Thumbnail
-      </p>
-      <p id="wpua-remove-button">
-        <button type="button" class="button" id="wpua-remove" name="wpua-remove">Default Avatar</button>
-      </p>
-      <p id="wpua-undo-button">
-        <button type="button" class="button" id="wpua-undo" name="wpua-undo">Undo</button>
-      </p>
-    </td>
-  </tr>
-</table>`
+`<div class="wpua-edit-container">
+  <h3>Avatar</h3>
+  <input type="hidden" name="wp-user-avatar" id="wp-user-avatar" value="{attachmentID}" />
+  <p id="wpua-add-button">
+    <button type="button" class="button" id="wpua-add" name="wpua-add">Edit Image</button>
+  </p>
+  <p id="wpua-preview">
+    <img src="{imageURL}" alt="" />
+    Original Size
+  </p>
+  <p id="wpua-thumbnail">
+    <img src="{imageURL}" alt="" />
+    Thumbnail
+  </p>
+  <p id="wpua-remove-button">
+    <button type="button" class="button" id="wpua-remove" name="wpua-remove">Default Avatar</button>
+  </p>
+  <p id="wpua-undo-button">
+    <button type="button" class="button" id="wpua-undo" name="wpua-undo">Undo</button>
+  </p>
+</div>`
 
-To strip out the table, you would add the following filters to the <code>functions.php</code> file in your theme:
+To strip out the div container and h3 heading, you would add the following filters to the <code>functions.php</code> file in your theme:
 
 `remove_action('wpua_before_avatar', 'wpua_do_before_avatar');
 remove_action('wpua_after_avatar', 'wpua_do_after_avatar');`
@@ -367,6 +383,72 @@ This would output:
 4. After you've chosen a WP User Avatar image, you will see the option to remove it.
 
 == Changelog ==
+
+= 1.9.13 =
+* Bug Fix: Load _load_wp_includes mostly only on front pages
+* Bug Fix: Check for edit_posts capability before enabling filters for Subscribers
+
+= 1.9.12 =
+* Add: wpua_edit_user_redirect_url filter
+* Add: wpua_edit_user_safe_redirect filter
+* Bug Fix: Clean output buffer
+* Update: Description field for widget
+
+= 1.9.11 =
+* Update: Disable resource manager until a better solution comes along
+
+= 1.9.10 =
+* Bug Fix: Check for TinyMCE version
+
+= 1.9.9 =
+* Bug Fix: TinyMCE not loaded
+
+= 1.9.8 =
+* Bug Fix: Check user permissions for displaying widget
+* Update: Load resource manager only if NextGEN Gallery isn't installed
+
+= 1.9.7 =
+* Bug Fix: Remove resource manager
+* Bug Fix: User ID in shortcode
+
+= 1.9.6 =
+* Bug Fix: Load resource manager on front pages only
+* Update: [avatar_upload] user variable
+* Update: Documentation
+
+= 1.9.5 =
+* Add: Start documentation of functions
+* Bug Fix: [avatar_upload] permalink and redirect
+
+= 1.9.4 =
+* Add: Widget for [avatar_upload]
+* Add: wpua_before_avatar_admin and wpua_after_avatar_admin for admin pages
+* Bug Fix: Load functions class on plugins_loaded
+* Update: Allow non-numeric WPUA value
+
+= 1.9.3 =
+* Bug Fix: Missing php
+
+= 1.9.2 =
+* Add: Setup class
+* Bug Fix: Give wpua_attachment_is_image filter two variables
+* Bug Fix: Return [avatar_upload] instead of echo
+* Remove: Unneccessary filters
+* Update: Allow upload to overwrite avatar for Contributors & Subscribers
+* Update: Move Edit Image link for Contributors & Subscribers
+* Update: Move text from localize script to data attribute
+* Update: Shorten variable names
+* Update: Wrap all classes in init
+
+= 1.9.1 =
+* Bug Fix: Double underscore for options page title
+* Bug Fix: Remove TinyMCE language pack
+* Bug Fix: Wrong variables in get_wp_user_avatar filter
+
+= 1.9 =
+* Add: Filters throughout plugin
+* Bug Fix: Die messages
+* Update: Move public functions to class
 
 = 1.8.10 =
 * Add: Search and screen option in Media Library view
@@ -475,7 +557,7 @@ This would output:
 
 = 1.5.5 =
 * Bug Fix: Hide "Edit Image" button if Contributors & Subscribers can't edit avatar
-* Bug Fix: Remove edit_posts capability if Contributors & Subscribers can't edit avatar
+* Bug Fix: Remove edit_posts capability if Subscribers can't edit avatar
 
 = 1.5.4 =
 * Add: Option to enable avatar editing privilege for Contributors & Subscribers

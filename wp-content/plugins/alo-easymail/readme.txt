@@ -3,11 +3,11 @@ Contributors: eventualo
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9E6BPXEZVQYHA
 Tags: send, mail, newsletter, widget, subscription, mailing list, subscribe, cron, batch sending, bounce, mail throttling, signup, multilanguage
 Requires at least: 3.6
-Tested up to: 3.8
-Stable tag: 2.5.01
+Tested up to: 4.0
+Stable tag: 2.5.03
 License: GPLv2 or later
 
-To send newsletters. Features: collect subscribers on registration or with an ajax widget, mailing lists, cron batch sending, multilanguage.
+To send newsletters. Features: collect subscribers on registration or with an ajax widget, mailing lists, cron batch sending, multilanguage, bounces.
 
 == Description ==
 
@@ -17,7 +17,7 @@ ALO EasyMail Newsletter is a plugin for WordPress that allows to write and send 
 
 **Here you are a short screencast:** [How to create and send a newsletter](http://www.eventualo.net/blog/wp-alo-easymail-newsletter-guide/)
 
-**Features:**
+**Features:** 
 
 * **write and send html/text newsletters, simple like writing posts**: newsletter is a custom post type, using the standard WordPress GUI and API
 * **select the recipients to send to**: registered users, subscribers, mailing lists
@@ -38,9 +38,17 @@ ALO EasyMail Newsletter is a plugin for WordPress that allows to write and send 
 *Available in more than 20 languages.*
 
 You can add or update the translation in your language. To make the plugin package lighter you can find only the .MO files inside it.
-You can visit the plugin [repository on Github](https://github.com/groucho75/alo-easymail/tree/master/languages) to look for the most updated language files (.MO and .PO files). You can share your updated translation files.
+You can visit [www.translators.hunstart.hu/projects/plugins/alo-easymail](http://www.translators.hunstart.hu/projects/plugins/alo-easymail) to look for the most updated language files (.MO and .PO files), you can download and share translation files.
 
-*If you are a developer, on Github you can find a repository with latest version: [github.com/groucho75/alo-easymail](https://github.com/groucho75/alo-easymail)*
+
+**For developers** 
+
+Developers can easily add own code using plugin action and filter hooks.
+Inside plugin package there is a *mu-plugins* folders that contains some useful samples, e.g.: "latest posts" placeholder, "multiple posts" placeholder, include attachments, add custom fields in subscription form. 
+You can move one or more of those files into *wp-content/mu-plugins* (if the directory doesn”t exist, simply create it) to activate them.
+You can use them as starting point for your development. Other samples at: [plugin developer page](http://www.eventualo.net/blog/easymail-newsletter-for-developers).
+
+*On Github you can find a repository with latest plugin version: [github.com/groucho75/alo-easymail](https://github.com/groucho75/alo-easymail)*
 
 == Installation ==
 
@@ -74,6 +82,12 @@ Plugin links: [homepage](http://www.eventualo.net/blog/wp-alo-easymail-newslette
 5. The list of subscribers in administration
 
 == Changelog ==
+
+= 2.5.03 =
+* Added: a multilingual hook filter: 'alo_easymail_multilang_translate_text'
+
+= 2.5.02 =
+* Fixed: a bug about Close button in recipient list modal
 
 = 2.5.01 =
 * Fixed: now subscriber ip address is not always null
@@ -529,3 +543,9 @@ Some improvements
 
 = 2.5.01 =
 Some bug fixes.
+
+= 2.5.02 =
+Fixed a bug about Close button in modal.
+
+= 2.5.03 =
+Added a hook filter for plugin multilingual integration.

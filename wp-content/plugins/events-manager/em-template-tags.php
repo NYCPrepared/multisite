@@ -213,6 +213,8 @@ function em_get_event_form( $args = array() ){
 
 /**
  * Outputs table of events belonging to user
+ * Additional search arguments:
+ * * show_add_new - passes argument to template as $show_add_new whether to show the add new event button
  * @param array $args
  */
 function em_events_admin($args = array()){
@@ -226,8 +228,8 @@ function em_events_admin($args = array()){
 		}else{
 			if( get_option('dbem_css_editors') ) echo '<div class="css-events-admin">';
 			//template $args for different views
-		    $args_views['pending'] = array('status'=>0, 'owner' =>get_current_user_id(), 'scope' => 'all');
-		    $args_views['draft'] = array('status'=>null, 'owner' =>get_current_user_id(), 'scope' => 'all');
+		    $args_views['pending'] = array('status'=>0, 'owner' =>get_current_user_id(), 'scope' => 'all', 'recurring'=>'include');
+		    $args_views['draft'] = array('status'=>null, 'owner' =>get_current_user_id(), 'scope' => 'all', 'recurring'=>'include');
 		    $args_views['past'] = array('status'=>'all', 'owner' =>get_current_user_id(), 'scope' => 'past');
 		    $args_views['future'] = array('status'=>'1', 'owner' =>get_current_user_id(), 'scope' => 'future');
 		    //get listing options for $args
@@ -237,10 +239,10 @@ function em_events_admin($args = array()){
 			$order = ( !empty($_REQUEST ['order']) ) ? $_REQUEST ['order']:'ASC';
 			$search = ( !empty($_REQUEST['em_search']) ) ? $_REQUEST['em_search']:'';
 			//deal with view or scope/status combinations
+			$show_add_new = isset($args['show_add_new']) ? $args['show_add_new']:true;
 			$args = array('order' => $order, 'search' => $search, 'owner' => get_current_user_id());
 			if( !empty($_REQUEST['view']) && in_array($_REQUEST['view'], array('future','draft','past','pending')) ){
-	    	    $args['status'] = $args_views[$_REQUEST['view']]['status'];
-	    	    $args['scope'] = $args_views[$_REQUEST['view']]['scope'];
+	    	    $args = array_merge($args, $args_views[$_REQUEST['view']]);
 			}else{
 				$scope_names = em_get_scopes();
 				$args['scope'] = ( !empty($_REQUEST ['scope']) && array_key_exists($_REQUEST ['scope'], $scope_names) ) ? $_REQUEST ['scope']:'future';
@@ -272,10 +274,10 @@ function em_events_admin($args = array()){
 				'page' => $page,
 				'limit' => $limit,
 				'offset' => $offset,
-				'show_add_new' => true
+				'show_add_new' => $show_add_new
 			));
+			if( get_option('dbem_css_editors') ) echo '</div>';
 		}
-		if( get_option('dbem_css_editors') ) echo '</div>';
 	}elseif( !is_user_logged_in() && get_option('dbem_events_anonymous_submissions') ){
 		em_event_form($args);
 	}else{
@@ -386,8 +388,8 @@ function em_locations_admin($args = array()){
 				'offset' => $offset,
 				'show_add_new' => true
 			));
+			if( get_option('dbem_css_editors') ) echo '</div>';
 		}
-		if( get_option('dbem_css_editors') ) echo '</div>';
 	}else{
 		if( get_option('dbem_css_editors') ) echo '<div class="css-locations-admin">';
 		echo '<div class="css-locations-admin-login">'. __("You must log in to view and manage your locations.",'dbem') .'</div>';

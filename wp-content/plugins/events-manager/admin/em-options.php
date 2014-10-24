@@ -17,6 +17,8 @@ function em_options_save(){
 				if( in_array($postKey, array('dbem_bookings_notify_admin','dbem_event_submitted_email_admin','dbem_js_limit_events_form','dbem_js_limit_search','dbem_js_limit_general','dbem_css_limit_include','dbem_css_limit_exclude')) ){ $postValue = str_replace(' ', '', $postValue); } //clean up comma seperated emails, no spaces needed
 				if( in_array($postKey,$numeric_options) && !is_numeric($postValue) ){
 					//Do nothing, keep old setting.
+				}elseif( $postKey == 'dbem_category_default_color' && !preg_match("/^#([abcdef0-9]{3}){1,2}?$/i",$postValue)){
+					$EM_Notices->add_error( sprintf(esc_html_x('Colors must be in a valid %s format, such as #FF00EE.', 'hex format', 'dbem'), '<a href="http://en.wikipedia.org/wiki/Web_colors">hex</a>').' '. esc_html__('This setting was not changed.', 'dbem'), true);					
 				}else{
 					//TODO slashes being added?
 					if( is_array($postValue) ){
@@ -169,6 +171,19 @@ function em_admin_email_test_ajax(){
         $subject = __("Events Manager Test Email",'dbem');
         $content = __('Congratulations! Your email settings work.','dbem');
         $current_user = get_user_by('id', get_current_user_id());
+        //add filters for options used in EM_Mailer so the current supplied ones are used
+        ob_start();
+        add_filter('pre_option_dbem_mail_sender_name', create_function('$args', "return '".$_REQUEST['dbem_mail_sender_name']."';"));
+        add_filter('pre_option_dbem_mail_sender_address', create_function('$args', "return '{$_REQUEST['dbem_mail_sender_address']}';"));
+        add_filter('pre_option_dbem_rsvp_mail_send_method', create_function('$args', "return '{$_REQUEST['dbem_rsvp_mail_send_method']}';"));
+        add_filter('pre_option_dbem_smtp_html', create_function('$args', "return '{$_REQUEST['dbem_smtp_html']}';"));
+        add_filter('pre_option_dbem_smtp_html_br', create_function('$args', "return '{$_REQUEST['dbem_smtp_html_br']}';"));
+        add_filter('pre_option_dbem_rsvp_mail_port', create_function('$args', "return '{$_REQUEST['dbem_rsvp_mail_port']}';"));
+        add_filter('pre_option_dbem_rsvp_mail_SMTPAuth', create_function('$args', "return '{$_REQUEST['dbem_rsvp_mail_SMTPAuth']}';"));
+        add_filter('pre_option_dbem_smtp_host', create_function('$args', "return '{$_REQUEST['dbem_smtp_host']}';"));
+        add_filter('pre_option_dbem_smtp_username', create_function('$args', "return '{$_REQUEST['dbem_smtp_username']}';"));
+        add_filter('pre_option_dbem_smtp_password', create_function('$args', "return '{$_REQUEST['dbem_smtp_password']}';"));
+        ob_clean(); //remove any php errors/warnings output
         $EM_Event = new EM_Event();
         if( $EM_Event->email_send($subject,$content,$current_user->user_email) ){
         	$result = array(
@@ -181,7 +196,7 @@ function em_admin_email_test_ajax(){
             	'message' => __('Email not sent.','dbem')." <ul><li>".implode('</li><li>',$EM_Event->get_errors()).'</li></ul>'
             );
         }
-        echo json_encode($result);
+        echo EM_Object::json_encode($result);
     }
     exit();
 }
@@ -1180,7 +1195,8 @@ function em_admin_options_page() {
 						<?php
 						$grouby_modes = array(0=>__('None','dbem'), 'yearly'=>__('Yearly','dbem'), 'monthly'=>__('Monthly','dbem'), 'weekly'=>__('Weekly','dbem'), 'daily'=>__('Daily','dbem'));
 						em_options_select(__('Events page grouping','dbem'), 'dbem_event_list_groupby', $grouby_modes, __('If you choose a group by mode, your events page will display events in groups of your chosen time range.','dbem'));
-						em_options_input_text(__('Events page grouping','dbem'), 'dbem_event_list_groupby_format', __('Choose how to format your group headings. Leave blank for defaults.','dbem').' '. sprintf(__('Date and Time formats follow the <a href="%s">WordPress time formatting conventions</a>', 'dbem'), 'http://codex.wordpress.org/Formatting_Date_and_Time'));
+						em_options_input_text(__('Events page grouping header','dbem'), 'dbem_event_list_groupby_header_format', __('Choose how to format your group headings.','dbem').' '. sprintf(__('#s will be replaced by the date format below', 'dbem'), 'http://codex.wordpress.org/Formatting_Date_and_Time'));
+						em_options_input_text(__('Events page grouping date format','dbem'), 'dbem_event_list_groupby_format', __('Choose how to format your group heading dates. Leave blank for default.','dbem').' '. sprintf(__('Date and Time formats follow the <a href="%s">WordPress time formatting conventions</a>', 'dbem'), 'http://codex.wordpress.org/Formatting_Date_and_Time'));
 						em_options_textarea ( __( 'Default event list format header', 'dbem' ), 'dbem_event_list_item_format_header', __( 'This content will appear just above your code for the default event list format. Default is blank', 'dbem' ) );
 					 	em_options_textarea ( __( 'Default event list format', 'dbem' ), 'dbem_event_list_item_format', __( 'The format of any events in a list.', 'dbem' ).$events_placeholder_tip );
 						em_options_textarea ( __( 'Default event list format footer', 'dbem' ), 'dbem_event_list_item_format_footer', __( 'This content will appear just below your code for the default event list format. Default is blank', 'dbem' ) );
@@ -1424,6 +1440,9 @@ function em_admin_options_page() {
 				<div class="handlediv" title="<?php __('Click to toggle', 'dbem'); ?>"><br /></div><h3><span><?php _e ( 'Event Categories', 'dbem' ); ?> </span></h3>
 				<div class="inside">
 	            	<table class="form-table">
+	            		<?php
+	            		em_options_input_text(sprintf(esc_html__('Default %s color','dbem'), esc_html__('category','dbem')), 'dbem_category_default_color', sprintf(esc_html_x('Colors must be in a valid %s format, such as #FF00EE.', 'hex format', 'dbem'), '<a href="http://en.wikipedia.org/wiki/Web_colors">hex</a>'));
+	            		?>
 					 	<tr><td colspan="2"><strong><?php echo sprintf(__('%s Page','dbem'),__('Categories','dbem')); ?></strong></td></tr>
 						<?php
 						em_options_textarea ( sprintf(__('%s list header format','dbem'),__('Categories','dbem')), 'dbem_categories_list_item_format_header', sprintf(__( 'This content will appear just above your code for the %s list format below. Default is blank', 'dbem' ), __('categories','dbem')) );
@@ -1505,6 +1524,52 @@ function em_admin_options_page() {
 						em_options_input_text ( __( 'RSS title format', 'dbem' ), 'dbem_rss_title_format', __( 'The format of the title of each item in the events RSS feed.', 'dbem' ).$events_placeholder_tip );
 						em_options_input_text ( __( 'RSS description format', 'dbem' ), 'dbem_rss_description_format', __( 'The format of the description of each item in the events RSS feed.', 'dbem' ).$events_placeholder_tip );
 						em_options_input_text ( __( 'RSS limit', 'dbem' ), 'dbem_rss_limit', __( 'Limits the number of future events shown (0 = unlimited).', 'dbem' ) );
+						em_options_select( __('RSS Scope','dbem'), 'dbem_rss_scope', em_get_scopes(), __('Choose to show events within a specific time range.','dbem'));
+						?>							
+						<tr valign="top" id='dbem_rss_orderby_row'>
+					   		<th scope="row"><?php _e('Default event list ordering','dbem'); ?></th>
+					   		<td>   
+								<select name="dbem_rss_orderby" >
+									<?php 
+										$orderby_options = apply_filters('em_settings_events_default_orderby_ddm', array(
+											'event_start_date,event_start_time,event_name' => __('Order by start date, start time, then event name','dbem'),
+											'event_name,event_start_date,event_start_time' => __('Order by name, start date, then start time','dbem'),
+											'event_name,event_end_date,event_end_time' => __('Order by name, end date, then end time','dbem'),
+											'event_end_date,event_end_time,event_name' => __('Order by end date, end time, then event name','dbem'),
+										)); 
+									?>
+									<?php foreach($orderby_options as $key => $value) : ?>   
+					 				<option value='<?php echo esc_attr($key) ?>' <?php echo ($key == get_option('dbem_rss_orderby')) ? "selected='selected'" : ''; ?>>
+					 					<?php echo esc_html($value); ?>
+					 				</option>
+									<?php endforeach; ?>
+								</select> 
+								<select name="dbem_rss_order" >
+									<?php 
+									$ascending = __('Ascending','dbem');
+									$descending = __('Descending','dbem');
+									$order_options = apply_filters('em_settings_events_default_order_ddm', array(
+										'ASC' => __('All Ascending','dbem'),
+										'DESC,ASC,ASC' => __("$descending, $ascending, $ascending",'dbem'),
+										'DESC,DESC,ASC' => __("$descending, $descending, $ascending",'dbem'),
+										'DESC' => __('All Descending','dbem'),
+										'ASC,DESC,ASC' => __("$ascending, $descending, $ascending",'dbem'),
+										'ASC,DESC,DESC' => __("$ascending, $descending, $descending",'dbem'),
+										'ASC,ASC,DESC' => __("$ascending, $ascending, $descending",'dbem'),
+										'DESC,ASC,DESC' => __("$descending, $ascending, $descending",'dbem'),
+									)); 
+									?>
+									<?php foreach( $order_options as $key => $value) : ?>   
+					 				<option value='<?php echo esc_attr($key) ?>' <?php echo ($key == get_option('dbem_rss_order')) ? "selected='selected'" : ''; ?>>
+					 					<?php echo esc_html($value); ?>
+					 				</option>
+									<?php endforeach; ?>
+								</select>
+								<br/>
+								<em><?php _e('When Events Manager displays lists of events the default behaviour is ordering by start date in ascending order. To change this, modify the values above.','dbem'); ?></em>
+							</td>
+					   	</tr>
+						<?php
 						echo $save_button;
 						?>
 					</table>
@@ -1560,7 +1625,7 @@ function em_admin_options_page() {
 					<table class='form-table'> 
 						<?php 
 						em_options_radio_binary ( __( 'Allow guest bookings?', 'dbem' ), 'dbem_bookings_anonymous', __( 'If enabled, guest visitors can supply an email address and a user account will automatically be created for them along with their booking. They will be also be able to log back in with that newly created account.', 'dbem' ) );
-						em_options_radio_binary ( __( 'Approval Required?', 'dbem' ), 'dbem_bookings_approval', __( 'Bookings will not be confirmed until the event administrator approves it.', 'dbem' ).' '.__( 'This setting is overriden by individual payment gateways.', 'dbem' ));
+						em_options_radio_binary ( __( 'Approval Required?', 'dbem' ), 'dbem_bookings_approval', __( 'Bookings will not be confirmed until the event administrator approves it.', 'dbem' ).' '.__( 'This setting is not applicable when using payment gateways, see individual gateways for approval settings.', 'dbem' ));
 						em_options_radio_binary ( __( 'Reserved unconfirmed spaces?', 'dbem' ), 'dbem_bookings_approval_reserved', __( 'By default, event spaces become unavailable once there are enough CONFIRMED bookings. To reserve spaces even if unnapproved, choose yes.', 'dbem' ) );
 						em_options_radio_binary ( __( 'Can users cancel their booking?', 'dbem' ), 'dbem_bookings_user_cancellation', __( 'If enabled, users can cancel their bookings themselves from their bookings page.', 'dbem' ) );
 						em_options_radio_binary ( __( 'Allow overbooking when approving?', 'dbem' ), 'dbem_bookings_approval_overbooking', __( 'If you get a lot of pending bookings and you decide to allow more bookings than spaces allow, setting this to yes will allow you to override the event space limit when manually approving.', 'dbem' ) );
@@ -1964,7 +2029,7 @@ function em_admin_option_box_email(){
 					}
 				}).trigger('change');
 				$('input#em-admin-check-email').click(function(e,el){
-					var email_data = $('.em-email-form input').serialize();
+					var email_data = $('.em-email-form input, .em-email-form select').serialize();
 					$.ajax({
 						url: EM.ajaxurl,
 						dataType: 'json',

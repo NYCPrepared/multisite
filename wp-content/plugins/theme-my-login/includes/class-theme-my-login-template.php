@@ -451,25 +451,36 @@ class Theme_My_Login_Template extends Theme_My_Login_Abstract {
 
 		extract( apply_filters_ref_array( 'tml_template_args', array( $args, &$this ) ) );
 
-		if ( ! is_array( $template_names ) )
-			$template_names = array( $template_names );
+		$template_paths = apply_filters( 'tml_template_paths', array(
+			get_stylesheet_directory() . '/theme-my-login',
+			get_stylesheet_directory(),
+			get_template_directory() . '/theme-my-login',
+			get_template_directory(),
+			WP_PLUGIN_DIR . '/theme-my-login/templates'
+		) );
 
-		if ( ! $found_template = locate_template( $template_names ) ) {
-			foreach ( $template_names as $template_name ) {
-				if ( file_exists( WP_PLUGIN_DIR . '/theme-my-login/templates/' . $template_name ) ) {
-					$found_template = WP_PLUGIN_DIR . '/theme-my-login/templates/' . $template_name;
-					break;
+		foreach ( (array) $template_names as $template_name ) {
+
+			if ( ! $template_name )
+				continue;
+
+			if ( preg_match( '/\/|\\\\/', $template_name ) )
+				continue;
+
+			foreach ( $template_paths as $template_path ) {
+				if ( file_exists( $template_path . '/' . $template_name ) ) {
+					$located = $template_path . '/' . $template_name;
+					break 2;
 				}
 			}
 		}
 
-		$found_template = apply_filters_ref_array( 'tml_template', array( $found_template, $template_names, &$this ) );
+		$located = apply_filters_ref_array( 'tml_template', array( $located, $template_names, &$this ) );
 
-		if ( $load && $found_template ) {
-			include( $found_template );
-		}
+		if ( $load && '' != $located )
+			include( $located );
 
-		return $found_template;
+		return $located;
 	}
 
 	/**

@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Events Manager
-Version: 5.5.2
+Version: 5.5.3.1
 Plugin URI: http://wp-events-plugin.com
 Description: Event registration and booking management for WordPress. Recurring events, locations, google maps, rss, ical, booking registration and more!
 Author: Marcus Sykes
@@ -9,7 +9,7 @@ Author URI: http://wp-events-plugin.com
 */
 
 /*
-Copyright (c) 2013, Marcus Sykes
+Copyright (c) 2014, Marcus Sykes
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -27,8 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 // Setting constants
-define('EM_VERSION', 5.52); //self expanatory
-define('EM_PRO_MIN_VERSION', 2.221); //self expanatory
+define('EM_VERSION', 5.53); //self expanatory
+define('EM_PRO_MIN_VERSION', 2.377); //self expanatory
 define('EM_DIR', dirname( __FILE__ )); //an absolute path to this directory
 define('EM_DIR_URI', trailingslashit(plugins_url('',__FILE__))); //an absolute path to this directory
 define('EM_SLUG', plugin_basename( __FILE__ )); //for updates
@@ -101,9 +101,7 @@ include('classes/em-person.php');
 include('classes/em-permalinks.php');
 include('classes/em-tag.php');
 include('classes/em-tag-taxonomy.php');
-if( get_option('dbem_tags_enabled') ){
-    include('classes/em-tags.php');
-}
+include('classes/em-tags.php');
 include('classes/em-ticket-booking.php');
 include('classes/em-ticket.php');
 include('classes/em-tickets-bookings.php');
@@ -182,7 +180,7 @@ if( file_exists($upload_dir['basedir'].'/locations-pics' ) ){
  * Contains functions for loading styles on both admin and public sides.
  */
 class EM_Scripts_and_Styles {
-	function init(){
+	public static function init(){
 		if( is_admin() ){
 			//Scripts and Styles
 			if( (!empty($_GET['page']) && substr($_GET['page'],0,14) == 'events-manager') || (!empty($_GET['post_type']) && in_array($_GET['post_type'], array(EM_POST_TYPE_EVENT,EM_POST_TYPE_LOCATION,'event-recurring'))) ){
@@ -198,7 +196,7 @@ class EM_Scripts_and_Styles {
 	/**
 	 * Enqueuing public scripts and styles
 	 */
-	function public_enqueue() {
+	public static function public_enqueue() {
 	    global $wp_query;
 		$pages = array( //pages which EM needs CSS or JS
            	'events' => get_option('dbem_events_page'),
@@ -294,7 +292,7 @@ class EM_Scripts_and_Styles {
 		}
 	}
 	
-	function admin_enqueue(){
+	public static function admin_enqueue(){
 	    do_action('em_enqueue_admin_scripts');
 		wp_enqueue_script('events-manager', plugins_url('includes/js/events-manager.js',__FILE__), array('jquery', 'jquery-ui-core','jquery-ui-widget','jquery-ui-position','jquery-ui-sortable','jquery-ui-datepicker','jquery-ui-autocomplete','jquery-ui-dialog'), EM_VERSION);
 		wp_enqueue_style('events-manager-admin', plugins_url('includes/css/events_manager_admin.css',__FILE__), array(), EM_VERSION);
@@ -304,7 +302,7 @@ class EM_Scripts_and_Styles {
 	/**
 	 * Localize the script vars that require PHP intervention, removing the need for inline JS.
 	 */
-	function localize_script(){
+	public static function localize_script(){
 		global $em_localized_js;
 		$locale_code = substr ( get_locale(), 0, 2 );
 		$date_format = get_option('dbem_date_format_js') ? get_option('dbem_date_format_js'):'yy-mm-dd'; //prevents blank datepickers if no option set
@@ -756,4 +754,14 @@ function em_deactivate() {
    	$wp_rewrite->flush_rules();
 }
 register_deactivation_hook( __FILE__,'em_deactivate');
+
+/**
+ * Fail-safe compatibility checking of EM Pro 
+ */
+function em_check_pro_compatability(){
+	if( defined('EMP_VERSION') && EMP_VERSION < EM_PRO_MIN_VERSION && (!defined('EMP_DISABLE_CRITICAL_WARNINGS') || !EMP_DISABLE_CRITICAL_WARNINGS) ){
+		include('em-pro-compatibility.php');
+	}
+}
+add_action('plugins_loaded','em_check_pro_compatability', 1);
 ?>

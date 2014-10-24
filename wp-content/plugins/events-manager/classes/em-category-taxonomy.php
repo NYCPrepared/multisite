@@ -1,9 +1,8 @@
 <?php
 class EM_Category_Taxonomy{
-	function init(){
+	public static function init(){
 		if( !is_admin() ){
-			add_filter('archive_template', array('EM_Category_Taxonomy','template'));
-			add_filter('category_template', array('EM_Category_Taxonomy','template'));
+			add_filter('taxonomy_template', array('EM_Category_Taxonomy','template'), 99);
 			add_filter('parse_query', array('EM_Category_Taxonomy','parse_query'));
 		}
 	}
@@ -12,7 +11,7 @@ class EM_Category_Taxonomy{
 	 * @param string $template
 	 * @return string
 	 */
-	function template($template){
+	public static function template($template){
 		global $wp_query, $EM_Category, $em_category_id, $post;
 		if( is_tax(EM_TAXONOMY_CATEGORY) && get_option('dbem_cp_categories_formats', true) ){
 			$EM_Category = em_get_category($wp_query->queried_object->term_id);
@@ -55,7 +54,7 @@ class EM_Category_Taxonomy{
 		return $template;
 	}
 	
-	function the_content($content){
+	public static function the_content($content){
 		global $wp_query, $EM_Category, $post, $em_category_id;
 		$is_categories_page = $post->ID == get_option('dbem_categories_page');
 		$category_flag = (!empty($wp_query->em_category_id) || !empty($em_category_id));
@@ -68,7 +67,7 @@ class EM_Category_Taxonomy{
 		return $content;
 	}
 	
-	function parse_query( ){
+	public static function parse_query( ){
 	    global $wp_query, $post;
 		if( is_tax(EM_TAXONOMY_CATEGORY) ){
 			//Scope is future
@@ -90,7 +89,7 @@ class EM_Category_Taxonomy{
 		}
 	}
 	
-	function wpseo_breadcrumb_links( $links ){
+	public static function wpseo_breadcrumb_links( $links ){
 	    global $wp_query;
 	    array_pop($links);
 	    if( get_option('dbem_categories_page') ){
@@ -128,22 +127,17 @@ class EM_Walker_Category extends Walker {
 	function __construct(){ 
 		$tree_type = EM_TAXONOMY_CATEGORY;
 	}
+	
 	/**
 	 * @see Walker::start_el()
-	 * @since 2.1.0
-	 *
-	 * @param string $output Passed by reference. Used to append additional content.
-	 * @param object $category Category data object.
-	 * @param int $depth Depth of category. Used for padding.
-	 * @param array $args Uses 'selected', 'show_count', and 'show_last_update' etc. keys, if they exist.
 	 */
-	function start_el(&$output, $category, $depth, $args) {
+	function start_el( &$output, $object, $depth = 0, $args = array(), $current_object_id = 0 ) {
 		$pad = str_repeat('&nbsp;', $depth * 3);
-		$cat_name = $category->name;
+		$cat_name = $object->name;
 		$name = !empty($args['name']) ? $args['name']:'event_categories[]';
 		$output .= !empty($args['before']) ? $args['after']:'';
-		$output .= $pad."<input type=\"checkbox\" name=\"$name\" class=\"level-$depth\" value=\"".$category->term_id."\"";
-		if ( (is_array($args['selected']) && in_array($category->term_id, $args['selected'])) || ($category->term_id == $args['selected']) )
+		$output .= $pad."<input type=\"checkbox\" name=\"$name\" class=\"level-$depth\" value=\"".$object->term_id."\"";
+		if ( (is_array($args['selected']) && in_array($object->term_id, $args['selected'])) || ($object->term_id == $args['selected']) )
 			$output .= ' checked="checked"';
 		$output .= ' /> ';
 		$output .= $cat_name;
@@ -161,18 +155,12 @@ class EM_Walker_Category extends Walker {
 class EM_Walker_CategoryMultiselect extends EM_Walker_Category {
 	/**
 	 * @see Walker::start_el()
-	 * @since 2.1.0
-	 *
-	 * @param string $output Passed by reference. Used to append additional content.
-	 * @param object $category Category data object.
-	 * @param int $depth Depth of category. Used for padding.
-	 * @param array $args Uses 'selected', 'show_count', and 'show_last_update' keys, if they exist.
 	 */
-	function start_el(&$output, $category, $depth, $args) {
+	function start_el( &$output, $object, $depth = 0, $args = array(), $current_object_id = 0 ) {
 		$pad = str_repeat('&nbsp;', $depth * 3);
-		$cat_name = $category->name;
-		$output .= "\t<option class=\"level-$depth\" value=\"".$category->term_id."\"";
-		if ( (is_array($args['selected']) && in_array($category->term_id, $args['selected'])) || ($category->term_id == $args['selected']) )
+		$cat_name = $object->name;
+		$output .= "\t<option class=\"level-$depth\" value=\"".$object->term_id."\"";
+		if ( (is_array($args['selected']) && in_array($object->term_id, $args['selected'])) || ($object->term_id == $args['selected']) )
 			$output .= ' selected="selected"';
 		$output .= '>';
 		$output .= $pad.$cat_name;

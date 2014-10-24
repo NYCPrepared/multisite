@@ -53,11 +53,11 @@ class jmm_JMM_Widget extends WP_Widget {
 			if( isset($_POST['jmm-join-site']) || isset($_POST['join-site']) ){
                 // This is the magic sauce.
                 do_action('jmm_joinsite', array('JMM', 'join_site'));
-                echo $welcome;
+                echo '<p>'.$welcome.'</p>';
             } else {
                 if( !is_user_logged_in() ) {
                     if ( get_option('users_can_register') == 1 ) {
-                         // If user isn't logged in but we allow for registration....
+                        // If user isn't logged in but we allow for registration....
                          
                         // IF we have a custom URL, use it, else send to /wp-signup.php
                         if ( !is_null($jmm_options['perpage']) && $jmm_options['perpage'] != "XXXXXX"  )
@@ -87,7 +87,7 @@ class jmm_JMM_Widget extends WP_Widget {
                     echo '</form>';
                 } else {
                     // Otherwise we're already a member, hello, mum!
-                    echo $member;
+                    echo '<p>'.$member.'</p>';
                 }
         
             }        

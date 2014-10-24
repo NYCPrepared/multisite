@@ -2,7 +2,7 @@
 // TODO make person details more secure and integrate with WP user data 
 class EM_Person extends WP_User{
 	
-	function EM_Person( $person_id = false, $username = false ){
+	function __construct( $person_id = 0, $username = '', $blog_id='' ){
 		if( is_array($person_id) ){
 			if( array_key_exists('person_id',$person_id) ){
 				$person_id = $person_id['person_id'];
@@ -16,10 +16,11 @@ class EM_Person extends WP_User{
 		}
 		if($username){
 			parent::__construct($person_id, $username);
-		}elseif( is_numeric($person_id) && $person_id == 0 ){
+		}elseif( is_numeric($person_id) && ($person_id <= 0) ){
+			$this->data = new stdClass();
 			$this->ID = 0;
 			$this->display_name = 'Non-Registered User';
-			$this->user_email = 'n/a';
+			$this->user_email = '';
 		}else{
 			parent::__construct($person_id);
 		}
@@ -27,9 +28,9 @@ class EM_Person extends WP_User{
 		do_action('em_person',$this, $person_id, $username);
 	}
 	
-	function get_bookings($ids_only = false){
+	function get_bookings($ids_only = false, $status= false){
 		global $wpdb;
-		$blog_condition = '';
+		$status_condition = $blog_condition = '';
 		if( is_multisite() ){
 			if( !is_main_site() ){
 				//not the main blog, force single blog search
@@ -37,9 +38,14 @@ class EM_Person extends WP_User{
 			}elseif(is_main_site() && !get_option('dbem_ms_global_events')){
 				$blog_condition = "AND (e.blog_id=".get_current_blog_id().' OR e.blog_id IS NULL)';
 			}
-		}		
+		}
+		if( is_numeric($status) ){
+			$status_condition = " AND booking_status=$status";
+		}elseif( EM_Object::array_is_numeric($status) ){
+			$status_condition = " AND booking_status IN (".implode(',', $status).")";
+		}
 		$EM_Booking = em_get_booking(); //empty booking for fields
-		$results = $wpdb->get_results("SELECT b.".implode(', b.', array_keys($EM_Booking->fields))." FROM ".EM_BOOKINGS_TABLE." b, ".EM_EVENTS_TABLE." e WHERE e.event_id=b.event_id AND person_id={$this->ID} {$blog_condition} ORDER BY ".get_option('dbem_bookings_default_orderby','event_start_date')." ".get_option('dbem_bookings_default_order','ASC'),ARRAY_A);
+		$results = $wpdb->get_results("SELECT b.".implode(', b.', array_keys($EM_Booking->fields))." FROM ".EM_BOOKINGS_TABLE." b, ".EM_EVENTS_TABLE." e WHERE e.event_id=b.event_id AND person_id={$this->ID} {$blog_condition} {$status_condition} ORDER BY ".get_option('dbem_bookings_default_orderby','event_start_date')." ".get_option('dbem_bookings_default_order','ASC'),ARRAY_A);
 		$bookings = array();
 		if($ids_only){
 			foreach($results as $booking_data){

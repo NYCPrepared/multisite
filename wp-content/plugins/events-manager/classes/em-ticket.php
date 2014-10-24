@@ -68,8 +68,8 @@ class EM_Ticket extends EM_Object{
 			$this->to_object($ticket);
 			$this->ticket_members_roles = maybe_unserialize($this->ticket_members_roles);
 			if( !is_array($this->ticket_members_roles) ) $this->ticket_members_roles = array();
-			$this->start_timestamp = (!empty($ticket['ticket_start'])) ? strtotime($ticket['ticket_start']):false;
-			$this->end_timestamp = (!empty($ticket['ticket_end'])) ? strtotime($ticket['ticket_end']):false;
+			$this->start_timestamp = (!empty($ticket['ticket_start'])) ? strtotime($ticket['ticket_start'], current_time('timestamp')):false;
+			$this->end_timestamp = (!empty($ticket['ticket_end'])) ? strtotime($ticket['ticket_end'], current_time('timestamp')):false;
 		}
 		$this->compat_keys();
 		do_action('em_ticket',$this, $ticket_data, $ticket);
@@ -204,16 +204,16 @@ class EM_Ticket extends EM_Object{
 	
 	function is_available( $include_members_only = false, $include_guests_only = false ){
 		$timestamp = current_time('timestamp');
-		if( isset($this->is_available) ) return $this->is_available;
+		if( isset($this->is_available) && !$include_members_only && !$include_guests_only ) return apply_filters('em_ticket_is_available',  $this->is_available, $this); //save extra queries if doing a standard check
 		$is_available = false;
 		$EM_Event = $this->get_event();
 		$available_spaces = $this->get_available_spaces();
 		$condition_1 = (empty($this->ticket_start) || $this->start_timestamp <= $timestamp);
 		$condition_2 = $this->end_timestamp >= $timestamp || empty($this->ticket_end);
-		$condition_3 = $EM_Event->start > $timestamp || strtotime($EM_Event->event_rsvp_date. ' '. $EM_Event->event_rsvp_time) > $timestamp;
+		$condition_3 = (empty($EM_Event->event_rsvp_date) && $EM_Event->start > $timestamp) || $EM_Event->rsvp_end > $timestamp;
 		$condition_4 = !$this->ticket_members || ($this->ticket_members && is_user_logged_in()) || $include_members_only;
 		$condition_5 = true;
-		if( $this->ticket_members && !empty($this->ticket_members_roles) ){
+		if( !EM_Bookings::$disable_restrictions && $this->ticket_members && !empty($this->ticket_members_roles) ){
 			//check if user has the right role to use this ticket
 			$condition_5 = false;
 			if( is_user_logged_in() ){
@@ -230,8 +230,10 @@ class EM_Ticket extends EM_Object{
 				$is_available = true;
 			}
 		}
-		$this->is_available = apply_filters('em_ticket_is_available', $is_available, $this);
-		return $this->is_available;
+		if( !$include_members_only && !$include_guests_only ){ //$this->is_available is only stored for the viewing user
+			$this->is_available = $is_available;
+		}
+		return apply_filters('em_ticket_is_available', $is_available, $this);
 	}
 	
 	/**
@@ -462,8 +464,11 @@ class EM_Ticket extends EM_Object{
 	/**
 	 * Can the user manage this event? 
 	 */
-	function can_manage(){
-		return $this->get_event()->can_manage('manage_bookings','manage_others_bookings');
+	function can_manage( $owner_capability = false, $admin_capability = false, $user_to_check = false ){
+		if( $this->ticket_id == '' && !is_user_logged_in() && get_option('dbem_events_anonymous_submissions') ){
+			$user_to_check = get_option('dbem_events_anonymous_user');
+		}
+		return $this->get_event()->can_manage('manage_bookings','manage_others_bookings', $user_to_check);
 	}
 	
 	/**

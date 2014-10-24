@@ -77,7 +77,7 @@ function em_init_actions() {
 					$EM_Notices->add_confirm( $EM_Event->output(get_option('dbem_events_anonymous_result_success')), true);
 				}
 				$redirect = !empty($_REQUEST['redirect_to']) ? $_REQUEST['redirect_to'] : wp_get_referer();
-				$redirect = em_add_get_params($redirect, array('success'=>1));
+				$redirect = em_add_get_params($redirect, array('success'=>1), false, false);
 				wp_redirect( $redirect );
 				exit();
 			}else{
@@ -649,14 +649,15 @@ add_action('wp_ajax_em_bookings_table','em_ajax_bookings_table');
  */
 function em_ajax_search_and_pagination(){
 	$args = array( 'owner' => false, 'pagination' => 1, 'ajax' => true);
-	if( empty($args['scope']) ){ $args['scope'] = get_option('dbem_events_page_scope'); }
 	echo '<div class="em-search-ajax">';
 	ob_start();
 	if( $_REQUEST['action'] == 'search_events' ){
+		$args['scope'] = get_option('dbem_events_page_scope');
 		$args = EM_Events::get_post_search($args);
 		$args['limit'] = !empty($args['limit']) ? $args['limit'] : get_option('dbem_events_default_limit');
 		em_locate_template('templates/events-list.php', true, array('args'=>$args)); //if successful, this template overrides the settings and defaults, including search
 	}elseif( $_REQUEST['action'] == 'search_events_grouped' && defined('DOING_AJAX') ){
+		$args['scope'] = get_option('dbem_events_page_scope');
 		$args = EM_Events::get_post_search($args);
 		$args['limit'] = !empty($args['limit']) ? $args['limit'] : get_option('dbem_events_default_limit');
 		em_locate_template('templates/events-list-grouped.php', true, array('args'=>$args)); //if successful, this template overrides the settings and defaults, including search
