@@ -3,15 +3,44 @@
  * Media Library view of all avatars in use.
  *
  * @package WP User Avatar
- * @version 1.8.10
+ * @version 1.9.13
  */
+
+/**
+ * @since 1.8
+ * @uses object $wpua_admin
+ * @uses _wpua_get_list_table()
+ * @uses add_query_arg()
+ * @uses check_admin_referer()
+ * @uses current_action()
+ * @uses current_user_can()
+ * @uses display()
+ * @uses esc_url()
+ * @uses find_posts_div()
+ * @uses get_pagenum()
+ * @uses get_search_query
+ * @uses number_format_i18n()
+ * @uses prepare_items()
+ * @uses remove_query_arg()
+ * @uses search_box()
+ * @uses views()
+ * @uses wp_delete_attachment()
+ * @uses wp_die()
+ * @uses wp_enqueue_script()
+ * @uses wp_get_referer()
+ * @uses wp_redirect()
+ * @uses wp_unslash()
+ */
+
   /** WordPress Administration Bootstrap */
   require_once(ABSPATH.'wp-admin/admin.php');
 
   if(!current_user_can('upload_files'))
     wp_die(__('You do not have permission to upload files.'));
 
-  $wp_list_table = $this->_wpua_get_list_table('WP_User_Avatar_List_Table');
+  global $wpua_admin;
+
+  $wp_list_table = $wpua_admin->_wpua_get_list_table('WP_User_Avatar_List_Table');
   $pagenum = $wp_list_table->get_pagenum();
 
   // Handle bulk actions
@@ -28,18 +57,22 @@
 
     $location = esc_url(add_query_arg(array('page' => 'wp-user-avatar-library'), 'admin.php'));
     if($referer = wp_get_referer()) {
-      if(false !== strpos($referer, 'admin.php'))
+      if(false !== strpos($referer, 'admin.php')) {
         $location = remove_query_arg(array('trashed', 'untrashed', 'deleted', 'message', 'ids', 'posted'), $referer);
+      }
     }
     switch($doaction) {
       case 'delete':
-        if(!isset($post_ids))
+        if(!isset($post_ids)) {
           break;
+        }
         foreach((array) $post_ids as $post_id_del) {
-          if(!current_user_can( 'delete_post', $post_id_del))
-            wp_die(__( 'You are not allowed to delete this post.'));
-          if(!wp_delete_attachment($post_id_del))
+          if(!current_user_can('delete_post', $post_id_del)) {
+            wp_die(__('You are not allowed to delete this post.'));
+          }
+          if(!wp_delete_attachment($post_id_del)) {
             wp_die(__('Error in deleting.'));
+          }
         }
       $location = add_query_arg('deleted', count($post_ids), $location);
       break;
@@ -64,7 +97,7 @@
     ?>
   </h2>
   <?php
-    $message = '';
+    $message = "";
     if(!empty($_GET['deleted']) && $deleted = absint($_GET['deleted'])) {
       $message = sprintf(_n('Media attachment permanently deleted.', '%d media attachments permanently deleted.', $deleted), number_format_i18n($_GET['deleted']));
       $_SERVER['REQUEST_URI'] = remove_query_arg(array('deleted'), $_SERVER['REQUEST_URI']);
@@ -74,7 +107,7 @@
   <?php endif; ?>
   <?php $wp_list_table->views(); ?>
   <form id="posts-filter" action="" method="get">
-    <?php $wp_list_table->search_box(__('Search'), 'media' ); ?>
+    <?php $wp_list_table->search_box(__('Search'), 'media'); ?>
     <?php $wp_list_table->display(); ?>
     <div id="ajax-response"></div>
     <?php find_posts_div(); ?>

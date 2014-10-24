@@ -8,8 +8,8 @@
  * @since 1.0
  * @uses Walker_Nav_Menu
  */
-class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu  {
 
+class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu {
     /**
      * Starts the list before the elements are added.
      *
@@ -185,86 +185,12 @@ class Walker_Nav_Menu_Edit_Roles extends Walker_Nav_Menu  {
                     </label>
                 </p>
 
-                <?php
-                /*
-                 * This is the added section
-                 */
-
-                global $wp_roles;
-
-                $display_roles = apply_filters( 'nav_menu_roles', $wp_roles->role_names );
-
-                /* Get the roles saved for the post. */
-                $roles = get_post_meta( $item->ID, '_nav_menu_role', true );
-
-                $checked_roles = is_array( $roles ) ? $roles : false;
-
-                $logged_in_out = ! is_array( $roles ) ? $roles : false;
-
+                <?php 
+                // This is the added section
+                do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args );
+                // end added section 
                 ?>
 
-                <input type="hidden" name="nav-menu-role-nonce" value="<?php echo wp_create_nonce( 'nav-menu-nonce-name' ); ?>" />
-
-                <div class="field-nav_menu_role nav_menu_logged_in_out_field description-wide" style="margin: 5px 0;">
-                    <span class="description"><?php _e( "Display Mode", 'nav-menu-roles' ); ?></span>
-                    <br />
-
-                    <input type="hidden" class="nav-menu-id" value="<?php echo $item->ID ;?>" />
-
-                    <div class="logged-input-holder" style="float: left; width: 35%;">
-                        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_out-for-<?php echo $item->ID ;?>" <?php checked( 'out', $logged_in_out ); ?> value="out" />
-                        <label for="nav_menu_logged_out-for-<?php echo $item->ID ;?>">
-                            <?php _e( 'Logged Out Users', 'nav-menu-roles'); ?>
-                        </label>
-                    </div>
-
-                    <div class="logged-input-holder" style="float: left; width: 35%;">
-                        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_logged_in-for-<?php echo $item->ID ;?>" <?php checked( 'in', $logged_in_out ); ?> value="in" />
-                        <label for="nav_menu_logged_in-for-<?php echo $item->ID ;?>">
-                            <?php _e( 'Logged In Users', 'nav-menu-roles'); ?>
-                        </label>
-                    </div>
-
-                    <div class="logged-input-holder" style="float: left; width: 30%;">
-                        <input type="radio" class="nav-menu-logged-in-out" name="nav-menu-logged-in-out[<?php echo $item->ID ;?>]" id="nav_menu_by_role-for-<?php echo $item->ID ;?>" <?php checked( '', $logged_in_out ); ?> value="" />
-                        <label for="nav_menu_by_role-for-<?php echo $item->ID ;?>">
-                            <?php _e( 'By Role', 'nav-menu-roles'); ?>
-                        </label>
-                    </div>
-
-                </div>
-
-                <div class="field-nav_menu_role nav_menu_role_field description-wide" style="margin: 5px 0;">
-                    <span class="description"><?php _e( "Access Role", 'nav-menu-roles' ); ?></span>
-                    <br />
-
-                    <?php
-
-                    /* Loop through each of the available roles. */
-                    foreach ( $display_roles as $role => $name ) {
-
-                        /* If the role has been selected, make sure it's checked. */
-                        $checked = checked( true, ( is_array( $checked_roles ) && in_array( $role, $checked_roles ) ), false );
-                        
-                        ?>
-
-                        <div class="role-input-holder" style="float: left; width: 33.3%; margin: 2px 0;">
-                        <input type="checkbox" name="nav-menu-role[<?php echo $item->ID ;?>][<?php echo $role; ?>]" id="nav_menu_role-<?php echo $role; ?>-for-<?php echo $item->ID ;?>" <?php echo $checked; ?> value="<?php echo $role; ?>" />
-                        <label for="nav_menu_role-<?php echo $role; ?>-for-<?php echo $item->ID ;?>">
-                        <?php echo esc_html( $name ); ?>
-                        </label>
-                        </div>
-
-                    <?php } ?>
-
-                </div>
-
-                <?php
-                /*
-                * end added section
-                */
-                ?>
-                
                 <p class="field-move hide-if-no-js description description-wide">
                     <label>
                         <span><?php _e( 'Move' ); ?></span>

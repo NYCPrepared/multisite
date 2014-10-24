@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: User Role Editor v. 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-04 08:52+0700\n"
+"POT-Creation-Date: 2014-10-21 10:21+0700\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Vladimir Garagulya <vladimir@shinephp.com>\n"
+"Last-Translator: Vladimir Garagulya <support@role-editor.com>\n"
 "Language-Team: ShinePHP.com <vladimir@shinephp.com>\n"
 "Language: es_RU\n"
 "MIME-Version: 1.0\n"
@@ -19,156 +19,270 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: user-role-editor\n"
 
-#: user-role-editor/includes/settings-template.php:63
-msgid "Save"
+# @ ure
+# @ default
+#: ../includes/settings-template.php:17
+#, fuzzy
+msgid "User Role Editor - Options"
+msgstr "User Role Editor"
+
+#: ../includes/settings-template.php:21
+#: ../includes/class-user-role-editor.php:547
+msgid "General"
+msgstr ""
+
+#: ../includes/settings-template.php:26
+#: ../includes/class-user-role-editor.php:553
+msgid "Additional Modules"
 msgstr ""
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:171
-#: user-role-editor/includes/class-user-role-editor.php:173
+#: ../includes/settings-template.php:30
+#: ../includes/class-user-role-editor.php:559
+#, fuzzy
+msgid "Default Roles"
+msgstr "Rol predeterminat"
+
+#: ../includes/settings-template.php:34
+#: ../includes/class-user-role-editor.php:565
+msgid "Multisite"
+msgstr ""
+
+#: ../includes/settings-template.php:39
+msgid "About"
+msgstr ""
+
+#: ../includes/settings-template.php:53
+#: ../includes/class-ure-screen-help.php:15
+msgid "Show Administrator role at User Role Editor"
+msgstr ""
+
+# @ ure
+#: ../includes/settings-template.php:61
+#: ../includes/class-ure-screen-help.php:18
+#, fuzzy
+msgid "Show capabilities in the human readable form"
+msgstr "Mostra privilegis de forma llegible"
+
+# @ ure
+#: ../includes/settings-template.php:69 ../includes/ure-role-edit.php:40
+#: ../includes/ure-user-edit.php:63 ../includes/class-ure-screen-help.php:21
+msgid "Show deprecated capabilities"
+msgstr "Mostrar privilegis obsolets"
+
+#: ../includes/settings-template.php:81 ../includes/settings-template.php:117
+#: ../includes/settings-template.php:149 ../includes/settings-template.php:181
+msgid "Save"
+msgstr ""
+
+#: ../includes/settings-template.php:102
+#: ../includes/class-ure-screen-help.php:41
+msgid "Count users without role"
+msgstr ""
+
+#: ../includes/settings-template.php:129
+msgid "Primary default role: "
+msgstr ""
+
+#: ../includes/settings-template.php:136
+msgid "Other default roles for new registered user: "
+msgstr ""
+
+#: ../includes/settings-template.php:142
+msgid ""
+"Note for multisite environment: take into account that other default roles "
+"should exist at the site, in order to be assigned to the new registered "
+"users."
+msgstr ""
+
+#: ../includes/settings-template.php:168
+msgid "Allow non super administrators to create, edit, and delete users"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:195
+msgid "Change role for users without role"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:196
+msgid "No rights"
+msgstr ""
+
+#: ../includes/class-user-role-editor.php:197
+msgid "Provide new role"
+msgstr ""
+
+# @ ure
+#: ../includes/class-user-role-editor.php:281
+#: ../includes/class-user-role-editor.php:283
 msgid "You do not have permission to edit this user."
 msgstr ""
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:314
+#: ../includes/class-user-role-editor.php:422
 msgid "Capabilities"
 msgstr "Capacitats"
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:407
+#: ../includes/class-user-role-editor.php:514
 msgid "Settings"
 msgstr "Opcions"
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:420
-#: user-role-editor/includes/class-ure-lib.php:2089
+#: ../includes/class-user-role-editor.php:525
+#: ../includes/class-ure-lib.php:2295
 msgid "Changelog"
 msgstr "Registre de canvis"
 
-#: user-role-editor/includes/class-user-role-editor.php:442
-msgid "Overview"
+# @ ure
+# @ default
+#: ../includes/class-user-role-editor.php:575
+#: ../includes/class-user-role-editor.php:603
+#: ../includes/class-user-role-editor.php:948
+#: ../includes/class-ure-lib.php:251
+msgid "User Role Editor"
+msgstr "User Role Editor"
+
+# @ ure
+# @ default
+#: ../includes/class-user-role-editor.php:660
+#: ../includes/class-user-role-editor.php:678
+#: ../includes/class-user-role-editor.php:722
+msgid "User Role Editor options are updated"
 msgstr ""
 
-#: user-role-editor/includes/class-user-role-editor.php:497
+# @ ure
+#: ../includes/class-user-role-editor.php:706
+#, fuzzy
+msgid "Default Roles are updated"
+msgstr "Rol predeterminat"
+
+#: ../includes/class-user-role-editor.php:730
 msgid ""
 "You do not have sufficient permissions to manage options for User Role "
 "Editor."
 msgstr ""
 
-# @ ure
-# @ default
-#: user-role-editor/includes/class-user-role-editor.php:526
-msgid "User Role Editor options are updated"
-msgstr ""
-
-#: user-role-editor/includes/class-user-role-editor.php:571
+#: ../includes/class-user-role-editor.php:809
 msgid "Insufficient permissions to work with User Role Editor"
 msgstr ""
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:624
+#: ../includes/class-user-role-editor.php:890
 msgid "Select All"
 msgstr "Seleccionar-ho tot"
 
-#: user-role-editor/includes/class-user-role-editor.php:625
+#: ../includes/class-user-role-editor.php:891
 msgid "Unselect All"
 msgstr "De-selecciona-ho tot"
 
-#: user-role-editor/includes/class-user-role-editor.php:626
+#: ../includes/class-user-role-editor.php:892
 msgid "Reverse"
 msgstr "Invertir"
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:627
+#: ../includes/class-user-role-editor.php:893
 msgid "Update"
 msgstr "Actualitzar"
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:628
+#: ../includes/class-user-role-editor.php:894
 msgid "Please confirm permissions update"
 msgstr "Si us plau confirmeu l'actualització de permisos "
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:629
+#: ../includes/class-user-role-editor.php:895
 msgid "Add New Role"
 msgstr "Afegir nou Rol"
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:630
+#: ../includes/class-user-role-editor.php:896
+#: ../includes/class-user-role-editor.php:901
+#, fuzzy
+msgid "Rename Role"
+msgstr "Eliminar Rol"
+
+# @ ure
+#: ../includes/class-user-role-editor.php:897
 msgid " Role name (ID) can not be empty!"
 msgstr "El nom de rol (ID) no pot estar buit!"
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:631
+#: ../includes/class-user-role-editor.php:898
 msgid ""
 " Role name (ID) must contain latin characters, digits, hyphens or underscore "
 "only!"
 msgstr "Error: nom del rol (ID) ha de tenir només lletres llatines i dígits!"
 
+#: ../includes/class-user-role-editor.php:899
+msgid ""
+" WordPress does not support numeric Role name (ID). Add latin characters to "
+"it."
+msgstr ""
+
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:632
+#: ../includes/class-user-role-editor.php:900
 msgid "Add Role"
 msgstr "Afegir nou Rol"
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:633
+#: ../includes/class-user-role-editor.php:902
 msgid "Delete Role"
 msgstr "Eliminar Rol"
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:634
+#: ../includes/class-user-role-editor.php:903
 msgid "Cancel"
 msgstr "Cancel·lar"
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:635
+#: ../includes/class-user-role-editor.php:904
 msgid "Add Capability"
 msgstr "Afegir nou privilegi"
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:636
-#: user-role-editor/includes/class-user-role-editor.php:645
+#: ../includes/class-user-role-editor.php:905
+#: ../includes/class-user-role-editor.php:914
 msgid "Delete Capability"
 msgstr "Eliminar privilegi"
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:637
+#: ../includes/class-user-role-editor.php:906
 msgid "Reset"
 msgstr "Reiniciar"
 
-#: user-role-editor/includes/class-user-role-editor.php:638
+#: ../includes/class-user-role-editor.php:907
 msgid "DANGER! Resetting will restore default settings from WordPress Core."
 msgstr ""
 
-#: user-role-editor/includes/class-user-role-editor.php:639
+#: ../includes/class-user-role-editor.php:908
 msgid ""
 "If any plugins have changed capabilities in any way upon installation (such "
 "as S2Member, WooCommerce, and many more), those capabilities will be DELETED!"
 msgstr ""
 
-#: user-role-editor/includes/class-user-role-editor.php:640
+#: ../includes/class-user-role-editor.php:909
 msgid ""
 "For more information on how to undo changes and restore plugin capabilities "
 "go to"
 msgstr ""
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:642
+#: ../includes/class-user-role-editor.php:911
 msgid "Continue?"
 msgstr ""
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:643
+#: ../includes/class-user-role-editor.php:912
 msgid "Default Role"
 msgstr "Rol predeterminat"
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:644
+#: ../includes/class-user-role-editor.php:913
 msgid "Set New Default Role"
 msgstr "Assignar com a rol predeterminat"
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:646
+#: ../includes/class-user-role-editor.php:915
 msgid ""
 "Warning! Be careful - removing critical capability could crash some plugin "
 "or other custom code"
@@ -177,12 +291,12 @@ msgstr ""
 "algun connector o algun altre codi personalitzat."
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:647
+#: ../includes/class-user-role-editor.php:916
 msgid " Capability name (ID) can not be empty!"
 msgstr "El nom de priviliegi (ID) no pot estar buit!"
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:648
+#: ../includes/class-user-role-editor.php:917
 msgid ""
 " Capability name (ID) must contain latin characters, digits, hyphens or "
 "underscore only!"
@@ -191,628 +305,689 @@ msgstr ""
 "dígits."
 
 # @ ure
-# @ default
-#: user-role-editor/includes/class-user-role-editor.php:678
-#: user-role-editor/includes/class-ure-lib.php:223
-msgid "User Role Editor"
-msgstr "User Role Editor"
-
-# @ ure
-#: user-role-editor/includes/class-user-role-editor.php:681
-#: user-role-editor/includes/class-user-role-editor.php:709
+#: ../includes/class-user-role-editor.php:951
+#: ../includes/class-user-role-editor.php:980
 msgid "Other Roles"
 msgstr "Altres rols"
 
 # @ ure
-#: user-role-editor/includes/class-user-role-editor.php:691
+#: ../includes/class-user-role-editor.php:962
 msgid "Edit"
 msgstr "Editar"
 
-# @ ure
-#: user-role-editor/includes/ure-role-edit.php:17
-msgid "Select Role and change its capabilities list"
-msgstr "Selecciona el Rol per canviar la seva llista de privilegis"
+#: ../includes/ure-role-edit.php:17
+msgid "Select Role and change its capabilities:"
+msgstr ""
 
 # @ ure
-#: user-role-editor/includes/ure-role-edit.php:19
-#: user-role-editor/includes/class-ure-lib.php:184
-msgid "Select Role:"
-msgstr "Selecciona el Rol:"
-
-# @ ure
-#: user-role-editor/includes/ure-role-edit.php:30
-#: user-role-editor/includes/ure-user-edit.php:51
+#: ../includes/ure-role-edit.php:30 ../includes/ure-user-edit.php:53
+#, fuzzy
 msgid "Show capabilities in human readable form"
 msgstr "Mostra privilegis de forma llegible"
 
-# @ ure
-#: user-role-editor/includes/ure-role-edit.php:40
-#: user-role-editor/includes/ure-user-edit.php:61
-msgid "Show deprecated capabilities"
-msgstr "Mostrar privilegis obsolets"
-
 # @ default
-#: user-role-editor/includes/ure-role-edit.php:45
+#: ../includes/ure-role-edit.php:44
 msgid "If checked, then apply action to ALL sites of this Network"
 msgstr "Si està marcat s'aplica l'acció a TOTS els llocs d'aquesta xarxa"
 
-# @ ure
-#: user-role-editor/includes/ure-role-edit.php:57
+#: ../includes/ure-role-edit.php:56
 msgid "Apply to All Sites"
-msgstr "Aplicar a tot arreu"
+msgstr ""
 
 # @ ure
-#: user-role-editor/includes/ure-role-edit.php:64
-#: user-role-editor/includes/ure-user-edit.php:104
+#: ../includes/ure-role-edit.php:63 ../includes/ure-user-edit.php:109
+#, fuzzy
 msgid "Core capabilities:"
-msgstr "Privilegis"
+msgstr "Capacitats"
 
-#: user-role-editor/includes/ure-role-edit.php:66
-#: user-role-editor/includes/ure-user-edit.php:106
+#: ../includes/ure-role-edit.php:65 ../includes/ure-user-edit.php:111
 msgid "Quick filter:"
 msgstr ""
 
 # @ ure
-#: user-role-editor/includes/ure-role-edit.php:84
-#: user-role-editor/includes/ure-user-edit.php:125
+#: ../includes/ure-role-edit.php:83 ../includes/ure-user-edit.php:130
+#, fuzzy
 msgid "Custom capabilities:"
-msgstr "Privilegis personalitzats"
+msgstr "Capacitats"
 
-#: user-role-editor/includes/class-ure-lib.php:141
+#: ../includes/class-ure-lib.php:159
 msgid "Error: wrong request"
 msgstr ""
 
-#: user-role-editor/includes/class-ure-lib.php:173
+# @ ure
+#: ../includes/class-ure-lib.php:192 ../includes/class-ure-lib.php:203
+#, fuzzy
 msgid "Role name (ID): "
-msgstr "Nom de rol (ID):"
+msgstr "El nom de rol (ID) no pot estar buit!"
 
-#: user-role-editor/includes/class-ure-lib.php:175
+#: ../includes/class-ure-lib.php:194 ../includes/class-ure-lib.php:205
 msgid "Display Role Name: "
-msgstr "Visualització de nom de rol:"
+msgstr ""
 
-# @ ure
-#: user-role-editor/includes/class-ure-lib.php:177
+#: ../includes/class-ure-lib.php:196
 msgid "Make copy of: "
-msgstr "Fer còpia de:"
+msgstr ""
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:199
+#: ../includes/class-ure-lib.php:212
+#, fuzzy
+msgid "Select Role:"
+msgstr "Eliminar Rol"
+
+# @ ure
+#: ../includes/class-ure-lib.php:227
+#, fuzzy
 msgid "Delete:"
-msgstr "Eliminar:"
-
-#: user-role-editor/includes/class-ure-lib.php:206
-msgid "Capability name (ID): "
-msgstr "Nom provolegi (ID):"
+msgstr "Eliminar Rol"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:321
+#: ../includes/class-ure-lib.php:234
+#, fuzzy
+msgid "Capability name (ID): "
+msgstr "El nom de priviliegi (ID) no pot estar buit!"
+
+# @ ure
+#: ../includes/class-ure-lib.php:348
 msgid "Error: "
 msgstr "Error:"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:321
+#: ../includes/class-ure-lib.php:348
 msgid "Role"
 msgstr "Rol"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:321
+#: ../includes/class-ure-lib.php:349
 msgid "does not exist"
 msgstr "no existeix"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:364
+#: ../includes/class-ure-lib.php:392
 msgid "Role is updated successfully"
 msgstr ""
 
-#: user-role-editor/includes/class-ure-lib.php:366
+#: ../includes/class-ure-lib.php:394
 msgid "Roles are updated for all network"
 msgstr ""
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:372
+#: ../includes/class-ure-lib.php:400
 msgid "Error occured during role(s) update"
 msgstr ""
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:379
+#: ../includes/class-ure-lib.php:407
 msgid "User capabilities are updated successfully"
 msgstr ""
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:384
+#: ../includes/class-ure-lib.php:412
 msgid "Error occured during user update"
 msgstr "Error trobat durant l'actualització del rol"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:439
+#: ../includes/class-ure-lib.php:470
 msgid "User Roles are restored to WordPress default values. "
 msgstr ""
 "Els rols d'usuari es restableixen als valors predeterminats de WordPress."
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1237
+#: ../includes/class-ure-lib.php:1337
 msgid "Help"
 msgstr "Ajuda"
 
 #  ure
-#: user-role-editor/includes/class-ure-lib.php:1576
+#: ../includes/class-ure-lib.php:1695
 msgid "Error is occur. Please check the log file."
 msgstr "Ha ocorregut un error. Si us plau revisa l'arxiu de registres."
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1601
+#: ../includes/class-ure-lib.php:1738 ../includes/class-ure-lib.php:1805
 msgid ""
 "Error: Role ID must contain latin characters, digits, hyphens or underscore "
 "only!"
 msgstr "Error: nom del rol (ID) ha de tenir només lletres llatines i dígits!"
 
+#: ../includes/class-ure-lib.php:1742 ../includes/class-ure-lib.php:1809
+msgid ""
+"Error: WordPress does not support numeric Role name (ID). Add latin "
+"characters to it."
+msgstr ""
+
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1616
+#: ../includes/class-ure-lib.php:1757
 #, php-format
 msgid "Role %s exists already"
 msgstr "Rol %s ja existeix"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1631
+#: ../includes/class-ure-lib.php:1772
 msgid "Error is encountered during new role create operation"
 msgstr "Error trobat durant la creació d'un nou Rol"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1633
+#: ../includes/class-ure-lib.php:1774
 #, php-format
 msgid "Role %s is created successfully"
 msgstr "Rol %s s'ha creat correctament"
 
+#: ../includes/class-ure-lib.php:1798
+msgid "Error: Role ID is empty!"
+msgstr ""
+
+#: ../includes/class-ure-lib.php:1816
+msgid "Error: Empty role display name is not allowed."
+msgstr ""
+
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1699
+#: ../includes/class-ure-lib.php:1823
+#, fuzzy, php-format
+msgid "Role %s does not exists"
+msgstr "no existeix"
+
+# @ ure
+#: ../includes/class-ure-lib.php:1831
+#, fuzzy, php-format
+msgid "Role %s is renamed to %s successfully"
+msgstr "Rol %s s'ha creat correctament"
+
+# @ ure
+#: ../includes/class-ure-lib.php:1898
 msgid "Error encountered during role delete operation"
 msgstr "Error trobat durant l'eliminació del Rol"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1701
+#: ../includes/class-ure-lib.php:1900
 msgid "Unused roles are deleted successfully"
 msgstr ""
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1703
+#: ../includes/class-ure-lib.php:1902
 #, php-format
 msgid "Role %s is deleted successfully"
 msgstr "Rol %s s'elimina amb èxit"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1728
+#: ../includes/class-ure-lib.php:1927
 msgid "Error encountered during default role change operation"
 msgstr "Error trobat durant el canvi de Rol per defecte"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1734
+#: ../includes/class-ure-lib.php:1933
 #, php-format
 msgid "Default role for new users is set to %s successfully"
 msgstr "Rol predeterminat per a nous usuaris està establert en %s amb èxit"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1753
+#: ../includes/class-ure-lib.php:1952
 msgid "Editor"
 msgstr "Editor"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1754
+#: ../includes/class-ure-lib.php:1953
 msgid "Author"
 msgstr "Autor"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1755
+#: ../includes/class-ure-lib.php:1954
 msgid "Contributor"
 msgstr "Col·laborador"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1756
+#: ../includes/class-ure-lib.php:1955
 msgid "Subscriber"
 msgstr "Subscriptor"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1758
+#: ../includes/class-ure-lib.php:1957
 msgid "Switch themes"
 msgstr "Canviar plantilles"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1759
+#: ../includes/class-ure-lib.php:1958
 msgid "Edit themes"
 msgstr "Editar plantilles"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1760
+#: ../includes/class-ure-lib.php:1959
 msgid "Activate plugins"
 msgstr "Activar connectors"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1761
+#: ../includes/class-ure-lib.php:1960
 msgid "Edit plugins"
 msgstr "Editar connectors"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1762
+#: ../includes/class-ure-lib.php:1961
 msgid "Edit users"
 msgstr "Editar usuaris"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1763
+#: ../includes/class-ure-lib.php:1962
 msgid "Edit files"
 msgstr "Editar arxius"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1764
+#: ../includes/class-ure-lib.php:1963
 msgid "Manage options"
 msgstr "Administrar opcions"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1765
+#: ../includes/class-ure-lib.php:1964
 msgid "Moderate comments"
 msgstr "Moderar comentaris"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1766
+#: ../includes/class-ure-lib.php:1965
 msgid "Manage categories"
 msgstr "Administrar categories"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1767
+#: ../includes/class-ure-lib.php:1966
 msgid "Manage links"
 msgstr "Administrar enllaços"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1768
+#: ../includes/class-ure-lib.php:1967
 msgid "Upload files"
 msgstr "Pujar arxius"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1769
+#: ../includes/class-ure-lib.php:1968
 msgid "Import"
 msgstr "Importar"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1770
+#: ../includes/class-ure-lib.php:1969
 msgid "Unfiltered html"
 msgstr "Ometre Filtrat d'HTML"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1771
+#: ../includes/class-ure-lib.php:1970
 msgid "Edit posts"
 msgstr "Editar missatges"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1772
+#: ../includes/class-ure-lib.php:1971
 msgid "Edit others posts"
 msgstr "Editar missatges de altres"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1773
+#: ../includes/class-ure-lib.php:1972
 msgid "Edit published posts"
 msgstr "Editar els missatges publicats"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1774
+#: ../includes/class-ure-lib.php:1973
 msgid "Publish posts"
 msgstr "Publicar missatges"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1775
+#: ../includes/class-ure-lib.php:1974
 msgid "Edit pages"
 msgstr "Editar pàgines"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1776
+#: ../includes/class-ure-lib.php:1975
 msgid "Read"
 msgstr "Llegir"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1777
+#: ../includes/class-ure-lib.php:1976
 msgid "Level 10"
 msgstr "Nivell 10"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1778
+#: ../includes/class-ure-lib.php:1977
 msgid "Level 9"
 msgstr "Nivell 9"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1779
+#: ../includes/class-ure-lib.php:1978
 msgid "Level 8"
 msgstr "Nivell 8"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1780
+#: ../includes/class-ure-lib.php:1979
 msgid "Level 7"
 msgstr "Nivell 7"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1781
+#: ../includes/class-ure-lib.php:1980
 msgid "Level 6"
 msgstr "Nivell 6"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1782
+#: ../includes/class-ure-lib.php:1981
 msgid "Level 5"
 msgstr "Nivell 5"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1783
+#: ../includes/class-ure-lib.php:1982
 msgid "Level 4"
 msgstr "Nivell 4"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1784
+#: ../includes/class-ure-lib.php:1983
 msgid "Level 3"
 msgstr "Nivell 3"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1785
+#: ../includes/class-ure-lib.php:1984
 msgid "Level 2"
 msgstr "Nivell 2"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1786
+#: ../includes/class-ure-lib.php:1985
 msgid "Level 1"
 msgstr "Nivell 1"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1787
+#: ../includes/class-ure-lib.php:1986
 msgid "Level 0"
 msgstr "Nivell 0"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1788
+#: ../includes/class-ure-lib.php:1987
 msgid "Edit others pages"
 msgstr "Editar pàgines de altres"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1789
+#: ../includes/class-ure-lib.php:1988
 msgid "Edit published pages"
 msgstr "Editar pàgines publicades"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1790
+#: ../includes/class-ure-lib.php:1989
 msgid "Publish pages"
 msgstr "Publicar pàgines"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1791
+#: ../includes/class-ure-lib.php:1990
 msgid "Delete pages"
 msgstr "Eliminar pàgines"
 
 #  ure
-#: user-role-editor/includes/class-ure-lib.php:1792
+#: ../includes/class-ure-lib.php:1991
 msgid "Delete others pages"
 msgstr "Eliminar pàgines de altres"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1793
+#: ../includes/class-ure-lib.php:1992
 msgid "Delete published pages"
 msgstr "Eliminar pàgines publicades"
 
 #  ure
-#: user-role-editor/includes/class-ure-lib.php:1794
+#: ../includes/class-ure-lib.php:1993
 msgid "Delete posts"
 msgstr "Eliminar missatges"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1795
+#: ../includes/class-ure-lib.php:1994
 msgid "Delete others posts"
 msgstr "Eliminar missatges de altres"
 
 #  ure
-#: user-role-editor/includes/class-ure-lib.php:1796
+#: ../includes/class-ure-lib.php:1995
 msgid "Delete published posts"
 msgstr "Eliminar missatges publicats"
 
 #  ure
-#: user-role-editor/includes/class-ure-lib.php:1797
+#: ../includes/class-ure-lib.php:1996
 msgid "Delete private posts"
 msgstr "Eliminar missatges privats"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1798
+#: ../includes/class-ure-lib.php:1997
 msgid "Edit private posts"
 msgstr "Editar missatges privats"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1799
+#: ../includes/class-ure-lib.php:1998
 msgid "Read private posts"
 msgstr "Llegir missatges privats"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1800
+#: ../includes/class-ure-lib.php:1999
 msgid "Delete private pages"
 msgstr "Eliminar pàgines privades"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1801
+#: ../includes/class-ure-lib.php:2000
 msgid "Edit private pages"
 msgstr "Editar pàgines privades"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1802
+#: ../includes/class-ure-lib.php:2001
 msgid "Read private pages"
 msgstr "Llegir pàgines privades"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1803
+#: ../includes/class-ure-lib.php:2002
 msgid "Delete users"
 msgstr "Eliminar usuaris"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1804
+#: ../includes/class-ure-lib.php:2003
 msgid "Create users"
 msgstr "Crear usuaris"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1805
+#: ../includes/class-ure-lib.php:2004
 msgid "Unfiltered upload"
 msgstr "Sense filtre de càrrega"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1806
+#: ../includes/class-ure-lib.php:2005
 msgid "Edit dashboard"
 msgstr "Editar taulell"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1807
+#: ../includes/class-ure-lib.php:2006
 msgid "Update plugins"
 msgstr "Actualitzar connectors"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1808
+#: ../includes/class-ure-lib.php:2007
 msgid "Delete plugins"
 msgstr "Eliminar connectors"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1809
+#: ../includes/class-ure-lib.php:2008
 msgid "Install plugins"
 msgstr "Instal·lar connectors"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1810
+#: ../includes/class-ure-lib.php:2009
 msgid "Update themes"
 msgstr "Actualitzar plantilles"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1811
+#: ../includes/class-ure-lib.php:2010
 msgid "Install themes"
 msgstr "Instal·lar plantilles"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1812
+#: ../includes/class-ure-lib.php:2011
 msgid "Update core"
 msgstr "Actualitzar nucli"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1813
+#: ../includes/class-ure-lib.php:2012
 msgid "List users"
 msgstr "Llistar usuaris"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1814
+#: ../includes/class-ure-lib.php:2013
 msgid "Remove users"
 msgstr "Eliminar usuaris"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1815
+#: ../includes/class-ure-lib.php:2014
 msgid "Add users"
 msgstr "Afegir usuaris"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1816
+#: ../includes/class-ure-lib.php:2015
 msgid "Promote users"
 msgstr "Promoure usuaris"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1817
+#: ../includes/class-ure-lib.php:2016
 msgid "Edit theme options"
 msgstr "Editar opcions de plantilla"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1818
+#: ../includes/class-ure-lib.php:2017
 msgid "Delete themes"
 msgstr "Eliminar plantilles"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1819
+#: ../includes/class-ure-lib.php:2018
 msgid "Export"
 msgstr "Exportar"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1929
+#: ../includes/class-ure-lib.php:2128
 msgid "Error: Capability name must contain latin characters and digits only!"
 msgstr ""
 "Error: el nom del Privilegi només ha de contenir caràcters llatins i dígits."
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1942
+#: ../includes/class-ure-lib.php:2141
 #, php-format
 msgid "Capability %s is added successfully"
 msgstr "Privilegi %s s'ha afegit correctament"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1944
+#: ../includes/class-ure-lib.php:2143
 #, php-format
 msgid "Capability %s exists already"
 msgstr "Ja existeix el privilegi %s"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1969
+#: ../includes/class-ure-lib.php:2168
 #, php-format
 msgid "Error! You do not have permission to delete this capability: %s!"
 msgstr "¡Error! No tens permisos per esborrar aquest privilegi: %s !"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:1988
+#: ../includes/class-ure-lib.php:2187
 #, php-format
 msgid "Capability %s is removed successfully"
 msgstr "El privilegi %s s'ha eliminat amb èxit"
 
-# @ ure
-#: user-role-editor/includes/class-ure-lib.php:2085
-msgid "About this Plugin:"
-msgstr "Sobre aquest connector:"
+#: ../includes/class-ure-lib.php:2291
+msgid "Version:"
+msgstr ""
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:2087
+#: ../includes/class-ure-lib.php:2292
 msgid "Author's website"
 msgstr "Lloc web del autor"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:2088
+#: ../includes/class-ure-lib.php:2293
 msgid "Plugin webpage"
 msgstr "Pàgina web del connector"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:2090
+#: ../includes/class-ure-lib.php:2294
+#, fuzzy
+msgid "Plugin download"
+msgstr "Pàgina web del connector"
+
+# @ ure
+#: ../includes/class-ure-lib.php:2296
 msgid "FAQ"
 msgstr "FAQ"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:2131
+#: ../includes/class-ure-lib.php:2344
 msgid "None"
 msgstr "Cap"
 
 # @ ure
-#: user-role-editor/includes/class-ure-lib.php:2157
+#: ../includes/class-ure-lib.php:2371
 msgid "Delete All Unused Roles"
 msgstr ""
 
-#: user-role-editor/includes/class-ure-lib.php:2181
+#: ../includes/class-ure-lib.php:2395
 msgid "&mdash; No role for this site &mdash;"
 msgstr ""
 
+#: ../includes/ure-user-edit.php:31
+msgid "Network Super Admin"
+msgstr ""
+
 # @ ure
-#: user-role-editor/includes/ure-user-edit.php:34
+#: ../includes/ure-user-edit.php:34
 msgid "Change capabilities for user"
 msgstr "Canviar privilegis d'usuari"
 
-#: user-role-editor/includes/ure-user-edit.php:66
+#: ../includes/ure-user-edit.php:71
 msgid "Primary Role:"
-msgstr "Rol principal:"
+msgstr ""
 
-#: user-role-editor/includes/ure-user-edit.php:75
+#: ../includes/ure-user-edit.php:81
 msgid "bbPress Role:"
-msgstr "Rol bbPress:"
+msgstr ""
 
 # @ ure
-#: user-role-editor/includes/ure-user-edit.php:85
-msgid "Other Roles:"
-msgstr "Altres rols:"
-
-#~ msgid ""
-#~ "Reset Roles to WordPress defaults. Be careful, all changes made by you or "
-#~ "plugins will be lost. Some plugins, e.g. S2Member, WooCommerce "
-#~ "reactivation could be needed. Continue?"
-#~ msgstr ""
-#~ "Restableix funcions als valors per defecte de WordPress. Aneu amb compte, "
-#~ "tots els canvis realitzats per vostè o per connectors es perdran. Alguns "
-#~ "connectors, per exemple, S2Member, WooCommerce, podrian necessitar una "
-#~ "reactivació. Continuar?"
-
-# @ ure
+#: ../includes/ure-user-edit.php:91
 #, fuzzy
-#~ msgid "Show capabilities in the human readable form"
-#~ msgstr "Mostra privilegis de forma llegible"
+msgid "Other Roles:"
+msgstr "Altres rols"
+
+#: ../includes/class-ure-screen-help.php:16
+msgid ""
+"turn this option on in order to make the \"Administrator\" role available at "
+"the User Role Editor roles selection drop-down list. It is hidden by default "
+"for security reasons."
+msgstr ""
+
+#: ../includes/class-ure-screen-help.php:19
+msgid ""
+"automatically converts capability names from the technical form for internal "
+"use like \"edit_others_posts\" to more user friendly form, e.g. \"Edit "
+"others posts\"."
+msgstr ""
+
+#: ../includes/class-ure-screen-help.php:22
+msgid ""
+"Capabilities like \"level_0\", \"level_1\" are deprecated and are not used "
+"by WordPress. They are left at the user roles for the compatibility purpose "
+"with the old themes and plugins code. Turning on this option will show those "
+"deprecated capabilities."
+msgstr ""
+
+#: ../includes/class-ure-screen-help.php:42
+msgid ""
+"Show at the \"Users\" page a quant of users without role. Module allows to "
+"assign all of them an empty role \"No rights\", in order to look on the "
+"users list with role \"No rights\" at the separate tab then."
+msgstr ""
+
+#: ../includes/class-ure-screen-help.php:59
+msgid "Other default roles for new registered user"
+msgstr ""
+
+#: ../includes/class-ure-screen-help.php:60
+msgid ""
+"select roles below to assign them to the new user automatically as an "
+"addition to the primary role. Note for multisite environment: take into "
+"account that other default roles should exist at the site, in order to be "
+"assigned to the new registered users."
+msgstr ""
+
+#: ../includes/class-ure-screen-help.php:78
+msgid "Allow non super-admininstrators to create, edit and delete users"
+msgstr ""
+
+#: ../includes/class-ure-screen-help.php:79
+msgid ""
+"Super administrator only may create, edit and delete users under WordPress "
+"multi-site by default. Turn this option on in order to remove this "
+"limitation."
+msgstr ""

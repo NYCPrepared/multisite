@@ -3,12 +3,16 @@
  * TinyMCE modal window.
  *
  * @package WP User Avatar
- * @version 1.8.10
+ * @version 1.9.13
+ */
+
+/**
+ * @since 1.2.1
+ * @uses get_users()
  */
 
 if(!defined('ABSPATH')) {
-  die(__('You are not allowed to call this page directly.'));
-  @header('Content-Type:'.get_option('html_type').';charset='.get_option('blog_charset'));
+  die('You are not allowed to call this page directly.');
 }
 ?>
 <!DOCTYPE html>
@@ -26,15 +30,16 @@ if(!defined('ABSPATH')) {
   <script type="text/javascript">
     function wpuaInsertAvatar() {
       // Custom shortcode values
-      var shortcode, closing_tag;
-      var user = document.getElementById('wp_user_avatar_user').value;
-      var size = document.getElementById('wp_user_avatar_size').value;
-      var size_number = document.getElementById('wp_user_avatar_size_number').value;
-      var align = document.getElementById('wp_user_avatar_align').value;
-      var link = document.getElementById('wp_user_avatar_link').value;
-      var link_external = document.getElementById('wp_user_avatar_link_external').value;
-      var target = document.getElementById('wp_user_avatar_target').value;
-      var caption = document.getElementById('wp_user_avatar_caption').value;
+      var shortcode,
+          closing_tag,
+          user = document.getElementById('wp_user_avatar_user').value,
+          size = document.getElementById('wp_user_avatar_size').value,
+          size_number = document.getElementById('wp_user_avatar_size_number').value,
+          align = document.getElementById('wp_user_avatar_align').value,
+          link = document.getElementById('wp_user_avatar_link').value,
+          link_external = document.getElementById('wp_user_avatar_link_external').value,
+          target = document.getElementById('wp_user_avatar_target').value,
+          caption = document.getElementById('wp_user_avatar_caption').value;
 
       // Add tag to shortcode only if not blank
       var user_tag = (user != "") ? ' user="' + user + '"' : "";
@@ -49,8 +54,14 @@ if(!defined('ABSPATH')) {
       closing_tag = (caption != "") ? "]" + caption + "[/avatar]" : " /]";
       shortcode = "<p>[avatar" + user_tag + size_tag + align_tag + link_tag + target_tag + closing_tag + "</p>";
 
+      // Insert into Visual Editor
       if(window.tinyMCE) {
-        window.tinyMCE.execInstanceCommand(window.tinyMCE.activeEditor.id, 'mceInsertContent', false, shortcode);
+        var tmce_ver = window.tinyMCE.majorVersion;
+        if(tmce_ver >= "4") {
+          window.tinyMCE.execCommand('mceInsertContent', false, shortcode);
+        } else {
+          window.tinyMCE.execInstanceCommand(window.tinyMCE.activeEditor.id, 'mceInsertContent', false, shortcode);
+        }
         tinyMCEPopup.editor.execCommand('mceRepaint');
         tinyMCEPopup.close();
       }
@@ -58,22 +69,32 @@ if(!defined('ABSPATH')) {
     }
     function wpuaInsertAvatarUpload() {
       // Upload shortcode
-      var shortcode = "<p>[avatar_upload]</p>";
+      var shortcode = "<p>[avatar_upload /]</p>";
 
+      // Insert into Visual Editor
       if(window.tinyMCE) {
-        window.tinyMCE.execInstanceCommand(window.tinyMCE.activeEditor.id, 'mceInsertContent', false, shortcode);
+        var tmce_ver = window.tinyMCE.majorVersion;
+        if(tmce_ver >= "4") {
+          window.tinyMCE.execCommand('mceInsertContent', false, shortcode);
+        } else {
+          window.tinyMCE.execInstanceCommand(window.tinyMCE.activeEditor.id, 'mceInsertContent', false, shortcode);
+        }
         tinyMCEPopup.editor.execCommand('mceRepaint');
         tinyMCEPopup.close();
       }
       return;
     }
+
     jQuery(function($) {
+      // Show link input
       $('#wp_user_avatar_link').change(function() {
         $('#wp_user_avatar_link_external_section').toggle($('#wp_user_avatar_link').val() == 'custom-url');
       });
+      // Show size input
       $('#wp_user_avatar_size').change(function() {
         $('#wp_user_avatar_size_number_section').toggle($('#wp_user_avatar_size').val() == 'custom');
       });
+      // Tabs
       $('#wpua-tabs').tabs();
     });
   </script>

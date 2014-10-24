@@ -7,7 +7,7 @@ Description: Allows admins on a WordPress Multisite network to manage unactivate
 Author: Boone B Gorges
 Author URI: http://boonebgorges.com
 Licence: GPLv3
-Version: 1.2.3
+Version: 1.2.7
 */
 
 class BBG_Unconfirmed {
@@ -37,17 +37,7 @@ class BBG_Unconfirmed {
 	var $is_multisite;
 
 	/**
-	 * PHP 4 constructor
-	 *
-	 * @package Unconfirmed
-	 * @since 1.0
-	 */
-	function bbg_unconfirmed() {
-		$this->__construct();
-	}
-
-	/**
-	 * PHP 5 constructor
+	 * Constructor.
 	 *
 	 * This function sets up a base url to use for URL concatenation throughout the plugin.
 	 *
@@ -133,7 +123,7 @@ class BBG_Unconfirmed {
 	 * @uses wp_enqueue_style()
 	 */
 	function add_admin_styles() {
-		wp_enqueue_style( 'unconfirmed-css', WP_PLUGIN_URL . '/unconfirmed/css/style.css' );
+		wp_enqueue_style( 'unconfirmed-css', plugins_url( 'css/style.css', __FILE__ ) );
 	}
 
 	/**
@@ -180,10 +170,21 @@ class BBG_Unconfirmed {
 		$r = wp_parse_args( $args, $defaults );
 		extract( $r );
 
+		$search = isset( $_REQUEST['s'] ) ? wp_unslash( trim( $_REQUEST['s'] ) ) : '';
+
 		// Our query will be different for multisite and for non-multisite
 		if ( $this->is_multisite ) {
 			$sql['select'] 	= "SELECT * FROM $wpdb->signups";
 			$sql['where'] 	= "WHERE active = 0";
+
+			if ( ! empty( $search ) ) {
+				if ( method_exists( $wpdb, 'esc_like' ) ) { // WP >= 4.0.0
+					$search_text = "%" . $wpdb->esc_like( $search ) . "%";
+				} else {
+					$search_text = "%" . like_escape( $search ) . "%";
+				}
+				$sql['where'] .= $wpdb->prepare( " AND ( user_login LIKE %s OR user_email LIKE %s )", $search_text, $search_text );
+			}
 
 			// Switch the non-MS orderby keys to their MS counterparts
 			if ( 'user_registered' == $orderby )
@@ -204,8 +205,12 @@ class BBG_Unconfirmed {
 			// running BP.
 			$sql['where']   = "WHERE u.user_status = 2 AND um.meta_key = 'activation_key'";
 
-			if ( !empty( $_REQUEST['s'] ) ) {
-				$search_text = "%" . like_escape( $_REQUEST['s'] ) . "%";
+			if ( ! empty( $search ) ) {
+				if ( method_exists( $wpdb, 'esc_like' ) ) { // WP >= 4.0.0
+					$search_text = "%" . $wpdb->esc_like( $search ) . "%";
+				} else {
+					$search_text = "%" . like_escape( $search ) . "%";
+				}
 				$sql['where'] .= $wpdb->prepare( " AND ( u.user_login LIKE %s OR u.user_email LIKE %s OR u.display_name LIKE %s )", $search_text, $search_text, $search_text );
 			}
 
@@ -566,7 +571,7 @@ class BBG_Unconfirmed {
 
 				if ( $this->is_multisite ) {
 					foreach( (array)$activation_keys as $ak_index => $activation_key ) {
-						$activation_keys[$ak_index] = '"' . $activation_key . '"';
+						$activation_keys[$ak_index] = '"' . sanitize_text_field( $activation_key ) . '"';
 					}
 					$activation_keys = implode( ',', $activation_keys );
 
@@ -814,7 +819,7 @@ class BBG_Unconfirmed {
 
 		<p class="search-box">
 			<label class="screen-reader-text" for="unconfirmed-search-input">Search:</label>
-			<input type="search" id="unconfirmed-search-input" name="s" value="<?php if ( !empty( $_REQUEST['s'] ) ) echo $_REQUEST['s']; ?>">
+			<input type="search" id="unconfirmed-search-input" name="s" value="<?php if ( !empty( $_REQUEST['s'] ) ) echo esc_attr( $_REQUEST['s'] ); ?>">
 			<input type="hidden" id="unconfirmed-performed-search-input" name="performed_search" value="0">
 			<input type="submit" name="search_submit" id="search-submit" class="button" value="Search" onclick="document.getElementById('unconfirmed-performed-search-input').value = '1';">
 		</p>
@@ -934,7 +939,13 @@ class BBG_Unconfirmed {
 	}
 }
 
-$bbg_unconfirmed = new BBG_Unconfirmed;
+function BBG_Unconfirmed() {
+	global $bbg_unconfirmed;
 
+	if ( empty( $bbg_unconfirmed ) ) {
+		$bbg_unconfirmed = new BBG_Unconfirmed;
+	}
 
-?>
+	return $bbg_unconfirmed;
+}
+add_action( 'plugins_loaded', 'BBG_Unconfirmed' );
