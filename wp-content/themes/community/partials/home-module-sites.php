@@ -1,7 +1,26 @@
-<?php $sites = wp_get_sites('offset=1'); // Set up variable that holds array of sites ?>
+<?php 
+if(function_exists('glocal_customization_settings')) {
+	$community_settings = glocal_customization_settings();
+	$sitenumber = $community_settings['sites']['number_sites'];
+	// echo '<pre>';
+	// var_dump($community_settings);
+	// echo '</pre>';
+} 
+?>
+
+<?php $sites = wp_get_sites('offset=1&archived=0&deleted=0'); // Set up variable that holds array of sites ?>	
 
 <article id="sites-module" class="module row sites">
-	<h2 class="module-heading"><a href="/directory">Sites</a></h2>
+	<h2 class="module-heading">
+	<?php if(!empty($community_settings['sites']['sites_heading_link'])) { ?>
+		<a href="<?php echo $community_settings['sites']['sites_heading_link']; ?>">
+			<?php echo $community_settings['sites']['sites_heading']; ?>
+		</a>
+	<?php } else { ?>
+		<?php echo $community_settings['sites']['sites_heading']; ?>
+	<?php } ?>	
+	</h2>
+
 	<ul class="sites-list">
 
 	<?php
@@ -23,8 +42,12 @@
 		</li>
 	
 	<?php
-        if (++$counter == 7) break;
+        if(!empty($sitenumber)) {
+			if (++$counter == $sitenumber) break;
+		}
     } ?>
+
+    
 
 		<li class="directory-promo" id="promo-directory">
 			<a href="/directory" title="Directory">

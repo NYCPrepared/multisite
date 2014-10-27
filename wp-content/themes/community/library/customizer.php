@@ -147,16 +147,16 @@ function glocal_customize_register( $wp_customize ) {
 		'panel'  => 'home_panel',
 	) );
 
-	// Section - Updates
-	$wp_customize->add_section( 'home_updates' , array(
-		'title'      => __( 'Updates', 'community' ),
+	// Section - Posts
+	$wp_customize->add_section( 'home_posts' , array(
+		'title'      => __( 'Posts', 'community' ),
 		'priority'   => 20,
 		'panel'  => 'home_panel',
 	) );
 
-	// Section - Posts
-	$wp_customize->add_section( 'home_posts' , array(
-		'title'      => __( 'Posts', 'community' ),
+	// Section - Updates
+	$wp_customize->add_section( 'home_updates' , array(
+		'title'      => __( 'Updates', 'community' ),
 		'priority'   => 30,
 		'panel'  => 'home_panel',
 	) );
@@ -221,7 +221,7 @@ function glocal_customize_register( $wp_customize ) {
 	$wp_customize->add_control( 
 		new WP_Customize_Multiple_Select_Control(
 			$wp_customize,
-			'glocal_featured_category', array(
+			'glocal_post_category', array(
 			'settings' => 'community_options[posts][featured_category]',
 			'label'   => __('Categorie(s)', 'community'),
 			'section'  => 'home_posts',
@@ -234,7 +234,7 @@ function glocal_customize_register( $wp_customize ) {
 
 	// Posts - Heading
     $wp_customize->add_setting('community_options[posts][posts_heading]', array(
-        'default'        => __('Posts', 'community'),
+        'default'        => __('News', 'community'),
         // 'capability'     => 'manage_options',
         'type'           => 'option',
  
@@ -307,7 +307,7 @@ function glocal_customize_register( $wp_customize ) {
 	$wp_customize->add_control( 
 		new WP_Customize_Multiple_Select_Control(
 			$wp_customize,
-			'glocal_featured_category', array(
+			'glocal_updates_category', array(
 			'settings' => 'community_options[updates][featured_category]',
 			'label'   => __('Categorie(s)', 'community'),
 			'section'  => 'home_updates',
@@ -320,7 +320,7 @@ function glocal_customize_register( $wp_customize ) {
 
 	// Updates - Heading
     $wp_customize->add_setting('community_options[updates][updates_heading]', array(
-        'default'        => __('Updates', 'community'),
+        'default'        => __('Requests', 'community'),
         // 'capability'     => 'manage_options',
         'type'           => 'option',
  
@@ -512,13 +512,13 @@ add_action( 'customize_register', 'glocal_customize_register' );
 
 // Return nice array of customization options
 
-function glocal_customation_settings() {
-	$glocal_home_settings = get_option('community_options');
+function glocal_customization_settings() {
+	$community_theme_settings = get_option('community_options');
 
-	if (!empty($glocal_home_settings)) {
-		foreach ($glocal_home_settings as $key => $option)
-			$home_options[$key] = $option;
+	if (!empty($community_theme_settings)) {
+		foreach ($community_theme_settings as $key => $option)
+			$community_options[$key] = $option;
 	}
-	return $home_options;
+	return $community_options;
 }
 
