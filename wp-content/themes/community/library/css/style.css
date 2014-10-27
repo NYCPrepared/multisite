@@ -2647,10 +2647,10 @@ div.css-search {
       .css-events-list .event-image {
         float: right;
         width: 33%;
+        margin-left: 20px;
         height: auto;
         max-height: 300px;
-        margin-left: 20px;
-        margin-bottom: 10px; } }
+        overflow: hidden; } }
   .css-events-list .event-title {
     margin: .75em 0 .25em; }
     @media (min-width: 769px) {
