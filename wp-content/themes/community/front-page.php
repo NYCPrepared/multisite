@@ -100,6 +100,7 @@
 						get_template_part( 'partials/home-module', 'news' ); ?>
 
 					<?php } ?>
+					
 					<?php
 					// Check if the "events" module is selected
 					if (in_array("events", $community_settings['modules'])) { ?>
