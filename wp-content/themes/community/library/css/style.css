@@ -1510,53 +1510,54 @@ POSTS & CONTENT STYLES
   font-size: 22px;
   font-size: 1.375rem; }
 
-.post .entry-content {
-  /*
-  image alignment on a screen this size may be
-  a bit difficult. It's set to start aligning
-  and floating images at the next breakpoint,
-  but it's up to you. Feel free to change it up.
-  */ }
-  .post .entry-content h2, .post .entry-content h3, .post .entry-content h4 {
-    margin-top: 1.8em; }
-  .post .entry-content p {
-    max-width: 40em; }
-  .post .entry-content a {
-    color: #333231;
-    border-bottom: 1px solid rgba(0, 169, 157, 0.2);
-    box-shadow: inset 0 -3px 0 rgba(0, 169, 157, 0.2); }
-    .post .entry-content a:hover {
-      color: #00a99d;
-      border-bottom-color: rgba(0, 169, 157, 0.1);
-      box-shadow: inset 0 -3px 0 rgba(0, 169, 157, 0.1); }
-  .post .entry-content ul, .post .entry-content ol {
-    padding: 0 40px; }
-  .post .entry-content ul {
-    list-style: square; }
-  .post .entry-content ol {
-    list-style: decimal; }
-  .post .entry-content dl {
-    border-top: 1px solid #fff;
-    padding-top: 1em; }
-  .post .entry-content dt {
-    float: left; }
-  .post .entry-content dd {
-    margin-left: 375px; }
-  .post .entry-content img {
-    margin: 0 0 20px 0;
-    max-width: 100%;
-    height: auto; }
-  .post .entry-content .alignleft, .post .entry-content img.alignleft {
-    float: left;
-    margin-right: 40px;
-    margin-bottom: 20px; }
-  .post .entry-content .alignright, .post .entry-content img.alignright {
-    float: right;
-    margin-left: 40px;
-    margin-bottom: 20px; }
-  .post .entry-content video, .post .entry-content object {
-    max-width: 100%;
-    height: auto; }
+.post .entry-content h2, .post .entry-content h3, .post .entry-content h4 {
+  margin-top: 1.8em; }
+.post .entry-content p {
+  max-width: 40em; }
+.post .entry-content a {
+  color: #333231;
+  border-bottom: 1px solid rgba(0, 169, 157, 0.2);
+  box-shadow: inset 0 -3px 0 rgba(0, 169, 157, 0.2); }
+  .post .entry-content a:hover {
+    color: #00a99d;
+    border-bottom-color: rgba(0, 169, 157, 0.1);
+    box-shadow: inset 0 -3px 0 rgba(0, 169, 157, 0.1); }
+.post .entry-content ul, .post .entry-content ol {
+  padding: 0 40px; }
+.post .entry-content ul {
+  list-style: square; }
+.post .entry-content ol {
+  list-style: decimal; }
+.post .entry-content dl {
+  border-top: 1px solid #fff;
+  padding-top: 1em; }
+.post .entry-content dt {
+  float: left; }
+.post .entry-content dd {
+  margin-left: 375px; }
+.post .entry-content img {
+  margin: 0 0 20px 0;
+  max-width: 100%;
+  height: auto; }
+.post .entry-content video, .post .entry-content object {
+  max-width: 100%;
+  height: auto; }
+
+/*
+image alignment on a screen this size may be
+a bit difficult. It's set to start aligning
+and floating images at the next breakpoint,
+but it's up to you. Feel free to change it up.
+*/
+.alignleft, img.alignleft {
+  float: left;
+  margin-right: 40px;
+  margin-bottom: 20px; }
+
+.alignright, img.alignright {
+  float: right;
+  margin-left: 40px;
+  margin-bottom: 20px; }
 
 .entry-content ul {
   list-style: square;
