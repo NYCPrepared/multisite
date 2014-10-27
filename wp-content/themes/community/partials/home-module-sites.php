@@ -28,7 +28,7 @@
 
 		<li class="directory-promo" id="promo-directory">
 			<a href="/directory" title="Directory">
-				<h3 class="post-title">Join the community</h3>
+				<h3 class="post-title">View more sites</h3>
 				<div class="promo-icons"><i class="icon"></i><i class="icon"></i><i class="icon"></i><i class="icon"></i></div>
 			</a>
 		</li>
