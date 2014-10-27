@@ -100,7 +100,7 @@
 
 					<ul class="sites-list view-grid" id="isotope">
 						<?php
-						$sites = wp_get_sites('offset=1');
+						$sites = wp_get_sites('offset=1&archived=0&deleted=0');
 
 						foreach ($sites as $site) {
 							$site_id = $site['blog_id'];
