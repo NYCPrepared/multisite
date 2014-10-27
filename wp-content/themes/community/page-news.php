@@ -45,7 +45,7 @@
 				'show_categories'    => 'true', 
 				'display_type'		=> 'block',
 				'thumbnail'        => 'true',
-				'thumbnail_wh'	   => 'medium',
+				'thumbnail_wh'	   => 'large',
 				'thumbnail_class'  => 'post-image',
 				'wrapper_list_css' => 'post-list',
 				'wrapper_block_css'=> '', //  wrapper class to add
