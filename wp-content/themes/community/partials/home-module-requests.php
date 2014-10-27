@@ -27,6 +27,7 @@ if(function_exists('glocal_customization_settings')) {
 			'display_type'     => 'ulist',
 			'full_meta'		=> 'true',
 			'sort_by_date'	=> 'true',
+			'use_pub_date'     => 'true',
 			'wrapper_list_css' => 'highlights-list',
 			'wrapper_block_css'=> 'module row highlights', //The wrapper class
 			'instance'         => 'highlights-module', //The wrapper ID
