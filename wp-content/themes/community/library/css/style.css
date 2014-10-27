@@ -1931,6 +1931,12 @@ but it's up to you. Feel free to change it up.
   font-size: 1.125rem;
   letter-spacing: 2px;
   margin-bottom: 12px; }
+.main-network .post-image {
+  float: right; }
+  .main-network .post-image img {
+    width: 150px;
+    height: auto;
+    margin: 0 0 12px 24px; }
 
 .network-posts li {
   background: #fff;

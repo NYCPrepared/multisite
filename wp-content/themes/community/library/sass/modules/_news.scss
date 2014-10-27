@@ -91,6 +91,14 @@
       letter-spacing: $tracking-loose;
       margin-bottom: $space-half;
   }
+  .post-image {
+    float: right;
+    img {
+      width: 150px;
+      height: auto;
+      margin: 0 0 $space-half $space;
+    }
+  }
   
 }
 
