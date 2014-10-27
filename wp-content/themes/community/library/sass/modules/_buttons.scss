@@ -119,8 +119,7 @@ button,
 // button sizes
 
 .button.large {
-    @include font-size($delta);
-    padding: 1em 3em;
+    @include font-size(20);
 }
 
 .button.small {
