@@ -687,6 +687,11 @@ main.main-news,
       transition: all 0;
       background: #e6e4df;
       color: #333231; }
+    .nav-global .menu .menu-item-has-children:hover {
+      background: #e6e4df; }
+      .nav-global .menu .menu-item-has-children:hover > a {
+        color: #333231;
+        cursor: default; }
     .nav-global .menu > li.current-menu-item,
     .nav-global .menu > li.current_page_item,
     .nav-global .menu > li.current-page-ancestor {
@@ -717,12 +722,14 @@ main.main-news,
         cursor: default;
         background: transparent; }
   .nav-global .sub-menu {
-    left: 0;
-    background: #e6e4df; }
+    left: 0; }
     .nav-global .sub-menu li a {
-      padding: 12px; }
+      padding: 12px;
+      background: #e6e4df; }
     .nav-global .sub-menu a:first-child {
-      border-top: 0; } }
+      border-top: 0; }
+    .nav-global .sub-menu a:hover {
+      background: #d1cfcb; } }
 .nav-local {
   background: #4d4c4a;
   height: 44px; }
