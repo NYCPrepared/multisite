@@ -361,7 +361,7 @@ p, li, dt, dd {
   font-size: 1.125rem; }
   @media (min-width: 1025px) {
     p, li, dt, dd {
-      max-width: 40em;
+      max-width: 50em;
       line-height: 1.75; } }
 
 input, label, select, textarea {

@@ -85,7 +85,7 @@ p, li, dt, dd {
   margin-top: 0;
   margin-bottom: $space;
   @include font-size($epsilon);
-	@include breakpoint(lg) {max-width: 40em; line-height: 1.75;}
+	@include breakpoint(lg) {max-width: 50em; line-height: 1.75;}
 }
 
 
