@@ -85,10 +85,13 @@
 
 // NETWORK PAGE
 
-.main-network .subtitle {
-    @include font-size($epsilon);
-    letter-spacing: $tracking-loose;
-    margin-bottom: $space-half;
+.main-network {
+  .subtitle {
+      @include font-size($epsilon);
+      letter-spacing: $tracking-loose;
+      margin-bottom: $space-half;
+  }
+  
 }
 
 
