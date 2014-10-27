@@ -1401,6 +1401,42 @@ button,
     background: #00dccc;
     color: #fff !important; }
 
+.button.red {
+  background: #f15a24; }
+
+.button.fuschia {
+  background: #c43b90; }
+
+.button.purple {
+  background: #9642a5; }
+
+.button.indigo {
+  background: #4747b0; }
+
+.button.navy {
+  background: #3756b8; }
+
+.button.blue {
+  background: #247cc9; }
+
+.button.sky {
+  background: #29abe2; }
+
+.button.teal {
+  background: #00a99d; }
+
+.button.green {
+  background: #22b573; }
+
+.button.lime {
+  background: #8cc63f; }
+
+.button.yellow {
+  background: #fbb03b; }
+
+.button.orange {
+  background: #ff931e; }
+
 .home-intro .button {
   margin-bottom: 10px;
   margin-right: 10px;
