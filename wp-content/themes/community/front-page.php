@@ -76,12 +76,12 @@
 				get_template_part( 'partials/home-module', 'news' ); ?>
 
 				<?php
-				// Get network-wide requests
-				get_template_part( 'partials/home-module', 'requests' ); ?>
-
-				<?php
 				// Get network-wide events
 				get_template_part( 'partials/home-module', 'events' ); ?>
+
+				<?php
+				// Get network-wide requests
+				get_template_part( 'partials/home-module', 'requests' ); ?>
 
 				<?php
 				// Get network-wide sites
