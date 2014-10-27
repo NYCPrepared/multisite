@@ -103,20 +103,26 @@
       background: transparent;
       li {
         @include font-size($zeta);
+        margin-right: -3px;
       }
       > li a {
         border: 0;
         padding: 20px $space-half;
+        color: $anchor-color;
       }
       a:focus,
       a:hover {
-        background: transparent; 
-        color: $teal;
+        @include transition(all 0); 
+        background: $base8;
+        color: $text-color;
       }
     	> li.current-menu-item, 
     	> li.current_page_item, 
     	> li.current-page-ancestor {
         position: relative;
+        a {
+          color: $text-color;
+        }
   	    // triangle 'on' state
         &:after {
           position: absolute;
@@ -132,8 +138,10 @@
           border-width: 10px;
           margin-left: -10px;
         }
-        a {
-          color: $anchor-color;
+        a:hover {
+          color: $text-color;
+          cursor: default;
+          background: transparent;
         }
     	}
     }
@@ -149,14 +157,6 @@
     }
   }    
   
-  // disable hover for current page but not its ancestors
-  li.current-menu-item,
-  li.current_page_item {
-    a:hover {
-      color: $text-color;
-      cursor: default;
-    }
-  }
 
 }
 

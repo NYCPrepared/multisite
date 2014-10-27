@@ -674,18 +674,27 @@ main.main-news,
     background: transparent; }
     .nav-global .menu li {
       font-size: 16px;
-      font-size: 1rem; }
+      font-size: 1rem;
+      margin-right: -3px; }
     .nav-global .menu > li a {
       border: 0;
-      padding: 20px 12px; }
+      padding: 20px 12px;
+      color: #00a99d; }
     .nav-global .menu a:focus,
     .nav-global .menu a:hover {
-      background: transparent;
-      color: #00a99d; }
+      -webkit-transition: all 0;
+      -moz-transition: all 0;
+      transition: all 0;
+      background: #e6e4df;
+      color: #333231; }
     .nav-global .menu > li.current-menu-item,
     .nav-global .menu > li.current_page_item,
     .nav-global .menu > li.current-page-ancestor {
       position: relative; }
+      .nav-global .menu > li.current-menu-item a,
+      .nav-global .menu > li.current_page_item a,
+      .nav-global .menu > li.current-page-ancestor a {
+        color: #333231; }
       .nav-global .menu > li.current-menu-item:after,
       .nav-global .menu > li.current_page_item:after,
       .nav-global .menu > li.current-page-ancestor:after {
@@ -701,22 +710,19 @@ main.main-news,
         border-bottom-color: #f5f3f0;
         border-width: 10px;
         margin-left: -10px; }
-      .nav-global .menu > li.current-menu-item a,
-      .nav-global .menu > li.current_page_item a,
-      .nav-global .menu > li.current-page-ancestor a {
-        color: #00a99d; }
+      .nav-global .menu > li.current-menu-item a:hover,
+      .nav-global .menu > li.current_page_item a:hover,
+      .nav-global .menu > li.current-page-ancestor a:hover {
+        color: #333231;
+        cursor: default;
+        background: transparent; }
   .nav-global .sub-menu {
     left: 0;
     background: #e6e4df; }
     .nav-global .sub-menu li a {
       padding: 12px; }
     .nav-global .sub-menu a:first-child {
-      border-top: 0; }
-
-  li.current-menu-item a:hover,
-  li.current_page_item a:hover {
-    color: #333231;
-    cursor: default; } }
+      border-top: 0; } }
 .nav-local {
   background: #4d4c4a;
   height: 44px; }
