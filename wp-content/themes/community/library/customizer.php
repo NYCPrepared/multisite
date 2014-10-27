@@ -147,23 +147,23 @@ function glocal_customize_register( $wp_customize ) {
 		'panel'  => 'home_panel',
 	) );
 
-	// Section - Posts
+	// Section - Posts (aka News)
 	$wp_customize->add_section( 'home_posts' , array(
-		'title'      => __( 'Posts', 'community' ),
+		'title'      => __( 'News', 'community' ),
 		'priority'   => 20,
-		'panel'  => 'home_panel',
-	) );
-
-	// Section - Updates
-	$wp_customize->add_section( 'home_updates' , array(
-		'title'      => __( 'Updates', 'community' ),
-		'priority'   => 30,
 		'panel'  => 'home_panel',
 	) );
 
 	// Section - Events
 	$wp_customize->add_section( 'home_events' , array(
 		'title'      => __( 'Events', 'community' ),
+		'priority'   => 30,
+		'panel'  => 'home_panel',
+	) );
+
+	// Section - Updates (aka Requests)
+	$wp_customize->add_section( 'home_updates' , array(
+		'title'      => __( 'Requests', 'community' ),
 		'priority'   => 40,
 		'panel'  => 'home_panel',
 	) );
@@ -196,9 +196,9 @@ function glocal_customize_register( $wp_customize ) {
 				'section'  => 'home_modules',
 				'type'     => 'multiple-select', // The $type in our class
 				'choices'  => array(
-					'updates' => __('Updates', 'community'),
-					'posts' => __('Posts', 'community'),
+					'posts' => __('News', 'community'),
 					'events' => __('Events', 'community'),
+					'updates' => __('Requests', 'community'),
 					'sites' => __('Sites', 'community'),
 				),
 				'priority' => 20,
