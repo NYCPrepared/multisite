@@ -53,6 +53,7 @@ jQuery(document).ready(function(){
 			'wrapper_list_css' => 'news-list',
 			'wrapper_block_css'=> 'module row news', //The wrapper class
 			'instance'         => 'news-module', //The wrapper ID
+			'ignore_blog'	=> '1', //Omit the main site from network news
 		);
 		// If a category was selected, limit to that category
 		if(!empty($postcategory)) {
