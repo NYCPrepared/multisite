@@ -2715,11 +2715,11 @@ div.css-search {
     .single-event .event-time,
     .single-event .location-address {
       margin-top: .75em; } }
-.single-event .tools {
+.single-event .event-tools {
   margin: 1.5em 0;
   margin-right: 10px; }
   @media (min-width: 481px) {
-    .single-event .tools {
+    .single-event .event-tools {
       margin-top: 2.25em; } }
 .single-event .event-description {
   margin: 2em 0; }

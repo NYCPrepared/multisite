@@ -24,7 +24,7 @@ echo $EM_Event->output_single();
 		<span class="event-time"><?php echo $EM_Event->output('#g:#i#a'); ?> - <?php echo $EM_Event->output('#@g:#@i#@a'); ?></span>
 	</div>
 	<div class="location">#_LOCATIONLINK</div>
-	{has_location}<div class="tools"><a href="#_LOCATIONICALURL" class="add-to-calendar button">Add to Calendar</a></div>{/has_location}
+	{has_location}<div class="event-tools"><a href="#_LOCATIONICALURL" class="add-to-calendar button">Add to Calendar</a></div>{/has_location}
 </section>
 {has_location}<section class="event-map"><?php echo $EM_Event->output('#_MAP'); ?></section>{/has_location}
 <section class="event-description"><?php echo $EM_Event->output('#_EVENTNOTES'); ?></section>
