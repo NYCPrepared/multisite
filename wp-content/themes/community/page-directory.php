@@ -26,46 +26,49 @@
           
 				</header>
 
+				<?php if ( is_plugin_active( 'network-landing-pages/network-landing-pages.php' ) ) { ?>
 
-				<section class="directory-content" itemprop="articleBody" rel="main">
+					<section class="directory-content" itemprop="articleBody" rel="main">
 
-				  <h4 class="subtitle">Networks</h4>
+					  <h4 class="subtitle">Networks</h4>
 
-					<ul class="networks-list">
-						<?php
-							$networks = get_posts('post_type=network');
-							foreach ($networks as $network) {
-								setup_postdata($post);
-								// $thumbnail = get_the_post_thumbnail($network->ID, 'thumbnail'); 
-								$content = get_the_content(' ...');
-								$permalink = get_permalink($network->ID);
-								$thumbnailurl = wp_get_attachment_image_src( get_post_thumbnail_id($network->ID), 'full' );
-								$thumbnail = $thumbnailurl['0'];
-								if(function_exists('get_excerpt_by_id')) {
-									$excerpt = get_excerpt_by_id($network->ID, '25');
-								} else {
-									$excerpt = $network->post_content;
-								}
+						<ul class="networks-list">
+							<?php
+								$networks = get_posts('post_type=network');
+								foreach ($networks as $network) {
+									setup_postdata($post);
+									// $thumbnail = get_the_post_thumbnail($network->ID, 'thumbnail'); 
+									$content = get_the_content(' ...');
+									$permalink = get_permalink($network->ID);
+									$thumbnailurl = wp_get_attachment_image_src( get_post_thumbnail_id($network->ID), 'full' );
+									$thumbnail = $thumbnailurl['0'];
+									if(function_exists('get_excerpt_by_id')) {
+										$excerpt = get_excerpt_by_id($network->ID, '25');
+									} else {
+										$excerpt = $network->post_content;
+									}
 
-							?>
-							<li id="network-<?php echo $network->post_name; ?>">
-								<a href="<?php echo $permalink; ?>" class="item-image" style="background-image: url(' <?php echo $thumbnail; ?> ');"></a>
-								<h3 class="item-title"><a href="<?php echo $permalink; ?>"><?php echo $network->post_title; ?></a></h3>
-								<h6 class="meta item-excerpt"><?php echo $excerpt; ?></h6>
-							</li>
-							<?php } ?>
+								?>
+								<li id="network-<?php echo $network->post_name; ?>">
+									<a href="<?php echo $permalink; ?>" class="item-image" style="background-image: url(' <?php echo $thumbnail; ?> ');"></a>
+									<h3 class="item-title"><a href="<?php echo $permalink; ?>"><?php echo $network->post_title; ?></a></h3>
+									<h6 class="meta item-excerpt"><?php echo $excerpt; ?></h6>
+								</li>
+								<?php } ?>
 
-        					<li class="directory-promo" id="promo-network">
-        						<a href="/registration" title="Register your network">
-            						<h3 class="post-title">Register your network</h3>
-            						<div class="promo-icons"><i class="icon"></i></div>
-        						</a>
-        					</li>
+	        					<li class="directory-promo" id="promo-network">
+	        						<a href="/registration" title="Register your network">
+	            						<h3 class="post-title">Register your network</h3>
+	            						<div class="promo-icons"><i class="icon"></i></div>
+	        						</a>
+	        					</li>
 
 
-					</ul>
-					
-				</section>
+						</ul>
+						
+					</section>
+
+				<?php } ?>
 
 
 				<section class="directory-content" itemprop="articleBody" rel="main">
