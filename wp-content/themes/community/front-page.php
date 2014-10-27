@@ -1,8 +1,17 @@
 <?php
 // Template: Home Page
-// This template makes heavy use of the Events Manager and Options Framework plugins and the recent-network-posts function (included in with this theme in recent-network-posts.php).
-// Without Events Manager, the events module (module 3) will not appear.
-// Without the recent-network-posts function, the network-wide posts (module 1 and module 2) will not appear
+// This template has dependencies:
+// 		- Requires that WP multisite is set-up
+// 		- Makes heavy use of the Events Manager plugin and a customized Network Latest Posts plugin.
+// 			- Without Events Manager, Events will not appear
+// 			- Without custom Network Latest Posts, News and Requests (aka Posts and Updates) will not appear
+// Some customization is available:
+// 		- Which modules appear is selected in the theme's Customization settings 
+// 			- Go to: Appearance > Customization > Front Page
+// 		- Module heading text can be changed (defaults: News, Requests, Events, Sites)
+//		- Module heading links can be added (default: none)
+//		- Number of items to display can be specified
+
 
 ?>
 
@@ -69,26 +78,81 @@
 		</section>
 
 		<section class="home-modules">
+
+			<?php 
+			if(function_exists('glocal_customization_settings')) {
+				$community_settings = glocal_customization_settings();
+			} 
+			?>
+
 			<?php if ( is_multisite() ) { // Check to see if multisite is active. If not, display a recent posts and events module for this site. ?> 
 
 				<?php
-				// Get network-wide news
-				get_template_part( 'partials/home-module', 'news' ); ?>
+				// Check that modules customization settings are in DB
+				if(!empty($community_settings['modules'])) { ?>
 
-				<?php
-				// Get network-wide events
-				get_template_part( 'partials/home-module', 'events' ); ?>
+					<?php
+					// Check if the "posts" module is selected
+					if (in_array("posts", $community_settings['modules'])) { ?>
 
-				<?php
-				// Get network-wide requests
-				get_template_part( 'partials/home-module', 'requests' ); ?>
+						<?php
+						// Get network-wide news
+						get_template_part( 'partials/home-module', 'news' ); ?>
 
-				<?php
-				// Get network-wide sites
-				get_template_part( 'partials/home-module', 'sites' ); ?>
+					<?php } ?>
+					<?php
+					// Check if the "events" module is selected
+					if (in_array("events", $community_settings['modules'])) { ?>
 
+						<?php
+						// Get network-wide events
+						get_template_part( 'partials/home-module', 'events' ); ?>
 
-			<?php } else { // If multisite isn't enabled, show a recent posts module for the site ?>
+					<?php } ?>
+
+					<?php
+					// Check if the "updates" module is selected
+					if (in_array("updates", $community_settings['modules'])) { ?>
+
+						<?php
+						// Get network-wide requests
+						get_template_part( 'partials/home-module', 'requests' ); ?>
+
+					<?php } ?>
+
+					<?php
+					// Check if the "sites" module is selected
+					if (in_array("sites", $community_settings['modules'])) { ?>
+
+						<?php
+						// Get network-wide sites
+						get_template_part( 'partials/home-module', 'sites' ); ?>
+
+					<?php } ?>
+
+				<?php } else { // Else just show all modules ?>
+
+					<?php
+					// Get network-wide news
+					get_template_part( 'partials/home-module', 'news' ); ?>
+
+					<?php
+					// Get network-wide events
+					get_template_part( 'partials/home-module', 'events' ); ?>
+
+					<?php
+					// Get network-wide requests
+					get_template_part( 'partials/home-module', 'requests' ); ?>
+					
+					<?php
+					// Get network-wide sites
+					get_template_part( 'partials/home-module', 'sites' ); ?>
+
+				<?php } ?>
+
+			<?php } else { // If multisite isn't enabled, show an error ?>
+
+				<!-- TODO: Make more meaningful error messages. -->
 
 				<?php
 				// Get multisite error message
