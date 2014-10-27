@@ -1,40 +1,45 @@
 <?php 
-if(function_exists('community_home_category')) {
-	$postcategory = community_home_category(); // Get the category from theme customization 
-	$categoryid = get_option("community_options");
-}
-
-if(function_exists('community_home_header')) {
-	$heading = community_home_header(); // Get the header text from theme customization 
-	if(!empty($heading)) {
-		$postheading = $heading;
-	} elseif(!empty($postcategory)) {
-		$postheading = $postcategory;
-	}
-	else {
-		$postheading = 'Latest'; // Fallback header text. Change to whatever you'd like.
-	}
-}
+if(function_exists('glocal_customization_settings')) {
+	$community_settings = glocal_customization_settings();
+	$postcategory = implode(",", $community_settings['updates']['featured_category']);
+	$postnumber = $community_settings['updates']['number_updates'];
+} 
 ?>
 
 <article id="highlights-module" class="module row highlights clearfix">
-	<h2 class="module-heading"><?php echo $postheading ?></h2>
+	<h2 class="module-heading">
+	<?php if(!empty($community_settings['updates']['updates_heading_link'])) { ?>
+		<a href="<?php echo $community_settings['updates']['updates_heading_link']; ?>">
+			<?php echo $community_settings['updates']['updates_heading']; ?>
+		</a>
+	<?php } else { ?>
+		<?php echo $community_settings['updates']['updates_heading']; ?>
+	<?php } ?>	
+	</h2>
 
 	<?php
 	if(function_exists( 'network_latest_posts' )) {
 
 		$parameters = array(
-		'title'         => '',
-		'title_only'    => 'false',
-		'auto_excerpt'  => 'true',
-		'display_type'     => 'ulist',
-		'full_meta'		=> 'true',
-		'category'         => $postcategory,          // Widget title
-		'number_posts'     => 9,
-		'wrapper_list_css' => 'highlights-list',
-		'wrapper_block_css'=> 'module row highlights', //The wrapper classe
-		'instance'         => 'highlights-module', //The wrapper ID
+			'title'         => '',
+			'title_only'    => 'false',
+			'auto_excerpt'  => 'true',
+			'display_type'     => 'ulist',
+			'full_meta'		=> 'true',
+			'sort_by_date'	=> 'true',
+			'wrapper_list_css' => 'highlights-list',
+			'wrapper_block_css'=> 'module row highlights', //The wrapper class
+			'instance'         => 'highlights-module', //The wrapper ID
 		);
+		// If a category was selected, limit to that category
+		if(!empty($postcategory)) {
+			$parameters['category'] = $postcategory;
+		}
+
+		// If number of posts is specified, limit to that number of posts
+		if(!empty($postnumber)) {
+			$parameters['number_posts'] = $postnumber;
+		}
 		// Execute
 		$hightlights_posts = network_latest_posts($parameters);
 	}
