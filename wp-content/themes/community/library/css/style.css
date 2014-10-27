@@ -1381,6 +1381,7 @@ button,
   transition: all 0.25s ease;
   font-size: 14px;
   font-size: 0.875rem;
+  background-color: #00a99d;
   text-transform: uppercase;
   letter-spacing: 2px;
   line-height: 1.2;
@@ -1388,9 +1389,11 @@ button,
   padding: .75em 3em;
   text-align: center;
   border: 0;
-  background: #00a99d;
   color: #fff;
   display: inline-block; }
+  button:hover,
+  .button:hover {
+    background: #00dccc; }
   button:link, button:visited,
   .button:link,
   .button:visited {
@@ -1398,44 +1401,78 @@ button,
   button:hover, button:focus,
   .button:hover,
   .button:focus {
-    background: #00dccc;
-    color: #fff !important; }
+    color: #fff !important;
+    cursor: pointer; }
 
 .button.red {
-  background: #f15a24; }
+  background-color: #f15a24; }
+  .button.red:hover {
+    background: #f47e54; }
 
 .button.fuschia {
-  background: #c43b90; }
+  background-color: #c43b90; }
+  .button.fuschia:hover {
+    background: #d062a6; }
 
 .button.purple {
-  background: #9642a5; }
+  background-color: #9642a5; }
+  .button.purple:hover {
+    background: #af5cbe; }
 
 .button.indigo {
-  background: #4747b0; }
+  background-color: #4747b0; }
+  .button.indigo:hover {
+    background: #6868c2; }
 
 .button.navy {
-  background: #3756b8; }
+  background-color: #3756b8; }
+  .button.navy:hover {
+    background: #5672cc; }
 
 .button.blue {
-  background: #247cc9; }
+  background-color: #247cc9; }
+  .button.blue:hover {
+    background: #4395dd; }
 
 .button.sky {
-  background: #29abe2; }
+  background-color: #29abe2; }
+  .button.sky:hover {
+    background: #56bde8; }
 
 .button.teal {
-  background: #00a99d; }
+  background-color: #00a99d; }
+  .button.teal:hover {
+    background: #00dccc; }
 
 .button.green {
-  background: #22b573; }
+  background-color: #22b573; }
+  .button.green:hover {
+    background: #32d88e; }
 
 .button.lime {
-  background: #8cc63f; }
+  background-color: #8cc63f; }
+  .button.lime:hover {
+    background: #a4d266; }
 
 .button.yellow {
-  background: #fbb03b; }
+  background-color: #fbb03b; }
+  .button.yellow:hover {
+    background: #fcc46d; }
 
 .button.orange {
-  background: #ff931e; }
+  background-color: #ff931e; }
+  .button.orange:hover {
+    background: #ffab51; }
+
+.button.large {
+  font-size: 22px;
+  font-size: 1.375rem;
+  padding: 1em 3em; }
+
+.button.small {
+  font-size: 12px;
+  font-size: 0.75rem;
+  padding: .25em 1em; }
 
 .home-intro .button {
   margin-bottom: 10px;

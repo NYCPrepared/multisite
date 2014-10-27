@@ -45,11 +45,19 @@ a {
 // BUTTONS
 
 
+@mixin button-bg($color) {
+	background-color: $color;
+	&:hover {
+    background: lighten($color, 10);
+	}
+}
+
 
 button,
 .button {
   @include transition(all 0.25s ease);
   @include font-size($milli);
+  @include button-bg($anchor-color);
   text-transform: uppercase; 
   letter-spacing: $tracking-loose;
   line-height: 1.2;
@@ -57,7 +65,6 @@ button,
   padding: .75em 3em;
   text-align: center;
   border: 0;
-  background: $anchor-color;
   color: $white;
   display: inline-block;
   &:link,
@@ -66,57 +73,57 @@ button,
   }
   &:hover,
   &:focus {
-    background: lighten($anchor-color, 10);
     color: $white !important;
+    cursor: pointer;
   }
 }
 
 .button.red {
-  background: $red;
+  @include button-bg($red);
 }
 .button.fuschia {
-  background:$fuschia;
+  @include button-bg($fuschia);
 }
 .button.purple {
-  background:$purple;
+  @include button-bg($purple);
 }
 .button.indigo {
-  background:$indigo;
+  @include button-bg($indigo);
 }
 .button.navy {
-  background:$navy;
+  @include button-bg($navy);
 }
 .button.blue {
-  background:$blue;
+  @include button-bg($blue);
 }
 .button.sky {
-  background:$sky;
+  @include button-bg($sky);
 }
 .button.teal {
-  background:$teal;
+  @include button-bg($teal);
 }
 .button.green {
-  background:$green;
+  @include button-bg($green);
 }
 .button.lime {
-  background:$lime;
+  @include button-bg($lime);
 }
 .button.yellow {
-  background:$yellow;
+  @include button-bg($yellow);
 }
 .button.orange {
-  background:$orange;
+  @include button-bg($orange);
 }
 
 
 // button sizes
 
-%button-large {
+.button.large {
     @include font-size($delta);
     padding: 1em 3em;
 }
 
-%button-small {
+.button.small {
     @include font-size($micro);
     padding: .25em 1em;
 }
