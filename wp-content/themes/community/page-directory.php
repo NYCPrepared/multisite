@@ -18,15 +18,11 @@
 
 					<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
 
-          <div class="page-blurb">
-          
-            <p>NYC Prepared tracks the activity of websites and social media profiles of organizations and groups active in New York City’s relief and resilience community. To facilitate this tracking and the coordination it enables, we suggest groups use websites that output standardized news (RSS) and events (iCAL) data feeds.</p>
-  
-            <p>Does your website use these data standards? Find out by following <a href="http://knowledge.nycprepared.org/Find_an_RSS_Feed" target="_blank">these steps.</a></p>
-            
-            <p>Want a website that is using these feeds?  We offer them for free. <a href="http://nycprepared.org/create-a-site">Learn more.</a></p>
-  
-          </div>
+						<div class="page-blurb">
+
+							<?php the_content(); ?>
+
+						</div>
           
 				</header>
 
