@@ -21,3 +21,4 @@ wp-content/plugins/wp-example-content/screenshot-1.png
 wp-content/plugins/wp-example-content/screenshot-2.png
 wp-content/plugins/wp-example-content/screenshot-3.png
 *.codekit
+*.sass-cache
