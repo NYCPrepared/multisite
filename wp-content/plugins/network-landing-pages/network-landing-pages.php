@@ -70,7 +70,7 @@ function community_manage_network_columns( $column, $post_id ) {
 		case 'thumbnail' :
 
 			/* Get the network banner. */
-			echo get_the_post_thumbnail($page->ID, array(120,120));
+			echo get_the_post_thumbnail($post->ID, array(120,120));
 
 			break;
 
